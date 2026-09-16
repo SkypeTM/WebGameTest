@@ -1,0 +1,22 @@
+{
+  "energy": 4,
+  "hand": 6,
+  "handLimit": 10,
+  "heroHP": 60,
+  "enemyHP": { "일반": 30, "정예": 70, "보스": 180 },
+  "enemyAttack": { "일반": 6, "정예": 12, "보스": 18 },
+  "startingGold": 100,
+  "recruitCost": 20,
+  "battleXP": 12,
+  "puzzleXP": 8,
+  "friendlyShield": 5,
+  "friendlyCap": 10,
+  "opposedStress": 2,
+  "stressCap": 4,
+  "sameFactionDefense": [0, 0, 0.05, 0.08, 0.1],
+  "inheritanceLimit": 3,
+  "facilityUpgradeCost": 30,
+  "trainingCost": 12,
+  "healingCost": 8,
+  "trainingXP": 10
+}

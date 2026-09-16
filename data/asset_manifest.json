@@ -1,0 +1,530 @@
+[
+  {
+    "id": "AR1",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/AR1_design_sheet.png"
+  },
+  {
+    "id": "AR2",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/AR2_design_sheet.png"
+  },
+  {
+    "id": "AR3",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/AR3_design_sheet.png"
+  },
+  {
+    "id": "AR4",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/AR4_design_sheet.png"
+  },
+  {
+    "id": "VR1",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/VR1_design_sheet.png"
+  },
+  {
+    "id": "VR2",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/VR2_design_sheet.png"
+  },
+  {
+    "id": "VR3",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/VR3_design_sheet.png"
+  },
+  {
+    "id": "VR4",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/VR4_design_sheet.png"
+  },
+  {
+    "id": "BC1",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/BC1_design_sheet.png"
+  },
+  {
+    "id": "BC2",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/BC2_design_sheet.png"
+  },
+  {
+    "id": "BC3",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/BC3_design_sheet.png"
+  },
+  {
+    "id": "BC4",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/BC4_design_sheet.png"
+  },
+  {
+    "id": "BK1",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/BK1_design_sheet.png"
+  },
+  {
+    "id": "BK2",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/BK2_design_sheet.png"
+  },
+  {
+    "id": "BK3",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/BK3_design_sheet.png"
+  },
+  {
+    "id": "BK4",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/BK4_design_sheet.png"
+  },
+  {
+    "id": "WS1",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/WS1_design_sheet.png"
+  },
+  {
+    "id": "WS2",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/WS2_design_sheet.png"
+  },
+  {
+    "id": "WS3",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/WS3_design_sheet.png"
+  },
+  {
+    "id": "WS4",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/WS4_design_sheet.png"
+  },
+  {
+    "id": "DS1",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/DS1_design_sheet.png"
+  },
+  {
+    "id": "DS2",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/DS2_design_sheet.png"
+  },
+  {
+    "id": "DS3",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/DS3_design_sheet.png"
+  },
+  {
+    "id": "DS4",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/DS4_design_sheet.png"
+  },
+  {
+    "id": "GO1",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/GO1_design_sheet.png"
+  },
+  {
+    "id": "GO2",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/GO2_design_sheet.png"
+  },
+  {
+    "id": "GO3",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/GO3_design_sheet.png"
+  },
+  {
+    "id": "GO4",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/GO4_design_sheet.png"
+  },
+  {
+    "id": "EF1",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/EF1_design_sheet.png"
+  },
+  {
+    "id": "EF2",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/EF2_design_sheet.png"
+  },
+  {
+    "id": "EF3",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/EF3_design_sheet.png"
+  },
+  {
+    "id": "EF4",
+    "status": "placeholder",
+    "path": null,
+    "reference": "art/characters/EF4_design_sheet.png"
+  },
+  {
+    "id": "M01",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M02",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M03",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M04",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M05",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M06",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M07",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M08",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M09",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M10",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M11",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M12",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M13",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M14",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M15",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M16",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M17",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M18",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M19",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M20",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M21",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M22",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M23",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M24",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M25",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M26",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M27",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M28",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M29",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M30",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M31",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M32",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M33",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M34",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M35",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M36",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M37",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M38",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M39",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M40",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M41",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M42",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M43",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M44",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M45",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M46",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M47",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M48",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M49",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M50",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M51",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M52",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M53",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M54",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M55",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  },
+  {
+    "id": "M56",
+    "status": "placeholder",
+    "path": null,
+    "reference": null
+  }
+]

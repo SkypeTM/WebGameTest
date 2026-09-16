@@ -1,0 +1,51 @@
+{
+  "strike": {
+    "name": "기본 타격",
+    "cost": 1,
+    "target": "enemy",
+    "power": 10,
+    "description": "피해 10"
+  },
+  "guard": {
+    "name": "방어 태세",
+    "cost": 1,
+    "target": "ally",
+    "power": 12,
+    "description": "보호막 12"
+  },
+  "heavy": {
+    "name": "집중 일격",
+    "cost": 2,
+    "target": "enemy",
+    "power": 23,
+    "description": "피해 23"
+  },
+  "수호": {
+    "name": "방패 반격",
+    "cost": 1,
+    "target": "ally",
+    "power": 20,
+    "description": "보호막 20 · 공격자 반격 5"
+  },
+  "공격": {
+    "name": "관통 표식",
+    "cost": 1,
+    "target": "enemy",
+    "power": 13,
+    "description": "관통 피해 13 · 표식 +4"
+  },
+  "지원": {
+    "name": "응급 회복",
+    "cost": 1,
+    "target": "ally",
+    "power": 16,
+    "description": "체력 16 회복 · 스트레스 -2"
+  },
+  "제어": {
+    "name": "룬 사슬",
+    "cost": 1,
+    "target": "enemy",
+    "power": 6,
+    "description": "피해 6 · 다음 행동 중단"
+  }
+}

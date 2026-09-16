@@ -2,6 +2,8 @@
 
 현재 개별 원화·스프라이트는 제공되지 않았습니다. 모든 캐릭터·몬스터는 ID가 표시된 임시 SVG 실루엣으로 표시합니다. SVG 자체는 `app/page.tsx`의 `Crest` 컴포넌트입니다.
 
+`test-images`에서 확인한 ID 표기 콘셉트 시트 중 식별 가능한 AR1, AR4, BC1, BC2, M17, M25, M33, M41은 `concept-sheets`에 연결했습니다. 이 파일들은 투명 스프라이트가 아닌 시트이므로 주 인물/첫 번째 몬스터 영역을 CSS로 잘라 표시하며, 최종 개별 자산으로 간주하지 않습니다.
+
 1. 완성된 이미지를 이 디렉터리에 넣습니다. 예: `public/assets/AR1.png`.
 2. `data/asset_manifest.json`에서 해당 ID의 `path`를 `/assets/AR1.png`, `status`를 `ready`로 변경합니다.
 3. 새 빌드에서 해당 이미지가 표시됩니다. 이미지 로딩 실패 시 임시 실루엣으로 복귀합니다.

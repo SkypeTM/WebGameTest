@@ -1,8 +1,8 @@
 [
   {
     "id": "AR1",
-    "status": "placeholder",
-    "path": null,
+    "status": "concept-sheet",
+    "path": "/assets/concept-sheets/AR1.png",
     "reference": "art/characters/AR1_design_sheet.png"
   },
   {
@@ -19,8 +19,8 @@
   },
   {
     "id": "AR4",
-    "status": "placeholder",
-    "path": null,
+    "status": "concept-sheet",
+    "path": "/assets/concept-sheets/AR4.png",
     "reference": "art/characters/AR4_design_sheet.png"
   },
   {
@@ -49,14 +49,14 @@
   },
   {
     "id": "BC1",
-    "status": "placeholder",
-    "path": null,
+    "status": "concept-sheet",
+    "path": "/assets/concept-sheets/BC1.png",
     "reference": "art/characters/BC1_design_sheet.png"
   },
   {
     "id": "BC2",
-    "status": "placeholder",
-    "path": null,
+    "status": "concept-sheet",
+    "path": "/assets/concept-sheets/BC2.png",
     "reference": "art/characters/BC2_design_sheet.png"
   },
   {
@@ -289,8 +289,8 @@
   },
   {
     "id": "M17",
-    "status": "placeholder",
-    "path": null,
+    "status": "concept-sheet",
+    "path": "/assets/concept-sheets/M17.png",
     "reference": null
   },
   {
@@ -337,8 +337,8 @@
   },
   {
     "id": "M25",
-    "status": "placeholder",
-    "path": null,
+    "status": "concept-sheet",
+    "path": "/assets/concept-sheets/M25.png",
     "reference": null
   },
   {
@@ -385,8 +385,8 @@
   },
   {
     "id": "M33",
-    "status": "placeholder",
-    "path": null,
+    "status": "concept-sheet",
+    "path": "/assets/concept-sheets/M33.png",
     "reference": null
   },
   {
@@ -433,8 +433,8 @@
   },
   {
     "id": "M41",
-    "status": "placeholder",
-    "path": null,
+    "status": "concept-sheet",
+    "path": "/assets/concept-sheets/M41.png",
     "reference": null
   },
   {

@@ -2,6 +2,7 @@ import { randomBytes, randomUUID } from "node:crypto";
 import { db, transaction } from "./db";
 import {
   initialGame,
+  normalizeGame,
   reduceGame,
   RuleError,
   type Action,
@@ -33,9 +34,13 @@ export function getCampaign(account: string): Row {
   db.prepare(
     "INSERT OR IGNORE INTO campaign(account_id,state,version,updated_at) VALUES(?,?,0,?)",
   ).run(account, JSON.stringify(initialGame()), new Date().toISOString());
-  return db
+  const row = db
     .prepare("SELECT state,version,controller FROM campaign WHERE account_id=?")
     .get(account) as unknown as Row;
+  return {
+    ...row,
+    state: JSON.stringify(normalizeGame(JSON.parse(row.state) as Game)),
+  };
 }
 export function claimControl(account: string, controller: string) {
   return transaction(() => {

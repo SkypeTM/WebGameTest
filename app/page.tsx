@@ -36,24 +36,30 @@ const symbols: Record<string, string> = {
   지원: "✦",
   제어: "◎",
 };
-function Crest({ id, large = false }: { id: string; large?: boolean }) {
+function Crest({ id, large = false, motion = "" }: { id: string; large?: boolean; motion?: string }) {
   const [failed, setFailed] = useState(false);
   const asset = assetManifest.find((a) => a.id === id);
   const monster = id.startsWith("M");
   if (asset?.path && !failed)
     return (
-      <div className={large ? "crest large" : "crest"}>
+      <div className={`${large ? "crest large" : "crest"} ${motion}`}>
         <img
           src={String(asset.path)}
           alt={id}
-          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          className="concept-art"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: id.startsWith("M") ? "0% 0%" : "16% 50%",
+          }}
           onError={() => setFailed(true)}
         />
       </div>
     );
   return (
     <div
-      className={`crest ${large ? "large" : ""} ${monster ? "machine" : "person"}`}
+      className={`crest ${large ? "large" : ""} ${monster ? "machine" : "person"} ${motion}`}
       aria-label={`${id} 임시 자산`}
     >
       <svg viewBox="0 0 120 120" role="img">
@@ -79,6 +85,19 @@ function Crest({ id, large = false }: { id: string; large?: boolean }) {
     </div>
   );
 }
+function CardArt({ kind, role }: { kind: Card["kind"]; role: string }) {
+  return (
+    <span className={`card-art art-${kind}`} aria-hidden="true">
+      <svg viewBox="0 0 80 56" role="img">
+        {kind === "strike" && <><path d="M12 44 48 8l8 8-36 36Z" /><path d="m50 18 15 15M58 10l12 12" /></>}
+        {kind === "guard" && <><path d="M40 6 68 16v16c0 12-11 18-28 24C21 50 12 44 12 32V16Z" /><path d="m25 30 10 10 20-22" /></>}
+        {kind === "heavy" && <><path d="M18 48 40 8l22 40" /><path d="M30 31h20M40 8v40" /></>}
+        {kind === "skill" && <><circle cx="40" cy="28" r="18" /><path d="M40 7v42M19 28h42M25 13l30 30M55 13 25 43" /></>}
+      </svg>
+      <small>{role}</small>
+    </span>
+  );
+}
 function Meter({ value, max }: { value: number; max: number }) {
   return (
     <div className="meter">
@@ -99,9 +118,11 @@ export default function Page() {
     [offline, setOffline] = useState(false),
     [register, setRegister] = useState(false),
     [tab, setTab] = useState("party"),
+    [overlayOpen, setOverlayOpen] = useState(true),
     [filter, setFilter] = useState("전체"),
     [inheritance, setInheritance] = useState<string[]>([]),
-    [selected, setSelected] = useState<Card | null>(null);
+    [selected, setSelected] = useState<Card | null>(null),
+    [previewTarget, setPreviewTarget] = useState("");
   const client = useRef(""),
     pending = useRef<Record<string, unknown> | null>(null),
     working = useRef(false);
@@ -261,9 +282,31 @@ export default function Page() {
   }
   const locked = busy || offline || !control || !!pending.current;
   const run = game?.run,
-    battle = run?.battle;
+    battle = run?.battle,
+    fx = run?.combatFx;
+  const motionFor = (id: string, side: "hero" | "enemy") => {
+    if (!fx) return "";
+    if (fx.actor === id && side === "hero") return fx.kind === "hero-guard" ? "motion-guard" : fx.kind === "hero-heal" ? "motion-heal" : "motion-strike";
+    if (fx.actor === id && side === "enemy") return "motion-strike";
+    if (fx.target === id && side === "hero" && fx.kind === "enemy-attack") return "motion-hit";
+    if (fx.target === id && side === "enemy" && fx.kind === "hero-attack") return "motion-hit";
+    return "";
+  };
   function target(id: string) {
     if (selected) void act({ type: "play", id: selected.id, target: id });
+  }
+  function previewFor(id: string) {
+    if (!selected || !battle) return "";
+    const info = cardInfo(selected);
+    if (info.target === "enemy") {
+      const enemy = battle.enemies.find((item) => item.id === id);
+      if (!enemy) return "";
+      const owner = run?.heroes.find((hero) => hero.id === selected.owner);
+      const damage = info.power + (owner?.equipment === "blade" ? 2 : 0) + Math.max(0, (owner?.level || 1) - 1) + enemy.mark;
+      const retaliation = ["M06", "M07"].includes(enemy.id) ? " · 반격 예상 5~6" : "";
+      return `예상 피해 ${Math.max(0, damage - enemy.shield)}${retaliation}`;
+    }
+    return "아군 효과 " + info.description;
   }
   if (loading)
     return (
@@ -456,23 +499,34 @@ export default function Page() {
         </div>
         {!run ? (
           <>
-            <nav className="tabs">
+            <section className="town-map" aria-label="거점 장소">
+              <div className="town-skyline"><span>THE LAST REFUGE</span><b>종이 멈춘 뒤에도, 마을은 살아 있다</b></div>
+              <div className="town-locations">
               {[
-                ["party", "파티 편성"],
-                ["roster", "동료 모집"],
-                ["growth", "성장과 시설"],
-                ["market", "시장"],
-                ["storage", "보관함 · 기록"],
-              ].map(([id, label]) => (
+                ["party", "작전실", "편성 · 장비"],
+                ["roster", "주점", "동료 모집"],
+                ["growth", "대장간", "훈련 · 치료"],
+                ["market", "시장 골목", "거래 · 암시장"],
+                ["storage", "기록 보관소", "전리품 · 로그"],
+              ].map(([id, label, subtitle]) => (
                 <button
                   key={id}
-                  aria-pressed={tab === id}
-                  onClick={() => setTab(id)}
+                  className={`town-location ${tab === id && overlayOpen ? "active" : ""}`}
+                  aria-label={label}
+                  onClick={() => { setTab(id); setOverlayOpen(true); }}
                 >
-                  {label}
+                  <span className={`town-icon town-${id}`} aria-hidden="true" />
+                  <strong>{label}</strong>
+                  <small>{subtitle}</small>
                 </button>
               ))}
-            </nav>
+              </div>
+            </section>
+            {overlayOpen && <section className="hub-overlay">
+              <div className="overlay-heading">
+                <div><span className="eyebrow">HAMLET / {tab?.toUpperCase()}</span><h2>{({ party: "작전실", roster: "주점", growth: "대장간", market: "시장 골목", storage: "기록 보관소" } as Record<string, string>)[tab] || "거점"}</h2></div>
+                <button className="mini" onClick={() => setOverlayOpen(false)}>오버레이 닫기 ×</button>
+              </div>
             {game.summary && <div className="summary">✦ {game.summary}</div>}
             {game.endingUnlocked && !game.ending && (
               <section className="panel ending-panel">
@@ -892,6 +946,7 @@ export default function Page() {
                 </section>
               </div>
             )}
+            </section>}
           </>
         ) : (
           <>
@@ -900,7 +955,7 @@ export default function Page() {
                 <div className="battle-toolbar">
                   <div>
                     <span className="eyebrow">
-                      TURN {battle.turn.toString().padStart(2, "0")}
+                      TURN {battle.turn.toString().padStart(2, "0")} / {balance.maxBattleTurns}
                     </span>
                     <h2>
                       행동 자원{" "}
@@ -915,7 +970,7 @@ export default function Page() {
                     {battle.discard.length}
                     <button
                       className="secondary"
-                      disabled={locked}
+                      disabled={locked || battle.turn >= balance.maxBattleTurns}
                       onClick={() => void act({ type: "endTurn" })}
                     >
                       턴 종료 →
@@ -927,10 +982,10 @@ export default function Page() {
                     <h3 className="field-label">
                       탐사대 <span>아군 대상 선택</span>
                     </h3>
-                    {run.heroes.map((h) => (
+                    {run.heroes.map((h, index) => (
                       <button
                         key={h.id}
-                        className={`ally ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
+                        className={`ally rank-${index + 1} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
                         disabled={
                           locked ||
                           !selected ||
@@ -938,8 +993,11 @@ export default function Page() {
                           h.hp === 0
                         }
                         onClick={() => target(h.id)}
+                        onDragOver={(event) => { event.preventDefault(); setPreviewTarget(h.id); }}
+                        onDrop={(event) => { event.preventDefault(); target(h.id); setPreviewTarget(""); }}
                       >
-                        <Crest id={h.id} />
+                        <span className="rank-badge">{index + 1}</span>
+                        <Crest id={h.id} motion={motionFor(h.id, "hero")} />
                         <div>
                           <h3>
                             {char(h.id).name} <small>{char(h.id).role}</small>
@@ -948,11 +1006,15 @@ export default function Page() {
                           <p>
                             HP {h.hp}/{h.maxHp} <span>◇ {h.shield}</span>
                           </p>
+                          <small className="equipment-line">{h.equipment === "blade" ? "⚔ 훈련용 무기 +2" : "▣ 호신 부적 +3"}</small>
                           <small>
                             {h.hp === 0
                               ? "전투 불능"
                               : `스트레스 ${h.stress} · Lv.${h.level}`}
                           </small>
+                              {h.stress > 0 && <span className="status-chip stress-chip">☾ 스트레스 {h.stress}</span>}
+                              {h.injury && <span className="status-chip debuff-chip">부상</span>}
+                              {previewTarget === h.id && <strong className="combat-preview">{previewFor(h.id)}</strong>}
                         </div>
                       </button>
                     ))}
@@ -983,13 +1045,18 @@ export default function Page() {
                               e.hp === 0
                             }
                             onClick={() => target(e.id)}
+                            onDragOver={(event) => { event.preventDefault(); setPreviewTarget(e.id); }}
+                            onDrop={(event) => { event.preventDefault(); target(e.id); setPreviewTarget(""); }}
                           >
-                            <Crest id={e.id} large />
+                            <Crest id={e.id} large motion={motionFor(e.id, "enemy")} />
                             <h3>{monsters.find((m) => m.id === e.id)!.name}</h3>
                             <Meter value={e.hp} max={e.maxHp} />
                             <p>
                               HP {e.hp}/{e.maxHp} · ◇ {e.shield}
                             </p>
+                            {e.mark > 0 && <span className="status-chip debuff-chip">표식 +{e.mark}</span>}
+                            {e.stun > 0 && <span className="status-chip stun-chip">기절</span>}
+                            {previewTarget === e.id && <strong className="combat-preview enemy-preview">{previewFor(e.id)}</strong>}
                           </button>
                           {e.tower > 0 && (
                             <button
@@ -1039,7 +1106,10 @@ export default function Page() {
                           aria-pressed={selected?.id === c.id}
                           aria-label={`${char(c.owner).name} ${info.name}`}
                           className={`play-card ${c.kind}`}
+                          draggable={!disabled}
                           disabled={disabled}
+                          onDragStart={() => { setSelected(c); setPreviewTarget(""); }}
+                          onDragEnd={() => setPreviewTarget("")}
                           onClick={() =>
                             setSelected(selected?.id === c.id ? null : c)
                           }
@@ -1048,13 +1118,7 @@ export default function Page() {
                           <span className="card-owner">
                             {char(c.owner).name}
                           </span>
-                          <span className="card-symbol">
-                            {c.kind === "guard"
-                              ? "◇"
-                              : c.kind === "heavy"
-                                ? "↟"
-                                : symbols[info.role]}
-                          </span>
+                          <CardArt kind={c.kind} role={info.role} />
                           <strong>{info.name}</strong>
                           <span className="card-desc">{info.description}</span>
                           <small>

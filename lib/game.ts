@@ -53,6 +53,14 @@ export type Battle = {
   enemies: Enemy[];
   lastActor: string | null;
 };
+export type CombatFx = {
+  nonce: number;
+  kind: "hero-attack" | "hero-guard" | "hero-heal" | "enemy-attack" | "enemy-hit";
+  actor: string;
+  target: string;
+  card?: string;
+  amount: number;
+};
 export type Run = {
   seed: number;
   room: string;
@@ -64,6 +72,7 @@ export type Run = {
   reward: { gold: number; materials: string[] } | null;
   mode: "map" | "battle" | "event" | "reward" | "defeat";
   cleared: boolean;
+  combatFx: CombatFx | null;
 };
 export type Game = {
   schema: 1;
@@ -204,6 +213,28 @@ export function initialGame(): Game {
     run: null,
     log: ["실종된 탐사대의 마지막 기록은 변경 요새에서 끊겼다."],
     summary: null,
+  };
+}
+export function normalizeGame(previous: Game): Game {
+  const defaults = initialGame();
+  return {
+    ...defaults,
+    ...structuredClone(previous),
+    party: previous.party || defaults.party,
+    roster: previous.roster || defaults.roster,
+    materials: previous.materials || {},
+    reputation: { ...defaults.reputation, ...(previous.reputation || {}) },
+    facilities: { ...defaults.facilities, ...(previous.facilities || {}) },
+    achievements: previous.achievements || [],
+    ending: previous.ending ?? null,
+    endingUnlocked: previous.endingUnlocked ?? false,
+    endingHistory: previous.endingHistory || [],
+    rebirths: previous.rebirths || 0,
+    legacy: previous.legacy || [],
+    log: previous.log || defaults.log,
+    run: previous.run
+      ? { ...previous.run, combatFx: previous.run.combatFx ?? null }
+      : null,
   };
 }
 export function relations(ids: string[]) {
@@ -387,7 +418,7 @@ function victory(g: Game) {
   }
 }
 export function reduceGame(previous: Game, a: Action, seed = 1): Game {
-  const g = structuredClone(previous),
+  const g = normalizeGame(previous),
     r = g.run;
   if (a.type === "party") {
     check(!r, "탐사 중에는 편성을 바꿀 수 없습니다.");
@@ -521,6 +552,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       reward: null,
       mode: "map",
       cleared: false,
+      combatFx: null,
     };
     log(g, "변경 요새에 진입했다.");
   } else {
@@ -598,19 +630,18 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
         if (c.kind === "skill" && info.role === "지원") {
           ally!.hp = Math.min(ally!.maxHp, ally!.hp + info.power);
           ally!.stress = Math.max(0, ally!.stress - 2);
+          r.combatFx = { nonce: g.version + 1, kind: "hero-heal", actor: h.id, target: ally!.id, card: c.kind, amount: info.power };
         } else {
           ally!.shield += info.power;
           if (c.kind === "skill") ally!.counter = 5;
+          r.combatFx = { nonce: g.version + 1, kind: "hero-guard", actor: h.id, target: ally!.id, card: c.kind, amount: info.power };
         }
       } else {
         let dmg =
           info.power +
           (h.equipment === "blade" ? 2 + g.facilities.forge : 0) +
           Math.max(0, h.level - 1);
-        const guard = b.enemies.find(
-          (e) => e.id === "M01" && e.hp > 0 && e.shield > 0,
-        );
-        const target = guard && enemy !== guard && !tower ? guard : enemy!;
+        const target = enemy!;
         if (!tower) dmg += target.mark;
         if (tower) enemy!.tower = Math.max(0, enemy!.tower - dmg);
         else {
@@ -623,6 +654,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           if (c.kind === "skill" && info.role === "공격") target.mark = 4;
           if (c.kind === "skill" && info.role === "제어") target.stun = 1;
         }
+        r.combatFx = { nonce: g.version + 1, kind: "hero-attack", actor: h.id, target: target.id, card: c.kind, amount: dmg };
         if (
           target.hp > 0 &&
           !target.stun &&
@@ -673,9 +705,22 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
             r.heroes
               .filter((h) => h.hp > 0)
               .forEach((h) => hit(h, e.tower > 0 ? 18 : 9));
-        } else hit(target, e.id === "M06" || e.id === "M07" ? 12 : 6);
+        } else {
+          const damage = e.id === "M06" || e.id === "M07" ? 12 : 6;
+          hit(target, damage);
+          r.combatFx = { nonce: g.version + 1, kind: "enemy-attack", actor: e.id, target: target.id, amount: damage };
+        }
       }
       victory(g);
+      if (r.mode === "battle") {
+        if (b.turn >= balance.maxBattleTurns) {
+          r.mode = "defeat";
+          r.reward = null;
+          r.gold = 0;
+          r.materials = [];
+          log(g, `전투가 ${balance.maxBattleTurns}턴에 도달해 탐사대가 후퇴했다.`);
+        }
+      }
       if (r.mode === "battle") {
         r.heroes.forEach((h) => {
           h.shield = h.equipment === "ward" ? 3 : 0;

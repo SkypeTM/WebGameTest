@@ -133,6 +133,26 @@ test("final ending unlocks only after the last return and rebirth keeps selected
   assert.equal(g.ending, null);
   assert.equal(g.facilities.forge, 0);
 });
+test("legacy saves without growth fields can continue combat", () => {
+  const current = battleStart();
+  const legacy = structuredClone(current) as Game & { facilities?: unknown };
+  delete legacy.facilities;
+  delete legacy.achievements;
+  delete legacy.ending;
+  delete legacy.endingUnlocked;
+  const card = legacy.run!.battle!.hand.find((item) => cardInfo(item).target === "enemy")!;
+  const next = act(legacy, { type: "play", id: card.id, target: "M01" });
+  assert.equal(typeof next.facilities.forge, "number");
+  assert.equal(next.run!.battle!.enemies[0].hp < 30, true);
+});
+test("battle ends instead of allowing unlimited turn endings", () => {
+  let g = battleStart();
+  g.run!.battle!.turn = 40;
+  g = act(g, { type: "endTurn" });
+  assert.equal(g.run!.mode, "defeat");
+  assert.equal(g.run!.reward, null);
+  assert.throws(() => act(g, { type: "endTurn" }));
+});
 test("deterministic cards and exact battle JSON restoration", () => {
   const a = battleStart(),
     b = battleStart();
@@ -244,14 +264,15 @@ test("implemented monster mechanics: shields, countdown, stun, tower and retalia
   assert.equal(stunned.run!.battle!.enemies[0].shield, 0);
 });
 
-test("guard redirection uses the actual target mark; guardian skill counters for its ally", () => {
+test("selected enemy takes damage; guardian skill counters for its ally", () => {
   let g = battleStart();
   g.run!.battle!.hand = [{ id: "AR1-strike", owner: "AR1", kind: "strike" }];
   g.run!.battle!.enemies[0].shield = 10;
   g.run!.battle!.enemies[1].mark = 4;
   g = act(g, { type: "play", id: "AR1-strike", target: "M02" });
-  assert.equal(g.run!.battle!.enemies[0].hp, 28);
-  assert.equal(g.run!.battle!.enemies[1].hp, 30);
+  assert.equal(g.run!.battle!.enemies[0].hp, 30);
+  assert.equal(g.run!.battle!.enemies[1].hp, 14);
+  assert.equal(g.run!.heroes[0].hp, 60);
   g = battleStart();
   g.run!.battle!.hand = [{ id: "AR1-skill", owner: "AR1", kind: "skill" }];
   g = act(g, { type: "play", id: "AR1-skill", target: "AR4" });

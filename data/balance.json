@@ -18,5 +18,6 @@
   "facilityUpgradeCost": 30,
   "trainingCost": 12,
   "healingCost": 8,
-  "trainingXP": 10
+  "trainingXP": 10,
+  "maxBattleTurns": 40
 }

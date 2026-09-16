@@ -21,3 +21,12 @@
 - `004-content-ending.md`: 7개 맵·엔딩·환생
 - `005-test-environment.md`: 격리 E2E 테스트 환경
 - `006-current-finalization.md`: 기록 체계 도입과 최종 후속 작업
+- `007-market-finalization.md`: 시장 만료·수수료·거래 내역
+- `008-no-pnpm-runner.md`: pnpm 없는 환경 실행기
+- `009-e2e-selector-fix.md`: 브라우저 선택자 수정
+- `010-github-upload-preparation.md`: GitHub 업로드 준비
+- `011-legacy-state-normalization.md`: 구버전 저장 상태 호환
+- `012-combat-motion-assets.md`: 전투 상한과 모션
+- `013-selected-target-damage-fix.md`: 선택 대상 피해 수정
+- `014-test-image-assets.md`: test-images 자산 연결
+- `015-auto-push-hook.md`: 커밋 후 GitHub 자동 push

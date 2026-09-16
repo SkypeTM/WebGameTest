@@ -112,6 +112,20 @@ powershell -ExecutionPolicy Bypass -File .\scripts\test-e2e.ps1
 
 이 스크립트는 PATH의 Node를 먼저 사용하고, 없으면 Codex가 제공한 Node 런타임을 찾아 로컬 Playwright와 격리 테스트 서버를 직접 실행합니다.
 
+## GitHub 자동 업로드
+
+커밋할 때마다 GitHub에 자동 업로드하려면 프로젝트 루트에서 한 번 실행하세요.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-git-hooks.ps1
+```
+
+이후 `git commit`이 성공하면 현재 브랜치가 `origin`으로 자동 push됩니다. GitHub 인증이나 네트워크가 없으면 로컬 커밋은 유지되고 push 실패 메시지가 표시됩니다. 자동 업로드를 끄려면 다음을 실행하세요.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-git-hooks.ps1 -Remove
+```
+
 ## 테스트
 
 ```sh

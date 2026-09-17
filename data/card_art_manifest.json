@@ -1,0 +1,14 @@
+[
+  {
+    "id": "strike",
+    "path": "/assets/generated/cards/basic-strike.png"
+  },
+  {
+    "id": "guard",
+    "path": "/assets/generated/cards/defensive-stance.png"
+  },
+  {
+    "id": "heavy",
+    "path": "/assets/generated/cards/heavy-attack.png"
+  }
+]

@@ -137,9 +137,13 @@ test("desktop to mobile: actual login, party, cards, offline retry, rewards, bos
     page.getByRole("button", { name: "파티에 편성", exact: true }).click(),
   );
   expect((await state(page)).party.length).toBe(4);
+  await page
+    .getByRole("button", { name: "레오나 상세 장비와 능력치 보기" })
+    .click();
   await clickSave(page, () =>
-    page.getByLabel("레오나 장비").selectOption("ward"),
+    page.getByRole("button", { name: /절단 창날/ }).click(),
   );
+  await page.getByRole("button", { name: "상세창 닫기" }).click();
   await clickSave(page, () =>
     page.getByRole("button", { name: "던전 입장" }).click(),
   );

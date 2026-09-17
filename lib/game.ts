@@ -16,6 +16,230 @@ export const friendly = [
   ["BC", "GO"],
   ["BK", "DS"],
 ];
+export const statusDefinitions = {
+  poison: {
+    name: "중독",
+    icon: "☠",
+    tone: "toxic",
+    description: "턴 종료 시 중첩만큼 피해를 받고 1 감소",
+  },
+  bleed: {
+    name: "출혈",
+    icon: "◆",
+    tone: "blood",
+    description: "턴 종료 시 중첩만큼 피해를 받고 1 감소",
+  },
+  madness: {
+    name: "광기",
+    icon: "◉",
+    tone: "mind",
+    description: "턴 종료 시 스트레스가 증가",
+  },
+  theft: {
+    name: "도벽",
+    icon: "♢",
+    tone: "gold",
+    description: "턴 종료 시 미확보 은화를 잃음",
+  },
+  weakness: {
+    name: "약화",
+    icon: "↓",
+    tone: "debuff",
+    description: "주는 피해 25% 감소",
+  },
+  target: {
+    name: "표적",
+    icon: "⌖",
+    tone: "danger",
+    description: "받는 피해가 중첩만큼 증가",
+  },
+  critical: {
+    name: "치명타",
+    icon: "✦",
+    tone: "gold",
+    description: "다음 공격 피해 50% 증가",
+  },
+  vulnerable: {
+    name: "취약",
+    icon: "◇",
+    tone: "danger",
+    description: "받는 피해 25% 증가",
+  },
+  thorns: {
+    name: "가시",
+    icon: "✣",
+    tone: "toxic",
+    description: "공격한 대상에게 반사 피해",
+  },
+  fury: {
+    name: "격노",
+    icon: "▲",
+    tone: "fire",
+    description: "주는 피해가 중첩만큼 증가",
+  },
+  stun: {
+    name: "기절",
+    icon: "✧",
+    tone: "shock",
+    description: "다음 행동을 건너뜀",
+  },
+  anger: {
+    name: "분노",
+    icon: "♨",
+    tone: "fire",
+    description: "체력이 낮을수록 공격력 증가",
+  },
+  burn: {
+    name: "화상",
+    icon: "♨",
+    tone: "fire",
+    description: "턴 종료 피해, 중첩이 절반으로 감소",
+  },
+  frost: {
+    name: "동상",
+    icon: "❄",
+    tone: "frost",
+    description: "방어력과 회복량 감소",
+  },
+  shock: {
+    name: "감전",
+    icon: "ϟ",
+    tone: "shock",
+    description: "추가 피해를 받고 인접 대상에 전이",
+  },
+  plague: {
+    name: "전염병",
+    icon: "☣",
+    tone: "toxic",
+    description: "턴 종료 피해 후 다른 대상에게 전파",
+  },
+  counter: {
+    name: "반격",
+    icon: "↶",
+    tone: "gold",
+    description: "공격을 받으면 반격",
+  },
+  block: {
+    name: "피해 차단",
+    icon: "▣",
+    tone: "guard",
+    description: "중첩만큼 받는 피해 감소",
+  },
+  stealth: {
+    name: "은신",
+    icon: "◌",
+    tone: "mind",
+    description: "다음 단일 공격을 회피",
+  },
+  fear: {
+    name: "공포",
+    icon: "☾",
+    tone: "mind",
+    description: "턴 종료 시 스트레스와 약화 발생",
+  },
+} as const;
+export type StatusId = keyof typeof statusDefinitions;
+export type StatusMap = Partial<Record<StatusId, number>>;
+export const cardTriggerDefinitions = {
+  copy: {
+    name: "복사",
+    description: "같은 카드 한 장을 버린 카드 더미에 생성",
+  },
+  retain: { name: "보존", description: "턴 종료 때 버리지 않고 손에 유지" },
+  exhaust: { name: "소멸", description: "사용 후 이번 전투에서 제외" },
+  create: { name: "생성", description: "지정된 카드를 새로 생성" },
+  discover: { name: "발견", description: "덱에서 카드를 즉시 한 장 뽑음" },
+  unplayable: {
+    name: "사용불가",
+    description: "조건을 해제하기 전까지 사용할 수 없음",
+  },
+} as const;
+export type CardTrigger = keyof typeof cardTriggerDefinitions;
+export const equipmentCatalog = {
+  weapon: [
+    {
+      id: "blade",
+      name: "훈련용 무기",
+      asset: "훈련용 무기",
+      attack: 2,
+      spell: 0,
+      defense: 0,
+    },
+    {
+      id: "spear",
+      name: "절단 창날",
+      asset: "절단 검날",
+      attack: 4,
+      spell: 0,
+      defense: 0,
+    },
+    {
+      id: "focus",
+      name: "성좌 촉매",
+      asset: "깨진 성좌석",
+      attack: 0,
+      spell: 4,
+      defense: 0,
+    },
+  ],
+  armor: [
+    {
+      id: "coat",
+      name: "탐사 코트",
+      asset: "방수 서지",
+      attack: 0,
+      spell: 0,
+      defense: 2,
+    },
+    {
+      id: "plate",
+      name: "심해 합금갑",
+      asset: "심해 합금",
+      attack: 0,
+      spell: 0,
+      defense: 5,
+    },
+    {
+      id: "vestment",
+      name: "흑광 예복",
+      asset: "흑광 성직포",
+      attack: 0,
+      spell: 3,
+      defense: 1,
+    },
+  ],
+  trinket: [
+    {
+      id: "ward",
+      name: "호신 부적",
+      asset: "호신 부적",
+      attack: 0,
+      spell: 0,
+      defense: 2,
+    },
+    {
+      id: "ember",
+      name: "불씨 깃털",
+      asset: "불씨 깃털",
+      attack: 2,
+      spell: 2,
+      defense: 0,
+    },
+    {
+      id: "thorn",
+      name: "가시뿔 장식",
+      asset: "가시뿔",
+      attack: 1,
+      spell: 0,
+      defense: 1,
+    },
+  ],
+} as const;
+export type Loadout = {
+  weapon: (typeof equipmentCatalog.weapon)[number]["id"];
+  armor: (typeof equipmentCatalog.armor)[number]["id"];
+  trinket: (typeof equipmentCatalog.trinket)[number]["id"];
+};
 export type Hero = {
   id: string;
   hp: number;
@@ -27,6 +251,10 @@ export type Hero = {
   level: number;
   injury: boolean;
   equipment: "blade" | "ward";
+  mana: number;
+  maxMana: number;
+  loadout: Loadout;
+  statuses: StatusMap;
 };
 export type Card = {
   id: string;
@@ -43,6 +271,7 @@ export type Enemy = {
   target: string;
   intent: string;
   tower: number;
+  statuses: StatusMap;
 };
 export type Battle = {
   turn: number;
@@ -52,6 +281,7 @@ export type Battle = {
   discard: Card[];
   enemies: Enemy[];
   lastActor: string | null;
+  exhausted: Card[];
 };
 export type CombatFx = {
   nonce: number;
@@ -114,6 +344,18 @@ export type CardPreview = {
   valid: boolean;
   summary: string;
   details: string[];
+  target?: {
+    hpBefore: number;
+    hpAfter: number;
+    maxHp: number;
+    shieldBefore: number;
+    shieldAfter: number;
+  };
+  retaliation?: {
+    hpBefore: number;
+    hpAfter: number;
+    maxHp: number;
+  };
 };
 export const rooms: Record<
   string,
@@ -326,6 +568,80 @@ export function hero(id: string): Hero {
     level: 1,
     injury: false,
     equipment: "blade",
+    mana: 3,
+    maxMana: 3,
+    loadout: { weapon: "blade", armor: "coat", trinket: "ward" },
+    statuses: {},
+  };
+}
+function normalizeHero(saved: Hero): Hero {
+  const defaults = hero(saved.id);
+  return {
+    ...defaults,
+    ...saved,
+    mana: saved.mana ?? defaults.mana,
+    maxMana: saved.maxMana ?? defaults.maxMana,
+    loadout: { ...defaults.loadout, ...(saved.loadout || {}) },
+    statuses: { ...(saved.statuses || {}) },
+  };
+}
+export function heroStats(h: Hero) {
+  const character = characters.find((item) => item.id === h.id)!;
+  const weapon =
+    equipmentCatalog.weapon.find((item) => item.id === h.loadout.weapon) ||
+    equipmentCatalog.weapon[0];
+  const armor =
+    equipmentCatalog.armor.find((item) => item.id === h.loadout.armor) ||
+    equipmentCatalog.armor[0];
+  const trinket =
+    equipmentCatalog.trinket.find((item) => item.id === h.loadout.trinket) ||
+    equipmentCatalog.trinket[0];
+  const roleBase = {
+    수호: {
+      attack: 5,
+      defense: 12,
+      spell: 3,
+      trait: "철벽 수호",
+      skill: "방패 반격",
+    },
+    공격: {
+      attack: 11,
+      defense: 5,
+      spell: 4,
+      trait: "정밀 추격",
+      skill: "관통 표식",
+    },
+    지원: {
+      attack: 4,
+      defense: 6,
+      spell: 12,
+      trait: "현장 구호",
+      skill: "응급 회복",
+    },
+    제어: {
+      attack: 6,
+      defense: 5,
+      spell: 10,
+      trait: "룬 공명",
+      skill: "룬 사슬",
+    },
+  }[character.role]!;
+  return {
+    maxHp: h.maxHp + Math.max(0, h.level - 1) * 4,
+    maxMana: h.maxMana + Math.floor(h.level / 3),
+    attack:
+      roleBase.attack + weapon.attack + armor.attack + trinket.attack + h.level,
+    defense:
+      roleBase.defense +
+      weapon.defense +
+      armor.defense +
+      trinket.defense +
+      Math.floor(h.level / 2),
+    spell:
+      roleBase.spell + weapon.spell + armor.spell + trinket.spell + h.level,
+    crit: 5 + (h.loadout.weapon === "spear" ? 6 : 0),
+    trait: roleBase.trait,
+    skill: roleBase.skill,
   };
 }
 export function initialGame(): Game {
@@ -357,7 +673,7 @@ export function normalizeGame(previous: Game): Game {
     ...defaults,
     ...saved,
     party: saved.party || defaults.party,
-    roster: saved.roster || defaults.roster,
+    roster: (saved.roster || defaults.roster).map(normalizeHero),
     materials: saved.materials || {},
     reputation: { ...defaults.reputation, ...(saved.reputation || {}) },
     facilities: { ...defaults.facilities, ...(saved.facilities || {}) },
@@ -369,7 +685,21 @@ export function normalizeGame(previous: Game): Game {
     legacy: saved.legacy || [],
     log: saved.log || defaults.log,
     run: saved.run
-      ? { ...saved.run, combatFx: saved.run.combatFx ?? null }
+      ? {
+          ...saved.run,
+          heroes: saved.run.heroes.map(normalizeHero),
+          battle: saved.run.battle
+            ? {
+                ...saved.run.battle,
+                exhausted: saved.run.battle.exhausted || [],
+                enemies: saved.run.battle.enemies.map((enemy) => ({
+                  ...enemy,
+                  statuses: { ...(enemy.statuses || {}) },
+                })),
+              }
+            : null,
+          combatFx: saved.run.combatFx ?? null,
+        }
       : null,
   };
 }
@@ -410,10 +740,9 @@ function shuffle<T>(r: Run, items: T[]) {
 }
 export function cardInfo(c: Card) {
   const role = characters.find((x) => x.id === c.owner)!.role;
-  return {
-    ...cards[(c.kind === "skill" ? role : c.kind) as keyof typeof cards],
-    role,
-  };
+  const info =
+    cards[(c.kind === "skill" ? role : c.kind) as keyof typeof cards];
+  return { ...info, role, triggers: info.triggers as CardTrigger[] };
 }
 function draw(r: Run) {
   const b = r.battle!;
@@ -470,6 +799,7 @@ function enterBattle(r: Run, ids: string[]) {
   r.heroes.forEach((h) => {
     h.shield = modifier.shield;
     h.counter = 0;
+    h.mana = heroStats(h).maxMana;
   });
   const deck = r.heroes
     .filter((h) => h.hp > 0)
@@ -486,6 +816,7 @@ function enterBattle(r: Run, ids: string[]) {
     hand: [],
     deck: shuffle(r, deck),
     discard: [],
+    exhausted: [],
     lastActor: null,
     enemies: ids.map((id) => {
       const m = monsters.find((x) => x.id === id)!;
@@ -499,6 +830,7 @@ function enterBattle(r: Run, ids: string[]) {
         target: "",
         intent: "",
         tower: id === "M08" ? 30 : 0,
+        statuses: {},
       };
     }),
   };
@@ -522,11 +854,28 @@ function xp(r: Run, n: number) {
       h.level = 1 + Math.floor(h.xp / 50);
     });
 }
+function addStatus(
+  target: { statuses: StatusMap },
+  id: StatusId,
+  amount: number,
+) {
+  target.statuses[id] = Math.max(0, (target.statuses[id] || 0) + amount);
+}
+function reduceStatus(
+  target: { statuses: StatusMap },
+  id: StatusId,
+  amount = 1,
+) {
+  target.statuses[id] = Math.max(0, (target.statuses[id] || 0) - amount);
+}
 function hurt(h: Hero, n: number, defense: number) {
-  const dmg = Math.ceil(n * (1 - defense));
+  const blocked = h.statuses.block || 0;
+  const dmg = Math.max(0, Math.ceil(n * (1 - defense)) - blocked);
+  if (blocked) reduceStatus(h, "block", Math.min(blocked, Math.ceil(n)));
   const absorb = Math.min(h.shield, dmg);
   h.shield -= absorb;
   h.hp = Math.max(0, h.hp - (dmg - absorb));
+  return dmg - absorb;
 }
 function victory(g: Game) {
   const r = g.run!,
@@ -588,11 +937,25 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     check(!r, "거점에서 장비를 변경하세요.");
     const h = g.roster.find((h) => h.id === a.id);
     check(h, "소유하지 않은 캐릭터입니다.");
+    const slot = (a.item ||
+      (a.choice === "ward" ? "trinket" : "weapon")) as keyof Loadout;
     check(
-      a.choice === "blade" || a.choice === "ward",
-      "알 수 없는 장비입니다.",
+      ["weapon", "armor", "trinket"].includes(slot),
+      "알 수 없는 장비 슬롯입니다.",
     );
-    h.equipment = a.choice;
+    const option = equipmentCatalog[slot].find((item) => item.id === a.choice);
+    check(option, "알 수 없는 장비입니다.");
+    h.loadout[slot] = option.id as never;
+    h.equipment =
+      h.loadout.weapon === "blade"
+        ? "blade"
+        : h.loadout.trinket === "ward"
+          ? "ward"
+          : "blade";
+    log(
+      g,
+      `${characters.find((item) => item.id === h.id)!.name}이(가) ${option.name}을(를) 장착했다.`,
+    );
   } else if (a.type === "upgradeFacility") {
     check(!r, "탐사 중에는 시설을 업그레이드할 수 없습니다.");
     const id = a.id as keyof Game["facilities"];
@@ -784,6 +1147,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       check(h.hp > 0, "전투 불능인 인물입니다.");
       const info = cardInfo(c);
       check(b.energy >= info.cost, "행동 자원이 부족합니다.");
+      if (c.kind === "skill") check(h.mana > 0, "마나가 부족합니다.");
       const ally = r.heroes.find((h) => h.id === a.target && h.hp > 0);
       const tower = a.target === "M08:tower";
       const enemy = b.enemies.find(
@@ -792,39 +1156,74 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       check(info.target === "ally" ? ally : enemy, "유효한 대상을 선택하세요.");
       if (tower) check(enemy!.tower > 0, "이미 파괴한 성탑입니다.");
       b.energy -= info.cost;
+      if (c.kind === "skill") h.mana--;
       b.hand = b.hand.filter((x) => x.id !== c.id);
-      b.discard.push(c);
+      if (info.triggers.includes("exhaust")) b.exhausted.push(c);
+      else b.discard.push(c);
+      if (info.triggers.includes("copy"))
+        b.discard.push({ ...c, id: `${c.id}-copy-${b.turn}-${g.version}` });
       if (info.target === "ally") {
         if (c.kind === "skill" && info.role === "지원") {
-          ally!.hp = Math.min(ally!.maxHp, ally!.hp + info.power);
+          const healing = info.power + Math.floor(heroStats(h).spell / 3);
+          ally!.hp = Math.min(ally!.maxHp, ally!.hp + healing);
           ally!.stress = Math.max(0, ally!.stress - 2);
+          reduceStatus(ally!, "fear", 2);
           r.combatFx = {
             nonce: g.version + 1,
             kind: "hero-heal",
             actor: h.id,
             target: ally!.id,
             card: c.kind,
-            amount: info.power,
+            amount: healing,
           };
         } else {
-          ally!.shield += info.power;
-          if (c.kind === "skill") ally!.counter = 5;
+          const shielding = info.power + Math.floor(heroStats(h).defense / 4);
+          ally!.shield += shielding;
+          addStatus(ally!, "block", c.kind === "guard" ? 2 : 1);
+          if (c.kind === "skill") {
+            ally!.counter = 5;
+            addStatus(ally!, "counter", 5);
+            addStatus(ally!, "thorns", 3);
+            b.discard.push({
+              id: `${h.id}-strike-created-${b.turn}-${g.version}`,
+              owner: h.id,
+              kind: "strike",
+            });
+          }
           r.combatFx = {
             nonce: g.version + 1,
             kind: "hero-guard",
             actor: h.id,
             target: ally!.id,
             card: c.kind,
-            amount: info.power,
+            amount: shielding,
           };
         }
       } else {
+        const stats = heroStats(h);
         let dmg =
           info.power +
-          (h.equipment === "blade" ? 2 + g.facilities.forge : 0) +
-          Math.max(0, h.level - 1);
+          (c.kind === "skill"
+            ? Math.floor(stats.spell / 3)
+            : Math.floor(stats.attack / 4)) +
+          g.facilities.forge +
+          (h.statuses.fury || 0);
+        if (h.statuses.weakness) dmg = Math.floor(dmg * 0.75);
+        if (h.statuses.anger && h.hp <= h.maxHp / 2)
+          dmg += h.statuses.anger * 2;
         const target = enemy!;
-        if (!tower) dmg += target.mark;
+        if (!tower) {
+          dmg += target.mark + (target.statuses.target || 0);
+          if (target.statuses.vulnerable) dmg = Math.ceil(dmg * 1.25);
+          if (h.statuses.critical) {
+            dmg = Math.ceil(dmg * 1.5);
+            reduceStatus(h, "critical");
+          }
+          if (target.statuses.stealth) {
+            reduceStatus(target, "stealth");
+            dmg = 0;
+          }
+        }
         if (tower) enemy!.tower = Math.max(0, enemy!.tower - dmg);
         else {
           if (!(c.kind === "skill" && info.role === "공격")) {
@@ -833,8 +1232,18 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
             dmg -= blocked;
           }
           target.hp = Math.max(0, target.hp - dmg);
-          if (c.kind === "skill" && info.role === "공격") target.mark = 4;
-          if (c.kind === "skill" && info.role === "제어") target.stun = 1;
+          if (c.kind === "strike") addStatus(target, "bleed", 2);
+          if (c.kind === "heavy") addStatus(target, "vulnerable", 1);
+          if (c.kind === "skill" && info.role === "공격") {
+            target.mark = 4;
+            addStatus(target, "target", 4);
+            addStatus(target, "poison", 2);
+          }
+          if (c.kind === "skill" && info.role === "제어") {
+            target.stun = 1;
+            addStatus(target, "stun", 1);
+            addStatus(target, "shock", 2);
+          }
         }
         r.combatFx = {
           nonce: g.version + 1,
@@ -853,6 +1262,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           hurt(h, target.id === "M06" ? 6 : 5, relations(g.party).defense);
         b.lastActor = h.id;
       }
+      if (info.triggers.includes("discover")) draw(r);
       log(g, `${characters.find((x) => x.id === h.id)!.name}의 ${info.name}.`);
       victory(g);
       if (r.mode === "battle") intent(r);
@@ -869,13 +1279,19 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           continue;
         }
         const hit = (h: Hero, n: number) => {
+          if (h.statuses.stealth) {
+            reduceStatus(h, "stealth");
+            return;
+          }
           const guarded = h.shield > 0;
-          hurt(
+          const received = hurt(
             h,
             n + (e.id === "M04" ? 0 : buff),
             e.id === "M02" ? 0 : defense,
           );
           if (guarded && h.counter) e.hp = Math.max(0, e.hp - h.counter);
+          if (received > 0 && h.statuses.thorns)
+            e.hp = Math.max(0, e.hp - h.statuses.thorns);
         };
         const target =
           r.heroes.find((h) => h.id === e.target && h.hp > 0) ||
@@ -906,6 +1322,57 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           };
         }
       }
+      for (const h of r.heroes.filter((hero) => hero.hp > 0)) {
+        const damage =
+          (h.statuses.poison || 0) +
+          (h.statuses.bleed || 0) +
+          (h.statuses.burn || 0) +
+          (h.statuses.shock || 0) +
+          (h.statuses.plague || 0);
+        if (damage) h.hp = Math.max(0, h.hp - damage);
+        h.stress += (h.statuses.madness || 0) + (h.statuses.fear || 0);
+        if (h.statuses.fear) addStatus(h, "weakness", 1);
+        if (h.statuses.theft) r.gold = Math.max(0, r.gold - h.statuses.theft!);
+        if (h.statuses.plague) {
+          const spread = r.heroes.find(
+            (other) => other.id !== h.id && other.hp > 0,
+          );
+          if (spread) addStatus(spread, "plague", 1);
+        }
+        for (const id of [
+          "poison",
+          "bleed",
+          "burn",
+          "shock",
+          "fear",
+          "weakness",
+        ] as StatusId[])
+          if (h.statuses[id]) reduceStatus(h, id);
+      }
+      for (const e of b.enemies.filter((enemy) => enemy.hp > 0)) {
+        const damage =
+          (e.statuses.poison || 0) +
+          (e.statuses.bleed || 0) +
+          (e.statuses.burn || 0) +
+          (e.statuses.shock || 0) +
+          (e.statuses.plague || 0);
+        if (damage) e.hp = Math.max(0, e.hp - damage);
+        if (e.statuses.plague) {
+          const spread = b.enemies.find(
+            (other) => other.id !== e.id && other.hp > 0,
+          );
+          if (spread) addStatus(spread, "plague", 1);
+        }
+        for (const id of [
+          "poison",
+          "bleed",
+          "burn",
+          "shock",
+          "vulnerable",
+          "target",
+        ] as StatusId[])
+          if (e.statuses[id]) reduceStatus(e, id);
+      }
       victory(g);
       if (r.mode === "battle") {
         if (b.turn >= balance.maxBattleTurns) {
@@ -921,11 +1388,21 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       }
       if (r.mode === "battle") {
         r.heroes.forEach((h) => {
-          h.shield = h.equipment === "ward" ? 3 : 0;
+          h.shield = h.loadout.trinket === "ward" ? 3 : 0;
           h.counter = 0;
+          h.mana = Math.min(heroStats(h).maxMana, h.mana + 1);
         });
-        b.discard.push(...b.hand);
-        b.hand = [];
+        const retained = b.hand.filter(
+          (card) =>
+            r.heroes.some((hero) => hero.id === card.owner && hero.hp > 0) &&
+            cardInfo(card).triggers.includes("retain"),
+        );
+        b.discard.push(
+          ...b.hand.filter(
+            (card) => !cardInfo(card).triggers.includes("retain"),
+          ),
+        );
+        b.hand = retained;
         b.turn++;
         b.energy = balance.energy;
         draw(r);
@@ -999,6 +1476,7 @@ export function predictCard(
       (enemy) => enemy.id === enemyId,
     );
     const details: string[] = [];
+    let target: CardPreview["target"];
     if (allyBefore && allyAfter) {
       const healing = allyAfter.hp - allyBefore.hp;
       const shielding = allyAfter.shield - allyBefore.shield;
@@ -1008,6 +1486,13 @@ export function predictCard(
         details.push(`스트레스 ${allyAfter.stress - allyBefore.stress}`);
       if ((allyAfter.counter || 0) > (allyBefore.counter || 0))
         details.push(`반격 ${allyAfter.counter}`);
+      target = {
+        hpBefore: allyBefore.hp,
+        hpAfter: allyAfter.hp,
+        maxHp: allyBefore.maxHp,
+        shieldBefore: allyBefore.shield,
+        shieldAfter: allyAfter.shield,
+      };
     }
     if (enemyBefore && enemyAfter) {
       if (targetId === "M08:tower")
@@ -1021,6 +1506,13 @@ export function predictCard(
           details.push(`표식 +${enemyAfter.mark - enemyBefore.mark}`);
         if (enemyAfter.stun > enemyBefore.stun) details.push("기절 1턴");
       }
+      target = {
+        hpBefore: enemyBefore.hp,
+        hpAfter: enemyAfter.hp,
+        maxHp: enemyBefore.maxHp,
+        shieldBefore: enemyBefore.shield,
+        shieldAfter: enemyAfter.shield,
+      };
     }
     const retaliation = actorBefore.hp - actorAfter.hp;
     if (retaliation > 0) details.push(`반격 피해 ${retaliation}`);
@@ -1028,6 +1520,15 @@ export function predictCard(
       valid: true,
       summary: details.join(" · ") || "효과 없음",
       details,
+      target,
+      retaliation:
+        retaliation > 0
+          ? {
+              hpBefore: actorBefore.hp,
+              hpAfter: actorAfter.hp,
+              maxHp: actorBefore.maxHp,
+            }
+          : undefined,
     };
   } catch (error) {
     return {

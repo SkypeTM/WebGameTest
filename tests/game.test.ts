@@ -8,6 +8,7 @@ import {
   relations,
   cardInfo,
   predictCard,
+  heroStats,
   type Game,
   type Action,
 } from "../lib/game";
@@ -303,4 +304,41 @@ test("card preview uses the same damage and retaliation rules as play", () => {
     ),
   );
   assert.deepEqual(g, before, "preview does not mutate the saved state");
+});
+
+test("loadout stats, visual preview data, statuses and card triggers persist", () => {
+  let g = initialGame();
+  const base = heroStats(g.roster[0]);
+  g = act(g, {
+    type: "equip",
+    id: "AR1",
+    item: "weapon",
+    choice: "spear",
+  });
+  g = act(g, {
+    type: "equip",
+    id: "AR1",
+    item: "armor",
+    choice: "plate",
+  });
+  const equipped = heroStats(g.roster[0]);
+  assert.ok(equipped.attack > base.attack);
+  assert.ok(equipped.defense > base.defense);
+
+  g = act(g, { type: "enter" });
+  g = act(g, { type: "move", id: "gate" });
+  g.run!.battle!.hand = [
+    { id: "AR1-strike", owner: "AR1", kind: "strike" },
+    { id: "AR1-heavy", owner: "AR1", kind: "heavy" },
+  ];
+  const preview = predictCard(g, "AR1-strike", "M01");
+  assert.equal(preview.valid, true);
+  assert.equal(preview.target?.hpBefore, 30);
+  assert.ok((preview.target?.hpAfter || 30) < 30);
+  g = act(g, { type: "play", id: "AR1-strike", target: "M01" });
+  assert.equal(g.run!.battle!.enemies[0].statuses.bleed, 2);
+  g.run!.battle!.energy = 3;
+  g = act(g, { type: "play", id: "AR1-heavy", target: "M02" });
+  assert.equal(g.run!.battle!.exhausted.length, 1);
+  assert.equal(g.run!.battle!.enemies[1].statuses.vulnerable, 1);
 });

@@ -33,3 +33,4 @@
 - `016-hamlet-tactical-ui.md`: 마을 허브·전술 배치·드래그 카드 예측 UI
 - `017-audio-monster-redesign.md`: 사운드·음악·몬스터 리디자인
 - `018-cinematic-expedition-combat.md`: 시네마틱 탐사·전투·대화 연출
+- `019-character-loadout-status-system.md`: 캐릭터 장비 상세창·전투 상태·카드 트리거

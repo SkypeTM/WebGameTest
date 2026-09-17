@@ -11,12 +11,19 @@ import {
   type Action,
   type Card,
   predictCard,
+  heroStats,
+  equipmentCatalog,
+  statusDefinitions,
+  cardTriggerDefinitions,
+  type StatusMap,
+  type CardPreview,
 } from "../lib/game";
 import assetManifest from "../data/asset_manifest.json";
 import generatedAssets from "../data/generated_assets.json";
 import characterAssets from "../data/character_asset_manifest.json";
 import monsterAssets from "../data/monster_asset_manifest.json";
 import environmentAssets from "../data/environment_manifest.json";
+import cardArtAssets from "../data/card_art_manifest.json";
 type MarketListing = {
   id: string;
   seller: string;
@@ -170,10 +177,62 @@ function CardArt({ kind, role }: { kind: Card["kind"]; role: string }) {
     </span>
   );
 }
-function Meter({ value, max }: { value: number; max: number }) {
+function Meter({
+  value,
+  max,
+  preview,
+}: {
+  value: number;
+  max: number;
+  preview?: CardPreview["target"];
+}) {
+  const current = Math.max(0, (value / max) * 100);
+  const after = preview ? Math.max(0, (preview.hpAfter / max) * 100) : current;
   return (
-    <div className="meter">
-      <i style={{ width: `${Math.max(0, (value / max) * 100)}%` }} />
+    <div className={`meter ${preview ? "previewing" : ""}`}>
+      <i style={{ width: `${preview ? after : current}%` }} />
+      {preview && after < current && (
+        <span
+          className="meter-damage-preview"
+          style={{ left: `${after}%`, width: `${current - after}%` }}
+        />
+      )}
+      {preview && after > current && (
+        <span
+          className="meter-heal-preview"
+          style={{ left: `${current}%`, width: `${after - current}%` }}
+        />
+      )}
+      {preview && preview.shieldAfter > preview.shieldBefore && (
+        <span
+          className="meter-shield-preview"
+          style={{
+            width: `${Math.min(100, ((preview.shieldAfter - preview.shieldBefore) / max) * 100)}%`,
+          }}
+        />
+      )}
+    </div>
+  );
+}
+function StatusList({ statuses }: { statuses: StatusMap }) {
+  const active = Object.entries(statuses).filter(
+    ([, value]) => (value || 0) > 0,
+  );
+  if (!active.length) return null;
+  return (
+    <div className="status-list" aria-label="현재 상태 효과">
+      {active.map(([id, value]) => {
+        const status = statusDefinitions[id as keyof typeof statusDefinitions];
+        return (
+          <span
+            className={`status-token tone-${status.tone}`}
+            title={status.description}
+            key={id}
+          >
+            <b>{status.icon}</b> {status.name} {value}
+          </span>
+        );
+      })}
     </div>
   );
 }
@@ -239,6 +298,7 @@ export default function Page() {
     [previewTarget, setPreviewTarget] = useState(""),
     [pendingRoom, setPendingRoom] = useState(""),
     [selectedItem, setSelectedItem] = useState(""),
+    [selectedHero, setSelectedHero] = useState(""),
     [soundEnabled, setSoundEnabled] = useState(true),
     [musicEnabled, setMusicEnabled] = useState(true),
     [audioReady, setAudioReady] = useState(false),
@@ -437,7 +497,9 @@ export default function Page() {
     fx = run?.combatFx;
   const musicTrack = run
     ? run.mode === "battle"
-      ? "battle"
+      ? run.room === "boss" || run.room?.endsWith("-boss")
+        ? "boss"
+        : "battle"
       : "exploration"
     : "hamlet";
   const loggedIn = Boolean(game);
@@ -487,6 +549,10 @@ export default function Page() {
   function previewFor(id: string) {
     if (!selected || !game) return "";
     return predictCard(game, selected.id, id).summary;
+  }
+  function previewDataFor(id: string) {
+    if (!selected || !game) return undefined;
+    return predictCard(game, selected.id, id);
   }
   function moveParty(id: string, direction: -1 | 1) {
     const index = game!.party.indexOf(id);
@@ -978,11 +1044,34 @@ export default function Page() {
                                 {symbols[char(h.id).role]} {char(h.id).role}
                               </b>
                             </div>
-                            <Crest
-                              id={h.id}
-                              large
-                              state={h.level >= 3 ? "promotion" : "idle"}
-                            />
+                            <button
+                              className="hero-portrait-button"
+                              onClick={() => setSelectedHero(h.id)}
+                              aria-label={`${char(h.id).name} 상세 장비와 능력치 보기`}
+                            >
+                              <Crest
+                                id={h.id}
+                                large
+                                state={h.level >= 3 ? "promotion" : "idle"}
+                              />
+                              <span className="equipped-art">
+                                {(["weapon", "armor", "trinket"] as const).map(
+                                  (slot) => {
+                                    const gear = equipmentCatalog[slot].find(
+                                      (item) => item.id === h.loadout[slot],
+                                    );
+                                    return gear ? (
+                                      <AssetIcon
+                                        name={gear.asset}
+                                        alt={gear.name}
+                                        key={slot}
+                                      />
+                                    ) : null;
+                                  },
+                                )}
+                              </span>
+                              <b>상세 장비 · 능력치</b>
+                            </button>
                             <div className="hero-body">
                               <div className="hero-title">
                                 <h3>{char(h.id).name}</h3>
@@ -995,28 +1084,12 @@ export default function Page() {
                                 HP {h.maxHp} · 경험치 {h.xp}
                                 {h.injury ? " · 부상" : ""}
                               </p>
-                              <label className="equip-label">
-                                장비
-                                <select
-                                  aria-label={`${char(h.id).name} 장비`}
-                                  value={h.equipment}
-                                  disabled={locked}
-                                  onChange={(e) =>
-                                    void act({
-                                      type: "equip",
-                                      id: h.id,
-                                      choice: e.target.value,
-                                    })
-                                  }
-                                >
-                                  <option value="blade">
-                                    훈련용 무기 · 피해 +2
-                                  </option>
-                                  <option value="ward">
-                                    호신 부적 · 턴 보호막 +3
-                                  </option>
-                                </select>
-                              </label>
+                              <button
+                                className="loadout-summary"
+                                onClick={() => setSelectedHero(h.id)}
+                              >
+                                장비 3개 · 세부 능력치 열기
+                              </button>
                               <button
                                 className={
                                   game.party.includes(h.id)
@@ -1046,6 +1119,183 @@ export default function Page() {
                           </article>
                         ))}
                       </div>
+                      {selectedHero &&
+                        (() => {
+                          const hero = game.roster.find(
+                            (item) => item.id === selectedHero,
+                          );
+                          if (!hero) return null;
+                          const stats = heroStats(hero);
+                          const xpCurrent = hero.xp % 50;
+                          return (
+                            <div
+                              className="character-detail-backdrop"
+                              role="dialog"
+                              aria-modal="true"
+                              aria-label={`${char(hero.id).name} 상세 정보`}
+                              onMouseDown={(event) => {
+                                if (event.target === event.currentTarget)
+                                  setSelectedHero("");
+                              }}
+                            >
+                              <section className="character-detail">
+                                <button
+                                  className="detail-close"
+                                  onClick={() => setSelectedHero("")}
+                                  aria-label="상세창 닫기"
+                                >
+                                  ×
+                                </button>
+                                <div className="detail-visual">
+                                  <Crest
+                                    id={hero.id}
+                                    state={
+                                      hero.level >= 3 ? "promotion" : "idle"
+                                    }
+                                    large
+                                  />
+                                  <div className="detail-equipped">
+                                    {(
+                                      ["weapon", "armor", "trinket"] as const
+                                    ).map((slot) => {
+                                      const gear = equipmentCatalog[slot].find(
+                                        (item) =>
+                                          item.id === hero.loadout[slot],
+                                      )!;
+                                      return (
+                                        <div key={slot}>
+                                          <AssetIcon
+                                            name={gear.asset}
+                                            alt={gear.name}
+                                          />
+                                          <span>{gear.name}</span>
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                                <div className="detail-copy">
+                                  <span className="eyebrow">
+                                    {char(hero.id).faction} /{" "}
+                                    {char(hero.id).role}
+                                  </span>
+                                  <h2>
+                                    {char(hero.id).name}{" "}
+                                    <small>Lv.{hero.level}</small>
+                                  </h2>
+                                  <p>{char(hero.id).design}</p>
+                                  <div className="detail-bars">
+                                    <label>
+                                      체력 {hero.hp}/{stats.maxHp}
+                                      <Meter
+                                        value={hero.hp}
+                                        max={stats.maxHp}
+                                      />
+                                    </label>
+                                    <label>
+                                      마나 {hero.mana}/{stats.maxMana}
+                                      <div className="mana-meter">
+                                        <i
+                                          style={{
+                                            width: `${(hero.mana / stats.maxMana) * 100}%`,
+                                          }}
+                                        />
+                                      </div>
+                                    </label>
+                                    <label>
+                                      스트레스 {hero.stress}/100
+                                      <div className="stress-meter">
+                                        <i
+                                          style={{
+                                            width: `${Math.min(100, hero.stress)}%`,
+                                          }}
+                                        />
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div className="stat-grid">
+                                    <span>
+                                      공격력 <b>{stats.attack}</b>
+                                    </span>
+                                    <span>
+                                      방어력 <b>{stats.defense}</b>
+                                    </span>
+                                    <span>
+                                      주문력 <b>{stats.spell}</b>
+                                    </span>
+                                    <span>
+                                      치명타 <b>{stats.crit}%</b>
+                                    </span>
+                                    <span>
+                                      특성 <b>{stats.trait}</b>
+                                    </span>
+                                    <span>
+                                      전용 스킬 <b>{stats.skill}</b>
+                                    </span>
+                                  </div>
+                                  <div className="xp-block">
+                                    <span>
+                                      경험치 {hero.xp} · 다음 레벨까지{" "}
+                                      {50 - xpCurrent}
+                                    </span>
+                                    <div className="xp-meter">
+                                      <i
+                                        style={{
+                                          width: `${(xpCurrent / 50) * 100}%`,
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className="loadout-grid">
+                                    {(
+                                      [
+                                        ["weapon", "무기"],
+                                        ["armor", "방어구"],
+                                        ["trinket", "장신구"],
+                                      ] as const
+                                    ).map(([slot, label]) => (
+                                      <fieldset key={slot}>
+                                        <legend>{label}</legend>
+                                        {equipmentCatalog[slot].map((gear) => (
+                                          <button
+                                            key={gear.id}
+                                            className={
+                                              hero.loadout[slot] === gear.id
+                                                ? "gear-option equipped"
+                                                : "gear-option"
+                                            }
+                                            disabled={locked}
+                                            onClick={() =>
+                                              void act({
+                                                type: "equip",
+                                                id: hero.id,
+                                                item: slot,
+                                                choice: gear.id,
+                                              })
+                                            }
+                                          >
+                                            <AssetIcon
+                                              name={gear.asset}
+                                              alt={gear.name}
+                                            />
+                                            <span>
+                                              <b>{gear.name}</b>
+                                              <small>
+                                                공격 +{gear.attack} · 방어 +
+                                                {gear.defense} · 주문 +
+                                                {gear.spell}
+                                              </small>
+                                            </span>
+                                          </button>
+                                        ))}
+                                      </fieldset>
+                                    ))}
+                                  </div>
+                                </div>
+                              </section>
+                            </div>
+                          );
+                        })()}
                     </section>
                     <aside className="expedition-panel">
                       <div className="fortress-art">
@@ -1656,28 +1906,37 @@ export default function Page() {
                           <h3>
                             {char(h.id).name} <small>{char(h.id).role}</small>
                           </h3>
-                          <Meter value={h.hp} max={h.maxHp} />
+                          <Meter
+                            value={h.hp}
+                            max={h.maxHp}
+                            preview={
+                              previewTarget === h.id
+                                ? previewDataFor(h.id)?.target
+                                : undefined
+                            }
+                          />
                           <p>
-                            HP {h.hp}/{h.maxHp} <span>◇ {h.shield}</span>
+                            HP {h.hp}/{h.maxHp} · MP {h.mana}/
+                            {heroStats(h).maxMana}
+                            <span>◇ {h.shield}</span>
                           </p>
                           <small
                             className="equipment-line inline-asset"
-                            title={
-                              h.equipment === "blade"
-                                ? "카드 피해가 2 증가합니다."
-                                : "새 턴마다 보호막 3을 얻습니다."
-                            }
+                            title="상세 장비창에서 무기·방어구·장신구를 변경할 수 있습니다."
                           >
                             <AssetIcon
                               name={
-                                h.equipment === "blade"
-                                  ? "훈련용 무기"
-                                  : "호신 부적"
+                                equipmentCatalog.weapon.find(
+                                  (item) => item.id === h.loadout.weapon,
+                                )!.asset
                               }
                             />
-                            {h.equipment === "blade"
-                              ? "훈련용 무기 · 피해 +2"
-                              : "호신 부적 · 턴 보호막 +3"}
+                            {
+                              equipmentCatalog.weapon.find(
+                                (item) => item.id === h.loadout.weapon,
+                              )!.name
+                            }{" "}
+                            · 공격 {heroStats(h).attack}
                           </small>
                           <small>
                             {h.hp === 0
@@ -1716,10 +1975,9 @@ export default function Page() {
                               ✚ 부상
                             </span>
                           )}
+                          <StatusList statuses={h.statuses} />
                           {previewTarget === h.id && (
-                            <strong className="combat-preview">
-                              {previewFor(h.id)}
-                            </strong>
+                            <strong className="preview-badge">예상 결과</strong>
                           )}
                         </div>
                       </button>
@@ -1769,7 +2027,15 @@ export default function Page() {
                               motion={motionFor(e.id, "enemy")}
                             />
                             <h3>{monsters.find((m) => m.id === e.id)!.name}</h3>
-                            <Meter value={e.hp} max={e.maxHp} />
+                            <Meter
+                              value={e.hp}
+                              max={e.maxHp}
+                              preview={
+                                previewTarget === e.id
+                                  ? previewDataFor(e.id)?.target
+                                  : undefined
+                              }
+                            />
                             <p>
                               HP {e.hp}/{e.maxHp} · ◇ {e.shield}
                             </p>
@@ -1797,9 +2063,10 @@ export default function Page() {
                                 ✦ 기절 {e.stun}턴
                               </span>
                             )}
+                            <StatusList statuses={e.statuses} />
                             {previewTarget === e.id && (
-                              <strong className="combat-preview enemy-preview">
-                                {previewFor(e.id)}
+                              <strong className="preview-badge">
+                                예상 결과
                               </strong>
                             )}
                           </button>
@@ -1851,6 +2118,9 @@ export default function Page() {
                         disabled =
                           locked ||
                           battle.energy < info.cost ||
+                          (c.kind === "skill" &&
+                            (run.heroes.find((h) => h.id === c.owner)?.mana ||
+                              0) <= 0) ||
                           !run.heroes.some((h) => h.id === c.owner && h.hp > 0);
                       return (
                         <button
@@ -1886,26 +2156,69 @@ export default function Page() {
                           <span className="card-owner">
                             {char(c.owner).name}
                           </span>
-                          <span
-                            className="card-character-art"
-                            aria-hidden="true"
-                          >
-                            <Crest id={c.owner} state="dialogue" />
+                          <span className="card-character-art">
+                            {cardArtAssets.find(
+                              (asset) => asset.id === c.kind,
+                            ) ? (
+                              <img
+                                src={
+                                  cardArtAssets.find(
+                                    (asset) => asset.id === c.kind,
+                                  )!.path
+                                }
+                                alt=""
+                              />
+                            ) : (
+                              <Crest id={c.owner} state="skill" />
+                            )}
                             <CardArt kind={c.kind} role={info.role} />
                           </span>
                           <strong>{info.name}</strong>
                           <span className="card-desc">{info.description}</span>
+                          <span className="card-triggers">
+                            {info.triggers.map((trigger) => (
+                              <b
+                                key={trigger}
+                                title={
+                                  cardTriggerDefinitions[trigger].description
+                                }
+                              >
+                                {cardTriggerDefinitions[trigger].name}
+                              </b>
+                            ))}
+                          </span>
                           <small>
                             {info.target === "ally" ? "아군 대상" : "적 대상"} ·{" "}
-                            {run.heroes.find((h) => h.id === c.owner)
-                              ?.equipment === "blade"
-                              ? "무기 +2"
-                              : "호신 부적"}
+                            {c.kind === "skill" ? "마나 1" : "마나 0"}
                           </small>
                         </button>
                       );
                     })}
                   </div>
+                  <details className="combat-codex">
+                    <summary>상태 및 카드 트리거 도감</summary>
+                    <div className="codex-grid">
+                      {Object.entries(statusDefinitions).map(([id, status]) => (
+                        <span
+                          className={`status-token tone-${status.tone}`}
+                          key={id}
+                        >
+                          <b>
+                            {status.icon} {status.name}
+                          </b>
+                          <small>{status.description}</small>
+                        </span>
+                      ))}
+                      {Object.entries(cardTriggerDefinitions).map(
+                        ([id, trigger]) => (
+                          <span className="trigger-entry" key={id}>
+                            <b>{trigger.name}</b>
+                            <small>{trigger.description}</small>
+                          </span>
+                        ),
+                      )}
+                    </div>
+                  </details>
                   {dragPoint && selected && (
                     <div
                       className="card-drag-ghost"
@@ -1915,7 +2228,7 @@ export default function Page() {
                       <strong>{cardInfo(selected).name}</strong>
                       <span>
                         {previewTarget
-                          ? previewFor(previewTarget)
+                          ? "대상 체력바에서 결과 확인"
                           : `${cardInfo(selected).target === "ally" ? "아군" : "적"}에게 놓으세요`}
                       </span>
                     </div>

@@ -15,7 +15,7 @@ if (-not (Test-Path -LiteralPath $node)) {
   throw 'Node.js 24.15 이상을 설치하거나 Codex Node 런타임을 준비하세요.'
 }
 
-$env:TEST_SERVER_COMMAND = "`"$node`" --import tsx scripts/e2e-server.ts"
+$env:TEST_SERVER_COMMAND = "`"$node`" scripts/e2e-server.mjs"
 $env:TEST_PORT = "$Port"
 $env:TEST_URL = "http://localhost:$Port"
 $playwright = Join-Path $ProjectRoot 'node_modules/@playwright/test/cli.js'

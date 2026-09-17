@@ -51,6 +51,12 @@ async function playCard(page: Page, id: string, target: string) {
             .click(),
   );
 }
+async function moveRoom(page: Page, name: RegExp) {
+  await page.getByRole("button", { name }).click();
+  await clickSave(page, () =>
+    page.getByRole("button", { name: "탐사 진행 →", exact: true }).click(),
+  );
+}
 async function fight(page: Page) {
   for (let i = 0; i < 180; i++) {
     const g = await state(page),
@@ -137,9 +143,7 @@ test("desktop to mobile: actual login, party, cards, offline retry, rewards, bos
   await clickSave(page, () =>
     page.getByRole("button", { name: "던전 입장" }).click(),
   );
-  await clickSave(page, () =>
-    page.getByRole("button", { name: /황색 경계선/ }).click(),
-  );
+  await moveRoom(page, /황색 경계선/);
   await expect(page.getByRole("heading", { name: /손패/ })).toBeVisible();
   const before = await state(page);
   await page.reload();
@@ -198,28 +202,20 @@ test("desktop to mobile: actual login, party, cards, offline retry, rewards, bos
   await clickSave(phone, () =>
     phone.getByRole("button", { name: "보상 획득", exact: true }).click(),
   );
-  await clickSave(phone, () =>
-    phone.getByRole("button", { name: /버려진 야영지/ }).click(),
-  );
+  await moveRoom(phone, /버려진 야영지/);
   await clickSave(phone, () =>
     phone.getByRole("button", { name: "야영지에서 휴식" }).click(),
   );
-  await clickSave(phone, () =>
-    phone.getByRole("button", { name: /화약의 안뜰/ }).click(),
-  );
+  await moveRoom(phone, /화약의 안뜰/);
   await fight(phone);
   await clickSave(phone, () =>
     phone.getByRole("button", { name: "보상 획득", exact: true }).click(),
   );
-  await clickSave(phone, () =>
-    phone.getByRole("button", { name: /왕국의 정찰대/ }).click(),
-  );
+  await moveRoom(phone, /왕국의 정찰대/);
   await clickSave(phone, () =>
     phone.getByRole("button", { name: "보급을 받는다" }).click(),
   );
-  await clickSave(phone, () =>
-    phone.getByRole("button", { name: /왕관 없는 성탑/ }).click(),
-  );
+  await moveRoom(phone, /왕관 없는 성탑/);
   await fight(phone);
   await clickSave(phone, () =>
     phone.getByRole("button", { name: "보상 획득", exact: true }).click(),
@@ -307,20 +303,32 @@ test("HTTP actions: same request in parallel applied once; stale actions, CSRF a
 });
 test("hub growth and market surfaces are playable", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "처음 오셨나요? 탐사대 등록" }).click();
+  await page
+    .getByRole("button", { name: "처음 오셨나요? 탐사대 등록" })
+    .click();
   await page.getByLabel("탐사대장 이름").fill("성장 시장 테스트");
   await page.getByLabel("이메일").fill(`growth-${Date.now()}@example.com`);
   await page.getByLabel("비밀번호").fill(password);
   await page.getByRole("button", { name: "계정 만들고 시작" }).click();
-  await expect(page.getByRole("heading", { name: "귀환자의 거점" })).toBeVisible();
-  await page.getByRole("button", { name: "성장과 시설" }).click();
+  await expect(
+    page.getByRole("heading", { name: "귀환자의 거점" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "대장간" }).click();
   await expect(page.getByRole("heading", { name: "거점 시설" })).toBeVisible();
-  await page.locator("section.panel").filter({ hasText: "거점 시설" }).locator("button").filter({ hasText: "강화" }).first().click();
+  await page
+    .locator("section.panel")
+    .filter({ hasText: "거점 시설" })
+    .locator("button")
+    .filter({ hasText: "강화" })
+    .first()
+    .click();
   await expect(page.getByText("대장간 Lv.1")).toBeVisible();
-  await page.getByRole("button", { name: "시장" }).click();
+  await page.getByRole("button", { name: "시장 골목" }).click();
   await expect(page.getByRole("heading", { name: "재료 등록" })).toBeVisible();
-  await expect(page.getByText("현재 열린 매물이 없습니다.")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "열린 매물" })).toBeVisible();
   expect(
-    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
   ).toBe(true);
 });

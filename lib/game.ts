@@ -55,7 +55,8 @@ export type Battle = {
 };
 export type CombatFx = {
   nonce: number;
-  kind: "hero-attack" | "hero-guard" | "hero-heal" | "enemy-attack" | "enemy-hit";
+  kind:
+    "hero-attack" | "hero-guard" | "hero-heal" | "enemy-attack" | "enemy-hit";
   actor: string;
   target: string;
   card?: string;
@@ -83,7 +84,12 @@ export type Game = {
   materials: Record<string, number>;
   runs: number;
   reputation: Record<string, number>;
-  facilities: { forge: number; training: number; infirmary: number; canteen: number };
+  facilities: {
+    forge: number;
+    training: number;
+    infirmary: number;
+    canteen: number;
+  };
   achievements: string[];
   ending: string | null;
   endingUnlocked: boolean;
@@ -103,6 +109,11 @@ export type Action = {
   item?: string;
   quantity?: number;
   price?: number;
+};
+export type CardPreview = {
+  valid: boolean;
+  summary: string;
+  details: string[];
 };
 export const rooms: Record<
   string,
@@ -137,36 +148,160 @@ export const rooms: Record<
     next: ["exit"],
   },
   exit: { name: "귀환의 봉화", kind: "exit", next: ["harbor-entry"] },
-  "harbor-entry": { name: "심연의 옛 항구", kind: "battle", enemies: ["M09", "M10"], next: ["harbor-yard"] },
-  "harbor-yard": { name: "침몰한 부두", kind: "battle", enemies: ["M11", "M12", "M13"], next: ["harbor-elite", "harbor-supply"] },
-  "harbor-elite": { name: "검은 닻의 관문", kind: "battle", enemies: ["M14", "M15"], next: ["harbor-boss"] },
+  "harbor-entry": {
+    name: "심연의 옛 항구",
+    kind: "battle",
+    enemies: ["M09", "M10"],
+    next: ["harbor-yard"],
+  },
+  "harbor-yard": {
+    name: "침몰한 부두",
+    kind: "battle",
+    enemies: ["M11", "M12", "M13"],
+    next: ["harbor-elite", "harbor-supply"],
+  },
+  "harbor-elite": {
+    name: "검은 닻의 관문",
+    kind: "battle",
+    enemies: ["M14", "M15"],
+    next: ["harbor-boss"],
+  },
   "harbor-supply": { name: "항구의 잔불", kind: "rest", next: ["harbor-boss"] },
-  "harbor-boss": { name: "흑조의 부두", kind: "battle", enemies: ["M16"], next: ["archive-entry"] },
-  "archive-entry": { name: "침수된 지하 서고", kind: "battle", enemies: ["M17", "M18"], next: ["archive-yard"] },
-  "archive-yard": { name: "잠긴 열람실", kind: "battle", enemies: ["M19", "M20", "M21"], next: ["archive-elite", "archive-supply"] },
-  "archive-elite": { name: "역문자의 문", kind: "battle", enemies: ["M22", "M23"], next: ["archive-boss"] },
-  "archive-supply": { name: "사서의 휴식처", kind: "rest", next: ["archive-boss"] },
-  "archive-boss": { name: "가라앉은 문헌고", kind: "battle", enemies: ["M24"], next: ["chapel-entry"] },
-  "chapel-entry": { name: "백야의 지하 예배당", kind: "battle", enemies: ["M25", "M26"], next: ["chapel-yard"] },
-  "chapel-yard": { name: "촛불 없는 회랑", kind: "battle", enemies: ["M27", "M28", "M29"], next: ["chapel-elite", "chapel-supply"] },
-  "chapel-elite": { name: "거꾸로 선 제단", kind: "battle", enemies: ["M30", "M31"], next: ["chapel-boss"] },
+  "harbor-boss": {
+    name: "흑조의 부두",
+    kind: "battle",
+    enemies: ["M16"],
+    next: ["archive-entry"],
+  },
+  "archive-entry": {
+    name: "침수된 지하 서고",
+    kind: "battle",
+    enemies: ["M17", "M18"],
+    next: ["archive-yard"],
+  },
+  "archive-yard": {
+    name: "잠긴 열람실",
+    kind: "battle",
+    enemies: ["M19", "M20", "M21"],
+    next: ["archive-elite", "archive-supply"],
+  },
+  "archive-elite": {
+    name: "역문자의 문",
+    kind: "battle",
+    enemies: ["M22", "M23"],
+    next: ["archive-boss"],
+  },
+  "archive-supply": {
+    name: "사서의 휴식처",
+    kind: "rest",
+    next: ["archive-boss"],
+  },
+  "archive-boss": {
+    name: "가라앉은 문헌고",
+    kind: "battle",
+    enemies: ["M24"],
+    next: ["chapel-entry"],
+  },
+  "chapel-entry": {
+    name: "백야의 지하 예배당",
+    kind: "battle",
+    enemies: ["M25", "M26"],
+    next: ["chapel-yard"],
+  },
+  "chapel-yard": {
+    name: "촛불 없는 회랑",
+    kind: "battle",
+    enemies: ["M27", "M28", "M29"],
+    next: ["chapel-elite", "chapel-supply"],
+  },
+  "chapel-elite": {
+    name: "거꾸로 선 제단",
+    kind: "battle",
+    enemies: ["M30", "M31"],
+    next: ["chapel-boss"],
+  },
   "chapel-supply": { name: "고해의 방", kind: "rest", next: ["chapel-boss"] },
-  "chapel-boss": { name: "백야의 성가대", kind: "battle", enemies: ["M32"], next: ["root-entry"] },
-  "root-entry": { name: "뿌리 성소", kind: "battle", enemies: ["M33", "M34"], next: ["root-yard"] },
-  "root-yard": { name: "수액의 정원", kind: "battle", enemies: ["M35", "M36", "M37"], next: ["root-elite", "root-supply"] },
-  "root-elite": { name: "뒤틀린 문지기", kind: "battle", enemies: ["M38", "M39"], next: ["root-boss"] },
+  "chapel-boss": {
+    name: "백야의 성가대",
+    kind: "battle",
+    enemies: ["M32"],
+    next: ["root-entry"],
+  },
+  "root-entry": {
+    name: "뿌리 성소",
+    kind: "battle",
+    enemies: ["M33", "M34"],
+    next: ["root-yard"],
+  },
+  "root-yard": {
+    name: "수액의 정원",
+    kind: "battle",
+    enemies: ["M35", "M36", "M37"],
+    next: ["root-elite", "root-supply"],
+  },
+  "root-elite": {
+    name: "뒤틀린 문지기",
+    kind: "battle",
+    enemies: ["M38", "M39"],
+    next: ["root-boss"],
+  },
   "root-supply": { name: "씨앗의 둥지", kind: "rest", next: ["root-boss"] },
-  "root-boss": { name: "성소의 심장", kind: "battle", enemies: ["M40"], next: ["village-entry"] },
-  "village-entry": { name: "재가 된 옛 마을", kind: "battle", enemies: ["M41", "M42"], next: ["village-yard"] },
-  "village-yard": { name: "그을린 시장", kind: "battle", enemies: ["M43", "M44", "M45"], next: ["village-elite", "village-supply"] },
-  "village-elite": { name: "재의 종지기", kind: "battle", enemies: ["M46", "M47"], next: ["village-boss"] },
+  "root-boss": {
+    name: "성소의 심장",
+    kind: "battle",
+    enemies: ["M40"],
+    next: ["village-entry"],
+  },
+  "village-entry": {
+    name: "재가 된 옛 마을",
+    kind: "battle",
+    enemies: ["M41", "M42"],
+    next: ["village-yard"],
+  },
+  "village-yard": {
+    name: "그을린 시장",
+    kind: "battle",
+    enemies: ["M43", "M44", "M45"],
+    next: ["village-elite", "village-supply"],
+  },
+  "village-elite": {
+    name: "재의 종지기",
+    kind: "battle",
+    enemies: ["M46", "M47"],
+    next: ["village-boss"],
+  },
   "village-supply": { name: "꺼진 화덕", kind: "rest", next: ["village-boss"] },
-  "village-boss": { name: "재의 왕좌", kind: "battle", enemies: ["M48"], next: ["tower-entry"] },
-  "tower-entry": { name: "침묵의 종탑", kind: "battle", enemies: ["M49", "M50"], next: ["tower-yard"] },
-  "tower-yard": { name: "무음의 계단", kind: "battle", enemies: ["M51", "M52", "M53"], next: ["tower-elite", "tower-supply"] },
-  "tower-elite": { name: "종 아래의 파수꾼", kind: "battle", enemies: ["M54", "M55"], next: ["tower-boss"] },
+  "village-boss": {
+    name: "재의 왕좌",
+    kind: "battle",
+    enemies: ["M48"],
+    next: ["tower-entry"],
+  },
+  "tower-entry": {
+    name: "침묵의 종탑",
+    kind: "battle",
+    enemies: ["M49", "M50"],
+    next: ["tower-yard"],
+  },
+  "tower-yard": {
+    name: "무음의 계단",
+    kind: "battle",
+    enemies: ["M51", "M52", "M53"],
+    next: ["tower-elite", "tower-supply"],
+  },
+  "tower-elite": {
+    name: "종 아래의 파수꾼",
+    kind: "battle",
+    enemies: ["M54", "M55"],
+    next: ["tower-boss"],
+  },
   "tower-supply": { name: "멈춘 추", kind: "rest", next: ["tower-boss"] },
-  "tower-boss": { name: "침묵의 종", kind: "battle", enemies: ["M56"], next: ["final-exit"] },
+  "tower-boss": {
+    name: "침묵의 종",
+    kind: "battle",
+    enemies: ["M56"],
+    next: ["final-exit"],
+  },
   "final-exit": { name: "마지막 귀환의 봉화", kind: "exit", next: [] },
 };
 export class RuleError extends Error {
@@ -217,23 +352,24 @@ export function initialGame(): Game {
 }
 export function normalizeGame(previous: Game): Game {
   const defaults = initialGame();
+  const saved = structuredClone(previous);
   return {
     ...defaults,
-    ...structuredClone(previous),
-    party: previous.party || defaults.party,
-    roster: previous.roster || defaults.roster,
-    materials: previous.materials || {},
-    reputation: { ...defaults.reputation, ...(previous.reputation || {}) },
-    facilities: { ...defaults.facilities, ...(previous.facilities || {}) },
-    achievements: previous.achievements || [],
-    ending: previous.ending ?? null,
-    endingUnlocked: previous.endingUnlocked ?? false,
-    endingHistory: previous.endingHistory || [],
-    rebirths: previous.rebirths || 0,
-    legacy: previous.legacy || [],
-    log: previous.log || defaults.log,
-    run: previous.run
-      ? { ...previous.run, combatFx: previous.run.combatFx ?? null }
+    ...saved,
+    party: saved.party || defaults.party,
+    roster: saved.roster || defaults.roster,
+    materials: saved.materials || {},
+    reputation: { ...defaults.reputation, ...(saved.reputation || {}) },
+    facilities: { ...defaults.facilities, ...(saved.facilities || {}) },
+    achievements: saved.achievements || [],
+    ending: saved.ending ?? null,
+    endingUnlocked: saved.endingUnlocked ?? false,
+    endingHistory: saved.endingHistory || [],
+    rebirths: saved.rebirths || 0,
+    legacy: saved.legacy || [],
+    log: saved.log || defaults.log,
+    run: saved.run
+      ? { ...saved.run, combatFx: saved.run.combatFx ?? null }
       : null,
   };
 }
@@ -405,7 +541,9 @@ function victory(g: Game) {
   }
   if (b.enemies.every((e) => e.hp <= 0)) {
     r.reward = {
-      gold: b.enemies.length * 18 + (r.room === "boss" || r.room.endsWith("-boss") ? 60 : 0),
+      gold:
+        b.enemies.length * 18 +
+        (r.room === "boss" || r.room.endsWith("-boss") ? 60 : 0),
       materials: b.enemies.map(
         (e) => monsters.find((m) => m.id === e.id)!.loot,
       ),
@@ -458,7 +596,10 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
   } else if (a.type === "upgradeFacility") {
     check(!r, "탐사 중에는 시설을 업그레이드할 수 없습니다.");
     const id = a.id as keyof Game["facilities"];
-    check(["forge", "training", "infirmary", "canteen"].includes(id), "알 수 없는 시설입니다.");
+    check(
+      ["forge", "training", "infirmary", "canteen"].includes(id),
+      "알 수 없는 시설입니다.",
+    );
     const level = g.facilities[id];
     check(level < 3, "시설이 이미 최고 단계입니다.");
     const cost = balance.facilityUpgradeCost * (level + 1);
@@ -477,7 +618,10 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     h.level = 1 + Math.floor(h.xp / 50);
     achievement(g, "first-training", "첫 훈련");
     if (h.level >= 3) achievement(g, "veteran", "베테랑 동료");
-    log(g, `${characters.find((character) => character.id === h.id)!.name}이 훈련으로 경험치를 얻었다.`);
+    log(
+      g,
+      `${characters.find((character) => character.id === h.id)!.name}이 훈련으로 경험치를 얻었다.`,
+    );
   } else if (a.type === "heal") {
     check(!r, "탐사 중에는 치료할 수 없습니다.");
     const h = g.roster.find((hero) => hero.id === a.id);
@@ -488,11 +632,17 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     g.gold -= cost;
     h.injury = false;
     achievement(g, "first-treatment", "첫 치료");
-    log(g, `${characters.find((character) => character.id === h.id)!.name}의 부상을 치료했다.`);
+    log(
+      g,
+      `${characters.find((character) => character.id === h.id)!.name}의 부상을 치료했다.`,
+    );
   } else if (a.type === "factionShop") {
     check(!r, "탐사 중에는 팩션 상점을 이용할 수 없습니다.");
     const faction = a.choice;
-    check(typeof faction === "string" && factionCodes.includes(faction), "알 수 없는 팩션입니다.");
+    check(
+      typeof faction === "string" && factionCodes.includes(faction),
+      "알 수 없는 팩션입니다.",
+    );
     check(g.reputation[faction] >= 10, "팩션 우호도가 부족합니다.");
     check(g.gold >= 25, "은화가 부족합니다.");
     g.reputation[faction] -= 10;
@@ -503,16 +653,28 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
   } else if (a.type === "darkMarket") {
     check(!r, "탐사 중에는 암시장을 이용할 수 없습니다.");
     check(a.choice === "token", "알 수 없는 암시장 계약입니다.");
-    check((g.materials["빈 왕관 파편"] || 0) > 0, "교환할 희생 재료가 없습니다.");
+    check(
+      (g.materials["빈 왕관 파편"] || 0) > 0,
+      "교환할 희생 재료가 없습니다.",
+    );
     check(g.gold >= 30, "은화가 부족합니다.");
     g.materials["빈 왕관 파편"]--;
     g.materials["암시장 증표"] = (g.materials["암시장 증표"] || 0) + 1;
     g.gold -= 30;
-    log(g, "선택형 암시장 계약을 체결했다. 희생 재료 1개와 은화 30을 지불했다.");
+    log(
+      g,
+      "선택형 암시장 계약을 체결했다. 희생 재료 1개와 은화 30을 지불했다.",
+    );
   } else if (a.type === "chooseEnding") {
     check(!r, "탐사 중에는 엔딩을 선택할 수 없습니다.");
-    check(g.endingUnlocked && g.ending === null, "최종 탐사를 완료해야 엔딩을 선택할 수 있습니다.");
-    check(["kingdom", "republic", "union", "liberation"].includes(a.choice || ""), "알 수 없는 엔딩입니다.");
+    check(
+      g.endingUnlocked && g.ending === null,
+      "최종 탐사를 완료해야 엔딩을 선택할 수 있습니다.",
+    );
+    check(
+      ["kingdom", "republic", "union", "liberation"].includes(a.choice || ""),
+      "알 수 없는 엔딩입니다.",
+    );
     g.ending = a.choice!;
     g.endingHistory.push(g.ending);
     achievement(g, `ending-${g.ending}`, `${g.ending} 엔딩`);
@@ -520,8 +682,14 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
   } else if (a.type === "rebirth") {
     check(!r && g.ending !== null, "엔딩 이후에만 환생할 수 있습니다.");
     const inheritance = a.ids || [];
-    check(inheritance.length <= balance.inheritanceLimit, "계승 슬롯은 최대 3개입니다.");
-    check(inheritance.every((item) => g.materials[item] > 0), "보유한 재료만 계승할 수 있습니다.");
+    check(
+      inheritance.length <= balance.inheritanceLimit,
+      "계승 슬롯은 최대 3개입니다.",
+    );
+    check(
+      inheritance.every((item) => g.materials[item] > 0),
+      "보유한 재료만 계승할 수 있습니다.",
+    );
     g.gold = balance.startingGold;
     g.legacy = [...inheritance];
     g.materials = Object.fromEntries(g.legacy.map((item) => [item, 1]));
@@ -630,11 +798,25 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
         if (c.kind === "skill" && info.role === "지원") {
           ally!.hp = Math.min(ally!.maxHp, ally!.hp + info.power);
           ally!.stress = Math.max(0, ally!.stress - 2);
-          r.combatFx = { nonce: g.version + 1, kind: "hero-heal", actor: h.id, target: ally!.id, card: c.kind, amount: info.power };
+          r.combatFx = {
+            nonce: g.version + 1,
+            kind: "hero-heal",
+            actor: h.id,
+            target: ally!.id,
+            card: c.kind,
+            amount: info.power,
+          };
         } else {
           ally!.shield += info.power;
           if (c.kind === "skill") ally!.counter = 5;
-          r.combatFx = { nonce: g.version + 1, kind: "hero-guard", actor: h.id, target: ally!.id, card: c.kind, amount: info.power };
+          r.combatFx = {
+            nonce: g.version + 1,
+            kind: "hero-guard",
+            actor: h.id,
+            target: ally!.id,
+            card: c.kind,
+            amount: info.power,
+          };
         }
       } else {
         let dmg =
@@ -654,7 +836,14 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           if (c.kind === "skill" && info.role === "공격") target.mark = 4;
           if (c.kind === "skill" && info.role === "제어") target.stun = 1;
         }
-        r.combatFx = { nonce: g.version + 1, kind: "hero-attack", actor: h.id, target: target.id, card: c.kind, amount: dmg };
+        r.combatFx = {
+          nonce: g.version + 1,
+          kind: "hero-attack",
+          actor: h.id,
+          target: target.id,
+          card: c.kind,
+          amount: dmg,
+        };
         if (
           target.hp > 0 &&
           !target.stun &&
@@ -708,7 +897,13 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
         } else {
           const damage = e.id === "M06" || e.id === "M07" ? 12 : 6;
           hit(target, damage);
-          r.combatFx = { nonce: g.version + 1, kind: "enemy-attack", actor: e.id, target: target.id, amount: damage };
+          r.combatFx = {
+            nonce: g.version + 1,
+            kind: "enemy-attack",
+            actor: e.id,
+            target: target.id,
+            amount: damage,
+          };
         }
       }
       victory(g);
@@ -718,7 +913,10 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           r.reward = null;
           r.gold = 0;
           r.materials = [];
-          log(g, `전투가 ${balance.maxBattleTurns}턴에 도달해 탐사대가 후퇴했다.`);
+          log(
+            g,
+            `전투가 ${balance.maxBattleTurns}턴에 도달해 탐사대가 후퇴했다.`,
+          );
         }
       }
       if (r.mode === "battle") {
@@ -770,4 +968,72 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
   }
   g.version++;
   return g;
+}
+
+/** 실제 리듀서를 복제 상태에 적용해 UI 예상치와 서버 판정이 어긋나지 않게 한다. */
+export function predictCard(
+  game: Game,
+  cardId: string,
+  targetId: string,
+): CardPreview {
+  const before = normalizeGame(game);
+  const run = before.run;
+  const battle = run?.battle;
+  const card = battle?.hand.find((item) => item.id === cardId);
+  if (!run || !battle || !card)
+    return { valid: false, summary: "사용할 수 없는 카드", details: [] };
+  try {
+    const actorBefore = run.heroes.find((hero) => hero.id === card.owner)!;
+    const allyBefore = run.heroes.find((hero) => hero.id === targetId);
+    const enemyId = targetId === "M08:tower" ? "M08" : targetId;
+    const enemyBefore = battle.enemies.find((enemy) => enemy.id === enemyId);
+    const after = reduceGame(before, {
+      type: "play",
+      id: cardId,
+      target: targetId,
+    });
+    const nextRun = after.run!;
+    const actorAfter = nextRun.heroes.find((hero) => hero.id === card.owner)!;
+    const allyAfter = nextRun.heroes.find((hero) => hero.id === targetId);
+    const enemyAfter = nextRun.battle?.enemies.find(
+      (enemy) => enemy.id === enemyId,
+    );
+    const details: string[] = [];
+    if (allyBefore && allyAfter) {
+      const healing = allyAfter.hp - allyBefore.hp;
+      const shielding = allyAfter.shield - allyBefore.shield;
+      if (healing > 0) details.push(`체력 +${healing}`);
+      if (shielding > 0) details.push(`보호막 +${shielding}`);
+      if (allyAfter.stress < allyBefore.stress)
+        details.push(`스트레스 ${allyAfter.stress - allyBefore.stress}`);
+      if ((allyAfter.counter || 0) > (allyBefore.counter || 0))
+        details.push(`반격 ${allyAfter.counter}`);
+    }
+    if (enemyBefore && enemyAfter) {
+      if (targetId === "M08:tower")
+        details.push(`성탑 피해 ${enemyBefore.tower - enemyAfter.tower}`);
+      else {
+        const damage = enemyBefore.hp - enemyAfter.hp;
+        const shieldDamage = enemyBefore.shield - enemyAfter.shield;
+        if (damage > 0) details.push(`체력 피해 ${damage}`);
+        if (shieldDamage > 0) details.push(`보호막 피해 ${shieldDamage}`);
+        if (enemyAfter.mark > enemyBefore.mark)
+          details.push(`표식 +${enemyAfter.mark - enemyBefore.mark}`);
+        if (enemyAfter.stun > enemyBefore.stun) details.push("기절 1턴");
+      }
+    }
+    const retaliation = actorBefore.hp - actorAfter.hp;
+    if (retaliation > 0) details.push(`반격 피해 ${retaliation}`);
+    return {
+      valid: true,
+      summary: details.join(" · ") || "효과 없음",
+      details,
+    };
+  } catch (error) {
+    return {
+      valid: false,
+      summary: error instanceof Error ? error.message : "사용할 수 없는 대상",
+      details: [],
+    };
+  }
 }

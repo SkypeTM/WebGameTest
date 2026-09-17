@@ -1,0 +1,1154 @@
+[
+  {
+    "id": "AR1",
+    "name": "레오나",
+    "state": "idle",
+    "path": "/assets/generated/characters/AR1/idle.png"
+  },
+  {
+    "id": "AR1",
+    "name": "레오나",
+    "state": "attack",
+    "path": "/assets/generated/characters/AR1/attack.png"
+  },
+  {
+    "id": "AR1",
+    "name": "레오나",
+    "state": "hit",
+    "path": "/assets/generated/characters/AR1/hit.png"
+  },
+  {
+    "id": "AR1",
+    "name": "레오나",
+    "state": "skill",
+    "path": "/assets/generated/characters/AR1/skill.png"
+  },
+  {
+    "id": "AR1",
+    "name": "레오나",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/AR1/dialogue.png"
+  },
+  {
+    "id": "AR1",
+    "name": "레오나",
+    "state": "promotion",
+    "path": "/assets/generated/characters/AR1/promotion.png"
+  },
+  {
+    "id": "AR2",
+    "name": "세린",
+    "state": "idle",
+    "path": "/assets/generated/characters/AR2/idle.png"
+  },
+  {
+    "id": "AR2",
+    "name": "세린",
+    "state": "attack",
+    "path": "/assets/generated/characters/AR2/attack.png"
+  },
+  {
+    "id": "AR2",
+    "name": "세린",
+    "state": "hit",
+    "path": "/assets/generated/characters/AR2/hit.png"
+  },
+  {
+    "id": "AR2",
+    "name": "세린",
+    "state": "skill",
+    "path": "/assets/generated/characters/AR2/skill.png"
+  },
+  {
+    "id": "AR2",
+    "name": "세린",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/AR2/dialogue.png"
+  },
+  {
+    "id": "AR2",
+    "name": "세린",
+    "state": "promotion",
+    "path": "/assets/generated/characters/AR2/promotion.png"
+  },
+  {
+    "id": "AR3",
+    "name": "마리엔",
+    "state": "idle",
+    "path": "/assets/generated/characters/AR3/idle.png"
+  },
+  {
+    "id": "AR3",
+    "name": "마리엔",
+    "state": "attack",
+    "path": "/assets/generated/characters/AR3/attack.png"
+  },
+  {
+    "id": "AR3",
+    "name": "마리엔",
+    "state": "hit",
+    "path": "/assets/generated/characters/AR3/hit.png"
+  },
+  {
+    "id": "AR3",
+    "name": "마리엔",
+    "state": "skill",
+    "path": "/assets/generated/characters/AR3/skill.png"
+  },
+  {
+    "id": "AR3",
+    "name": "마리엔",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/AR3/dialogue.png"
+  },
+  {
+    "id": "AR3",
+    "name": "마리엔",
+    "state": "promotion",
+    "path": "/assets/generated/characters/AR3/promotion.png"
+  },
+  {
+    "id": "AR4",
+    "name": "에델",
+    "state": "idle",
+    "path": "/assets/generated/characters/AR4/idle.png"
+  },
+  {
+    "id": "AR4",
+    "name": "에델",
+    "state": "attack",
+    "path": "/assets/generated/characters/AR4/attack.png"
+  },
+  {
+    "id": "AR4",
+    "name": "에델",
+    "state": "hit",
+    "path": "/assets/generated/characters/AR4/hit.png"
+  },
+  {
+    "id": "AR4",
+    "name": "에델",
+    "state": "skill",
+    "path": "/assets/generated/characters/AR4/skill.png"
+  },
+  {
+    "id": "AR4",
+    "name": "에델",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/AR4/dialogue.png"
+  },
+  {
+    "id": "AR4",
+    "name": "에델",
+    "state": "promotion",
+    "path": "/assets/generated/characters/AR4/promotion.png"
+  },
+  {
+    "id": "BC1",
+    "name": "로웬",
+    "state": "idle",
+    "path": "/assets/generated/characters/BC1/idle.png"
+  },
+  {
+    "id": "BC1",
+    "name": "로웬",
+    "state": "attack",
+    "path": "/assets/generated/characters/BC1/attack.png"
+  },
+  {
+    "id": "BC1",
+    "name": "로웬",
+    "state": "hit",
+    "path": "/assets/generated/characters/BC1/hit.png"
+  },
+  {
+    "id": "BC1",
+    "name": "로웬",
+    "state": "skill",
+    "path": "/assets/generated/characters/BC1/skill.png"
+  },
+  {
+    "id": "BC1",
+    "name": "로웬",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/BC1/dialogue.png"
+  },
+  {
+    "id": "BC1",
+    "name": "로웬",
+    "state": "promotion",
+    "path": "/assets/generated/characters/BC1/promotion.png"
+  },
+  {
+    "id": "BC2",
+    "name": "미라",
+    "state": "idle",
+    "path": "/assets/generated/characters/BC2/idle.png"
+  },
+  {
+    "id": "BC2",
+    "name": "미라",
+    "state": "attack",
+    "path": "/assets/generated/characters/BC2/attack.png"
+  },
+  {
+    "id": "BC2",
+    "name": "미라",
+    "state": "hit",
+    "path": "/assets/generated/characters/BC2/hit.png"
+  },
+  {
+    "id": "BC2",
+    "name": "미라",
+    "state": "skill",
+    "path": "/assets/generated/characters/BC2/skill.png"
+  },
+  {
+    "id": "BC2",
+    "name": "미라",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/BC2/dialogue.png"
+  },
+  {
+    "id": "BC2",
+    "name": "미라",
+    "state": "promotion",
+    "path": "/assets/generated/characters/BC2/promotion.png"
+  },
+  {
+    "id": "BC3",
+    "name": "오델",
+    "state": "idle",
+    "path": "/assets/generated/characters/BC3/idle.png"
+  },
+  {
+    "id": "BC3",
+    "name": "오델",
+    "state": "attack",
+    "path": "/assets/generated/characters/BC3/attack.png"
+  },
+  {
+    "id": "BC3",
+    "name": "오델",
+    "state": "hit",
+    "path": "/assets/generated/characters/BC3/hit.png"
+  },
+  {
+    "id": "BC3",
+    "name": "오델",
+    "state": "skill",
+    "path": "/assets/generated/characters/BC3/skill.png"
+  },
+  {
+    "id": "BC3",
+    "name": "오델",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/BC3/dialogue.png"
+  },
+  {
+    "id": "BC3",
+    "name": "오델",
+    "state": "promotion",
+    "path": "/assets/generated/characters/BC3/promotion.png"
+  },
+  {
+    "id": "BC4",
+    "name": "피아",
+    "state": "idle",
+    "path": "/assets/generated/characters/BC4/idle.png"
+  },
+  {
+    "id": "BC4",
+    "name": "피아",
+    "state": "attack",
+    "path": "/assets/generated/characters/BC4/attack.png"
+  },
+  {
+    "id": "BC4",
+    "name": "피아",
+    "state": "hit",
+    "path": "/assets/generated/characters/BC4/hit.png"
+  },
+  {
+    "id": "BC4",
+    "name": "피아",
+    "state": "skill",
+    "path": "/assets/generated/characters/BC4/skill.png"
+  },
+  {
+    "id": "BC4",
+    "name": "피아",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/BC4/dialogue.png"
+  },
+  {
+    "id": "BC4",
+    "name": "피아",
+    "state": "promotion",
+    "path": "/assets/generated/characters/BC4/promotion.png"
+  },
+  {
+    "id": "BK1",
+    "name": "베스라",
+    "state": "idle",
+    "path": "/assets/generated/characters/BK1/idle.png"
+  },
+  {
+    "id": "BK1",
+    "name": "베스라",
+    "state": "attack",
+    "path": "/assets/generated/characters/BK1/attack.png"
+  },
+  {
+    "id": "BK1",
+    "name": "베스라",
+    "state": "hit",
+    "path": "/assets/generated/characters/BK1/hit.png"
+  },
+  {
+    "id": "BK1",
+    "name": "베스라",
+    "state": "skill",
+    "path": "/assets/generated/characters/BK1/skill.png"
+  },
+  {
+    "id": "BK1",
+    "name": "베스라",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/BK1/dialogue.png"
+  },
+  {
+    "id": "BK1",
+    "name": "베스라",
+    "state": "promotion",
+    "path": "/assets/generated/characters/BK1/promotion.png"
+  },
+  {
+    "id": "BK2",
+    "name": "니엘",
+    "state": "idle",
+    "path": "/assets/generated/characters/BK2/idle.png"
+  },
+  {
+    "id": "BK2",
+    "name": "니엘",
+    "state": "attack",
+    "path": "/assets/generated/characters/BK2/attack.png"
+  },
+  {
+    "id": "BK2",
+    "name": "니엘",
+    "state": "hit",
+    "path": "/assets/generated/characters/BK2/hit.png"
+  },
+  {
+    "id": "BK2",
+    "name": "니엘",
+    "state": "skill",
+    "path": "/assets/generated/characters/BK2/skill.png"
+  },
+  {
+    "id": "BK2",
+    "name": "니엘",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/BK2/dialogue.png"
+  },
+  {
+    "id": "BK2",
+    "name": "니엘",
+    "state": "promotion",
+    "path": "/assets/generated/characters/BK2/promotion.png"
+  },
+  {
+    "id": "BK3",
+    "name": "사브린",
+    "state": "idle",
+    "path": "/assets/generated/characters/BK3/idle.png"
+  },
+  {
+    "id": "BK3",
+    "name": "사브린",
+    "state": "attack",
+    "path": "/assets/generated/characters/BK3/attack.png"
+  },
+  {
+    "id": "BK3",
+    "name": "사브린",
+    "state": "hit",
+    "path": "/assets/generated/characters/BK3/hit.png"
+  },
+  {
+    "id": "BK3",
+    "name": "사브린",
+    "state": "skill",
+    "path": "/assets/generated/characters/BK3/skill.png"
+  },
+  {
+    "id": "BK3",
+    "name": "사브린",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/BK3/dialogue.png"
+  },
+  {
+    "id": "BK3",
+    "name": "사브린",
+    "state": "promotion",
+    "path": "/assets/generated/characters/BK3/promotion.png"
+  },
+  {
+    "id": "BK4",
+    "name": "루크",
+    "state": "idle",
+    "path": "/assets/generated/characters/BK4/idle.png"
+  },
+  {
+    "id": "BK4",
+    "name": "루크",
+    "state": "attack",
+    "path": "/assets/generated/characters/BK4/attack.png"
+  },
+  {
+    "id": "BK4",
+    "name": "루크",
+    "state": "hit",
+    "path": "/assets/generated/characters/BK4/hit.png"
+  },
+  {
+    "id": "BK4",
+    "name": "루크",
+    "state": "skill",
+    "path": "/assets/generated/characters/BK4/skill.png"
+  },
+  {
+    "id": "BK4",
+    "name": "루크",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/BK4/dialogue.png"
+  },
+  {
+    "id": "BK4",
+    "name": "루크",
+    "state": "promotion",
+    "path": "/assets/generated/characters/BK4/promotion.png"
+  },
+  {
+    "id": "DS1",
+    "name": "네레아",
+    "state": "idle",
+    "path": "/assets/generated/characters/DS1/idle.png"
+  },
+  {
+    "id": "DS1",
+    "name": "네레아",
+    "state": "attack",
+    "path": "/assets/generated/characters/DS1/attack.png"
+  },
+  {
+    "id": "DS1",
+    "name": "네레아",
+    "state": "hit",
+    "path": "/assets/generated/characters/DS1/hit.png"
+  },
+  {
+    "id": "DS1",
+    "name": "네레아",
+    "state": "skill",
+    "path": "/assets/generated/characters/DS1/skill.png"
+  },
+  {
+    "id": "DS1",
+    "name": "네레아",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/DS1/dialogue.png"
+  },
+  {
+    "id": "DS1",
+    "name": "네레아",
+    "state": "promotion",
+    "path": "/assets/generated/characters/DS1/promotion.png"
+  },
+  {
+    "id": "DS2",
+    "name": "시엘라",
+    "state": "idle",
+    "path": "/assets/generated/characters/DS2/idle.png"
+  },
+  {
+    "id": "DS2",
+    "name": "시엘라",
+    "state": "attack",
+    "path": "/assets/generated/characters/DS2/attack.png"
+  },
+  {
+    "id": "DS2",
+    "name": "시엘라",
+    "state": "hit",
+    "path": "/assets/generated/characters/DS2/hit.png"
+  },
+  {
+    "id": "DS2",
+    "name": "시엘라",
+    "state": "skill",
+    "path": "/assets/generated/characters/DS2/skill.png"
+  },
+  {
+    "id": "DS2",
+    "name": "시엘라",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/DS2/dialogue.png"
+  },
+  {
+    "id": "DS2",
+    "name": "시엘라",
+    "state": "promotion",
+    "path": "/assets/generated/characters/DS2/promotion.png"
+  },
+  {
+    "id": "DS3",
+    "name": "모이라",
+    "state": "idle",
+    "path": "/assets/generated/characters/DS3/idle.png"
+  },
+  {
+    "id": "DS3",
+    "name": "모이라",
+    "state": "attack",
+    "path": "/assets/generated/characters/DS3/attack.png"
+  },
+  {
+    "id": "DS3",
+    "name": "모이라",
+    "state": "hit",
+    "path": "/assets/generated/characters/DS3/hit.png"
+  },
+  {
+    "id": "DS3",
+    "name": "모이라",
+    "state": "skill",
+    "path": "/assets/generated/characters/DS3/skill.png"
+  },
+  {
+    "id": "DS3",
+    "name": "모이라",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/DS3/dialogue.png"
+  },
+  {
+    "id": "DS3",
+    "name": "모이라",
+    "state": "promotion",
+    "path": "/assets/generated/characters/DS3/promotion.png"
+  },
+  {
+    "id": "DS4",
+    "name": "벨린",
+    "state": "idle",
+    "path": "/assets/generated/characters/DS4/idle.png"
+  },
+  {
+    "id": "DS4",
+    "name": "벨린",
+    "state": "attack",
+    "path": "/assets/generated/characters/DS4/attack.png"
+  },
+  {
+    "id": "DS4",
+    "name": "벨린",
+    "state": "hit",
+    "path": "/assets/generated/characters/DS4/hit.png"
+  },
+  {
+    "id": "DS4",
+    "name": "벨린",
+    "state": "skill",
+    "path": "/assets/generated/characters/DS4/skill.png"
+  },
+  {
+    "id": "DS4",
+    "name": "벨린",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/DS4/dialogue.png"
+  },
+  {
+    "id": "DS4",
+    "name": "벨린",
+    "state": "promotion",
+    "path": "/assets/generated/characters/DS4/promotion.png"
+  },
+  {
+    "id": "EF1",
+    "name": "레나",
+    "state": "idle",
+    "path": "/assets/generated/characters/EF1/idle.png"
+  },
+  {
+    "id": "EF1",
+    "name": "레나",
+    "state": "attack",
+    "path": "/assets/generated/characters/EF1/attack.png"
+  },
+  {
+    "id": "EF1",
+    "name": "레나",
+    "state": "hit",
+    "path": "/assets/generated/characters/EF1/hit.png"
+  },
+  {
+    "id": "EF1",
+    "name": "레나",
+    "state": "skill",
+    "path": "/assets/generated/characters/EF1/skill.png"
+  },
+  {
+    "id": "EF1",
+    "name": "레나",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/EF1/dialogue.png"
+  },
+  {
+    "id": "EF1",
+    "name": "레나",
+    "state": "promotion",
+    "path": "/assets/generated/characters/EF1/promotion.png"
+  },
+  {
+    "id": "EF2",
+    "name": "유나",
+    "state": "idle",
+    "path": "/assets/generated/characters/EF2/idle.png"
+  },
+  {
+    "id": "EF2",
+    "name": "유나",
+    "state": "attack",
+    "path": "/assets/generated/characters/EF2/attack.png"
+  },
+  {
+    "id": "EF2",
+    "name": "유나",
+    "state": "hit",
+    "path": "/assets/generated/characters/EF2/hit.png"
+  },
+  {
+    "id": "EF2",
+    "name": "유나",
+    "state": "skill",
+    "path": "/assets/generated/characters/EF2/skill.png"
+  },
+  {
+    "id": "EF2",
+    "name": "유나",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/EF2/dialogue.png"
+  },
+  {
+    "id": "EF2",
+    "name": "유나",
+    "state": "promotion",
+    "path": "/assets/generated/characters/EF2/promotion.png"
+  },
+  {
+    "id": "EF3",
+    "name": "다리아",
+    "state": "idle",
+    "path": "/assets/generated/characters/EF3/idle.png"
+  },
+  {
+    "id": "EF3",
+    "name": "다리아",
+    "state": "attack",
+    "path": "/assets/generated/characters/EF3/attack.png"
+  },
+  {
+    "id": "EF3",
+    "name": "다리아",
+    "state": "hit",
+    "path": "/assets/generated/characters/EF3/hit.png"
+  },
+  {
+    "id": "EF3",
+    "name": "다리아",
+    "state": "skill",
+    "path": "/assets/generated/characters/EF3/skill.png"
+  },
+  {
+    "id": "EF3",
+    "name": "다리아",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/EF3/dialogue.png"
+  },
+  {
+    "id": "EF3",
+    "name": "다리아",
+    "state": "promotion",
+    "path": "/assets/generated/characters/EF3/promotion.png"
+  },
+  {
+    "id": "EF4",
+    "name": "세이",
+    "state": "idle",
+    "path": "/assets/generated/characters/EF4/idle.png"
+  },
+  {
+    "id": "EF4",
+    "name": "세이",
+    "state": "attack",
+    "path": "/assets/generated/characters/EF4/attack.png"
+  },
+  {
+    "id": "EF4",
+    "name": "세이",
+    "state": "hit",
+    "path": "/assets/generated/characters/EF4/hit.png"
+  },
+  {
+    "id": "EF4",
+    "name": "세이",
+    "state": "skill",
+    "path": "/assets/generated/characters/EF4/skill.png"
+  },
+  {
+    "id": "EF4",
+    "name": "세이",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/EF4/dialogue.png"
+  },
+  {
+    "id": "EF4",
+    "name": "세이",
+    "state": "promotion",
+    "path": "/assets/generated/characters/EF4/promotion.png"
+  },
+  {
+    "id": "GO1",
+    "name": "실바",
+    "state": "idle",
+    "path": "/assets/generated/characters/GO1/idle.png"
+  },
+  {
+    "id": "GO1",
+    "name": "실바",
+    "state": "attack",
+    "path": "/assets/generated/characters/GO1/attack.png"
+  },
+  {
+    "id": "GO1",
+    "name": "실바",
+    "state": "hit",
+    "path": "/assets/generated/characters/GO1/hit.png"
+  },
+  {
+    "id": "GO1",
+    "name": "실바",
+    "state": "skill",
+    "path": "/assets/generated/characters/GO1/skill.png"
+  },
+  {
+    "id": "GO1",
+    "name": "실바",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/GO1/dialogue.png"
+  },
+  {
+    "id": "GO1",
+    "name": "실바",
+    "state": "promotion",
+    "path": "/assets/generated/characters/GO1/promotion.png"
+  },
+  {
+    "id": "GO2",
+    "name": "에린",
+    "state": "idle",
+    "path": "/assets/generated/characters/GO2/idle.png"
+  },
+  {
+    "id": "GO2",
+    "name": "에린",
+    "state": "attack",
+    "path": "/assets/generated/characters/GO2/attack.png"
+  },
+  {
+    "id": "GO2",
+    "name": "에린",
+    "state": "hit",
+    "path": "/assets/generated/characters/GO2/hit.png"
+  },
+  {
+    "id": "GO2",
+    "name": "에린",
+    "state": "skill",
+    "path": "/assets/generated/characters/GO2/skill.png"
+  },
+  {
+    "id": "GO2",
+    "name": "에린",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/GO2/dialogue.png"
+  },
+  {
+    "id": "GO2",
+    "name": "에린",
+    "state": "promotion",
+    "path": "/assets/generated/characters/GO2/promotion.png"
+  },
+  {
+    "id": "GO3",
+    "name": "바르나",
+    "state": "idle",
+    "path": "/assets/generated/characters/GO3/idle.png"
+  },
+  {
+    "id": "GO3",
+    "name": "바르나",
+    "state": "attack",
+    "path": "/assets/generated/characters/GO3/attack.png"
+  },
+  {
+    "id": "GO3",
+    "name": "바르나",
+    "state": "hit",
+    "path": "/assets/generated/characters/GO3/hit.png"
+  },
+  {
+    "id": "GO3",
+    "name": "바르나",
+    "state": "skill",
+    "path": "/assets/generated/characters/GO3/skill.png"
+  },
+  {
+    "id": "GO3",
+    "name": "바르나",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/GO3/dialogue.png"
+  },
+  {
+    "id": "GO3",
+    "name": "바르나",
+    "state": "promotion",
+    "path": "/assets/generated/characters/GO3/promotion.png"
+  },
+  {
+    "id": "GO4",
+    "name": "리스",
+    "state": "idle",
+    "path": "/assets/generated/characters/GO4/idle.png"
+  },
+  {
+    "id": "GO4",
+    "name": "리스",
+    "state": "attack",
+    "path": "/assets/generated/characters/GO4/attack.png"
+  },
+  {
+    "id": "GO4",
+    "name": "리스",
+    "state": "hit",
+    "path": "/assets/generated/characters/GO4/hit.png"
+  },
+  {
+    "id": "GO4",
+    "name": "리스",
+    "state": "skill",
+    "path": "/assets/generated/characters/GO4/skill.png"
+  },
+  {
+    "id": "GO4",
+    "name": "리스",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/GO4/dialogue.png"
+  },
+  {
+    "id": "GO4",
+    "name": "리스",
+    "state": "promotion",
+    "path": "/assets/generated/characters/GO4/promotion.png"
+  },
+  {
+    "id": "VR1",
+    "name": "리베아",
+    "state": "idle",
+    "path": "/assets/generated/characters/VR1/idle.png"
+  },
+  {
+    "id": "VR1",
+    "name": "리베아",
+    "state": "attack",
+    "path": "/assets/generated/characters/VR1/attack.png"
+  },
+  {
+    "id": "VR1",
+    "name": "리베아",
+    "state": "hit",
+    "path": "/assets/generated/characters/VR1/hit.png"
+  },
+  {
+    "id": "VR1",
+    "name": "리베아",
+    "state": "skill",
+    "path": "/assets/generated/characters/VR1/skill.png"
+  },
+  {
+    "id": "VR1",
+    "name": "리베아",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/VR1/dialogue.png"
+  },
+  {
+    "id": "VR1",
+    "name": "리베아",
+    "state": "promotion",
+    "path": "/assets/generated/characters/VR1/promotion.png"
+  },
+  {
+    "id": "VR2",
+    "name": "노에라",
+    "state": "idle",
+    "path": "/assets/generated/characters/VR2/idle.png"
+  },
+  {
+    "id": "VR2",
+    "name": "노에라",
+    "state": "attack",
+    "path": "/assets/generated/characters/VR2/attack.png"
+  },
+  {
+    "id": "VR2",
+    "name": "노에라",
+    "state": "hit",
+    "path": "/assets/generated/characters/VR2/hit.png"
+  },
+  {
+    "id": "VR2",
+    "name": "노에라",
+    "state": "skill",
+    "path": "/assets/generated/characters/VR2/skill.png"
+  },
+  {
+    "id": "VR2",
+    "name": "노에라",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/VR2/dialogue.png"
+  },
+  {
+    "id": "VR2",
+    "name": "노에라",
+    "state": "promotion",
+    "path": "/assets/generated/characters/VR2/promotion.png"
+  },
+  {
+    "id": "VR3",
+    "name": "테사",
+    "state": "idle",
+    "path": "/assets/generated/characters/VR3/idle.png"
+  },
+  {
+    "id": "VR3",
+    "name": "테사",
+    "state": "attack",
+    "path": "/assets/generated/characters/VR3/attack.png"
+  },
+  {
+    "id": "VR3",
+    "name": "테사",
+    "state": "hit",
+    "path": "/assets/generated/characters/VR3/hit.png"
+  },
+  {
+    "id": "VR3",
+    "name": "테사",
+    "state": "skill",
+    "path": "/assets/generated/characters/VR3/skill.png"
+  },
+  {
+    "id": "VR3",
+    "name": "테사",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/VR3/dialogue.png"
+  },
+  {
+    "id": "VR3",
+    "name": "테사",
+    "state": "promotion",
+    "path": "/assets/generated/characters/VR3/promotion.png"
+  },
+  {
+    "id": "VR4",
+    "name": "카엘",
+    "state": "idle",
+    "path": "/assets/generated/characters/VR4/idle.png"
+  },
+  {
+    "id": "VR4",
+    "name": "카엘",
+    "state": "attack",
+    "path": "/assets/generated/characters/VR4/attack.png"
+  },
+  {
+    "id": "VR4",
+    "name": "카엘",
+    "state": "hit",
+    "path": "/assets/generated/characters/VR4/hit.png"
+  },
+  {
+    "id": "VR4",
+    "name": "카엘",
+    "state": "skill",
+    "path": "/assets/generated/characters/VR4/skill.png"
+  },
+  {
+    "id": "VR4",
+    "name": "카엘",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/VR4/dialogue.png"
+  },
+  {
+    "id": "VR4",
+    "name": "카엘",
+    "state": "promotion",
+    "path": "/assets/generated/characters/VR4/promotion.png"
+  },
+  {
+    "id": "WS1",
+    "name": "아우렐라",
+    "state": "idle",
+    "path": "/assets/generated/characters/WS1/idle.png"
+  },
+  {
+    "id": "WS1",
+    "name": "아우렐라",
+    "state": "attack",
+    "path": "/assets/generated/characters/WS1/attack.png"
+  },
+  {
+    "id": "WS1",
+    "name": "아우렐라",
+    "state": "hit",
+    "path": "/assets/generated/characters/WS1/hit.png"
+  },
+  {
+    "id": "WS1",
+    "name": "아우렐라",
+    "state": "skill",
+    "path": "/assets/generated/characters/WS1/skill.png"
+  },
+  {
+    "id": "WS1",
+    "name": "아우렐라",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/WS1/dialogue.png"
+  },
+  {
+    "id": "WS1",
+    "name": "아우렐라",
+    "state": "promotion",
+    "path": "/assets/generated/characters/WS1/promotion.png"
+  },
+  {
+    "id": "WS2",
+    "name": "클레아",
+    "state": "idle",
+    "path": "/assets/generated/characters/WS2/idle.png"
+  },
+  {
+    "id": "WS2",
+    "name": "클레아",
+    "state": "attack",
+    "path": "/assets/generated/characters/WS2/attack.png"
+  },
+  {
+    "id": "WS2",
+    "name": "클레아",
+    "state": "hit",
+    "path": "/assets/generated/characters/WS2/hit.png"
+  },
+  {
+    "id": "WS2",
+    "name": "클레아",
+    "state": "skill",
+    "path": "/assets/generated/characters/WS2/skill.png"
+  },
+  {
+    "id": "WS2",
+    "name": "클레아",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/WS2/dialogue.png"
+  },
+  {
+    "id": "WS2",
+    "name": "클레아",
+    "state": "promotion",
+    "path": "/assets/generated/characters/WS2/promotion.png"
+  },
+  {
+    "id": "WS3",
+    "name": "이사벨",
+    "state": "idle",
+    "path": "/assets/generated/characters/WS3/idle.png"
+  },
+  {
+    "id": "WS3",
+    "name": "이사벨",
+    "state": "attack",
+    "path": "/assets/generated/characters/WS3/attack.png"
+  },
+  {
+    "id": "WS3",
+    "name": "이사벨",
+    "state": "hit",
+    "path": "/assets/generated/characters/WS3/hit.png"
+  },
+  {
+    "id": "WS3",
+    "name": "이사벨",
+    "state": "skill",
+    "path": "/assets/generated/characters/WS3/skill.png"
+  },
+  {
+    "id": "WS3",
+    "name": "이사벨",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/WS3/dialogue.png"
+  },
+  {
+    "id": "WS3",
+    "name": "이사벨",
+    "state": "promotion",
+    "path": "/assets/generated/characters/WS3/promotion.png"
+  },
+  {
+    "id": "WS4",
+    "name": "라비엔",
+    "state": "idle",
+    "path": "/assets/generated/characters/WS4/idle.png"
+  },
+  {
+    "id": "WS4",
+    "name": "라비엔",
+    "state": "attack",
+    "path": "/assets/generated/characters/WS4/attack.png"
+  },
+  {
+    "id": "WS4",
+    "name": "라비엔",
+    "state": "hit",
+    "path": "/assets/generated/characters/WS4/hit.png"
+  },
+  {
+    "id": "WS4",
+    "name": "라비엔",
+    "state": "skill",
+    "path": "/assets/generated/characters/WS4/skill.png"
+  },
+  {
+    "id": "WS4",
+    "name": "라비엔",
+    "state": "dialogue",
+    "path": "/assets/generated/characters/WS4/dialogue.png"
+  },
+  {
+    "id": "WS4",
+    "name": "라비엔",
+    "state": "promotion",
+    "path": "/assets/generated/characters/WS4/promotion.png"
+  }
+]

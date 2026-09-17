@@ -30,3 +30,4 @@
 - `013-selected-target-damage-fix.md`: 선택 대상 피해 수정
 - `014-test-image-assets.md`: test-images 자산 연결
 - `015-auto-push-hook.md`: 커밋 후 GitHub 자동 push
+- `016-hamlet-tactical-ui.md`: 마을 허브·전술 배치·드래그 카드 예측 UI

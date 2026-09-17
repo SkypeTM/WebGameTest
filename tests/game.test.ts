@@ -7,6 +7,7 @@ import {
   monsters,
   relations,
   cardInfo,
+  predictCard,
   type Game,
   type Action,
 } from "../lib/game";
@@ -135,12 +136,18 @@ test("final ending unlocks only after the last return and rebirth keeps selected
 });
 test("legacy saves without growth fields can continue combat", () => {
   const current = battleStart();
-  const legacy = structuredClone(current) as Game & { facilities?: unknown };
-  delete legacy.facilities;
-  delete legacy.achievements;
-  delete legacy.ending;
-  delete legacy.endingUnlocked;
-  const card = legacy.run!.battle!.hand.find((item) => cardInfo(item).target === "enemy")!;
+  const legacyRecord = structuredClone(current) as unknown as Record<
+    string,
+    unknown
+  >;
+  delete legacyRecord.facilities;
+  delete legacyRecord.achievements;
+  delete legacyRecord.ending;
+  delete legacyRecord.endingUnlocked;
+  const legacy = legacyRecord as unknown as Game;
+  const card = legacy.run!.battle!.hand.find(
+    (item) => cardInfo(item).target === "enemy",
+  )!;
   const next = act(legacy, { type: "play", id: card.id, target: "M01" });
   assert.equal(typeof next.facilities.forge, "number");
   assert.equal(next.run!.battle!.enemies[0].hp < 30, true);
@@ -279,4 +286,21 @@ test("selected enemy takes damage; guardian skill counters for its ally", () => 
   g = act(g, { type: "endTurn" });
   assert.equal(g.run!.battle!.enemies[1].hp, 25);
   assert.equal(g.run!.heroes.find((h) => h.id === "AR4")!.hp, 60);
+});
+
+test("card preview uses the same damage and retaliation rules as play", () => {
+  let g = battleStart();
+  g.run!.battle!.hand = [{ id: "AR1-strike", owner: "AR1", kind: "strike" }];
+  g.run!.battle!.enemies[0].shield = 3;
+  const before = structuredClone(g);
+  const preview = predictCard(g, "AR1-strike", "M01");
+  const played = act(g, { type: "play", id: "AR1-strike", target: "M01" });
+  assert.equal(preview.valid, true);
+  assert.ok(preview.details.includes("보호막 피해 3"));
+  assert.ok(
+    preview.details.includes(
+      `체력 피해 ${before.run!.battle!.enemies[0].hp - played.run!.battle!.enemies[0].hp}`,
+    ),
+  );
+  assert.deepEqual(g, before, "preview does not mutate the saved state");
 });

@@ -10,8 +10,11 @@ import {
   type Game,
   type Action,
   type Card,
+  predictCard,
 } from "../lib/game";
 import assetManifest from "../data/asset_manifest.json";
+import generatedAssets from "../data/generated_assets.json";
+import characterAssets from "../data/character_asset_manifest.json";
 type MarketListing = {
   id: string;
   seller: string;
@@ -36,10 +39,33 @@ const symbols: Record<string, string> = {
   지원: "✦",
   제어: "◎",
 };
-function Crest({ id, large = false, motion = "" }: { id: string; large?: boolean; motion?: string }) {
+function Crest({
+  id,
+  large = false,
+  motion = "",
+  state,
+}: {
+  id: string;
+  large?: boolean;
+  motion?: string;
+  state?: "idle" | "attack" | "hit" | "skill" | "dialogue" | "promotion";
+}) {
   const [failed, setFailed] = useState(false);
-  const asset = assetManifest.find((a) => a.id === id);
   const monster = id.startsWith("M");
+  const visualState =
+    state ||
+    (motion === "motion-strike"
+      ? "attack"
+      : motion === "motion-hit"
+        ? "hit"
+        : motion === "motion-guard" || motion === "motion-heal"
+          ? "skill"
+          : "idle");
+  const asset = monster
+    ? assetManifest.find((item) => item.id === id)
+    : characterAssets.find(
+        (item) => item.id === id && item.state === visualState,
+      );
   if (asset?.path && !failed)
     return (
       <div className={`${large ? "crest large" : "crest"} ${motion}`}>
@@ -51,7 +77,7 @@ function Crest({ id, large = false, motion = "" }: { id: string; large?: boolean
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: id.startsWith("M") ? "0% 0%" : "16% 50%",
+            objectPosition: monster ? "0% 0%" : "50% 50%",
           }}
           onError={() => setFailed(true)}
         />
@@ -89,10 +115,30 @@ function CardArt({ kind, role }: { kind: Card["kind"]; role: string }) {
   return (
     <span className={`card-art art-${kind}`} aria-hidden="true">
       <svg viewBox="0 0 80 56" role="img">
-        {kind === "strike" && <><path d="M12 44 48 8l8 8-36 36Z" /><path d="m50 18 15 15M58 10l12 12" /></>}
-        {kind === "guard" && <><path d="M40 6 68 16v16c0 12-11 18-28 24C21 50 12 44 12 32V16Z" /><path d="m25 30 10 10 20-22" /></>}
-        {kind === "heavy" && <><path d="M18 48 40 8l22 40" /><path d="M30 31h20M40 8v40" /></>}
-        {kind === "skill" && <><circle cx="40" cy="28" r="18" /><path d="M40 7v42M19 28h42M25 13l30 30M55 13 25 43" /></>}
+        {kind === "strike" && (
+          <>
+            <path d="M12 44 48 8l8 8-36 36Z" />
+            <path d="m50 18 15 15M58 10l12 12" />
+          </>
+        )}
+        {kind === "guard" && (
+          <>
+            <path d="M40 6 68 16v16c0 12-11 18-28 24C21 50 12 44 12 32V16Z" />
+            <path d="m25 30 10 10 20-22" />
+          </>
+        )}
+        {kind === "heavy" && (
+          <>
+            <path d="M18 48 40 8l22 40" />
+            <path d="M30 31h20M40 8v40" />
+          </>
+        )}
+        {kind === "skill" && (
+          <>
+            <circle cx="40" cy="28" r="18" />
+            <path d="M40 7v42M19 28h42M25 13l30 30M55 13 25 43" />
+          </>
+        )}
       </svg>
       <small>{role}</small>
     </span>
@@ -104,6 +150,48 @@ function Meter({ value, max }: { value: number; max: number }) {
       <i style={{ width: `${Math.max(0, (value / max) * 100)}%` }} />
     </div>
   );
+}
+function AssetIcon({ name, alt = "" }: { name: string; alt?: string }) {
+  const asset = generatedAssets.find((item) => item.name === name);
+  return asset ? (
+    <img className="asset-icon" src={asset.path} alt={alt} />
+  ) : null;
+}
+function itemDetails(name: string) {
+  if (/수정|유리|결정|성좌/.test(name))
+    return {
+      kind: "희귀 광물",
+      text: `${name}에 남은 빛은 정밀 장비와 의식 도구를 강화할 때 쓰입니다.`,
+    };
+  if (/철|합금|금속|기어|톱니|경첩|검날|바퀴살|종편|초침/.test(name))
+    return {
+      kind: "제작 부품",
+      text: `${name}은 오래된 기계에서 회수한 부품입니다. 대장간 제작과 시설 보수에 쓰입니다.`,
+    };
+  if (/책|서지|양피지|잉크|계약|문헌|표찰/.test(name))
+    return {
+      kind: "기록 재료",
+      text: `${name}에는 사라진 탐사대의 기록이 남아 있습니다. 연구와 거래에 가치가 있습니다.`,
+    };
+  if (/뿌리|나이테|수액|가지|포자|목심|껍질/.test(name))
+    return {
+      kind: "생체 재료",
+      text: `${name}은 지하 생태에서 채집한 재료입니다. 회복제와 자연 장비의 원료가 됩니다.`,
+    };
+  if (/향|밀랍|기도|성가|성직|종핵|공명|음계/.test(name))
+    return {
+      kind: "의식 유물",
+      text: `${name}은 침묵한 예배 시설에서 발견됐습니다. 의식과 정신 안정에 쓰입니다.`,
+    };
+  if (/화약|불씨|화심|재주머니|탄화|검댕/.test(name))
+    return {
+      kind: "화염 재료",
+      text: `${name}에는 아직 열기가 남아 있습니다. 공격 도구와 야영 보급품의 재료입니다.`,
+    };
+  return {
+    kind: "탐사 전리품",
+    text: `${name}은 위험 지역에서 확보한 희귀 전리품입니다. 거래하거나 후속 제작에 사용할 수 있습니다.`,
+  };
 }
 export default function Page() {
   const [game, setGame] = useState<Game | null>(null),
@@ -122,11 +210,22 @@ export default function Page() {
     [filter, setFilter] = useState("전체"),
     [inheritance, setInheritance] = useState<string[]>([]),
     [selected, setSelected] = useState<Card | null>(null),
-    [previewTarget, setPreviewTarget] = useState("");
+    [previewTarget, setPreviewTarget] = useState(""),
+    [pendingRoom, setPendingRoom] = useState(""),
+    [selectedItem, setSelectedItem] = useState(""),
+    [dragPoint, setDragPoint] = useState<{ x: number; y: number } | null>(null);
   const client = useRef(""),
     pending = useRef<Record<string, unknown> | null>(null),
-    working = useRef(false);
-  const accept = (data: { state: Game; control: boolean; name: string; account?: string; market?: MarketListing[]; marketHistory?: MarketHistory[] }) => {
+    working = useRef(false),
+    dragStart = useRef({ x: 0, y: 0, moved: false });
+  const accept = (data: {
+    state: Game;
+    control: boolean;
+    name: string;
+    account?: string;
+    market?: MarketListing[];
+    marketHistory?: MarketHistory[];
+  }) => {
     setGame((previous) =>
       previous && previous.version > data.state.version ? previous : data.state,
     );
@@ -286,27 +385,62 @@ export default function Page() {
     fx = run?.combatFx;
   const motionFor = (id: string, side: "hero" | "enemy") => {
     if (!fx) return "";
-    if (fx.actor === id && side === "hero") return fx.kind === "hero-guard" ? "motion-guard" : fx.kind === "hero-heal" ? "motion-heal" : "motion-strike";
+    if (fx.actor === id && side === "hero")
+      return fx.kind === "hero-guard"
+        ? "motion-guard"
+        : fx.kind === "hero-heal"
+          ? "motion-heal"
+          : "motion-strike";
     if (fx.actor === id && side === "enemy") return "motion-strike";
-    if (fx.target === id && side === "hero" && fx.kind === "enemy-attack") return "motion-hit";
-    if (fx.target === id && side === "enemy" && fx.kind === "hero-attack") return "motion-hit";
+    if (fx.target === id && side === "hero" && fx.kind === "enemy-attack")
+      return "motion-hit";
+    if (fx.target === id && side === "enemy" && fx.kind === "hero-attack")
+      return "motion-hit";
     return "";
   };
   function target(id: string) {
     if (selected) void act({ type: "play", id: selected.id, target: id });
   }
   function previewFor(id: string) {
-    if (!selected || !battle) return "";
-    const info = cardInfo(selected);
-    if (info.target === "enemy") {
-      const enemy = battle.enemies.find((item) => item.id === id);
-      if (!enemy) return "";
-      const owner = run?.heroes.find((hero) => hero.id === selected.owner);
-      const damage = info.power + (owner?.equipment === "blade" ? 2 : 0) + Math.max(0, (owner?.level || 1) - 1) + enemy.mark;
-      const retaliation = ["M06", "M07"].includes(enemy.id) ? " · 반격 예상 5~6" : "";
-      return `예상 피해 ${Math.max(0, damage - enemy.shield)}${retaliation}`;
-    }
-    return "아군 효과 " + info.description;
+    if (!selected || !game) return "";
+    return predictCard(game, selected.id, id).summary;
+  }
+  function moveParty(id: string, direction: -1 | 1) {
+    const index = game!.party.indexOf(id);
+    const nextIndex = index + direction;
+    if (index < 0 || nextIndex < 0 || nextIndex >= game!.party.length) return;
+    const ids = [...game!.party];
+    [ids[index], ids[nextIndex]] = [ids[nextIndex], ids[index]];
+    void act({ type: "party", ids });
+  }
+  function cardPointerMove(event: React.PointerEvent, card: Card) {
+    if (
+      Math.hypot(
+        event.clientX - dragStart.current.x,
+        event.clientY - dragStart.current.y,
+      ) > 7
+    )
+      dragStart.current.moved = true;
+    if (!dragStart.current.moved) return;
+    setSelected(card);
+    setDragPoint({ x: event.clientX, y: event.clientY });
+    const targetElement = document
+      .elementFromPoint(event.clientX, event.clientY)
+      ?.closest<HTMLElement>("[data-card-target]");
+    setPreviewTarget(targetElement?.dataset.cardTarget || "");
+  }
+  function cardPointerUp(event: React.PointerEvent, card: Card) {
+    const wasMoved = dragStart.current.moved;
+    const targetElement = document
+      .elementFromPoint(event.clientX, event.clientY)
+      ?.closest<HTMLElement>("[data-card-target]");
+    const targetId = targetElement?.dataset.cardTarget;
+    const targetKind = targetElement?.dataset.cardKind;
+    setDragPoint(null);
+    setPreviewTarget("");
+    dragStart.current.moved = false;
+    if (wasMoved && targetId && targetKind === cardInfo(card).target)
+      void act({ type: "play", id: card.id, target: targetId });
   }
   if (loading)
     return (
@@ -499,454 +633,835 @@ export default function Page() {
         </div>
         {!run ? (
           <>
-            <section className="town-map" aria-label="거점 장소">
-              <div className="town-skyline"><span>THE LAST REFUGE</span><b>종이 멈춘 뒤에도, 마을은 살아 있다</b></div>
+            <section className="town-map" aria-label="마지막 피난처 마을 지도">
+              <div className="town-skyline">
+                <span>THE LAST REFUGE</span>
+                <b>건물을 선택해 방문하세요</b>
+              </div>
               <div className="town-locations">
-              {[
-                ["party", "작전실", "편성 · 장비"],
-                ["roster", "주점", "동료 모집"],
-                ["growth", "대장간", "훈련 · 치료"],
-                ["market", "시장 골목", "거래 · 암시장"],
-                ["storage", "기록 보관소", "전리품 · 로그"],
-              ].map(([id, label, subtitle]) => (
-                <button
-                  key={id}
-                  className={`town-location ${tab === id && overlayOpen ? "active" : ""}`}
-                  aria-label={label}
-                  onClick={() => { setTab(id); setOverlayOpen(true); }}
-                >
-                  <span className={`town-icon town-${id}`} aria-hidden="true" />
-                  <strong>{label}</strong>
-                  <small>{subtitle}</small>
-                </button>
-              ))}
-              </div>
-            </section>
-            {overlayOpen && <section className="hub-overlay">
-              <div className="overlay-heading">
-                <div><span className="eyebrow">HAMLET / {tab?.toUpperCase()}</span><h2>{({ party: "작전실", roster: "주점", growth: "대장간", market: "시장 골목", storage: "기록 보관소" } as Record<string, string>)[tab] || "거점"}</h2></div>
-                <button className="mini" onClick={() => setOverlayOpen(false)}>오버레이 닫기 ×</button>
-              </div>
-            {game.summary && <div className="summary">✦ {game.summary}</div>}
-            {game.endingUnlocked && !game.ending && (
-              <section className="panel ending-panel">
-                <span className="eyebrow">THE LAST BELL</span>
-                <h2>최종 결말을 선택하세요</h2>
-                <p className="muted">이번 기록의 방향을 정하면 계정에 엔딩이 남습니다.</p>
-                <div className="ending-actions">
-                  {[["kingdom", "왕국의 새벽"], ["republic", "공화의 항로"], ["union", "조합의 망치"], ["liberation", "해방의 종소리"]].map(([id, label]) => (
-                    <button className="primary" key={id} disabled={locked} onClick={() => void act({ type: "chooseEnding", choice: id })}>{label}</button>
-                  ))}
-                </div>
-              </section>
-            )}
-            {game.ending && (
-              <section className="panel ending-panel">
-                <span className="eyebrow">ENDING RECORDED</span>
-                <h2>{game.ending} 엔딩</h2>
-                <p className="muted">환생은 선택 사항입니다. 보관 재료 중 최대 3개만 계승할 수 있습니다.</p>
-                <div className="ending-actions">
-                  {Object.keys(game.materials).map((item) => (
-                    <button key={item} className={inheritance.includes(item) ? "selected-button" : "secondary"} disabled={locked || (!inheritance.includes(item) && inheritance.length >= 3)} onClick={() => setInheritance((current) => current.includes(item) ? current.filter((x) => x !== item) : [...current, item])}>{item}</button>
-                  ))}
-                </div>
-                <button className="primary" disabled={locked} onClick={() => void act({ type: "rebirth", ids: inheritance })}>선택한 계승품으로 환생</button>
-              </section>
-            )}
-            {tab === "party" ? (
-              <div className="hub-grid">
-                <section>
-                  <div className="section-heading">
-                    <h2>
-                      당신의 탐사대 <span>{game.party.length} / 4</span>
-                    </h2>
-                    <span className="muted small">
-                      캐릭터당 4장 · 최대 16장 덱
-                    </span>
-                  </div>
-                  <div className="party-grid">
-                    {game.roster.map((h) => (
-                      <article
-                        className={`hero-card ${game.party.includes(h.id) ? "chosen" : ""}`}
-                        key={h.id}
-                      >
-                        <div className="hero-top">
-                          <span>{char(h.id).faction}</span>
-                          <b>
-                            {symbols[char(h.id).role]} {char(h.id).role}
-                          </b>
-                        </div>
-                        <Crest id={h.id} large />
-                        <div className="hero-body">
-                          <div className="hero-title">
-                            <h3>{char(h.id).name}</h3>
-                            <span>Lv.{h.level}</span>
-                          </div>
-                          <p className="muted small">{char(h.id).signature}</p>
-                          <p className="small">
-                            HP {h.maxHp} · 경험치 {h.xp}
-                            {h.injury ? " · 부상" : ""}
-                          </p>
-                          <label className="equip-label">
-                            장비
-                            <select
-                              aria-label={`${char(h.id).name} 장비`}
-                              value={h.equipment}
-                              disabled={locked}
-                              onChange={(e) =>
-                                void act({
-                                  type: "equip",
-                                  id: h.id,
-                                  choice: e.target.value,
-                                })
-                              }
-                            >
-                              <option value="blade">
-                                훈련용 무기 · 피해 +2
-                              </option>
-                              <option value="ward">
-                                호신 부적 · 턴 보호막 +3
-                              </option>
-                            </select>
-                          </label>
-                          <button
-                            className={
-                              game.party.includes(h.id)
-                                ? "selected-button"
-                                : "secondary"
-                            }
-                            disabled={
-                              locked ||
-                              (game.party.includes(h.id)
-                                ? game.party.length === 1
-                                : game.party.length === 4)
-                            }
-                            onClick={() =>
-                              void act({
-                                type: "party",
-                                ids: game.party.includes(h.id)
-                                  ? game.party.filter((id) => id !== h.id)
-                                  : [...game.party, h.id],
-                              })
-                            }
-                          >
-                            {game.party.includes(h.id)
-                              ? "✓ 편성 중 · 해제"
-                              : "파티에 편성"}
-                          </button>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                </section>
-                <aside className="expedition-panel">
-                  <div className="fortress-art">
-                    <div className="moon" />
-                    <div className="tower one" />
-                    <div className="tower two" />
-                    <div className="tower three" />
-                    <span>01 / FRONTIER</span>
-                  </div>
-                  <div className="expedition-copy">
-                    <span className="eyebrow">다음 탐사</span>
-                    <h2>변경 요새</h2>
-                    <p>
-                      종소리가 사라진 밤, 성문을 지키던 기계들이 다시 움직이기
-                      시작했다.
-                    </p>
-                    <div className="facts">
-                      <span>분기 경로</span>
-                      <strong>전투 · 휴식 · 사건</strong>
-                      <span>최종 위협</span>
-                      <strong>캐슬 타이탄</strong>
-                      <span>파티 방어</span>
-                      <strong>
-                        +{Math.round(relations(game.party).defense * 100)}%
-                      </strong>
-                      <span>관계 효과</span>
-                      <strong>
-                        보호막 {relations(game.party).shield} / 스트레스 +
-                        {relations(game.party).stress}
-                      </strong>
-                    </div>
-                    <button
-                      className="primary full"
-                      disabled={locked}
-                      onClick={() => void act({ type: "enter" })}
-                    >
-                      던전 입장 <span>→</span>
-                    </button>
-                    <p className="small muted">
-                      전투가 끝난 방에서 언제든 안전 귀환할 수 있습니다.
-                    </p>
-                  </div>
-                </aside>
-              </div>
-            ) : tab === "roster" ? (
-              <section>
-                <div className="section-heading">
-                  <h2>
-                    팩션의 동료들 <span>32명</span>
-                  </h2>
-                  <span className="muted small">
-                    첫 버전 영입 비용 ◈ {balance.recruitCost}
-                  </span>
-                </div>
-                <div className="filters">
-                  {["전체", ...new Set(characters.map((c) => c.faction))].map(
-                    (f) => (
-                      <button
-                        key={f}
-                        onClick={() => setFilter(f)}
-                        aria-pressed={filter === f}
-                      >
-                        {f}
-                      </button>
-                    ),
-                  )}
-                </div>
-                <div className="recruit-grid">
-                  {characters
-                    .filter((c) => filter === "전체" || c.faction === filter)
-                    .map((c) => (
-                      <article className="recruit" key={c.id}>
-                        <Crest id={c.id} />
-                        <div>
-                          <span className="eyebrow">
-                            {c.id} / {c.role}
-                          </span>
-                          <h3>
-                            {c.name}{" "}
-                            <small>
-                              {c.age}세 · {c.heightCm}cm
-                            </small>
-                          </h3>
-                          <p>{c.faction}</p>
-                          <details>
-                            <summary>인물 기록</summary>
-                            <p>
-                              {c.body} · {c.face} · {c.skin}
-                              <br />
-                              {c.signature}
-                              <br />
-                              {c.design}
-                              <br />
-                              기획 카드: {c.cards}
-                              <br />첫 버전: 역할 공통 카드 적용
-                            </p>
-                          </details>
-                          <button
-                            disabled={
-                              locked ||
-                              game.roster.some((h) => h.id === c.id) ||
-                              game.gold < balance.recruitCost
-                            }
-                            onClick={() =>
-                              void act({ type: "recruit", id: c.id })
-                            }
-                          >
-                            {game.roster.some((h) => h.id === c.id)
-                              ? "영입 완료"
-                              : `영입 · ◈ ${balance.recruitCost}`}
-                          </button>
-                        </div>
-                      </article>
-                    ))}
-                </div>
-              </section>
-            ) : tab === "growth" ? (
-              <div className="storage-grid">
-                <section className="panel">
-                  <div className="section-heading">
-                    <h2>거점 시설</h2>
-                    <span className="muted small">은화 ◈ {game.gold}</span>
-                  </div>
-                  <p className="muted small">
-                    시설은 최대 3단계까지 올릴 수 있으며 다음 탐사에도 효과가 남습니다.
-                  </p>
-                  {(
-                    [
-                      ["forge", "대장간", "훈련용 무기의 피해 보정"],
-                      ["training", "훈련장", "훈련 경험치 증가"],
-                      ["infirmary", "치료실", "부상 치료 비용 감소"],
-                      ["canteen", "식당", "탐사 후 스트레스 회복 준비"],
-                    ] as const
-                  ).map(([id, label, description]) => {
-                    const level = game.facilities[id];
-                    const cost = balance.facilityUpgradeCost * (level + 1);
-                    return (
-                      <div className="inventory-row" key={id}>
-                        <span>
-                          <strong>{label} Lv.{level}</strong>
-                          <small className="muted"> · {description}</small>
-                        </span>
-                        <button
-                          className="mini"
-                          disabled={locked || level >= 3 || game.gold < cost}
-                          onClick={() => void act({ type: "upgradeFacility", id })}
-                        >
-                          {level >= 3 ? "최고 단계" : `강화 · ◈ ${cost}`}
-                        </button>
-                      </div>
-                    );
-                  })}
-                  <h3>업적</h3>
-                  {game.achievements.length ? (
-                    game.achievements.map((id) => (
-                      <p className="log-line" key={id}>✦ {id}</p>
-                    ))
-                  ) : (
-                    <p className="muted">아직 달성한 업적이 없습니다.</p>
-                  )}
-                </section>
-                <section className="panel">
-                  <h2>동료 성장</h2>
-                  <p className="muted small">
-                    훈련은 경험치를 올리고, 부상은 치료실에서 회복합니다.
-                  </p>
-                  {game.roster.map((h) => (
-                    <div className="growth-row" key={h.id}>
-                      <div>
-                        <strong>{char(h.id).name}</strong>
-                        <p className="muted small">
-                          Lv.{h.level} · 경험치 {h.xp}{h.injury ? " · 부상" : ""}
-                        </p>
-                      </div>
-                      <div className="growth-actions">
-                        <button
-                          className="mini"
-                          disabled={locked || game.gold < balance.trainingCost + game.facilities.training * 4}
-                          onClick={() => void act({ type: "train", id: h.id })}
-                        >
-                          훈련 · ◈ {balance.trainingCost + game.facilities.training * 4}
-                        </button>
-                        <button
-                          className="mini"
-                          disabled={locked || !h.injury || game.gold < Math.max(1, balance.healingCost - game.facilities.infirmary * 2)}
-                          onClick={() => void act({ type: "heal", id: h.id })}
-                        >
-                          {h.injury ? `치료 · ◈ ${Math.max(1, balance.healingCost - game.facilities.infirmary * 2)}` : "건강"}
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </section>
-              </div>
-            ) : tab === "market" ? (
-              <div className="storage-grid">
-                <section className="panel">
-                  <h2>재료 등록</h2>
-                  <p className="muted small">실제 계정이 보유한 재료만 등록할 수 있습니다.</p>
-                  <label>
-                    재료
-                    <select id="market-item" defaultValue={Object.keys(game.materials)[0] || ""}>
-                      {Object.keys(game.materials).map((item) => (
-                        <option value={item} key={item}>{item} · {game.materials[item]}개</option>
-                      ))}
-                    </select>
-                  </label>
-                  <label>
-                    수량
-                    <input id="market-quantity" type="number" min="1" defaultValue="1" />
-                  </label>
-                  <label>
-                    가격
-                    <input id="market-price" type="number" min="1" defaultValue="20" />
-                  </label>
+                {[
+                  ["party", "작전실", "편성 · 장비"],
+                  ["roster", "주점", "동료 모집"],
+                  ["growth", "대장간", "훈련 · 치료"],
+                  ["market", "시장 골목", "거래 · 암시장"],
+                  ["storage", "기록 보관소", "전리품 · 로그"],
+                ].map(([id, label, subtitle]) => (
                   <button
-                    className="primary full"
-                    disabled={locked || !Object.keys(game.materials).length}
+                    key={id}
+                    className={`town-location location-${id} ${tab === id && overlayOpen ? "active" : ""}`}
+                    aria-label={label}
                     onClick={() => {
-                      const item = (document.getElementById("market-item") as HTMLSelectElement).value;
-                      const quantity = Number((document.getElementById("market-quantity") as HTMLInputElement).value);
-                      const price = Number((document.getElementById("market-price") as HTMLInputElement).value);
-                      void act({ type: "marketList", item, quantity, price });
+                      setTab(id);
+                      setOverlayOpen(true);
                     }}
                   >
-                    매물 등록
+                    <span
+                      className={`town-icon town-${id}`}
+                      aria-hidden="true"
+                    />
+                    <strong>{label}</strong>
+                    <small>{subtitle}</small>
                   </button>
-                </section>
-                <section className="panel">
-                  <h2>열린 매물</h2>
-                  {market.length ? market.map((listing) => (
-                    <div className="inventory-row" key={listing.id}>
-                      <span><strong>{listing.item} × {listing.quantity}</strong><small className="muted"> · 판매자 {listing.seller} · 만료 {new Date(listing.expiresAt).toLocaleDateString("ko-KR")}</small></span>
-                      {listing.seller === account ? (
-                        <button className="mini" disabled={locked} onClick={() => void act({ type: "marketCancel", id: listing.id })}>취소</button>
-                      ) : (
-                        <button className="mini" disabled={locked || game.gold < listing.price} onClick={() => void act({ type: "marketBuy", id: listing.id })}>구매 · ◈ {listing.price}</button>
-                      )}
-                    </div>
-                  )) : <p className="muted">현재 열린 매물이 없습니다.</p>}
-                                    <h3>내 거래 내역</h3>
-                                    {marketHistory.length ? marketHistory.map((entry, index) => (
-                                      <p className="log-line" key={`${entry.item}-${entry.status}-${index}`}>
-                                        {entry.status === "sold" ? "판매 완료" : entry.status === "expired" ? "만료 회수" : "매물 취소"} · {entry.item} × {entry.quantity} · ◈ {entry.price} {entry.fee ? `(수수료 ${entry.fee})` : ""}
-                                      </p>
-                                    )) : <p className="muted">아직 거래 내역이 없습니다.</p>}
-                  <h3>팩션 상점</h3>
-                  <p className="muted small">우호도 10과 은화 25로 보급품을 교환합니다.</p>
-                  {Object.entries(game.reputation).map(([faction, reputation]) => (
-                    <button
-                      className="mini"
-                      key={faction}
-                      disabled={locked || reputation < 10 || game.gold < 25}
-                      onClick={() => void act({ type: "factionShop", choice: faction })}
-                    >
-                      {faction} 상점 · 우호도 {reputation}
-                    </button>
-                  ))}
-                  <h3>암시장</h3>
-                  <p className="muted small">선택형 계약입니다. 빈 왕관 파편과 은화 30을 지불합니다.</p>
+                ))}
+              </div>
+            </section>
+            {overlayOpen && (
+              <section
+                className="hub-overlay"
+                role="dialog"
+                aria-modal="true"
+                aria-label="거점 장소 정보"
+              >
+                <div className="overlay-heading">
+                  <div>
+                    <span className="eyebrow">
+                      HAMLET / {tab?.toUpperCase()}
+                    </span>
+                    <h2>
+                      {(
+                        {
+                          party: "작전실",
+                          roster: "주점",
+                          growth: "대장간",
+                          market: "시장 골목",
+                          storage: "기록 보관소",
+                        } as Record<string, string>
+                      )[tab] || "거점"}
+                    </h2>
+                  </div>
                   <button
-                    className="secondary"
-                    disabled={locked || !game.materials["빈 왕관 파편"] || game.gold < 30}
-                    onClick={() => void act({ type: "darkMarket", choice: "token" })}
+                    className="mini"
+                    onClick={() => setOverlayOpen(false)}
                   >
-                    암시장 증표 교환
+                    오버레이 닫기 ×
                   </button>
-                </section>
-              </div>
-            ) : (
-              <div className="storage-grid">
-                <section className="panel">
-                  <h2>안전하게 보관한 전리품</h2>
-                  <p>
-                    은화 <strong>{game.gold}</strong>
-                  </p>
-                  {Object.keys(game.materials).length ? (
-                    Object.entries(game.materials).map(([m, n]) => (
-                      <p className="inventory-row" key={m}>
-                        <span>◇ {m}</span>
-                        <strong>× {n}</strong>
-                      </p>
-                    ))
-                  ) : (
+                </div>
+                {game.summary && (
+                  <div className="summary">✦ {game.summary}</div>
+                )}
+                {game.endingUnlocked && !game.ending && (
+                  <section className="panel ending-panel">
+                    <span className="eyebrow">THE LAST BELL</span>
+                    <h2>최종 결말을 선택하세요</h2>
                     <p className="muted">
-                      아직 재료가 없습니다. 탐사에서 전리품을 얻고 귀환하세요.
+                      이번 기록의 방향을 정하면 계정에 엔딩이 남습니다.
                     </p>
-                  )}
-                  <h3>팩션 우호도</h3>
-                  {Object.entries(game.reputation).map(([f, n]) => (
-                    <p key={f} className="inventory-row">
-                      <span>
-                        {characters.find((c) => c.id.startsWith(f))!.faction}
+                    <div className="ending-actions">
+                      {[
+                        ["kingdom", "왕국의 새벽"],
+                        ["republic", "공화의 항로"],
+                        ["union", "조합의 망치"],
+                        ["liberation", "해방의 종소리"],
+                      ].map(([id, label]) => (
+                        <button
+                          className="primary"
+                          key={id}
+                          disabled={locked}
+                          onClick={() =>
+                            void act({ type: "chooseEnding", choice: id })
+                          }
+                        >
+                          {label}
+                        </button>
+                      ))}
+                    </div>
+                  </section>
+                )}
+                {game.ending && (
+                  <section className="panel ending-panel">
+                    <span className="eyebrow">ENDING RECORDED</span>
+                    <h2>{game.ending} 엔딩</h2>
+                    <p className="muted">
+                      환생은 선택 사항입니다. 보관 재료 중 최대 3개만 계승할 수
+                      있습니다.
+                    </p>
+                    <div className="ending-actions">
+                      {Object.keys(game.materials).map((item) => (
+                        <button
+                          key={item}
+                          className={
+                            inheritance.includes(item)
+                              ? "selected-button"
+                              : "secondary"
+                          }
+                          disabled={
+                            locked ||
+                            (!inheritance.includes(item) &&
+                              inheritance.length >= 3)
+                          }
+                          onClick={() =>
+                            setInheritance((current) =>
+                              current.includes(item)
+                                ? current.filter((x) => x !== item)
+                                : [...current, item],
+                            )
+                          }
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </div>
+                    <button
+                      className="primary"
+                      disabled={locked}
+                      onClick={() =>
+                        void act({ type: "rebirth", ids: inheritance })
+                      }
+                    >
+                      선택한 계승품으로 환생
+                    </button>
+                  </section>
+                )}
+                {tab === "party" ? (
+                  <div className="hub-grid">
+                    <section>
+                      <div className="section-heading">
+                        <h2>
+                          당신의 탐사대 <span>{game.party.length} / 4</span>
+                        </h2>
+                        <span className="muted small">
+                          캐릭터당 4장 · 최대 16장 덱
+                        </span>
+                      </div>
+                      <section
+                        className="formation-board"
+                        aria-label="탐사대 전투 배치"
+                      >
+                        <div className="formation-axis">
+                          <strong>적과 가까움</strong>
+                          <span>전열 1 → 2 → 3 → 4 후열</span>
+                          <strong>적과 멂</strong>
+                        </div>
+                        <div className="formation-slots">
+                          {[0, 1, 2, 3].map((index) => {
+                            const id = game.party[index];
+                            return (
+                              <article
+                                className={`formation-slot ${id ? "occupied" : ""}`}
+                                key={index}
+                              >
+                                <span className="formation-rank">
+                                  {index + 1}
+                                  <small>
+                                    {index === 0
+                                      ? "전열"
+                                      : index === 3
+                                        ? "후열"
+                                        : "중열"}
+                                  </small>
+                                </span>
+                                {id ? (
+                                  <>
+                                    <Crest id={id} />
+                                    <strong>{char(id).name}</strong>
+                                    <small className="inline-asset">
+                                      <AssetIcon
+                                        name={
+                                          game.roster.find(
+                                            (hero) => hero.id === id,
+                                          )?.equipment === "blade"
+                                            ? "훈련용 무기"
+                                            : "호신 부적"
+                                        }
+                                      />
+                                      {char(id).role} ·{" "}
+                                      {game.roster.find(
+                                        (hero) => hero.id === id,
+                                      )?.equipment === "blade"
+                                        ? "훈련용 무기"
+                                        : "호신 부적"}
+                                    </small>
+                                    <div className="formation-controls">
+                                      <button
+                                        className="mini"
+                                        aria-label={`${char(id).name} 전열로 이동`}
+                                        disabled={locked || index === 0}
+                                        onClick={() => moveParty(id, -1)}
+                                      >
+                                        ←
+                                      </button>
+                                      <button
+                                        className="mini"
+                                        aria-label={`${char(id).name} 후열로 이동`}
+                                        disabled={
+                                          locked ||
+                                          index === game.party.length - 1
+                                        }
+                                        onClick={() => moveParty(id, 1)}
+                                      >
+                                        →
+                                      </button>
+                                    </div>
+                                  </>
+                                ) : (
+                                  <span className="muted">빈 자리</span>
+                                )}
+                              </article>
+                            );
+                          })}
+                        </div>
+                        <p className="formation-help">
+                          1번은 적과 가장 가까운 전열, 4번은 가장 먼 후열입니다.
+                          화살표로 순서를 바꾸면 서버에 즉시 저장됩니다.
+                        </p>
+                      </section>
+                      <div className="party-grid">
+                        {game.roster.map((h) => (
+                          <article
+                            className={`hero-card ${game.party.includes(h.id) ? "chosen" : ""}`}
+                            key={h.id}
+                          >
+                            <div className="hero-top">
+                              <span>{char(h.id).faction}</span>
+                              <b>
+                                {symbols[char(h.id).role]} {char(h.id).role}
+                              </b>
+                            </div>
+                            <Crest
+                              id={h.id}
+                              large
+                              state={h.level >= 3 ? "promotion" : "idle"}
+                            />
+                            <div className="hero-body">
+                              <div className="hero-title">
+                                <h3>{char(h.id).name}</h3>
+                                <span>Lv.{h.level}</span>
+                              </div>
+                              <p className="muted small">
+                                {char(h.id).signature}
+                              </p>
+                              <p className="small">
+                                HP {h.maxHp} · 경험치 {h.xp}
+                                {h.injury ? " · 부상" : ""}
+                              </p>
+                              <label className="equip-label">
+                                장비
+                                <select
+                                  aria-label={`${char(h.id).name} 장비`}
+                                  value={h.equipment}
+                                  disabled={locked}
+                                  onChange={(e) =>
+                                    void act({
+                                      type: "equip",
+                                      id: h.id,
+                                      choice: e.target.value,
+                                    })
+                                  }
+                                >
+                                  <option value="blade">
+                                    훈련용 무기 · 피해 +2
+                                  </option>
+                                  <option value="ward">
+                                    호신 부적 · 턴 보호막 +3
+                                  </option>
+                                </select>
+                              </label>
+                              <button
+                                className={
+                                  game.party.includes(h.id)
+                                    ? "selected-button"
+                                    : "secondary"
+                                }
+                                disabled={
+                                  locked ||
+                                  (game.party.includes(h.id)
+                                    ? game.party.length === 1
+                                    : game.party.length === 4)
+                                }
+                                onClick={() =>
+                                  void act({
+                                    type: "party",
+                                    ids: game.party.includes(h.id)
+                                      ? game.party.filter((id) => id !== h.id)
+                                      : [...game.party, h.id],
+                                  })
+                                }
+                              >
+                                {game.party.includes(h.id)
+                                  ? "✓ 편성 중 · 해제"
+                                  : "파티에 편성"}
+                              </button>
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+                    </section>
+                    <aside className="expedition-panel">
+                      <div className="fortress-art">
+                        <div className="moon" />
+                        <div className="tower one" />
+                        <div className="tower two" />
+                        <div className="tower three" />
+                        <span>01 / FRONTIER</span>
+                      </div>
+                      <div className="expedition-copy">
+                        <span className="eyebrow">다음 탐사</span>
+                        <h2>변경 요새</h2>
+                        <p>
+                          종소리가 사라진 밤, 성문을 지키던 기계들이 다시
+                          움직이기 시작했다.
+                        </p>
+                        <div className="facts">
+                          <span>분기 경로</span>
+                          <strong>전투 · 휴식 · 사건</strong>
+                          <span>최종 위협</span>
+                          <strong>캐슬 타이탄</strong>
+                          <span>파티 방어</span>
+                          <strong>
+                            +{Math.round(relations(game.party).defense * 100)}%
+                          </strong>
+                          <span>관계 효과</span>
+                          <strong>
+                            보호막 {relations(game.party).shield} / 스트레스 +
+                            {relations(game.party).stress}
+                          </strong>
+                        </div>
+                        <button
+                          className="primary full"
+                          disabled={locked}
+                          onClick={() => void act({ type: "enter" })}
+                        >
+                          던전 입장 <span>→</span>
+                        </button>
+                        <p className="small muted">
+                          전투가 끝난 방에서 언제든 안전 귀환할 수 있습니다.
+                        </p>
+                      </div>
+                    </aside>
+                  </div>
+                ) : tab === "roster" ? (
+                  <section>
+                    <div className="section-heading">
+                      <h2>
+                        팩션의 동료들 <span>32명</span>
+                      </h2>
+                      <span className="muted small">
+                        첫 버전 영입 비용 ◈ {balance.recruitCost}
                       </span>
-                      <strong>{n}</strong>
-                    </p>
-                  ))}
-                </section>
-                <section className="panel">
-                  <h2>탐사 기록</h2>
-                  {game.log.map((l, i) => (
-                    <p key={i} className="log-line">
-                      {l}
-                    </p>
-                  ))}
-                </section>
-              </div>
+                    </div>
+                    <div className="filters">
+                      {[
+                        "전체",
+                        ...new Set(characters.map((c) => c.faction)),
+                      ].map((f) => (
+                        <button
+                          key={f}
+                          onClick={() => setFilter(f)}
+                          aria-pressed={filter === f}
+                        >
+                          {f}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="recruit-grid">
+                      {characters
+                        .filter(
+                          (c) => filter === "전체" || c.faction === filter,
+                        )
+                        .map((c) => (
+                          <article className="recruit" key={c.id}>
+                            <Crest id={c.id} state="dialogue" />
+                            <div>
+                              <span className="eyebrow">
+                                {c.id} / {c.role}
+                              </span>
+                              <h3>
+                                {c.name}{" "}
+                                <small>
+                                  {c.age}세 · {c.heightCm}cm
+                                </small>
+                              </h3>
+                              <p>{c.faction}</p>
+                              <details>
+                                <summary>인물 기록</summary>
+                                <p>
+                                  {c.body} · {c.face} · {c.skin}
+                                  <br />
+                                  {c.signature}
+                                  <br />
+                                  {c.design}
+                                  <br />
+                                  기획 카드: {c.cards}
+                                  <br />첫 버전: 역할 공통 카드 적용
+                                </p>
+                              </details>
+                              <button
+                                disabled={
+                                  locked ||
+                                  game.roster.some((h) => h.id === c.id) ||
+                                  game.gold < balance.recruitCost
+                                }
+                                onClick={() =>
+                                  void act({ type: "recruit", id: c.id })
+                                }
+                              >
+                                {game.roster.some((h) => h.id === c.id)
+                                  ? "영입 완료"
+                                  : `영입 · ◈ ${balance.recruitCost}`}
+                              </button>
+                            </div>
+                          </article>
+                        ))}
+                    </div>
+                  </section>
+                ) : tab === "growth" ? (
+                  <div className="storage-grid">
+                    <section className="panel">
+                      <div className="section-heading">
+                        <h2>거점 시설</h2>
+                        <span className="muted small">은화 ◈ {game.gold}</span>
+                      </div>
+                      <p className="muted small">
+                        시설은 최대 3단계까지 올릴 수 있으며 다음 탐사에도
+                        효과가 남습니다.
+                      </p>
+                      {(
+                        [
+                          ["forge", "대장간", "훈련용 무기의 피해 보정"],
+                          ["training", "훈련장", "훈련 경험치 증가"],
+                          ["infirmary", "치료실", "부상 치료 비용 감소"],
+                          ["canteen", "식당", "탐사 후 스트레스 회복 준비"],
+                        ] as const
+                      ).map(([id, label, description]) => {
+                        const level = game.facilities[id];
+                        const cost = balance.facilityUpgradeCost * (level + 1);
+                        return (
+                          <div className="inventory-row" key={id}>
+                            <span>
+                              <strong>
+                                {label} Lv.{level}
+                              </strong>
+                              <small className="muted"> · {description}</small>
+                            </span>
+                            <button
+                              className="mini"
+                              disabled={
+                                locked || level >= 3 || game.gold < cost
+                              }
+                              onClick={() =>
+                                void act({ type: "upgradeFacility", id })
+                              }
+                            >
+                              {level >= 3 ? "최고 단계" : `강화 · ◈ ${cost}`}
+                            </button>
+                          </div>
+                        );
+                      })}
+                      <h3>업적</h3>
+                      {game.achievements.length ? (
+                        game.achievements.map((id) => (
+                          <p className="log-line" key={id}>
+                            ✦ {id}
+                          </p>
+                        ))
+                      ) : (
+                        <p className="muted">아직 달성한 업적이 없습니다.</p>
+                      )}
+                    </section>
+                    <section className="panel">
+                      <h2>동료 성장</h2>
+                      <p className="muted small">
+                        훈련은 경험치를 올리고, 부상은 치료실에서 회복합니다.
+                      </p>
+                      {game.roster.map((h) => (
+                        <div className="growth-row" key={h.id}>
+                          <div>
+                            <strong>{char(h.id).name}</strong>
+                            <p className="muted small">
+                              Lv.{h.level} · 경험치 {h.xp}
+                              {h.injury ? " · 부상" : ""}
+                            </p>
+                          </div>
+                          <div className="growth-actions">
+                            <button
+                              className="mini"
+                              disabled={
+                                locked ||
+                                game.gold <
+                                  balance.trainingCost +
+                                    game.facilities.training * 4
+                              }
+                              onClick={() =>
+                                void act({ type: "train", id: h.id })
+                              }
+                            >
+                              훈련 · ◈{" "}
+                              {balance.trainingCost +
+                                game.facilities.training * 4}
+                            </button>
+                            <button
+                              className="mini"
+                              disabled={
+                                locked ||
+                                !h.injury ||
+                                game.gold <
+                                  Math.max(
+                                    1,
+                                    balance.healingCost -
+                                      game.facilities.infirmary * 2,
+                                  )
+                              }
+                              onClick={() =>
+                                void act({ type: "heal", id: h.id })
+                              }
+                            >
+                              {h.injury
+                                ? `치료 · ◈ ${Math.max(1, balance.healingCost - game.facilities.infirmary * 2)}`
+                                : "건강"}
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </section>
+                  </div>
+                ) : tab === "market" ? (
+                  <div className="storage-grid">
+                    <section className="panel">
+                      <h2>재료 등록</h2>
+                      <p className="muted small">
+                        실제 계정이 보유한 재료만 등록할 수 있습니다.
+                      </p>
+                      <label>
+                        재료
+                        <select
+                          id="market-item"
+                          defaultValue={Object.keys(game.materials)[0] || ""}
+                        >
+                          {Object.keys(game.materials).map((item) => (
+                            <option value={item} key={item}>
+                              {item} · {game.materials[item]}개
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      <label>
+                        수량
+                        <input
+                          id="market-quantity"
+                          type="number"
+                          min="1"
+                          defaultValue="1"
+                        />
+                      </label>
+                      <label>
+                        가격
+                        <input
+                          id="market-price"
+                          type="number"
+                          min="1"
+                          defaultValue="20"
+                        />
+                      </label>
+                      <button
+                        className="primary full"
+                        disabled={locked || !Object.keys(game.materials).length}
+                        onClick={() => {
+                          const item = (
+                            document.getElementById(
+                              "market-item",
+                            ) as HTMLSelectElement
+                          ).value;
+                          const quantity = Number(
+                            (
+                              document.getElementById(
+                                "market-quantity",
+                              ) as HTMLInputElement
+                            ).value,
+                          );
+                          const price = Number(
+                            (
+                              document.getElementById(
+                                "market-price",
+                              ) as HTMLInputElement
+                            ).value,
+                          );
+                          void act({
+                            type: "marketList",
+                            item,
+                            quantity,
+                            price,
+                          });
+                        }}
+                      >
+                        매물 등록
+                      </button>
+                    </section>
+                    <section className="panel">
+                      <h2>열린 매물</h2>
+                      {market.length ? (
+                        market.map((listing) => (
+                          <div className="inventory-row" key={listing.id}>
+                            <span>
+                              <strong>
+                                {listing.item} × {listing.quantity}
+                              </strong>
+                              <small className="muted">
+                                {" "}
+                                · 판매자 {listing.seller} · 만료{" "}
+                                {new Date(listing.expiresAt).toLocaleDateString(
+                                  "ko-KR",
+                                )}
+                              </small>
+                            </span>
+                            {listing.seller === account ? (
+                              <button
+                                className="mini"
+                                disabled={locked}
+                                onClick={() =>
+                                  void act({
+                                    type: "marketCancel",
+                                    id: listing.id,
+                                  })
+                                }
+                              >
+                                취소
+                              </button>
+                            ) : (
+                              <button
+                                className="mini"
+                                disabled={locked || game.gold < listing.price}
+                                onClick={() =>
+                                  void act({
+                                    type: "marketBuy",
+                                    id: listing.id,
+                                  })
+                                }
+                              >
+                                구매 · ◈ {listing.price}
+                              </button>
+                            )}
+                          </div>
+                        ))
+                      ) : (
+                        <p className="muted">현재 열린 매물이 없습니다.</p>
+                      )}
+                      <h3>내 거래 내역</h3>
+                      {marketHistory.length ? (
+                        marketHistory.map((entry, index) => (
+                          <p
+                            className="log-line"
+                            key={`${entry.item}-${entry.status}-${index}`}
+                          >
+                            {entry.status === "sold"
+                              ? "판매 완료"
+                              : entry.status === "expired"
+                                ? "만료 회수"
+                                : "매물 취소"}{" "}
+                            · {entry.item} × {entry.quantity} · ◈ {entry.price}{" "}
+                            {entry.fee ? `(수수료 ${entry.fee})` : ""}
+                          </p>
+                        ))
+                      ) : (
+                        <p className="muted">아직 거래 내역이 없습니다.</p>
+                      )}
+                      <h3>팩션 상점</h3>
+                      <p className="muted small">
+                        우호도 10과 은화 25로 보급품을 교환합니다.
+                      </p>
+                      {Object.entries(game.reputation).map(
+                        ([faction, reputation]) => (
+                          <button
+                            className="mini"
+                            key={faction}
+                            disabled={
+                              locked || reputation < 10 || game.gold < 25
+                            }
+                            onClick={() =>
+                              void act({ type: "factionShop", choice: faction })
+                            }
+                          >
+                            {faction} 상점 · 우호도 {reputation}
+                          </button>
+                        ),
+                      )}
+                      <h3>암시장</h3>
+                      <p className="muted small">
+                        선택형 계약입니다. 빈 왕관 파편과 은화 30을 지불합니다.
+                      </p>
+                      <button
+                        className="secondary"
+                        disabled={
+                          locked ||
+                          !game.materials["빈 왕관 파편"] ||
+                          game.gold < 30
+                        }
+                        onClick={() =>
+                          void act({ type: "darkMarket", choice: "token" })
+                        }
+                      >
+                        암시장 증표 교환
+                      </button>
+                    </section>
+                  </div>
+                ) : (
+                  <div className="storage-grid">
+                    <section className="panel inventory-panel">
+                      <div className="inventory-title">
+                        <div>
+                          <span className="eyebrow">STORAGE / POSSESSIONS</span>
+                          <h2>탐사대 소지품</h2>
+                        </div>
+                        <strong>
+                          ◈ {game.gold} <small>은화</small>
+                        </strong>
+                      </div>
+                      {Object.keys(game.materials).length ? (
+                        (() => {
+                          const activeItem =
+                            selectedItem && game.materials[selectedItem]
+                              ? selectedItem
+                              : Object.keys(game.materials)[0];
+                          const detail = itemDetails(activeItem);
+                          const asset = generatedAssets.find(
+                            (item) => item.name === activeItem,
+                          );
+                          return (
+                            <div className="inventory-browser">
+                              <div
+                                className="inventory-grid"
+                                role="listbox"
+                                aria-label="소지품 목록"
+                              >
+                                {Object.entries(game.materials).map(
+                                  ([item, quantity]) => (
+                                    <button
+                                      key={item}
+                                      role="option"
+                                      aria-selected={activeItem === item}
+                                      className={`inventory-item ${activeItem === item ? "selected" : ""}`}
+                                      onClick={() => setSelectedItem(item)}
+                                    >
+                                      <AssetIcon name={item} />
+                                      <span>{item}</span>
+                                      <b>{quantity}</b>
+                                    </button>
+                                  ),
+                                )}
+                              </div>
+                              <aside className="item-detail">
+                                <div className="item-detail-heading">
+                                  <span>{detail.kind}</span>
+                                  <strong>
+                                    보유 {game.materials[activeItem]}
+                                  </strong>
+                                </div>
+                                <div className="item-detail-art">
+                                  {asset && (
+                                    <img src={asset.path} alt={activeItem} />
+                                  )}
+                                </div>
+                                <div className="item-detail-copy">
+                                  <h3>{activeItem}</h3>
+                                  <p>{detail.text}</p>
+                                  <small>
+                                    귀환 시 계정 보관소에 자동 저장됩니다.
+                                  </small>
+                                </div>
+                              </aside>
+                            </div>
+                          );
+                        })()
+                      ) : (
+                        <div className="empty-inventory">
+                          <span>◇</span>
+                          <p>
+                            아직 소지품이 없습니다.
+                            <br />
+                            탐사에서 전리품을 얻고 귀환하세요.
+                          </p>
+                        </div>
+                      )}
+                      <h3>팩션 우호도</h3>
+                      {Object.entries(game.reputation).map(([f, n]) => (
+                        <p key={f} className="inventory-row">
+                          <span className="inline-asset">
+                            <AssetIcon
+                              name={
+                                characters.find((c) => c.id.startsWith(f))!
+                                  .faction
+                              }
+                            />
+                            {
+                              characters.find((c) => c.id.startsWith(f))!
+                                .faction
+                            }
+                          </span>
+                          <strong>{n}</strong>
+                        </p>
+                      ))}
+                    </section>
+                    <section className="panel">
+                      <h2>탐사 기록</h2>
+                      {game.log.map((l, i) => (
+                        <p key={i} className="log-line">
+                          {l}
+                        </p>
+                      ))}
+                    </section>
+                  </div>
+                )}
+              </section>
             )}
-            </section>}
           </>
         ) : (
           <>
@@ -955,7 +1470,8 @@ export default function Page() {
                 <div className="battle-toolbar">
                   <div>
                     <span className="eyebrow">
-                      TURN {battle.turn.toString().padStart(2, "0")} / {balance.maxBattleTurns}
+                      TURN {battle.turn.toString().padStart(2, "0")} /{" "}
+                      {balance.maxBattleTurns}
                     </span>
                     <h2>
                       행동 자원{" "}
@@ -980,11 +1496,13 @@ export default function Page() {
                 <div className="battlefield">
                   <section className="allies">
                     <h3 className="field-label">
-                      탐사대 <span>아군 대상 선택</span>
+                      탐사대 <span>1 전열 → 4 후열 · 아군 대상 선택</span>
                     </h3>
                     {run.heroes.map((h, index) => (
                       <button
                         key={h.id}
+                        data-card-target={h.id}
+                        data-card-kind="ally"
                         className={`ally rank-${index + 1} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
                         disabled={
                           locked ||
@@ -993,10 +1511,22 @@ export default function Page() {
                           h.hp === 0
                         }
                         onClick={() => target(h.id)}
-                        onDragOver={(event) => { event.preventDefault(); setPreviewTarget(h.id); }}
-                        onDrop={(event) => { event.preventDefault(); target(h.id); setPreviewTarget(""); }}
+                        onDragOver={(event) => {
+                          event.preventDefault();
+                          setPreviewTarget(h.id);
+                        }}
+                        onDrop={(event) => {
+                          event.preventDefault();
+                          target(h.id);
+                          setPreviewTarget("");
+                        }}
                       >
-                        <span className="rank-badge">{index + 1}</span>
+                        <span className="rank-badge">
+                          {index + 1}
+                          <small>
+                            {index === 0 ? "전" : index === 3 ? "후" : "중"}
+                          </small>
+                        </span>
                         <Crest id={h.id} motion={motionFor(h.id, "hero")} />
                         <div>
                           <h3>
@@ -1006,15 +1536,67 @@ export default function Page() {
                           <p>
                             HP {h.hp}/{h.maxHp} <span>◇ {h.shield}</span>
                           </p>
-                          <small className="equipment-line">{h.equipment === "blade" ? "⚔ 훈련용 무기 +2" : "▣ 호신 부적 +3"}</small>
+                          <small
+                            className="equipment-line inline-asset"
+                            title={
+                              h.equipment === "blade"
+                                ? "카드 피해가 2 증가합니다."
+                                : "새 턴마다 보호막 3을 얻습니다."
+                            }
+                          >
+                            <AssetIcon
+                              name={
+                                h.equipment === "blade"
+                                  ? "훈련용 무기"
+                                  : "호신 부적"
+                              }
+                            />
+                            {h.equipment === "blade"
+                              ? "훈련용 무기 · 피해 +2"
+                              : "호신 부적 · 턴 보호막 +3"}
+                          </small>
                           <small>
                             {h.hp === 0
                               ? "전투 불능"
                               : `스트레스 ${h.stress} · Lv.${h.level}`}
                           </small>
-                              {h.stress > 0 && <span className="status-chip stress-chip">☾ 스트레스 {h.stress}</span>}
-                              {h.injury && <span className="status-chip debuff-chip">부상</span>}
-                              {previewTarget === h.id && <strong className="combat-preview">{previewFor(h.id)}</strong>}
+                          {h.shield > 0 && (
+                            <span
+                              className="status-chip shield-chip"
+                              title="먼저 피해를 흡수하고 소모됩니다."
+                            >
+                              ◇ 보호막 {h.shield}
+                            </span>
+                          )}
+                          {(h.counter || 0) > 0 && (
+                            <span
+                              className="status-chip counter-chip"
+                              title="보호막으로 공격을 막으면 적에게 피해를 줍니다."
+                            >
+                              ↶ 반격 {h.counter}
+                            </span>
+                          )}
+                          {h.stress > 0 && (
+                            <span
+                              className="status-chip stress-chip"
+                              title="탐사 중 누적되는 정신적 부담입니다. 휴식으로 낮출 수 있습니다."
+                            >
+                              ☾ 스트레스 {h.stress}
+                            </span>
+                          )}
+                          {h.injury && (
+                            <span
+                              className="status-chip debuff-chip"
+                              title="거점 의무실에서 치료하기 전까지 남는 부상입니다."
+                            >
+                              ✚ 부상
+                            </span>
+                          )}
+                          {previewTarget === h.id && (
+                            <strong className="combat-preview">
+                              {previewFor(h.id)}
+                            </strong>
+                          )}
                         </div>
                       </button>
                     ))}
@@ -1037,6 +1619,8 @@ export default function Page() {
                               )}
                           </div>
                           <button
+                            data-card-target={e.id}
+                            data-card-kind="enemy"
                             className={`enemy-target ${selected && cardInfo(selected).target === "enemy" ? "targetable" : ""}`}
                             disabled={
                               locked ||
@@ -1045,21 +1629,60 @@ export default function Page() {
                               e.hp === 0
                             }
                             onClick={() => target(e.id)}
-                            onDragOver={(event) => { event.preventDefault(); setPreviewTarget(e.id); }}
-                            onDrop={(event) => { event.preventDefault(); target(e.id); setPreviewTarget(""); }}
+                            onDragOver={(event) => {
+                              event.preventDefault();
+                              setPreviewTarget(e.id);
+                            }}
+                            onDrop={(event) => {
+                              event.preventDefault();
+                              target(e.id);
+                              setPreviewTarget("");
+                            }}
                           >
-                            <Crest id={e.id} large motion={motionFor(e.id, "enemy")} />
+                            <Crest
+                              id={e.id}
+                              large
+                              motion={motionFor(e.id, "enemy")}
+                            />
                             <h3>{monsters.find((m) => m.id === e.id)!.name}</h3>
                             <Meter value={e.hp} max={e.maxHp} />
                             <p>
                               HP {e.hp}/{e.maxHp} · ◇ {e.shield}
                             </p>
-                            {e.mark > 0 && <span className="status-chip debuff-chip">표식 +{e.mark}</span>}
-                            {e.stun > 0 && <span className="status-chip stun-chip">기절</span>}
-                            {previewTarget === e.id && <strong className="combat-preview enemy-preview">{previewFor(e.id)}</strong>}
+                            {e.shield > 0 && (
+                              <span
+                                className="status-chip shield-chip"
+                                title="체력 피해보다 먼저 소모됩니다."
+                              >
+                                ◇ 보호막 {e.shield}
+                              </span>
+                            )}
+                            {e.mark > 0 && (
+                              <span
+                                className="status-chip debuff-chip"
+                                title={`다음 일반 공격의 피해가 ${e.mark} 증가합니다.`}
+                              >
+                                ⌖ 표식 +{e.mark}
+                              </span>
+                            )}
+                            {e.stun > 0 && (
+                              <span
+                                className="status-chip stun-chip"
+                                title="다음 적 행동을 한 번 건너뜁니다."
+                              >
+                                ✦ 기절 {e.stun}턴
+                              </span>
+                            )}
+                            {previewTarget === e.id && (
+                              <strong className="combat-preview enemy-preview">
+                                {previewFor(e.id)}
+                              </strong>
+                            )}
                           </button>
                           {e.tower > 0 && (
                             <button
+                              data-card-target="M08:tower"
+                              data-card-kind="enemy"
                               className="tower-target"
                               disabled={
                                 locked ||
@@ -1069,6 +1692,11 @@ export default function Page() {
                               onClick={() => target("M08:tower")}
                             >
                               성탑 파괴 {e.tower}/30
+                              {previewTarget === "M08:tower" && (
+                                <strong className="combat-preview">
+                                  {previewFor("M08:tower")}
+                                </strong>
+                              )}
                             </button>
                           )}
                           <details>
@@ -1106,12 +1734,27 @@ export default function Page() {
                           aria-pressed={selected?.id === c.id}
                           aria-label={`${char(c.owner).name} ${info.name}`}
                           className={`play-card ${c.kind}`}
-                          draggable={!disabled}
+                          draggable={false}
                           disabled={disabled}
-                          onDragStart={() => { setSelected(c); setPreviewTarget(""); }}
-                          onDragEnd={() => setPreviewTarget("")}
+                          onPointerDown={(event) => {
+                            event.currentTarget.setPointerCapture(
+                              event.pointerId,
+                            );
+                            dragStart.current = {
+                              x: event.clientX,
+                              y: event.clientY,
+                              moved: false,
+                            };
+                            setSelected(c);
+                          }}
+                          onPointerMove={(event) => cardPointerMove(event, c)}
+                          onPointerUp={(event) => cardPointerUp(event, c)}
+                          onPointerCancel={() => {
+                            setDragPoint(null);
+                            setPreviewTarget("");
+                          }}
                           onClick={() =>
-                            setSelected(selected?.id === c.id ? null : c)
+                            !dragStart.current.moved && setSelected(c)
                           }
                         >
                           <span className="card-cost">{info.cost}</span>
@@ -1132,6 +1775,20 @@ export default function Page() {
                       );
                     })}
                   </div>
+                  {dragPoint && selected && (
+                    <div
+                      className="card-drag-ghost"
+                      style={{ left: dragPoint.x, top: dragPoint.y }}
+                      aria-hidden="true"
+                    >
+                      <strong>{cardInfo(selected).name}</strong>
+                      <span>
+                        {previewTarget
+                          ? previewFor(previewTarget)
+                          : `${cardInfo(selected).target === "ally" ? "아군" : "적"}에게 놓으세요`}
+                      </span>
+                    </div>
+                  )}
                 </section>
               </>
             ) : (
@@ -1145,16 +1802,16 @@ export default function Page() {
                     {["entrance", ...run.visited, ...rooms[run.room].next]
                       .filter((id, i, all) => all.indexOf(id) === i)
                       .map((id) => (
-                      <div className="route-row" key={id}>
+                        <div className="route-row" key={id}>
                           <button
                             key={id}
-                            className={`room ${run.room === id ? "current" : ""} ${run.visited.includes(id) ? "visited" : ""}`}
+                            className={`room ${run.room === id ? "current" : ""} ${run.visited.includes(id) ? "visited" : ""} ${pendingRoom === id ? "pending" : ""}`}
                             disabled={
                               locked ||
                               run.mode !== "map" ||
                               !rooms[run.room].next.includes(id)
                             }
-                            onClick={() => void act({ type: "move", id })}
+                            onClick={() => setPendingRoom(id)}
                           >
                             <span>
                               {rooms[id].kind === "battle"
@@ -1178,9 +1835,44 @@ export default function Page() {
                                     : "미탐사"}
                             </small>
                           </button>
-                      </div>
-                    ))}
+                        </div>
+                      ))}
                   </div>
+                  {pendingRoom &&
+                    rooms[run.room].next.includes(pendingRoom) && (
+                      <div className="route-confirm" role="status">
+                        <div>
+                          <span className="eyebrow">SELECTED ROUTE</span>
+                          <strong>{rooms[pendingRoom].name}</strong>
+                          <small>
+                            {rooms[pendingRoom].kind === "battle"
+                              ? "전투 지역"
+                              : rooms[pendingRoom].kind === "rest"
+                                ? "휴식 지역"
+                                : rooms[pendingRoom].kind === "puzzle"
+                                  ? "수수께끼 지역"
+                                  : "탐사 지역"}
+                          </small>
+                        </div>
+                        <button
+                          className="mini"
+                          onClick={() => setPendingRoom("")}
+                        >
+                          취소
+                        </button>
+                        <button
+                          className="primary"
+                          disabled={locked}
+                          onClick={() => {
+                            const id = pendingRoom;
+                            setPendingRoom("");
+                            void act({ type: "move", id });
+                          }}
+                        >
+                          탐사 진행 →
+                        </button>
+                      </div>
+                    )}
                 </section>
                 <section className="room-panel panel">
                   <span className="eyebrow">EXPEDITION JOURNAL</span>

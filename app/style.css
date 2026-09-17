@@ -1761,6 +1761,257 @@ footer {
   );
   animation: turn-reveal 1.35s ease both;
 }
+
+/* One shared timeline makes approach, impact, knockback, and recovery read as a
+   single exchange instead of independent sprite swaps. */
+.combat-sequence {
+  --lunge-distance: clamp(150px, 23vw, 330px);
+  --lunge-distance-negative: clamp(-330px, -23vw, -150px);
+}
+.sequence-hero-attack,
+.sequence-enemy-attack {
+  animation: battlefield-impact 900ms linear both;
+}
+.battlefield.combat-sequence .crest.motion-strike {
+  position: relative;
+  z-index: 12;
+  will-change: transform, filter;
+  animation: hero-attack-sequence 900ms cubic-bezier(0.22, 0.74, 0.2, 1) both;
+}
+.battlefield.sequence-enemy-attack .enemy .crest.motion-strike {
+  animation-name: enemy-attack-sequence;
+}
+.battlefield.sequence-hero-attack .enemy .crest.motion-hit {
+  will-change: transform, filter;
+  animation: target-hit-right 560ms cubic-bezier(0.2, 0.78, 0.24, 1) 270ms both;
+}
+.battlefield.sequence-enemy-attack .allies .crest.motion-hit {
+  will-change: transform, filter;
+  animation: target-hit-left 560ms cubic-bezier(0.2, 0.78, 0.24, 1) 270ms both;
+}
+.impact-stage {
+  position: absolute;
+  top: 47%;
+  z-index: 15;
+  width: 104px;
+  height: 104px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  animation: impact-burst 900ms ease-out both;
+}
+.impact-hero-attack {
+  left: 73%;
+}
+.impact-enemy-attack {
+  left: 29%;
+}
+.impact-stage i,
+.impact-stage b {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.impact-ring {
+  width: 70px;
+  height: 70px;
+  border: 3px solid #fff3c8;
+  border-radius: 50%;
+  box-shadow:
+    0 0 16px #fff,
+    0 0 34px #d8ba7f;
+  transform: translate(-50%, -50%);
+  animation: impact-ring 900ms ease-out both;
+}
+.impact-slash {
+  width: 92px;
+  height: 7px;
+  border-radius: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #fff 25%,
+    #f0c16f,
+    transparent
+  );
+  box-shadow: 0 0 15px #fff1b8;
+  transform: translate(-50%, -50%) rotate(-28deg);
+  animation: impact-slash 900ms ease-out both;
+}
+.impact-stage b {
+  color: #fff4d0;
+  font: 800 26px/1 monospace;
+  text-shadow:
+    0 2px 2px #250700,
+    0 0 12px #e6512e;
+  transform: translate(-50%, -50%);
+  animation: impact-number 900ms ease-out both;
+}
+@keyframes hero-attack-sequence {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) rotate(0) scale(1);
+    filter: brightness(1);
+  }
+  14% {
+    transform: translateX(-14px) translateY(5px) rotate(-4deg) scale(0.96, 1.04);
+  }
+  38%,
+  43% {
+    transform: translateX(var(--lunge-distance)) translateY(-3px) rotate(5deg)
+      scale(1.08, 0.94);
+    filter: brightness(1.35) drop-shadow(0 0 12px #f0c16f99);
+  }
+  53% {
+    transform: translateX(calc(var(--lunge-distance) - 18px)) translateY(2px)
+      rotate(1deg) scale(1);
+  }
+  82% {
+    transform: translateX(-8px) rotate(-2deg);
+  }
+}
+@keyframes enemy-attack-sequence {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) rotate(0) scale(1);
+    filter: brightness(1);
+  }
+  14% {
+    transform: translateX(14px) translateY(5px) rotate(4deg) scale(0.96, 1.04);
+  }
+  38%,
+  43% {
+    transform: translateX(var(--lunge-distance-negative)) translateY(-3px)
+      rotate(-5deg) scale(1.08, 0.94);
+    filter: brightness(1.35) drop-shadow(0 0 12px #d85a4999);
+  }
+  53% {
+    transform: translateX(calc(var(--lunge-distance-negative) + 18px))
+      translateY(2px) rotate(-1deg) scale(1);
+  }
+  82% {
+    transform: translateX(8px) rotate(2deg);
+  }
+}
+@keyframes target-hit-right {
+  0%,
+  100% {
+    transform: translateX(0) scale(1);
+    filter: brightness(1) saturate(1);
+  }
+  8% {
+    transform: translateX(-8px) scale(0.92, 1.08);
+    filter: brightness(2.8) saturate(0.2);
+  }
+  28% {
+    transform: translateX(34px) scale(1.1, 0.86) rotate(4deg);
+    filter: brightness(1.35) saturate(1.8);
+  }
+  58% {
+    transform: translateX(12px) scale(0.98, 1.03) rotate(-2deg);
+  }
+  78% {
+    transform: translateX(3px) rotate(1deg);
+  }
+}
+@keyframes target-hit-left {
+  0%,
+  100% {
+    transform: translateX(0) scale(1);
+    filter: brightness(1) saturate(1);
+  }
+  8% {
+    transform: translateX(8px) scale(0.92, 1.08);
+    filter: brightness(2.8) saturate(0.2);
+  }
+  28% {
+    transform: translateX(-34px) scale(1.1, 0.86) rotate(-4deg);
+    filter: brightness(1.35) saturate(1.8);
+  }
+  58% {
+    transform: translateX(-12px) scale(0.98, 1.03) rotate(2deg);
+  }
+  78% {
+    transform: translateX(-3px) rotate(-1deg);
+  }
+}
+@keyframes battlefield-impact {
+  0%,
+  31%,
+  60%,
+  100% {
+    transform: translate(0);
+  }
+  34% {
+    transform: translate(-5px, 2px);
+  }
+  38% {
+    transform: translate(6px, -2px);
+  }
+  43% {
+    transform: translate(-3px, 1px);
+  }
+  49% {
+    transform: translate(2px, 0);
+  }
+}
+@keyframes impact-burst {
+  0%,
+  29% {
+    opacity: 0;
+  }
+  34%,
+  47% {
+    opacity: 1;
+  }
+  68%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes impact-ring {
+  0%,
+  29% {
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  49% {
+    transform: translate(-50%, -50%) scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes impact-slash {
+  0%,
+  29% {
+    transform: translate(-50%, -50%) rotate(-28deg) scaleX(0);
+  }
+  37% {
+    transform: translate(-50%, -50%) rotate(-28deg) scaleX(1.2);
+  }
+  53%,
+  100% {
+    transform: translate(-50%, -50%) rotate(-28deg) scaleX(0.35);
+    opacity: 0;
+  }
+}
+@keyframes impact-number {
+  0%,
+  35% {
+    opacity: 0;
+    transform: translate(-50%, -25%) scale(0.7);
+  }
+  43% {
+    opacity: 1;
+    transform: translate(-50%, -80%) scale(1.22);
+  }
+  78%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -165%) scale(1);
+  }
+}
 .turn-reveal small {
   font-size: 8px;
   letter-spacing: 0.32em;
@@ -2496,6 +2747,9 @@ footer {
     transition: none !important;
     animation: none !important;
   }
+  .impact-stage {
+    display: none;
+  }
 }
 @media (max-width: 1000px) {
   .battlefield {
@@ -2508,6 +2762,20 @@ footer {
   }
 }
 @media (max-width: 700px) {
+  .combat-sequence {
+    --lunge-distance: clamp(72px, 20vw, 130px);
+    --lunge-distance-negative: clamp(-130px, -20vw, -72px);
+  }
+  .impact-stage {
+    width: 76px;
+    height: 76px;
+  }
+  .impact-hero-attack {
+    left: 76%;
+  }
+  .impact-enemy-attack {
+    left: 25%;
+  }
   .battle-toolbar {
     margin-bottom: 15px;
   }

@@ -299,6 +299,7 @@ export default function Page() {
     [pendingRoom, setPendingRoom] = useState(""),
     [selectedItem, setSelectedItem] = useState(""),
     [selectedHero, setSelectedHero] = useState(""),
+    [animating, setAnimating] = useState(false),
     [soundEnabled, setSoundEnabled] = useState(true),
     [musicEnabled, setMusicEnabled] = useState(true),
     [audioReady, setAudioReady] = useState(false),
@@ -491,7 +492,7 @@ export default function Page() {
       setBusy(false);
     }
   }
-  const locked = busy || offline || !control || !!pending.current;
+  const locked = busy || animating || offline || !control || !!pending.current;
   const run = game?.run,
     battle = run?.battle,
     fx = run?.combatFx;
@@ -525,9 +526,12 @@ export default function Page() {
   useEffect(() => {
     if (!fx || fx.nonce === lastFx.current) return;
     lastFx.current = fx.nonce;
+    setAnimating(true);
+    const timer = window.setTimeout(() => setAnimating(false), 900);
     if (fx.kind === "hero-attack" || fx.kind === "enemy-attack")
       playSound("hit", 0.32);
-  }, [fx]); // eslint-disable-line react-hooks/exhaustive-deps
+    return () => window.clearTimeout(timer);
+  }, [fx?.nonce]); // eslint-disable-line react-hooks/exhaustive-deps
   const motionFor = (id: string, side: "hero" | "enemy") => {
     if (!fx) return "";
     if (fx.actor === id && side === "hero")
@@ -1850,7 +1854,9 @@ export default function Page() {
                   <span>3 · 예상 효과 확인</span>
                   <span>4 · 행동 해결</span>
                 </div>
-                <div className="battlefield">
+                <div
+                  className={`battlefield ${fx ? `combat-sequence sequence-${fx.kind}` : ""}`}
+                >
                   <img
                     className="battle-scene-bg"
                     src={environmentForRoom(run.room).path}
@@ -1858,6 +1864,19 @@ export default function Page() {
                     aria-hidden="true"
                   />
                   <div className="battle-vignette" aria-hidden="true" />
+                  {fx &&
+                    (fx.kind === "hero-attack" ||
+                      fx.kind === "enemy-attack") && (
+                      <div
+                        className={`impact-stage impact-${fx.kind}`}
+                        key={`impact-${fx.nonce}`}
+                        aria-hidden="true"
+                      >
+                        <i className="impact-ring" />
+                        <i className="impact-slash" />
+                        <b>-{fx.amount}</b>
+                      </div>
+                    )}
                   <div
                     className="turn-reveal"
                     key={battle.turn}
@@ -1901,7 +1920,11 @@ export default function Page() {
                             {index === 0 ? "전" : index === 3 ? "후" : "중"}
                           </small>
                         </span>
-                        <Crest id={h.id} motion={motionFor(h.id, "hero")} />
+                        <Crest
+                          key={`crest-${h.id}-${fx?.nonce ?? "idle"}`}
+                          id={h.id}
+                          motion={motionFor(h.id, "hero")}
+                        />
                         <div>
                           <h3>
                             {char(h.id).name} <small>{char(h.id).role}</small>
@@ -2022,6 +2045,7 @@ export default function Page() {
                             }}
                           >
                             <Crest
+                              key={`crest-${e.id}-${fx?.nonce ?? "idle"}`}
                               id={e.id}
                               large
                               motion={motionFor(e.id, "enemy")}

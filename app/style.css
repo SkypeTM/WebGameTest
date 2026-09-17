@@ -316,6 +316,18 @@ input::placeholder {
   gap: 16px;
   font-size: 12px;
 }
+.audio-controls {
+  display: flex;
+  gap: 5px;
+}
+.audio-controls .mini {
+  min-width: 38px;
+  padding: 7px;
+  font-family: sans-serif;
+}
+.audio-controls .mini[aria-pressed="false"] {
+  opacity: 0.55;
+}
 .save-dot {
   width: 6px;
   height: 6px;

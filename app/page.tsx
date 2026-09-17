@@ -15,6 +15,7 @@ import {
 import assetManifest from "../data/asset_manifest.json";
 import generatedAssets from "../data/generated_assets.json";
 import characterAssets from "../data/character_asset_manifest.json";
+import monsterAssets from "../data/monster_asset_manifest.json";
 type MarketListing = {
   id: string;
   seller: string;
@@ -61,8 +62,16 @@ function Crest({
         : motion === "motion-guard" || motion === "motion-heal"
           ? "skill"
           : "idle");
+  const monsterState =
+    motion === "motion-strike"
+      ? "action"
+      : motion === "motion-hit"
+        ? "hit"
+        : "idle";
   const asset = monster
-    ? assetManifest.find((item) => item.id === id)
+    ? monsterAssets.find(
+        (item) => item.id === id && item.state === monsterState,
+      ) || assetManifest.find((item) => item.id === id)
     : characterAssets.find(
         (item) => item.id === id && item.state === visualState,
       );
@@ -213,11 +222,22 @@ export default function Page() {
     [previewTarget, setPreviewTarget] = useState(""),
     [pendingRoom, setPendingRoom] = useState(""),
     [selectedItem, setSelectedItem] = useState(""),
+    [soundEnabled, setSoundEnabled] = useState(true),
+    [musicEnabled, setMusicEnabled] = useState(true),
+    [audioReady, setAudioReady] = useState(false),
     [dragPoint, setDragPoint] = useState<{ x: number; y: number } | null>(null);
   const client = useRef(""),
     pending = useRef<Record<string, unknown> | null>(null),
     working = useRef(false),
+    musicRef = useRef<HTMLAudioElement | null>(null),
+    lastFx = useRef(0),
     dragStart = useRef({ x: 0, y: 0, moved: false });
+  function playSound(name: string, volume = 0.35) {
+    if (!audioReady || !soundEnabled) return;
+    const sound = new Audio(`/assets/audio/sfx/${name}.wav`);
+    sound.volume = volume;
+    void sound.play().catch(() => undefined);
+  }
   const accept = (data: {
     state: Game;
     control: boolean;
@@ -328,7 +348,22 @@ export default function Page() {
         sessionStorage.setItem("bell-pending", JSON.stringify(pending.current));
       }
       if (!pending.current) return;
+      const performed =
+        action || (pending.current.action as Action | undefined);
       accept(await api(pending.current));
+      if (performed?.type === "play")
+        playSound(
+          game?.run?.battle?.hand.find((card) => card.id === performed.id)
+            ?.kind === "skill"
+            ? "skill"
+            : "card-play",
+        );
+      else if (performed?.type === "move" || performed?.type === "enter")
+        playSound("route");
+      else if (performed?.type === "claim") playSound("reward");
+      else if (performed?.type === "return") playSound("victory");
+      else if (performed?.type === "event") playSound("skill", 0.25);
+      else playSound("ui-click", 0.2);
       pending.current = null;
       sessionStorage.removeItem("bell-pending");
       setSelected(null);
@@ -383,6 +418,37 @@ export default function Page() {
   const run = game?.run,
     battle = run?.battle,
     fx = run?.combatFx;
+  const musicTrack = run
+    ? run.mode === "battle"
+      ? "battle"
+      : "exploration"
+    : "hamlet";
+  const loggedIn = Boolean(game);
+  useEffect(() => {
+    const unlock = () => setAudioReady(true);
+    window.addEventListener("pointerdown", unlock, { once: true });
+    window.addEventListener("keydown", unlock, { once: true });
+    return () => {
+      window.removeEventListener("pointerdown", unlock);
+      window.removeEventListener("keydown", unlock);
+    };
+  }, []);
+  useEffect(() => {
+    musicRef.current?.pause();
+    if (!audioReady || !musicEnabled || !loggedIn) return;
+    const audio = new Audio(`/assets/audio/music/${musicTrack}.wav`);
+    audio.loop = true;
+    audio.volume = 0.16;
+    musicRef.current = audio;
+    void audio.play().catch(() => undefined);
+    return () => audio.pause();
+  }, [audioReady, loggedIn, musicEnabled, musicTrack]);
+  useEffect(() => {
+    if (!fx || fx.nonce === lastFx.current) return;
+    lastFx.current = fx.nonce;
+    if (fx.kind === "hero-attack" || fx.kind === "enemy-attack")
+      playSound("hit", 0.32);
+  }, [fx]); // eslint-disable-line react-hooks/exhaustive-deps
   const motionFor = (id: string, side: "hero" | "enemy") => {
     if (!fx) return "";
     if (fx.actor === id && side === "hero")
@@ -557,6 +623,24 @@ export default function Page() {
           </span>
         </a>
         <div className="account">
+          <div className="audio-controls" aria-label="오디오 설정">
+            <button
+              className="mini"
+              aria-pressed={musicEnabled}
+              onClick={() => setMusicEnabled((value) => !value)}
+              title="배경 음악 켜기/끄기"
+            >
+              {musicEnabled ? "♫" : "♩̸"}
+            </button>
+            <button
+              className="mini"
+              aria-pressed={soundEnabled}
+              onClick={() => setSoundEnabled((value) => !value)}
+              title="효과음 켜기/끄기"
+            >
+              {soundEnabled ? "◖))" : "◖×"}
+            </button>
+          </div>
           <span className="save-dot" />
           <span className="save-label">
             {busy
@@ -1740,6 +1824,7 @@ export default function Page() {
                             event.currentTarget.setPointerCapture(
                               event.pointerId,
                             );
+                            playSound("card-select", 0.22);
                             dragStart.current = {
                               x: event.clientX,
                               y: event.clientY,

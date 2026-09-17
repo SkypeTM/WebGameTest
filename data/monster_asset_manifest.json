@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "M01",
+    "name": "성문 가드봇",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M01/idle.png"
+  },
+  {
+    "id": "M01",
+    "name": "성문 가드봇",
+    "state": "action",
+    "path": "/assets/generated/monsters/M01/action.png"
+  },
+  {
+    "id": "M01",
+    "name": "성문 가드봇",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M01/hit.png"
+  },
+  {
+    "id": "M02",
+    "name": "리벳 윙",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M02/idle.png"
+  },
+  {
+    "id": "M02",
+    "name": "리벳 윙",
+    "state": "action",
+    "path": "/assets/generated/monsters/M02/action.png"
+  },
+  {
+    "id": "M02",
+    "name": "리벳 윙",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M02/hit.png"
+  },
+  {
+    "id": "M03",
+    "name": "화약 등짐벌레",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M03/idle.png"
+  },
+  {
+    "id": "M03",
+    "name": "화약 등짐벌레",
+    "state": "action",
+    "path": "/assets/generated/monsters/M03/action.png"
+  },
+  {
+    "id": "M03",
+    "name": "화약 등짐벌레",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M03/hit.png"
+  },
+  {
+    "id": "M04",
+    "name": "깃발 꼬마정령",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M04/idle.png"
+  },
+  {
+    "id": "M04",
+    "name": "깃발 꼬마정령",
+    "state": "action",
+    "path": "/assets/generated/monsters/M04/action.png"
+  },
+  {
+    "id": "M04",
+    "name": "깃발 꼬마정령",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M04/hit.png"
+  },
+  {
+    "id": "M05",
+    "name": "벨 하운드",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M05/idle.png"
+  },
+  {
+    "id": "M05",
+    "name": "벨 하운드",
+    "state": "action",
+    "path": "/assets/generated/monsters/M05/action.png"
+  },
+  {
+    "id": "M05",
+    "name": "벨 하운드",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M05/hit.png"
+  },
+  {
+    "id": "M06",
+    "name": "벌워크 팔문",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M06/idle.png"
+  },
+  {
+    "id": "M06",
+    "name": "벌워크 팔문",
+    "state": "action",
+    "path": "/assets/generated/monsters/M06/action.png"
+  },
+  {
+    "id": "M06",
+    "name": "벌워크 팔문",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M06/hit.png"
+  },
+  {
+    "id": "M07",
+    "name": "쌍날 기사",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M07/idle.png"
+  },
+  {
+    "id": "M07",
+    "name": "쌍날 기사",
+    "state": "action",
+    "path": "/assets/generated/monsters/M07/action.png"
+  },
+  {
+    "id": "M07",
+    "name": "쌍날 기사",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M07/hit.png"
+  },
+  {
+    "id": "M08",
+    "name": "캐슬 타이탄",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M08/idle.png"
+  },
+  {
+    "id": "M08",
+    "name": "캐슬 타이탄",
+    "state": "action",
+    "path": "/assets/generated/monsters/M08/action.png"
+  },
+  {
+    "id": "M08",
+    "name": "캐슬 타이탄",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M08/hit.png"
+  },
+  {
+    "id": "M09",
+    "name": "앵커 크랩",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M09/idle.png"
+  },
+  {
+    "id": "M09",
+    "name": "앵커 크랩",
+    "state": "action",
+    "path": "/assets/generated/monsters/M09/action.png"
+  },
+  {
+    "id": "M09",
+    "name": "앵커 크랩",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M09/hit.png"
+  },
+  {
+    "id": "M10",
+    "name": "랜턴 젤리",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M10/idle.png"
+  },
+  {
+    "id": "M10",
+    "name": "랜턴 젤리",
+    "state": "action",
+    "path": "/assets/generated/monsters/M10/action.png"
+  },
+  {
+    "id": "M10",
+    "name": "랜턴 젤리",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M10/hit.png"
+  },
+  {
+    "id": "M11",
+    "name": "로프 골렘",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M11/idle.png"
+  },
+  {
+    "id": "M11",
+    "name": "로프 골렘",
+    "state": "action",
+    "path": "/assets/generated/monsters/M11/action.png"
+  },
+  {
+    "id": "M11",
+    "name": "로프 골렘",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M11/hit.png"
+  },
+  {
+    "id": "M12",
+    "name": "보물 껍질게",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M12/idle.png"
+  },
+  {
+    "id": "M12",
+    "name": "보물 껍질게",
+    "state": "action",
+    "path": "/assets/generated/monsters/M12/action.png"
+  },
+  {
+    "id": "M12",
+    "name": "보물 껍질게",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M12/hit.png"
+  },
+  {
+    "id": "M13",
+    "name": "솔트 윙",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M13/idle.png"
+  },
+  {
+    "id": "M13",
+    "name": "솔트 윙",
+    "state": "action",
+    "path": "/assets/generated/monsters/M13/action.png"
+  },
+  {
+    "id": "M13",
+    "name": "솔트 윙",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M13/hit.png"
+  },
+  {
+    "id": "M14",
+    "name": "문어 경매상",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M14/idle.png"
+  },
+  {
+    "id": "M14",
+    "name": "문어 경매상",
+    "state": "action",
+    "path": "/assets/generated/monsters/M14/action.png"
+  },
+  {
+    "id": "M14",
+    "name": "문어 경매상",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M14/hit.png"
+  },
+  {
+    "id": "M15",
+    "name": "다이버 센트리",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M15/idle.png"
+  },
+  {
+    "id": "M15",
+    "name": "다이버 센트리",
+    "state": "action",
+    "path": "/assets/generated/monsters/M15/action.png"
+  },
+  {
+    "id": "M15",
+    "name": "다이버 센트리",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M15/hit.png"
+  },
+  {
+    "id": "M16",
+    "name": "타이드 캐리어",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M16/idle.png"
+  },
+  {
+    "id": "M16",
+    "name": "타이드 캐리어",
+    "state": "action",
+    "path": "/assets/generated/monsters/M16/action.png"
+  },
+  {
+    "id": "M16",
+    "name": "타이드 캐리어",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M16/hit.png"
+  },
+  {
+    "id": "M17",
+    "name": "잉크 애벌레",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M17/idle.png"
+  },
+  {
+    "id": "M17",
+    "name": "잉크 애벌레",
+    "state": "action",
+    "path": "/assets/generated/monsters/M17/action.png"
+  },
+  {
+    "id": "M17",
+    "name": "잉크 애벌레",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M17/hit.png"
+  },
+  {
+    "id": "M18",
+    "name": "종이 제비",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M18/idle.png"
+  },
+  {
+    "id": "M18",
+    "name": "종이 제비",
+    "state": "action",
+    "path": "/assets/generated/monsters/M18/action.png"
+  },
+  {
+    "id": "M18",
+    "name": "종이 제비",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M18/hit.png"
+  },
+  {
+    "id": "M19",
+    "name": "북카트 골렘",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M19/idle.png"
+  },
+  {
+    "id": "M19",
+    "name": "북카트 골렘",
+    "state": "action",
+    "path": "/assets/generated/monsters/M19/action.png"
+  },
+  {
+    "id": "M19",
+    "name": "북카트 골렘",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M19/hit.png"
+  },
+  {
+    "id": "M20",
+    "name": "인덱스 렌즈",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M20/idle.png"
+  },
+  {
+    "id": "M20",
+    "name": "인덱스 렌즈",
+    "state": "action",
+    "path": "/assets/generated/monsters/M20/action.png"
+  },
+  {
+    "id": "M20",
+    "name": "인덱스 렌즈",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M20/hit.png"
+  },
+  {
+    "id": "M21",
+    "name": "쉿 부엉이",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M21/idle.png"
+  },
+  {
+    "id": "M21",
+    "name": "쉿 부엉이",
+    "state": "action",
+    "path": "/assets/generated/monsters/M21/action.png"
+  },
+  {
+    "id": "M21",
+    "name": "쉿 부엉이",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M21/hit.png"
+  },
+  {
+    "id": "M22",
+    "name": "페이지 키퍼",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M22/idle.png"
+  },
+  {
+    "id": "M22",
+    "name": "페이지 키퍼",
+    "state": "action",
+    "path": "/assets/generated/monsters/M22/action.png"
+  },
+  {
+    "id": "M22",
+    "name": "페이지 키퍼",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M22/hit.png"
+  },
+  {
+    "id": "M23",
+    "name": "바인더 봇",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M23/idle.png"
+  },
+  {
+    "id": "M23",
+    "name": "바인더 봇",
+    "state": "action",
+    "path": "/assets/generated/monsters/M23/action.png"
+  },
+  {
+    "id": "M23",
+    "name": "바인더 봇",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M23/hit.png"
+  },
+  {
+    "id": "M24",
+    "name": "그랜드 아카이브",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M24/idle.png"
+  },
+  {
+    "id": "M24",
+    "name": "그랜드 아카이브",
+    "state": "action",
+    "path": "/assets/generated/monsters/M24/action.png"
+  },
+  {
+    "id": "M24",
+    "name": "그랜드 아카이브",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M24/hit.png"
+  },
+  {
+    "id": "M25",
+    "name": "캔들 버디",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M25/idle.png"
+  },
+  {
+    "id": "M25",
+    "name": "캔들 버디",
+    "state": "action",
+    "path": "/assets/generated/monsters/M25/action.png"
+  },
+  {
+    "id": "M25",
+    "name": "캔들 버디",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M25/hit.png"
+  },
+  {
+    "id": "M26",
+    "name": "벨 코러스",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M26/idle.png"
+  },
+  {
+    "id": "M26",
+    "name": "벨 코러스",
+    "state": "action",
+    "path": "/assets/generated/monsters/M26/action.png"
+  },
+  {
+    "id": "M26",
+    "name": "벨 코러스",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M26/hit.png"
+  },
+  {
+    "id": "M27",
+    "name": "인센스 비틀",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M27/idle.png"
+  },
+  {
+    "id": "M27",
+    "name": "인센스 비틀",
+    "state": "action",
+    "path": "/assets/generated/monsters/M27/action.png"
+  },
+  {
+    "id": "M27",
+    "name": "인센스 비틀",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M27/hit.png"
+  },
+  {
+    "id": "M28",
+    "name": "마블 가디언",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M28/idle.png"
+  },
+  {
+    "id": "M28",
+    "name": "마블 가디언",
+    "state": "action",
+    "path": "/assets/generated/monsters/M28/action.png"
+  },
+  {
+    "id": "M28",
+    "name": "마블 가디언",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M28/hit.png"
+  },
+  {
+    "id": "M29",
+    "name": "글라스 모스",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M29/idle.png"
+  },
+  {
+    "id": "M29",
+    "name": "글라스 모스",
+    "state": "action",
+    "path": "/assets/generated/monsters/M29/action.png"
+  },
+  {
+    "id": "M29",
+    "name": "글라스 모스",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M29/hit.png"
+  },
+  {
+    "id": "M30",
+    "name": "차임 워커",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M30/idle.png"
+  },
+  {
+    "id": "M30",
+    "name": "차임 워커",
+    "state": "action",
+    "path": "/assets/generated/monsters/M30/action.png"
+  },
+  {
+    "id": "M30",
+    "name": "차임 워커",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M30/hit.png"
+  },
+  {
+    "id": "M31",
+    "name": "이클립스 메이지",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M31/idle.png"
+  },
+  {
+    "id": "M31",
+    "name": "이클립스 메이지",
+    "state": "action",
+    "path": "/assets/generated/monsters/M31/action.png"
+  },
+  {
+    "id": "M31",
+    "name": "이클립스 메이지",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M31/hit.png"
+  },
+  {
+    "id": "M32",
+    "name": "솔라 세라프",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M32/idle.png"
+  },
+  {
+    "id": "M32",
+    "name": "솔라 세라프",
+    "state": "action",
+    "path": "/assets/generated/monsters/M32/action.png"
+  },
+  {
+    "id": "M32",
+    "name": "솔라 세라프",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M32/hit.png"
+  },
+  {
+    "id": "M33",
+    "name": "가시등 노루",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M33/idle.png"
+  },
+  {
+    "id": "M33",
+    "name": "가시등 노루",
+    "state": "action",
+    "path": "/assets/generated/monsters/M33/action.png"
+  },
+  {
+    "id": "M33",
+    "name": "가시등 노루",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M33/hit.png"
+  },
+  {
+    "id": "M34",
+    "name": "우산 버섯",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M34/idle.png"
+  },
+  {
+    "id": "M34",
+    "name": "우산 버섯",
+    "state": "action",
+    "path": "/assets/generated/monsters/M34/action.png"
+  },
+  {
+    "id": "M34",
+    "name": "우산 버섯",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M34/hit.png"
+  },
+  {
+    "id": "M35",
+    "name": "수액 슬라임",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M35/idle.png"
+  },
+  {
+    "id": "M35",
+    "name": "수액 슬라임",
+    "state": "action",
+    "path": "/assets/generated/monsters/M35/action.png"
+  },
+  {
+    "id": "M35",
+    "name": "수액 슬라임",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M35/hit.png"
+  },
+  {
+    "id": "M36",
+    "name": "나이테 방패벌",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M36/idle.png"
+  },
+  {
+    "id": "M36",
+    "name": "나이테 방패벌",
+    "state": "action",
+    "path": "/assets/generated/monsters/M36/action.png"
+  },
+  {
+    "id": "M36",
+    "name": "나이테 방패벌",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M36/hit.png"
+  },
+  {
+    "id": "M37",
+    "name": "새싹 인형",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M37/idle.png"
+  },
+  {
+    "id": "M37",
+    "name": "새싹 인형",
+    "state": "action",
+    "path": "/assets/generated/monsters/M37/action.png"
+  },
+  {
+    "id": "M37",
+    "name": "새싹 인형",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M37/hit.png"
+  },
+  {
+    "id": "M38",
+    "name": "왕관사슴",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M38/idle.png"
+  },
+  {
+    "id": "M38",
+    "name": "왕관사슴",
+    "state": "action",
+    "path": "/assets/generated/monsters/M38/action.png"
+  },
+  {
+    "id": "M38",
+    "name": "왕관사슴",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M38/hit.png"
+  },
+  {
+    "id": "M39",
+    "name": "가든 커터",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M39/idle.png"
+  },
+  {
+    "id": "M39",
+    "name": "가든 커터",
+    "state": "action",
+    "path": "/assets/generated/monsters/M39/action.png"
+  },
+  {
+    "id": "M39",
+    "name": "가든 커터",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M39/hit.png"
+  },
+  {
+    "id": "M40",
+    "name": "에인션트 트리혼",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M40/idle.png"
+  },
+  {
+    "id": "M40",
+    "name": "에인션트 트리혼",
+    "state": "action",
+    "path": "/assets/generated/monsters/M40/action.png"
+  },
+  {
+    "id": "M40",
+    "name": "에인션트 트리혼",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M40/hit.png"
+  },
+  {
+    "id": "M41",
+    "name": "패치 스케어크로",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M41/idle.png"
+  },
+  {
+    "id": "M41",
+    "name": "패치 스케어크로",
+    "state": "action",
+    "path": "/assets/generated/monsters/M41/action.png"
+  },
+  {
+    "id": "M41",
+    "name": "패치 스케어크로",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M41/hit.png"
+  },
+  {
+    "id": "M42",
+    "name": "굴뚝 참새",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M42/idle.png"
+  },
+  {
+    "id": "M42",
+    "name": "굴뚝 참새",
+    "state": "action",
+    "path": "/assets/generated/monsters/M42/action.png"
+  },
+  {
+    "id": "M42",
+    "name": "굴뚝 참새",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M42/hit.png"
+  },
+  {
+    "id": "M43",
+    "name": "팟 워커",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M43/idle.png"
+  },
+  {
+    "id": "M43",
+    "name": "팟 워커",
+    "state": "action",
+    "path": "/assets/generated/monsters/M43/action.png"
+  },
+  {
+    "id": "M43",
+    "name": "팟 워커",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M43/hit.png"
+  },
+  {
+    "id": "M44",
+    "name": "벽지 도마뱀",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M44/idle.png"
+  },
+  {
+    "id": "M44",
+    "name": "벽지 도마뱀",
+    "state": "action",
+    "path": "/assets/generated/monsters/M44/action.png"
+  },
+  {
+    "id": "M44",
+    "name": "벽지 도마뱀",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M44/hit.png"
+  },
+  {
+    "id": "M45",
+    "name": "휠 러너",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M45/idle.png"
+  },
+  {
+    "id": "M45",
+    "name": "휠 러너",
+    "state": "action",
+    "path": "/assets/generated/monsters/M45/action.png"
+  },
+  {
+    "id": "M45",
+    "name": "휠 러너",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M45/hit.png"
+  },
+  {
+    "id": "M46",
+    "name": "스모크 소방봇",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M46/idle.png"
+  },
+  {
+    "id": "M46",
+    "name": "스모크 소방봇",
+    "state": "action",
+    "path": "/assets/generated/monsters/M46/action.png"
+  },
+  {
+    "id": "M46",
+    "name": "스모크 소방봇",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M46/hit.png"
+  },
+  {
+    "id": "M47",
+    "name": "랜턴 캐러밴",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M47/idle.png"
+  },
+  {
+    "id": "M47",
+    "name": "랜턴 캐러밴",
+    "state": "action",
+    "path": "/assets/generated/monsters/M47/action.png"
+  },
+  {
+    "id": "M47",
+    "name": "랜턴 캐러밴",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M47/hit.png"
+  },
+  {
+    "id": "M48",
+    "name": "퍼니스 하우스",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M48/idle.png"
+  },
+  {
+    "id": "M48",
+    "name": "퍼니스 하우스",
+    "state": "action",
+    "path": "/assets/generated/monsters/M48/action.png"
+  },
+  {
+    "id": "M48",
+    "name": "퍼니스 하우스",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M48/hit.png"
+  },
+  {
+    "id": "M49",
+    "name": "클록 맨티스",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M49/idle.png"
+  },
+  {
+    "id": "M49",
+    "name": "클록 맨티스",
+    "state": "action",
+    "path": "/assets/generated/monsters/M49/action.png"
+  },
+  {
+    "id": "M49",
+    "name": "클록 맨티스",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M49/hit.png"
+  },
+  {
+    "id": "M50",
+    "name": "차임 캐터필러",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M50/idle.png"
+  },
+  {
+    "id": "M50",
+    "name": "차임 캐터필러",
+    "state": "action",
+    "path": "/assets/generated/monsters/M50/action.png"
+  },
+  {
+    "id": "M50",
+    "name": "차임 캐터필러",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M50/hit.png"
+  },
+  {
+    "id": "M51",
+    "name": "오브 드론",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M51/idle.png"
+  },
+  {
+    "id": "M51",
+    "name": "오브 드론",
+    "state": "action",
+    "path": "/assets/generated/monsters/M51/action.png"
+  },
+  {
+    "id": "M51",
+    "name": "오브 드론",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M51/hit.png"
+  },
+  {
+    "id": "M52",
+    "name": "노트 골렘",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M52/idle.png"
+  },
+  {
+    "id": "M52",
+    "name": "노트 골렘",
+    "state": "action",
+    "path": "/assets/generated/monsters/M52/action.png"
+  },
+  {
+    "id": "M52",
+    "name": "노트 골렘",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M52/hit.png"
+  },
+  {
+    "id": "M53",
+    "name": "리버스 윙",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M53/idle.png"
+  },
+  {
+    "id": "M53",
+    "name": "리버스 윙",
+    "state": "action",
+    "path": "/assets/generated/monsters/M53/action.png"
+  },
+  {
+    "id": "M53",
+    "name": "리버스 윙",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M53/hit.png"
+  },
+  {
+    "id": "M54",
+    "name": "기어 마스터",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M54/idle.png"
+  },
+  {
+    "id": "M54",
+    "name": "기어 마스터",
+    "state": "action",
+    "path": "/assets/generated/monsters/M54/action.png"
+  },
+  {
+    "id": "M54",
+    "name": "기어 마스터",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M54/hit.png"
+  },
+  {
+    "id": "M55",
+    "name": "펜듈럼 가드",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M55/idle.png"
+  },
+  {
+    "id": "M55",
+    "name": "펜듈럼 가드",
+    "state": "action",
+    "path": "/assets/generated/monsters/M55/action.png"
+  },
+  {
+    "id": "M55",
+    "name": "펜듈럼 가드",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M55/hit.png"
+  },
+  {
+    "id": "M56",
+    "name": "종탑 거신",
+    "state": "idle",
+    "path": "/assets/generated/monsters/M56/idle.png"
+  },
+  {
+    "id": "M56",
+    "name": "종탑 거신",
+    "state": "action",
+    "path": "/assets/generated/monsters/M56/action.png"
+  },
+  {
+    "id": "M56",
+    "name": "종탑 거신",
+    "state": "hit",
+    "path": "/assets/generated/monsters/M56/hit.png"
+  }
+]

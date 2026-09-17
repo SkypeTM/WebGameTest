@@ -69,11 +69,13 @@ function Crest({
   large = false,
   motion = "",
   state,
+  contain = false,
 }: {
   id: string;
   large?: boolean;
   motion?: string;
   state?: "idle" | "attack" | "hit" | "skill" | "dialogue" | "promotion";
+  contain?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
   const monster = id.startsWith("M");
@@ -86,12 +88,7 @@ function Crest({
         : motion === "motion-guard" || motion === "motion-heal"
           ? "skill"
           : "idle");
-  const monsterState =
-    motion === "motion-strike"
-      ? "action"
-      : motion === "motion-hit"
-        ? "hit"
-        : "idle";
+  const monsterState = motion === "motion-strike" ? "action" : "idle";
   const asset = monster
     ? monsterAssets.find(
         (item) => item.id === id && item.state === monsterState,
@@ -109,8 +106,8 @@ function Crest({
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover",
-            objectPosition: monster ? "0% 0%" : "50% 50%",
+            objectFit: monster || contain ? "contain" : "cover",
+            objectPosition: monster ? "50% 100%" : "50% 50%",
           }}
           onError={() => setFailed(true)}
         />
@@ -1157,6 +1154,7 @@ export default function Page() {
                                       hero.level >= 3 ? "promotion" : "idle"
                                     }
                                     large
+                                    contain
                                   />
                                   <div className="detail-equipped">
                                     {(
@@ -2139,6 +2137,16 @@ export default function Page() {
                   <div className="hand">
                     {battle.hand.map((c) => {
                       const info = cardInfo(c),
+                        artwork =
+                          c.kind === "skill"
+                            ? characterAssets.find(
+                                (asset) =>
+                                  asset.id === c.owner &&
+                                  asset.state === "skill",
+                              )
+                            : cardArtAssets.find(
+                                (asset) => asset.id === c.kind,
+                              ),
                         disabled =
                           locked ||
                           battle.energy < info.cost ||
@@ -2181,21 +2189,30 @@ export default function Page() {
                             {char(c.owner).name}
                           </span>
                           <span className="card-character-art">
-                            {cardArtAssets.find(
-                              (asset) => asset.id === c.kind,
-                            ) ? (
+                            {artwork ? (
                               <img
-                                src={
-                                  cardArtAssets.find(
-                                    (asset) => asset.id === c.kind,
-                                  )!.path
+                                src={artwork.path}
+                                alt={
+                                  c.kind === "skill"
+                                    ? `${char(c.owner).name} 전용 스킬`
+                                    : ""
                                 }
-                                alt=""
+                                className={
+                                  c.kind === "skill"
+                                    ? "personal-skill-art"
+                                    : undefined
+                                }
                               />
                             ) : (
                               <Crest id={c.owner} state="skill" />
                             )}
-                            <CardArt kind={c.kind} role={info.role} />
+                            {c.kind === "skill" ? (
+                              <small className="personal-skill-label">
+                                {char(c.owner).name} 전용 · {info.role}
+                              </small>
+                            ) : (
+                              <CardArt kind={c.kind} role={info.role} />
+                            )}
                           </span>
                           <strong>{info.name}</strong>
                           <span className="card-desc">{info.description}</span>

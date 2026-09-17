@@ -35,3 +35,4 @@
 - `018-cinematic-expedition-combat.md`: 시네마틱 탐사·전투·대화 연출
 - `019-character-loadout-status-system.md`: 캐릭터 장비 상세창·전투 상태·카드 트리거
 - `020-connected-combat-motion.md`: 연결형 공격·피격 전투 모션
+- `021-asset-quality-card-monster-fixes.md`: 캐릭터·아이템·카드·몬스터 자산 표시 개선

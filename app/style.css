@@ -1035,6 +1035,7 @@ summary:before {
   width: 62px;
   height: 62px;
   flex-basis: 62px;
+  border-radius: 12px;
 }
 .inventory-item span {
   width: 100%;
@@ -1074,9 +1075,10 @@ summary:before {
 .item-detail-art img {
   width: 150px;
   height: 150px;
-  object-fit: cover;
-  border: 1px solid #887c5a;
-  box-shadow: 0 8px 22px #24303366;
+  object-fit: contain;
+  border: 0;
+  filter: drop-shadow(0 8px 10px #24303377);
+  border-radius: 18px;
 }
 .item-detail-copy {
   min-height: 160px;
@@ -1120,7 +1122,7 @@ summary:before {
   width: 28px;
   height: 28px;
   flex: 0 0 28px;
-  object-fit: cover;
+  object-fit: contain;
   border: 1px solid #706b55;
   background: #10191b;
   border-radius: 3px;
@@ -2954,6 +2956,7 @@ footer {
 }
 .detail-visual .concept-art {
   object-position: 50% 18% !important;
+  image-rendering: auto;
 }
 .detail-equipped {
   position: absolute;
@@ -3197,6 +3200,21 @@ footer {
   height: 100%;
   object-fit: cover;
   filter: saturate(0.8) brightness(0.72);
+}
+.card-character-art > img.personal-skill-art {
+  object-position: 50% 42%;
+  filter: saturate(0.95) brightness(0.88) contrast(1.04);
+}
+.personal-skill-label {
+  position: absolute;
+  z-index: 3;
+  right: 5px;
+  bottom: 5px;
+  padding: 3px 5px;
+  color: #fff4d1;
+  background: #10191bd9;
+  border: 1px solid #d8ba7f88;
+  font-size: 7px;
 }
 .card-triggers {
   display: flex;

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "fortress",
+    "label": "변경 요새",
+    "path": "/assets/environments/expedition/fortress-gate.png"
+  },
+  {
+    "id": "harbor",
+    "label": "심연의 옛 항구",
+    "path": "/assets/environments/expedition/tidal-harbor.png"
+  },
+  {
+    "id": "archive",
+    "label": "침수된 지하 서고",
+    "path": "/assets/environments/expedition/forgotten-archive.png"
+  },
+  {
+    "id": "chapel",
+    "label": "폐허가 된 예배당",
+    "path": "/assets/environments/expedition/ruined-chapel.png"
+  },
+  {
+    "id": "roots",
+    "label": "뿌리의 성소",
+    "path": "/assets/environments/expedition/root-sanctuary.png"
+  },
+  {
+    "id": "village",
+    "label": "잿빛 변경 마을",
+    "path": "/assets/environments/expedition/ashen-village.png"
+  },
+  {
+    "id": "tower",
+    "label": "침묵의 종탑",
+    "path": "/assets/environments/expedition/bell-tower.png"
+  }
+]

@@ -16,6 +16,7 @@ import assetManifest from "../data/asset_manifest.json";
 import generatedAssets from "../data/generated_assets.json";
 import characterAssets from "../data/character_asset_manifest.json";
 import monsterAssets from "../data/monster_asset_manifest.json";
+import environmentAssets from "../data/environment_manifest.json";
 type MarketListing = {
   id: string;
   seller: string;
@@ -39,6 +40,22 @@ const symbols: Record<string, string> = {
   공격: "↗",
   지원: "✦",
   제어: "◎",
+};
+const environmentForRoom = (roomId: string) => {
+  const prefix = roomId.split("-")[0];
+  const region = [
+    "harbor",
+    "archive",
+    "chapel",
+    "root",
+    "village",
+    "tower",
+  ].includes(prefix)
+    ? prefix === "root"
+      ? "roots"
+      : prefix
+    : "fortress";
+  return environmentAssets.find((asset) => asset.id === region)!;
 };
 function Crest({
   id,
@@ -1569,7 +1586,7 @@ export default function Page() {
                     뽑을 카드 {battle.deck.length} · 버린 카드{" "}
                     {battle.discard.length}
                     <button
-                      className="secondary"
+                      className="secondary end-turn-button"
                       disabled={locked || battle.turn >= balance.maxBattleTurns}
                       onClick={() => void act({ type: "endTurn" })}
                     >
@@ -1577,7 +1594,30 @@ export default function Page() {
                     </button>
                   </div>
                 </div>
+                <div className="battle-flow" aria-label="전투 진행 순서">
+                  <span className="active">1 · 카드 선택</span>
+                  <span>2 · 대상에 끌기</span>
+                  <span>3 · 예상 효과 확인</span>
+                  <span>4 · 행동 해결</span>
+                </div>
                 <div className="battlefield">
+                  <img
+                    className="battle-scene-bg"
+                    src={environmentForRoom(run.room).path}
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <div className="battle-vignette" aria-hidden="true" />
+                  <div
+                    className="turn-reveal"
+                    key={battle.turn}
+                    aria-hidden="true"
+                  >
+                    <small>EXPEDITION PHASE</small>
+                    <strong>
+                      TURN {battle.turn.toString().padStart(2, "0")}
+                    </strong>
+                  </div>
                   <section className="allies">
                     <h3 className="field-label">
                       탐사대 <span>1 전열 → 4 후열 · 아군 대상 선택</span>
@@ -1846,7 +1886,13 @@ export default function Page() {
                           <span className="card-owner">
                             {char(c.owner).name}
                           </span>
-                          <CardArt kind={c.kind} role={info.role} />
+                          <span
+                            className="card-character-art"
+                            aria-hidden="true"
+                          >
+                            <Crest id={c.owner} state="dialogue" />
+                            <CardArt kind={c.kind} role={info.role} />
+                          </span>
                           <strong>{info.name}</strong>
                           <span className="card-desc">{info.description}</span>
                           <small>
@@ -1882,6 +1928,37 @@ export default function Page() {
                   <div className="section-heading">
                     <h2>탐사 경로</h2>
                     <span className="small muted">변경 요새</span>
+                  </div>
+                  <div className="expedition-stage">
+                    <img
+                      src={environmentForRoom(run.room).path}
+                      alt={`${environmentForRoom(run.room).label} 탐사 배경`}
+                    />
+                    <div className="stage-shade" aria-hidden="true" />
+                    <div className="stage-caption">
+                      <span className="eyebrow">CURRENT AREA</span>
+                      <strong>{rooms[run.room].name}</strong>
+                    </div>
+                    <div className="stage-party" aria-label="현재 탐사 대형">
+                      {run.heroes.map((hero, index) => (
+                        <div
+                          className={`stage-hero stage-rank-${index + 1}`}
+                          key={hero.id}
+                          title={`${index + 1}열 · ${char(hero.id).name}`}
+                        >
+                          <Crest id={hero.id} />
+                          <b>{index + 1}</b>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="stage-destination" aria-hidden="true">
+                      <i />
+                      <span>
+                        {pendingRoom
+                          ? rooms[pendingRoom].name
+                          : "경로를 선택하세요"}
+                      </span>
+                    </div>
                   </div>
                   <div className="route-map">
                     {["entrance", ...run.visited, ...rooms[run.room].next]
@@ -2010,6 +2087,21 @@ export default function Page() {
                     </>
                   ) : run.mode === "event" ? (
                     <>
+                      <div className="dialogue-scene">
+                        <Crest id={run.heroes[0].id} state="dialogue" large />
+                        <div>
+                          <span className="eyebrow">
+                            {char(run.heroes[0].id).name} · 현장 기록
+                          </span>
+                          <p>
+                            {rooms[run.room].kind === "rest"
+                              ? "불빛이 남아 있어요. 여기라면 잠시 장비를 고르고 숨을 돌릴 수 있습니다."
+                              : rooms[run.room].kind === "puzzle"
+                                ? "문양의 배열이 종의 기록과 닮았습니다. 답을 고르기 전에 한 번 더 살펴보죠."
+                                : "정찰대가 길을 열어 두었습니다. 보급을 받을지 바로 통과할지 결정해야 합니다."}
+                          </p>
+                        </div>
+                      </div>
                       {rooms[run.room].kind === "rest" ? (
                         <>
                           <p>

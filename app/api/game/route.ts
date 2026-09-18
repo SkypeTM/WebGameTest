@@ -1,7 +1,12 @@
-import { auth } from "../../../lib/auth";
-import { getCampaign, getMarket, getMarketHistory, claimControl, executeAction } from "../../../lib/store";
+import { getAuth } from "../../../lib/auth";
+import {
+  getCampaign,
+  getMarket,
+  getMarketHistory,
+  claimControl,
+  executeAction,
+} from "../../../lib/store";
 import { RuleError } from "../../../lib/game";
-export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 function response(value: unknown, status = 200) {
   return Response.json(value, {
@@ -10,7 +15,7 @@ function response(value: unknown, status = 200) {
   });
 }
 async function session(req: Request) {
-  const s = await auth.api.getSession({ headers: req.headers });
+  const s = await getAuth(req).api.getSession({ headers: req.headers });
   if (!s) throw new RuleError("로그인이 필요합니다.", 401);
   const client = req.headers.get("x-game-client");
   if (!client || !/^[\w-]{12,100}$/.test(client))
@@ -24,14 +29,14 @@ async function session(req: Request) {
 export async function GET(req: Request) {
   try {
     const s = await session(req),
-      row = getCampaign(s.account);
+      row = await getCampaign(s.account);
     return response({
       state: JSON.parse(row.state),
       control: row.controller === s.controller,
       name: s.name,
       account: s.account,
-      market: getMarket(),
-      marketHistory: getMarketHistory(s.account),
+      market: await getMarket(),
+      marketHistory: await getMarketHistory(s.account),
     });
   } catch (e) {
     return fail(e);
@@ -40,9 +45,10 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const origin = req.headers.get("origin");
-    const allowed = (
-      process.env.TRUSTED_ORIGINS || "http://localhost:3000"
-    ).split(",");
+    const allowed = [
+      new URL(req.url).origin,
+      ...(process.env.TRUSTED_ORIGINS || "").split(","),
+    ];
     if (!origin || !allowed.includes(origin))
       throw new RuleError("허용되지 않은 출처입니다.", 403);
     if (Number(req.headers.get("content-length") || 0) > 12000)
@@ -51,22 +57,22 @@ export async function POST(req: Request) {
     const body = await req.json();
     if (body.type === "claim")
       return response({
-        state: claimControl(s.account, s.controller),
+        state: await claimControl(s.account, s.controller),
         control: true,
         name: s.name,
         account: s.account,
-        market: getMarket(),
-        marketHistory: getMarketHistory(s.account),
+        market: await getMarket(),
+        marketHistory: await getMarketHistory(s.account),
       });
     if (!body.action || typeof body.action.type !== "string")
       throw new RuleError("행동을 지정하세요.");
     return response({
-      state: executeAction(s.account, s.controller, body),
+      state: await executeAction(s.account, s.controller, body),
       control: true,
       name: s.name,
       account: s.account,
-      market: getMarket(),
-      marketHistory: getMarketHistory(s.account),
+      market: await getMarket(),
+      marketHistory: await getMarketHistory(s.account),
     });
   } catch (e) {
     return fail(e);

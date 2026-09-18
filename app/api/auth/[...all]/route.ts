@@ -1,4 +1,9 @@
-import { auth } from "../../../../lib/auth";
-import { toNextJsHandler } from "better-auth/next-js";
-export const runtime = "nodejs";
-export const { GET, POST } = toNextJsHandler(auth);
+import { getAuth } from "../../../../lib/auth";
+
+export const dynamic = "force-dynamic";
+export async function GET(request: Request) {
+  return getAuth(request).handler(request);
+}
+export async function POST(request: Request) {
+  return getAuth(request).handler(request);
+}

@@ -7,14 +7,14 @@ process.env.DATABASE_PATH = join(
   mkdtempSync(join(tmpdir(), "bell-store-")),
   "test.sqlite",
 );
-const { db, migrateGame } = await import("../lib/db");
+const { db, migrateGame } = await import("../lib/db-node");
 const { initialGame } = await import("../lib/game");
 db.exec(
   "CREATE TABLE user(id TEXT PRIMARY KEY); INSERT INTO user VALUES ('a'),('b');",
 );
 migrateGame();
 const { claimControl, executeAction, getCampaign, getMarket, getMarketHistory } =
-  await import("../lib/store");
+  await import("../lib/store-node");
 test("atomic receipt replay, conflicting replay, concurrent versions and device control", () => {
   claimControl("a", "device-one");
   const request = {

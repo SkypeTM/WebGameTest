@@ -15,6 +15,7 @@
 
 현재 기록:
 
+- `025-collection-relics-live-deploy.md`: 통합 도감·팩션 유물·무료 라이브 배포
 - `024-fhd-live2d-quests-deck.md`: FHD 자산·Live 2D·스토리 퀘스트·덱 미리보기
 - `023-branching-expedition-forge-animation.md`: 분기 탐험·직업 무기 제작·전투 연출
 - `001-project-scan.md`: 초기 구조 파악과 검증 기준

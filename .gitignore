@@ -1,8 +1,12 @@
 node_modules/
 .pnpm-store/
 .next/
+.open-next/
+.wrangler/
+.wrangler-config/
 .env
 .env.local
+.dev.vars
 storage/
 test-results/
 playwright-report/

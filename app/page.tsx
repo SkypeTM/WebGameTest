@@ -29,6 +29,7 @@ import {
   availableRecruitIds,
   deckPreview,
   effectiveCardValue,
+  relicCatalog,
 } from "../lib/game";
 import assetManifest from "../data/asset_manifest.json";
 import generatedAssets from "../data/generated_assets.json";
@@ -54,6 +55,16 @@ type MarketHistory = {
   price: number;
   fee: number;
   status: "sold" | "cancelled" | "expired";
+};
+type CodexEntry = {
+  id: string;
+  name: string;
+  description: string;
+  asset?: string;
+  actor?: string;
+  cardKind?: Card["kind"];
+  role?: string;
+  unlockHint: string;
 };
 const char = (id: string) => characters.find((c) => c.id === id)!;
 const rankLabel = (ranks: readonly number[]) =>
@@ -123,12 +134,16 @@ function Crest({
   const actionAsset = rigStates[monster ? monsterState : visualState]
     ? { path: rigStates[monster ? monsterState : visualState] }
     : manifestActionAsset;
-  const idleAsset = rigStates.idle ? { path: rigStates.idle } : manifestIdleAsset;
+  const idleAsset = rigStates.idle
+    ? { path: rigStates.idle }
+    : manifestIdleAsset;
   const portraitPath = !monster ? `/assets/fhd/portraits/${id}.webp` : "";
   const asset = state ? actionAsset : idleAsset || actionAsset;
   if (asset?.path && !failed)
     return (
-      <div className={`${large ? "crest large" : "crest"} sprite-actor live2d-rig ${portrait ? "portrait-only" : ""} ${motion}`}>
+      <div
+        className={`${large ? "crest large" : "crest"} sprite-actor live2d-rig ${portrait ? "portrait-only" : ""} ${motion}`}
+      >
         <img
           src={portrait ? portraitPath : String(asset.path)}
           alt={id}
@@ -369,6 +384,10 @@ export default function Page() {
     [facilityTab, setFacilityTab] = useState("forge"),
     [selectedRegion, setSelectedRegion] = useState("fortress"),
     [deckOpen, setDeckOpen] = useState(false),
+    [codexOpen, setCodexOpen] = useState(false),
+    [codexTab, setCodexTab] = useState<
+      "characters" | "items" | "monsters" | "cards" | "relics"
+    >("characters"),
     [merchantHero, setMerchantHero] = useState(""),
     [merchantPreview, setMerchantPreview] = useState("idle"),
     [infoPopup, setInfoPopup] = useState<{
@@ -575,7 +594,9 @@ export default function Page() {
     battle = run?.battle,
     fx = run?.combatFx;
   const merchantHeroId = merchantHero || run?.heroes[0]?.id || "";
-  const merchantHeroState = run?.heroes.find((hero) => hero.id === merchantHeroId);
+  const merchantHeroState = run?.heroes.find(
+    (hero) => hero.id === merchantHeroId,
+  );
   const merchantStrike =
     game && merchantHeroState
       ? effectiveCardValue(game, merchantHeroState, "strike")
@@ -801,6 +822,83 @@ export default function Page() {
         </section>
       </main>
     );
+  const equipmentEntries: CodexEntry[] = Object.entries(
+    equipmentCatalog,
+  ).flatMap(([slot, entries]) =>
+    entries.map((entry) => ({
+      id: `gear:${entry.id}`,
+      name: entry.name,
+      description: `공격 +${entry.attack} · 방어 +${entry.defense} · 주문 +${entry.spell}`,
+      asset: generatedAssets.find((asset) => asset.name === entry.asset)?.path,
+      unlockHint:
+        slot === "weapon" &&
+        forgeRecipes.some((recipe) => recipe.id === entry.id)
+          ? "대장간 제작"
+          : "기본 장비 발견",
+    })),
+  );
+  const codexData: Record<typeof codexTab, CodexEntry[]> = {
+    characters: characters.map((character) => ({
+      id: character.id,
+      name: character.name,
+      description: `${professionFor(character.id).name} · ${professionFor(character.id).combatRole}`,
+      actor: character.id,
+      unlockHint: character.id.startsWith("AR")
+        ? "초기 탐사대"
+        : "스토리 퀘스트 완료",
+    })),
+    items: [
+      ...generatedAssets
+        .filter((asset) => asset.id.startsWith("loot-"))
+        .map((asset) => ({
+          id: asset.name,
+          name: asset.name,
+          description: itemDetails(asset.name).text,
+          asset: asset.path,
+          unlockHint: "맵 전투·랜덤 이벤트에서 획득",
+        })),
+      ...equipmentEntries,
+    ],
+    monsters: monsters.map((monster) => ({
+      id: monster.id,
+      name: monster.name,
+      description: `${monster.map} · ${monster.rank} · ${monster.action}`,
+      actor: monster.id,
+      unlockHint: `${monster.map}에서 조우`,
+    })),
+    cards: [
+      ...(["strike", "guard", "heavy"] as const).map((kind) => ({
+        id: `card:${kind}`,
+        name: cardInfo({ id: "codex", owner: "AR1", kind }).name,
+        description: cardInfo({ id: "codex", owner: "AR1", kind }).description,
+        cardKind: kind,
+        role: "기본",
+        unlockHint: "기본 덱",
+      })),
+      {
+        id: "card:transformed-heavy",
+        name: "암시장 집중 일격",
+        description: "암상인이 기본 공격을 고비용 강공 카드로 변화시킵니다.",
+        cardKind: "heavy" as const,
+        role: "변환",
+        unlockHint: "암상인 카드 변화 사용",
+      },
+      ...characters.map((character) => ({
+        id: `skill:${character.id}`,
+        name: `${character.name} · ${professionFor(character.id).skill}`,
+        description: professionFor(character.id).skillDescription,
+        actor: character.id,
+        unlockHint: "캐릭터 해금",
+      })),
+    ],
+    relics: relicCatalog.map((relic) => ({
+      id: relic.id,
+      name: relic.name,
+      description: relic.description,
+      asset: relic.asset,
+      unlockHint: `${regionCatalog.find((region) => region.id === relic.region)?.name} · ${relic.faction} 우호도 ${relic.requiredReputation}`,
+    })),
+  };
   return (
     <div className="shell">
       <header className="header">
@@ -837,6 +935,13 @@ export default function Page() {
                 ? "연결 중단"
                 : `저장됨 · v${game.version}`}
           </span>
+          <button
+            className="codex-button"
+            onClick={() => setCodexOpen(true)}
+            aria-label="통합 도감 열기"
+          >
+            ▤ <span>도감</span>
+          </button>
           <span className="wallet">◈ {game.gold}</span>
           <span className="username">{name}</span>
           <button
@@ -890,7 +995,9 @@ export default function Page() {
           <div>
             <span className="eyebrow">
               {run
-                ? regionCatalog.find((region) => region.id === (run.region || "fortress"))?.name
+                ? regionCatalog.find(
+                    (region) => region.id === (run.region || "fortress"),
+                  )?.name
                 : "EXPLORER’S REFUGE"}
             </span>
             <h1>{run ? roomFor(run).name : "귀환자의 거점"}</h1>
@@ -904,9 +1011,23 @@ export default function Page() {
             {run ? `탐사 ${game.runs + 1}` : `귀환 ${game.runs}회`}
             <small>{run ? `확보 대기 ◈ ${run.gold}` : "변경 요새 개방"}</small>
             {run && (
-              <button className="mini" onClick={() => setDeckOpen(true)}>
-                덱 {deckPreview(game).length}장 보기
-              </button>
+              <>
+                {run.relic && (
+                  <span className="active-relic">
+                    <img
+                      src={
+                        relicCatalog.find((relic) => relic.id === run.relic)
+                          ?.asset
+                      }
+                      alt=""
+                    />
+                    {relicCatalog.find((relic) => relic.id === run.relic)?.name}
+                  </span>
+                )}
+                <button className="mini" onClick={() => setDeckOpen(true)}>
+                  덱 {deckPreview(game).length}장 보기
+                </button>
+              </>
             )}
           </div>
         </div>
@@ -1433,9 +1554,18 @@ export default function Page() {
                                         {equipmentCatalog[slot]
                                           .filter(
                                             (gear) =>
-                                              equipmentAllowed(hero.id, slot, gear.id) &&
-                                              (!forgeRecipes.some((recipe) => recipe.id === gear.id) ||
-                                                game.craftedGear.includes(gear.id)),
+                                              equipmentAllowed(
+                                                hero.id,
+                                                slot,
+                                                gear.id,
+                                              ) &&
+                                              (!forgeRecipes.some(
+                                                (recipe) =>
+                                                  recipe.id === gear.id,
+                                              ) ||
+                                                game.craftedGear.includes(
+                                                  gear.id,
+                                                )),
                                           )
                                           .map((gear) => (
                                             <button
@@ -1485,23 +1615,54 @@ export default function Page() {
                         <div className="tower two" />
                         <div className="tower three" />
                         <span>
-                          {String(regionCatalog.findIndex((region) => region.id === selectedRegion) + 1).padStart(2, "0")} / FRONTIER
+                          {String(
+                            regionCatalog.findIndex(
+                              (region) => region.id === selectedRegion,
+                            ) + 1,
+                          ).padStart(2, "0")}{" "}
+                          / FRONTIER
                         </span>
                       </div>
                       <div className="expedition-copy">
                         <span className="eyebrow">다음 탐사</span>
-                        <h2>{regionCatalog.find((region) => region.id === selectedRegion)?.name}</h2>
-                        <p>{regionCatalog.find((region) => region.id === selectedRegion)?.description}</p>
+                        <h2>
+                          {
+                            regionCatalog.find(
+                              (region) => region.id === selectedRegion,
+                            )?.name
+                          }
+                        </h2>
+                        <p>
+                          {
+                            regionCatalog.find(
+                              (region) => region.id === selectedRegion,
+                            )?.description
+                          }
+                        </p>
                         <label>
                           출발 지역
-                          <select value={selectedRegion} onChange={(event) => setSelectedRegion(event.target.value)}>
+                          <select
+                            value={selectedRegion}
+                            onChange={(event) =>
+                              setSelectedRegion(event.target.value)
+                            }
+                          >
                             {regionCatalog.map((region) => (
                               <option
                                 key={region.id}
                                 value={region.id}
-                                disabled={!unlockedRegions(game.completedQuests).includes(region.id)}
+                                disabled={
+                                  !unlockedRegions(
+                                    game.completedQuests,
+                                  ).includes(region.id)
+                                }
                               >
-                                {region.name}{unlockedRegions(game.completedQuests).includes(region.id) ? "" : " · 잠김"}
+                                {region.name}
+                                {unlockedRegions(game.completedQuests).includes(
+                                  region.id,
+                                )
+                                  ? ""
+                                  : " · 잠김"}
                               </option>
                             ))}
                           </select>
@@ -1524,15 +1685,21 @@ export default function Page() {
                         <button
                           className="primary full"
                           disabled={locked}
-                          onClick={() => void act({ type: "enter", choice: selectedRegion })}
+                          onClick={() =>
+                            void act({ type: "enter", choice: selectedRegion })
+                          }
                         >
                           던전 입장 <span>→</span>
                         </button>
-                        <button className="secondary full" onClick={() => setDeckOpen(true)}>
+                        <button
+                          className="secondary full"
+                          onClick={() => setDeckOpen(true)}
+                        >
                           현재 덱 미리보기 · {deckPreview(game).length}장
                         </button>
                         <p className="small muted">
-                          귀환 야영지에서만 전리품을 지키며 거점으로 돌아갈 수 있습니다.
+                          귀환 야영지에서만 전리품을 지키며 거점으로 돌아갈 수
+                          있습니다.
                         </p>
                       </div>
                     </aside>
@@ -1543,10 +1710,12 @@ export default function Page() {
                       <h2>
                         팩션의 동료들{" "}
                         <span>
-                          {new Set([
-                            ...game.roster.map((hero) => hero.id),
-                            ...availableRecruitIds(game.completedQuests),
-                          ]).size}
+                          {
+                            new Set([
+                              ...game.roster.map((hero) => hero.id),
+                              ...availableRecruitIds(game.completedQuests),
+                            ]).size
+                          }
                           명
                         </span>
                       </h2>
@@ -1573,7 +1742,9 @@ export default function Page() {
                         .filter(
                           (c) =>
                             (game.roster.some((hero) => hero.id === c.id) ||
-                              availableRecruitIds(game.completedQuests).includes(c.id)) &&
+                              availableRecruitIds(
+                                game.completedQuests,
+                              ).includes(c.id)) &&
                             (filter === "전체" || c.faction === filter),
                         )
                         .map((c) => {
@@ -1733,30 +1904,63 @@ export default function Page() {
                     <section className="panel quest-timeline">
                       <div className="section-heading">
                         <h2>전체 이야기</h2>
-                        <span>{game.completedQuests.length} / {storyQuests.length}</span>
+                        <span>
+                          {game.completedQuests.length} / {storyQuests.length}
+                        </span>
                       </div>
                       {storyQuests.map((quest) => {
-                        const complete = game.completedQuests.includes(quest.id);
+                        const complete = game.completedQuests.includes(
+                          quest.id,
+                        );
                         const active = game.activeQuest === quest.id;
-                        const next = storyQuests.find((item) => !game.completedQuests.includes(item.id));
-                        const region = regionCatalog.find((item) => item.id === quest.region)!;
+                        const next = storyQuests.find(
+                          (item) => !game.completedQuests.includes(item.id),
+                        );
+                        const region = regionCatalog.find(
+                          (item) => item.id === quest.region,
+                        )!;
                         return (
-                          <article className={`quest-card ${complete ? "complete" : ""} ${active ? "active" : ""}`} key={quest.id}>
-                            <span className="quest-chapter">CH.{quest.chapter.toString().padStart(2, "0")}</span>
+                          <article
+                            className={`quest-card ${complete ? "complete" : ""} ${active ? "active" : ""}`}
+                            key={quest.id}
+                          >
+                            <span className="quest-chapter">
+                              CH.{quest.chapter.toString().padStart(2, "0")}
+                            </span>
                             <div>
                               <h3>{quest.title}</h3>
                               <small>{region.name}</small>
                               <p>{quest.story}</p>
-                              <span>보상 ◈ {quest.rewardGold} · {quest.rewardMaterial}</span>
+                              <span>
+                                보상 ◈ {quest.rewardGold} ·{" "}
+                                {quest.rewardMaterial}
+                              </span>
                             </div>
                             {complete ? (
                               <b>완료</b>
                             ) : active ? (
-                              <button disabled={locked} onClick={() => void act({ type: "quest", choice: "abandon" })}>보류</button>
+                              <button
+                                disabled={locked}
+                                onClick={() =>
+                                  void act({ type: "quest", choice: "abandon" })
+                                }
+                              >
+                                보류
+                              </button>
                             ) : (
                               <button
-                                disabled={locked || Boolean(game.activeQuest) || next?.id !== quest.id}
-                                onClick={() => void act({ type: "quest", id: quest.id, choice: "accept" })}
+                                disabled={
+                                  locked ||
+                                  Boolean(game.activeQuest) ||
+                                  next?.id !== quest.id
+                                }
+                                onClick={() =>
+                                  void act({
+                                    type: "quest",
+                                    id: quest.id,
+                                    choice: "accept",
+                                  })
+                                }
                               >
                                 수락
                               </button>
@@ -1768,11 +1972,22 @@ export default function Page() {
                     <section className="panel region-progress">
                       <h2>탐사 지역 해금</h2>
                       {regionCatalog.map((region) => {
-                        const open = unlockedRegions(game.completedQuests).includes(region.id);
+                        const open = unlockedRegions(
+                          game.completedQuests,
+                        ).includes(region.id);
                         return (
-                          <div className={`region-row ${open ? "open" : "locked"}`} key={region.id}>
-                            <strong>{open ? "◆" : "◇"} {region.name}</strong>
-                            <small>{open ? region.description : "앞선 스토리 완료 필요"}</small>
+                          <div
+                            className={`region-row ${open ? "open" : "locked"}`}
+                            key={region.id}
+                          >
+                            <strong>
+                              {open ? "◆" : "◇"} {region.name}
+                            </strong>
+                            <small>
+                              {open
+                                ? region.description
+                                : "앞선 스토리 완료 필요"}
+                            </small>
                           </div>
                         );
                       })}
@@ -1815,29 +2030,33 @@ export default function Page() {
                       )
                         .filter(([id]) => id === facilityTab)
                         .map(([id, label, description]) => {
-                        const level = game.facilities[id];
-                        const cost = balance.facilityUpgradeCost * (level + 1);
-                        return (
-                          <div className="inventory-row" key={id}>
-                            <span>
-                              <strong>
-                                {label} Lv.{level}
-                              </strong>
-                              <small className="muted"> · {description}</small>
-                            </span>
-                            <button
-                              className="mini"
-                              disabled={
-                                locked || level >= 3 || game.gold < cost
-                              }
-                              onClick={() =>
-                                void act({ type: "upgradeFacility", id })
-                              }
-                            >
-                              {level >= 3 ? "최고 단계" : `강화 · ◈ ${cost}`}
-                            </button>
-                          </div>
-                        );
+                          const level = game.facilities[id];
+                          const cost =
+                            balance.facilityUpgradeCost * (level + 1);
+                          return (
+                            <div className="inventory-row" key={id}>
+                              <span>
+                                <strong>
+                                  {label} Lv.{level}
+                                </strong>
+                                <small className="muted">
+                                  {" "}
+                                  · {description}
+                                </small>
+                              </span>
+                              <button
+                                className="mini"
+                                disabled={
+                                  locked || level >= 3 || game.gold < cost
+                                }
+                                onClick={() =>
+                                  void act({ type: "upgradeFacility", id })
+                                }
+                              >
+                                {level >= 3 ? "최고 단계" : `강화 · ◈ ${cost}`}
+                              </button>
+                            </div>
+                          );
                         })}
                       <h3>업적</h3>
                       {game.achievements.length ? (
@@ -1870,14 +2089,19 @@ export default function Page() {
                               20,
                               recipe.gold - game.facilities.forge * 10,
                             );
-                            const ready = Object.entries(recipe.materials).every(
+                            const ready = Object.entries(
+                              recipe.materials,
+                            ).every(
                               ([material, amount]) =>
                                 (game.materials[material] || 0) >= amount,
                             );
                             const owned = game.craftedGear.includes(recipe.id);
                             return (
                               <article className="forge-recipe" key={recipe.id}>
-                                <AssetIcon name={weapon.asset} alt={weapon.name} />
+                                <AssetIcon
+                                  name={weapon.asset}
+                                  alt={weapon.name}
+                                />
                                 <div>
                                   <strong>{weapon.name}</strong>
                                   <small>
@@ -1886,7 +2110,8 @@ export default function Page() {
                                       .join(" · ")}
                                   </small>
                                   <p>
-                                    공격 +{weapon.attack} · 주문 +{weapon.spell} · 방어 +{weapon.defense}
+                                    공격 +{weapon.attack} · 주문 +{weapon.spell}{" "}
+                                    · 방어 +{weapon.defense}
                                   </p>
                                   <small>
                                     {Object.entries(recipe.materials)
@@ -1899,8 +2124,15 @@ export default function Page() {
                                 </div>
                                 <button
                                   className="mini"
-                                  disabled={locked || owned || !ready || game.gold < cost}
-                                  onClick={() => void act({ type: "craft", id: recipe.id })}
+                                  disabled={
+                                    locked ||
+                                    owned ||
+                                    !ready ||
+                                    game.gold < cost
+                                  }
+                                  onClick={() =>
+                                    void act({ type: "craft", id: recipe.id })
+                                  }
                                 >
                                   {owned ? "제작 완료" : `제작 · ◈ ${cost}`}
                                 </button>
@@ -1910,38 +2142,61 @@ export default function Page() {
                         </div>
                       ) : facilityTab === "canteen" ? (
                         <p className="muted">
-                          식당 강화 단계에 따라 향후 탐사 식량과 스트레스 회복식을 제작할 수 있습니다.
+                          식당 강화 단계에 따라 향후 탐사 식량과 스트레스
+                          회복식을 제작할 수 있습니다.
                         </p>
                       ) : (
                         game.roster.map((h) => (
-                        <div className="growth-row" key={h.id}>
-                          <div>
-                            <strong>{char(h.id).name}</strong>
-                            <p className="muted small">
-                              Lv.{h.level} · 경험치 {h.xp}
-                              {h.injury ? " · 부상" : ""}
-                            </p>
+                          <div className="growth-row" key={h.id}>
+                            <div>
+                              <strong>{char(h.id).name}</strong>
+                              <p className="muted small">
+                                Lv.{h.level} · 경험치 {h.xp}
+                                {h.injury ? " · 부상" : ""}
+                              </p>
+                            </div>
+                            <div className="growth-actions">
+                              {facilityTab === "training" ? (
+                                <button
+                                  className="mini"
+                                  disabled={
+                                    locked ||
+                                    game.gold <
+                                      balance.trainingCost +
+                                        game.facilities.training * 4
+                                  }
+                                  onClick={() =>
+                                    void act({ type: "train", id: h.id })
+                                  }
+                                >
+                                  훈련 · ◈{" "}
+                                  {balance.trainingCost +
+                                    game.facilities.training * 4}
+                                </button>
+                              ) : (
+                                <button
+                                  className="mini"
+                                  disabled={
+                                    locked ||
+                                    !h.injury ||
+                                    game.gold <
+                                      Math.max(
+                                        1,
+                                        balance.healingCost -
+                                          game.facilities.infirmary * 2,
+                                      )
+                                  }
+                                  onClick={() =>
+                                    void act({ type: "heal", id: h.id })
+                                  }
+                                >
+                                  {h.injury
+                                    ? `치료 · ◈ ${Math.max(1, balance.healingCost - game.facilities.infirmary * 2)}`
+                                    : "건강"}
+                                </button>
+                              )}
+                            </div>
                           </div>
-                          <div className="growth-actions">
-                            {facilityTab === "training" ? (
-                              <button
-                                className="mini"
-                                disabled={locked || game.gold < balance.trainingCost + game.facilities.training * 4}
-                                onClick={() => void act({ type: "train", id: h.id })}
-                              >
-                                훈련 · ◈ {balance.trainingCost + game.facilities.training * 4}
-                              </button>
-                            ) : (
-                              <button
-                                className="mini"
-                                disabled={locked || !h.injury || game.gold < Math.max(1, balance.healingCost - game.facilities.infirmary * 2)}
-                                onClick={() => void act({ type: "heal", id: h.id })}
-                              >
-                                {h.injury ? `치료 · ◈ ${Math.max(1, balance.healingCost - game.facilities.infirmary * 2)}` : "건강"}
-                              </button>
-                            )}
-                          </div>
-                        </div>
                         ))
                       )}
                     </section>
@@ -2657,7 +2912,9 @@ export default function Page() {
                             {liveValue.label} {liveValue.value}
                             <small>
                               기본 {liveValue.sources.base} · 장비/스탯{" "}
-                              {liveValue.sources.equipmentAndStats >= 0 ? "+" : ""}
+                              {liveValue.sources.equipmentAndStats >= 0
+                                ? "+"
+                                : ""}
                               {liveValue.sources.equipmentAndStats}
                             </small>
                           </span>
@@ -2791,13 +3048,13 @@ export default function Page() {
                                     ? "◈"
                                     : roomFor(run, id).kind === "question"
                                       ? "?"
-                                : roomFor(run, id).kind === "rest"
-                                  ? "✦"
-                                  : roomFor(run, id).kind === "puzzle"
-                                    ? "◎"
-                                    : roomFor(run, id).kind === "exit"
-                                      ? "⌂"
-                                      : "◇"}
+                                      : roomFor(run, id).kind === "rest"
+                                        ? "✦"
+                                        : roomFor(run, id).kind === "puzzle"
+                                          ? "◎"
+                                          : roomFor(run, id).kind === "exit"
+                                            ? "⌂"
+                                            : "◇"}
                             </span>
                             {roomFor(run, id).name}
                             <small>
@@ -2813,58 +3070,89 @@ export default function Page() {
                         </div>
                       ))}
                   </div>
-                  {pendingRoom &&
-                    roomFor(run).next.includes(pendingRoom) && (
-                      <div className="route-confirm" role="status">
-                        <div>
-                          <span className="eyebrow">SELECTED ROUTE</span>
-                          <strong>{roomFor(run, pendingRoom).name}</strong>
-                          <small>
-                            {roomFor(run, pendingRoom).kind === "battle"
-                              ? "전투 지역"
-                              : roomFor(run, pendingRoom).kind === "boss"
-                                ? "보스 지역"
-                                : roomFor(run, pendingRoom).kind === "merchant"
-                                  ? "던전 상인"
-                                  : roomFor(run, pendingRoom).kind === "question"
-                                    ? "무작위 조우"
-                              : roomFor(run, pendingRoom).kind === "rest"
-                                ? "휴식 지역"
-                                : roomFor(run, pendingRoom).kind === "puzzle"
-                                  ? "수수께끼 지역"
-                                  : "탐사 지역"}
-                          </small>
-                        </div>
-                        <button
-                          className="mini"
-                          onClick={() => setPendingRoom("")}
-                        >
-                          취소
-                        </button>
-                        <button
-                          className="primary"
-                          disabled={locked}
-                          onClick={() => {
-                            const id = pendingRoom;
-                            setPendingRoom("");
-                            void act({ type: "move", id });
-                          }}
-                        >
-                          탐사 진행 →
-                        </button>
+                  {pendingRoom && roomFor(run).next.includes(pendingRoom) && (
+                    <div className="route-confirm" role="status">
+                      <div>
+                        <span className="eyebrow">SELECTED ROUTE</span>
+                        <strong>{roomFor(run, pendingRoom).name}</strong>
+                        <small>
+                          {roomFor(run, pendingRoom).kind === "battle"
+                            ? "전투 지역"
+                            : roomFor(run, pendingRoom).kind === "boss"
+                              ? "보스 지역"
+                              : roomFor(run, pendingRoom).kind === "merchant"
+                                ? "던전 상인"
+                                : roomFor(run, pendingRoom).kind === "question"
+                                  ? "무작위 조우"
+                                  : roomFor(run, pendingRoom).kind === "rest"
+                                    ? "휴식 지역"
+                                    : roomFor(run, pendingRoom).kind ===
+                                        "puzzle"
+                                      ? "수수께끼 지역"
+                                      : "탐사 지역"}
+                        </small>
                       </div>
-                    )}
+                      <button
+                        className="mini"
+                        onClick={() => setPendingRoom("")}
+                      >
+                        취소
+                      </button>
+                      <button
+                        className="primary"
+                        disabled={locked}
+                        onClick={() => {
+                          const id = pendingRoom;
+                          setPendingRoom("");
+                          void act({ type: "move", id });
+                        }}
+                      >
+                        탐사 진행 →
+                      </button>
+                    </div>
+                  )}
                 </section>
                 <section className="room-panel panel">
                   <span className="eyebrow">EXPEDITION JOURNAL</span>
                   <h2>
-                    {run.mode === "reward"
-                      ? "전투 승리"
-                      : run.mode === "defeat"
-                        ? "꺼져가는 등불"
-                        : roomFor(run).name}
+                    {run.mode === "relic"
+                      ? "팩션의 탐사 유물"
+                      : run.mode === "reward"
+                        ? "전투 승리"
+                        : run.mode === "defeat"
+                          ? "꺼져가는 등불"
+                          : roomFor(run).name}
                   </h2>
-                  {run.mode === "reward" && run.reward ? (
+                  {run.mode === "relic" ? (
+                    <>
+                      <p>
+                        스토리와 우호도 조건을 충족했습니다. 이번 탐사에서만
+                        작동할 유물 하나를 선택하세요.
+                      </p>
+                      <div className="relic-choice-grid">
+                        {run.relicChoices.map((id) => {
+                          const relic = relicCatalog.find(
+                            (item) => item.id === id,
+                          )!;
+                          return (
+                            <button
+                              key={id}
+                              className="relic-choice"
+                              disabled={locked}
+                              onClick={() =>
+                                void act({ type: "chooseRelic", id })
+                              }
+                            >
+                              <img src={relic.asset} alt={relic.name} />
+                              <strong>{relic.name}</strong>
+                              <span>{relic.description}</span>
+                              <small>이번 탐사 한정</small>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </>
+                  ) : run.mode === "reward" && run.reward ? (
                     <>
                       <div className="reward-emblem">✦</div>
                       <p>
@@ -2881,7 +3169,8 @@ export default function Page() {
                         ))}
                         {run.heroes.map((hero) => (
                           <span key={hero.id}>
-                            {char(hero.id).name} · 경험치 {hero.hp > 0 ? "+" + balance.battleXP : "+0"}
+                            {char(hero.id).name} · 경험치{" "}
+                            {hero.hp > 0 ? "+" + balance.battleXP : "+0"}
                           </span>
                         ))}
                       </div>
@@ -2925,7 +3214,7 @@ export default function Page() {
                                 ? "문양의 배열이 종의 기록과 닮았습니다. 답을 고르기 전에 한 번 더 살펴보죠."
                                 : roomFor(run).kind === "question"
                                   ? "앞의 기척이 보물인지 함정인지 알 수 없습니다. 위험을 감수할지 결정해야 합니다."
-                                : "정찰대가 길을 열어 두었습니다. 보급을 받을지 바로 통과할지 결정해야 합니다."}
+                                  : "정찰대가 길을 열어 두었습니다. 보급을 받을지 바로 통과할지 결정해야 합니다."}
                           </p>
                         </div>
                       </div>
@@ -2981,13 +3270,20 @@ export default function Page() {
                           <div className="choices">
                             <button
                               disabled={locked}
-                              onClick={() => void act({ type: "event", choice: "investigate" })}
+                              onClick={() =>
+                                void act({
+                                  type: "event",
+                                  choice: "investigate",
+                                })
+                              }
                             >
                               위험을 감수하고 조사
                             </button>
                             <button
                               disabled={locked}
-                              onClick={() => void act({ type: "event", choice: "avoid" })}
+                              onClick={() =>
+                                void act({ type: "event", choice: "avoid" })
+                              }
                             >
                               안전하게 우회
                             </button>
@@ -3024,33 +3320,60 @@ export default function Page() {
                   ) : run.mode === "merchant" ? (
                     <>
                       <MerchantLive2D state={merchantPreview} />
-                      <p>암상인은 희귀 재료와 카드 수선 도구를 펼쳐 놓았습니다.</p>
+                      <p>
+                        암상인은 희귀 재료와 카드 수선 도구를 펼쳐 놓았습니다.
+                      </p>
                       <label>
                         대상 동료
                         <select
                           id="merchant-hero"
                           value={merchantHeroId}
-                          onChange={(event) => setMerchantHero(event.target.value)}
+                          onChange={(event) =>
+                            setMerchantHero(event.target.value)
+                          }
                         >
                           {run.heroes.map((hero) => (
                             <option key={hero.id} value={hero.id}>
-                              {char(hero.id).name} · {professionFor(hero.id).name}
+                              {char(hero.id).name} ·{" "}
+                              {professionFor(hero.id).name}
                             </option>
                           ))}
                         </select>
                       </label>
                       <div className="merchant-actions">
                         {[
-                          ["heal", `체력 ${merchantHeroState?.hp || 0} → ${Math.min(merchantHeroState?.maxHp || 0, (merchantHeroState?.hp || 0) + 28)}`, 20, "welcome"],
+                          [
+                            "heal",
+                            `체력 ${merchantHeroState?.hp || 0} → ${Math.min(merchantHeroState?.maxHp || 0, (merchantHeroState?.hp || 0) + 28)}`,
+                            20,
+                            "welcome",
+                          ],
                           ["rare", "월광 합금 1개 획득", 45, "rare"],
-                          ["upgrade", `기본 공격 피해 ${merchantStrike?.value || 0} → ${(merchantStrike?.value || 0) + 4}`, 30, "exchange"],
-                          ["remove", `기본 공격 카드 1장 삭제 ?`, 40, "exchange"],
-                          ["transform", `${merchantStrike?.name || "기본 공격"} → ${merchantHeavy?.name || "강공"} ?`, 35, "exchange"],
+                          [
+                            "upgrade",
+                            `기본 공격 피해 ${merchantStrike?.value || 0} → ${(merchantStrike?.value || 0) + 4}`,
+                            30,
+                            "exchange",
+                          ],
+                          [
+                            "remove",
+                            `기본 공격 카드 1장 삭제 ?`,
+                            40,
+                            "exchange",
+                          ],
+                          [
+                            "transform",
+                            `${merchantStrike?.name || "기본 공격"} → ${merchantHeavy?.name || "강공"} ?`,
+                            35,
+                            "exchange",
+                          ],
                         ].map(([choice, label, cost, pose]) => (
                           <button
                             key={choice}
                             disabled={locked || run.gold < Number(cost)}
-                            onMouseEnter={() => setMerchantPreview(String(pose))}
+                            onMouseEnter={() =>
+                              setMerchantPreview(String(pose))
+                            }
                             onMouseLeave={() => setMerchantPreview("idle")}
                             onFocus={() => setMerchantPreview(String(pose))}
                             onClick={() =>
@@ -3068,7 +3391,10 @@ export default function Page() {
                                 max={merchantHeroState.maxHp}
                                 preview={{
                                   hpBefore: merchantHeroState.hp,
-                                  hpAfter: Math.min(merchantHeroState.maxHp, merchantHeroState.hp + 28),
+                                  hpAfter: Math.min(
+                                    merchantHeroState.maxHp,
+                                    merchantHeroState.hp + 28,
+                                  ),
                                   maxHp: merchantHeroState.maxHp,
                                   shieldBefore: merchantHeroState.shield,
                                   shieldAfter: merchantHeroState.shield,
@@ -3082,7 +3408,9 @@ export default function Page() {
                       <button
                         className="primary full"
                         disabled={locked}
-                        onClick={() => void act({ type: "merchant", choice: "leave" })}
+                        onClick={() =>
+                          void act({ type: "merchant", choice: "leave" })
+                        }
                       >
                         거래를 마치고 이동
                       </button>
@@ -3109,7 +3437,9 @@ export default function Page() {
                         </button>
                       )}
                       {roomFor(run).kind !== "rest" && (
-                        <p className="small muted">귀환은 휴식지에서만 가능합니다.</p>
+                        <p className="small muted">
+                          귀환은 휴식지에서만 가능합니다.
+                        </p>
                       )}
                     </>
                   )}
@@ -3134,33 +3464,146 @@ export default function Page() {
           </>
         )}
         {deckOpen && (
-          <div className="deck-modal-backdrop" role="dialog" aria-modal="true" aria-label="현재 덱 미리보기">
+          <div
+            className="deck-modal-backdrop"
+            role="dialog"
+            aria-modal="true"
+            aria-label="현재 덱 미리보기"
+          >
             <section className="deck-modal">
               <div className="section-heading">
                 <div>
                   <span className="eyebrow">TACTICAL DECK</span>
                   <h2>현재 덱 · {deckPreview(game).length}장</h2>
                 </div>
-                <button className="mini" onClick={() => setDeckOpen(false)}>닫기 ×</button>
+                <button className="mini" onClick={() => setDeckOpen(false)}>
+                  닫기 ×
+                </button>
               </div>
-              <p className="muted small">장비·직업 능력치·시설·카드 강화·현재 디버프를 모두 반영한 수치입니다.</p>
+              <p className="muted small">
+                장비·직업 능력치·시설·카드 강화·현재 디버프를 모두 반영한
+                수치입니다.
+              </p>
               <div className="deck-preview-grid">
                 {deckPreview(game).map(({ card, value, transformed }) => (
-                  <article className={`deck-preview-card card-${card.kind}`} key={card.id}>
+                  <article
+                    className={`deck-preview-card card-${card.kind}`}
+                    key={card.id}
+                  >
                     <span className="card-cost">{value.cost}</span>
                     {card.kind === "skill" ? (
                       <Crest id={card.owner} state="skill" />
                     ) : (
                       <CardArt kind={card.kind} role={value.role} />
                     )}
-                    <small>{char(card.owner).name} · {professionFor(card.owner).name}</small>
-                    <h3>{value.name}{transformed ? " · 변경됨" : ""}</h3>
-                    <strong>{value.label} {value.value}</strong>
-                    <p>기본 {value.sources.base} · 능력/장비 {value.sources.equipmentAndStats >= 0 ? "+" : ""}{value.sources.equipmentAndStats}</p>
-                    {value.sources.cardUpgrade > 0 && <b>카드 진화 +{value.sources.cardUpgrade}</b>}
+                    <small>
+                      {char(card.owner).name} · {professionFor(card.owner).name}
+                    </small>
+                    <h3>
+                      {value.name}
+                      {transformed ? " · 변경됨" : ""}
+                    </h3>
+                    <strong>
+                      {value.label} {value.value}
+                    </strong>
+                    <p>
+                      기본 {value.sources.base} · 능력/장비{" "}
+                      {value.sources.equipmentAndStats >= 0 ? "+" : ""}
+                      {value.sources.equipmentAndStats}
+                    </p>
+                    {value.sources.cardUpgrade > 0 && (
+                      <b>카드 진화 +{value.sources.cardUpgrade}</b>
+                    )}
                     <span>{value.description}</span>
                   </article>
                 ))}
+              </div>
+            </section>
+          </div>
+        )}
+        {codexOpen && (
+          <div
+            className="codex-backdrop"
+            role="dialog"
+            aria-modal="true"
+            aria-label="통합 도감"
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) setCodexOpen(false);
+            }}
+          >
+            <section className="codex-modal">
+              <div className="section-heading">
+                <div>
+                  <span className="eyebrow">ARCHIVE / COLLECTION</span>
+                  <h2>침묵의 종 도감</h2>
+                </div>
+                <button className="mini" onClick={() => setCodexOpen(false)}>
+                  닫기 ×
+                </button>
+              </div>
+              <nav className="codex-tabs" aria-label="도감 분류">
+                {(
+                  [
+                    ["characters", "캐릭터"],
+                    ["items", "아이템"],
+                    ["monsters", "몬스터"],
+                    ["cards", "카드"],
+                    ["relics", "유물"],
+                  ] as const
+                ).map(([id, label]) => {
+                  const unlocked = codexData[id].filter((entry) =>
+                    game.codex[id].includes(entry.id),
+                  ).length;
+                  return (
+                    <button
+                      key={id}
+                      className={codexTab === id ? "active" : ""}
+                      onClick={() => setCodexTab(id)}
+                    >
+                      {label}{" "}
+                      <small>
+                        {unlocked}/{codexData[id].length}
+                      </small>
+                    </button>
+                  );
+                })}
+              </nav>
+              <div className="collection-grid">
+                {codexData[codexTab].map((entry) => {
+                  const unlocked = game.codex[codexTab].includes(entry.id);
+                  return (
+                    <article
+                      className={`codex-entry ${unlocked ? "unlocked" : "locked"}`}
+                      key={entry.id}
+                    >
+                      <div className="codex-visual">
+                        {entry.actor ? (
+                          <Crest id={entry.actor} state="idle" contain />
+                        ) : entry.cardKind ? (
+                          <CardArt
+                            kind={entry.cardKind}
+                            role={entry.role || "카드"}
+                          />
+                        ) : entry.asset ? (
+                          <img
+                            src={entry.asset}
+                            alt={unlocked ? entry.name : "잠긴 항목"}
+                          />
+                        ) : (
+                          <span>?</span>
+                        )}
+                        {!unlocked && <b>?</b>}
+                      </div>
+                      <small>{unlocked ? "해금 완료" : entry.unlockHint}</small>
+                      <h3>{unlocked ? entry.name : "미확인 기록"}</h3>
+                      <p>
+                        {unlocked
+                          ? entry.description
+                          : "조건을 달성하면 상세 기록이 공개됩니다."}
+                      </p>
+                    </article>
+                  );
+                })}
               </div>
             </section>
           </div>

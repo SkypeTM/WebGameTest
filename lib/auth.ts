@@ -1,28 +1,37 @@
 import { betterAuth } from "better-auth";
-import { randomBytes } from "node:crypto";
-import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { db } from "./db";
-function secret() {
-  if (process.env.BETTER_AUTH_SECRET) return process.env.BETTER_AUTH_SECRET;
-  if (
-    process.env.NODE_ENV === "production" &&
-    process.env.NEXT_PHASE !== "phase-production-build"
-  )
-    throw new Error("운영 실행에는 BETTER_AUTH_SECRET이 필요합니다.");
-  mkdirSync("storage", { recursive: true });
-  const path = "storage/development-secret";
-  if (!existsSync(path))
-    writeFileSync(path, randomBytes(48).toString("base64url"), { mode: 0o600 });
-  return readFileSync(path, "utf8");
+import { cloudEnv } from "./cloud";
+
+export function getAuth(request?: Request) {
+  const env = cloudEnv();
+  const origin = request ? new URL(request.url).origin : undefined;
+  const forwardedHost =
+    request?.headers.get("x-forwarded-host") || request?.headers.get("host");
+  const forwardedProtocol =
+    request?.headers.get("x-forwarded-proto") ||
+    (origin ? new URL(origin).protocol.slice(0, -1) : "https");
+  const publicOrigin = forwardedHost
+    ? `${forwardedProtocol}://${forwardedHost}`
+    : origin;
+  const baseURL =
+    env.BETTER_AUTH_URL || publicOrigin || "http://localhost:3000";
+  if (!env.BETTER_AUTH_SECRET)
+    throw new Error("BETTER_AUTH_SECRET binding이 필요합니다.");
+  return betterAuth({
+    database: env.DB as never,
+    secret: env.BETTER_AUTH_SECRET,
+    baseURL,
+    emailAndPassword: { enabled: true, minPasswordLength: 8 },
+    session: { expiresIn: 60 * 60 * 24 * 7 },
+    rateLimit: { enabled: true, window: 60, max: 50 },
+    trustedOrigins: Array.from(
+      new Set(
+        [
+          baseURL,
+          ...(env.TRUSTED_ORIGINS || "").split(","),
+          origin,
+          publicOrigin,
+        ].filter(Boolean),
+      ),
+    ) as string[],
+  });
 }
-export const auth = betterAuth({
-  database: db,
-  secret: secret(),
-  baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
-  emailAndPassword: { enabled: true, minPasswordLength: 8 },
-  session: { expiresIn: 60 * 60 * 24 * 7 },
-  rateLimit: { enabled: true, window: 60, max: 50 },
-  trustedOrigins: (
-    process.env.TRUSTED_ORIGINS || "http://localhost:3000"
-  ).split(","),
-});

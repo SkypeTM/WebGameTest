@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
-  serverExternalPackages: ["better-auth"],
+  images: { unoptimized: true },
   devIndicators: false,
   outputFileTracingExcludes: {
     "/*": ["./storage/**/*", "./test-results/**/*", "./playwright-report/**/*"],
   },
 };
 export default config;
+
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+initOpenNextCloudflareForDev();

@@ -16,6 +16,7 @@ import {
   availableRecruitIds,
   unlockedRegions,
   deckPreview,
+  relicCatalog,
   type Game,
   type Action,
 } from "../lib/game";
@@ -373,7 +374,14 @@ test("professions constrain gear, distribute stats and recommend formation", () 
 });
 test("branching route contains four layers, required nodes and rest-only return", () => {
   const route = createExpeditionRoute(9, 2);
-  assert.deepEqual(new Set(Object.values(route).filter((r) => r.layer && r.layer <= 4).map((r) => r.layer)), new Set([1, 2, 3, 4]));
+  assert.deepEqual(
+    new Set(
+      Object.values(route)
+        .filter((r) => r.layer && r.layer <= 4)
+        .map((r) => r.layer),
+    ),
+    new Set([1, 2, 3, 4]),
+  );
   for (const kind of ["battle", "merchant", "rest", "question", "boss"])
     assert.ok(Object.values(route).some((room) => room.kind === kind));
   let g = act(initialGame(), { type: "enter" });
@@ -390,9 +398,22 @@ test("forge crafts and equips a profession weapon from account materials", () =>
   g.materials["성문 경첩"] = 1;
   g = act(g, { type: "craft", id: "bastion-blade" });
   assert.ok(g.craftedGear.includes("bastion-blade"));
-  g = act(g, { type: "equip", id: "AR1", item: "weapon", choice: "bastion-blade" });
+  assert.ok(g.codex.items.includes("gear:bastion-blade"));
+  g = act(g, {
+    type: "equip",
+    id: "AR1",
+    item: "weapon",
+    choice: "bastion-blade",
+  });
   assert.equal(g.roster[0].loadout.weapon, "bastion-blade");
-  assert.throws(() => act(g, { type: "equip", id: "AR2", item: "weapon", choice: "bastion-blade" }));
+  assert.throws(() =>
+    act(g, {
+      type: "equip",
+      id: "AR2",
+      item: "weapon",
+      choice: "bastion-blade",
+    }),
+  );
 });
 test("story quests unlock recruits, maps and live deck values persist", () => {
   let g = initialGame();
@@ -403,6 +424,7 @@ test("story quests unlock recruits, maps and live deck values persist", () => {
   g.run!.mode = "map";
   g = act(g, { type: "return" });
   assert.ok(g.completedQuests.includes("Q01"));
+  assert.ok(g.codex.characters.includes("VR1"));
   assert.deepEqual(availableRecruitIds(g.completedQuests), ["VR1", "VR2"]);
   g = act(g, { type: "quest", id: "Q02", choice: "accept" });
   g = act(g, { type: "enter", choice: "fortress" });
@@ -414,4 +436,20 @@ test("story quests unlock recruits, maps and live deck values persist", () => {
   g = act(g, { type: "enter", choice: "harbor" });
   assert.equal(g.run!.region, "harbor");
   assert.equal(deckPreview(g).length, 16);
+});
+test("faction relic choice is run-only and discoveries persist in the codex", () => {
+  let g = initialGame();
+  g.completedQuests = ["Q01"];
+  g.reputation.AR = 10;
+  g = act(g, { type: "enter", choice: "fortress" });
+  assert.equal(g.run!.mode, "relic");
+  assert.equal(g.run!.relicChoices.length, 3);
+  const relic = relicCatalog.find((item) => item.id === "fortress-3")!;
+  g = act(g, { type: "chooseRelic", id: relic.id });
+  assert.equal(g.run!.relic, relic.id);
+  assert.ok(g.codex.relics.includes(relic.id));
+  g = act(g, { type: "move", id: "l1-battle" });
+  assert.equal(g.run!.battle!.energy, 5);
+  assert.ok(g.codex.monsters.includes("M01"));
+  assert.ok(g.codex.monsters.includes("M02"));
 });

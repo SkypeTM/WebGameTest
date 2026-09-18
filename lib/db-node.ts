@@ -15,11 +15,15 @@ db.exec(
 export function migrateGame() {
   db.exec(readFileSync(resolve("migrations/001-game.sql"), "utf8"));
   try {
-    db.exec("ALTER TABLE market_listing ADD COLUMN expires_at TEXT NOT NULL DEFAULT ''");
+    db.exec(
+      "ALTER TABLE market_listing ADD COLUMN expires_at TEXT NOT NULL DEFAULT ''",
+    );
   } catch {
     // Existing databases already have the compatibility column.
   }
-  db.exec("UPDATE market_listing SET expires_at=created_at WHERE expires_at=''");
+  db.exec(
+    "UPDATE market_listing SET expires_at=created_at WHERE expires_at=''",
+  );
 }
 export function transaction<T>(fn: () => T): T {
   db.exec("BEGIN IMMEDIATE");

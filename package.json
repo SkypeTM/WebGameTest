@@ -7,6 +7,12 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
+    "build:cloudflare": "node scripts/patch-opennext-windows.mjs && opennextjs-cloudflare build",
+    "preview:cloudflare": "pnpm build:cloudflare && opennextjs-cloudflare preview",
+    "deploy:cloudflare": "pnpm build:cloudflare && opennextjs-cloudflare deploy",
+    "deploy:temporary": "pnpm build:cloudflare && wrangler deploy --temporary",
+    "db:migrate:cloudflare": "wrangler d1 migrations apply DB --remote",
+    "db:migrate:cloudflare:local": "wrangler d1 migrations apply DB --local",
     "start": "next start --hostname 0.0.0.0",
     "db:migrate": "node --env-file-if-exists=.env.local --import tsx scripts/migrate.ts",
     "test:server": "node scripts/e2e-server.mjs",
@@ -25,12 +31,14 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.6",
     "@playwright/test": "1.63.0",
     "@types/node": "22.20.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "prettier": "3.9.6",
     "tsx": "4.23.13",
-    "typescript": "7.0.2"
+    "typescript": "7.0.2",
+    "wrangler": "^4.133.0"
   }
 }

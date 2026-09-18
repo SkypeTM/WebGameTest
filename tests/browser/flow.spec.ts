@@ -323,6 +323,14 @@ test("hub growth and market surfaces are playable", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: "귀환자의 거점" }),
   ).toBeVisible();
+  await page.getByRole("button", { name: "통합 도감 열기" }).click();
+  await expect(
+    page.getByRole("heading", { name: "침묵의 종 도감" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: /캐릭터 4\/32/ }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "닫기 ×", exact: true }).click();
   await page.getByRole("button", { name: "거점 시설" }).click();
   const facilityDialog = page.getByRole("dialog", { name: "거점 장소 정보" });
   await expect(

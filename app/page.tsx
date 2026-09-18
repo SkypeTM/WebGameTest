@@ -39,6 +39,10 @@ import environmentAssets from "../data/environment_manifest.json";
 import cardArtAssets from "../data/card_art_manifest.json";
 import live2dAssets from "../data/live2d_manifest.json";
 import merchantAssets from "../data/merchant_asset_manifest.json";
+import {
+  Actor3D,
+  threeDimensionalActors,
+} from "./components/Actor3D";
 type MarketListing = {
   id: string;
   seller: string;
@@ -185,6 +189,32 @@ function Crest({
       <span>{id}</span>
     </div>
   );
+}
+
+function BattleActor({
+  id,
+  motion = "",
+  full = false,
+  large = false,
+}: {
+  id: string;
+  motion?: string;
+  full?: boolean;
+  large?: boolean;
+}) {
+  if (!threeDimensionalActors.has(id))
+    return <Crest id={id} large={large || full} contain motion={motion} />;
+  const threeMotion = motion.includes("strike")
+    ? "attack"
+    : motion.includes("hit")
+      ? "hit"
+      : motion.includes("death")
+        ? "death"
+        : "idle";
+  const label = id.startsWith("M")
+    ? `${monsters.find((monster) => monster.id === id)?.name || id} 3D 모델`
+    : `${char(id).name} 3D 모델`;
+  return <Actor3D id={id} motion={threeMotion} full={full} label={label} />;
 }
 function MerchantLive2D({ state = "idle" }: { state?: string }) {
   const asset =
@@ -2528,18 +2558,16 @@ export default function Page() {
                         aria-hidden="true"
                       >
                         <div className="cut-in-actor">
-                          <Crest
+                          <BattleActor
                             id={fx.actor}
-                            large
-                            contain
+                            full
                             motion="motion-strike"
                           />
                         </div>
                         <div className="cut-in-target">
-                          <Crest
+                          <BattleActor
                             id={fx.target.split(":")[0]}
-                            large
-                            contain
+                            full
                             motion="motion-hit"
                           />
                         </div>
@@ -2601,7 +2629,7 @@ export default function Page() {
                             {index === 0 ? "전" : index === 3 ? "후" : "중"}
                           </small>
                         </span>
-                        <Crest
+                        <BattleActor
                           key={`crest-${h.id}-${fx?.nonce ?? "idle"}`}
                           id={h.id}
                           motion={motionFor(h.id, "hero")}
@@ -2725,7 +2753,7 @@ export default function Page() {
                               setPreviewTarget("");
                             }}
                           >
-                            <Crest
+                            <BattleActor
                               key={`crest-${e.id}-${fx?.nonce ?? "idle"}`}
                               id={e.id}
                               large

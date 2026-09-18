@@ -388,6 +388,6 @@ test("HD portraits, procedural route and full-size combat cut-in render", async 
   )!;
   await playCard(page, attack.id, game.run!.battle!.enemies[0].id);
   await expect(page.locator(".combat-cut-in")).toBeAttached();
-  await expect(page.locator(".combat-cut-in .crest img")).toHaveCount(2);
+  await expect(page.locator(".combat-cut-in canvas.actor-3d")).toHaveCount(2);
   await page.screenshot({ path: "test-results/visual-patch.png", fullPage: true });
 });

@@ -2184,7 +2184,8 @@ footer {
   width: 44%;
   height: 108%;
 }
-.combat-cut-in .crest.large {
+.combat-cut-in .crest.large,
+.combat-cut-in .actor-3d {
   width: 100%;
   height: 100%;
   border: 0;
@@ -2253,6 +2254,34 @@ footer {
   width: 72px;
   min-width: 72px;
   animation: field-idle 3.2s ease-in-out infinite;
+}
+.actor-3d {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  filter: drop-shadow(0 12px 9px #000a);
+  transition: filter 180ms ease, transform 180ms ease;
+}
+.battlefield .ally .actor-3d {
+  width: 76px;
+  min-width: 76px;
+  height: 92px;
+}
+.battlefield .enemy .actor-3d {
+  width: min(100%, 240px);
+  height: 235px;
+  margin: auto;
+}
+.battlefield button:hover .actor-3d,
+.battlefield button:focus-visible .actor-3d,
+.battlefield .targetable .actor-3d {
+  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 14px #d8ba7f);
+  transform: scale(1.045);
+}
+.actor-3d-full {
+  min-width: 100%;
+  min-height: 100%;
 }
 .battlefield .ally:nth-of-type(3n) .crest {
   animation-delay: -1.1s;

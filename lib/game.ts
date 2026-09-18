@@ -155,6 +155,195 @@ export const cardTriggerDefinitions = {
   },
 } as const;
 export type CardTrigger = keyof typeof cardTriggerDefinitions;
+export type ProfessionId =
+  | "bulwark"
+  | "sentinel"
+  | "duelist"
+  | "ranger"
+  | "medic"
+  | "chaplain"
+  | "runesmith"
+  | "tactician";
+export const professionCatalog = {
+  bulwark: {
+    id: "bulwark",
+    name: "방벽기사",
+    combatRole: "주 방어 · 도발",
+    family: "수호",
+    preferredRanks: [1, 2],
+    priority: 1,
+    hp: 76,
+    mana: 2,
+    attack: 6,
+    defense: 15,
+    spell: 2,
+    crit: 3,
+    trait: "불굴의 성벽",
+    traitDescription:
+      "전열에서 받는 피해를 버티는 높은 체력과 방어력을 가집니다.",
+    skill: "방패 반격",
+    skillDescription: "아군에게 보호막 20, 반격 5, 가시 3을 부여합니다.",
+    description:
+      "가장 앞에서 공격을 받아내며 파티의 붕괴를 막는 중장 수호 직업입니다.",
+  },
+  sentinel: {
+    id: "sentinel",
+    name: "파수기사",
+    combatRole: "보조 방어 · 감시",
+    family: "수호",
+    preferredRanks: [1, 2],
+    priority: 1.25,
+    hp: 70,
+    mana: 3,
+    attack: 8,
+    defense: 12,
+    spell: 3,
+    crit: 5,
+    trait: "경계 태세",
+    traitDescription:
+      "방어와 공격의 균형이 좋아 1·2열을 모두 안정적으로 지킵니다.",
+    skill: "방패 반격",
+    skillDescription: "아군에게 보호막 20, 반격 5, 가시 3을 부여합니다.",
+    description:
+      "적의 움직임을 감시하며 전열의 빈틈을 메우는 균형형 수호 직업입니다.",
+  },
+  duelist: {
+    id: "duelist",
+    name: "결투가",
+    combatRole: "근접 피해 · 처형",
+    family: "공격",
+    preferredRanks: [1, 2],
+    priority: 1.75,
+    hp: 62,
+    mana: 3,
+    attack: 14,
+    defense: 6,
+    spell: 3,
+    crit: 10,
+    trait: "빈틈 추적",
+    traitDescription:
+      "높은 공격력과 치명타로 표식이 남은 적을 빠르게 마무리합니다.",
+    skill: "관통 표식",
+    skillDescription: "방어를 관통하는 피해 13과 표적 4, 중독 2를 적용합니다.",
+    description:
+      "전열에서 한 대상을 집중 공격하는 고위험 근접 공격 직업입니다.",
+  },
+  ranger: {
+    id: "ranger",
+    name: "추적사수",
+    combatRole: "원거리 피해 · 표식",
+    family: "공격",
+    preferredRanks: [2, 3],
+    priority: 2.25,
+    hp: 58,
+    mana: 4,
+    attack: 12,
+    defense: 5,
+    spell: 5,
+    crit: 12,
+    trait: "원거리 조준",
+    traitDescription: "2·3열에서 높은 치명타와 표식 연계 피해를 냅니다.",
+    skill: "관통 표식",
+    skillDescription: "방어를 관통하는 피해 13과 표적 4, 중독 2를 적용합니다.",
+    description:
+      "안전한 중열에서 표식을 새기고 약점을 노리는 원거리 공격 직업입니다.",
+  },
+  medic: {
+    id: "medic",
+    name: "전투의무관",
+    combatRole: "회복 · 부상 완화",
+    family: "지원",
+    preferredRanks: [3, 4],
+    priority: 3.25,
+    hp: 60,
+    mana: 6,
+    attack: 4,
+    defense: 7,
+    spell: 13,
+    crit: 4,
+    trait: "응급 처치",
+    traitDescription:
+      "높은 주문력과 마나로 아군의 체력과 스트레스를 관리합니다.",
+    skill: "응급 회복",
+    skillDescription: "아군 체력을 16 회복하고 스트레스를 2 낮춥니다.",
+    description: "후열에서 전투 지속력을 책임지는 치료 중심 지원 직업입니다.",
+  },
+  chaplain: {
+    id: "chaplain",
+    name: "성가사제",
+    combatRole: "회복 · 강화",
+    family: "지원",
+    preferredRanks: [3, 4],
+    priority: 3.5,
+    hp: 56,
+    mana: 7,
+    attack: 3,
+    defense: 6,
+    spell: 15,
+    crit: 3,
+    trait: "고요한 성가",
+    traitDescription:
+      "가장 높은 주문력과 마나로 후열에서 회복을 오래 유지합니다.",
+    skill: "응급 회복",
+    skillDescription: "아군 체력을 16 회복하고 스트레스를 2 낮춥니다.",
+    description: "마법과 의식으로 파티를 회복시키는 순수 후열 지원 직업입니다.",
+  },
+  runesmith: {
+    id: "runesmith",
+    name: "룬술사",
+    combatRole: "약화 · 기절",
+    family: "제어",
+    preferredRanks: [3, 4],
+    priority: 3,
+    hp: 55,
+    mana: 7,
+    attack: 4,
+    defense: 5,
+    spell: 14,
+    crit: 5,
+    trait: "연쇄 공명",
+    traitDescription:
+      "높은 주문력으로 감전과 기절 효과를 강화하는 후열 제어 직업입니다.",
+    skill: "룬 사슬",
+    skillDescription: "피해 6과 기절 1, 감전 2를 적용해 적의 행동을 끊습니다.",
+    description:
+      "후열에서 룬을 연결해 적의 행동과 상태를 통제하는 주문 직업입니다.",
+  },
+  tactician: {
+    id: "tactician",
+    name: "사슬전술가",
+    combatRole: "행동 제어 · 보조 피해",
+    family: "제어",
+    preferredRanks: [2, 3],
+    priority: 2.75,
+    hp: 61,
+    mana: 5,
+    attack: 7,
+    defense: 7,
+    spell: 10,
+    crit: 7,
+    trait: "전장 계산",
+    traitDescription:
+      "중열에서 공격과 제어를 번갈아 사용하기 좋은 균형형 능력치를 가집니다.",
+    skill: "룬 사슬",
+    skillDescription: "피해 6과 기절 1, 감전 2를 적용해 적의 행동을 끊습니다.",
+    description:
+      "중열에서 적의 의도를 읽고 행동 순서를 무너뜨리는 전술 직업입니다.",
+  },
+} as const satisfies Record<ProfessionId, Record<string, unknown>>;
+const professionByRole = {
+  수호: ["bulwark", "sentinel"],
+  공격: ["duelist", "ranger"],
+  지원: ["medic", "chaplain"],
+  제어: ["runesmith", "tactician"],
+} as const;
+export function professionFor(id: string) {
+  const character = characters.find((item) => item.id === id)!;
+  const factionIndex = Math.max(0, factionCodes.indexOf(id.slice(0, 2)));
+  const variants =
+    professionByRole[character.role as keyof typeof professionByRole];
+  return professionCatalog[variants[factionIndex % variants.length]];
+}
 export const equipmentCatalog = {
   weapon: [
     {
@@ -164,6 +353,7 @@ export const equipmentCatalog = {
       attack: 2,
       spell: 0,
       defense: 0,
+      professions: ["bulwark", "sentinel", "duelist", "medic"],
     },
     {
       id: "spear",
@@ -172,6 +362,7 @@ export const equipmentCatalog = {
       attack: 4,
       spell: 0,
       defense: 0,
+      professions: ["sentinel", "duelist", "ranger", "tactician"],
     },
     {
       id: "focus",
@@ -180,6 +371,7 @@ export const equipmentCatalog = {
       attack: 0,
       spell: 4,
       defense: 0,
+      professions: ["medic", "chaplain", "runesmith", "tactician"],
     },
   ],
   armor: [
@@ -190,6 +382,7 @@ export const equipmentCatalog = {
       attack: 0,
       spell: 0,
       defense: 2,
+      professions: ["sentinel", "duelist", "ranger", "medic", "tactician"],
     },
     {
       id: "plate",
@@ -198,6 +391,7 @@ export const equipmentCatalog = {
       attack: 0,
       spell: 0,
       defense: 5,
+      professions: ["bulwark", "sentinel", "duelist"],
     },
     {
       id: "vestment",
@@ -206,6 +400,7 @@ export const equipmentCatalog = {
       attack: 0,
       spell: 3,
       defense: 1,
+      professions: ["medic", "chaplain", "runesmith", "tactician"],
     },
   ],
   trinket: [
@@ -216,6 +411,14 @@ export const equipmentCatalog = {
       attack: 0,
       spell: 0,
       defense: 2,
+      professions: [
+        "bulwark",
+        "sentinel",
+        "ranger",
+        "medic",
+        "chaplain",
+        "tactician",
+      ],
     },
     {
       id: "ember",
@@ -224,6 +427,7 @@ export const equipmentCatalog = {
       attack: 2,
       spell: 2,
       defense: 0,
+      professions: ["duelist", "ranger", "medic", "chaplain", "runesmith"],
     },
     {
       id: "thorn",
@@ -232,6 +436,7 @@ export const equipmentCatalog = {
       attack: 1,
       spell: 0,
       defense: 1,
+      professions: ["bulwark", "duelist", "ranger", "runesmith", "tactician"],
     },
   ],
 } as const;
@@ -240,6 +445,40 @@ export type Loadout = {
   armor: (typeof equipmentCatalog.armor)[number]["id"];
   trinket: (typeof equipmentCatalog.trinket)[number]["id"];
 };
+const defaultLoadouts: Record<ProfessionId, Loadout> = {
+  bulwark: { weapon: "blade", armor: "plate", trinket: "ward" },
+  sentinel: { weapon: "spear", armor: "plate", trinket: "ward" },
+  duelist: { weapon: "blade", armor: "coat", trinket: "ember" },
+  ranger: { weapon: "spear", armor: "coat", trinket: "ward" },
+  medic: { weapon: "focus", armor: "coat", trinket: "ward" },
+  chaplain: { weapon: "focus", armor: "vestment", trinket: "ward" },
+  runesmith: { weapon: "focus", armor: "vestment", trinket: "thorn" },
+  tactician: { weapon: "spear", armor: "coat", trinket: "thorn" },
+};
+export function defaultLoadoutFor(id: string): Loadout {
+  return { ...defaultLoadouts[professionFor(id).id] };
+}
+export function equipmentAllowed(
+  id: string,
+  slot: keyof Loadout,
+  gearId: string,
+) {
+  const profession = professionFor(id);
+  return equipmentCatalog[slot].some(
+    (gear) =>
+      gear.id === gearId &&
+      (gear.professions as readonly ProfessionId[]).includes(profession.id),
+  );
+}
+export function recommendedFormation(ids: string[]) {
+  return ids
+    .map((id, index) => ({ id, index, profession: professionFor(id) }))
+    .sort(
+      (a, b) =>
+        a.profession.priority - b.profession.priority || a.index - b.index,
+    )
+    .map(({ id }) => id);
+}
 export type Hero = {
   id: string;
   hp: number;
@@ -558,35 +797,52 @@ function check(ok: unknown, msg: string): asserts ok {
   if (!ok) throw new RuleError(msg);
 }
 export function hero(id: string): Hero {
+  const profession = professionFor(id);
   return {
     id,
-    hp: balance.heroHP,
-    maxHp: balance.heroHP,
+    hp: profession.hp,
+    maxHp: profession.hp,
     shield: 0,
     stress: 0,
     xp: 0,
     level: 1,
     injury: false,
     equipment: "blade",
-    mana: 3,
-    maxMana: 3,
-    loadout: { weapon: "blade", armor: "coat", trinket: "ward" },
+    mana: profession.mana,
+    maxMana: profession.mana,
+    loadout: defaultLoadoutFor(id),
     statuses: {},
   };
 }
 function normalizeHero(saved: Hero): Hero {
   const defaults = hero(saved.id);
+  const mergedLoadout = { ...defaults.loadout, ...(saved.loadout || {}) };
+  const loadout = (Object.keys(defaults.loadout) as (keyof Loadout)[]).reduce(
+    (result, slot) => {
+      result[slot] = equipmentAllowed(saved.id, slot, mergedLoadout[slot])
+        ? (mergedLoadout[slot] as never)
+        : (defaults.loadout[slot] as never);
+      return result;
+    },
+    { ...defaults.loadout },
+  );
+  const level = saved.level ?? defaults.level;
+  const maxHp = professionFor(saved.id).hp + Math.max(0, level - 1) * 4;
+  const maxMana = professionFor(saved.id).mana + Math.floor(level / 3);
+  const hpRatio = saved.maxHp > 0 ? saved.hp / saved.maxHp : 1;
   return {
     ...defaults,
     ...saved,
-    mana: saved.mana ?? defaults.mana,
-    maxMana: saved.maxMana ?? defaults.maxMana,
-    loadout: { ...defaults.loadout, ...(saved.loadout || {}) },
+    hp: Math.max(0, Math.min(maxHp, Math.round(hpRatio * maxHp))),
+    maxHp,
+    mana: Math.min(saved.mana ?? maxMana, maxMana),
+    maxMana,
+    loadout,
     statuses: { ...(saved.statuses || {}) },
   };
 }
 export function heroStats(h: Hero) {
-  const character = characters.find((item) => item.id === h.id)!;
+  const profession = professionFor(h.id);
   const weapon =
     equipmentCatalog.weapon.find((item) => item.id === h.loadout.weapon) ||
     equipmentCatalog.weapon[0];
@@ -596,52 +852,31 @@ export function heroStats(h: Hero) {
   const trinket =
     equipmentCatalog.trinket.find((item) => item.id === h.loadout.trinket) ||
     equipmentCatalog.trinket[0];
-  const roleBase = {
-    수호: {
-      attack: 5,
-      defense: 12,
-      spell: 3,
-      trait: "철벽 수호",
-      skill: "방패 반격",
-    },
-    공격: {
-      attack: 11,
-      defense: 5,
-      spell: 4,
-      trait: "정밀 추격",
-      skill: "관통 표식",
-    },
-    지원: {
-      attack: 4,
-      defense: 6,
-      spell: 12,
-      trait: "현장 구호",
-      skill: "응급 회복",
-    },
-    제어: {
-      attack: 6,
-      defense: 5,
-      spell: 10,
-      trait: "룬 공명",
-      skill: "룬 사슬",
-    },
-  }[character.role]!;
   return {
-    maxHp: h.maxHp + Math.max(0, h.level - 1) * 4,
-    maxMana: h.maxMana + Math.floor(h.level / 3),
+    maxHp: profession.hp + Math.max(0, h.level - 1) * 4,
+    maxMana: profession.mana + Math.floor(h.level / 3),
     attack:
-      roleBase.attack + weapon.attack + armor.attack + trinket.attack + h.level,
+      profession.attack +
+      weapon.attack +
+      armor.attack +
+      trinket.attack +
+      h.level,
     defense:
-      roleBase.defense +
+      profession.defense +
       weapon.defense +
       armor.defense +
       trinket.defense +
       Math.floor(h.level / 2),
     spell:
-      roleBase.spell + weapon.spell + armor.spell + trinket.spell + h.level,
-    crit: 5 + (h.loadout.weapon === "spear" ? 6 : 0),
-    trait: roleBase.trait,
-    skill: roleBase.skill,
+      profession.spell + weapon.spell + armor.spell + trinket.spell + h.level,
+    crit: profession.crit + (h.loadout.weapon === "spear" ? 6 : 0),
+    trait: profession.trait,
+    traitDescription: profession.traitDescription,
+    skill: profession.skill,
+    skillDescription: profession.skillDescription,
+    profession: profession.name,
+    combatRole: profession.combatRole,
+    preferredRanks: profession.preferredRanks,
   };
 }
 export function initialGame(): Game {
@@ -945,6 +1180,10 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     );
     const option = equipmentCatalog[slot].find((item) => item.id === a.choice);
     check(option, "알 수 없는 장비입니다.");
+    check(
+      equipmentAllowed(h.id, slot, option.id),
+      `${professionFor(h.id).name}이(가) 착용할 수 없는 장비입니다.`,
+    );
     h.loadout[slot] = option.id as never;
     h.equipment =
       h.loadout.weapon === "blade"
@@ -1072,11 +1311,18 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       seed: seed >>> 0 || 1,
       room: "entrance",
       visited: ["entrance"],
-      heroes: g.party.map((id) => ({
-        ...g.roster.find((h) => h.id === id)!,
-        hp: balance.heroHP,
-        shield: 0,
-      })),
+      heroes: g.party.map((id) => {
+        const saved = g.roster.find((h) => h.id === id)!;
+        const stats = heroStats(saved);
+        return {
+          ...saved,
+          hp: stats.maxHp,
+          maxHp: stats.maxHp,
+          mana: stats.maxMana,
+          maxMana: stats.maxMana,
+          shield: 0,
+        };
+      }),
       battle: null,
       gold: 0,
       materials: [],

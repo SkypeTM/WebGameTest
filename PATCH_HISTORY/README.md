@@ -36,3 +36,4 @@
 - `019-character-loadout-status-system.md`: 캐릭터 장비 상세창·전투 상태·카드 트리거
 - `020-connected-combat-motion.md`: 연결형 공격·피격 전투 모션
 - `021-asset-quality-card-monster-fixes.md`: 캐릭터·아이템·카드·몬스터 자산 표시 개선
+- `022-professions-party-formation.md`: 직업·장비 제한·추천 파티 배치

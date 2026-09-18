@@ -9,6 +9,9 @@ import {
   cardInfo,
   predictCard,
   heroStats,
+  professionFor,
+  equipmentAllowed,
+  recommendedFormation,
   type Game,
   type Action,
 } from "../lib/game";
@@ -280,13 +283,16 @@ test("selected enemy takes damage; guardian skill counters for its ally", () => 
   g = act(g, { type: "play", id: "AR1-strike", target: "M02" });
   assert.equal(g.run!.battle!.enemies[0].hp, 30);
   assert.equal(g.run!.battle!.enemies[1].hp, 14);
-  assert.equal(g.run!.heroes[0].hp, 60);
+  assert.equal(g.run!.heroes[0].hp, g.run!.heroes[0].maxHp);
   g = battleStart();
   g.run!.battle!.hand = [{ id: "AR1-skill", owner: "AR1", kind: "skill" }];
   g = act(g, { type: "play", id: "AR1-skill", target: "AR4" });
   g = act(g, { type: "endTurn" });
   assert.equal(g.run!.battle!.enemies[1].hp, 25);
-  assert.equal(g.run!.heroes.find((h) => h.id === "AR4")!.hp, 60);
+  assert.equal(
+    g.run!.heroes.find((h) => h.id === "AR4")!.hp,
+    g.run!.heroes.find((h) => h.id === "AR4")!.maxHp,
+  );
 });
 
 test("card preview uses the same damage and retaliation rules as play", () => {
@@ -308,20 +314,20 @@ test("card preview uses the same damage and retaliation rules as play", () => {
 
 test("loadout stats, visual preview data, statuses and card triggers persist", () => {
   let g = initialGame();
-  const base = heroStats(g.roster[0]);
+  const base = heroStats(g.roster[1]);
   g = act(g, {
     type: "equip",
-    id: "AR1",
+    id: "AR2",
     item: "weapon",
     choice: "spear",
   });
   g = act(g, {
     type: "equip",
-    id: "AR1",
+    id: "AR2",
     item: "armor",
     choice: "plate",
   });
-  const equipped = heroStats(g.roster[0]);
+  const equipped = heroStats(g.roster[1]);
   assert.ok(equipped.attack > base.attack);
   assert.ok(equipped.defense > base.defense);
 
@@ -341,4 +347,24 @@ test("loadout stats, visual preview data, statuses and card triggers persist", (
   g = act(g, { type: "play", id: "AR1-heavy", target: "M02" });
   assert.equal(g.run!.battle!.exhausted.length, 1);
   assert.equal(g.run!.battle!.enemies[1].statuses.vulnerable, 1);
+});
+
+test("professions constrain gear, distribute stats and recommend formation", () => {
+  const g = initialGame();
+  assert.equal(professionFor("AR1").name, "방벽기사");
+  assert.equal(professionFor("VR1").name, "추적사수");
+  assert.equal(equipmentAllowed("AR1", "armor", "plate"), true);
+  assert.equal(equipmentAllowed("AR1", "weapon", "focus"), false);
+  assert.throws(() =>
+    act(g, {
+      type: "equip",
+      id: "AR1",
+      item: "weapon",
+      choice: "focus",
+    }),
+  );
+  const formation = recommendedFormation(["AR3", "AR2", "AR4", "AR1"]);
+  assert.deepEqual(formation, ["AR1", "AR2", "AR4", "AR3"]);
+  assert.ok(heroStats(g.roster[0]).defense > heroStats(g.roster[1]).defense);
+  assert.ok(heroStats(g.roster[2]).spell > heroStats(g.roster[1]).spell);
 });

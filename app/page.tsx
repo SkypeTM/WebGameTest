@@ -12,7 +12,11 @@ import {
   type Card,
   predictCard,
   heroStats,
+  hero,
   equipmentCatalog,
+  equipmentAllowed,
+  professionFor,
+  recommendedFormation,
   statusDefinitions,
   cardTriggerDefinitions,
   type StatusMap,
@@ -42,6 +46,8 @@ type MarketHistory = {
   status: "sold" | "cancelled" | "expired";
 };
 const char = (id: string) => characters.find((c) => c.id === id)!;
+const rankLabel = (ranks: readonly number[]) =>
+  ranks.map((rank) => `${rank}열`).join("·");
 const symbols: Record<string, string> = {
   수호: "◇",
   공격: "↗",
@@ -296,6 +302,11 @@ export default function Page() {
     [pendingRoom, setPendingRoom] = useState(""),
     [selectedItem, setSelectedItem] = useState(""),
     [selectedHero, setSelectedHero] = useState(""),
+    [infoPopup, setInfoPopup] = useState<{
+      title: string;
+      subtitle: string;
+      body: string;
+    } | null>(null),
     [animating, setAnimating] = useState(false),
     [soundEnabled, setSoundEnabled] = useState(true),
     [musicEnabled, setMusicEnabled] = useState(true),
@@ -947,9 +958,23 @@ export default function Page() {
                         <h2>
                           당신의 탐사대 <span>{game.party.length} / 4</span>
                         </h2>
-                        <span className="muted small">
-                          캐릭터당 4장 · 최대 16장 덱
-                        </span>
+                        <div className="formation-actions">
+                          <span className="muted small">
+                            캐릭터당 4장 · 최대 16장 덱
+                          </span>
+                          <button
+                            className="mini auto-formation"
+                            disabled={locked || game.party.length < 2}
+                            onClick={() =>
+                              void act({
+                                type: "party",
+                                ids: recommendedFormation(game.party),
+                              })
+                            }
+                          >
+                            ↯ 직업 추천 자동 배치
+                          </button>
+                        </div>
                       </div>
                       <section
                         className="formation-board"
@@ -963,6 +988,14 @@ export default function Page() {
                         <div className="formation-slots">
                           {[0, 1, 2, 3].map((index) => {
                             const id = game.party[index];
+                            const member = game.roster.find(
+                              (hero) => hero.id === id,
+                            );
+                            const weapon = member
+                              ? equipmentCatalog.weapon.find(
+                                  (item) => item.id === member.loadout.weapon,
+                                )
+                              : undefined;
                             return (
                               <article
                                 className={`formation-slot ${id ? "occupied" : ""}`}
@@ -982,22 +1015,21 @@ export default function Page() {
                                   <>
                                     <Crest id={id} />
                                     <strong>{char(id).name}</strong>
+                                    <b className="profession-name">
+                                      {professionFor(id).name}
+                                    </b>
                                     <small className="inline-asset">
                                       <AssetIcon
-                                        name={
-                                          game.roster.find(
-                                            (hero) => hero.id === id,
-                                          )?.equipment === "blade"
-                                            ? "훈련용 무기"
-                                            : "호신 부적"
-                                        }
+                                        name={weapon?.asset || "훈련용 무기"}
                                       />
-                                      {char(id).role} ·{" "}
-                                      {game.roster.find(
-                                        (hero) => hero.id === id,
-                                      )?.equipment === "blade"
-                                        ? "훈련용 무기"
-                                        : "호신 부적"}
+                                      {professionFor(id).combatRole} ·{" "}
+                                      {weapon?.name || "훈련용 무기"}
+                                    </small>
+                                    <small className="recommended-rank">
+                                      추천{" "}
+                                      {rankLabel(
+                                        professionFor(id).preferredRanks,
+                                      )}
                                     </small>
                                     <div className="formation-controls">
                                       <button
@@ -1040,9 +1072,13 @@ export default function Page() {
                             key={h.id}
                           >
                             <div className="hero-top">
-                              <span>{char(h.id).faction}</span>
+                              <span className="faction-label">
+                                <AssetIcon name={char(h.id).faction} />
+                                {char(h.id).faction}
+                              </span>
                               <b>
-                                {symbols[char(h.id).role]} {char(h.id).role}
+                                {symbols[char(h.id).role]}{" "}
+                                {professionFor(h.id).name}
                               </b>
                             </div>
                             <button
@@ -1079,7 +1115,8 @@ export default function Page() {
                                 <span>Lv.{h.level}</span>
                               </div>
                               <p className="muted small">
-                                {char(h.id).signature}
+                                {professionFor(h.id).combatRole} · 추천{" "}
+                                {rankLabel(professionFor(h.id).preferredRanks)}
                               </p>
                               <p className="small">
                                 HP {h.maxHp} · 경험치 {h.xp}
@@ -1179,13 +1216,28 @@ export default function Page() {
                                 <div className="detail-copy">
                                   <span className="eyebrow">
                                     {char(hero.id).faction} /{" "}
-                                    {char(hero.id).role}
+                                    {professionFor(hero.id).name} /{" "}
+                                    {stats.combatRole}
                                   </span>
                                   <h2>
                                     {char(hero.id).name}{" "}
                                     <small>Lv.{hero.level}</small>
                                   </h2>
                                   <p>{char(hero.id).design}</p>
+                                  <button
+                                    className="profession-summary"
+                                    onClick={() =>
+                                      setInfoPopup({
+                                        title: professionFor(hero.id).name,
+                                        subtitle: `${stats.combatRole} · 추천 ${rankLabel(stats.preferredRanks)}`,
+                                        body: professionFor(hero.id)
+                                          .description,
+                                      })
+                                    }
+                                  >
+                                    직업 설명 · 추천 배치{" "}
+                                    {rankLabel(stats.preferredRanks)}
+                                  </button>
                                   <div className="detail-bars">
                                     <label>
                                       체력 {hero.hp}/{stats.maxHp}
@@ -1228,12 +1280,30 @@ export default function Page() {
                                     <span>
                                       치명타 <b>{stats.crit}%</b>
                                     </span>
-                                    <span>
+                                    <button
+                                      className="stat-info-button"
+                                      onClick={() =>
+                                        setInfoPopup({
+                                          title: stats.trait,
+                                          subtitle: `${stats.profession} 고유 특성`,
+                                          body: stats.traitDescription,
+                                        })
+                                      }
+                                    >
                                       특성 <b>{stats.trait}</b>
-                                    </span>
-                                    <span>
+                                    </button>
+                                    <button
+                                      className="stat-info-button"
+                                      onClick={() =>
+                                        setInfoPopup({
+                                          title: stats.skill,
+                                          subtitle: `${stats.profession} 전용 스킬`,
+                                          body: stats.skillDescription,
+                                        })
+                                      }
+                                    >
                                       전용 스킬 <b>{stats.skill}</b>
-                                    </span>
+                                    </button>
                                   </div>
                                   <div className="xp-block">
                                     <span>
@@ -1258,38 +1328,46 @@ export default function Page() {
                                     ).map(([slot, label]) => (
                                       <fieldset key={slot}>
                                         <legend>{label}</legend>
-                                        {equipmentCatalog[slot].map((gear) => (
-                                          <button
-                                            key={gear.id}
-                                            className={
-                                              hero.loadout[slot] === gear.id
-                                                ? "gear-option equipped"
-                                                : "gear-option"
-                                            }
-                                            disabled={locked}
-                                            onClick={() =>
-                                              void act({
-                                                type: "equip",
-                                                id: hero.id,
-                                                item: slot,
-                                                choice: gear.id,
-                                              })
-                                            }
-                                          >
-                                            <AssetIcon
-                                              name={gear.asset}
-                                              alt={gear.name}
-                                            />
-                                            <span>
-                                              <b>{gear.name}</b>
-                                              <small>
-                                                공격 +{gear.attack} · 방어 +
-                                                {gear.defense} · 주문 +
-                                                {gear.spell}
-                                              </small>
-                                            </span>
-                                          </button>
-                                        ))}
+                                        {equipmentCatalog[slot]
+                                          .filter((gear) =>
+                                            equipmentAllowed(
+                                              hero.id,
+                                              slot,
+                                              gear.id,
+                                            ),
+                                          )
+                                          .map((gear) => (
+                                            <button
+                                              key={gear.id}
+                                              className={
+                                                hero.loadout[slot] === gear.id
+                                                  ? "gear-option equipped"
+                                                  : "gear-option"
+                                              }
+                                              disabled={locked}
+                                              onClick={() =>
+                                                void act({
+                                                  type: "equip",
+                                                  id: hero.id,
+                                                  item: slot,
+                                                  choice: gear.id,
+                                                })
+                                              }
+                                            >
+                                              <AssetIcon
+                                                name={gear.asset}
+                                                alt={gear.name}
+                                              />
+                                              <span>
+                                                <b>{gear.name}</b>
+                                                <small>
+                                                  공격 +{gear.attack} · 방어 +
+                                                  {gear.defense} · 주문 +
+                                                  {gear.spell}
+                                                </small>
+                                              </span>
+                                            </button>
+                                          ))}
                                       </fieldset>
                                     ))}
                                   </div>
@@ -1371,51 +1449,157 @@ export default function Page() {
                         .filter(
                           (c) => filter === "전체" || c.faction === filter,
                         )
-                        .map((c) => (
-                          <article className="recruit" key={c.id}>
-                            <Crest id={c.id} state="dialogue" />
-                            <div>
-                              <span className="eyebrow">
-                                {c.id} / {c.role}
-                              </span>
-                              <h3>
-                                {c.name}{" "}
-                                <small>
-                                  {c.age}세 · {c.heightCm}cm
-                                </small>
-                              </h3>
-                              <p>{c.faction}</p>
-                              <details>
-                                <summary>인물 기록</summary>
-                                <p>
-                                  {c.body} · {c.face} · {c.skin}
-                                  <br />
-                                  {c.signature}
-                                  <br />
-                                  {c.design}
-                                  <br />
-                                  기획 카드: {c.cards}
-                                  <br />첫 버전: 역할 공통 카드 적용
+                        .map((c) => {
+                          const preview =
+                            game.roster.find((member) => member.id === c.id) ||
+                            hero(c.id);
+                          const stats = heroStats(preview);
+                          const profession = professionFor(c.id);
+                          return (
+                            <article className="recruit" key={c.id}>
+                              <Crest id={c.id} state="dialogue" />
+                              <div>
+                                <span className="eyebrow">
+                                  {c.id} / {profession.name}
+                                </span>
+                                <h3>
+                                  {c.name} <small>Lv.{preview.level}</small>
+                                </h3>
+                                <p className="faction-label">
+                                  <AssetIcon name={c.faction} /> {c.faction}
                                 </p>
-                              </details>
-                              <button
-                                disabled={
-                                  locked ||
-                                  game.roster.some((h) => h.id === c.id) ||
-                                  game.gold < balance.recruitCost
-                                }
-                                onClick={() =>
-                                  void act({ type: "recruit", id: c.id })
-                                }
-                              >
-                                {game.roster.some((h) => h.id === c.id)
-                                  ? "영입 완료"
-                                  : `영입 · ◈ ${balance.recruitCost}`}
-                              </button>
-                            </div>
-                          </article>
-                        ))}
+                                <strong className="recruit-role">
+                                  {profession.combatRole} · 추천{" "}
+                                  {rankLabel(profession.preferredRanks)}
+                                </strong>
+                                <div className="recruit-stats">
+                                  <span>HP {stats.maxHp}</span>
+                                  <span>공격 {stats.attack}</span>
+                                  <span>방어 {stats.defense}</span>
+                                  <span>주문 {stats.spell}</span>
+                                </div>
+                                <button
+                                  className="secondary recruit-detail-button"
+                                  onClick={() => setSelectedHero(c.id)}
+                                >
+                                  직업·스킬·장비 상세
+                                </button>
+                                <button
+                                  disabled={
+                                    locked ||
+                                    game.roster.some((h) => h.id === c.id) ||
+                                    game.gold < balance.recruitCost
+                                  }
+                                  onClick={() =>
+                                    void act({ type: "recruit", id: c.id })
+                                  }
+                                >
+                                  {game.roster.some((h) => h.id === c.id)
+                                    ? "영입 완료"
+                                    : `영입 · ◈ ${balance.recruitCost}`}
+                                </button>
+                              </div>
+                            </article>
+                          );
+                        })}
                     </div>
+                    {selectedHero &&
+                      (() => {
+                        const preview =
+                          game.roster.find(
+                            (member) => member.id === selectedHero,
+                          ) || hero(selectedHero);
+                        const character = char(selectedHero);
+                        const stats = heroStats(preview);
+                        const profession = professionFor(selectedHero);
+                        return (
+                          <div
+                            className="character-detail-backdrop"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-label={`${character.name} 영입 상세 정보`}
+                            onMouseDown={(event) => {
+                              if (event.target === event.currentTarget)
+                                setSelectedHero("");
+                            }}
+                          >
+                            <section className="recruit-detail-modal">
+                              <button
+                                className="detail-close"
+                                onClick={() => setSelectedHero("")}
+                                aria-label="상세창 닫기"
+                              >
+                                ×
+                              </button>
+                              <Crest id={selectedHero} state="dialogue" large />
+                              <div>
+                                <span className="eyebrow">
+                                  {character.faction} / {profession.name}
+                                </span>
+                                <h2>
+                                  {character.name}{" "}
+                                  <small>Lv.{preview.level}</small>
+                                </h2>
+                                <p>
+                                  {profession.combatRole} · 추천 배치{" "}
+                                  {rankLabel(profession.preferredRanks)}
+                                </p>
+                                <div className="recruit-stats detailed">
+                                  <span>HP {stats.maxHp}</span>
+                                  <span>MP {stats.maxMana}</span>
+                                  <span>공격 {stats.attack}</span>
+                                  <span>방어 {stats.defense}</span>
+                                  <span>주문 {stats.spell}</span>
+                                  <span>치명타 {stats.crit}%</span>
+                                </div>
+                                <div className="profile-actions">
+                                  <button
+                                    onClick={() =>
+                                      setInfoPopup({
+                                        title: stats.trait,
+                                        subtitle: `${profession.name} 고유 특성`,
+                                        body: stats.traitDescription,
+                                      })
+                                    }
+                                  >
+                                    특성 · {stats.trait}
+                                  </button>
+                                  <button
+                                    onClick={() =>
+                                      setInfoPopup({
+                                        title: stats.skill,
+                                        subtitle: `${profession.name} 전용 스킬`,
+                                        body: stats.skillDescription,
+                                      })
+                                    }
+                                  >
+                                    스킬 · {stats.skill}
+                                  </button>
+                                </div>
+                                <div className="preview-loadout">
+                                  {(
+                                    ["weapon", "armor", "trinket"] as const
+                                  ).map((slot) => {
+                                    const gear = equipmentCatalog[slot].find(
+                                      (item) =>
+                                        item.id === preview.loadout[slot],
+                                    )!;
+                                    return (
+                                      <span key={slot}>
+                                        <AssetIcon
+                                          name={gear.asset}
+                                          alt={gear.name}
+                                        />
+                                        {gear.name}
+                                      </span>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            </section>
+                          </div>
+                        );
+                      })()}
                   </section>
                 ) : tab === "growth" ? (
                   <div className="storage-grid">
@@ -2570,6 +2754,30 @@ export default function Page() {
               <p aria-live="polite">{game.log.at(-1)}</p>
             </section>
           </>
+        )}
+        {infoPopup && (
+          <div
+            className="info-popup-backdrop"
+            role="dialog"
+            aria-modal="true"
+            aria-label={infoPopup.title}
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) setInfoPopup(null);
+            }}
+          >
+            <section className="info-popup">
+              <button
+                className="detail-close"
+                onClick={() => setInfoPopup(null)}
+                aria-label="설명 닫기"
+              >
+                ×
+              </button>
+              <span className="eyebrow">{infoPopup.subtitle}</span>
+              <h2>{infoPopup.title}</h2>
+              <p>{infoPopup.body}</p>
+            </section>
+          </div>
         )}
         <footer>
           <span>침묵의 종 아래 · 첫 플레이 버전</span>

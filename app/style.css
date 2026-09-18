@@ -611,6 +611,15 @@ input::placeholder {
   color: var(--gold);
   margin-left: 10px;
 }
+.formation-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.auto-formation {
+  color: var(--gold);
+  border-color: #837758;
+}
 .party-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -671,6 +680,13 @@ input::placeholder {
 .formation-slot > strong {
   font-size: 12px;
 }
+.formation-slot .profession-name {
+  color: var(--gold);
+  font-size: 9px;
+}
+.formation-slot .recommended-rank {
+  color: #b6c9c3;
+}
 .formation-slot > small {
   color: var(--muted);
   font-size: 8px;
@@ -717,6 +733,19 @@ input::placeholder {
 .hero-top b {
   color: var(--gold);
   white-space: nowrap;
+}
+.faction-label {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+}
+.faction-label .asset-icon {
+  width: 20px;
+  height: 20px;
+  flex-basis: 20px;
+  border: 0;
+  background: transparent;
 }
 .crest {
   width: 66px;
@@ -946,6 +975,81 @@ input::placeholder {
   width: 100%;
   font-size: 12px;
   margin-top: 12px;
+}
+.recruit-role {
+  display: block;
+  margin-top: 7px;
+  color: var(--gold);
+  font-size: 9px;
+}
+.recruit-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  margin-top: 9px;
+}
+.recruit-stats span {
+  padding: 5px;
+  color: #cad4d0;
+  border: 1px solid #435351;
+  background: #10191b;
+  font-size: 8px;
+}
+.recruit-detail-button {
+  color: var(--gold);
+}
+.recruit-detail-modal {
+  position: relative;
+  width: min(760px, 94vw);
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 26px;
+  max-height: 90vh;
+  padding: 28px;
+  overflow: auto;
+  border: 1px solid #8a7b55;
+  background: #142022;
+  box-shadow: 0 24px 70px #000e;
+}
+.recruit-detail-modal > .crest.large {
+  width: 100%;
+  height: 440px;
+}
+.recruit-detail-modal h2 {
+  margin: 8px 0;
+  font-size: 28px;
+}
+.recruit-detail-modal h2 small {
+  color: var(--gold);
+  font-size: 12px;
+}
+.recruit-stats.detailed {
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px 0;
+}
+.profile-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.profile-actions button {
+  min-height: 58px;
+  color: var(--gold);
+}
+.preview-loadout {
+  display: grid;
+  gap: 6px;
+  margin-top: 18px;
+}
+.preview-loadout > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px;
+  border: 1px solid #465653;
+  background: #10191b;
+  color: #d6ded9;
+  font-size: 9px;
 }
 details {
   color: var(--muted);
@@ -2317,6 +2421,24 @@ footer {
   }
 }
 @media (max-width: 700px) {
+  .formation-actions {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .section-heading:has(.formation-actions) {
+    align-items: flex-start;
+  }
+  .recruit-detail-modal {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+  .recruit-detail-modal > .crest.large {
+    height: 270px;
+  }
+  .recruit-stats.detailed {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .login {
     grid-template-columns: 1fr;
   }
@@ -3048,6 +3170,54 @@ footer {
   background: #10191b;
   color: var(--muted);
   font-size: 10px;
+}
+.stat-grid .stat-info-button {
+  min-height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px;
+  color: var(--muted);
+  border: 1px solid #6e674f;
+  background: #171f20;
+  font-size: 10px;
+}
+.stat-info-button b {
+  color: var(--gold);
+}
+.profession-summary {
+  width: 100%;
+  margin-top: 12px;
+  color: var(--gold);
+  border-color: #74694e;
+  background: #10191b;
+}
+.info-popup-backdrop {
+  position: fixed;
+  z-index: 220;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #05090be8;
+  backdrop-filter: blur(8px);
+}
+.info-popup {
+  position: relative;
+  width: min(480px, 94vw);
+  padding: 34px;
+  border: 1px solid #8a7b55;
+  background: linear-gradient(145deg, #1e2c2d, #111a1c);
+  box-shadow: 0 22px 60px #000d;
+}
+.info-popup h2 {
+  margin: 10px 0 14px;
+  color: var(--gold);
+}
+.info-popup p {
+  margin: 0;
+  color: #c6d0cc;
+  line-height: 1.75;
 }
 .stat-grid b {
   color: #e0d7be;

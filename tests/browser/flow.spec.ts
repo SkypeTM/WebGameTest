@@ -36,6 +36,7 @@ async function playCard(page: Page, id: string, target: string) {
       name: `${characters.find((h) => h.id === c.owner)!.name} ${info.name}`,
       exact: true,
     })
+    .first()
     .click();
   await clickSave(page, () =>
     target === "M08:tower"
@@ -106,6 +107,7 @@ async function noOverflow(page: Page) {
 test("desktop to mobile: actual login, party, cards, offline retry, rewards, boss, return, relogin", async ({
   browser,
 }) => {
+  test.setTimeout(360000);
   const desktop = await browser.newContext({
       viewport: { width: 1440, height: 1000 },
     }),
@@ -140,14 +142,14 @@ test("desktop to mobile: actual login, party, cards, offline retry, rewards, bos
   await page
     .getByRole("button", { name: "레오나 상세 장비와 능력치 보기" })
     .click();
-  await clickSave(page, () =>
-    page.getByRole("button", { name: /절단 창날/ }).click(),
-  );
+  await expect(
+    page.getByRole("heading", { name: /레오나 Lv\.1/ }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "상세창 닫기" }).click();
   await clickSave(page, () =>
     page.getByRole("button", { name: "던전 입장" }).click(),
   );
-  await moveRoom(page, /황색 경계선/);
+  await moveRoom(page, /1계층 전투 구역/);
   await expect(page.getByRole("heading", { name: /손패/ })).toBeVisible();
   const before = await state(page);
   await page.reload();
@@ -192,6 +194,7 @@ test("desktop to mobile: actual login, party, cards, offline retry, rewards, bos
     return r.status;
   }, before.version);
   expect(denied).toBe(423);
+  await page.close();
   await mobile.setOffline(true);
   await phone.getByRole("button", { name: "턴 종료 →" }).click();
   await expect(
@@ -206,23 +209,26 @@ test("desktop to mobile: actual login, party, cards, offline retry, rewards, bos
   await clickSave(phone, () =>
     phone.getByRole("button", { name: "보상 획득", exact: true }).click(),
   );
-  await moveRoom(phone, /버려진 야영지/);
+  await moveRoom(phone, /2계층 귀환 야영지/);
   await clickSave(phone, () =>
     phone.getByRole("button", { name: "야영지에서 휴식" }).click(),
   );
-  await moveRoom(phone, /화약의 안뜰/);
+  await moveRoom(phone, /3계층 미지의 징후/);
+  await clickSave(phone, () =>
+    phone.getByRole("button", { name: "안전하게 우회" }).click(),
+  );
+  await moveRoom(phone, /4계층 귀환 야영지/);
+  await clickSave(phone, () =>
+    phone.getByRole("button", { name: "야영지에서 휴식" }).click(),
+  );
+  await moveRoom(phone, /변경 요새의 지배자/);
   await fight(phone);
   await clickSave(phone, () =>
     phone.getByRole("button", { name: "보상 획득", exact: true }).click(),
   );
-  await moveRoom(phone, /왕국의 정찰대/);
+  await moveRoom(phone, /승전 귀환 야영지/);
   await clickSave(phone, () =>
-    phone.getByRole("button", { name: "보급을 받는다" }).click(),
-  );
-  await moveRoom(phone, /왕관 없는 성탑/);
-  await fight(phone);
-  await clickSave(phone, () =>
-    phone.getByRole("button", { name: "보상 획득", exact: true }).click(),
+    phone.getByRole("button", { name: "야영지에서 휴식" }).click(),
   );
   await noOverflow(phone);
   await phone.screenshot({
@@ -317,15 +323,12 @@ test("hub growth and market surfaces are playable", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: "귀환자의 거점" }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "대장간" }).click();
-  await expect(page.getByRole("heading", { name: "거점 시설" })).toBeVisible();
-  await page
-    .locator("section.panel")
-    .filter({ hasText: "거점 시설" })
-    .locator("button")
-    .filter({ hasText: "강화" })
-    .first()
-    .click();
+  await page.getByRole("button", { name: "거점 시설" }).click();
+  const facilityDialog = page.getByRole("dialog", { name: "거점 장소 정보" });
+  await expect(
+    facilityDialog.getByRole("heading", { name: "거점 시설" }).first(),
+  ).toBeVisible();
+  await facilityDialog.getByRole("button", { name: /강화/ }).first().click();
   await expect(page.getByText("대장간 Lv.1")).toBeVisible();
   await page.getByRole("button", { name: "시장 골목" }).click();
   await expect(page.getByRole("heading", { name: "재료 등록" })).toBeVisible();

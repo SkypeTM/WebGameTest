@@ -1,0 +1,890 @@
+[
+  {
+    "id": "AR1",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/AR1/idle.webp",
+      "attack": "/assets/fhd/characters/AR1/attack.webp",
+      "hit": "/assets/fhd/characters/AR1/hit.webp",
+      "skill": "/assets/fhd/characters/AR1/skill.webp",
+      "dialogue": "/assets/fhd/characters/AR1/dialogue.webp",
+      "promotion": "/assets/fhd/characters/AR1/promotion.webp"
+    }
+  },
+  {
+    "id": "AR2",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/AR2/idle.webp",
+      "attack": "/assets/fhd/characters/AR2/attack.webp",
+      "hit": "/assets/fhd/characters/AR2/hit.webp",
+      "skill": "/assets/fhd/characters/AR2/skill.webp",
+      "dialogue": "/assets/fhd/characters/AR2/dialogue.webp",
+      "promotion": "/assets/fhd/characters/AR2/promotion.webp"
+    }
+  },
+  {
+    "id": "AR3",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/AR3/idle.webp",
+      "attack": "/assets/fhd/characters/AR3/attack.webp",
+      "hit": "/assets/fhd/characters/AR3/hit.webp",
+      "skill": "/assets/fhd/characters/AR3/skill.webp",
+      "dialogue": "/assets/fhd/characters/AR3/dialogue.webp",
+      "promotion": "/assets/fhd/characters/AR3/promotion.webp"
+    }
+  },
+  {
+    "id": "AR4",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/AR4/idle.webp",
+      "attack": "/assets/fhd/characters/AR4/attack.webp",
+      "hit": "/assets/fhd/characters/AR4/hit.webp",
+      "skill": "/assets/fhd/characters/AR4/skill.webp",
+      "dialogue": "/assets/fhd/characters/AR4/dialogue.webp",
+      "promotion": "/assets/fhd/characters/AR4/promotion.webp"
+    }
+  },
+  {
+    "id": "BC1",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/BC1/idle.webp",
+      "attack": "/assets/fhd/characters/BC1/attack.webp",
+      "hit": "/assets/fhd/characters/BC1/hit.webp",
+      "skill": "/assets/fhd/characters/BC1/skill.webp",
+      "dialogue": "/assets/fhd/characters/BC1/dialogue.webp",
+      "promotion": "/assets/fhd/characters/BC1/promotion.webp"
+    }
+  },
+  {
+    "id": "BC2",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/BC2/idle.webp",
+      "attack": "/assets/fhd/characters/BC2/attack.webp",
+      "hit": "/assets/fhd/characters/BC2/hit.webp",
+      "skill": "/assets/fhd/characters/BC2/skill.webp",
+      "dialogue": "/assets/fhd/characters/BC2/dialogue.webp",
+      "promotion": "/assets/fhd/characters/BC2/promotion.webp"
+    }
+  },
+  {
+    "id": "BC3",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/BC3/idle.webp",
+      "attack": "/assets/fhd/characters/BC3/attack.webp",
+      "hit": "/assets/fhd/characters/BC3/hit.webp",
+      "skill": "/assets/fhd/characters/BC3/skill.webp",
+      "dialogue": "/assets/fhd/characters/BC3/dialogue.webp",
+      "promotion": "/assets/fhd/characters/BC3/promotion.webp"
+    }
+  },
+  {
+    "id": "BC4",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/BC4/idle.webp",
+      "attack": "/assets/fhd/characters/BC4/attack.webp",
+      "hit": "/assets/fhd/characters/BC4/hit.webp",
+      "skill": "/assets/fhd/characters/BC4/skill.webp",
+      "dialogue": "/assets/fhd/characters/BC4/dialogue.webp",
+      "promotion": "/assets/fhd/characters/BC4/promotion.webp"
+    }
+  },
+  {
+    "id": "BK1",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/BK1/idle.webp",
+      "attack": "/assets/fhd/characters/BK1/attack.webp",
+      "hit": "/assets/fhd/characters/BK1/hit.webp",
+      "skill": "/assets/fhd/characters/BK1/skill.webp",
+      "dialogue": "/assets/fhd/characters/BK1/dialogue.webp",
+      "promotion": "/assets/fhd/characters/BK1/promotion.webp"
+    }
+  },
+  {
+    "id": "BK2",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/BK2/idle.webp",
+      "attack": "/assets/fhd/characters/BK2/attack.webp",
+      "hit": "/assets/fhd/characters/BK2/hit.webp",
+      "skill": "/assets/fhd/characters/BK2/skill.webp",
+      "dialogue": "/assets/fhd/characters/BK2/dialogue.webp",
+      "promotion": "/assets/fhd/characters/BK2/promotion.webp"
+    }
+  },
+  {
+    "id": "BK3",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/BK3/idle.webp",
+      "attack": "/assets/fhd/characters/BK3/attack.webp",
+      "hit": "/assets/fhd/characters/BK3/hit.webp",
+      "skill": "/assets/fhd/characters/BK3/skill.webp",
+      "dialogue": "/assets/fhd/characters/BK3/dialogue.webp",
+      "promotion": "/assets/fhd/characters/BK3/promotion.webp"
+    }
+  },
+  {
+    "id": "BK4",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/BK4/idle.webp",
+      "attack": "/assets/fhd/characters/BK4/attack.webp",
+      "hit": "/assets/fhd/characters/BK4/hit.webp",
+      "skill": "/assets/fhd/characters/BK4/skill.webp",
+      "dialogue": "/assets/fhd/characters/BK4/dialogue.webp",
+      "promotion": "/assets/fhd/characters/BK4/promotion.webp"
+    }
+  },
+  {
+    "id": "DS1",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/DS1/idle.webp",
+      "attack": "/assets/fhd/characters/DS1/attack.webp",
+      "hit": "/assets/fhd/characters/DS1/hit.webp",
+      "skill": "/assets/fhd/characters/DS1/skill.webp",
+      "dialogue": "/assets/fhd/characters/DS1/dialogue.webp",
+      "promotion": "/assets/fhd/characters/DS1/promotion.webp"
+    }
+  },
+  {
+    "id": "DS2",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/DS2/idle.webp",
+      "attack": "/assets/fhd/characters/DS2/attack.webp",
+      "hit": "/assets/fhd/characters/DS2/hit.webp",
+      "skill": "/assets/fhd/characters/DS2/skill.webp",
+      "dialogue": "/assets/fhd/characters/DS2/dialogue.webp",
+      "promotion": "/assets/fhd/characters/DS2/promotion.webp"
+    }
+  },
+  {
+    "id": "DS3",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/DS3/idle.webp",
+      "attack": "/assets/fhd/characters/DS3/attack.webp",
+      "hit": "/assets/fhd/characters/DS3/hit.webp",
+      "skill": "/assets/fhd/characters/DS3/skill.webp",
+      "dialogue": "/assets/fhd/characters/DS3/dialogue.webp",
+      "promotion": "/assets/fhd/characters/DS3/promotion.webp"
+    }
+  },
+  {
+    "id": "DS4",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/DS4/idle.webp",
+      "attack": "/assets/fhd/characters/DS4/attack.webp",
+      "hit": "/assets/fhd/characters/DS4/hit.webp",
+      "skill": "/assets/fhd/characters/DS4/skill.webp",
+      "dialogue": "/assets/fhd/characters/DS4/dialogue.webp",
+      "promotion": "/assets/fhd/characters/DS4/promotion.webp"
+    }
+  },
+  {
+    "id": "EF1",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/EF1/idle.webp",
+      "attack": "/assets/fhd/characters/EF1/attack.webp",
+      "hit": "/assets/fhd/characters/EF1/hit.webp",
+      "skill": "/assets/fhd/characters/EF1/skill.webp",
+      "dialogue": "/assets/fhd/characters/EF1/dialogue.webp",
+      "promotion": "/assets/fhd/characters/EF1/promotion.webp"
+    }
+  },
+  {
+    "id": "EF2",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/EF2/idle.webp",
+      "attack": "/assets/fhd/characters/EF2/attack.webp",
+      "hit": "/assets/fhd/characters/EF2/hit.webp",
+      "skill": "/assets/fhd/characters/EF2/skill.webp",
+      "dialogue": "/assets/fhd/characters/EF2/dialogue.webp",
+      "promotion": "/assets/fhd/characters/EF2/promotion.webp"
+    }
+  },
+  {
+    "id": "EF3",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/EF3/idle.webp",
+      "attack": "/assets/fhd/characters/EF3/attack.webp",
+      "hit": "/assets/fhd/characters/EF3/hit.webp",
+      "skill": "/assets/fhd/characters/EF3/skill.webp",
+      "dialogue": "/assets/fhd/characters/EF3/dialogue.webp",
+      "promotion": "/assets/fhd/characters/EF3/promotion.webp"
+    }
+  },
+  {
+    "id": "EF4",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/EF4/idle.webp",
+      "attack": "/assets/fhd/characters/EF4/attack.webp",
+      "hit": "/assets/fhd/characters/EF4/hit.webp",
+      "skill": "/assets/fhd/characters/EF4/skill.webp",
+      "dialogue": "/assets/fhd/characters/EF4/dialogue.webp",
+      "promotion": "/assets/fhd/characters/EF4/promotion.webp"
+    }
+  },
+  {
+    "id": "GO1",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/GO1/idle.webp",
+      "attack": "/assets/fhd/characters/GO1/attack.webp",
+      "hit": "/assets/fhd/characters/GO1/hit.webp",
+      "skill": "/assets/fhd/characters/GO1/skill.webp",
+      "dialogue": "/assets/fhd/characters/GO1/dialogue.webp",
+      "promotion": "/assets/fhd/characters/GO1/promotion.webp"
+    }
+  },
+  {
+    "id": "GO2",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/GO2/idle.webp",
+      "attack": "/assets/fhd/characters/GO2/attack.webp",
+      "hit": "/assets/fhd/characters/GO2/hit.webp",
+      "skill": "/assets/fhd/characters/GO2/skill.webp",
+      "dialogue": "/assets/fhd/characters/GO2/dialogue.webp",
+      "promotion": "/assets/fhd/characters/GO2/promotion.webp"
+    }
+  },
+  {
+    "id": "GO3",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/GO3/idle.webp",
+      "attack": "/assets/fhd/characters/GO3/attack.webp",
+      "hit": "/assets/fhd/characters/GO3/hit.webp",
+      "skill": "/assets/fhd/characters/GO3/skill.webp",
+      "dialogue": "/assets/fhd/characters/GO3/dialogue.webp",
+      "promotion": "/assets/fhd/characters/GO3/promotion.webp"
+    }
+  },
+  {
+    "id": "GO4",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/GO4/idle.webp",
+      "attack": "/assets/fhd/characters/GO4/attack.webp",
+      "hit": "/assets/fhd/characters/GO4/hit.webp",
+      "skill": "/assets/fhd/characters/GO4/skill.webp",
+      "dialogue": "/assets/fhd/characters/GO4/dialogue.webp",
+      "promotion": "/assets/fhd/characters/GO4/promotion.webp"
+    }
+  },
+  {
+    "id": "M01",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M01/idle.webp",
+      "action": "/assets/fhd/monsters/M01/action.webp",
+      "hit": "/assets/fhd/monsters/M01/hit.webp"
+    }
+  },
+  {
+    "id": "M02",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M02/idle.webp",
+      "action": "/assets/fhd/monsters/M02/action.webp",
+      "hit": "/assets/fhd/monsters/M02/hit.webp"
+    }
+  },
+  {
+    "id": "M03",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M03/idle.webp",
+      "action": "/assets/fhd/monsters/M03/action.webp",
+      "hit": "/assets/fhd/monsters/M03/hit.webp"
+    }
+  },
+  {
+    "id": "M04",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M04/idle.webp",
+      "action": "/assets/fhd/monsters/M04/action.webp",
+      "hit": "/assets/fhd/monsters/M04/hit.webp"
+    }
+  },
+  {
+    "id": "M05",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M05/idle.webp",
+      "action": "/assets/fhd/monsters/M05/action.webp",
+      "hit": "/assets/fhd/monsters/M05/hit.webp"
+    }
+  },
+  {
+    "id": "M06",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M06/idle.webp",
+      "action": "/assets/fhd/monsters/M06/action.webp",
+      "hit": "/assets/fhd/monsters/M06/hit.webp"
+    }
+  },
+  {
+    "id": "M07",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M07/idle.webp",
+      "action": "/assets/fhd/monsters/M07/action.webp",
+      "hit": "/assets/fhd/monsters/M07/hit.webp"
+    }
+  },
+  {
+    "id": "M08",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M08/idle.webp",
+      "action": "/assets/fhd/monsters/M08/action.webp",
+      "hit": "/assets/fhd/monsters/M08/hit.webp"
+    }
+  },
+  {
+    "id": "M09",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M09/idle.webp",
+      "action": "/assets/fhd/monsters/M09/action.webp",
+      "hit": "/assets/fhd/monsters/M09/hit.webp"
+    }
+  },
+  {
+    "id": "M10",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M10/idle.webp",
+      "action": "/assets/fhd/monsters/M10/action.webp",
+      "hit": "/assets/fhd/monsters/M10/hit.webp"
+    }
+  },
+  {
+    "id": "M11",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M11/idle.webp",
+      "action": "/assets/fhd/monsters/M11/action.webp",
+      "hit": "/assets/fhd/monsters/M11/hit.webp"
+    }
+  },
+  {
+    "id": "M12",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M12/idle.webp",
+      "action": "/assets/fhd/monsters/M12/action.webp",
+      "hit": "/assets/fhd/monsters/M12/hit.webp"
+    }
+  },
+  {
+    "id": "M13",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M13/idle.webp",
+      "action": "/assets/fhd/monsters/M13/action.webp",
+      "hit": "/assets/fhd/monsters/M13/hit.webp"
+    }
+  },
+  {
+    "id": "M14",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M14/idle.webp",
+      "action": "/assets/fhd/monsters/M14/action.webp",
+      "hit": "/assets/fhd/monsters/M14/hit.webp"
+    }
+  },
+  {
+    "id": "M15",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M15/idle.webp",
+      "action": "/assets/fhd/monsters/M15/action.webp",
+      "hit": "/assets/fhd/monsters/M15/hit.webp"
+    }
+  },
+  {
+    "id": "M16",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M16/idle.webp",
+      "action": "/assets/fhd/monsters/M16/action.webp",
+      "hit": "/assets/fhd/monsters/M16/hit.webp"
+    }
+  },
+  {
+    "id": "M17",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M17/idle.webp",
+      "action": "/assets/fhd/monsters/M17/action.webp",
+      "hit": "/assets/fhd/monsters/M17/hit.webp"
+    }
+  },
+  {
+    "id": "M18",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M18/idle.webp",
+      "action": "/assets/fhd/monsters/M18/action.webp",
+      "hit": "/assets/fhd/monsters/M18/hit.webp"
+    }
+  },
+  {
+    "id": "M19",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M19/idle.webp",
+      "action": "/assets/fhd/monsters/M19/action.webp",
+      "hit": "/assets/fhd/monsters/M19/hit.webp"
+    }
+  },
+  {
+    "id": "M20",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M20/idle.webp",
+      "action": "/assets/fhd/monsters/M20/action.webp",
+      "hit": "/assets/fhd/monsters/M20/hit.webp"
+    }
+  },
+  {
+    "id": "M21",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M21/idle.webp",
+      "action": "/assets/fhd/monsters/M21/action.webp",
+      "hit": "/assets/fhd/monsters/M21/hit.webp"
+    }
+  },
+  {
+    "id": "M22",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M22/idle.webp",
+      "action": "/assets/fhd/monsters/M22/action.webp",
+      "hit": "/assets/fhd/monsters/M22/hit.webp"
+    }
+  },
+  {
+    "id": "M23",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M23/idle.webp",
+      "action": "/assets/fhd/monsters/M23/action.webp",
+      "hit": "/assets/fhd/monsters/M23/hit.webp"
+    }
+  },
+  {
+    "id": "M24",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M24/idle.webp",
+      "action": "/assets/fhd/monsters/M24/action.webp",
+      "hit": "/assets/fhd/monsters/M24/hit.webp"
+    }
+  },
+  {
+    "id": "M25",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M25/idle.webp",
+      "action": "/assets/fhd/monsters/M25/action.webp",
+      "hit": "/assets/fhd/monsters/M25/hit.webp"
+    }
+  },
+  {
+    "id": "M26",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M26/idle.webp",
+      "action": "/assets/fhd/monsters/M26/action.webp",
+      "hit": "/assets/fhd/monsters/M26/hit.webp"
+    }
+  },
+  {
+    "id": "M27",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M27/idle.webp",
+      "action": "/assets/fhd/monsters/M27/action.webp",
+      "hit": "/assets/fhd/monsters/M27/hit.webp"
+    }
+  },
+  {
+    "id": "M28",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M28/idle.webp",
+      "action": "/assets/fhd/monsters/M28/action.webp",
+      "hit": "/assets/fhd/monsters/M28/hit.webp"
+    }
+  },
+  {
+    "id": "M29",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M29/idle.webp",
+      "action": "/assets/fhd/monsters/M29/action.webp",
+      "hit": "/assets/fhd/monsters/M29/hit.webp"
+    }
+  },
+  {
+    "id": "M30",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M30/idle.webp",
+      "action": "/assets/fhd/monsters/M30/action.webp",
+      "hit": "/assets/fhd/monsters/M30/hit.webp"
+    }
+  },
+  {
+    "id": "M31",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M31/idle.webp",
+      "action": "/assets/fhd/monsters/M31/action.webp",
+      "hit": "/assets/fhd/monsters/M31/hit.webp"
+    }
+  },
+  {
+    "id": "M32",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M32/idle.webp",
+      "action": "/assets/fhd/monsters/M32/action.webp",
+      "hit": "/assets/fhd/monsters/M32/hit.webp"
+    }
+  },
+  {
+    "id": "M33",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M33/idle.webp",
+      "action": "/assets/fhd/monsters/M33/action.webp",
+      "hit": "/assets/fhd/monsters/M33/hit.webp"
+    }
+  },
+  {
+    "id": "M34",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M34/idle.webp",
+      "action": "/assets/fhd/monsters/M34/action.webp",
+      "hit": "/assets/fhd/monsters/M34/hit.webp"
+    }
+  },
+  {
+    "id": "M35",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M35/idle.webp",
+      "action": "/assets/fhd/monsters/M35/action.webp",
+      "hit": "/assets/fhd/monsters/M35/hit.webp"
+    }
+  },
+  {
+    "id": "M36",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M36/idle.webp",
+      "action": "/assets/fhd/monsters/M36/action.webp",
+      "hit": "/assets/fhd/monsters/M36/hit.webp"
+    }
+  },
+  {
+    "id": "M37",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M37/idle.webp",
+      "action": "/assets/fhd/monsters/M37/action.webp",
+      "hit": "/assets/fhd/monsters/M37/hit.webp"
+    }
+  },
+  {
+    "id": "M38",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M38/idle.webp",
+      "action": "/assets/fhd/monsters/M38/action.webp",
+      "hit": "/assets/fhd/monsters/M38/hit.webp"
+    }
+  },
+  {
+    "id": "M39",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M39/idle.webp",
+      "action": "/assets/fhd/monsters/M39/action.webp",
+      "hit": "/assets/fhd/monsters/M39/hit.webp"
+    }
+  },
+  {
+    "id": "M40",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M40/idle.webp",
+      "action": "/assets/fhd/monsters/M40/action.webp",
+      "hit": "/assets/fhd/monsters/M40/hit.webp"
+    }
+  },
+  {
+    "id": "M41",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M41/idle.webp",
+      "action": "/assets/fhd/monsters/M41/action.webp",
+      "hit": "/assets/fhd/monsters/M41/hit.webp"
+    }
+  },
+  {
+    "id": "M42",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M42/idle.webp",
+      "action": "/assets/fhd/monsters/M42/action.webp",
+      "hit": "/assets/fhd/monsters/M42/hit.webp"
+    }
+  },
+  {
+    "id": "M43",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M43/idle.webp",
+      "action": "/assets/fhd/monsters/M43/action.webp",
+      "hit": "/assets/fhd/monsters/M43/hit.webp"
+    }
+  },
+  {
+    "id": "M44",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M44/idle.webp",
+      "action": "/assets/fhd/monsters/M44/action.webp",
+      "hit": "/assets/fhd/monsters/M44/hit.webp"
+    }
+  },
+  {
+    "id": "M45",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M45/idle.webp",
+      "action": "/assets/fhd/monsters/M45/action.webp",
+      "hit": "/assets/fhd/monsters/M45/hit.webp"
+    }
+  },
+  {
+    "id": "M46",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M46/idle.webp",
+      "action": "/assets/fhd/monsters/M46/action.webp",
+      "hit": "/assets/fhd/monsters/M46/hit.webp"
+    }
+  },
+  {
+    "id": "M47",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M47/idle.webp",
+      "action": "/assets/fhd/monsters/M47/action.webp",
+      "hit": "/assets/fhd/monsters/M47/hit.webp"
+    }
+  },
+  {
+    "id": "M48",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M48/idle.webp",
+      "action": "/assets/fhd/monsters/M48/action.webp",
+      "hit": "/assets/fhd/monsters/M48/hit.webp"
+    }
+  },
+  {
+    "id": "M49",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M49/idle.webp",
+      "action": "/assets/fhd/monsters/M49/action.webp",
+      "hit": "/assets/fhd/monsters/M49/hit.webp"
+    }
+  },
+  {
+    "id": "M50",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M50/idle.webp",
+      "action": "/assets/fhd/monsters/M50/action.webp",
+      "hit": "/assets/fhd/monsters/M50/hit.webp"
+    }
+  },
+  {
+    "id": "M51",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M51/idle.webp",
+      "action": "/assets/fhd/monsters/M51/action.webp",
+      "hit": "/assets/fhd/monsters/M51/hit.webp"
+    }
+  },
+  {
+    "id": "M52",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M52/idle.webp",
+      "action": "/assets/fhd/monsters/M52/action.webp",
+      "hit": "/assets/fhd/monsters/M52/hit.webp"
+    }
+  },
+  {
+    "id": "M53",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M53/idle.webp",
+      "action": "/assets/fhd/monsters/M53/action.webp",
+      "hit": "/assets/fhd/monsters/M53/hit.webp"
+    }
+  },
+  {
+    "id": "M54",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M54/idle.webp",
+      "action": "/assets/fhd/monsters/M54/action.webp",
+      "hit": "/assets/fhd/monsters/M54/hit.webp"
+    }
+  },
+  {
+    "id": "M55",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M55/idle.webp",
+      "action": "/assets/fhd/monsters/M55/action.webp",
+      "hit": "/assets/fhd/monsters/M55/hit.webp"
+    }
+  },
+  {
+    "id": "M56",
+    "type": "monster",
+    "states": {
+      "idle": "/assets/fhd/monsters/M56/idle.webp",
+      "action": "/assets/fhd/monsters/M56/action.webp",
+      "hit": "/assets/fhd/monsters/M56/hit.webp"
+    }
+  },
+  {
+    "id": "VR1",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/VR1/idle.webp",
+      "attack": "/assets/fhd/characters/VR1/attack.webp",
+      "hit": "/assets/fhd/characters/VR1/hit.webp",
+      "skill": "/assets/fhd/characters/VR1/skill.webp",
+      "dialogue": "/assets/fhd/characters/VR1/dialogue.webp",
+      "promotion": "/assets/fhd/characters/VR1/promotion.webp"
+    }
+  },
+  {
+    "id": "VR2",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/VR2/idle.webp",
+      "attack": "/assets/fhd/characters/VR2/attack.webp",
+      "hit": "/assets/fhd/characters/VR2/hit.webp",
+      "skill": "/assets/fhd/characters/VR2/skill.webp",
+      "dialogue": "/assets/fhd/characters/VR2/dialogue.webp",
+      "promotion": "/assets/fhd/characters/VR2/promotion.webp"
+    }
+  },
+  {
+    "id": "VR3",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/VR3/idle.webp",
+      "attack": "/assets/fhd/characters/VR3/attack.webp",
+      "hit": "/assets/fhd/characters/VR3/hit.webp",
+      "skill": "/assets/fhd/characters/VR3/skill.webp",
+      "dialogue": "/assets/fhd/characters/VR3/dialogue.webp",
+      "promotion": "/assets/fhd/characters/VR3/promotion.webp"
+    }
+  },
+  {
+    "id": "VR4",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/VR4/idle.webp",
+      "attack": "/assets/fhd/characters/VR4/attack.webp",
+      "hit": "/assets/fhd/characters/VR4/hit.webp",
+      "skill": "/assets/fhd/characters/VR4/skill.webp",
+      "dialogue": "/assets/fhd/characters/VR4/dialogue.webp",
+      "promotion": "/assets/fhd/characters/VR4/promotion.webp"
+    }
+  },
+  {
+    "id": "WS1",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/WS1/idle.webp",
+      "attack": "/assets/fhd/characters/WS1/attack.webp",
+      "hit": "/assets/fhd/characters/WS1/hit.webp",
+      "skill": "/assets/fhd/characters/WS1/skill.webp",
+      "dialogue": "/assets/fhd/characters/WS1/dialogue.webp",
+      "promotion": "/assets/fhd/characters/WS1/promotion.webp"
+    }
+  },
+  {
+    "id": "WS2",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/WS2/idle.webp",
+      "attack": "/assets/fhd/characters/WS2/attack.webp",
+      "hit": "/assets/fhd/characters/WS2/hit.webp",
+      "skill": "/assets/fhd/characters/WS2/skill.webp",
+      "dialogue": "/assets/fhd/characters/WS2/dialogue.webp",
+      "promotion": "/assets/fhd/characters/WS2/promotion.webp"
+    }
+  },
+  {
+    "id": "WS3",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/WS3/idle.webp",
+      "attack": "/assets/fhd/characters/WS3/attack.webp",
+      "hit": "/assets/fhd/characters/WS3/hit.webp",
+      "skill": "/assets/fhd/characters/WS3/skill.webp",
+      "dialogue": "/assets/fhd/characters/WS3/dialogue.webp",
+      "promotion": "/assets/fhd/characters/WS3/promotion.webp"
+    }
+  },
+  {
+    "id": "WS4",
+    "type": "character",
+    "states": {
+      "idle": "/assets/fhd/characters/WS4/idle.webp",
+      "attack": "/assets/fhd/characters/WS4/attack.webp",
+      "hit": "/assets/fhd/characters/WS4/hit.webp",
+      "skill": "/assets/fhd/characters/WS4/skill.webp",
+      "dialogue": "/assets/fhd/characters/WS4/dialogue.webp",
+      "promotion": "/assets/fhd/characters/WS4/promotion.webp"
+    }
+  }
+]

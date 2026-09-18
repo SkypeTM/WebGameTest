@@ -2,361 +2,361 @@
   {
     "id": "loot-01",
     "name": "가시뿔",
-    "path": "/assets/generated/items/loot-01.png"
+    "path": "/assets/fhd/items/loot-01.webp"
   },
   {
     "id": "loot-02",
     "name": "건조 화약낭",
-    "path": "/assets/generated/items/loot-02.png"
+    "path": "/assets/fhd/items/loot-02.webp"
   },
   {
     "id": "loot-03",
     "name": "검댕 철편",
-    "path": "/assets/generated/items/loot-03.png"
+    "path": "/assets/fhd/items/loot-03.webp"
   },
   {
     "id": "loot-04",
     "name": "검은 향재",
-    "path": "/assets/generated/items/loot-04.png"
+    "path": "/assets/fhd/items/loot-04.webp"
   },
   {
     "id": "loot-05",
     "name": "검은 호스",
-    "path": "/assets/generated/items/loot-05.png"
+    "path": "/assets/fhd/items/loot-05.webp"
   },
   {
     "id": "loot-06",
     "name": "고해실 톱니",
-    "path": "/assets/generated/items/loot-06.png"
+    "path": "/assets/fhd/items/loot-06.webp"
   },
   {
     "id": "loot-07",
     "name": "공명 막",
-    "path": "/assets/generated/items/loot-07.png"
+    "path": "/assets/fhd/items/loot-07.webp"
   },
   {
     "id": "loot-08",
     "name": "공백 양피지",
-    "path": "/assets/generated/items/loot-08.png"
+    "path": "/assets/fhd/items/loot-08.webp"
   },
   {
     "id": "loot-09",
     "name": "귀향 표찰",
-    "path": "/assets/generated/items/loot-09.png"
+    "path": "/assets/fhd/items/loot-09.webp"
   },
   {
     "id": "loot-10",
     "name": "기도석",
-    "path": "/assets/generated/items/loot-10.png"
+    "path": "/assets/fhd/items/loot-10.webp"
   },
   {
     "id": "loot-11",
     "name": "기억 제본끈",
-    "path": "/assets/generated/items/loot-11.png"
+    "path": "/assets/fhd/items/loot-11.webp"
   },
   {
     "id": "loot-12",
     "name": "깨어난 포자",
-    "path": "/assets/generated/items/loot-12.png"
+    "path": "/assets/fhd/items/loot-12.webp"
   },
   {
     "id": "loot-13",
     "name": "깨진 성좌석",
-    "path": "/assets/generated/items/loot-13.png"
+    "path": "/assets/fhd/items/loot-13.webp"
   },
   {
     "id": "loot-14",
     "name": "나이테 껍질",
-    "path": "/assets/generated/items/loot-14.png"
+    "path": "/assets/fhd/items/loot-14.webp"
   },
   {
     "id": "loot-15",
     "name": "녹슨 철심",
-    "path": "/assets/generated/items/loot-15.png"
+    "path": "/assets/fhd/items/loot-15.webp"
   },
   {
     "id": "loot-16",
     "name": "농축 수액",
-    "path": "/assets/generated/items/loot-16.png"
+    "path": "/assets/fhd/items/loot-16.webp"
   },
   {
     "id": "loot-17",
     "name": "닻껍질",
-    "path": "/assets/generated/items/loot-17.png"
+    "path": "/assets/fhd/items/loot-17.webp"
   },
   {
     "id": "loot-18",
     "name": "뒤틀린 벽지",
-    "path": "/assets/generated/items/loot-18.png"
+    "path": "/assets/fhd/items/loot-18.webp"
   },
   {
     "id": "loot-19",
     "name": "룬 책등",
-    "path": "/assets/generated/items/loot-19.png"
+    "path": "/assets/fhd/items/loot-19.webp"
   },
   {
     "id": "loot-20",
     "name": "망령의 실",
-    "path": "/assets/generated/items/loot-20.png"
+    "path": "/assets/fhd/items/loot-20.webp"
   },
   {
     "id": "loot-21",
     "name": "매듭 뿌리",
-    "path": "/assets/generated/items/loot-21.png"
+    "path": "/assets/fhd/items/loot-21.webp"
   },
   {
     "id": "loot-22",
     "name": "먹물 계약지",
-    "path": "/assets/generated/items/loot-22.png"
+    "path": "/assets/fhd/items/loot-22.webp"
   },
   {
     "id": "loot-23",
     "name": "먹물낭",
-    "path": "/assets/generated/items/loot-23.png"
+    "path": "/assets/fhd/items/loot-23.webp"
   },
   {
     "id": "loot-24",
     "name": "무명 서핵",
-    "path": "/assets/generated/items/loot-24.png"
+    "path": "/assets/fhd/items/loot-24.webp"
   },
   {
     "id": "loot-25",
     "name": "무음 잉크",
-    "path": "/assets/generated/items/loot-25.png"
+    "path": "/assets/fhd/items/loot-25.webp"
   },
   {
     "id": "loot-26",
     "name": "발광 유리",
-    "path": "/assets/generated/items/loot-26.png"
+    "path": "/assets/fhd/items/loot-26.webp"
   },
   {
     "id": "loot-27",
     "name": "방수 서지",
-    "path": "/assets/generated/items/loot-27.png"
+    "path": "/assets/fhd/items/loot-27.webp"
   },
   {
     "id": "loot-28",
     "name": "불씨 깃털",
-    "path": "/assets/generated/items/loot-28.png"
+    "path": "/assets/fhd/items/loot-28.webp"
   },
   {
     "id": "loot-29",
     "name": "빈 왕관 파편",
-    "path": "/assets/generated/items/loot-29.png"
+    "path": "/assets/fhd/items/loot-29.webp"
   },
   {
     "id": "loot-30",
     "name": "살아 있는 목심",
-    "path": "/assets/generated/items/loot-30.png"
+    "path": "/assets/fhd/items/loot-30.webp"
   },
   {
     "id": "loot-31",
     "name": "상자 경첩",
-    "path": "/assets/generated/items/loot-31.png"
+    "path": "/assets/fhd/items/loot-31.webp"
   },
   {
     "id": "loot-32",
     "name": "색유리 날개",
-    "path": "/assets/generated/items/loot-32.png"
+    "path": "/assets/fhd/items/loot-32.webp"
   },
   {
     "id": "loot-33",
     "name": "성가 청동",
-    "path": "/assets/generated/items/loot-33.png"
+    "path": "/assets/fhd/items/loot-33.webp"
   },
   {
     "id": "loot-34",
     "name": "성문 경첩",
-    "path": "/assets/generated/items/loot-34.png"
+    "path": "/assets/fhd/items/loot-34.webp"
   },
   {
     "id": "loot-35",
     "name": "성화 밀랍",
-    "path": "/assets/generated/items/loot-35.png"
+    "path": "/assets/fhd/items/loot-35.webp"
   },
   {
     "id": "loot-36",
     "name": "심해 합금",
-    "path": "/assets/generated/items/loot-36.png"
+    "path": "/assets/fhd/items/loot-36.webp"
   },
   {
     "id": "loot-37",
     "name": "아궁이 화심",
-    "path": "/assets/generated/items/loot-37.png"
+    "path": "/assets/fhd/items/loot-37.webp"
   },
   {
     "id": "loot-38",
     "name": "역문자 수정체",
-    "path": "/assets/generated/items/loot-38.png"
+    "path": "/assets/fhd/items/loot-38.webp"
   },
   {
     "id": "loot-39",
     "name": "역익 금속",
-    "path": "/assets/generated/items/loot-39.png"
+    "path": "/assets/fhd/items/loot-39.webp"
   },
   {
     "id": "loot-40",
     "name": "염수 결정",
-    "path": "/assets/generated/items/loot-40.png"
+    "path": "/assets/fhd/items/loot-40.webp"
   },
   {
     "id": "loot-41",
     "name": "왕관 가지",
-    "path": "/assets/generated/items/loot-41.png"
+    "path": "/assets/fhd/items/loot-41.webp"
   },
   {
     "id": "loot-42",
     "name": "원초 기억수액",
-    "path": "/assets/generated/items/loot-42.png"
+    "path": "/assets/fhd/items/loot-42.webp"
   },
   {
     "id": "loot-43",
     "name": "음계 석편",
-    "path": "/assets/generated/items/loot-43.png"
+    "path": "/assets/fhd/items/loot-43.webp"
   },
   {
     "id": "loot-44",
     "name": "재주머니 천",
-    "path": "/assets/generated/items/loot-44.png"
+    "path": "/assets/fhd/items/loot-44.webp"
   },
   {
     "id": "loot-45",
     "name": "절단 검날",
-    "path": "/assets/generated/items/loot-45.png"
+    "path": "/assets/fhd/items/loot-45.webp"
   },
   {
     "id": "loot-46",
     "name": "정밀 공허기어",
-    "path": "/assets/generated/items/loot-46.png"
+    "path": "/assets/fhd/items/loot-46.webp"
   },
   {
     "id": "loot-47",
     "name": "집행 종줄",
-    "path": "/assets/generated/items/loot-47.png"
+    "path": "/assets/fhd/items/loot-47.webp"
   },
   {
     "id": "loot-48",
     "name": "철익막",
-    "path": "/assets/generated/items/loot-48.png"
+    "path": "/assets/fhd/items/loot-48.webp"
   },
   {
     "id": "loot-49",
     "name": "청동 종편",
-    "path": "/assets/generated/items/loot-49.png"
+    "path": "/assets/fhd/items/loot-49.webp"
   },
   {
     "id": "loot-50",
     "name": "초침 날",
-    "path": "/assets/generated/items/loot-50.png"
+    "path": "/assets/fhd/items/loot-50.webp"
   },
   {
     "id": "loot-51",
     "name": "침묵의 종핵",
-    "path": "/assets/generated/items/loot-51.png"
+    "path": "/assets/fhd/items/loot-51.webp"
   },
   {
     "id": "loot-52",
     "name": "탄화 바퀴살",
-    "path": "/assets/generated/items/loot-52.png"
+    "path": "/assets/fhd/items/loot-52.webp"
   },
   {
     "id": "loot-53",
     "name": "해묵은 밧줄",
-    "path": "/assets/generated/items/loot-53.png"
+    "path": "/assets/fhd/items/loot-53.webp"
   },
   {
     "id": "loot-54",
     "name": "흑공 수정",
-    "path": "/assets/generated/items/loot-54.png"
+    "path": "/assets/fhd/items/loot-54.webp"
   },
   {
     "id": "loot-55",
     "name": "흑광 성직포",
-    "path": "/assets/generated/items/loot-55.png"
+    "path": "/assets/fhd/items/loot-55.webp"
   },
   {
     "id": "loot-56",
     "name": "흑조 심장석",
-    "path": "/assets/generated/items/loot-56.png"
+    "path": "/assets/fhd/items/loot-56.webp"
   },
   {
     "id": "faction-AR",
     "name": "아르켄 왕국",
-    "path": "/assets/generated/factions/AR.png"
+    "path": "/assets/fhd/items/faction-AR.webp"
   },
   {
     "id": "faction-BC",
     "name": "황동나침반 조합",
-    "path": "/assets/generated/factions/BC.png"
+    "path": "/assets/fhd/items/faction-BC.webp"
   },
   {
     "id": "faction-BK",
     "name": "검은열쇠 결사",
-    "path": "/assets/generated/factions/BK.png"
+    "path": "/assets/fhd/items/faction-BK.webp"
   },
   {
     "id": "faction-DS",
     "name": "깊은별 성회",
-    "path": "/assets/generated/factions/DS.png"
+    "path": "/assets/fhd/items/faction-DS.webp"
   },
   {
     "id": "faction-EF",
     "name": "잿불 해방전선",
-    "path": "/assets/generated/factions/EF.png"
+    "path": "/assets/fhd/items/faction-EF.webp"
   },
   {
     "id": "faction-GO",
     "name": "녹서약 수호회",
-    "path": "/assets/generated/factions/GO.png"
+    "path": "/assets/fhd/items/faction-GO.webp"
   },
   {
     "id": "faction-VR",
     "name": "벨로라 공화연맹",
-    "path": "/assets/generated/factions/VR.png"
+    "path": "/assets/fhd/items/faction-VR.webp"
   },
   {
     "id": "faction-WS",
     "name": "백야성좌 교단",
-    "path": "/assets/generated/factions/WS.png"
+    "path": "/assets/fhd/items/faction-WS.webp"
   },
   {
     "id": "equipment-blade",
     "name": "훈련용 무기",
-    "path": "/assets/generated/equipment/blade.png"
+    "path": "/assets/fhd/items/equipment-blade.webp"
   },
   {
     "id": "equipment-ward",
     "name": "호신 부적",
-    "path": "/assets/generated/equipment/ward.png"
+    "path": "/assets/fhd/items/equipment-ward.webp"
   },
   {
     "id": "sprite-attack",
     "name": "공격",
-    "path": "/assets/generated/sprites/attack.png"
+    "path": "/assets/fhd/items/sprite-attack.webp"
   },
   {
     "id": "sprite-guard",
     "name": "수호",
-    "path": "/assets/generated/sprites/guard.png"
+    "path": "/assets/fhd/items/sprite-guard.webp"
   },
   {
     "id": "sprite-support",
     "name": "지원",
-    "path": "/assets/generated/sprites/support.png"
+    "path": "/assets/fhd/items/sprite-support.webp"
   },
   {
     "id": "sprite-control",
     "name": "제어",
-    "path": "/assets/generated/sprites/control.png"
+    "path": "/assets/fhd/items/sprite-control.webp"
   },
   {
     "id": "sprite-stress",
     "name": "스트레스",
-    "path": "/assets/generated/sprites/stress.png"
+    "path": "/assets/fhd/items/sprite-stress.webp"
   },
   {
     "id": "sprite-injury",
     "name": "부상",
-    "path": "/assets/generated/sprites/injury.png"
+    "path": "/assets/fhd/items/sprite-injury.webp"
   }
 ]

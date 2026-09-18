@@ -13,6 +13,9 @@ import {
   equipmentAllowed,
   recommendedFormation,
   createExpeditionRoute,
+  availableRecruitIds,
+  unlockedRegions,
+  deckPreview,
   type Game,
   type Action,
 } from "../lib/game";
@@ -98,6 +101,8 @@ test("party ownership, 1–4 unique slots, equipment and no hub xp", () => {
     ["VR1"],
   ])
     assert.throws(() => act(g, { type: "party", ids }));
+  assert.throws(() => act(g, { type: "recruit", id: "VR1" }));
+  g.completedQuests.push("Q01");
   g = act(g, { type: "recruit", id: "VR1" });
   g = act(g, { type: "equip", id: "VR1", choice: "ward" });
   assert.equal(g.roster.at(-1)?.xp, 0);
@@ -388,4 +393,25 @@ test("forge crafts and equips a profession weapon from account materials", () =>
   g = act(g, { type: "equip", id: "AR1", item: "weapon", choice: "bastion-blade" });
   assert.equal(g.roster[0].loadout.weapon, "bastion-blade");
   assert.throws(() => act(g, { type: "equip", id: "AR2", item: "weapon", choice: "bastion-blade" }));
+});
+test("story quests unlock recruits, maps and live deck values persist", () => {
+  let g = initialGame();
+  g = act(g, { type: "quest", id: "Q01", choice: "accept" });
+  g = act(g, { type: "enter", choice: "fortress" });
+  g.run!.cleared = true;
+  g.run!.room = "l1-rest";
+  g.run!.mode = "map";
+  g = act(g, { type: "return" });
+  assert.ok(g.completedQuests.includes("Q01"));
+  assert.deepEqual(availableRecruitIds(g.completedQuests), ["VR1", "VR2"]);
+  g = act(g, { type: "quest", id: "Q02", choice: "accept" });
+  g = act(g, { type: "enter", choice: "fortress" });
+  g.run!.cleared = true;
+  g.run!.room = "l1-rest";
+  g.run!.mode = "map";
+  g = act(g, { type: "return" });
+  assert.ok(unlockedRegions(g.completedQuests).includes("harbor"));
+  g = act(g, { type: "enter", choice: "harbor" });
+  assert.equal(g.run!.region, "harbor");
+  assert.equal(deckPreview(g).length, 16);
 });

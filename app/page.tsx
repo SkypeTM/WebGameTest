@@ -23,6 +23,12 @@ import {
   cardTriggerDefinitions,
   type StatusMap,
   type CardPreview,
+  storyQuests,
+  regionCatalog,
+  unlockedRegions,
+  availableRecruitIds,
+  deckPreview,
+  effectiveCardValue,
 } from "../lib/game";
 import assetManifest from "../data/asset_manifest.json";
 import generatedAssets from "../data/generated_assets.json";
@@ -30,6 +36,8 @@ import characterAssets from "../data/character_asset_manifest.json";
 import monsterAssets from "../data/monster_asset_manifest.json";
 import environmentAssets from "../data/environment_manifest.json";
 import cardArtAssets from "../data/card_art_manifest.json";
+import live2dAssets from "../data/live2d_manifest.json";
+import merchantAssets from "../data/merchant_asset_manifest.json";
 type MarketListing = {
   id: string;
   seller: string;
@@ -78,12 +86,14 @@ function Crest({
   motion = "",
   state,
   contain = false,
+  portrait = false,
 }: {
   id: string;
   large?: boolean;
   motion?: string;
   state?: "idle" | "attack" | "hit" | "skill" | "dialogue" | "promotion";
   contain?: boolean;
+  portrait?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
   const monster = id.startsWith("M");
@@ -97,23 +107,30 @@ function Crest({
           ? "skill"
           : "idle");
   const monsterState = motion === "motion-strike" ? "action" : "idle";
-  const actionAsset = monster
+  const rig = live2dAssets.find((item) => item.id === id);
+  const rigStates = (rig?.states || {}) as Record<string, string>;
+  const manifestActionAsset = monster
     ? monsterAssets.find(
         (item) => item.id === id && item.state === monsterState,
       ) || assetManifest.find((item) => item.id === id)
     : characterAssets.find(
         (item) => item.id === id && item.state === visualState,
       );
-  const idleAsset = monster
+  const manifestIdleAsset = monster
     ? monsterAssets.find((item) => item.id === id && item.state === "idle") ||
       assetManifest.find((item) => item.id === id)
     : characterAssets.find((item) => item.id === id && item.state === "idle");
+  const actionAsset = rigStates[monster ? monsterState : visualState]
+    ? { path: rigStates[monster ? monsterState : visualState] }
+    : manifestActionAsset;
+  const idleAsset = rigStates.idle ? { path: rigStates.idle } : manifestIdleAsset;
+  const portraitPath = !monster ? `/assets/fhd/portraits/${id}.webp` : "";
   const asset = state ? actionAsset : idleAsset || actionAsset;
   if (asset?.path && !failed)
     return (
-      <div className={`${large ? "crest large" : "crest"} sprite-actor ${motion}`}>
+      <div className={`${large ? "crest large" : "crest"} sprite-actor live2d-rig ${portrait ? "portrait-only" : ""} ${motion}`}>
         <img
-          src={String(asset.path)}
+          src={portrait ? portraitPath : String(asset.path)}
           alt={id}
           className="concept-art sprite-frame sprite-frame-idle"
           style={{
@@ -124,6 +141,20 @@ function Crest({
           }}
           onError={() => setFailed(true)}
         />
+        {!portrait && !state && (
+          <>
+            <img
+              src={String(asset.path)}
+              alt=""
+              className="concept-art live2d-layer live2d-upper"
+            />
+            <img
+              src={String(asset.path)}
+              alt=""
+              className="concept-art live2d-layer live2d-face"
+            />
+          </>
+        )}
         {!state && actionAsset?.path && actionAsset.path !== asset.path && (
           <img
             src={String(actionAsset.path)}
@@ -164,6 +195,19 @@ function Crest({
         )}
       </svg>
       <span>{id}</span>
+    </div>
+  );
+}
+function MerchantLive2D({ state = "idle" }: { state?: string }) {
+  const asset =
+    merchantAssets.find((item) => item.state === state) || merchantAssets[0];
+  if (!asset) return null;
+  return (
+    <div className={`merchant-live2d merchant-${state}`} aria-label="암상인">
+      <img src={asset.path} alt="암상인" className="merchant-base" />
+      <img src={asset.path} alt="" className="merchant-layer merchant-upper" />
+      <img src={asset.path} alt="" className="merchant-layer merchant-face" />
+      <i className="merchant-glow" aria-hidden="true" />
     </div>
   );
 }
@@ -323,6 +367,10 @@ export default function Page() {
     [selectedItem, setSelectedItem] = useState(""),
     [selectedHero, setSelectedHero] = useState(""),
     [facilityTab, setFacilityTab] = useState("forge"),
+    [selectedRegion, setSelectedRegion] = useState("fortress"),
+    [deckOpen, setDeckOpen] = useState(false),
+    [merchantHero, setMerchantHero] = useState(""),
+    [merchantPreview, setMerchantPreview] = useState("idle"),
     [infoPopup, setInfoPopup] = useState<{
       title: string;
       subtitle: string;
@@ -526,6 +574,16 @@ export default function Page() {
   const run = game?.run,
     battle = run?.battle,
     fx = run?.combatFx;
+  const merchantHeroId = merchantHero || run?.heroes[0]?.id || "";
+  const merchantHeroState = run?.heroes.find((hero) => hero.id === merchantHeroId);
+  const merchantStrike =
+    game && merchantHeroState
+      ? effectiveCardValue(game, merchantHeroState, "strike")
+      : null;
+  const merchantHeavy =
+    game && merchantHeroState
+      ? effectiveCardValue(game, merchantHeroState, "heavy")
+      : null;
   const musicTrack = run
     ? run.mode === "battle"
       ? run.room === "boss" || run.room?.endsWith("-boss")
@@ -831,7 +889,9 @@ export default function Page() {
         <div className="page-heading">
           <div>
             <span className="eyebrow">
-              {run ? "THE FRONTIER FORTRESS" : "EXPLORER’S REFUGE"}
+              {run
+                ? regionCatalog.find((region) => region.id === (run.region || "fortress"))?.name
+                : "EXPLORER’S REFUGE"}
             </span>
             <h1>{run ? roomFor(run).name : "귀환자의 거점"}</h1>
             <p>
@@ -843,6 +903,11 @@ export default function Page() {
           <div className="chapter-tag">
             {run ? `탐사 ${game.runs + 1}` : `귀환 ${game.runs}회`}
             <small>{run ? `확보 대기 ◈ ${run.gold}` : "변경 요새 개방"}</small>
+            {run && (
+              <button className="mini" onClick={() => setDeckOpen(true)}>
+                덱 {deckPreview(game).length}장 보기
+              </button>
+            )}
           </div>
         </div>
         {!run ? (
@@ -855,6 +920,7 @@ export default function Page() {
               <div className="town-locations">
                 {[
                   ["party", "작전실", "편성 · 장비"],
+                  ["quests", "의뢰 게시판", "스토리 · 지역 해금"],
                   ["roster", "주점", "동료 모집"],
                   ["growth", "거점 시설", "제작 · 훈련 · 치료"],
                   ["market", "시장 골목", "거래 · 암시장"],
@@ -895,6 +961,7 @@ export default function Page() {
                       {(
                         {
                           party: "작전실",
+                          quests: "의뢰 게시판",
                           roster: "주점",
                           growth: "거점 시설",
                           market: "시장 골목",
@@ -1048,7 +1115,7 @@ export default function Page() {
                                 </span>
                                 {id ? (
                                   <>
-                                    <Crest id={id} />
+                                    <Crest id={id} portrait />
                                     <strong>{char(id).name}</strong>
                                     <b className="profession-name">
                                       {professionFor(id).name}
@@ -1417,15 +1484,28 @@ export default function Page() {
                         <div className="tower one" />
                         <div className="tower two" />
                         <div className="tower three" />
-                        <span>01 / FRONTIER</span>
+                        <span>
+                          {String(regionCatalog.findIndex((region) => region.id === selectedRegion) + 1).padStart(2, "0")} / FRONTIER
+                        </span>
                       </div>
                       <div className="expedition-copy">
                         <span className="eyebrow">다음 탐사</span>
-                        <h2>변경 요새</h2>
-                        <p>
-                          종소리가 사라진 밤, 성문을 지키던 기계들이 다시
-                          움직이기 시작했다.
-                        </p>
+                        <h2>{regionCatalog.find((region) => region.id === selectedRegion)?.name}</h2>
+                        <p>{regionCatalog.find((region) => region.id === selectedRegion)?.description}</p>
+                        <label>
+                          출발 지역
+                          <select value={selectedRegion} onChange={(event) => setSelectedRegion(event.target.value)}>
+                            {regionCatalog.map((region) => (
+                              <option
+                                key={region.id}
+                                value={region.id}
+                                disabled={!unlockedRegions(game.completedQuests).includes(region.id)}
+                              >
+                                {region.name}{unlockedRegions(game.completedQuests).includes(region.id) ? "" : " · 잠김"}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
                         <div className="facts">
                           <span>분기 경로</span>
                           <strong>전투 · 휴식 · 사건</strong>
@@ -1444,9 +1524,12 @@ export default function Page() {
                         <button
                           className="primary full"
                           disabled={locked}
-                          onClick={() => void act({ type: "enter" })}
+                          onClick={() => void act({ type: "enter", choice: selectedRegion })}
                         >
                           던전 입장 <span>→</span>
+                        </button>
+                        <button className="secondary full" onClick={() => setDeckOpen(true)}>
+                          현재 덱 미리보기 · {deckPreview(game).length}장
                         </button>
                         <p className="small muted">
                           귀환 야영지에서만 전리품을 지키며 거점으로 돌아갈 수 있습니다.
@@ -1458,7 +1541,14 @@ export default function Page() {
                   <section>
                     <div className="section-heading">
                       <h2>
-                        팩션의 동료들 <span>32명</span>
+                        팩션의 동료들{" "}
+                        <span>
+                          {new Set([
+                            ...game.roster.map((hero) => hero.id),
+                            ...availableRecruitIds(game.completedQuests),
+                          ]).size}
+                          명
+                        </span>
                       </h2>
                       <span className="muted small">
                         첫 버전 영입 비용 ◈ {balance.recruitCost}
@@ -1481,7 +1571,10 @@ export default function Page() {
                     <div className="recruit-grid">
                       {characters
                         .filter(
-                          (c) => filter === "전체" || c.faction === filter,
+                          (c) =>
+                            (game.roster.some((hero) => hero.id === c.id) ||
+                              availableRecruitIds(game.completedQuests).includes(c.id)) &&
+                            (filter === "전체" || c.faction === filter),
                         )
                         .map((c) => {
                           const preview =
@@ -1635,6 +1728,56 @@ export default function Page() {
                         );
                       })()}
                   </section>
+                ) : tab === "quests" ? (
+                  <div className="quest-layout">
+                    <section className="panel quest-timeline">
+                      <div className="section-heading">
+                        <h2>전체 이야기</h2>
+                        <span>{game.completedQuests.length} / {storyQuests.length}</span>
+                      </div>
+                      {storyQuests.map((quest) => {
+                        const complete = game.completedQuests.includes(quest.id);
+                        const active = game.activeQuest === quest.id;
+                        const next = storyQuests.find((item) => !game.completedQuests.includes(item.id));
+                        const region = regionCatalog.find((item) => item.id === quest.region)!;
+                        return (
+                          <article className={`quest-card ${complete ? "complete" : ""} ${active ? "active" : ""}`} key={quest.id}>
+                            <span className="quest-chapter">CH.{quest.chapter.toString().padStart(2, "0")}</span>
+                            <div>
+                              <h3>{quest.title}</h3>
+                              <small>{region.name}</small>
+                              <p>{quest.story}</p>
+                              <span>보상 ◈ {quest.rewardGold} · {quest.rewardMaterial}</span>
+                            </div>
+                            {complete ? (
+                              <b>완료</b>
+                            ) : active ? (
+                              <button disabled={locked} onClick={() => void act({ type: "quest", choice: "abandon" })}>보류</button>
+                            ) : (
+                              <button
+                                disabled={locked || Boolean(game.activeQuest) || next?.id !== quest.id}
+                                onClick={() => void act({ type: "quest", id: quest.id, choice: "accept" })}
+                              >
+                                수락
+                              </button>
+                            )}
+                          </article>
+                        );
+                      })}
+                    </section>
+                    <section className="panel region-progress">
+                      <h2>탐사 지역 해금</h2>
+                      {regionCatalog.map((region) => {
+                        const open = unlockedRegions(game.completedQuests).includes(region.id);
+                        return (
+                          <div className={`region-row ${open ? "open" : "locked"}`} key={region.id}>
+                            <strong>{open ? "◆" : "◇"} {region.name}</strong>
+                            <small>{open ? region.description : "앞선 스토리 완료 필요"}</small>
+                          </div>
+                        );
+                      })}
+                    </section>
+                  </div>
                 ) : tab === "growth" ? (
                   <div className="storage-grid">
                     <nav className="facility-tabs" aria-label="거점 시설 이동">
@@ -2427,6 +2570,11 @@ export default function Page() {
                   <div className="hand">
                     {battle.hand.map((c) => {
                       const info = cardInfo(c),
+                        liveValue = effectiveCardValue(
+                          game,
+                          run.heroes.find((hero) => hero.id === c.owner)!,
+                          c.kind,
+                        ),
                         artwork =
                           c.kind === "skill"
                             ? characterAssets.find(
@@ -2505,6 +2653,14 @@ export default function Page() {
                             )}
                           </span>
                           <strong>{info.name}</strong>
+                          <span className="live-card-value">
+                            {liveValue.label} {liveValue.value}
+                            <small>
+                              기본 {liveValue.sources.base} · 장비/스탯{" "}
+                              {liveValue.sources.equipmentAndStats >= 0 ? "+" : ""}
+                              {liveValue.sources.equipmentAndStats}
+                            </small>
+                          </span>
                           <span className="card-desc">{info.description}</span>
                           <span className="card-triggers">
                             {info.triggers.map((trigger) => (
@@ -2867,11 +3023,15 @@ export default function Page() {
                     </>
                   ) : run.mode === "merchant" ? (
                     <>
-                      <div className="reward-emblem">◈</div>
+                      <MerchantLive2D state={merchantPreview} />
                       <p>암상인은 희귀 재료와 카드 수선 도구를 펼쳐 놓았습니다.</p>
                       <label>
                         대상 동료
-                        <select id="merchant-hero" defaultValue={run.heroes[0]?.id}>
+                        <select
+                          id="merchant-hero"
+                          value={merchantHeroId}
+                          onChange={(event) => setMerchantHero(event.target.value)}
+                        >
                           {run.heroes.map((hero) => (
                             <option key={hero.id} value={hero.id}>
                               {char(hero.id).name} · {professionFor(hero.id).name}
@@ -2881,24 +3041,41 @@ export default function Page() {
                       </label>
                       <div className="merchant-actions">
                         {[
-                          ["heal", "체력 28 회복", 20],
-                          ["rare", "희귀 재료 구매", 45],
-                          ["upgrade", "기본 공격 진화 +4", 30],
-                          ["remove", "기본 공격 삭제", 40],
-                          ["transform", "기본 공격 변경", 35],
-                        ].map(([choice, label, cost]) => (
+                          ["heal", `체력 ${merchantHeroState?.hp || 0} → ${Math.min(merchantHeroState?.maxHp || 0, (merchantHeroState?.hp || 0) + 28)}`, 20, "welcome"],
+                          ["rare", "월광 합금 1개 획득", 45, "rare"],
+                          ["upgrade", `기본 공격 피해 ${merchantStrike?.value || 0} → ${(merchantStrike?.value || 0) + 4}`, 30, "exchange"],
+                          ["remove", `기본 공격 카드 1장 삭제 ?`, 40, "exchange"],
+                          ["transform", `${merchantStrike?.name || "기본 공격"} → ${merchantHeavy?.name || "강공"} ?`, 35, "exchange"],
+                        ].map(([choice, label, cost, pose]) => (
                           <button
                             key={choice}
                             disabled={locked || run.gold < Number(cost)}
+                            onMouseEnter={() => setMerchantPreview(String(pose))}
+                            onMouseLeave={() => setMerchantPreview("idle")}
+                            onFocus={() => setMerchantPreview(String(pose))}
                             onClick={() =>
                               void act({
                                 type: "merchant",
                                 choice: String(choice),
-                                id: (document.getElementById("merchant-hero") as HTMLSelectElement).value,
+                                id: merchantHeroId,
                               })
                             }
                           >
-                            {label} · ◈ {cost}
+                            <span>{label}</span>
+                            {choice === "heal" && merchantHeroState && (
+                              <Meter
+                                value={merchantHeroState.hp}
+                                max={merchantHeroState.maxHp}
+                                preview={{
+                                  hpBefore: merchantHeroState.hp,
+                                  hpAfter: Math.min(merchantHeroState.maxHp, merchantHeroState.hp + 28),
+                                  maxHp: merchantHeroState.maxHp,
+                                  shieldBefore: merchantHeroState.shield,
+                                  shieldAfter: merchantHeroState.shield,
+                                }}
+                              />
+                            )}
+                            <b>◈ {cost}</b>
                           </button>
                         ))}
                       </div>
@@ -2955,6 +3132,38 @@ export default function Page() {
               <p aria-live="polite">{game.log.at(-1)}</p>
             </section>
           </>
+        )}
+        {deckOpen && (
+          <div className="deck-modal-backdrop" role="dialog" aria-modal="true" aria-label="현재 덱 미리보기">
+            <section className="deck-modal">
+              <div className="section-heading">
+                <div>
+                  <span className="eyebrow">TACTICAL DECK</span>
+                  <h2>현재 덱 · {deckPreview(game).length}장</h2>
+                </div>
+                <button className="mini" onClick={() => setDeckOpen(false)}>닫기 ×</button>
+              </div>
+              <p className="muted small">장비·직업 능력치·시설·카드 강화·현재 디버프를 모두 반영한 수치입니다.</p>
+              <div className="deck-preview-grid">
+                {deckPreview(game).map(({ card, value, transformed }) => (
+                  <article className={`deck-preview-card card-${card.kind}`} key={card.id}>
+                    <span className="card-cost">{value.cost}</span>
+                    {card.kind === "skill" ? (
+                      <Crest id={card.owner} state="skill" />
+                    ) : (
+                      <CardArt kind={card.kind} role={value.role} />
+                    )}
+                    <small>{char(card.owner).name} · {professionFor(card.owner).name}</small>
+                    <h3>{value.name}{transformed ? " · 변경됨" : ""}</h3>
+                    <strong>{value.label} {value.value}</strong>
+                    <p>기본 {value.sources.base} · 능력/장비 {value.sources.equipmentAndStats >= 0 ? "+" : ""}{value.sources.equipmentAndStats}</p>
+                    {value.sources.cardUpgrade > 0 && <b>카드 진화 +{value.sources.cardUpgrade}</b>}
+                    <span>{value.description}</span>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
         )}
         {infoPopup && (
           <div

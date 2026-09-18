@@ -1,0 +1,32 @@
+[
+  {
+    "id": "merchant",
+    "state": "idle",
+    "path": "/assets/fhd/merchant/idle.webp"
+  },
+  {
+    "id": "merchant",
+    "state": "welcome",
+    "path": "/assets/fhd/merchant/welcome.webp"
+  },
+  {
+    "id": "merchant",
+    "state": "rare",
+    "path": "/assets/fhd/merchant/rare.webp"
+  },
+  {
+    "id": "merchant",
+    "state": "exchange",
+    "path": "/assets/fhd/merchant/exchange.webp"
+  },
+  {
+    "id": "merchant",
+    "state": "surprised",
+    "path": "/assets/fhd/merchant/surprised.webp"
+  },
+  {
+    "id": "merchant",
+    "state": "portrait",
+    "path": "/assets/fhd/merchant/portrait.webp"
+  }
+]

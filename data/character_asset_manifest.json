@@ -3,1152 +3,1152 @@
     "id": "AR1",
     "name": "레오나",
     "state": "idle",
-    "path": "/assets/generated/characters/AR1/idle.png"
+    "path": "/assets/fhd/characters/AR1/idle.webp"
   },
   {
     "id": "AR1",
     "name": "레오나",
     "state": "attack",
-    "path": "/assets/generated/characters/AR1/attack.png"
+    "path": "/assets/fhd/characters/AR1/attack.webp"
   },
   {
     "id": "AR1",
     "name": "레오나",
     "state": "hit",
-    "path": "/assets/generated/characters/AR1/hit.png"
+    "path": "/assets/fhd/characters/AR1/hit.webp"
   },
   {
     "id": "AR1",
     "name": "레오나",
     "state": "skill",
-    "path": "/assets/generated/characters/AR1/skill.png"
+    "path": "/assets/fhd/characters/AR1/skill.webp"
   },
   {
     "id": "AR1",
     "name": "레오나",
     "state": "dialogue",
-    "path": "/assets/generated/characters/AR1/dialogue.png"
+    "path": "/assets/fhd/characters/AR1/dialogue.webp"
   },
   {
     "id": "AR1",
     "name": "레오나",
     "state": "promotion",
-    "path": "/assets/generated/characters/AR1/promotion.png"
+    "path": "/assets/fhd/characters/AR1/promotion.webp"
   },
   {
     "id": "AR2",
     "name": "세린",
     "state": "idle",
-    "path": "/assets/generated/characters/AR2/idle.png"
+    "path": "/assets/fhd/characters/AR2/idle.webp"
   },
   {
     "id": "AR2",
     "name": "세린",
     "state": "attack",
-    "path": "/assets/generated/characters/AR2/attack.png"
+    "path": "/assets/fhd/characters/AR2/attack.webp"
   },
   {
     "id": "AR2",
     "name": "세린",
     "state": "hit",
-    "path": "/assets/generated/characters/AR2/hit.png"
+    "path": "/assets/fhd/characters/AR2/hit.webp"
   },
   {
     "id": "AR2",
     "name": "세린",
     "state": "skill",
-    "path": "/assets/generated/characters/AR2/skill.png"
+    "path": "/assets/fhd/characters/AR2/skill.webp"
   },
   {
     "id": "AR2",
     "name": "세린",
     "state": "dialogue",
-    "path": "/assets/generated/characters/AR2/dialogue.png"
+    "path": "/assets/fhd/characters/AR2/dialogue.webp"
   },
   {
     "id": "AR2",
     "name": "세린",
     "state": "promotion",
-    "path": "/assets/generated/characters/AR2/promotion.png"
+    "path": "/assets/fhd/characters/AR2/promotion.webp"
   },
   {
     "id": "AR3",
     "name": "마리엔",
     "state": "idle",
-    "path": "/assets/generated/characters/AR3/idle.png"
+    "path": "/assets/fhd/characters/AR3/idle.webp"
   },
   {
     "id": "AR3",
     "name": "마리엔",
     "state": "attack",
-    "path": "/assets/generated/characters/AR3/attack.png"
+    "path": "/assets/fhd/characters/AR3/attack.webp"
   },
   {
     "id": "AR3",
     "name": "마리엔",
     "state": "hit",
-    "path": "/assets/generated/characters/AR3/hit.png"
+    "path": "/assets/fhd/characters/AR3/hit.webp"
   },
   {
     "id": "AR3",
     "name": "마리엔",
     "state": "skill",
-    "path": "/assets/generated/characters/AR3/skill.png"
+    "path": "/assets/fhd/characters/AR3/skill.webp"
   },
   {
     "id": "AR3",
     "name": "마리엔",
     "state": "dialogue",
-    "path": "/assets/generated/characters/AR3/dialogue.png"
+    "path": "/assets/fhd/characters/AR3/dialogue.webp"
   },
   {
     "id": "AR3",
     "name": "마리엔",
     "state": "promotion",
-    "path": "/assets/generated/characters/AR3/promotion.png"
+    "path": "/assets/fhd/characters/AR3/promotion.webp"
   },
   {
     "id": "AR4",
     "name": "에델",
     "state": "idle",
-    "path": "/assets/generated/characters/AR4/idle.png"
+    "path": "/assets/fhd/characters/AR4/idle.webp"
   },
   {
     "id": "AR4",
     "name": "에델",
     "state": "attack",
-    "path": "/assets/generated/characters/AR4/attack.png"
+    "path": "/assets/fhd/characters/AR4/attack.webp"
   },
   {
     "id": "AR4",
     "name": "에델",
     "state": "hit",
-    "path": "/assets/generated/characters/AR4/hit.png"
+    "path": "/assets/fhd/characters/AR4/hit.webp"
   },
   {
     "id": "AR4",
     "name": "에델",
     "state": "skill",
-    "path": "/assets/generated/characters/AR4/skill.png"
+    "path": "/assets/fhd/characters/AR4/skill.webp"
   },
   {
     "id": "AR4",
     "name": "에델",
     "state": "dialogue",
-    "path": "/assets/generated/characters/AR4/dialogue.png"
+    "path": "/assets/fhd/characters/AR4/dialogue.webp"
   },
   {
     "id": "AR4",
     "name": "에델",
     "state": "promotion",
-    "path": "/assets/generated/characters/AR4/promotion.png"
+    "path": "/assets/fhd/characters/AR4/promotion.webp"
   },
   {
     "id": "BC1",
     "name": "로웬",
     "state": "idle",
-    "path": "/assets/generated/characters/BC1/idle.png"
+    "path": "/assets/fhd/characters/BC1/idle.webp"
   },
   {
     "id": "BC1",
     "name": "로웬",
     "state": "attack",
-    "path": "/assets/generated/characters/BC1/attack.png"
+    "path": "/assets/fhd/characters/BC1/attack.webp"
   },
   {
     "id": "BC1",
     "name": "로웬",
     "state": "hit",
-    "path": "/assets/generated/characters/BC1/hit.png"
+    "path": "/assets/fhd/characters/BC1/hit.webp"
   },
   {
     "id": "BC1",
     "name": "로웬",
     "state": "skill",
-    "path": "/assets/generated/characters/BC1/skill.png"
+    "path": "/assets/fhd/characters/BC1/skill.webp"
   },
   {
     "id": "BC1",
     "name": "로웬",
     "state": "dialogue",
-    "path": "/assets/generated/characters/BC1/dialogue.png"
+    "path": "/assets/fhd/characters/BC1/dialogue.webp"
   },
   {
     "id": "BC1",
     "name": "로웬",
     "state": "promotion",
-    "path": "/assets/generated/characters/BC1/promotion.png"
+    "path": "/assets/fhd/characters/BC1/promotion.webp"
   },
   {
     "id": "BC2",
     "name": "미라",
     "state": "idle",
-    "path": "/assets/generated/characters/BC2/idle.png"
+    "path": "/assets/fhd/characters/BC2/idle.webp"
   },
   {
     "id": "BC2",
     "name": "미라",
     "state": "attack",
-    "path": "/assets/generated/characters/BC2/attack.png"
+    "path": "/assets/fhd/characters/BC2/attack.webp"
   },
   {
     "id": "BC2",
     "name": "미라",
     "state": "hit",
-    "path": "/assets/generated/characters/BC2/hit.png"
+    "path": "/assets/fhd/characters/BC2/hit.webp"
   },
   {
     "id": "BC2",
     "name": "미라",
     "state": "skill",
-    "path": "/assets/generated/characters/BC2/skill.png"
+    "path": "/assets/fhd/characters/BC2/skill.webp"
   },
   {
     "id": "BC2",
     "name": "미라",
     "state": "dialogue",
-    "path": "/assets/generated/characters/BC2/dialogue.png"
+    "path": "/assets/fhd/characters/BC2/dialogue.webp"
   },
   {
     "id": "BC2",
     "name": "미라",
     "state": "promotion",
-    "path": "/assets/generated/characters/BC2/promotion.png"
+    "path": "/assets/fhd/characters/BC2/promotion.webp"
   },
   {
     "id": "BC3",
     "name": "오델",
     "state": "idle",
-    "path": "/assets/generated/characters/BC3/idle.png"
+    "path": "/assets/fhd/characters/BC3/idle.webp"
   },
   {
     "id": "BC3",
     "name": "오델",
     "state": "attack",
-    "path": "/assets/generated/characters/BC3/attack.png"
+    "path": "/assets/fhd/characters/BC3/attack.webp"
   },
   {
     "id": "BC3",
     "name": "오델",
     "state": "hit",
-    "path": "/assets/generated/characters/BC3/hit.png"
+    "path": "/assets/fhd/characters/BC3/hit.webp"
   },
   {
     "id": "BC3",
     "name": "오델",
     "state": "skill",
-    "path": "/assets/generated/characters/BC3/skill.png"
+    "path": "/assets/fhd/characters/BC3/skill.webp"
   },
   {
     "id": "BC3",
     "name": "오델",
     "state": "dialogue",
-    "path": "/assets/generated/characters/BC3/dialogue.png"
+    "path": "/assets/fhd/characters/BC3/dialogue.webp"
   },
   {
     "id": "BC3",
     "name": "오델",
     "state": "promotion",
-    "path": "/assets/generated/characters/BC3/promotion.png"
+    "path": "/assets/fhd/characters/BC3/promotion.webp"
   },
   {
     "id": "BC4",
     "name": "피아",
     "state": "idle",
-    "path": "/assets/generated/characters/BC4/idle.png"
+    "path": "/assets/fhd/characters/BC4/idle.webp"
   },
   {
     "id": "BC4",
     "name": "피아",
     "state": "attack",
-    "path": "/assets/generated/characters/BC4/attack.png"
+    "path": "/assets/fhd/characters/BC4/attack.webp"
   },
   {
     "id": "BC4",
     "name": "피아",
     "state": "hit",
-    "path": "/assets/generated/characters/BC4/hit.png"
+    "path": "/assets/fhd/characters/BC4/hit.webp"
   },
   {
     "id": "BC4",
     "name": "피아",
     "state": "skill",
-    "path": "/assets/generated/characters/BC4/skill.png"
+    "path": "/assets/fhd/characters/BC4/skill.webp"
   },
   {
     "id": "BC4",
     "name": "피아",
     "state": "dialogue",
-    "path": "/assets/generated/characters/BC4/dialogue.png"
+    "path": "/assets/fhd/characters/BC4/dialogue.webp"
   },
   {
     "id": "BC4",
     "name": "피아",
     "state": "promotion",
-    "path": "/assets/generated/characters/BC4/promotion.png"
+    "path": "/assets/fhd/characters/BC4/promotion.webp"
   },
   {
     "id": "BK1",
     "name": "베스라",
     "state": "idle",
-    "path": "/assets/generated/characters/BK1/idle.png"
+    "path": "/assets/fhd/characters/BK1/idle.webp"
   },
   {
     "id": "BK1",
     "name": "베스라",
     "state": "attack",
-    "path": "/assets/generated/characters/BK1/attack.png"
+    "path": "/assets/fhd/characters/BK1/attack.webp"
   },
   {
     "id": "BK1",
     "name": "베스라",
     "state": "hit",
-    "path": "/assets/generated/characters/BK1/hit.png"
+    "path": "/assets/fhd/characters/BK1/hit.webp"
   },
   {
     "id": "BK1",
     "name": "베스라",
     "state": "skill",
-    "path": "/assets/generated/characters/BK1/skill.png"
+    "path": "/assets/fhd/characters/BK1/skill.webp"
   },
   {
     "id": "BK1",
     "name": "베스라",
     "state": "dialogue",
-    "path": "/assets/generated/characters/BK1/dialogue.png"
+    "path": "/assets/fhd/characters/BK1/dialogue.webp"
   },
   {
     "id": "BK1",
     "name": "베스라",
     "state": "promotion",
-    "path": "/assets/generated/characters/BK1/promotion.png"
+    "path": "/assets/fhd/characters/BK1/promotion.webp"
   },
   {
     "id": "BK2",
     "name": "니엘",
     "state": "idle",
-    "path": "/assets/generated/characters/BK2/idle.png"
+    "path": "/assets/fhd/characters/BK2/idle.webp"
   },
   {
     "id": "BK2",
     "name": "니엘",
     "state": "attack",
-    "path": "/assets/generated/characters/BK2/attack.png"
+    "path": "/assets/fhd/characters/BK2/attack.webp"
   },
   {
     "id": "BK2",
     "name": "니엘",
     "state": "hit",
-    "path": "/assets/generated/characters/BK2/hit.png"
+    "path": "/assets/fhd/characters/BK2/hit.webp"
   },
   {
     "id": "BK2",
     "name": "니엘",
     "state": "skill",
-    "path": "/assets/generated/characters/BK2/skill.png"
+    "path": "/assets/fhd/characters/BK2/skill.webp"
   },
   {
     "id": "BK2",
     "name": "니엘",
     "state": "dialogue",
-    "path": "/assets/generated/characters/BK2/dialogue.png"
+    "path": "/assets/fhd/characters/BK2/dialogue.webp"
   },
   {
     "id": "BK2",
     "name": "니엘",
     "state": "promotion",
-    "path": "/assets/generated/characters/BK2/promotion.png"
+    "path": "/assets/fhd/characters/BK2/promotion.webp"
   },
   {
     "id": "BK3",
     "name": "사브린",
     "state": "idle",
-    "path": "/assets/generated/characters/BK3/idle.png"
+    "path": "/assets/fhd/characters/BK3/idle.webp"
   },
   {
     "id": "BK3",
     "name": "사브린",
     "state": "attack",
-    "path": "/assets/generated/characters/BK3/attack.png"
+    "path": "/assets/fhd/characters/BK3/attack.webp"
   },
   {
     "id": "BK3",
     "name": "사브린",
     "state": "hit",
-    "path": "/assets/generated/characters/BK3/hit.png"
+    "path": "/assets/fhd/characters/BK3/hit.webp"
   },
   {
     "id": "BK3",
     "name": "사브린",
     "state": "skill",
-    "path": "/assets/generated/characters/BK3/skill.png"
+    "path": "/assets/fhd/characters/BK3/skill.webp"
   },
   {
     "id": "BK3",
     "name": "사브린",
     "state": "dialogue",
-    "path": "/assets/generated/characters/BK3/dialogue.png"
+    "path": "/assets/fhd/characters/BK3/dialogue.webp"
   },
   {
     "id": "BK3",
     "name": "사브린",
     "state": "promotion",
-    "path": "/assets/generated/characters/BK3/promotion.png"
+    "path": "/assets/fhd/characters/BK3/promotion.webp"
   },
   {
     "id": "BK4",
     "name": "루크",
     "state": "idle",
-    "path": "/assets/generated/characters/BK4/idle.png"
+    "path": "/assets/fhd/characters/BK4/idle.webp"
   },
   {
     "id": "BK4",
     "name": "루크",
     "state": "attack",
-    "path": "/assets/generated/characters/BK4/attack.png"
+    "path": "/assets/fhd/characters/BK4/attack.webp"
   },
   {
     "id": "BK4",
     "name": "루크",
     "state": "hit",
-    "path": "/assets/generated/characters/BK4/hit.png"
+    "path": "/assets/fhd/characters/BK4/hit.webp"
   },
   {
     "id": "BK4",
     "name": "루크",
     "state": "skill",
-    "path": "/assets/generated/characters/BK4/skill.png"
+    "path": "/assets/fhd/characters/BK4/skill.webp"
   },
   {
     "id": "BK4",
     "name": "루크",
     "state": "dialogue",
-    "path": "/assets/generated/characters/BK4/dialogue.png"
+    "path": "/assets/fhd/characters/BK4/dialogue.webp"
   },
   {
     "id": "BK4",
     "name": "루크",
     "state": "promotion",
-    "path": "/assets/generated/characters/BK4/promotion.png"
+    "path": "/assets/fhd/characters/BK4/promotion.webp"
   },
   {
     "id": "DS1",
     "name": "네레아",
     "state": "idle",
-    "path": "/assets/generated/characters/DS1/idle.png"
+    "path": "/assets/fhd/characters/DS1/idle.webp"
   },
   {
     "id": "DS1",
     "name": "네레아",
     "state": "attack",
-    "path": "/assets/generated/characters/DS1/attack.png"
+    "path": "/assets/fhd/characters/DS1/attack.webp"
   },
   {
     "id": "DS1",
     "name": "네레아",
     "state": "hit",
-    "path": "/assets/generated/characters/DS1/hit.png"
+    "path": "/assets/fhd/characters/DS1/hit.webp"
   },
   {
     "id": "DS1",
     "name": "네레아",
     "state": "skill",
-    "path": "/assets/generated/characters/DS1/skill.png"
+    "path": "/assets/fhd/characters/DS1/skill.webp"
   },
   {
     "id": "DS1",
     "name": "네레아",
     "state": "dialogue",
-    "path": "/assets/generated/characters/DS1/dialogue.png"
+    "path": "/assets/fhd/characters/DS1/dialogue.webp"
   },
   {
     "id": "DS1",
     "name": "네레아",
     "state": "promotion",
-    "path": "/assets/generated/characters/DS1/promotion.png"
+    "path": "/assets/fhd/characters/DS1/promotion.webp"
   },
   {
     "id": "DS2",
     "name": "시엘라",
     "state": "idle",
-    "path": "/assets/generated/characters/DS2/idle.png"
+    "path": "/assets/fhd/characters/DS2/idle.webp"
   },
   {
     "id": "DS2",
     "name": "시엘라",
     "state": "attack",
-    "path": "/assets/generated/characters/DS2/attack.png"
+    "path": "/assets/fhd/characters/DS2/attack.webp"
   },
   {
     "id": "DS2",
     "name": "시엘라",
     "state": "hit",
-    "path": "/assets/generated/characters/DS2/hit.png"
+    "path": "/assets/fhd/characters/DS2/hit.webp"
   },
   {
     "id": "DS2",
     "name": "시엘라",
     "state": "skill",
-    "path": "/assets/generated/characters/DS2/skill.png"
+    "path": "/assets/fhd/characters/DS2/skill.webp"
   },
   {
     "id": "DS2",
     "name": "시엘라",
     "state": "dialogue",
-    "path": "/assets/generated/characters/DS2/dialogue.png"
+    "path": "/assets/fhd/characters/DS2/dialogue.webp"
   },
   {
     "id": "DS2",
     "name": "시엘라",
     "state": "promotion",
-    "path": "/assets/generated/characters/DS2/promotion.png"
+    "path": "/assets/fhd/characters/DS2/promotion.webp"
   },
   {
     "id": "DS3",
     "name": "모이라",
     "state": "idle",
-    "path": "/assets/generated/characters/DS3/idle.png"
+    "path": "/assets/fhd/characters/DS3/idle.webp"
   },
   {
     "id": "DS3",
     "name": "모이라",
     "state": "attack",
-    "path": "/assets/generated/characters/DS3/attack.png"
+    "path": "/assets/fhd/characters/DS3/attack.webp"
   },
   {
     "id": "DS3",
     "name": "모이라",
     "state": "hit",
-    "path": "/assets/generated/characters/DS3/hit.png"
+    "path": "/assets/fhd/characters/DS3/hit.webp"
   },
   {
     "id": "DS3",
     "name": "모이라",
     "state": "skill",
-    "path": "/assets/generated/characters/DS3/skill.png"
+    "path": "/assets/fhd/characters/DS3/skill.webp"
   },
   {
     "id": "DS3",
     "name": "모이라",
     "state": "dialogue",
-    "path": "/assets/generated/characters/DS3/dialogue.png"
+    "path": "/assets/fhd/characters/DS3/dialogue.webp"
   },
   {
     "id": "DS3",
     "name": "모이라",
     "state": "promotion",
-    "path": "/assets/generated/characters/DS3/promotion.png"
+    "path": "/assets/fhd/characters/DS3/promotion.webp"
   },
   {
     "id": "DS4",
     "name": "벨린",
     "state": "idle",
-    "path": "/assets/generated/characters/DS4/idle.png"
+    "path": "/assets/fhd/characters/DS4/idle.webp"
   },
   {
     "id": "DS4",
     "name": "벨린",
     "state": "attack",
-    "path": "/assets/generated/characters/DS4/attack.png"
+    "path": "/assets/fhd/characters/DS4/attack.webp"
   },
   {
     "id": "DS4",
     "name": "벨린",
     "state": "hit",
-    "path": "/assets/generated/characters/DS4/hit.png"
+    "path": "/assets/fhd/characters/DS4/hit.webp"
   },
   {
     "id": "DS4",
     "name": "벨린",
     "state": "skill",
-    "path": "/assets/generated/characters/DS4/skill.png"
+    "path": "/assets/fhd/characters/DS4/skill.webp"
   },
   {
     "id": "DS4",
     "name": "벨린",
     "state": "dialogue",
-    "path": "/assets/generated/characters/DS4/dialogue.png"
+    "path": "/assets/fhd/characters/DS4/dialogue.webp"
   },
   {
     "id": "DS4",
     "name": "벨린",
     "state": "promotion",
-    "path": "/assets/generated/characters/DS4/promotion.png"
+    "path": "/assets/fhd/characters/DS4/promotion.webp"
   },
   {
     "id": "EF1",
     "name": "레나",
     "state": "idle",
-    "path": "/assets/generated/characters/EF1/idle.png"
+    "path": "/assets/fhd/characters/EF1/idle.webp"
   },
   {
     "id": "EF1",
     "name": "레나",
     "state": "attack",
-    "path": "/assets/generated/characters/EF1/attack.png"
+    "path": "/assets/fhd/characters/EF1/attack.webp"
   },
   {
     "id": "EF1",
     "name": "레나",
     "state": "hit",
-    "path": "/assets/generated/characters/EF1/hit.png"
+    "path": "/assets/fhd/characters/EF1/hit.webp"
   },
   {
     "id": "EF1",
     "name": "레나",
     "state": "skill",
-    "path": "/assets/generated/characters/EF1/skill.png"
+    "path": "/assets/fhd/characters/EF1/skill.webp"
   },
   {
     "id": "EF1",
     "name": "레나",
     "state": "dialogue",
-    "path": "/assets/generated/characters/EF1/dialogue.png"
+    "path": "/assets/fhd/characters/EF1/dialogue.webp"
   },
   {
     "id": "EF1",
     "name": "레나",
     "state": "promotion",
-    "path": "/assets/generated/characters/EF1/promotion.png"
+    "path": "/assets/fhd/characters/EF1/promotion.webp"
   },
   {
     "id": "EF2",
     "name": "유나",
     "state": "idle",
-    "path": "/assets/generated/characters/EF2/idle.png"
+    "path": "/assets/fhd/characters/EF2/idle.webp"
   },
   {
     "id": "EF2",
     "name": "유나",
     "state": "attack",
-    "path": "/assets/generated/characters/EF2/attack.png"
+    "path": "/assets/fhd/characters/EF2/attack.webp"
   },
   {
     "id": "EF2",
     "name": "유나",
     "state": "hit",
-    "path": "/assets/generated/characters/EF2/hit.png"
+    "path": "/assets/fhd/characters/EF2/hit.webp"
   },
   {
     "id": "EF2",
     "name": "유나",
     "state": "skill",
-    "path": "/assets/generated/characters/EF2/skill.png"
+    "path": "/assets/fhd/characters/EF2/skill.webp"
   },
   {
     "id": "EF2",
     "name": "유나",
     "state": "dialogue",
-    "path": "/assets/generated/characters/EF2/dialogue.png"
+    "path": "/assets/fhd/characters/EF2/dialogue.webp"
   },
   {
     "id": "EF2",
     "name": "유나",
     "state": "promotion",
-    "path": "/assets/generated/characters/EF2/promotion.png"
+    "path": "/assets/fhd/characters/EF2/promotion.webp"
   },
   {
     "id": "EF3",
     "name": "다리아",
     "state": "idle",
-    "path": "/assets/generated/characters/EF3/idle.png"
+    "path": "/assets/fhd/characters/EF3/idle.webp"
   },
   {
     "id": "EF3",
     "name": "다리아",
     "state": "attack",
-    "path": "/assets/generated/characters/EF3/attack.png"
+    "path": "/assets/fhd/characters/EF3/attack.webp"
   },
   {
     "id": "EF3",
     "name": "다리아",
     "state": "hit",
-    "path": "/assets/generated/characters/EF3/hit.png"
+    "path": "/assets/fhd/characters/EF3/hit.webp"
   },
   {
     "id": "EF3",
     "name": "다리아",
     "state": "skill",
-    "path": "/assets/generated/characters/EF3/skill.png"
+    "path": "/assets/fhd/characters/EF3/skill.webp"
   },
   {
     "id": "EF3",
     "name": "다리아",
     "state": "dialogue",
-    "path": "/assets/generated/characters/EF3/dialogue.png"
+    "path": "/assets/fhd/characters/EF3/dialogue.webp"
   },
   {
     "id": "EF3",
     "name": "다리아",
     "state": "promotion",
-    "path": "/assets/generated/characters/EF3/promotion.png"
+    "path": "/assets/fhd/characters/EF3/promotion.webp"
   },
   {
     "id": "EF4",
     "name": "세이",
     "state": "idle",
-    "path": "/assets/generated/characters/EF4/idle.png"
+    "path": "/assets/fhd/characters/EF4/idle.webp"
   },
   {
     "id": "EF4",
     "name": "세이",
     "state": "attack",
-    "path": "/assets/generated/characters/EF4/attack.png"
+    "path": "/assets/fhd/characters/EF4/attack.webp"
   },
   {
     "id": "EF4",
     "name": "세이",
     "state": "hit",
-    "path": "/assets/generated/characters/EF4/hit.png"
+    "path": "/assets/fhd/characters/EF4/hit.webp"
   },
   {
     "id": "EF4",
     "name": "세이",
     "state": "skill",
-    "path": "/assets/generated/characters/EF4/skill.png"
+    "path": "/assets/fhd/characters/EF4/skill.webp"
   },
   {
     "id": "EF4",
     "name": "세이",
     "state": "dialogue",
-    "path": "/assets/generated/characters/EF4/dialogue.png"
+    "path": "/assets/fhd/characters/EF4/dialogue.webp"
   },
   {
     "id": "EF4",
     "name": "세이",
     "state": "promotion",
-    "path": "/assets/generated/characters/EF4/promotion.png"
+    "path": "/assets/fhd/characters/EF4/promotion.webp"
   },
   {
     "id": "GO1",
     "name": "실바",
     "state": "idle",
-    "path": "/assets/generated/characters/GO1/idle.png"
+    "path": "/assets/fhd/characters/GO1/idle.webp"
   },
   {
     "id": "GO1",
     "name": "실바",
     "state": "attack",
-    "path": "/assets/generated/characters/GO1/attack.png"
+    "path": "/assets/fhd/characters/GO1/attack.webp"
   },
   {
     "id": "GO1",
     "name": "실바",
     "state": "hit",
-    "path": "/assets/generated/characters/GO1/hit.png"
+    "path": "/assets/fhd/characters/GO1/hit.webp"
   },
   {
     "id": "GO1",
     "name": "실바",
     "state": "skill",
-    "path": "/assets/generated/characters/GO1/skill.png"
+    "path": "/assets/fhd/characters/GO1/skill.webp"
   },
   {
     "id": "GO1",
     "name": "실바",
     "state": "dialogue",
-    "path": "/assets/generated/characters/GO1/dialogue.png"
+    "path": "/assets/fhd/characters/GO1/dialogue.webp"
   },
   {
     "id": "GO1",
     "name": "실바",
     "state": "promotion",
-    "path": "/assets/generated/characters/GO1/promotion.png"
+    "path": "/assets/fhd/characters/GO1/promotion.webp"
   },
   {
     "id": "GO2",
     "name": "에린",
     "state": "idle",
-    "path": "/assets/generated/characters/GO2/idle.png"
+    "path": "/assets/fhd/characters/GO2/idle.webp"
   },
   {
     "id": "GO2",
     "name": "에린",
     "state": "attack",
-    "path": "/assets/generated/characters/GO2/attack.png"
+    "path": "/assets/fhd/characters/GO2/attack.webp"
   },
   {
     "id": "GO2",
     "name": "에린",
     "state": "hit",
-    "path": "/assets/generated/characters/GO2/hit.png"
+    "path": "/assets/fhd/characters/GO2/hit.webp"
   },
   {
     "id": "GO2",
     "name": "에린",
     "state": "skill",
-    "path": "/assets/generated/characters/GO2/skill.png"
+    "path": "/assets/fhd/characters/GO2/skill.webp"
   },
   {
     "id": "GO2",
     "name": "에린",
     "state": "dialogue",
-    "path": "/assets/generated/characters/GO2/dialogue.png"
+    "path": "/assets/fhd/characters/GO2/dialogue.webp"
   },
   {
     "id": "GO2",
     "name": "에린",
     "state": "promotion",
-    "path": "/assets/generated/characters/GO2/promotion.png"
+    "path": "/assets/fhd/characters/GO2/promotion.webp"
   },
   {
     "id": "GO3",
     "name": "바르나",
     "state": "idle",
-    "path": "/assets/generated/characters/GO3/idle.png"
+    "path": "/assets/fhd/characters/GO3/idle.webp"
   },
   {
     "id": "GO3",
     "name": "바르나",
     "state": "attack",
-    "path": "/assets/generated/characters/GO3/attack.png"
+    "path": "/assets/fhd/characters/GO3/attack.webp"
   },
   {
     "id": "GO3",
     "name": "바르나",
     "state": "hit",
-    "path": "/assets/generated/characters/GO3/hit.png"
+    "path": "/assets/fhd/characters/GO3/hit.webp"
   },
   {
     "id": "GO3",
     "name": "바르나",
     "state": "skill",
-    "path": "/assets/generated/characters/GO3/skill.png"
+    "path": "/assets/fhd/characters/GO3/skill.webp"
   },
   {
     "id": "GO3",
     "name": "바르나",
     "state": "dialogue",
-    "path": "/assets/generated/characters/GO3/dialogue.png"
+    "path": "/assets/fhd/characters/GO3/dialogue.webp"
   },
   {
     "id": "GO3",
     "name": "바르나",
     "state": "promotion",
-    "path": "/assets/generated/characters/GO3/promotion.png"
+    "path": "/assets/fhd/characters/GO3/promotion.webp"
   },
   {
     "id": "GO4",
     "name": "리스",
     "state": "idle",
-    "path": "/assets/generated/characters/GO4/idle.png"
+    "path": "/assets/fhd/characters/GO4/idle.webp"
   },
   {
     "id": "GO4",
     "name": "리스",
     "state": "attack",
-    "path": "/assets/generated/characters/GO4/attack.png"
+    "path": "/assets/fhd/characters/GO4/attack.webp"
   },
   {
     "id": "GO4",
     "name": "리스",
     "state": "hit",
-    "path": "/assets/generated/characters/GO4/hit.png"
+    "path": "/assets/fhd/characters/GO4/hit.webp"
   },
   {
     "id": "GO4",
     "name": "리스",
     "state": "skill",
-    "path": "/assets/generated/characters/GO4/skill.png"
+    "path": "/assets/fhd/characters/GO4/skill.webp"
   },
   {
     "id": "GO4",
     "name": "리스",
     "state": "dialogue",
-    "path": "/assets/generated/characters/GO4/dialogue.png"
+    "path": "/assets/fhd/characters/GO4/dialogue.webp"
   },
   {
     "id": "GO4",
     "name": "리스",
     "state": "promotion",
-    "path": "/assets/generated/characters/GO4/promotion.png"
+    "path": "/assets/fhd/characters/GO4/promotion.webp"
   },
   {
     "id": "VR1",
     "name": "리베아",
     "state": "idle",
-    "path": "/assets/generated/characters/VR1/idle.png"
+    "path": "/assets/fhd/characters/VR1/idle.webp"
   },
   {
     "id": "VR1",
     "name": "리베아",
     "state": "attack",
-    "path": "/assets/generated/characters/VR1/attack.png"
+    "path": "/assets/fhd/characters/VR1/attack.webp"
   },
   {
     "id": "VR1",
     "name": "리베아",
     "state": "hit",
-    "path": "/assets/generated/characters/VR1/hit.png"
+    "path": "/assets/fhd/characters/VR1/hit.webp"
   },
   {
     "id": "VR1",
     "name": "리베아",
     "state": "skill",
-    "path": "/assets/generated/characters/VR1/skill.png"
+    "path": "/assets/fhd/characters/VR1/skill.webp"
   },
   {
     "id": "VR1",
     "name": "리베아",
     "state": "dialogue",
-    "path": "/assets/generated/characters/VR1/dialogue.png"
+    "path": "/assets/fhd/characters/VR1/dialogue.webp"
   },
   {
     "id": "VR1",
     "name": "리베아",
     "state": "promotion",
-    "path": "/assets/generated/characters/VR1/promotion.png"
+    "path": "/assets/fhd/characters/VR1/promotion.webp"
   },
   {
     "id": "VR2",
     "name": "노에라",
     "state": "idle",
-    "path": "/assets/generated/characters/VR2/idle.png"
+    "path": "/assets/fhd/characters/VR2/idle.webp"
   },
   {
     "id": "VR2",
     "name": "노에라",
     "state": "attack",
-    "path": "/assets/generated/characters/VR2/attack.png"
+    "path": "/assets/fhd/characters/VR2/attack.webp"
   },
   {
     "id": "VR2",
     "name": "노에라",
     "state": "hit",
-    "path": "/assets/generated/characters/VR2/hit.png"
+    "path": "/assets/fhd/characters/VR2/hit.webp"
   },
   {
     "id": "VR2",
     "name": "노에라",
     "state": "skill",
-    "path": "/assets/generated/characters/VR2/skill.png"
+    "path": "/assets/fhd/characters/VR2/skill.webp"
   },
   {
     "id": "VR2",
     "name": "노에라",
     "state": "dialogue",
-    "path": "/assets/generated/characters/VR2/dialogue.png"
+    "path": "/assets/fhd/characters/VR2/dialogue.webp"
   },
   {
     "id": "VR2",
     "name": "노에라",
     "state": "promotion",
-    "path": "/assets/generated/characters/VR2/promotion.png"
+    "path": "/assets/fhd/characters/VR2/promotion.webp"
   },
   {
     "id": "VR3",
     "name": "테사",
     "state": "idle",
-    "path": "/assets/generated/characters/VR3/idle.png"
+    "path": "/assets/fhd/characters/VR3/idle.webp"
   },
   {
     "id": "VR3",
     "name": "테사",
     "state": "attack",
-    "path": "/assets/generated/characters/VR3/attack.png"
+    "path": "/assets/fhd/characters/VR3/attack.webp"
   },
   {
     "id": "VR3",
     "name": "테사",
     "state": "hit",
-    "path": "/assets/generated/characters/VR3/hit.png"
+    "path": "/assets/fhd/characters/VR3/hit.webp"
   },
   {
     "id": "VR3",
     "name": "테사",
     "state": "skill",
-    "path": "/assets/generated/characters/VR3/skill.png"
+    "path": "/assets/fhd/characters/VR3/skill.webp"
   },
   {
     "id": "VR3",
     "name": "테사",
     "state": "dialogue",
-    "path": "/assets/generated/characters/VR3/dialogue.png"
+    "path": "/assets/fhd/characters/VR3/dialogue.webp"
   },
   {
     "id": "VR3",
     "name": "테사",
     "state": "promotion",
-    "path": "/assets/generated/characters/VR3/promotion.png"
+    "path": "/assets/fhd/characters/VR3/promotion.webp"
   },
   {
     "id": "VR4",
     "name": "카엘",
     "state": "idle",
-    "path": "/assets/generated/characters/VR4/idle.png"
+    "path": "/assets/fhd/characters/VR4/idle.webp"
   },
   {
     "id": "VR4",
     "name": "카엘",
     "state": "attack",
-    "path": "/assets/generated/characters/VR4/attack.png"
+    "path": "/assets/fhd/characters/VR4/attack.webp"
   },
   {
     "id": "VR4",
     "name": "카엘",
     "state": "hit",
-    "path": "/assets/generated/characters/VR4/hit.png"
+    "path": "/assets/fhd/characters/VR4/hit.webp"
   },
   {
     "id": "VR4",
     "name": "카엘",
     "state": "skill",
-    "path": "/assets/generated/characters/VR4/skill.png"
+    "path": "/assets/fhd/characters/VR4/skill.webp"
   },
   {
     "id": "VR4",
     "name": "카엘",
     "state": "dialogue",
-    "path": "/assets/generated/characters/VR4/dialogue.png"
+    "path": "/assets/fhd/characters/VR4/dialogue.webp"
   },
   {
     "id": "VR4",
     "name": "카엘",
     "state": "promotion",
-    "path": "/assets/generated/characters/VR4/promotion.png"
+    "path": "/assets/fhd/characters/VR4/promotion.webp"
   },
   {
     "id": "WS1",
     "name": "아우렐라",
     "state": "idle",
-    "path": "/assets/generated/characters/WS1/idle.png"
+    "path": "/assets/fhd/characters/WS1/idle.webp"
   },
   {
     "id": "WS1",
     "name": "아우렐라",
     "state": "attack",
-    "path": "/assets/generated/characters/WS1/attack.png"
+    "path": "/assets/fhd/characters/WS1/attack.webp"
   },
   {
     "id": "WS1",
     "name": "아우렐라",
     "state": "hit",
-    "path": "/assets/generated/characters/WS1/hit.png"
+    "path": "/assets/fhd/characters/WS1/hit.webp"
   },
   {
     "id": "WS1",
     "name": "아우렐라",
     "state": "skill",
-    "path": "/assets/generated/characters/WS1/skill.png"
+    "path": "/assets/fhd/characters/WS1/skill.webp"
   },
   {
     "id": "WS1",
     "name": "아우렐라",
     "state": "dialogue",
-    "path": "/assets/generated/characters/WS1/dialogue.png"
+    "path": "/assets/fhd/characters/WS1/dialogue.webp"
   },
   {
     "id": "WS1",
     "name": "아우렐라",
     "state": "promotion",
-    "path": "/assets/generated/characters/WS1/promotion.png"
+    "path": "/assets/fhd/characters/WS1/promotion.webp"
   },
   {
     "id": "WS2",
     "name": "클레아",
     "state": "idle",
-    "path": "/assets/generated/characters/WS2/idle.png"
+    "path": "/assets/fhd/characters/WS2/idle.webp"
   },
   {
     "id": "WS2",
     "name": "클레아",
     "state": "attack",
-    "path": "/assets/generated/characters/WS2/attack.png"
+    "path": "/assets/fhd/characters/WS2/attack.webp"
   },
   {
     "id": "WS2",
     "name": "클레아",
     "state": "hit",
-    "path": "/assets/generated/characters/WS2/hit.png"
+    "path": "/assets/fhd/characters/WS2/hit.webp"
   },
   {
     "id": "WS2",
     "name": "클레아",
     "state": "skill",
-    "path": "/assets/generated/characters/WS2/skill.png"
+    "path": "/assets/fhd/characters/WS2/skill.webp"
   },
   {
     "id": "WS2",
     "name": "클레아",
     "state": "dialogue",
-    "path": "/assets/generated/characters/WS2/dialogue.png"
+    "path": "/assets/fhd/characters/WS2/dialogue.webp"
   },
   {
     "id": "WS2",
     "name": "클레아",
     "state": "promotion",
-    "path": "/assets/generated/characters/WS2/promotion.png"
+    "path": "/assets/fhd/characters/WS2/promotion.webp"
   },
   {
     "id": "WS3",
     "name": "이사벨",
     "state": "idle",
-    "path": "/assets/generated/characters/WS3/idle.png"
+    "path": "/assets/fhd/characters/WS3/idle.webp"
   },
   {
     "id": "WS3",
     "name": "이사벨",
     "state": "attack",
-    "path": "/assets/generated/characters/WS3/attack.png"
+    "path": "/assets/fhd/characters/WS3/attack.webp"
   },
   {
     "id": "WS3",
     "name": "이사벨",
     "state": "hit",
-    "path": "/assets/generated/characters/WS3/hit.png"
+    "path": "/assets/fhd/characters/WS3/hit.webp"
   },
   {
     "id": "WS3",
     "name": "이사벨",
     "state": "skill",
-    "path": "/assets/generated/characters/WS3/skill.png"
+    "path": "/assets/fhd/characters/WS3/skill.webp"
   },
   {
     "id": "WS3",
     "name": "이사벨",
     "state": "dialogue",
-    "path": "/assets/generated/characters/WS3/dialogue.png"
+    "path": "/assets/fhd/characters/WS3/dialogue.webp"
   },
   {
     "id": "WS3",
     "name": "이사벨",
     "state": "promotion",
-    "path": "/assets/generated/characters/WS3/promotion.png"
+    "path": "/assets/fhd/characters/WS3/promotion.webp"
   },
   {
     "id": "WS4",
     "name": "라비엔",
     "state": "idle",
-    "path": "/assets/generated/characters/WS4/idle.png"
+    "path": "/assets/fhd/characters/WS4/idle.webp"
   },
   {
     "id": "WS4",
     "name": "라비엔",
     "state": "attack",
-    "path": "/assets/generated/characters/WS4/attack.png"
+    "path": "/assets/fhd/characters/WS4/attack.webp"
   },
   {
     "id": "WS4",
     "name": "라비엔",
     "state": "hit",
-    "path": "/assets/generated/characters/WS4/hit.png"
+    "path": "/assets/fhd/characters/WS4/hit.webp"
   },
   {
     "id": "WS4",
     "name": "라비엔",
     "state": "skill",
-    "path": "/assets/generated/characters/WS4/skill.png"
+    "path": "/assets/fhd/characters/WS4/skill.webp"
   },
   {
     "id": "WS4",
     "name": "라비엔",
     "state": "dialogue",
-    "path": "/assets/generated/characters/WS4/dialogue.png"
+    "path": "/assets/fhd/characters/WS4/dialogue.webp"
   },
   {
     "id": "WS4",
     "name": "라비엔",
     "state": "promotion",
-    "path": "/assets/generated/characters/WS4/promotion.png"
+    "path": "/assets/fhd/characters/WS4/promotion.webp"
   }
 ]

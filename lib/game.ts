@@ -164,6 +164,46 @@ export type ProfessionId =
   | "chaplain"
   | "runesmith"
   | "tactician";
+export const regionCatalog = [
+  { id: "fortress", name: "변경 요새", description: "침묵한 종과 기계 수비대의 기원을 추적합니다." },
+  { id: "harbor", name: "심연 항구", description: "검은 조류와 밀수선이 사라진 부두를 조사합니다." },
+  { id: "archive", name: "침수 서고", description: "물에 잠긴 왕국 기록에서 지워진 이름을 찾습니다." },
+  { id: "chapel", name: "백야 예배당", description: "꺼지지 않는 촛불과 성가의 비밀을 밝힙니다." },
+  { id: "laboratory", name: "폐쇄 연구동", description: "왕관 기계의 제작 기록과 실패작을 회수합니다." },
+  { id: "observatory", name: "설원 관측소", description: "멈춘 별자리 장치가 가리키는 심연을 확인합니다." },
+  { id: "palace", name: "침묵 궁전", description: "모든 종소리를 빼앗은 마지막 왕좌로 향합니다." },
+] as const;
+export type RegionId = (typeof regionCatalog)[number]["id"];
+export const storyQuests = [
+  { id: "Q01", chapter: 1, title: "종이 멎은 밤", region: "fortress", story: "변경 요새의 첫 봉화를 되살리고 실종된 선발대의 흔적을 찾는다.", rewardGold: 45, rewardMaterial: "청동 종편", unlockHeroes: ["VR1", "VR2"] },
+  { id: "Q02", chapter: 2, title: "왕관 없는 수문장", region: "fortress", story: "요새 지배자의 기억핵을 회수해 검은 조류의 항로를 연다.", rewardGold: 55, rewardMaterial: "빈 왕관 파편", unlockHeroes: ["VR3", "VR4"], unlockRegion: "harbor" },
+  { id: "Q03", chapter: 3, title: "가라앉은 계약", region: "harbor", story: "심연 항구의 밀수 계약과 사라진 탐사선의 항적을 복원한다.", rewardGold: 60, rewardMaterial: "먹물 계약지", unlockHeroes: ["BC1", "BC2"] },
+  { id: "Q04", chapter: 4, title: "흑조의 심장", region: "harbor", story: "검은 닻 아래 봉인된 심장석을 거두어 침수 서고의 문을 연다.", rewardGold: 65, rewardMaterial: "흑조 심장석", unlockHeroes: ["BC3", "BC4"], unlockRegion: "archive" },
+  { id: "Q05", chapter: 5, title: "지워진 이름들", region: "archive", story: "서고의 공백 문서에서 왕국이 지운 탐사대 명단을 찾아낸다.", rewardGold: 70, rewardMaterial: "공백 양피지", unlockHeroes: ["BK1", "BK2"] },
+  { id: "Q06", chapter: 6, title: "역문자의 문", region: "archive", story: "거꾸로 기록된 봉인을 풀어 백야 예배당의 위치를 밝힌다.", rewardGold: 75, rewardMaterial: "역문자 수정체", unlockHeroes: ["BK3", "BK4"], unlockRegion: "chapel" },
+  { id: "Q07", chapter: 7, title: "촛불 없는 성가", region: "chapel", story: "빛 없이 이어지는 성가와 광기의 근원을 조사한다.", rewardGold: 80, rewardMaterial: "성가 청동", unlockHeroes: ["WS1", "WS2"] },
+  { id: "Q08", chapter: 8, title: "백야의 고해", region: "chapel", story: "교단의 마지막 고해를 기록하고 폐쇄 연구동의 열쇠를 얻는다.", rewardGold: 85, rewardMaterial: "기도석", unlockHeroes: ["WS3", "WS4"], unlockRegion: "laboratory" },
+  { id: "Q09", chapter: 9, title: "유리톱니의 탄생", region: "laboratory", story: "기계군이 인간의 기억을 모방한 실험 기록을 파기한다.", rewardGold: 90, rewardMaterial: "기억 용액", unlockHeroes: ["DS1", "DS2"] },
+  { id: "Q10", chapter: 10, title: "폐쇄 명령", region: "laboratory", story: "연구동의 중앙 동력로를 멈추고 설원 관측소 좌표를 확보한다.", rewardGold: 95, rewardMaterial: "심해 합금", unlockHeroes: ["DS3", "DS4"], unlockRegion: "observatory" },
+  { id: "Q11", chapter: 11, title: "얼어붙은 별", region: "observatory", story: "정지한 성좌판을 움직여 침묵 궁전의 밤하늘을 되돌린다.", rewardGold: 100, rewardMaterial: "깨진 성좌석", unlockHeroes: ["GO1", "GO2"] },
+  { id: "Q12", chapter: 12, title: "북극성의 증언", region: "observatory", story: "관측 기록을 통해 마지막 왕의 거짓 예언을 폭로한다.", rewardGold: 110, rewardMaterial: "빙점 렌즈", unlockHeroes: ["GO3", "GO4"], unlockRegion: "palace" },
+  { id: "Q13", chapter: 13, title: "침묵한 왕좌", region: "palace", story: "왕좌로 이어지는 네 개의 봉인을 해제하고 해방전선과 합류한다.", rewardGold: 120, rewardMaterial: "왕좌 기어", unlockHeroes: ["EF1", "EF2"] },
+  { id: "Q14", chapter: 14, title: "다시 울리는 종", region: "palace", story: "마지막 지배자를 쓰러뜨리고 종소리의 주인을 선택한다.", rewardGold: 160, rewardMaterial: "새벽의 종핵", unlockHeroes: ["EF3", "EF4"] },
+] as const;
+export type QuestId = (typeof storyQuests)[number]["id"];
+export function unlockedRegions(completed: string[]): RegionId[] {
+  const unlocked = new Set<RegionId>(["fortress"]);
+  for (const quest of storyQuests)
+    if (completed.includes(quest.id) && "unlockRegion" in quest && quest.unlockRegion)
+      unlocked.add(quest.unlockRegion as RegionId);
+  return [...unlocked];
+}
+export function availableRecruitIds(completed: string[]) {
+  const ids = new Set<string>();
+  for (const quest of storyQuests)
+    if (completed.includes(quest.id)) quest.unlockHeroes.forEach((id) => ids.add(id));
+  return [...ids];
+}
 export const professionCatalog = {
   bulwark: {
     id: "bulwark",
@@ -596,6 +636,7 @@ export type CombatFx = {
 };
 export type Run = {
   seed: number;
+  region?: RegionId;
   room: string;
   visited: string[];
   heroes: Hero[];
@@ -620,6 +661,8 @@ export type Game = {
   gold: number;
   materials: Record<string, number>;
   craftedGear: string[];
+  activeQuest: string | null;
+  completedQuests: string[];
   runs: number;
   reputation: Record<string, number>;
   facilities: {
@@ -1034,6 +1077,8 @@ export function initialGame(): Game {
     gold: balance.startingGold,
     materials: {},
     craftedGear: [],
+    activeQuest: null,
+    completedQuests: [],
     runs: 0,
     reputation: Object.fromEntries(factionCodes.map((f) => [f, 0])),
     facilities: { forge: 0, training: 0, infirmary: 0, canteen: 0 },
@@ -1058,6 +1103,8 @@ export function normalizeGame(previous: Game): Game {
     roster: (saved.roster || defaults.roster).map(normalizeHero),
     materials: saved.materials || {},
     craftedGear: saved.craftedGear || [],
+    activeQuest: saved.activeQuest ?? null,
+    completedQuests: saved.completedQuests || [],
     reputation: { ...defaults.reputation, ...(saved.reputation || {}) },
     facilities: { ...defaults.facilities, ...(saved.facilities || {}) },
     achievements: saved.achievements || [],
@@ -1070,6 +1117,12 @@ export function normalizeGame(previous: Game): Game {
     run: saved.run
       ? {
           ...saved.run,
+          region:
+            saved.run.region ||
+            regionCatalog.find((region) =>
+              saved.run?.route?.entrance?.name.includes(region.name),
+            )?.id ||
+            "fortress",
           route: saved.run.route || rooms,
           cardMods: saved.run.cardMods || {},
           heroes: saved.run.heroes.map(normalizeHero),
@@ -1128,6 +1181,54 @@ export function cardInfo(c: Card) {
   const info =
     cards[(c.kind === "skill" ? role : c.kind) as keyof typeof cards];
   return { ...info, role, triggers: info.triggers as CardTrigger[] };
+}
+export function effectiveCardValue(game: Game, heroState: Hero, kind: Card["kind"]) {
+  const info = cardInfo({ id: "preview", owner: heroState.id, kind });
+  const stats = heroStats(heroState);
+  const mods = game.run?.cardMods?.[heroState.id];
+  let value =
+    info.power +
+    (info.target === "ally"
+      ? Math.floor(
+          (kind === "skill" && info.role === "지원" ? stats.spell : stats.defense) /
+            (kind === "skill" && info.role === "지원" ? 3 : 4),
+        )
+      : Math.floor(
+          (kind === "skill" ? stats.spell : stats.attack) /
+            (kind === "skill" ? 3 : 4),
+        )) +
+    (info.target === "enemy" ? game.facilities.forge : 0) +
+    (kind === "strike" ? mods?.strikeBonus || 0 : 0) +
+    (heroState.statuses.fury || 0);
+  if (info.target === "enemy" && heroState.statuses.weakness)
+    value = Math.floor(value * 0.75);
+  return {
+    ...info,
+    value,
+    label: info.target === "ally" ? (kind === "skill" ? "회복" : "보호막") : "피해",
+    sources: {
+      base: info.power,
+      equipmentAndStats:
+        value - info.power - (kind === "strike" ? mods?.strikeBonus || 0 : 0),
+      cardUpgrade: kind === "strike" ? mods?.strikeBonus || 0 : 0,
+    },
+  };
+}
+export function deckPreview(game: Game) {
+  const heroes = game.run?.heroes || game.party.map((id) => game.roster.find((hero) => hero.id === id)!).filter(Boolean);
+  return heroes.flatMap((heroState) =>
+    (["strike", "guard", "skill", "heavy"] as const)
+      .filter((kind) => !(kind === "strike" && game.run?.cardMods?.[heroState.id]?.removeStrike))
+      .map((kind) => {
+        const transformed = kind === "strike" && game.run?.cardMods?.[heroState.id]?.transformStrike;
+        const actualKind = transformed ? ("heavy" as const) : kind;
+        return {
+          card: { id: `${heroState.id}-${kind}`, owner: heroState.id, kind: actualKind },
+          value: effectiveCardValue(game, heroState, actualKind),
+          transformed,
+        };
+      }),
+  );
 }
 function draw(r: Run) {
   const b = r.battle!;
@@ -1321,6 +1422,10 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       "존재하지 않는 인물입니다.",
     );
     check(!g.roster.some((h) => h.id === a.id), "이미 영입했습니다.");
+    check(
+      availableRecruitIds(g.completedQuests).includes(a.id!),
+      "스토리 퀘스트를 진행해야 만날 수 있는 동료입니다.",
+    );
     check(g.gold >= balance.recruitCost, "은화가 부족합니다.");
     g.gold -= balance.recruitCost;
     g.roster.push(hero(a.id!));
@@ -1483,13 +1588,32 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     g.endingUnlocked = false;
     g.rebirths++;
     log(g, "새 순환을 시작했다. 선택한 계승품만 남았다.");
+  } else if (a.type === "quest") {
+    check(!r, "거점에서 퀘스트를 선택하세요.");
+    if (a.choice === "abandon") {
+      check(g.activeQuest, "포기할 퀘스트가 없습니다.");
+      g.activeQuest = null;
+      log(g, "진행 중인 퀘스트를 보류했다.");
+    } else {
+      const quest = storyQuests.find((item) => item.id === a.id);
+      check(quest, "알 수 없는 퀘스트입니다.");
+      const next = storyQuests.find((item) => !g.completedQuests.includes(item.id));
+      check(next?.id === quest.id, "앞선 이야기부터 완료해야 합니다.");
+      check(unlockedRegions(g.completedQuests).includes(quest.region as RegionId), "아직 갈 수 없는 지역입니다.");
+      g.activeQuest = quest.id;
+      log(g, `스토리 퀘스트 수락: ${quest.title}`);
+    }
   } else if (a.type === "enter") {
     check(!r, "이미 진행 중인 탐사가 있습니다.");
+    const region = (a.choice || "fortress") as RegionId;
+    check(unlockedRegions(g.completedQuests).includes(region), "아직 해금되지 않은 탐사 지역입니다.");
+    const regionIndex = regionCatalog.findIndex((item) => item.id === region);
     g.summary = null;
     g.run = {
       seed: seed >>> 0 || 1,
+      region,
       room: "entrance",
-      route: createExpeditionRoute(seed >>> 0 || 1, g.runs),
+      route: createExpeditionRoute(seed >>> 0 || 1, regionIndex),
       cardMods: {},
       visited: ["entrance"],
       heroes: g.party.map((id) => {
@@ -1512,7 +1636,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       cleared: false,
       combatFx: null,
     };
-    log(g, "변경 요새에 진입했다.");
+    log(g, `${regionCatalog[regionIndex].name}에 진입했다.`);
   } else {
     check(r, "진행 중인 탐사가 없습니다.");
     if (a.type === "move") {
@@ -1642,7 +1766,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
         b.discard.push({ ...c, id: `${c.id}-copy-${b.turn}-${g.version}` });
       if (info.target === "ally") {
         if (c.kind === "skill" && info.role === "지원") {
-          const healing = info.power + Math.floor(heroStats(h).spell / 3);
+          const healing = effectiveCardValue(g, h, c.kind).value;
           ally!.hp = Math.min(ally!.maxHp, ally!.hp + healing);
           ally!.stress = Math.max(0, ally!.stress - 2);
           reduceStatus(ally!, "fear", 2);
@@ -1655,7 +1779,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
             amount: healing,
           };
         } else {
-          const shielding = info.power + Math.floor(heroStats(h).defense / 4);
+          const shielding = effectiveCardValue(g, h, c.kind).value;
           ally!.shield += shielding;
           addStatus(ally!, "block", c.kind === "guard" ? 2 : 1);
           if (c.kind === "skill") {
@@ -1678,16 +1802,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           };
         }
       } else {
-        const stats = heroStats(h);
-        let dmg =
-          info.power +
-          (c.kind === "skill"
-            ? Math.floor(stats.spell / 3)
-            : Math.floor(stats.attack / 4)) +
-          g.facilities.forge +
-          (c.kind === "strike" ? r.cardMods?.[h.id]?.strikeBonus || 0 : 0) +
-          (h.statuses.fury || 0);
-        if (h.statuses.weakness) dmg = Math.floor(dmg * 0.75);
+        let dmg = effectiveCardValue(g, h, c.kind).value;
         if (h.statuses.anger && h.hp <= h.maxHp / 2)
           dmg += h.statuses.anger * 2;
         const target = enemy!;
@@ -1914,6 +2029,17 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           shield: 0,
           injury: failed || h.hp === 0,
         });
+      }
+      const quest = storyQuests.find((item) => item.id === g.activeQuest);
+      if (!failed && r.cleared && quest && quest.region === (r.region || "fortress")) {
+        g.completedQuests.push(quest.id);
+        g.activeQuest = null;
+        g.gold += quest.rewardGold;
+        g.materials[quest.rewardMaterial] =
+          (g.materials[quest.rewardMaterial] || 0) + 1;
+        achievement(g, `quest-${quest.id}`, `${quest.title} 완료`);
+        log(g, `퀘스트 완료: ${quest.title} · 은화 ${quest.rewardGold}`);
+        if (quest.id === "Q14") g.endingUnlocked = true;
       }
       g.runs++;
       if (r.room === "final-exit") g.endingUnlocked = true;

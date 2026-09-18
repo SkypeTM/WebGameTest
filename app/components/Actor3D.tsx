@@ -148,14 +148,14 @@ export function Actor3D({ id, motion = "idle", full = false, label }: { id: stri
     const key = new THREE.DirectionalLight(0xffd895, 3.8); key.position.set(3, 5, 5); scene.add(key);
     const actor = id.startsWith("M") ? monster(id, full) : humanoid(id, full); scene.add(actor);
     let frame = 0;
-    const clock = new THREE.Clock();
+    const startedAt = performance.now();
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
       renderer.setSize(Math.max(1, rect.width), Math.max(1, rect.height), false);
     };
     const observer = new ResizeObserver(resize); observer.observe(canvas); resize();
     const render = () => {
-      const t = clock.getElapsedTime();
+      const t = (performance.now() - startedAt) / 1000;
       actor.position.y = Math.sin(t * 2.2) * .035;
       actor.rotation.y = Math.sin(t * .8) * .08;
       if (motion === "attack") {

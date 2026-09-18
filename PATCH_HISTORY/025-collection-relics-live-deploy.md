@@ -34,10 +34,11 @@
 
 ## 배포 결과
 
-- 무료 Cloudflare Workers + D1 배포 번들과 마이그레이션을 준비했다.
-- 공개 업로드는 자동 승인 검토가 Cloudflare 목적지의 명시적 승인을 요구해 대기 중이다.
+- 무료 Cloudflare Workers + D1에 공개 배포했다.
+- 공개 플레이 주소: `https://beneath-the-silent-bell.camp-cough.workers.dev`
+- D1 원격 마이그레이션과 운영 로그인 비밀키 설정을 완료했다.
+- 공개 주소에서 HTTP 200 응답과 실제 회원가입·계정 저장·중복 요청 방지·CSRF·계정 격리를 검증했다.
 
 ## 남은 작업
 
-- Cloudflare 임시 계정 공개 업로드, D1 원격 마이그레이션, 실제 URL 회원가입·저장 복원 검증
-- 임시 계정을 60분 안에 사용자 Cloudflare 계정으로 귀속해야 영구 유지된다.
+- 임시 계정을 배포 후 60분 안에 사용자 Cloudflare 계정으로 귀속해야 주소와 데이터베이스가 영구 유지된다.

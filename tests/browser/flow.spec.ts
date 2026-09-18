@@ -347,3 +347,47 @@ test("hub growth and market surfaces are playable", async ({ page }) => {
     ),
   ).toBe(true);
 });
+
+test("HD portraits, procedural route and full-size combat cut-in render", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "처음 오셨나요? 탐사대 등록" })
+    .click();
+  await page.getByLabel("탐사대장 이름").fill("시각 패치 테스트");
+  await page.getByLabel("이메일").fill(`visual-${Date.now()}@example.com`);
+  await page.getByLabel("비밀번호").fill(password);
+  await page.getByRole("button", { name: "계정 만들고 시작" }).click();
+  await expect(page.getByRole("heading", { name: "귀환자의 거점" })).toBeVisible();
+
+  const portrait = page
+    .getByRole("button", { name: "레오나 상세 장비와 능력치 보기" })
+    .locator("img")
+    .first();
+  await expect(portrait).toHaveAttribute("src", /fhd\/portraits\/AR1\.webp/);
+  expect(await portrait.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBe(
+    1080,
+  );
+
+  await clickSave(page, () =>
+    page.getByRole("button", { name: "던전 입장" }).click(),
+  );
+  await expect(page.locator(".procedural-map .route-row")).toHaveCount(15);
+  expect(await page.locator(".route-links line").count()).toBeGreaterThan(16);
+  const layerOnePositions = await page
+    .locator(".route-layer-1")
+    .evaluateAll((nodes) => nodes.map((node) => (node as HTMLElement).style.left));
+  expect(new Set(layerOnePositions).size).toBe(3);
+  await page.screenshot({ path: "test-results/procedural-map.png", fullPage: true });
+
+  await moveRoom(page, /1계층 전투 구역/);
+  const game = await state(page);
+  const attack = game.run!.battle!.hand.find(
+    (card) => cardInfo(card).target === "enemy",
+  )!;
+  await playCard(page, attack.id, game.run!.battle!.enemies[0].id);
+  await expect(page.locator(".combat-cut-in")).toBeAttached();
+  await expect(page.locator(".combat-cut-in .crest img")).toHaveCount(2);
+  await page.screenshot({ path: "test-results/visual-patch.png", fullPage: true });
+});

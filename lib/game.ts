@@ -988,6 +988,7 @@ export type RoomDefinition = {
   next: string[];
   enemies?: string[];
   layer?: number;
+  x?: number;
 };
 export const rooms: Record<string, RoomDefinition> = {
   entrance: { name: "무너진 성문", kind: "entry", next: ["gate"] },
@@ -1192,17 +1193,32 @@ export function createExpeditionRoute(
   const firstMonster = region * 8 + 1;
   const monster = (offset: number) =>
     `M${String(firstMonster + Math.min(7, offset)).padStart(2, "0")}`;
+  let mapSeed = (seed ^ ((region + 1) * 0x9e3779b9)) >>> 0;
+  const mapRandom = () => {
+    mapSeed ^= mapSeed << 13;
+    mapSeed ^= mapSeed >>> 17;
+    mapSeed ^= mapSeed << 5;
+    mapSeed >>>= 0;
+    return mapSeed / 4294967296;
+  };
   const link = (layer: number) => [
     `l${layer}-battle`,
     `l${layer}-${layer % 2 ? "question" : "merchant"}`,
     `l${layer}-rest`,
   ];
+  const positions: Record<number, number[]> = {};
+  for (let layer = 1; layer <= 4; layer++) {
+    positions[layer] = [18, 50, 82]
+      .map((x) => x + Math.round((mapRandom() - 0.5) * 16))
+      .sort(() => mapRandom() - 0.5);
+  }
   const route: Record<string, RoomDefinition> = {
     entrance: {
       name: `${expeditionRegionNames[region]} 입구`,
       kind: "entry",
       next: link(1),
       layer: 0,
+      x: 50,
     },
   };
   for (let layer = 1; layer <= 4; layer++) {
@@ -1213,32 +1229,67 @@ export function createExpeditionRoute(
       next,
       enemies: [monster((layer - 1) * 2), monster((layer - 1) * 2 + 1)],
       layer,
+      x: positions[layer][0],
     };
     route[`l${layer}-${layer % 2 ? "question" : "merchant"}`] = {
       name: layer % 2 ? `${layer}계층 미지의 징후` : `${layer}계층 암상인`,
       kind: layer % 2 ? "question" : "merchant",
       next,
       layer,
+      x: positions[layer][1],
     };
     route[`l${layer}-rest`] = {
       name: `${layer}계층 귀환 야영지`,
       kind: "rest",
       next,
       layer,
+      x: positions[layer][2],
     };
   }
+  // Build a deterministic branching graph with splits and merges instead of
+  // connecting every room to every room on the following floor.
+  for (let layer = 1; layer < 4; layer++) {
+    const current = link(layer);
+    const following = link(layer + 1);
+    current.forEach((id, index) => {
+      const first = following[(index + Math.floor(mapRandom() * 2)) % following.length];
+      const second = following[(following.indexOf(first) + 1) % following.length];
+      route[id].next = mapRandom() > 0.42 ? [first, second] : [first];
+    });
+    following.forEach((target) => {
+      if (!current.some((id) => route[id].next.includes(target))) {
+        const nearest = [...current].sort(
+          (a, b) =>
+            Math.abs((route[a].x || 50) - (route[target].x || 50)) -
+            Math.abs((route[b].x || 50) - (route[target].x || 50)),
+        )[0];
+        route[nearest].next.push(target);
+      }
+    });
+  }
+  const guaranteedStoryLinks: Array<[string, string]> = [
+    ["l1-battle", "l2-battle"],
+    ["l1-battle", "l2-merchant"],
+    ["l2-merchant", "l3-question"],
+    ["l3-question", "l4-rest"],
+  ];
+  guaranteedStoryLinks.forEach(([from, to]) => {
+    if (!route[from].next.includes(to)) route[from].next.push(to);
+  });
   route.boss = {
     name: `${expeditionRegionNames[region]}의 지배자`,
     kind: "boss",
     next: ["victory-rest"],
     enemies: [monster(7)],
     layer: 5,
+    x: 50,
   };
   route["victory-rest"] = {
     name: "승전 귀환 야영지",
     kind: "rest",
     next: [],
     layer: 6,
+    x: 50,
   };
   return route;
 }

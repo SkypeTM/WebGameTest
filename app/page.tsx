@@ -138,7 +138,7 @@ function Crest({
     ? { path: rigStates.idle }
     : manifestIdleAsset;
   const portraitPath = !monster ? `/assets/fhd/portraits/${id}.webp` : "";
-  const asset = state ? actionAsset : idleAsset || actionAsset;
+  const asset = motion ? actionAsset || idleAsset : state ? actionAsset : idleAsset || actionAsset;
   if (asset?.path && !failed)
     return (
       <div
@@ -156,33 +156,6 @@ function Crest({
           }}
           onError={() => setFailed(true)}
         />
-        {!portrait && !state && (
-          <>
-            <img
-              src={String(asset.path)}
-              alt=""
-              className="concept-art live2d-layer live2d-upper"
-            />
-            <img
-              src={String(asset.path)}
-              alt=""
-              className="concept-art live2d-layer live2d-face"
-            />
-          </>
-        )}
-        {!state && actionAsset?.path && actionAsset.path !== asset.path && (
-          <img
-            src={String(actionAsset.path)}
-            alt=""
-            className="concept-art sprite-frame sprite-frame-action"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-              objectPosition: "50% 100%",
-            }}
-          />
-        )}
       </div>
     );
   return (
@@ -1312,7 +1285,7 @@ export default function Page() {
                               <Crest
                                 id={h.id}
                                 large
-                                state={h.level >= 3 ? "promotion" : "idle"}
+                                portrait
                               />
                               <span className="equipped-art">
                                 {(["weapon", "armor", "trinket"] as const).map(
@@ -2550,6 +2523,32 @@ export default function Page() {
                     (fx.kind === "hero-attack" ||
                       fx.kind === "enemy-attack") && (
                       <div
+                        className={`combat-cut-in cut-in-${fx.kind}`}
+                        key={`cut-in-${fx.nonce}`}
+                        aria-hidden="true"
+                      >
+                        <div className="cut-in-actor">
+                          <Crest
+                            id={fx.actor}
+                            large
+                            contain
+                            motion="motion-strike"
+                          />
+                        </div>
+                        <div className="cut-in-target">
+                          <Crest
+                            id={fx.target.split(":")[0]}
+                            large
+                            contain
+                            motion="motion-hit"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  {fx &&
+                    (fx.kind === "hero-attack" ||
+                      fx.kind === "enemy-attack") && (
+                      <div
                         className={`impact-stage impact-${fx.kind}`}
                         key={`impact-${fx.nonce}`}
                         aria-hidden="true"
@@ -3017,7 +3016,38 @@ export default function Page() {
                       </span>
                     </div>
                   </div>
-                  <div className="route-map">
+                  <div className="route-map procedural-map">
+                    <svg
+                      className="route-links"
+                      viewBox="0 0 100 100"
+                      preserveAspectRatio="none"
+                      aria-hidden="true"
+                    >
+                      {Object.entries(run.route || {}).flatMap(
+                        ([fromId, from]) =>
+                          from.next
+                            .filter((toId) => (run.route || {})[toId])
+                            .map((toId) => {
+                              const to = roomFor(run, toId);
+                              return (
+                                <line
+                                  key={`${fromId}-${toId}`}
+                                  x1={from.x || 50}
+                                  y1={94 - (from.layer || 0) * 14}
+                                  x2={to.x || 50}
+                                  y2={94 - (to.layer || 0) * 14}
+                                  className={
+                                    run.visited.includes(fromId) &&
+                                    (run.visited.includes(toId) ||
+                                      roomFor(run).next.includes(toId))
+                                      ? "active"
+                                      : ""
+                                  }
+                                />
+                              );
+                            }),
+                      )}
+                    </svg>
                     {Object.keys(run.route || {})
                       .sort(
                         (a, b) =>
@@ -3028,6 +3058,10 @@ export default function Page() {
                         <div
                           className={`route-row route-layer-${roomFor(run, id).layer || 0}`}
                           key={id}
+                          style={{
+                            left: `${roomFor(run, id).x || 50}%`,
+                            bottom: `${4 + (roomFor(run, id).layer || 0) * 14}%`,
+                          }}
                         >
                           <button
                             key={id}

@@ -1715,37 +1715,41 @@ summary:before {
   padding: 24px;
 }
 .route-map {
+  position: relative;
+  height: 650px;
   max-width: 680px;
   margin: auto;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  overflow: hidden;
+  border: 1px solid #64705d66;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 50% 100%, #42503e55, transparent 50%),
+    linear-gradient(#111b1d99, #172527dd);
 }
 .route-row {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  margin-bottom: 0;
-}
-.route-row:not(:last-child):after {
-  content: "";
   position: absolute;
-  top: 100%;
-  left: 50%;
-  height: 14px;
-  border-left: 1px dashed #7c876b;
+  z-index: 2;
+  width: 132px;
+  transform: translate(-50%, 50%);
 }
-.route-layer-0,
-.route-layer-5,
-.route-layer-6 {
-  grid-column: 1 / -1;
+.route-links {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
-.route-layer-0 + .route-layer-1,
-.route-layer-2:first-of-type,
-.route-layer-3:first-of-type,
-.route-layer-4:first-of-type {
-  margin-top: 12px;
+.route-links line {
+  stroke: #77806d88;
+  stroke-width: 0.45;
+  stroke-dasharray: 1.2 1.2;
+  vector-effect: non-scaling-stroke;
+}
+.route-links line.active {
+  stroke: #d8ba7f;
+  stroke-width: 1.1;
+  filter: drop-shadow(0 0 3px #d8ba7f);
 }
 .room {
   width: 100%;
@@ -1755,6 +1759,22 @@ summary:before {
   padding: 10px;
   font-size: 12px;
   z-index: 1;
+}
+.procedural-map .room {
+  min-height: 66px;
+  padding: 7px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  box-shadow: 0 7px 16px #0008;
+}
+.procedural-map .room > span {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: #11191b;
 }
 .facility-tabs {
   grid-column: 1 / -1;
@@ -2147,6 +2167,59 @@ footer {
   inset: 0;
   width: 100%;
   height: 100%;
+}
+.combat-cut-in {
+  position: absolute;
+  inset: 0;
+  z-index: 14;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(105deg, #0a1115f2 0 42%, transparent 66%);
+  animation: cut-in-stage 900ms ease both;
+}
+.combat-cut-in .cut-in-actor,
+.combat-cut-in .cut-in-target {
+  position: absolute;
+  bottom: -8%;
+  width: 44%;
+  height: 108%;
+}
+.combat-cut-in .crest.large {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  filter: drop-shadow(0 16px 18px #000b);
+}
+.combat-cut-in .cut-in-actor {
+  left: 4%;
+  animation: fullsize-attacker 900ms cubic-bezier(0.2, 0.75, 0.18, 1) both;
+}
+.combat-cut-in .cut-in-target {
+  right: 4%;
+  opacity: 0.78;
+  transform: scaleX(-1);
+  animation: fullsize-target 900ms ease both;
+}
+.cut-in-enemy-attack {
+  transform: scaleX(-1);
+}
+@keyframes cut-in-stage {
+  0%, 100% { opacity: 0; }
+  8%, 78% { opacity: 1; }
+}
+@keyframes fullsize-attacker {
+  0% { transform: translateX(-55%) scale(0.92); }
+  18% { transform: translateX(0) scale(1); }
+  45% { transform: translateX(38%) scale(1.08) rotate(2deg); }
+  72% { transform: translateX(30%) scale(1.02); }
+  100% { transform: translateX(-25%); }
+}
+@keyframes fullsize-target {
+  0%, 28% { transform: translateX(20%) scaleX(-1); filter: brightness(1); }
+  42% { transform: translateX(28%) rotate(-4deg) scaleX(-1); filter: brightness(2.5); }
+  62% { transform: translateX(20%) rotate(2deg) scaleX(-1); }
+  100% { transform: translateX(35%) scaleX(-1); }
 }
 .battle-scene-bg {
   z-index: -3;
@@ -3399,8 +3472,50 @@ footer {
   width: 100%;
   height: 330px;
 }
+.hero-portrait-button .portrait-only {
+  border: 0;
+  border-radius: 0;
+}
 .hero-portrait-button .concept-art {
-  object-position: 50% 24% !important;
+  object-position: 50% 36% !important;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+.hero-portrait-button:hover .concept-art,
+.hero-portrait-button:focus-visible .concept-art {
+  transform: scale(1.035);
+  filter: brightness(1.08) saturate(1.08);
+}
+.hero-portrait-button:hover .portrait-only,
+.hero-portrait-button:focus-visible .portrait-only {
+  box-shadow: inset 0 0 0 2px var(--gold), 0 0 20px #d8ba7f55;
+}
+
+@media (max-width: 700px) {
+  .route-map {
+    height: 590px;
+  }
+  .route-row {
+    width: 88px;
+  }
+  .procedural-map .room {
+    min-height: 58px;
+    padding: 5px 3px;
+    font-size: 8px;
+  }
+  .procedural-map .room > span {
+    width: 21px;
+    height: 21px;
+  }
+  .combat-cut-in .cut-in-actor,
+  .combat-cut-in .cut-in-target {
+    width: 58%;
+  }
+  .combat-cut-in .cut-in-actor {
+    left: -8%;
+  }
+  .combat-cut-in .cut-in-target {
+    right: -10%;
+  }
 }
 .hero-portrait-button > b {
   position: absolute;

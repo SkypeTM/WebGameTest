@@ -15,6 +15,7 @@
 
 현재 기록:
 
+- `023-branching-expedition-forge-animation.md`: 분기 탐험·직업 무기 제작·전투 연출
 - `001-project-scan.md`: 초기 구조 파악과 검증 기준
 - `002-growth.md`: 성장·시설·치료·업적
 - `003-economy.md`: 시장·팩션 상점·암시장

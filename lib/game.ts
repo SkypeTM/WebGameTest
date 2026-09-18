@@ -373,6 +373,42 @@ export const equipmentCatalog = {
       defense: 0,
       professions: ["medic", "chaplain", "runesmith", "tactician"],
     },
+    {
+      id: "bastion-blade",
+      name: "성문 파쇄검",
+      asset: "성문 경첩",
+      attack: 8,
+      spell: 0,
+      defense: 3,
+      professions: ["bulwark", "sentinel"],
+    },
+    {
+      id: "hunter-edge",
+      name: "흑조 추적창",
+      asset: "절단 검날",
+      attack: 11,
+      spell: 0,
+      defense: 0,
+      professions: ["duelist", "ranger"],
+    },
+    {
+      id: "sacred-focus",
+      name: "성가의 등불",
+      asset: "성가 청동",
+      attack: 1,
+      spell: 10,
+      defense: 2,
+      professions: ["medic", "chaplain"],
+    },
+    {
+      id: "rune-chain",
+      name: "역문자 사슬",
+      asset: "역문자 수정체",
+      attack: 4,
+      spell: 9,
+      defense: 1,
+      professions: ["runesmith", "tactician"],
+    },
   ],
   armor: [
     {
@@ -440,6 +476,33 @@ export const equipmentCatalog = {
     },
   ],
 } as const;
+export const forgeRecipes = [
+  {
+    id: "bastion-blade",
+    professions: ["bulwark", "sentinel"],
+    gold: 55,
+    materials: { "녹슨 철심": 1, "성문 경첩": 1 },
+  },
+  {
+    id: "hunter-edge",
+    professions: ["duelist", "ranger"],
+    gold: 60,
+    materials: { "절단 검날": 1, "철익막": 1 },
+  },
+  {
+    id: "sacred-focus",
+    professions: ["medic", "chaplain"],
+    gold: 60,
+    materials: { "성가 청동": 1, "발광 유리": 1 },
+  },
+  {
+    id: "rune-chain",
+    professions: ["runesmith", "tactician"],
+    gold: 65,
+    materials: { "역문자 수정체": 1, "룬 책등": 1 },
+  },
+] as const;
+export const craftedWeaponIds = forgeRecipes.map((recipe) => recipe.id);
 export type Loadout = {
   weapon: (typeof equipmentCatalog.weapon)[number]["id"];
   armor: (typeof equipmentCatalog.armor)[number]["id"];
@@ -540,9 +603,14 @@ export type Run = {
   gold: number;
   materials: string[];
   reward: { gold: number; materials: string[] } | null;
-  mode: "map" | "battle" | "event" | "reward" | "defeat";
+  mode: "map" | "battle" | "event" | "merchant" | "reward" | "defeat";
   cleared: boolean;
   combatFx: CombatFx | null;
+  route?: Record<string, RoomDefinition>;
+  cardMods?: Record<
+    string,
+    { strikeBonus: number; removeStrike: boolean; transformStrike: boolean }
+  >;
 };
 export type Game = {
   schema: 1;
@@ -551,6 +619,7 @@ export type Game = {
   roster: Hero[];
   gold: number;
   materials: Record<string, number>;
+  craftedGear: string[];
   runs: number;
   reputation: Record<string, number>;
   facilities: {
@@ -596,9 +665,16 @@ export type CardPreview = {
     maxHp: number;
   };
 };
+export type RoomDefinition = {
+  name: string;
+  kind: string;
+  next: string[];
+  enemies?: string[];
+  layer?: number;
+};
 export const rooms: Record<
   string,
-  { name: string; kind: string; next: string[]; enemies?: string[] }
+  RoomDefinition
 > = {
   entrance: { name: "무너진 성문", kind: "entry", next: ["gate"] },
   gate: {
@@ -785,6 +861,76 @@ export const rooms: Record<
   },
   "final-exit": { name: "마지막 귀환의 봉화", kind: "exit", next: [] },
 };
+const expeditionRegionNames = [
+  "변경 요새",
+  "심연 항구",
+  "침수 서고",
+  "백야 예배당",
+  "폐쇄 연구동",
+  "설원 관측소",
+  "침묵 궁전",
+];
+export function createExpeditionRoute(
+  seed: number,
+  regionIndex = 0,
+): Record<string, RoomDefinition> {
+  const region = Math.abs(regionIndex) % expeditionRegionNames.length;
+  const firstMonster = region * 8 + 1;
+  const monster = (offset: number) =>
+    `M${String(firstMonster + Math.min(7, offset)).padStart(2, "0")}`;
+  const link = (layer: number) => [
+    `l${layer}-battle`,
+    `l${layer}-${layer % 2 ? "question" : "merchant"}`,
+    `l${layer}-rest`,
+  ];
+  const route: Record<string, RoomDefinition> = {
+    entrance: {
+      name: `${expeditionRegionNames[region]} 입구`,
+      kind: "entry",
+      next: link(1),
+      layer: 0,
+    },
+  };
+  for (let layer = 1; layer <= 4; layer++) {
+    const next = layer === 4 ? ["boss"] : link(layer + 1);
+    route[`l${layer}-battle`] = {
+      name: `${layer}계층 전투 구역`,
+      kind: "battle",
+      next,
+      enemies: [monster((layer - 1) * 2), monster((layer - 1) * 2 + 1)],
+      layer,
+    };
+    route[`l${layer}-${layer % 2 ? "question" : "merchant"}`] = {
+      name: layer % 2 ? `${layer}계층 미지의 징후` : `${layer}계층 암상인`,
+      kind: layer % 2 ? "question" : "merchant",
+      next,
+      layer,
+    };
+    route[`l${layer}-rest`] = {
+      name: `${layer}계층 귀환 야영지`,
+      kind: "rest",
+      next,
+      layer,
+    };
+  }
+  route.boss = {
+    name: `${expeditionRegionNames[region]}의 지배자`,
+    kind: "boss",
+    next: ["victory-rest"],
+    enemies: [monster(7)],
+    layer: 5,
+  };
+  route["victory-rest"] = {
+    name: "승전 귀환 야영지",
+    kind: "rest",
+    next: [],
+    layer: 6,
+  };
+  return route;
+}
+export function roomFor(run: Pick<Run, "room" | "route">, id = run.room) {
+  return run.route?.[id] || rooms[id];
+}
 export class RuleError extends Error {
   constructor(
     message: string,
@@ -887,6 +1033,7 @@ export function initialGame(): Game {
     roster: ["AR1", "AR2", "AR3", "AR4"].map(hero),
     gold: balance.startingGold,
     materials: {},
+    craftedGear: [],
     runs: 0,
     reputation: Object.fromEntries(factionCodes.map((f) => [f, 0])),
     facilities: { forge: 0, training: 0, infirmary: 0, canteen: 0 },
@@ -910,6 +1057,7 @@ export function normalizeGame(previous: Game): Game {
     party: saved.party || defaults.party,
     roster: (saved.roster || defaults.roster).map(normalizeHero),
     materials: saved.materials || {},
+    craftedGear: saved.craftedGear || [],
     reputation: { ...defaults.reputation, ...(saved.reputation || {}) },
     facilities: { ...defaults.facilities, ...(saved.facilities || {}) },
     achievements: saved.achievements || [],
@@ -922,6 +1070,8 @@ export function normalizeGame(previous: Game): Game {
     run: saved.run
       ? {
           ...saved.run,
+          route: saved.run.route || rooms,
+          cardMods: saved.run.cardMods || {},
           heroes: saved.run.heroes.map(normalizeHero),
           battle: saved.run.battle
             ? {
@@ -1039,11 +1189,18 @@ function enterBattle(r: Run, ids: string[]) {
   const deck = r.heroes
     .filter((h) => h.hp > 0)
     .flatMap((h) =>
-      (["strike", "guard", "skill", "heavy"] as const).map((kind) => ({
-        id: `${h.id}-${kind}`,
-        owner: h.id,
-        kind,
-      })),
+      (["strike", "guard", "skill", "heavy"] as const)
+        .filter(
+          (kind) => !(kind === "strike" && r.cardMods?.[h.id]?.removeStrike),
+        )
+        .map((kind) => ({
+          id: `${h.id}-${kind}`,
+          owner: h.id,
+          kind:
+            kind === "strike" && r.cardMods?.[h.id]?.transformStrike
+              ? ("heavy" as const)
+              : kind,
+        })),
     );
   r.battle = {
     turn: 1,
@@ -1127,7 +1284,7 @@ function victory(g: Game) {
     r.reward = {
       gold:
         b.enemies.length * 18 +
-        (r.room === "boss" || r.room.endsWith("-boss") ? 60 : 0),
+        (roomFor(r).kind === "boss" || r.room.endsWith("-boss") ? 60 : 0),
       materials: b.enemies.map(
         (e) => monsters.find((m) => m.id === e.id)!.loot,
       ),
@@ -1135,7 +1292,7 @@ function victory(g: Game) {
     r.mode = "reward";
     xp(r, balance.battleXP);
     r.heroes.forEach((h) => (h.stress += relations(g.party).stress));
-    if (r.room === "boss" || r.room.endsWith("-boss")) r.cleared = true;
+    if (roomFor(r).kind === "boss" || r.room.endsWith("-boss")) r.cleared = true;
     log(g, "전투 승리. 전리품을 챙기면 다음 경로가 열린다.");
   }
 }
@@ -1184,6 +1341,11 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       equipmentAllowed(h.id, slot, option.id),
       `${professionFor(h.id).name}이(가) 착용할 수 없는 장비입니다.`,
     );
+    check(
+      !craftedWeaponIds.includes(option.id as (typeof craftedWeaponIds)[number]) ||
+        g.craftedGear.includes(option.id),
+      "대장간에서 먼저 제작해야 합니다.",
+    );
     h.loadout[slot] = option.id as never;
     h.equipment =
       h.loadout.weapon === "blade"
@@ -1195,6 +1357,23 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       g,
       `${characters.find((item) => item.id === h.id)!.name}이(가) ${option.name}을(를) 장착했다.`,
     );
+  } else if (a.type === "craft") {
+    check(!r, "거점에서 제작하세요.");
+    const recipe = forgeRecipes.find((item) => item.id === a.id);
+    check(recipe, "알 수 없는 제작 도면입니다.");
+    check(!g.craftedGear.includes(recipe.id), "이미 제작한 무기입니다.");
+    const cost = Math.max(20, recipe.gold - g.facilities.forge * 10);
+    check(g.gold >= cost, "은화가 부족합니다.");
+    for (const [material, amount] of Object.entries(recipe.materials))
+      check((g.materials[material] || 0) >= amount, `${material}이(가) 부족합니다.`);
+    g.gold -= cost;
+    for (const [material, amount] of Object.entries(recipe.materials)) {
+      g.materials[material] -= amount;
+      if (g.materials[material] <= 0) delete g.materials[material];
+    }
+    g.craftedGear.push(recipe.id);
+    const weapon = equipmentCatalog.weapon.find((item) => item.id === recipe.id)!;
+    log(g, `${weapon.name} 제작 완료. 해당 직업이 장착할 수 있습니다.`);
   } else if (a.type === "upgradeFacility") {
     check(!r, "탐사 중에는 시설을 업그레이드할 수 없습니다.");
     const id = a.id as keyof Game["facilities"];
@@ -1310,6 +1489,8 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     g.run = {
       seed: seed >>> 0 || 1,
       room: "entrance",
+      route: createExpeditionRoute(seed >>> 0 || 1, g.runs),
+      cardMods: {},
       visited: ["entrance"],
       heroes: g.party.map((id) => {
         const saved = g.roster.find((h) => h.id === id)!;
@@ -1336,18 +1517,19 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     check(r, "진행 중인 탐사가 없습니다.");
     if (a.type === "move") {
       check(r.mode === "map", "현재 방의 행동을 먼저 완료하세요.");
-      check(rooms[r.room].next.includes(a.id || ""), "연결되지 않은 방입니다.");
+      check(roomFor(r).next.includes(a.id || ""), "연결되지 않은 방입니다.");
       check(!r.visited.includes(a.id!), "이미 완료한 방입니다.");
       r.room = a.id!;
       r.visited.push(r.room);
-      const room = rooms[r.room];
+      const room = roomFor(r);
       if (room.enemies) enterBattle(r, room.enemies);
-      else if (["rest", "puzzle", "faction"].includes(room.kind))
+      else if (["rest", "puzzle", "faction", "question"].includes(room.kind))
         r.mode = "event";
+      else if (room.kind === "merchant") r.mode = "merchant";
       log(g, `${room.name}에 도착했다.`);
     } else if (a.type === "event") {
       check(r.mode === "event", "선택할 사건이 없습니다.");
-      const kind = rooms[r.room].kind;
+      const kind = roomFor(r).kind;
       if (kind === "rest") {
         check(a.choice === "rest", "휴식 선택이 필요합니다.");
         r.heroes
@@ -1370,6 +1552,23 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
         xp(r, balance.puzzleXP);
         r.gold += 25;
         log(g, "종 문양이 봉인을 풀었다. 은화 25와 경험치 8 획득.");
+      } else if (kind === "question") {
+        check(["investigate", "avoid"].includes(a.choice || ""), "행동을 선택하세요.");
+        if (a.choice === "avoid") {
+          r.heroes.forEach((h) => (h.stress = Math.max(0, h.stress - 2)));
+          log(g, "불길한 징후를 피해 안전하게 통과했다. 스트레스 -2.");
+        } else if ((r.seed + r.visited.length) % 2 === 0) {
+          const rare = "월광 합금";
+          r.gold += 35;
+          r.materials.push(rare);
+          log(g, `숨은 보관함을 찾았다. 은화 35와 ${rare} 획득.`);
+        } else {
+          r.heroes.filter((h) => h.hp > 0).forEach((h) => {
+            h.hp = Math.max(1, h.hp - 10);
+            h.stress += 3;
+          });
+          log(g, "함정이 작동했다. 생존 동료 체력 -10, 스트레스 +3.");
+        }
       } else {
         check(
           ["accept", "leave"].includes(a.choice || ""),
@@ -1384,6 +1583,39 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
         }
       }
       r.mode = "map";
+    } else if (a.type === "merchant") {
+      check(r.mode === "merchant" && roomFor(r).kind === "merchant", "상인이 없습니다.");
+      const target = r.heroes.find((h) => h.id === a.id);
+      if (a.choice === "leave") {
+        r.mode = "map";
+        log(g, "암상인과 거래를 마쳤다.");
+      } else if (a.choice === "heal") {
+        check(target && target.hp > 0, "회복할 동료를 선택하세요.");
+        check(r.gold >= 20, "배낭 은화가 부족합니다.");
+        r.gold -= 20;
+        target.hp = Math.min(target.maxHp, target.hp + 28);
+        log(g, `${characters.find((c) => c.id === target.id)!.name} 체력 +28.`);
+      } else if (a.choice === "rare") {
+        check(r.gold >= 45, "배낭 은화가 부족합니다.");
+        r.gold -= 45;
+        r.materials.push("월광 합금");
+        log(g, "암상인에게서 희귀 재료 월광 합금을 샀다.");
+      } else {
+        check(target, "카드를 조정할 동료를 선택하세요.");
+        const mods = (r.cardMods![target.id] ||= {
+          strikeBonus: 0,
+          removeStrike: false,
+          transformStrike: false,
+        });
+        const cost = a.choice === "upgrade" ? 30 : a.choice === "remove" ? 40 : 35;
+        check(["upgrade", "remove", "transform"].includes(a.choice || ""), "알 수 없는 카드 작업입니다.");
+        check(r.gold >= cost, "배낭 은화가 부족합니다.");
+        if (a.choice === "upgrade") mods.strikeBonus += 4;
+        if (a.choice === "remove") mods.removeStrike = true;
+        if (a.choice === "transform") mods.transformStrike = true;
+        r.gold -= cost;
+        log(g, `${characters.find((c) => c.id === target.id)!.name}의 기본 공격 카드를 조정했다.`);
+      }
     } else if (a.type === "play") {
       check(r.mode === "battle" && r.battle, "전투 중이 아닙니다.");
       const b = r.battle,
@@ -1453,6 +1685,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
             ? Math.floor(stats.spell / 3)
             : Math.floor(stats.attack / 4)) +
           g.facilities.forge +
+          (c.kind === "strike" ? r.cardMods?.[h.id]?.strikeBonus || 0 : 0) +
           (h.statuses.fury || 0);
         if (h.statuses.weakness) dmg = Math.floor(dmg * 0.75);
         if (h.statuses.anger && h.hp <= h.maxHp / 2)
@@ -1665,7 +1898,10 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       log(g, "전리품을 배낭에 보관했다. 귀환하면 창고에 저장된다.");
     } else if (a.type === "return") {
       check(
-        ["map", "defeat"].includes(r.mode),
+        r.mode === "defeat" ||
+          (r.mode === "map" &&
+            (roomFor(r).kind === "rest" ||
+              (roomFor(r).kind === "exit" && !roomFor(r).layer))),
         "전투·사건·보상 처리를 먼저 완료하세요.",
       );
       const failed = r.mode === "defeat";

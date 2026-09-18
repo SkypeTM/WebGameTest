@@ -12,6 +12,7 @@ import {
   professionFor,
   equipmentAllowed,
   recommendedFormation,
+  createExpeditionRoute,
   type Game,
   type Action,
 } from "../lib/game";
@@ -21,7 +22,7 @@ function act(g: Game, a: Action) {
 function battleStart() {
   return act(act(initialGame(), { type: "enter" }), {
     type: "move",
-    id: "gate",
+    id: "l1-battle",
   });
 }
 export function fight(input: Game) {
@@ -202,32 +203,31 @@ test("knocked-out owners cannot play and are excluded from next draw", () => {
   g = act(g, { type: "endTurn" });
   assert.ok(g.run!.battle!.hand.every((c) => c.owner !== owner));
 });
-test("one whole expedition: combat, reward once, puzzle, faction, boss, return", () => {
+test("one whole branching expedition: combat, merchant, encounter, rest, boss, return", () => {
   let g = fight(battleStart());
   assert.equal(g.run!.mode, "reward");
   g = act(g, { type: "claim" });
   assert.throws(() => act(g, { type: "claim" }));
-  g = act(g, { type: "move", id: "runes" });
-  g = act(g, { type: "event", choice: "star" });
-  assert.equal(g.run!.mode, "event");
-  g = act(g, { type: "event", choice: "bell" });
-  assert.throws(() => act(g, { type: "event", choice: "bell" }));
-  assert.throws(() => act(g, { type: "move", id: "gate" }));
-  g = fight(act(g, { type: "move", id: "yard" }));
-  assert.equal(g.run!.mode, "reward");
-  g = act(g, { type: "claim" });
-  g = act(g, { type: "move", id: "supply" });
-  g = act(g, { type: "event", choice: "accept" });
+  assert.throws(() => act(g, { type: "return" }));
+  g = act(g, { type: "move", id: "l2-merchant" });
+  g = act(g, { type: "merchant", choice: "upgrade", id: "AR1" });
+  assert.equal(g.run!.cardMods!.AR1.strikeBonus, 4);
+  g = act(g, { type: "merchant", choice: "leave" });
+  g = act(g, { type: "move", id: "l3-question" });
+  g = act(g, { type: "event", choice: "avoid" });
+  g = act(g, { type: "move", id: "l4-rest" });
+  g = act(g, { type: "event", choice: "rest" });
   g = fight(act(g, { type: "move", id: "boss" }));
   assert.equal(g.run!.mode, "reward");
   assert.equal(g.run!.cleared, true);
   g = act(g, { type: "claim" });
-  g = act(g, { type: "move", id: "exit" });
+  g = act(g, { type: "move", id: "victory-rest" });
+  g = act(g, { type: "event", choice: "rest" });
   const gold = g.run!.gold;
   g = act(g, { type: "return" });
   assert.equal(g.run, null);
   assert.equal(g.gold, 100 + gold);
-  assert.ok(g.materials["빈 왕관 파편"]);
+  assert.ok(Object.keys(g.materials).length > 0);
   assert.equal(g.runs, 1);
   assert.ok(g.roster.every((h) => h.xp > 0));
   assert.throws(() => act(g, { type: "return" }));
@@ -254,12 +254,10 @@ test("implemented monster mechanics: shields, countdown, stun, tower and retalia
   let g = battleStart();
   g = act(g, { type: "endTurn" });
   assert.equal(g.run!.battle!.enemies[0].shield, 10);
-  // Use real graph to enter courtyard, then test the saved encounter at its explosive turn.
+  // Enter the second combat layer, then test the explosive enemy turn.
   g = fight(battleStart());
   g = act(g, { type: "claim" });
-  g = act(g, { type: "move", id: "camp" });
-  g = act(g, { type: "event", choice: "rest" });
-  g = act(g, { type: "move", id: "yard" });
+  g = act(g, { type: "move", id: "l2-battle" });
   g.run!.battle!.turn = 3;
   const before = g.run!.heroes.map((h) => h.hp);
   g = act(g, { type: "endTurn" });
@@ -332,7 +330,7 @@ test("loadout stats, visual preview data, statuses and card triggers persist", (
   assert.ok(equipped.defense > base.defense);
 
   g = act(g, { type: "enter" });
-  g = act(g, { type: "move", id: "gate" });
+  g = act(g, { type: "move", id: "l1-battle" });
   g.run!.battle!.hand = [
     { id: "AR1-strike", owner: "AR1", kind: "strike" },
     { id: "AR1-heavy", owner: "AR1", kind: "heavy" },
@@ -367,4 +365,27 @@ test("professions constrain gear, distribute stats and recommend formation", () 
   assert.deepEqual(formation, ["AR1", "AR2", "AR4", "AR3"]);
   assert.ok(heroStats(g.roster[0]).defense > heroStats(g.roster[1]).defense);
   assert.ok(heroStats(g.roster[2]).spell > heroStats(g.roster[1]).spell);
+});
+test("branching route contains four layers, required nodes and rest-only return", () => {
+  const route = createExpeditionRoute(9, 2);
+  assert.deepEqual(new Set(Object.values(route).filter((r) => r.layer && r.layer <= 4).map((r) => r.layer)), new Set([1, 2, 3, 4]));
+  for (const kind of ["battle", "merchant", "rest", "question", "boss"])
+    assert.ok(Object.values(route).some((room) => room.kind === kind));
+  let g = act(initialGame(), { type: "enter" });
+  assert.throws(() => act(g, { type: "return" }));
+  g = act(g, { type: "move", id: "l1-rest" });
+  g = act(g, { type: "event", choice: "rest" });
+  g = act(g, { type: "return" });
+  assert.equal(g.run, null);
+});
+test("forge crafts and equips a profession weapon from account materials", () => {
+  let g = initialGame();
+  g.gold = 200;
+  g.materials["녹슨 철심"] = 1;
+  g.materials["성문 경첩"] = 1;
+  g = act(g, { type: "craft", id: "bastion-blade" });
+  assert.ok(g.craftedGear.includes("bastion-blade"));
+  g = act(g, { type: "equip", id: "AR1", item: "weapon", choice: "bastion-blade" });
+  assert.equal(g.roster[0].loadout.weapon, "bastion-blade");
+  assert.throws(() => act(g, { type: "equip", id: "AR2", item: "weapon", choice: "bastion-blade" }));
 });

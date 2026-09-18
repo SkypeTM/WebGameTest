@@ -42,13 +42,13 @@ test("atomic receipt replay, conflicting replay, concurrent versions and device 
     executeAction("a", "device-one", {
       requestId: "request-000000003",
       version: 1,
-      action: { type: "move", id: "gate" },
+      action: { type: "move", id: "l1-battle" },
     }),
   );
   const next = executeAction("a", "device-two", {
     requestId: "request-000000003",
     version: 1,
-    action: { type: "move", id: "gate" },
+    action: { type: "move", id: "l1-battle" },
   });
   assert.equal(next.run!.mode, "battle");
   assert.deepEqual(JSON.parse(getCampaign("a").state), next);

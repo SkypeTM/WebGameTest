@@ -773,6 +773,37 @@ input::placeholder {
   font: 9px monospace;
   color: #9aa69c;
 }
+.sprite-actor {
+  overflow: visible;
+  transform-origin: 50% 100%;
+}
+.sprite-frame {
+  position: absolute;
+  inset: 0;
+}
+.sprite-frame-action {
+  opacity: 0;
+  pointer-events: none;
+}
+.motion-strike .sprite-frame-action,
+.motion-guard .sprite-frame-action,
+.motion-heal .sprite-frame-action,
+.motion-hit .sprite-frame-action {
+  animation: sprite-frame-cut 900ms steps(1, end) both;
+}
+@keyframes sprite-frame-cut {
+  0%, 12%, 86%, 100% { opacity: 0; }
+  13%, 85% { opacity: 1; }
+}
+.motion-death {
+  animation: monster-death 1250ms cubic-bezier(0.4, 0, 0.8, 0.3) both !important;
+}
+@keyframes monster-death {
+  0% { opacity: 1; transform: translateY(0) scale(1); filter: brightness(1); }
+  24% { transform: translateY(-8px) scale(1.05, 0.92); filter: brightness(2.4) saturate(0.2); }
+  58% { opacity: 0.72; transform: translateY(12px) rotate(3deg) scale(0.96, 0.74); filter: grayscale(0.8); }
+  100% { opacity: 0; transform: translateY(52px) rotate(-5deg) scale(1.08, 0.05); filter: grayscale(1) blur(5px); }
+}
 .motion-strike {
   animation: hero-lunge 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -1592,32 +1623,98 @@ summary:before {
   padding: 24px;
 }
 .route-map {
-  max-width: 480px;
+  max-width: 680px;
   margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 .route-row {
   position: relative;
   display: flex;
   justify-content: center;
   gap: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 .route-row:not(:last-child):after {
   content: "";
   position: absolute;
   top: 100%;
   left: 50%;
-  height: 20px;
+  height: 14px;
   border-left: 1px dashed #7c876b;
 }
+.route-layer-0,
+.route-layer-5,
+.route-layer-6 {
+  grid-column: 1 / -1;
+}
+.route-layer-0 + .route-layer-1,
+.route-layer-2:first-of-type,
+.route-layer-3:first-of-type,
+.route-layer-4:first-of-type {
+  margin-top: 12px;
+}
 .room {
-  width: 180px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
   font-size: 12px;
   z-index: 1;
+}
+.facility-tabs {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.facility-tabs button.active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: #3b3d30;
+}
+.forge-recipes,
+.merchant-actions {
+  display: grid;
+  gap: 10px;
+}
+.forge-recipe {
+  display: grid;
+  grid-template-columns: 68px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: #142022;
+}
+.forge-recipe .asset-icon {
+  width: 64px;
+  height: 64px;
+  flex-basis: 64px;
+}
+.forge-recipe div {
+  display: grid;
+  gap: 4px;
+}
+.forge-recipe p,
+.forge-recipe small {
+  margin: 0;
+}
+.reward-item {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+.reward-item .asset-icon {
+  width: 42px;
+  height: 42px;
+  flex-basis: 42px;
+}
+.death-sequence-label {
+  grid-column: 1 / -1;
+  text-align: center;
 }
 .room > span {
   font-size: 20px;
@@ -2421,6 +2518,24 @@ footer {
   }
 }
 @media (max-width: 700px) {
+  .facility-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .route-map {
+    grid-template-columns: repeat(3, minmax(84px, 1fr));
+    overflow-x: auto;
+  }
+  .room {
+    min-width: 84px;
+    padding: 7px 4px;
+    font-size: 9px;
+  }
+  .forge-recipe {
+    grid-template-columns: 54px 1fr;
+  }
+  .forge-recipe > button {
+    grid-column: 1 / -1;
+  }
   .formation-actions {
     width: 100%;
     align-items: stretch;

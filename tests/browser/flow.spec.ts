@@ -366,9 +366,13 @@ test("HD portraits, procedural route and full-size combat cut-in render", async 
     .locator("img")
     .first();
   await expect(portrait).toHaveAttribute("src", /fhd\/portraits\/AR1\.webp/);
-  expect(await portrait.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBe(
-    1080,
-  );
+  await expect
+    .poll(() =>
+      portrait.evaluate((image: HTMLImageElement) =>
+        image.complete ? image.naturalWidth : 0,
+      ),
+    )
+    .toBe(1080);
 
   await clickSave(page, () =>
     page.getByRole("button", { name: "던전 입장" }).click(),

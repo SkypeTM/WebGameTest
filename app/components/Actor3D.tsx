@@ -2,11 +2,17 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 export const threeDimensionalActors = new Set([
   "AR1", "AR2", "AR3", "AR4",
   "M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08",
+  "BC2",
 ]);
+
+const riggedModels: Record<string, string> = {
+  BC2: "/assets/models/BC2/BC2_rigged.glb",
+};
 
 type Motion = "idle" | "attack" | "hit" | "death";
 
@@ -146,9 +152,40 @@ export function Actor3D({ id, motion = "idle", full = false, label }: { id: stri
     camera.position.set(0, .8, 7); camera.lookAt(0, .65, 0);
     scene.add(new THREE.HemisphereLight(0xfff2d0, 0x15212b, 2.2));
     const key = new THREE.DirectionalLight(0xffd895, 3.8); key.position.set(3, 5, 5); scene.add(key);
-    const actor = id.startsWith("M") ? monster(id, full) : humanoid(id, full); scene.add(actor);
+    // Existing procedural actors remain a compatibility fallback while Blender
+    // deliveries are migrated one character at a time.
+    let actor = id.startsWith("M") ? monster(id, full) : humanoid(id === "BC2" ? "AR3" : id, full);
+    scene.add(actor);
+    let mixer: THREE.AnimationMixer | undefined;
+    let disposed = false;
+    const modelUrl = riggedModels[id];
+    if (modelUrl) {
+      new GLTFLoader().load(
+        modelUrl,
+        (gltf) => {
+          if (disposed) return;
+          scene.remove(actor);
+          actor = gltf.scene;
+          actor.name = `${id}-rigged-model`;
+          actor.traverse((item) => {
+            if (item instanceof THREE.Mesh) {
+              item.castShadow = true;
+              item.receiveShadow = true;
+            }
+          });
+          scene.add(actor);
+          mixer = new THREE.AnimationMixer(actor);
+          const clipName = motion === "idle" ? "Idle" : motion === "attack" ? "Attack" : motion === "hit" ? "Hit" : "Death";
+          const clip = THREE.AnimationClip.findByName(gltf.animations, clipName);
+          if (clip) mixer.clipAction(clip).reset().play();
+        },
+        undefined,
+        () => { /* fallback actor stays visible if a future model is unavailable */ },
+      );
+    }
     let frame = 0;
     const startedAt = performance.now();
+    let lastFrame = startedAt;
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
       renderer.setSize(Math.max(1, rect.width), Math.max(1, rect.height), false);
@@ -156,6 +193,8 @@ export function Actor3D({ id, motion = "idle", full = false, label }: { id: stri
     const observer = new ResizeObserver(resize); observer.observe(canvas); resize();
     const render = () => {
       const t = (performance.now() - startedAt) / 1000;
+      mixer?.update((performance.now() - lastFrame) / 1000);
+      lastFrame = performance.now();
       actor.position.y = Math.sin(t * 2.2) * .035;
       actor.rotation.y = Math.sin(t * .8) * .08;
       if (motion === "attack") {
@@ -174,7 +213,9 @@ export function Actor3D({ id, motion = "idle", full = false, label }: { id: stri
     };
     render();
     return () => {
+      disposed = true;
       cancelAnimationFrame(frame); observer.disconnect();
+      mixer?.stopAllAction();
       scene.traverse((object) => {
         if (object instanceof THREE.Mesh) {
           object.geometry.dispose();

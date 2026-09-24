@@ -42,3 +42,10 @@
 - `020-connected-combat-motion.md`: 연결형 공격·피격 전투 모션
 - `021-asset-quality-card-monster-fixes.md`: 캐릭터·아이템·카드·몬스터 자산 표시 개선
 - `022-professions-party-formation.md`: 직업·장비 제한·추천 파티 배치
+- `023-branching-expedition-forge-animation.md`: 분기 탐사·대장간·전투 애니메이션
+- `024-fhd-live2d-quests-deck.md`: FHD 자산·퀘스트·덱 미리보기
+- `025-collection-relics-live-deploy.md`: 도감·팩션 유물·라이브 배포
+- `026-hd-characters-combat-motion-procedural-map.md`: HD 초상화·절차적 탐사 지도
+- `027-webgl-3d-battle-actors.md`: WebGL 3D 전투 캐릭터·변경 요새 몬스터
+- `028-cloudflare-3d-release-validation.md`: Cloudflare 3D 공개 배포·라이브 검증
+- `029-blender-rigged-character-pipeline.md`: Blender 리깅 GLB 제작·런타임 로더

@@ -144,6 +144,9 @@ def build_outfit():
 
 def make_animation(name, keys):
     action = bpy.data.actions.new(name)
+    # Blender 5 removes unused action datablocks on save. Keep all four clips in
+    # the editable delivery file, not only the action active at save time.
+    action.use_fake_user = True
     RIG.animation_data_create(); RIG.animation_data.action = action
     for frame, values in keys:
         for bone_name, rotation in values.items():

@@ -4,6 +4,7 @@
 
 - 첨부 원화 시트의 BC2(미라) 작업본에서 별도 버전의 Blender 리깅 파일을 생성했다.
 - `BC2_rigged.glb`에 Armature 1개와 Idle·Attack·Hit·Death 애니메이션 클립을 포함했다.
+- Blender 5 저장 시 미사용 액션이 제거되지 않도록 각 클립을 보존 처리했다.
 - 게임의 `Actor3D`가 GLB를 우선 로드하고, 자산을 읽지 못할 때 기존 WebGL 메시로 안전하게 대체하도록 했다.
 
 ## 생성 자산

@@ -4184,3 +4184,263 @@ footer {
     display: none;
   }
 }
+
+/* Responsive play surfaces: phones are designed for landscape play; tablets
+   retain a deliberate layout in either orientation. These rules sit last so
+   they override the older narrow-screen stack without changing desktop. */
+@media (max-width: 760px) and (orientation: landscape) and (max-height: 600px) {
+  .header {
+    min-height: 0;
+    padding: 8px 14px;
+    gap: 8px;
+  }
+  .brand {
+    font-size: 18px;
+  }
+  .status,
+  .page-heading p,
+  .build-label,
+  .battle-flow {
+    display: none;
+  }
+  .main {
+    padding: 12px 16px 0;
+  }
+  .page-heading {
+    margin-bottom: 10px;
+  }
+  .page-heading h1 {
+    font-size: 21px;
+  }
+  .town-map {
+    min-height: calc(100svh - 82px);
+  }
+  .town-locations {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    padding: 10px;
+  }
+  .town-location {
+    position: relative;
+    inset: auto;
+    width: auto;
+    min-height: 54px;
+    transform: none;
+  }
+  .town-location:hover,
+  .town-location.active {
+    transform: translateY(-3px);
+  }
+  .hub-overlay {
+    margin: -28px 8px 12px;
+    max-height: calc(100svh - 68px);
+    overflow: auto;
+    padding: 14px;
+  }
+  .party-grid,
+  .recruit-grid,
+  .storage-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-top {
+    flex-direction: row;
+  }
+  .hero-card > .crest.large {
+    width: 76px;
+    height: 88px;
+  }
+  .battle-toolbar {
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    align-items: center;
+  }
+  .battle-toolbar h2 {
+    font-size: 14px;
+  }
+  .energy {
+    display: inline;
+    margin-left: 6px;
+    font-size: 14px;
+  }
+  .deck-count {
+    flex-direction: row;
+    gap: 8px;
+    font-size: 8px;
+  }
+  .end-turn-button {
+    width: 48px;
+    height: 48px;
+    font-size: 8px;
+  }
+  .battlefield {
+    display: grid;
+    grid-template-columns: minmax(190px, 0.75fr) minmax(0, 1.25fr);
+    min-height: calc(100svh - 148px);
+    padding: 34px 12px 10px;
+    gap: 12px;
+    align-items: end;
+  }
+  .battle-scene-bg,
+  .battle-vignette {
+    height: 100%;
+  }
+  .battlefield .allies {
+    display: block;
+    padding: 0;
+    background: transparent;
+  }
+  .battlefield .ally {
+    min-height: 52px;
+    margin: 3px 0;
+    padding: 4px 7px;
+    gap: 6px;
+  }
+  .battlefield .ally .crest {
+    width: 32px;
+    min-width: 32px;
+    height: 42px;
+  }
+  .battlefield .ally h3 {
+    font-size: 10px;
+  }
+  .battlefield .ally p,
+  .battlefield .ally small,
+  .battlefield .equipment-line,
+  .battlefield .status-chip {
+    font-size: 7px;
+  }
+  .battlefield .enemy-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 6px;
+  }
+  .battlefield .enemy .crest.large {
+    height: min(31svh, 145px);
+  }
+  .battlefield .enemy h3 {
+    font-size: 10px;
+  }
+  .battlefield .enemy p,
+  .battlefield .enemy details {
+    font-size: 8px;
+  }
+  .hand-section {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  .hand {
+    grid-template-columns: repeat(4, minmax(126px, 1fr));
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 8px;
+  }
+  .play-card {
+    min-height: 148px;
+  }
+  .play-card .card-character-art {
+    height: 48px;
+  }
+  .explore-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(210px, 0.9fr);
+    gap: 12px;
+  }
+  .room-panel {
+    grid-row: auto;
+    padding: 14px;
+  }
+  .map-panel {
+    padding: 14px;
+  }
+  .expedition-stage {
+    min-height: 190px;
+  }
+  .route-map {
+    min-height: 380px;
+  }
+  .character-detail-backdrop {
+    padding: 10px;
+  }
+  .character-detail {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    max-height: calc(100svh - 20px);
+  }
+  .detail-visual,
+  .detail-visual > .crest.large {
+    min-height: 0;
+    height: 100%;
+  }
+  .detail-copy {
+    max-height: calc(100svh - 40px);
+    overflow: auto;
+    padding: 18px;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1199px) and (orientation: portrait) {
+  .main {
+    padding: 28px 28px 0;
+  }
+  .town-locations {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .hub-overlay {
+    margin: -68px 18px 28px;
+  }
+  .party-grid,
+  .recruit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .battlefield {
+    grid-template-columns: minmax(245px, 0.78fr) minmax(0, 1.22fr);
+    min-height: 580px;
+  }
+  .battlefield .ally .crest {
+    width: 58px;
+    min-width: 58px;
+    height: 74px;
+  }
+  .battlefield .enemy .crest.large {
+    height: 190px;
+  }
+  .hand {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .explore-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1199px) and (orientation: landscape) {
+  .main {
+    padding: 22px 30px 0;
+  }
+  .town-map {
+    min-height: 460px;
+  }
+  .town-locations {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .party-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .battlefield {
+    grid-template-columns: minmax(270px, 0.78fr) minmax(0, 1.4fr);
+    min-height: min(620px, calc(100svh - 190px));
+  }
+  .battlefield .enemy-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+  .battlefield .enemy .crest.large {
+    height: min(33svh, 205px);
+  }
+  .hand {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .play-card {
+    min-height: 230px;
+  }
+  .explore-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+  }
+}

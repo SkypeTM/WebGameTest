@@ -49,3 +49,6 @@
 - `027-webgl-3d-battle-actors.md`: WebGL 3D 전투 캐릭터·변경 요새 몬스터
 - `028-cloudflare-3d-release-validation.md`: Cloudflare 3D 공개 배포·라이브 검증
 - `029-blender-rigged-character-pipeline.md`: Blender 리깅 GLB 제작·런타임 로더
+- `030-arken-party-blender-models.md`: AR1~AR4 Blender 리그·GLB 전투 모델
+- `031-restore-2d-actors.md`: 전투 액터 2D 스프라이트 복귀
+- `032-landscape-mobile-tablet-layouts.md`: 모바일 가로·태블릿 세로/가로 레이아웃

@@ -667,6 +667,19 @@ export default function Page() {
     if (!selected || !game) return undefined;
     return predictCard(game, selected.id, id);
   }
+  const selectedInfo = selected ? cardInfo(selected) : undefined;
+  const selectedCardHero = selected
+    ? run?.heroes.find((hero) => hero.id === selected.owner)
+    : undefined;
+  const selectedPower =
+    selected && selectedInfo && selectedCardHero && game
+      ? effectiveCardValue(game, selectedCardHero, selected.kind).value
+      : 0;
+  const clashTargetCount = selectedInfo
+    ? selectedInfo.target === "enemy"
+      ? battle?.enemies.filter((enemy) => enemy.hp > 0).length || 0
+      : run?.heroes.filter((hero) => hero.hp > 0).length || 0
+    : 0;
   function moveParty(id: string, direction: -1 | 1) {
     const index = game!.party.indexOf(id);
     const nextIndex = index + direction;
@@ -2533,6 +2546,19 @@ export default function Page() {
                     aria-hidden="true"
                   />
                   <div className="battle-vignette" aria-hidden="true" />
+                  {selected && !fx && (
+                    <>
+                      <svg className="clash-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                        {Array.from({ length: clashTargetCount }, (_, index) => (
+                          <path key={index} className="clash-arc" style={{ animationDelay: `${index * 110}ms` }} d={`M 13 88 C ${30 + index * 4} ${78 - index * 10}, ${62 + index * 3} ${34 + index * 9}, 88 ${18 + index * 15}`} />
+                        ))}
+                      </svg>
+                      <div className="clash-planning" aria-live="polite">
+                        <span>합 판정 준비</span><strong>{cardInfo(selected).name}</strong><b>위력 {selectedPower}</b>
+                        <small>{cardInfo(selected).target === "enemy" ? "연결된 적을 선택하세요" : "연결된 아군을 선택하세요"}</small>
+                      </div>
+                    </>
+                  )}
                   {fx &&
                     (fx.kind === "hero-attack" ||
                       fx.kind === "enemy-attack") && (
@@ -2541,6 +2567,7 @@ export default function Page() {
                         key={`cut-in-${fx.nonce}`}
                         aria-hidden="true"
                       >
+                        <span className="cut-in-label">{fx.kind === "hero-attack" ? "공격 합 해결" : "적 공격 접근"}</span>
                         <div className="cut-in-actor">
                           <BattleActor
                             id={fx.actor}
@@ -2566,8 +2593,10 @@ export default function Page() {
                         aria-hidden="true"
                       >
                         <i className="impact-ring" />
+                        <img className="combat-slash-art" src="/assets/effects/combat-slash-crimson-v1.png" alt="" />
                         <i className="impact-slash" />
                         <b>-{fx.amount}</b>
+                        <span className="clash-result">피격</span>
                       </div>
                     )}
                   <div
@@ -2618,6 +2647,7 @@ export default function Page() {
                           id={h.id}
                           motion={motionFor(h.id, "hero")}
                         />
+                        {selectedInfo?.target === "ally" && h.hp > 0 && <span className="clash-coin"><em>{selectedPower}</em></span>}
                         <div>
                           <h3>
                             {char(h.id).name} <small>{char(h.id).role}</small>
@@ -2737,6 +2767,7 @@ export default function Page() {
                               setPreviewTarget("");
                             }}
                           >
+                            {selectedInfo?.target === "enemy" && e.hp > 0 && <span className="clash-coin"><em>{selectedPower}</em></span>}
                             <BattleActor
                               key={`crest-${e.id}-${fx?.nonce ?? "idle"}`}
                               id={e.id}
@@ -3686,3 +3717,8 @@ export default function Page() {
     </div>
   );
 }
+
+
+
+
+

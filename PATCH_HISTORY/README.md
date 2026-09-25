@@ -15,6 +15,8 @@
 
 현재 기록:
 
+- `034-2d-clash-combat.md`: 2D 합선·컷인·타격 이펙트 전투 연출
+
 - `027-webgl-3d-battle-actors.md`: 기본 파티·변경 요새 몬스터 WebGL 3D 전투 모델
 - `026-hd-characters-combat-motion-procedural-map.md`: HD 캐릭터·전투 컷 모션·절차적 지도
 - `025-collection-relics-live-deploy.md`: 통합 도감·팩션 유물·무료 라이브 배포

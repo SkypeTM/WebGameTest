@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
   "name": "beneath-the-silent-bell",
+  "account_id": "4fa20b81a9448491847348c43a0bf239",
   "compatibility_date": "2026-09-18",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {

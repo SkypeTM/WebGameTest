@@ -52,3 +52,4 @@
 - `030-arken-party-blender-models.md`: AR1~AR4 Blender 리그·GLB 전투 모델
 - `031-restore-2d-actors.md`: 전투 액터 2D 스프라이트 복귀
 - `032-landscape-mobile-tablet-layouts.md`: 모바일 가로·태블릿 세로/가로 레이아웃
+- `033-mobile-route-and-portable-shell.md`: 모바일·태블릿 전용 `/m` 경로와 자동 이동

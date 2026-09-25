@@ -4444,3 +4444,59 @@ footer {
     grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
   }
 }
+
+/* /m is a separate portable surface while still sharing the same account and
+   game state. The route label makes the active presentation explicit. */
+.mobile-page {
+  min-height: 100svh;
+  background: #0a1112;
+}
+.mobile-route-banner {
+  position: sticky;
+  z-index: 150;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 32px;
+  padding: 0.35rem max(1rem, env(safe-area-inset-right)) 0.35rem
+    max(1rem, env(safe-area-inset-left));
+  color: #d9d2bd;
+  border-bottom: 1px solid #6b6045;
+  background: #111b1ce8;
+  backdrop-filter: blur(8px);
+  font-size: 0.7rem;
+}
+.mobile-route-banner span {
+  color: var(--gold);
+  font-weight: 800;
+}
+.mobile-route-banner small {
+  color: var(--muted);
+}
+.mobile-route-banner a {
+  margin-left: auto;
+  color: var(--gold);
+  font-size: 0.65rem;
+}
+@media (max-width: 760px) and (orientation: portrait) {
+  .mobile-route-banner small::after {
+    content: " · 가로 회전을 권장합니다";
+    color: var(--gold);
+  }
+}
+@media (max-width: 760px) and (orientation: landscape) and (max-height: 600px) {
+  .mobile-route-banner {
+    min-height: 24px;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    font-size: 0.56rem;
+  }
+  .mobile-route-banner small,
+  .mobile-route-banner a {
+    font-size: 0.55rem;
+  }
+  .mobile-page .main {
+    min-height: calc(100svh - 50px);
+  }
+}

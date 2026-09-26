@@ -5,7 +5,7 @@
     "target": "enemy",
     "power": 10,
     "description": "피해 10 · 출혈 2",
-    "triggers": ["retain"]
+    "triggers": []
   },
   "guard": {
     "name": "방어 태세",
@@ -13,7 +13,7 @@
     "target": "ally",
     "power": 12,
     "description": "보호막 12 · 피해 차단 2",
-    "triggers": ["retain"]
+    "triggers": []
   },
   "heavy": {
     "name": "집중 일격",
@@ -21,7 +21,7 @@
     "target": "enemy",
     "power": 23,
     "description": "피해 23 · 취약 1",
-    "triggers": ["exhaust"]
+    "triggers": []
   },
   "수호": {
     "name": "방패 반격",
@@ -29,7 +29,7 @@
     "target": "ally",
     "power": 20,
     "description": "보호막 20 · 반격 5 · 가시 3",
-    "triggers": ["create"]
+    "triggers": []
   },
   "공격": {
     "name": "관통 표식",
@@ -37,7 +37,7 @@
     "target": "enemy",
     "power": 13,
     "description": "관통 피해 13 · 표적 4 · 중독 2",
-    "triggers": ["copy"]
+    "triggers": []
   },
   "지원": {
     "name": "응급 회복",
@@ -45,7 +45,7 @@
     "target": "ally",
     "power": 16,
     "description": "체력 16 회복 · 스트레스 -2",
-    "triggers": ["discover"]
+    "triggers": []
   },
   "제어": {
     "name": "룬 사슬",
@@ -53,6 +53,6 @@
     "target": "enemy",
     "power": 6,
     "description": "피해 6 · 기절 1 · 감전 2",
-    "triggers": ["retain"]
+    "triggers": []
   }
 }

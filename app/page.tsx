@@ -1,8 +1,10 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import BattleTargetLines from "./components/BattleTargetLines";
 import sdAssets from "../data/sd_asset_manifest.json";
 import "./battle-stage.css";
+import "./card-hand.css";
+import characterCardArt from "../data/card_character_art.json";
 import {
   characters,
   monsters,
@@ -1015,7 +1017,9 @@ export default function Page() {
           </>
         )}
       </div>
-      <main className="main">
+      <main
+        className={`main ${battle && (run?.mode === "battle" || (run?.mode === "reward" && !rewardReady)) ? "battle-page" : ""}`}
+      >
         <div className="page-heading">
           <div>
             <span className="eyebrow">
@@ -2177,6 +2181,24 @@ export default function Page() {
                               </p>
                             </div>
                             <div className="growth-actions">
+                              {facilityTab === "training" && (
+                                <button
+                                  className="mini"
+                                  disabled={
+                                    locked ||
+                                    h.level < 5 ||
+                                    !!h.promotion ||
+                                    game.gold < 80
+                                  }
+                                  onClick={() =>
+                                    void act({ type: "promote", id: h.id })
+                                  }
+                                >
+                                  {h.promotion
+                                    ? "상위 전직 완료"
+                                    : "상위 전직 · Lv.5 / ◈80 · 전용 스킬 생성"}
+                                </button>
+                              )}
                               {facilityTab === "training" ? (
                                 <button
                                   className="mini"
@@ -2942,16 +2964,19 @@ export default function Page() {
                 <section className="hand-section">
                   <div className="section-heading">
                     <h2>
-                      손패 <span>{battle.hand.length} / 6</span>
+                      손패{" "}
+                      <span>
+                        {battle.hand.length}장 · ◆ {battle.energy}
+                      </span>
                     </h2>
                     <span className="selection-hint" aria-live="polite">
                       {selected
-                        ? `${cardInfo(selected).name} 선택됨 → ${cardInfo(selected).target === "ally" ? "아군" : "적"}을 선택하세요`
+                        ? `${cardInfo(selected).name} · ${cardInfo(selected).description} → ${cardInfo(selected).target === "ally" ? "아군" : "적"} 선택`
                         : "카드를 선택한 뒤 대상을 누르세요"}
                     </span>
                   </div>
                   <div className="hand">
-                    {battle.hand.map((c) => {
+                    {battle.hand.map((c, handIndex) => {
                       const info = cardInfo(c),
                         liveValue = effectiveCardValue(
                           game,
@@ -2959,15 +2984,10 @@ export default function Page() {
                           c.kind,
                         ),
                         artwork =
-                          c.kind === "skill"
-                            ? characterAssets.find(
-                                (asset) =>
-                                  asset.id === c.owner &&
-                                  asset.state === "skill",
-                              )
-                            : cardArtAssets.find(
-                                (asset) => asset.id === c.kind,
-                              ),
+                          characterCardArt.find(
+                            (asset) =>
+                              asset.id === c.owner && asset.kind === c.kind,
+                          ) || sdAssets.find((asset) => asset.id === c.owner),
                         disabled =
                           locked ||
                           battle.energy < info.cost ||
@@ -2981,6 +3001,13 @@ export default function Page() {
                           aria-pressed={selected?.id === c.id}
                           aria-label={`${char(c.owner).name} ${info.name}`}
                           className={`play-card ${c.kind}`}
+                          style={
+                            {
+                              "--fan-angle": `${(handIndex - (battle.hand.length - 1) / 2) * 5}deg`,
+                              "--fan-drop": `${Math.abs(handIndex - (battle.hand.length - 1) / 2) * 5}px`,
+                            } as CSSProperties
+                          }
+                          title={`${info.description} · ${info.triggers.map((t) => cardTriggerDefinitions[t].name).join(" · ") || "키워드 없음"}`}
                           draggable={false}
                           disabled={disabled}
                           onPointerDown={(event) => {
@@ -3007,7 +3034,21 @@ export default function Page() {
                             !dragStart.current.moved && setSelected(c)
                           }
                         >
-                          <span className="card-cost">{info.cost}</span>
+                          <span
+                            className="card-cost"
+                            aria-label={`행동력 ${info.cost} 소비`}
+                          >
+                            <i aria-hidden="true">◆</i>
+                            {info.cost}
+                          </span>
+                          {c.kind === "skill" && (
+                            <span
+                              className="card-mana"
+                              aria-label="마나 1 소비"
+                            >
+                              💧1
+                            </span>
+                          )}
                           <span className="card-owner">
                             {char(c.owner).name}
                           </span>
@@ -3029,13 +3070,6 @@ export default function Page() {
                             ) : (
                               <Crest id={c.owner} state="skill" />
                             )}
-                            {c.kind === "skill" ? (
-                              <small className="personal-skill-label">
-                                {char(c.owner).name} 전용 · {info.role}
-                              </small>
-                            ) : (
-                              <CardArt kind={c.kind} role={info.role} />
-                            )}
                           </span>
                           <strong>{info.name}</strong>
                           <span className="live-card-value">
@@ -3048,7 +3082,17 @@ export default function Page() {
                               {liveValue.sources.equipmentAndStats}
                             </small>
                           </span>
-                          <span className="card-desc">{info.description}</span>
+                          <span
+                            className="card-desc"
+                            aria-label={info.description}
+                          >
+                            {info.target === "ally" ? "아군" : "적"} ·{" "}
+                            {c.kind === "skill"
+                              ? "전용"
+                              : c.kind === "guard"
+                                ? "방어"
+                                : "공격"}
+                          </span>
                           <span className="card-triggers">
                             {info.triggers.map((trigger) => (
                               <b
@@ -3310,7 +3354,9 @@ export default function Page() {
                             >
                               <img src={relic.asset} alt={relic.name} />
                               <strong>{relic.name}</strong>
-                              <span>{relic.description}</span>
+                              <span>
+                                {relic.description} {relic.keywordDescription}
+                              </span>
                               <small>이번 탐사 한정</small>
                             </button>
                           );
@@ -3514,6 +3560,12 @@ export default function Page() {
                             "welcome",
                           ],
                           ["rare", "월광 합금 1개 획득", 45, "rare"],
+                          [
+                            "keyword",
+                            "집중 일격 → 보존 각인 · 이번 탐사",
+                            30,
+                            "exchange",
+                          ],
                           [
                             "upgrade",
                             `기본 공격 피해 ${merchantStrike?.value || 0} → ${(merchantStrike?.value || 0) + 4}`,

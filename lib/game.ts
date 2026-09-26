@@ -422,6 +422,11 @@ export const relicCatalog = relicRegions.flatMap((entry) =>
       ...(entry.region === "harbor" && index === 1 ? { goldPercent: 25 } : {}),
       ...(entry.region === "archive" && index === 2 ? { draw: 1 } : {}),
     },
+    keywordDescription: [
+      "집중 일격: 복사·소멸",
+      "방어 태세: 보존",
+      "전용 스킬: 발견",
+    ][index],
     description:
       index === 0
         ? "모든 공격과 전용 공격의 최종 수치가 3 증가합니다."
@@ -862,6 +867,7 @@ export type Hero = {
   stress: number;
   xp: number;
   level: number;
+  promotion?: number;
   injury: boolean;
   equipment: "blade" | "ward";
   mana: number;
@@ -869,7 +875,14 @@ export type Hero = {
   loadout: Loadout;
   statuses: StatusMap;
 };
+export type KeywordGrant = {
+  owner: string;
+  kind: Card["kind"];
+  trigger: CardTrigger;
+  source: "merchant" | "event";
+};
 export type Card = {
+  triggers?: CardTrigger[];
   id: string;
   owner: string;
   kind: "strike" | "guard" | "skill" | "heavy";
@@ -921,6 +934,7 @@ export type Run = {
   cleared: boolean;
   combatFx: CombatFx | null;
   route?: Record<string, RoomDefinition>;
+  keywordGrants?: KeywordGrant[];
   cardMods?: Record<
     string,
     { strikeBonus: number; removeStrike: boolean; transformStrike: boolean }
@@ -1252,8 +1266,10 @@ export function createExpeditionRoute(
     const current = link(layer);
     const following = link(layer + 1);
     current.forEach((id, index) => {
-      const first = following[(index + Math.floor(mapRandom() * 2)) % following.length];
-      const second = following[(following.indexOf(first) + 1) % following.length];
+      const first =
+        following[(index + Math.floor(mapRandom() * 2)) % following.length];
+      const second =
+        following[(following.indexOf(first) + 1) % following.length];
       route[id].next = mapRandom() > 0.42 ? [first, second] : [first];
     });
     following.forEach((target) => {
@@ -1443,7 +1459,7 @@ export function initialGame(): Game {
 export function normalizeGame(previous: Game): Game {
   const defaults = initialGame();
   const saved = structuredClone(previous);
-  return {
+  const normalized: Game = {
     ...defaults,
     ...saved,
     party: saved.party || defaults.party,
@@ -1520,6 +1536,8 @@ export function normalizeGame(previous: Game): Game {
         }
       : null,
   };
+  syncCardTriggers(normalized);
+  return normalized;
 }
 export function relations(ids: string[]) {
   const fs = new Set(ids.map((id) => id.slice(0, 2)));
@@ -1556,11 +1574,57 @@ function shuffle<T>(r: Run, items: T[]) {
   }
   return items;
 }
+/** Permanent growth and run-only rewards are resolved when a deck is built. */
+export function earnedCardTriggers(
+  hero: Hero,
+  kind: Card["kind"],
+  run?: Run | null,
+): CardTrigger[] {
+  const result: CardTrigger[] = [];
+  if (hero.level >= 3 && kind === "guard") result.push("retain");
+  if (hero.level >= 5 && kind === "skill") result.push("discover");
+  if ((hero.promotion || 0) >= 1 && kind === "skill") result.push("create");
+  for (const grant of run?.keywordGrants || [])
+    if (grant.owner === hero.id && grant.kind === kind)
+      result.push(grant.trigger);
+  if (run?.relic?.endsWith("-1") && kind === "heavy")
+    result.push("copy", "exhaust");
+  if (run?.relic?.endsWith("-2") && kind === "guard") result.push("retain");
+  if (run?.relic?.endsWith("-3") && kind === "skill") result.push("discover");
+  return [...new Set(result)];
+}
+function grantKeyword(run: Run, grant: KeywordGrant) {
+  run.keywordGrants ||= [];
+  check(
+    !run.keywordGrants.some(
+      (g) =>
+        g.owner === grant.owner &&
+        g.kind === grant.kind &&
+        g.trigger === grant.trigger,
+    ),
+    "이미 획득한 키워드입니다.",
+  );
+  run.keywordGrants.push(grant);
+}
+function syncCardTriggers(game: Game) {
+  const run = game.run;
+  if (!run?.battle) return;
+  for (const pile of [
+    run.battle.hand,
+    run.battle.deck,
+    run.battle.discard,
+    run.battle.exhausted,
+  ])
+    for (const card of pile) {
+      const hero = run.heroes.find((h) => h.id === card.owner);
+      if (hero) card.triggers = earnedCardTriggers(hero, card.kind, run);
+    }
+}
 export function cardInfo(c: Card) {
   const role = characters.find((x) => x.id === c.owner)!.role;
   const info =
     cards[(c.kind === "skill" ? role : c.kind) as keyof typeof cards];
-  return { ...info, role, triggers: info.triggers as CardTrigger[] };
+  return { ...info, role, triggers: c.triggers || [] };
 }
 export function effectiveCardValue(
   game: Game,
@@ -1630,6 +1694,7 @@ export function deckPreview(game: Game) {
             id: `${heroState.id}-${kind}`,
             owner: heroState.id,
             kind: actualKind,
+            triggers: earnedCardTriggers(heroState, actualKind, game.run),
           },
           value: effectiveCardValue(game, heroState, actualKind),
           transformed,
@@ -1710,6 +1775,13 @@ function enterBattle(g: Game, r: Run, ids: string[]) {
         .map((kind) => ({
           id: `${h.id}-${kind}`,
           owner: h.id,
+          triggers: earnedCardTriggers(
+            h,
+            kind === "strike" && r.cardMods?.[h.id]?.transformStrike
+              ? "heavy"
+              : kind,
+            r,
+          ),
           kind:
             kind === "strike" && r.cardMods?.[h.id]?.transformStrike
               ? ("heavy" as const)
@@ -1926,6 +1998,18 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     g.gold -= cost;
     g.facilities[id]++;
     log(g, `${id} 시설을 ${level + 1}단계로 올렸다.`);
+  } else if (a.type === "promote") {
+    check(!r, "거점에서만 전직할 수 있습니다.");
+    const h = g.roster.find((hero) => hero.id === a.id);
+    check(h && h.level >= 5, "레벨 5 이상 동료가 필요합니다.");
+    check(!h.promotion, "이미 상위 전직했습니다.");
+    check(g.gold >= 80, "은화가 부족합니다.");
+    g.gold -= 80;
+    h.promotion = 1;
+    log(
+      g,
+      `${characters.find((c) => c.id === h.id)!.name} 상위 전직: 전용 스킬에 생성 키워드 해금.`,
+    );
   } else if (a.type === "train") {
     check(!r, "탐사 중에는 훈련할 수 없습니다.");
     const h = g.roster.find((hero) => hero.id === a.id);
@@ -2154,6 +2238,27 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
             100,
             (g.reputation[faction] || 0) + 5,
           );
+          const eventHero = r.heroes.find((h) => h.hp > 0)!;
+          r.keywordGrants ||= [];
+          if (
+            !r.keywordGrants.some(
+              (k) =>
+                k.owner === eventHero.id &&
+                k.kind === "strike" &&
+                k.trigger === "retain",
+            )
+          ) {
+            grantKeyword(r, {
+              owner: eventHero.id,
+              kind: "strike",
+              trigger: "retain",
+              source: "event",
+            });
+            log(
+              g,
+              "고대 전술서: 선두 동료의 기본 타격에 이번 탐사 동안 보존 추가.",
+            );
+          }
           log(g, `숨은 보관함을 찾았다. 은화 35와 ${rare} 획득.`);
         } else {
           r.heroes
@@ -2193,6 +2298,17 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
         r.gold -= 20;
         target.hp = Math.min(target.maxHp, target.hp + 28);
         log(g, `${characters.find((c) => c.id === target.id)!.name} 체력 +28.`);
+      } else if (a.choice === "keyword") {
+        check(target, "각인할 동료를 선택하세요.");
+        check(r.gold >= 30, "배낭 은화가 부족합니다.");
+        grantKeyword(r, {
+          owner: target.id,
+          kind: "heavy",
+          trigger: "retain",
+          source: "merchant",
+        });
+        r.gold -= 30;
+        log(g, "집중 일격에 이번 탐사 동안 보존 키워드를 각인했다.");
       } else if (a.choice === "rare") {
         check(r.gold >= 45, "배낭 은화가 부족합니다.");
         r.gold -= 45;
@@ -2232,7 +2348,12 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       check(c, "손패에 없는 카드입니다.");
       const h = r.heroes.find((h) => h.id === c.owner)!;
       check(h.hp > 0, "전투 불능인 인물입니다.");
+      c.triggers = earnedCardTriggers(h, c.kind, r);
       const info = cardInfo(c);
+      check(
+        !info.triggers.includes("unplayable"),
+        "사용할 수 없는 카드입니다.",
+      );
       check(b.energy >= info.cost, "행동 자원이 부족합니다.");
       if (c.kind === "skill") check(h.mana > 0, "마나가 부족합니다.");
       const ally = r.heroes.find((h) => h.id === a.target && h.hp > 0);
@@ -2271,11 +2392,6 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
             ally!.counter = 5;
             addStatus(ally!, "counter", 5);
             addStatus(ally!, "thorns", 3);
-            b.discard.push({
-              id: `${h.id}-strike-created-${b.turn}-${g.version}`,
-              owner: h.id,
-              kind: "strike",
-            });
           }
           r.combatFx = {
             nonce: g.version + 1,
@@ -2341,6 +2457,13 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           hurt(h, target.id === "M06" ? 6 : 5, relations(g.party).defense);
         b.lastActor = h.id;
       }
+      if (info.triggers.includes("create"))
+        b.discard.push({
+          id: `${h.id}-strike-created-${b.turn}-${g.version}`,
+          owner: h.id,
+          kind: "strike",
+          triggers: earnedCardTriggers(h, "strike", r),
+        });
       if (info.triggers.includes("discover")) draw(r);
       log(g, `${characters.find((x) => x.id === h.id)!.name}의 ${info.name}.`);
       victory(g);
@@ -2549,6 +2672,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       log(g, g.summary);
     } else throw new RuleError("지원하지 않는 행동입니다.");
   }
+  syncCardTriggers(g);
   g.version++;
   return g;
 }

@@ -58,3 +58,4 @@
 
 - `034-2d-clash-combat.md`: 2D 전투 컷인·타격 이펙트
 - `035-sd-horizontal-battle.md`: SD 32명·변경 요새 몬스터 8종·횡배열·실제 대상 연결선
+- `036-fan-hand-earned-keywords.md`: 부채꼴 손패·코스트 아이콘·전용 카드 그림·획득형 키워드

@@ -349,7 +349,7 @@ test("loadout stats, visual preview data, statuses and card triggers persist", (
   assert.equal(g.run!.battle!.enemies[0].statuses.bleed, 2);
   g.run!.battle!.energy = 3;
   g = act(g, { type: "play", id: "AR1-heavy", target: "M02" });
-  assert.equal(g.run!.battle!.exhausted.length, 1);
+  assert.equal(g.run!.battle!.exhausted.length, 0); // 소멸은 획득 보상으로만 부여
   assert.equal(g.run!.battle!.enemies[1].statuses.vulnerable, 1);
 });
 

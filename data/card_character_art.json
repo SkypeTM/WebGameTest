@@ -1,0 +1,22 @@
+[
+  {
+    "id": "AR1",
+    "kind": "skill",
+    "path": "/assets/cards-v2/AR1-skill.webp"
+  },
+  {
+    "id": "AR2",
+    "kind": "skill",
+    "path": "/assets/cards-v2/AR2-skill.webp"
+  },
+  {
+    "id": "AR3",
+    "kind": "skill",
+    "path": "/assets/cards-v2/AR3-skill.webp"
+  },
+  {
+    "id": "AR4",
+    "kind": "skill",
+    "path": "/assets/cards-v2/AR4-skill.webp"
+  }
+]

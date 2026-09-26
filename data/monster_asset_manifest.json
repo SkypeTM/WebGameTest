@@ -3,145 +3,145 @@
     "id": "M01",
     "name": "성문 가드봇",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M01/idle.webp"
+    "path": "/assets/sd/monsters/M01.webp"
   },
   {
     "id": "M01",
     "name": "성문 가드봇",
     "state": "action",
-    "path": "/assets/fhd/monsters/M01/action.webp"
+    "path": "/assets/sd/monsters/M01.webp"
   },
   {
     "id": "M01",
     "name": "성문 가드봇",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M01/hit.webp"
+    "path": "/assets/sd/monsters/M01.webp"
   },
   {
     "id": "M02",
     "name": "리벳 윙",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M02/idle.webp"
+    "path": "/assets/sd/monsters/M02.webp"
   },
   {
     "id": "M02",
     "name": "리벳 윙",
     "state": "action",
-    "path": "/assets/fhd/monsters/M02/action.webp"
+    "path": "/assets/sd/monsters/M02.webp"
   },
   {
     "id": "M02",
     "name": "리벳 윙",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M02/hit.webp"
+    "path": "/assets/sd/monsters/M02.webp"
   },
   {
     "id": "M03",
     "name": "화약 등짐벌레",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M03/idle.webp"
+    "path": "/assets/sd/monsters/M03.webp"
   },
   {
     "id": "M03",
     "name": "화약 등짐벌레",
     "state": "action",
-    "path": "/assets/fhd/monsters/M03/action.webp"
+    "path": "/assets/sd/monsters/M03.webp"
   },
   {
     "id": "M03",
     "name": "화약 등짐벌레",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M03/hit.webp"
+    "path": "/assets/sd/monsters/M03.webp"
   },
   {
     "id": "M04",
     "name": "깃발 꼬마정령",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M04/idle.webp"
+    "path": "/assets/sd/monsters/M04.webp"
   },
   {
     "id": "M04",
     "name": "깃발 꼬마정령",
     "state": "action",
-    "path": "/assets/fhd/monsters/M04/action.webp"
+    "path": "/assets/sd/monsters/M04.webp"
   },
   {
     "id": "M04",
     "name": "깃발 꼬마정령",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M04/hit.webp"
+    "path": "/assets/sd/monsters/M04.webp"
   },
   {
     "id": "M05",
     "name": "벨 하운드",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M05/idle.webp"
+    "path": "/assets/sd/monsters/M05.webp"
   },
   {
     "id": "M05",
     "name": "벨 하운드",
     "state": "action",
-    "path": "/assets/fhd/monsters/M05/action.webp"
+    "path": "/assets/sd/monsters/M05.webp"
   },
   {
     "id": "M05",
     "name": "벨 하운드",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M05/hit.webp"
+    "path": "/assets/sd/monsters/M05.webp"
   },
   {
     "id": "M06",
     "name": "벌워크 팔문",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M06/idle.webp"
+    "path": "/assets/sd/monsters/M06.webp"
   },
   {
     "id": "M06",
     "name": "벌워크 팔문",
     "state": "action",
-    "path": "/assets/fhd/monsters/M06/action.webp"
+    "path": "/assets/sd/monsters/M06.webp"
   },
   {
     "id": "M06",
     "name": "벌워크 팔문",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M06/hit.webp"
+    "path": "/assets/sd/monsters/M06.webp"
   },
   {
     "id": "M07",
     "name": "쌍날 기사",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M07/idle.webp"
+    "path": "/assets/sd/monsters/M07.webp"
   },
   {
     "id": "M07",
     "name": "쌍날 기사",
     "state": "action",
-    "path": "/assets/fhd/monsters/M07/action.webp"
+    "path": "/assets/sd/monsters/M07.webp"
   },
   {
     "id": "M07",
     "name": "쌍날 기사",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M07/hit.webp"
+    "path": "/assets/sd/monsters/M07.webp"
   },
   {
     "id": "M08",
     "name": "캐슬 타이탄",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M08/idle.webp"
+    "path": "/assets/sd/monsters/M08.webp"
   },
   {
     "id": "M08",
     "name": "캐슬 타이탄",
     "state": "action",
-    "path": "/assets/fhd/monsters/M08/action.webp"
+    "path": "/assets/sd/monsters/M08.webp"
   },
   {
     "id": "M08",
     "name": "캐슬 타이탄",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M08/hit.webp"
+    "path": "/assets/sd/monsters/M08.webp"
   },
   {
     "id": "M09",

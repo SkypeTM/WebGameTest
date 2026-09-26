@@ -1,0 +1,425 @@
+/* The party array stays in gameplay rank order. Only visual placement reverses. */
+.battlefield.sd-battlefield {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(12px, 3vw, 48px);
+  min-height: 425px;
+  padding: 85px 22px 24px;
+  isolation: isolate;
+  background: #0c171a;
+}
+.sd-battlefield .battle-scene-bg {
+  z-index: -2;
+  height: 100%;
+}
+.sd-battlefield .battle-vignette {
+  z-index: -1;
+  height: 100%;
+  background: linear-gradient(0deg, #081215e8, transparent 60%);
+}
+.sd-battlefield .allies,
+.sd-battlefield .enemies {
+  min-width: 0;
+  padding: 0;
+  background: none;
+}
+.sd-battlefield .field-label {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  font-size: 10px;
+}
+.sd-battlefield .allies .field-label {
+  top: -40px;
+}
+.sd-battlefield .field-label span {
+  font-size: 9px;
+  letter-spacing: 0;
+}
+.sd-battlefield .ally-lineup {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  gap: 3px;
+}
+.sd-battlefield .ally {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 5px 3px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  gap: 0;
+  background: linear-gradient(0deg, #122124c9, transparent 52%);
+  backdrop-filter: none;
+  text-align: center;
+  overflow: visible;
+}
+.sd-battlefield .rank-badge {
+  left: calc(50% - 12px);
+  top: -17px;
+  width: 24px;
+  height: 27px;
+  font-size: 12px;
+}
+.battle-sd {
+  position: relative;
+  width: 100%;
+  height: clamp(125px, 17vw, 235px);
+  flex-shrink: 0;
+  transform-origin: 50% 90%;
+}
+.battle-sd img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 8px 5px #0009);
+  user-select: none;
+}
+.sd-battlefield .battle-sd::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 2%;
+  left: 20%;
+  right: 20%;
+  height: 9%;
+  border-radius: 50%;
+  background: #070e14b0;
+}
+.sd-battlefield .ally:hover .battle-sd img,
+.sd-battlefield .targetable:focus-visible .battle-sd img,
+.sd-battlefield .targetable:hover .battle-sd img {
+  filter: drop-shadow(0 0 2px #ffeac2) drop-shadow(0 0 8px #cfaf59a0);
+}
+.sd-battlefield .unit-readout {
+  width: 100%;
+  min-width: 0;
+  min-height: 109px;
+  padding: 7px 3px 2px;
+  border-top: 1px solid #b59d6644;
+}
+.sd-battlefield .ally h3 {
+  font-size: 12px;
+}
+.sd-battlefield .ally h3 small {
+  display: block;
+  color: #c7b585;
+  font-size: 8px;
+}
+.sd-battlefield .ally p {
+  font-size: 8px;
+  margin: 3px 0;
+}
+.sd-battlefield .ally p span {
+  float: none;
+  display: block;
+}
+.sd-battlefield .ally small,
+.sd-battlefield .equipment-line {
+  font-size: 8px;
+  overflow-wrap: anywhere;
+}
+.sd-battlefield .equipment-line .asset-icon {
+  width: 17px;
+  height: 17px;
+}
+.sd-battlefield .ally .status-chip {
+  font-size: 8px;
+  padding: 1px 3px;
+  margin: 2px;
+}
+.sd-battlefield .enemy-grid {
+  display: flex;
+  padding: 0;
+  gap: 8px;
+  align-items: flex-end;
+}
+.sd-battlefield .enemy {
+  min-width: 0;
+  max-width: none;
+}
+.sd-battlefield .enemy-target {
+  position: relative;
+  padding: 0 3px 6px;
+  background: none;
+}
+.sd-battlefield .enemy .battle-sd {
+  height: clamp(145px, 19vw, 250px);
+}
+.sd-battlefield .enemy .intent {
+  min-height: 30px;
+  padding: 5px;
+  margin-bottom: 6px;
+  font-size: 10px;
+}
+.sd-battlefield .enemy h3 {
+  font-size: 12px;
+}
+.sd-battlefield .enemy p,
+.sd-battlefield .enemy details {
+  font-size: 9px;
+}
+.sd-battlefield .clash-coin {
+  top: 12%;
+  left: 80%;
+  font-size: 11px;
+  width: 24px;
+  height: 24px;
+}
+.sd-battlefield .clash-planning {
+  top: 12px;
+  padding: 6px 14px;
+  pointer-events: none;
+}
+.battle-target-lines {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  color: #ecc45e;
+}
+.battle-target-lines > path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  opacity: 0.55;
+}
+.battle-target-lines > path.highlighted {
+  stroke-width: 3;
+  opacity: 1;
+  filter: drop-shadow(0 0 4px #ffca65);
+}
+.battle-sd.motion-strike {
+  animation: sd-strike 900ms both;
+}
+.battle-sd.sd-monster.motion-strike {
+  animation-name: sd-enemy-strike;
+}
+.battle-sd.motion-hit {
+  animation: sd-hit 900ms both;
+}
+.battle-sd.motion-guard {
+  animation: sd-guard 900ms both;
+}
+.battle-sd.motion-heal {
+  animation: sd-heal 900ms both;
+}
+.battle-sd.motion-death {
+  animation: sd-death 1150ms both;
+}
+.sd-battlefield .fallen {
+  pointer-events: none;
+}
+.sd-battlefield .combat-cut-in .cut-in-actor,
+.sd-battlefield .combat-cut-in .cut-in-target {
+  bottom: 7%;
+  height: 76%;
+  width: 43%;
+}
+.sd-battlefield .combat-cut-in .battle-sd {
+  height: 100%;
+  width: 100%;
+}
+.sd-battlefield .cut-in-target {
+  animation: sd-cut-target 900ms both;
+}
+.sd-battlefield .cut-in-enemy-attack {
+  transform: none;
+}
+.sd-battlefield .cut-in-enemy-attack .cut-in-actor {
+  left: auto;
+  right: 4%;
+  animation: sd-cut-enemy 900ms both;
+}
+.sd-battlefield .cut-in-enemy-attack .cut-in-target {
+  right: auto;
+  left: 4%;
+}
+@keyframes sd-strike {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+  18% {
+    transform: translateX(-10%) rotate(-7deg);
+  }
+  38%,
+  48% {
+    transform: translateX(28%) rotate(6deg);
+  }
+  70% {
+    transform: translateX(12%);
+  }
+}
+@keyframes sd-enemy-strike {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  18% {
+    transform: translateX(10%) rotate(7deg);
+  }
+  38%,
+  48% {
+    transform: translateX(-28%) rotate(-6deg);
+  }
+}
+@keyframes sd-hit {
+  0%,
+  28%,
+  100% {
+    transform: translate(0);
+    filter: brightness(1);
+  }
+  36%,
+  46% {
+    transform: translate(7%, -3%) rotate(8deg);
+    filter: brightness(2);
+  }
+  40%,
+  54% {
+    transform: translate(-3%, 0) rotate(-3deg);
+    filter: brightness(1.25);
+  }
+}
+@keyframes sd-guard {
+  35% {
+    transform: translateY(-4px) scale(1.04);
+    filter: drop-shadow(0 0 9px #b8ddff);
+  }
+}
+@keyframes sd-heal {
+  35%,
+  65% {
+    filter: drop-shadow(0 0 12px #8fe8b8);
+    transform: translateY(-5px);
+  }
+}
+@keyframes sd-death {
+  0% {
+    opacity: 1;
+    transform: rotate(0);
+  }
+  35% {
+    opacity: 0.8;
+    transform: translateY(7%) rotate(12deg);
+    filter: grayscale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(17%) rotate(20deg);
+  }
+}
+@keyframes sd-cut-target {
+  0%,
+  28% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(9%) rotate(4deg);
+  }
+  100% {
+    transform: translateX(15%);
+  }
+}
+@keyframes sd-cut-enemy {
+  0% {
+    transform: translateX(40%);
+  }
+  20% {
+    transform: translateX(0);
+  }
+  45%,
+  65% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(20%);
+  }
+}
+@media (max-width: 1000px) {
+  .battlefield.sd-battlefield {
+    gap: 12px;
+    padding-inline: 10px;
+    min-height: 370px;
+  }
+  .sd-battlefield .field-label {
+    flex-wrap: wrap;
+    gap: 4px;
+    top: -50px;
+  }
+  .sd-battlefield .allies .field-label {
+    top: -50px;
+  }
+  .sd-battlefield .battle-sd {
+    height: 155px;
+  }
+  .sd-battlefield .enemy .battle-sd {
+    height: 170px;
+  }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .battlefield.sd-battlefield {
+    grid-template-columns: 1fr;
+    gap: 75px;
+    padding-top: 75px;
+  }
+  .sd-battlefield .enemies {
+    grid-row: 1;
+  }
+  .sd-battlefield .allies {
+    grid-row: 2;
+  }
+  .sd-battlefield .enemy-grid {
+    max-width: 330px;
+    margin: auto;
+  }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .battlefield.sd-battlefield {
+    min-height: 270px;
+    padding: 72px 9px 9px;
+    gap: 12px;
+  }
+  .sd-battlefield .battle-sd,
+  .sd-battlefield .enemy .battle-sd {
+    height: 105px;
+  }
+  .sd-battlefield .unit-readout {
+    min-height: 84px;
+    padding-top: 3px;
+  }
+  .sd-battlefield .ally h3 {
+    font-size: 10px;
+  }
+  .sd-battlefield .ally p,
+  .sd-battlefield .ally small {
+    font-size: 7px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sd-battlefield *,
+  .sd-battlefield *::before,
+  .sd-battlefield *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .sd-battlefield .combat-cut-in,
+  .sd-battlefield .impact-stage {
+    display: none;
+  }
+  .sd-battlefield .battle-sd.motion-death {
+    opacity: 0;
+  }
+}

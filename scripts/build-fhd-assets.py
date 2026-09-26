@@ -55,7 +55,11 @@ for character_id in sorted({entry["id"] for entry in characters}):
         crop.save(target, "WEBP", quality=94, method=3)
 
 monsters = read("monster_asset_manifest.json")
+repaired = {item["id"]: item["path"] for item in read("sd_asset_manifest.json") if item["type"] == "monsters"} if (DATA / "sd_asset_manifest.json").exists() else {}
 for entry in monsters:
+    if entry["id"] in repaired:
+        entry["path"] = repaired[entry["id"]]
+        continue
     source = PUBLIC / "assets" / "generated" / "monsters" / entry["id"] / f'{entry["state"]}.png'
     target = FHD / "monsters" / entry["id"] / f'{entry["state"]}.webp'
     save_fhd(source, target, (1440, 1920))

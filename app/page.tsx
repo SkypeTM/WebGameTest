@@ -1,5 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import BattleTargetLines from "./components/BattleTargetLines";
+import sdAssets from "../data/sd_asset_manifest.json";
+import "./battle-stage.css";
 import {
   characters,
   monsters,
@@ -138,7 +141,16 @@ function Crest({
     ? { path: rigStates.idle }
     : manifestIdleAsset;
   const portraitPath = !monster ? `/assets/fhd/portraits/${id}.webp` : "";
-  const asset = motion ? actionAsset || idleAsset : state ? actionAsset : idleAsset || actionAsset;
+  const repairedMonster = monster
+    ? sdAssets.find((entry) => entry.id === id)
+    : undefined;
+  const asset =
+    repairedMonster ||
+    (motion
+      ? actionAsset || idleAsset
+      : state
+        ? actionAsset
+        : idleAsset || actionAsset);
   if (asset?.path && !failed)
     return (
       <div
@@ -198,6 +210,21 @@ function BattleActor({
   full?: boolean;
   large?: boolean;
 }) {
+  const asset = sdAssets.find((entry) => entry.id === id);
+  if (asset)
+    return (
+      <div
+        className={`battle-sd ${id.startsWith("M") ? "sd-monster" : "sd-hero"} ${large || full ? "sd-large" : ""} ${motion}`}
+      >
+        <img
+          src={asset.path}
+          alt={`${id} SD 전신`}
+          width={1280}
+          height={1280}
+          draggable={false}
+        />
+      </div>
+    );
   return <Crest id={id} large={large || full} contain motion={motion} />;
 }
 function MerchantLive2D({ state = "idle" }: { state?: string }) {
@@ -388,12 +415,13 @@ export default function Page() {
     [musicEnabled, setMusicEnabled] = useState(true),
     [audioReady, setAudioReady] = useState(false),
     [dragPoint, setDragPoint] = useState<{ x: number; y: number } | null>(null);
+  const battleFieldRef = useRef<HTMLDivElement>(null);
   const client = useRef(""),
     pending = useRef<Record<string, unknown> | null>(null),
     working = useRef(false),
     musicRef = useRef<HTMLAudioElement | null>(null),
     lastFx = useRef(0),
-    dragStart = useRef({ x: 0, y: 0, moved: false });
+    dragStart = useRef({ x: 0, y: 0, moved: false, active: false });
   function playSound(name: string, volume = 0.35) {
     if (!audioReady || !soundEnabled) return;
     const sound = new Audio(`/assets/audio/sfx/${name}.wav`);
@@ -675,11 +703,6 @@ export default function Page() {
     selected && selectedInfo && selectedCardHero && game
       ? effectiveCardValue(game, selectedCardHero, selected.kind).value
       : 0;
-  const clashTargetCount = selectedInfo
-    ? selectedInfo.target === "enemy"
-      ? battle?.enemies.filter((enemy) => enemy.hp > 0).length || 0
-      : run?.heroes.filter((hero) => hero.hp > 0).length || 0
-    : 0;
   function moveParty(id: string, direction: -1 | 1) {
     const index = game!.party.indexOf(id);
     const nextIndex = index + direction;
@@ -689,6 +712,7 @@ export default function Page() {
     void act({ type: "party", ids });
   }
   function cardPointerMove(event: React.PointerEvent, card: Card) {
+    if (!dragStart.current.active) return;
     if (
       Math.hypot(
         event.clientX - dragStart.current.x,
@@ -705,6 +729,7 @@ export default function Page() {
     setPreviewTarget(targetElement?.dataset.cardTarget || "");
   }
   function cardPointerUp(event: React.PointerEvent, card: Card) {
+    dragStart.current.active = false;
     const wasMoved = dragStart.current.moved;
     const targetElement = document
       .elementFromPoint(event.clientX, event.clientY)
@@ -1309,11 +1334,7 @@ export default function Page() {
                               onClick={() => setSelectedHero(h.id)}
                               aria-label={`${char(h.id).name} 상세 장비와 능력치 보기`}
                             >
-                              <Crest
-                                id={h.id}
-                                large
-                                portrait
-                              />
+                              <Crest id={h.id} large portrait />
                               <span className="equipped-art">
                                 {(["weapon", "armor", "trinket"] as const).map(
                                   (slot) => {
@@ -2537,7 +2558,8 @@ export default function Page() {
                   )}
                 </div>
                 <div
-                  className={`battlefield ${fx ? `combat-sequence sequence-${fx.kind}` : ""}`}
+                  ref={battleFieldRef}
+                  className={`battlefield sd-battlefield ${fx && animating ? `combat-sequence sequence-${fx.kind}` : ""}`}
                 >
                   <img
                     className="battle-scene-bg"
@@ -2546,20 +2568,33 @@ export default function Page() {
                     aria-hidden="true"
                   />
                   <div className="battle-vignette" aria-hidden="true" />
-                  {selected && !fx && (
+                  {selected && !locked && (
                     <>
-                      <svg className="clash-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                        {Array.from({ length: clashTargetCount }, (_, index) => (
-                          <path key={index} className="clash-arc" style={{ animationDelay: `${index * 110}ms` }} d={`M 13 88 C ${30 + index * 4} ${78 - index * 10}, ${62 + index * 3} ${34 + index * 9}, 88 ${18 + index * 15}`} />
-                        ))}
-                      </svg>
+                      <BattleTargetLines
+                        fieldRef={battleFieldRef}
+                        owner={selected.owner}
+                        targetKind={
+                          cardInfo(selected).target === "ally"
+                            ? "ally"
+                            : "enemy"
+                        }
+                        highlighted={previewTarget}
+                        revision={game.version}
+                      />
                       <div className="clash-planning" aria-live="polite">
-                        <span>합 판정 준비</span><strong>{cardInfo(selected).name}</strong><b>위력 {selectedPower}</b>
-                        <small>{cardInfo(selected).target === "enemy" ? "연결된 적을 선택하세요" : "연결된 아군을 선택하세요"}</small>
+                        <span>대상 선택</span>
+                        <strong>{cardInfo(selected).name}</strong>
+                        <b>위력 {selectedPower}</b>
+                        <small>
+                          {cardInfo(selected).target === "enemy"
+                            ? "연결된 적을 선택하세요"
+                            : "연결된 아군을 선택하세요"}
+                        </small>
                       </div>
                     </>
                   )}
                   {fx &&
+                    animating &&
                     (fx.kind === "hero-attack" ||
                       fx.kind === "enemy-attack") && (
                       <div
@@ -2567,7 +2602,9 @@ export default function Page() {
                         key={`cut-in-${fx.nonce}`}
                         aria-hidden="true"
                       >
-                        <span className="cut-in-label">{fx.kind === "hero-attack" ? "공격 합 해결" : "적 공격 접근"}</span>
+                        <span className="cut-in-label">
+                          {fx.kind === "hero-attack" ? "공격" : "적 공격"}
+                        </span>
                         <div className="cut-in-actor">
                           <BattleActor
                             id={fx.actor}
@@ -2585,6 +2622,7 @@ export default function Page() {
                       </div>
                     )}
                   {fx &&
+                    animating &&
                     (fx.kind === "hero-attack" ||
                       fx.kind === "enemy-attack") && (
                       <div
@@ -2593,7 +2631,11 @@ export default function Page() {
                         aria-hidden="true"
                       >
                         <i className="impact-ring" />
-                        <img className="combat-slash-art" src="/assets/effects/combat-slash-crimson-v1.png" alt="" />
+                        <img
+                          className="combat-slash-art"
+                          src="/assets/effects/combat-slash-crimson-v1.png"
+                          alt=""
+                        />
                         <i className="impact-slash" />
                         <b>-{fx.amount}</b>
                         <span className="clash-result">피격</span>
@@ -2611,123 +2653,151 @@ export default function Page() {
                   </div>
                   <section className="allies">
                     <h3 className="field-label">
-                      탐사대 <span>1 전열 → 4 후열 · 아군 대상 선택</span>
+                      탐사대 <span>← 4 후열 · 3 · 2 · 1 전열 → 적</span>
                     </h3>
-                    {run.heroes.map((h, index) => (
-                      <button
-                        key={h.id}
-                        data-card-target={h.id}
-                        data-card-kind="ally"
-                        className={`ally rank-${index + 1} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
-                        disabled={
-                          locked ||
-                          !selected ||
-                          cardInfo(selected).target !== "ally" ||
-                          h.hp === 0
-                        }
-                        onClick={() => target(h.id)}
-                        onDragOver={(event) => {
-                          event.preventDefault();
-                          setPreviewTarget(h.id);
-                        }}
-                        onDrop={(event) => {
-                          event.preventDefault();
-                          target(h.id);
-                          setPreviewTarget("");
-                        }}
-                      >
-                        <span className="rank-badge">
-                          {index + 1}
-                          <small>
-                            {index === 0 ? "전" : index === 3 ? "후" : "중"}
-                          </small>
-                        </span>
-                        <BattleActor
-                          key={`crest-${h.id}-${fx?.nonce ?? "idle"}`}
-                          id={h.id}
-                          motion={motionFor(h.id, "hero")}
-                        />
-                        {selectedInfo?.target === "ally" && h.hp > 0 && <span className="clash-coin"><em>{selectedPower}</em></span>}
-                        <div>
-                          <h3>
-                            {char(h.id).name} <small>{char(h.id).role}</small>
-                          </h3>
-                          <Meter
-                            value={h.hp}
-                            max={h.maxHp}
-                            preview={
-                              previewTarget === h.id
-                                ? previewDataFor(h.id)?.target
-                                : undefined
+                    <div
+                      className="ally-lineup"
+                      aria-label="오른쪽부터 1 전열, 2 중열, 3 중열, 4 후열"
+                    >
+                      {run.heroes.map((h, index) => (
+                        <button
+                          key={h.id}
+                          data-card-target={h.id}
+                          data-card-kind="ally"
+                          className={`ally rank-${index + 1} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
+                          disabled={
+                            locked ||
+                            !selected ||
+                            cardInfo(selected).target !== "ally" ||
+                            h.hp === 0
+                          }
+                          onClick={() => target(h.id)}
+                          onPointerEnter={() =>
+                            selectedInfo?.target === "ally" &&
+                            setPreviewTarget(h.id)
+                          }
+                          onPointerLeave={() => setPreviewTarget("")}
+                          onFocus={() =>
+                            selectedInfo?.target === "ally" &&
+                            setPreviewTarget(h.id)
+                          }
+                          onBlur={() => setPreviewTarget("")}
+                          onDragOver={(event) => {
+                            event.preventDefault();
+                            setPreviewTarget(h.id);
+                          }}
+                          onDrop={(event) => {
+                            event.preventDefault();
+                            target(h.id);
+                            setPreviewTarget("");
+                          }}
+                        >
+                          <span className="rank-badge">
+                            {index + 1}
+                            <small>
+                              {index === 0 ? "전" : index === 3 ? "후" : "중"}
+                            </small>
+                          </span>
+                          <BattleActor
+                            key={`crest-${h.id}-${fx?.nonce ?? "idle"}`}
+                            id={h.id}
+                            motion={
+                              h.hp === 0
+                                ? "motion-death"
+                                : animating
+                                  ? motionFor(h.id, "hero")
+                                  : ""
                             }
                           />
-                          <p>
-                            HP {h.hp}/{h.maxHp} · MP {h.mana}/
-                            {heroStats(h).maxMana}
-                            <span>◇ {h.shield}</span>
-                          </p>
-                          <small
-                            className="equipment-line inline-asset"
-                            title="상세 장비창에서 무기·방어구·장신구를 변경할 수 있습니다."
-                          >
-                            <AssetIcon
-                              name={
-                                equipmentCatalog.weapon.find(
-                                  (item) => item.id === h.loadout.weapon,
-                                )!.asset
+                          {selectedInfo?.target === "ally" && h.hp > 0 && (
+                            <span className="clash-coin">
+                              <em>{selectedPower}</em>
+                            </span>
+                          )}
+                          <div className="unit-readout">
+                            <h3>
+                              {char(h.id).name}{" "}
+                              <small>{professionFor(h.id).name}</small>
+                            </h3>
+                            <Meter
+                              value={h.hp}
+                              max={h.maxHp}
+                              preview={
+                                previewTarget === h.id
+                                  ? previewDataFor(h.id)?.target
+                                  : undefined
                               }
                             />
-                            {
-                              equipmentCatalog.weapon.find(
-                                (item) => item.id === h.loadout.weapon,
-                              )!.name
-                            }{" "}
-                            · 공격 {heroStats(h).attack}
-                          </small>
-                          <small>
-                            {h.hp === 0
-                              ? "전투 불능"
-                              : `스트레스 ${h.stress} · Lv.${h.level}`}
-                          </small>
-                          {h.shield > 0 && (
-                            <span
-                              className="status-chip shield-chip"
-                              title="먼저 피해를 흡수하고 소모됩니다."
+                            <p>
+                              HP {h.hp}/{h.maxHp} · MP {h.mana}/
+                              {heroStats(h).maxMana}
+                              <span>◇ {h.shield}</span>
+                            </p>
+                            <small
+                              className="equipment-line inline-asset"
+                              title="상세 장비창에서 무기·방어구·장신구를 변경할 수 있습니다."
                             >
-                              ◇ 보호막 {h.shield}
-                            </span>
-                          )}
-                          {(h.counter || 0) > 0 && (
-                            <span
-                              className="status-chip counter-chip"
-                              title="보호막으로 공격을 막으면 적에게 피해를 줍니다."
-                            >
-                              ↶ 반격 {h.counter}
-                            </span>
-                          )}
-                          {h.stress > 0 && (
-                            <span
-                              className="status-chip stress-chip"
-                              title="탐사 중 누적되는 정신적 부담입니다. 휴식으로 낮출 수 있습니다."
-                            >
-                              ☾ 스트레스 {h.stress}
-                            </span>
-                          )}
-                          {h.injury && (
-                            <span
-                              className="status-chip debuff-chip"
-                              title="거점 의무실에서 치료하기 전까지 남는 부상입니다."
-                            >
-                              ✚ 부상
-                            </span>
-                          )}
-                          <StatusList statuses={h.statuses} />
-                          {previewTarget === h.id && (
-                            <strong className="preview-badge">예상 결과</strong>
-                          )}
-                        </div>
-                      </button>
-                    ))}
+                              <AssetIcon
+                                name={
+                                  equipmentCatalog.weapon.find(
+                                    (item) => item.id === h.loadout.weapon,
+                                  )!.asset
+                                }
+                              />
+                              {
+                                equipmentCatalog.weapon.find(
+                                  (item) => item.id === h.loadout.weapon,
+                                )!.name
+                              }{" "}
+                              · 공격 {heroStats(h).attack}
+                            </small>
+                            <small>
+                              {h.hp === 0
+                                ? "전투 불능"
+                                : `스트레스 ${h.stress} · Lv.${h.level}`}
+                            </small>
+                            {h.shield > 0 && (
+                              <span
+                                className="status-chip shield-chip"
+                                title="먼저 피해를 흡수하고 소모됩니다."
+                              >
+                                ◇ 보호막 {h.shield}
+                              </span>
+                            )}
+                            {(h.counter || 0) > 0 && (
+                              <span
+                                className="status-chip counter-chip"
+                                title="보호막으로 공격을 막으면 적에게 피해를 줍니다."
+                              >
+                                ↶ 반격 {h.counter}
+                              </span>
+                            )}
+                            {h.stress > 0 && (
+                              <span
+                                className="status-chip stress-chip"
+                                title="탐사 중 누적되는 정신적 부담입니다. 휴식으로 낮출 수 있습니다."
+                              >
+                                ☾ 스트레스 {h.stress}
+                              </span>
+                            )}
+                            {h.injury && (
+                              <span
+                                className="status-chip debuff-chip"
+                                title="거점 의무실에서 치료하기 전까지 남는 부상입니다."
+                              >
+                                ✚ 부상
+                              </span>
+                            )}
+                            <StatusList statuses={h.statuses} />
+                            {previewTarget === h.id && (
+                              <strong className="preview-badge">
+                                예상 결과
+                              </strong>
+                            )}
+                          </div>
+                        </button>
+                      ))}
+                    </div>
                   </section>
                   <section className="enemies">
                     <h3 className="field-label">
@@ -2757,6 +2827,16 @@ export default function Page() {
                               e.hp === 0
                             }
                             onClick={() => target(e.id)}
+                            onPointerEnter={() =>
+                              selectedInfo?.target === "enemy" &&
+                              setPreviewTarget(e.id)
+                            }
+                            onPointerLeave={() => setPreviewTarget("")}
+                            onFocus={() =>
+                              selectedInfo?.target === "enemy" &&
+                              setPreviewTarget(e.id)
+                            }
+                            onBlur={() => setPreviewTarget("")}
                             onDragOver={(event) => {
                               event.preventDefault();
                               setPreviewTarget(e.id);
@@ -2767,15 +2847,21 @@ export default function Page() {
                               setPreviewTarget("");
                             }}
                           >
-                            {selectedInfo?.target === "enemy" && e.hp > 0 && <span className="clash-coin"><em>{selectedPower}</em></span>}
+                            {selectedInfo?.target === "enemy" && e.hp > 0 && (
+                              <span className="clash-coin">
+                                <em>{selectedPower}</em>
+                              </span>
+                            )}
                             <BattleActor
                               key={`crest-${e.id}-${fx?.nonce ?? "idle"}`}
                               id={e.id}
                               large
                               motion={
-                                run.mode === "reward"
+                                e.hp === 0
                                   ? "motion-death"
-                                  : motionFor(e.id, "enemy")
+                                  : animating
+                                    ? motionFor(e.id, "enemy")
+                                    : ""
                               }
                             />
                             <h3>{monsters.find((m) => m.id === e.id)!.name}</h3>
@@ -2906,12 +2992,14 @@ export default function Page() {
                               x: event.clientX,
                               y: event.clientY,
                               moved: false,
+                              active: true,
                             };
                             setSelected(c);
                           }}
                           onPointerMove={(event) => cardPointerMove(event, c)}
                           onPointerUp={(event) => cardPointerUp(event, c)}
                           onPointerCancel={() => {
+                            dragStart.current.active = false;
                             setDragPoint(null);
                             setPreviewTarget("");
                           }}
@@ -3717,8 +3805,3 @@ export default function Page() {
     </div>
   );
 }
-
-
-
-
-

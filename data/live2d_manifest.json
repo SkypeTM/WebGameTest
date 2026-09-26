@@ -291,72 +291,72 @@
     "id": "M01",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M01/idle.webp",
-      "action": "/assets/fhd/monsters/M01/action.webp",
-      "hit": "/assets/fhd/monsters/M01/hit.webp"
+      "idle": "/assets/sd/monsters/M01.webp",
+      "action": "/assets/sd/monsters/M01.webp",
+      "hit": "/assets/sd/monsters/M01.webp"
     }
   },
   {
     "id": "M02",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M02/idle.webp",
-      "action": "/assets/fhd/monsters/M02/action.webp",
-      "hit": "/assets/fhd/monsters/M02/hit.webp"
+      "idle": "/assets/sd/monsters/M02.webp",
+      "action": "/assets/sd/monsters/M02.webp",
+      "hit": "/assets/sd/monsters/M02.webp"
     }
   },
   {
     "id": "M03",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M03/idle.webp",
-      "action": "/assets/fhd/monsters/M03/action.webp",
-      "hit": "/assets/fhd/monsters/M03/hit.webp"
+      "idle": "/assets/sd/monsters/M03.webp",
+      "action": "/assets/sd/monsters/M03.webp",
+      "hit": "/assets/sd/monsters/M03.webp"
     }
   },
   {
     "id": "M04",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M04/idle.webp",
-      "action": "/assets/fhd/monsters/M04/action.webp",
-      "hit": "/assets/fhd/monsters/M04/hit.webp"
+      "idle": "/assets/sd/monsters/M04.webp",
+      "action": "/assets/sd/monsters/M04.webp",
+      "hit": "/assets/sd/monsters/M04.webp"
     }
   },
   {
     "id": "M05",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M05/idle.webp",
-      "action": "/assets/fhd/monsters/M05/action.webp",
-      "hit": "/assets/fhd/monsters/M05/hit.webp"
+      "idle": "/assets/sd/monsters/M05.webp",
+      "action": "/assets/sd/monsters/M05.webp",
+      "hit": "/assets/sd/monsters/M05.webp"
     }
   },
   {
     "id": "M06",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M06/idle.webp",
-      "action": "/assets/fhd/monsters/M06/action.webp",
-      "hit": "/assets/fhd/monsters/M06/hit.webp"
+      "idle": "/assets/sd/monsters/M06.webp",
+      "action": "/assets/sd/monsters/M06.webp",
+      "hit": "/assets/sd/monsters/M06.webp"
     }
   },
   {
     "id": "M07",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M07/idle.webp",
-      "action": "/assets/fhd/monsters/M07/action.webp",
-      "hit": "/assets/fhd/monsters/M07/hit.webp"
+      "idle": "/assets/sd/monsters/M07.webp",
+      "action": "/assets/sd/monsters/M07.webp",
+      "hit": "/assets/sd/monsters/M07.webp"
     }
   },
   {
     "id": "M08",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M08/idle.webp",
-      "action": "/assets/fhd/monsters/M08/action.webp",
-      "hit": "/assets/fhd/monsters/M08/hit.webp"
+      "idle": "/assets/sd/monsters/M08.webp",
+      "action": "/assets/sd/monsters/M08.webp",
+      "hit": "/assets/sd/monsters/M08.webp"
     }
   },
   {

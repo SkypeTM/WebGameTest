@@ -1,0 +1,322 @@
+[
+  {
+    "id": "AR1",
+    "type": "characters",
+    "path": "/assets/sd/characters/AR1.webp",
+    "source": "art-source/sd/characters/AR1.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "AR2",
+    "type": "characters",
+    "path": "/assets/sd/characters/AR2.webp",
+    "source": "art-source/sd/characters/AR2.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "AR3",
+    "type": "characters",
+    "path": "/assets/sd/characters/AR3.webp",
+    "source": "art-source/sd/characters/AR3.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "AR4",
+    "type": "characters",
+    "path": "/assets/sd/characters/AR4.webp",
+    "source": "art-source/sd/characters/AR4.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "BC1",
+    "type": "characters",
+    "path": "/assets/sd/characters/BC1.webp",
+    "source": "art-source/sd/characters/BC1.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "BC2",
+    "type": "characters",
+    "path": "/assets/sd/characters/BC2.webp",
+    "source": "art-source/sd/characters/BC2.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "BC3",
+    "type": "characters",
+    "path": "/assets/sd/characters/BC3.webp",
+    "source": "art-source/sd/characters/BC3.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "BC4",
+    "type": "characters",
+    "path": "/assets/sd/characters/BC4.webp",
+    "source": "art-source/sd/characters/BC4.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "BK1",
+    "type": "characters",
+    "path": "/assets/sd/characters/BK1.webp",
+    "source": "art-source/sd/characters/BK1.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "BK2",
+    "type": "characters",
+    "path": "/assets/sd/characters/BK2.webp",
+    "source": "art-source/sd/characters/BK2.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "BK3",
+    "type": "characters",
+    "path": "/assets/sd/characters/BK3.webp",
+    "source": "art-source/sd/characters/BK3.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "BK4",
+    "type": "characters",
+    "path": "/assets/sd/characters/BK4.webp",
+    "source": "art-source/sd/characters/BK4.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "DS1",
+    "type": "characters",
+    "path": "/assets/sd/characters/DS1.webp",
+    "source": "art-source/sd/characters/DS1.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "DS2",
+    "type": "characters",
+    "path": "/assets/sd/characters/DS2.webp",
+    "source": "art-source/sd/characters/DS2.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "DS3",
+    "type": "characters",
+    "path": "/assets/sd/characters/DS3.webp",
+    "source": "art-source/sd/characters/DS3.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "DS4",
+    "type": "characters",
+    "path": "/assets/sd/characters/DS4.webp",
+    "source": "art-source/sd/characters/DS4.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "EF1",
+    "type": "characters",
+    "path": "/assets/sd/characters/EF1.webp",
+    "source": "art-source/sd/characters/EF1.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "EF2",
+    "type": "characters",
+    "path": "/assets/sd/characters/EF2.webp",
+    "source": "art-source/sd/characters/EF2.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "EF3",
+    "type": "characters",
+    "path": "/assets/sd/characters/EF3.webp",
+    "source": "art-source/sd/characters/EF3.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "EF4",
+    "type": "characters",
+    "path": "/assets/sd/characters/EF4.webp",
+    "source": "art-source/sd/characters/EF4.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "GO1",
+    "type": "characters",
+    "path": "/assets/sd/characters/GO1.webp",
+    "source": "art-source/sd/characters/GO1.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "GO2",
+    "type": "characters",
+    "path": "/assets/sd/characters/GO2.webp",
+    "source": "art-source/sd/characters/GO2.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "GO3",
+    "type": "characters",
+    "path": "/assets/sd/characters/GO3.webp",
+    "source": "art-source/sd/characters/GO3.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "GO4",
+    "type": "characters",
+    "path": "/assets/sd/characters/GO4.webp",
+    "source": "art-source/sd/characters/GO4.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "VR1",
+    "type": "characters",
+    "path": "/assets/sd/characters/VR1.webp",
+    "source": "art-source/sd/characters/VR1.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "VR2",
+    "type": "characters",
+    "path": "/assets/sd/characters/VR2.webp",
+    "source": "art-source/sd/characters/VR2.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "VR3",
+    "type": "characters",
+    "path": "/assets/sd/characters/VR3.webp",
+    "source": "art-source/sd/characters/VR3.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "VR4",
+    "type": "characters",
+    "path": "/assets/sd/characters/VR4.webp",
+    "source": "art-source/sd/characters/VR4.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "WS1",
+    "type": "characters",
+    "path": "/assets/sd/characters/WS1.webp",
+    "source": "art-source/sd/characters/WS1.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "WS2",
+    "type": "characters",
+    "path": "/assets/sd/characters/WS2.webp",
+    "source": "art-source/sd/characters/WS2.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "WS3",
+    "type": "characters",
+    "path": "/assets/sd/characters/WS3.webp",
+    "source": "art-source/sd/characters/WS3.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "WS4",
+    "type": "characters",
+    "path": "/assets/sd/characters/WS4.webp",
+    "source": "art-source/sd/characters/WS4.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "M01",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M01.webp",
+    "source": "art-source/sd/monsters/M01.png",
+    "width": 1086,
+    "height": 1448
+  },
+  {
+    "id": "M02",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M02.webp",
+    "source": "art-source/sd/monsters/M02.png",
+    "width": 1176,
+    "height": 1338
+  },
+  {
+    "id": "M03",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M03.webp",
+    "source": "art-source/sd/monsters/M03.png",
+    "width": 1243,
+    "height": 1266
+  },
+  {
+    "id": "M04",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M04.webp",
+    "source": "art-source/sd/monsters/M04.png",
+    "width": 1225,
+    "height": 1284
+  },
+  {
+    "id": "M05",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M05.webp",
+    "source": "art-source/sd/monsters/M05.png",
+    "width": 1312,
+    "height": 1199
+  },
+  {
+    "id": "M06",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M06.webp",
+    "source": "art-source/sd/monsters/M06.png",
+    "width": 1230,
+    "height": 1278
+  },
+  {
+    "id": "M07",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M07.webp",
+    "source": "art-source/sd/monsters/M07.png",
+    "width": 1214,
+    "height": 1295
+  },
+  {
+    "id": "M08",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M08.webp",
+    "source": "art-source/sd/monsters/M08.png",
+    "width": 1312,
+    "height": 1199
+  }
+]

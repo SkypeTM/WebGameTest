@@ -19,12 +19,17 @@ def main() -> None:
     atlas_directory = Path(sys.argv[1])
     monsters = json.loads((ROOT / "data" / "monsters.json").read_text(encoding="utf-8"))
     records: list[dict[str, str]] = []
+    sd_file = ROOT / "data" / "sd_asset_manifest.json"
+    repaired = {item["id"]: item["path"] for item in json.loads(sd_file.read_text(encoding="utf-8")) if item["type"] == "monsters"} if sd_file.exists() else {}
     for group in range(7):
         image = Image.open(atlas_directory / f"map-{group + 1}.png").convert("RGB")
         cell_width, cell_height = image.width / 8, image.height / 3
         for column in range(8):
             monster = monsters[group * 8 + column]
             for row, state in enumerate(STATES):
+                if monster["id"] in repaired:
+                    records.append({"id": monster["id"], "name": monster["name"], "state": state, "path": repaired[monster["id"]]})
+                    continue
                 box = (
                     round(column * cell_width),
                     round(row * cell_height),

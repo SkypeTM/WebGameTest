@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "primary_points": 2,
+  "secondary_points": 1,
+  "negative_points": false,
+  "normalization": "raw / max_raw_for_faction * 100",
+  "tie_break": [
+    "primary_hit_count",
+    "M7_relevance",
+    "show_joint_result"
+  ],
+  "max_raw_by_faction": {
+    "AR": 10,
+    "EF": 10,
+    "WS": 10,
+    "BC": 11,
+    "GO": 7,
+    "VR": 8,
+    "DS": 9,
+    "BK": 9
+  },
+  "questions": [
+    {
+      "id": "M1",
+      "title": "닫히는 문",
+      "choices": {
+        "A": {
+          "primary": "AR",
+          "secondary": "EF",
+          "summary": "질서를 유지하되 가능한 구조를 수행"
+        },
+        "B": {
+          "primary": "EF",
+          "secondary": "WS",
+          "summary": "명령보다 귀환자의 생존을 우선"
+        },
+        "C": {
+          "primary": "BC",
+          "secondary": "AR",
+          "summary": "숫자보다 이름과 기록을 먼저 확인"
+        },
+        "D": {
+          "primary": "WS",
+          "secondary": "GO",
+          "summary": "가장 취약한 사람을 우선 보호"
+        }
+      }
+    },
+    {
+      "id": "M2",
+      "title": "도착하지 않은 배",
+      "choices": {
+        "A": {
+          "primary": "VR",
+          "secondary": "AR",
+          "summary": "계약과 책임 관계 추적"
+        },
+        "B": {
+          "primary": "DS",
+          "secondary": "GO",
+          "summary": "현상을 기술적으로 분석"
+        },
+        "C": {
+          "primary": "BK",
+          "secondary": "BC",
+          "summary": "비공개 기록과 은폐 흔적 확보"
+        },
+        "D": {
+          "primary": "GO",
+          "secondary": "VR",
+          "summary": "현장과 실제 이동 흔적을 추적"
+        }
+      }
+    },
+    {
+      "id": "M3",
+      "title": "지워진 이름",
+      "choices": {
+        "A": {
+          "primary": "BC",
+          "secondary": "GO",
+          "summary": "모든 원본과 수정 흔적을 보존"
+        },
+        "B": {
+          "primary": "BK",
+          "secondary": "DS",
+          "summary": "의도적으로 지워진 대상을 우선 조사"
+        },
+        "C": {
+          "primary": "EF",
+          "secondary": "BC",
+          "summary": "사본을 분산해 독점을 방지"
+        },
+        "D": {
+          "primary": "AR",
+          "secondary": "VR",
+          "summary": "공적 절차로 기록을 바로잡음"
+        }
+      }
+    },
+    {
+      "id": "M4",
+      "title": "울지 않는 사람들",
+      "choices": {
+        "A": {
+          "primary": "WS",
+          "secondary": "BC",
+          "summary": "대상자의 고통과 증언을 먼저 들음"
+        },
+        "B": {
+          "primary": "DS",
+          "secondary": "GO",
+          "summary": "현상을 계측하고 원인을 규명"
+        },
+        "C": {
+          "primary": "BK",
+          "secondary": "WS",
+          "summary": "말하지 못했던 증인을 확보"
+        },
+        "D": {
+          "primary": "AR",
+          "secondary": "EF",
+          "summary": "추가 피해를 막기 위해 안전지대로 이동"
+        }
+      }
+    },
+    {
+      "id": "M5",
+      "title": "사람의 목소리를 내는 기계",
+      "choices": {
+        "A": {
+          "primary": "DS",
+          "secondary": "BC",
+          "summary": "설비와 증거를 분리해 보존/중단을 양립"
+        },
+        "B": {
+          "primary": "WS",
+          "secondary": "BK",
+          "summary": "기억의 주체와 정체성을 우선 확인"
+        },
+        "C": {
+          "primary": "EF",
+          "secondary": "AR",
+          "summary": "재사용 불가능하도록 통제 장치를 파괴"
+        },
+        "D": {
+          "primary": "VR",
+          "secondary": "DS",
+          "summary": "기술의 전달망과 이해관계를 추적"
+        }
+      }
+    },
+    {
+      "id": "M6",
+      "title": "움직이는 별",
+      "choices": {
+        "A": {
+          "primary": "GO",
+          "secondary": "DS",
+          "summary": "현재 세계를 직접 재관측"
+        },
+        "B": {
+          "primary": "BC",
+          "secondary": "GO",
+          "summary": "장기 기록을 비교해 반복된 수정 여부 확인"
+        },
+        "C": {
+          "primary": "VR",
+          "secondary": "BK",
+          "summary": "예언을 이용해 이익을 얻은 주체 추적"
+        },
+        "D": {
+          "primary": "WS",
+          "secondary": "EF",
+          "summary": "예언으로 피해를 본 사람을 우선 확인"
+        }
+      }
+    },
+    {
+      "id": "M7",
+      "title": "마지막 자리",
+      "choices": {
+        "A": {
+          "primary": "AR",
+          "secondary": "VR",
+          "summary": "책임 주체와 질서를 다시 세움"
+        },
+        "B": {
+          "primary": "BC",
+          "secondary": "EF",
+          "summary": "사실과 기록의 공동 접근을 보장"
+        },
+        "C": {
+          "primary": "WS",
+          "secondary": "DS",
+          "summary": "고통과 피해의 재발 방지를 우선"
+        },
+        "D": {
+          "primary": "EF",
+          "secondary": "BK",
+          "summary": "단일 주인이 생기지 않도록 권한을 해체"
+        }
+      }
+    }
+  ]
+}

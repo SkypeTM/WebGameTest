@@ -18,5 +18,290 @@
     "id": "AR4",
     "kind": "skill",
     "path": "/assets/cards-v2/AR4-skill.webp"
+  },
+  {
+    "id": "AR1",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-AR1-strike.webp"
+  },
+  {
+    "id": "AR1",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-AR1-guard.webp"
+  },
+  {
+    "id": "AR1",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-AR1-heavy.webp"
+  },
+  {
+    "id": "AR2",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-AR2-strike.webp"
+  },
+  {
+    "id": "AR2",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-AR2-guard.webp"
+  },
+  {
+    "id": "AR2",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-AR2-heavy.webp"
+  },
+  {
+    "id": "AR3",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-AR3-strike.webp"
+  },
+  {
+    "id": "AR3",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-AR3-guard.webp"
+  },
+  {
+    "id": "AR3",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-AR3-heavy.webp"
+  },
+  {
+    "id": "AR4",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-AR4-strike.webp"
+  },
+  {
+    "id": "AR4",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-AR4-guard.webp"
+  },
+  {
+    "id": "AR4",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-AR4-heavy.webp"
+  },
+  {
+    "id": "VR1",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-VR1-strike.webp"
+  },
+  {
+    "id": "VR1",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-VR1-guard.webp"
+  },
+  {
+    "id": "VR1",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-VR1-heavy.webp"
+  },
+  {
+    "id": "VR2",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-VR2-strike.webp"
+  },
+  {
+    "id": "VR2",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-VR2-guard.webp"
+  },
+  {
+    "id": "VR2",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-VR2-heavy.webp"
+  },
+  {
+    "id": "VR3",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-VR3-strike.webp"
+  },
+  {
+    "id": "VR3",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-VR3-guard.webp"
+  },
+  {
+    "id": "VR3",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-VR3-heavy.webp"
+  },
+  {
+    "id": "VR4",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-VR4-strike.webp"
+  },
+  {
+    "id": "VR4",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-VR4-guard.webp"
+  },
+  {
+    "id": "VR4",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-VR4-heavy.webp"
+  },
+  {
+    "id": "BC1",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-BC1-strike.webp"
+  },
+  {
+    "id": "BC1",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-BC1-guard.webp"
+  },
+  {
+    "id": "BC1",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-BC1-heavy.webp"
+  },
+  {
+    "id": "BC2",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-BC2-strike.webp"
+  },
+  {
+    "id": "BC2",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-BC2-guard.webp"
+  },
+  {
+    "id": "BC2",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-BC2-heavy.webp"
+  },
+  {
+    "id": "BC3",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-BC3-strike.webp"
+  },
+  {
+    "id": "BC3",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-BC3-guard.webp"
+  },
+  {
+    "id": "BC3",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-BC3-heavy.webp"
+  },
+  {
+    "id": "BC4",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-BC4-strike.webp"
+  },
+  {
+    "id": "BC4",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-BC4-guard.webp"
+  },
+  {
+    "id": "BC4",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-BC4-heavy.webp"
+  },
+  {
+    "id": "BK1",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-BK1-strike.webp"
+  },
+  {
+    "id": "BK1",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-BK1-guard.webp"
+  },
+  {
+    "id": "BK1",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-BK1-heavy.webp"
+  },
+  {
+    "id": "BK2",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-BK2-strike.webp"
+  },
+  {
+    "id": "BK2",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-BK2-guard.webp"
+  },
+  {
+    "id": "BK2",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-BK2-heavy.webp"
+  },
+  {
+    "id": "BK3",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-BK3-strike.webp"
+  },
+  {
+    "id": "BK3",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-BK3-guard.webp"
+  },
+  {
+    "id": "BK3",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-BK3-heavy.webp"
+  },
+  {
+    "id": "BK4",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-BK4-strike.webp"
+  },
+  {
+    "id": "BK4",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-BK4-guard.webp"
+  },
+  {
+    "id": "BK4",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-BK4-heavy.webp"
+  },
+  {
+    "id": "WS1",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-WS1-strike.webp"
+  },
+  {
+    "id": "WS1",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-WS1-guard.webp"
+  },
+  {
+    "id": "WS1",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-WS1-heavy.webp"
+  },
+  {
+    "id": "WS2",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-WS2-strike.webp"
+  },
+  {
+    "id": "WS2",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-WS2-guard.webp"
+  },
+  {
+    "id": "WS2",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-WS2-heavy.webp"
+  },
+  {
+    "id": "WS3",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-WS3-strike.webp"
+  },
+  {
+    "id": "WS3",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-WS3-guard.webp"
+  },
+  {
+    "id": "WS3",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-WS3-heavy.webp"
   }
 ]

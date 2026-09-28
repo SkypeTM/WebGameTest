@@ -1,0 +1,151 @@
+.story-conversation {
+  width: min(960px, 96vw);
+  max-height: 96dvh;
+  padding: 20px;
+  border: 1px solid #b5a16e;
+  border-radius: 16px;
+  color: #ece7d8;
+  background: radial-gradient(ellipse at 50% 35%, #354347, #101b21 80%);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.story-conversation::backdrop {
+  background: #040b10d9;
+}
+.story-conversation header,
+.story-conversation footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.story-conversation header h2 {
+  margin: 4px 0;
+}
+.conversation-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  height: clamp(180px, 40dvh, 400px);
+  overflow: hidden;
+}
+.conversation-person {
+  position: relative;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  opacity: 0.65;
+  filter: saturate(0.7);
+  transition:
+    opacity 0.2s,
+    filter 0.2s;
+}
+.conversation-person.speaking {
+  opacity: 1;
+  filter: none;
+}
+.conversation-person img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+.conversation-person .legacy-dialogue-crop {
+  object-fit: cover;
+  object-position: center 15%;
+}
+.conversation-person figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 9px;
+  text-align: center;
+  background: linear-gradient(transparent, #0a131fee);
+  font-size: 12px;
+}
+.conversation-line {
+  border: 1px solid #b5a16e88;
+  border-left: 4px solid #8ebfb7;
+  border-radius: 10px;
+  padding: 16px 20px;
+  min-height: 115px;
+  background: #0c171ee8;
+}
+.conversation-line.npc-line {
+  border-left: 1px solid #b5a16e88;
+  border-right: 4px solid #ddbc78;
+}
+.conversation-line strong {
+  color: #e3c786;
+}
+.conversation-line p {
+  line-height: 1.8;
+  margin: 8px 0 0;
+}
+.story-conversation footer {
+  margin-top: 12px;
+}
+.story-conversation button {
+  min-height: 44px;
+}
+.conversation-objective {
+  font-size: 11px;
+  color: #b6c6c4;
+  margin-bottom: 0;
+}
+.portrait-pending {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: #d7c394;
+}
+.relic-host img.npc-relic-portrait {
+  object-fit: contain;
+  object-position: center bottom;
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .story-conversation {
+    padding: 10px 18px;
+  }
+  .story-conversation header h2 {
+    font-size: 17px;
+  }
+  .conversation-stage {
+    height: 34dvh;
+  }
+  .conversation-line {
+    min-height: 75px;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  .conversation-line p {
+    line-height: 1.5;
+    margin-top: 3px;
+  }
+  .story-conversation footer {
+    margin-top: 6px;
+  }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .story-conversation {
+    padding: 12px;
+  }
+  .conversation-stage {
+    gap: 0;
+    height: 32dvh;
+  }
+  .conversation-person figcaption {
+    font-size: 10px;
+  }
+  .conversation-line {
+    min-height: 145px;
+    padding: 14px;
+  }
+  .story-conversation header h2 {
+    font-size: 19px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .conversation-person {
+    transition: none;
+  }
+}

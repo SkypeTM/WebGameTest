@@ -1,3 +1,6 @@
+import { originRegions, scorePrologue, type PrologueProfile } from "./prologue";
+import prologueScoring from "../data/prologue_scoring_v1.json";
+import { storyArt } from "./story-art";
 import characters from "../data/characters.json" with { type: "json" };
 import monsters from "../data/monsters.json" with { type: "json" };
 import balance from "../data/balance.json" with { type: "json" };
@@ -437,7 +440,9 @@ export const relicCatalog = relicRegions.flatMap((entry) =>
           : entry.region === "archive"
             ? "첫 행동력 1, 전투 후 체력 5 회복, 손패 1장을 추가합니다."
             : "첫 행동력 1을 얻고 전투 후 생존 동료의 체력을 5 회복합니다.",
-    asset: `/assets/fhd/relics/${entry.region}-${index + 1}.webp`,
+    asset:
+      storyArt(`relic-${entry.region}-${index + 1}`) ||
+      `/assets/fhd/relics/${entry.region}-${index + 1}.webp`,
   })),
 );
 export function relicChoicesFor(
@@ -464,6 +469,9 @@ function unlockCodex(game: Game, category: keyof CodexState, ...ids: string[]) {
 }
 export function unlockedRegions(completed: string[]): RegionId[] {
   const unlocked = new Set<RegionId>(["fortress"]);
+  const origin = completed.find((id) => id.startsWith("Q00-"))?.split("-")[1];
+  if (origin) unlocked.add(originRegions[origin] as RegionId);
+  if (completed.includes("Q00-EF-harbor")) unlocked.add("harbor");
   for (const quest of storyQuests)
     if (
       completed.includes(quest.id) &&
@@ -471,7 +479,23 @@ export function unlockedRegions(completed: string[]): RegionId[] {
       quest.unlockRegion
     )
       unlocked.add(quest.unlockRegion as RegionId);
+  if (
+    completed.some((id) => id.startsWith("Q00-")) &&
+    !["Q02", "Q06", "Q08", "Q12"].every((id) => completed.includes(id))
+  )
+    unlocked.delete("palace");
   return [...unlocked];
+}
+export function nextStoryQuest(completed: string[]) {
+  const origin = completed.find((id) => id.startsWith("Q00-"))?.split("-")[1];
+  const start = completed.includes("Q00-EF-harbor")
+    ? "harbor"
+    : originRegions[origin || "AR"];
+  const order = [
+    ...storyQuests.filter((q) => q.region === start),
+    ...storyQuests.filter((q) => q.region !== start),
+  ];
+  return order.find((q) => !completed.includes(q.id));
 }
 export function availableRecruitIds(completed: string[]) {
   const ids = new Set<string>();
@@ -941,6 +965,12 @@ export type Run = {
   >;
 };
 export type Game = {
+  originFaction?: string;
+  prologue?: {
+    stage: "questions" | "origin" | "q00" | "complete";
+    profile: PrologueProfile;
+  };
+  storyLeadId?: string;
   schema: 1;
   version: number;
   party: string[];
@@ -1408,6 +1438,7 @@ export function heroStats(h: Hero) {
 }
 export function initialGame(): Game {
   return {
+    prologue: { stage: "questions", profile: scorePrologue({}, 0) },
     schema: 1,
     version: 0,
     party: ["AR1", "AR2", "AR3", "AR4"],
@@ -1462,6 +1493,7 @@ export function normalizeGame(previous: Game): Game {
   const normalized: Game = {
     ...defaults,
     ...saved,
+    prologue: saved.prologue,
     party: saved.party || defaults.party,
     roster: (saved.roster || defaults.roster).map(normalizeHero),
     materials: saved.materials || {},
@@ -1896,7 +1928,66 @@ function victory(g: Game) {
 export function reduceGame(previous: Game, a: Action, seed = 1): Game {
   const g = normalizeGame(previous),
     r = g.run;
-  if (a.type === "party") {
+  check(
+    !g.prologue || g.prologue.stage === "complete" || a.type === "prologue",
+    "프롤로그를 먼저 완료하세요.",
+  );
+  if (a.type === "prologue") {
+    check(
+      !r && g.prologue && g.prologue.stage !== "complete",
+      "이미 기원을 선택했습니다.",
+    );
+    const p = g.prologue;
+    if (a.choice === "answer") {
+      check(p.stage === "questions", "답변할 수 없는 단계입니다.");
+      const q =
+        prologueScoring.questions[Object.keys(p.profile.answers).length];
+      check(
+        q && q.id === a.id && ["A", "B", "C", "D"].includes(a.target || ""),
+        "올바른 기억과 답변을 선택하세요.",
+      );
+      p.profile = scorePrologue(
+        { ...p.profile.answers, [q.id]: a.target! },
+        g.rebirths,
+      );
+      if (Object.keys(p.profile.answers).length === 7) p.stage = "origin";
+    } else if (a.choice === "origin") {
+      check(
+        p.stage === "origin" && factionCodes.includes(a.id || ""),
+        "선택할 수 없는 기원입니다.",
+      );
+      g.originFaction = a.id!;
+      g.party = characters
+        .filter((c) => c.id.startsWith(a.id!))
+        .map((c) => c.id)
+        .slice(0, 4);
+      g.roster = g.party.map(hero);
+      g.storyLeadId = g.party[0];
+      g.codex.characters = unique([...g.codex.characters, ...g.party]);
+      unlockCodex(g, "cards", ...g.party.map((id) => `skill:${id}`));
+      p.stage = "q00";
+    } else if (a.choice === "begin") {
+      check(p.stage === "q00", "시작 대화를 먼저 확인하세요.");
+      if (g.originFaction === "EF")
+        check(
+          ["fortress", "harbor"].includes(a.target || ""),
+          "피난로의 목적지를 선택하세요.",
+        );
+      p.stage = "complete";
+      g.completedQuests.push(
+        `Q00-${g.originFaction}${g.originFaction === "EF" && a.target === "harbor" ? "-harbor" : ""}`,
+      );
+      const start = originRegions[g.originFaction!] as RegionId;
+      g.activeQuest = storyQuests.find(
+        (q) =>
+          q.region ===
+          (g.originFaction === "EF" && a.target === "harbor"
+            ? "harbor"
+            : start),
+      )!.id;
+      log(g, "종이 멎은 밤의 기억을 남기고, 선택한 동료들과 첫 조사에 나섰다.");
+    } else throw new RuleError("알 수 없는 프롤로그 선택입니다.");
+  } else if (a.type === "party") {
     check(!r, "탐사 중에는 편성을 바꿀 수 없습니다.");
     check(
       Array.isArray(a.ids) &&
@@ -2104,6 +2195,20 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     g.ending = null;
     g.endingUnlocked = false;
     g.rebirths++;
+    g.completedQuests = [];
+    g.activeQuest = null;
+    g.craftedGear = [];
+    g.originFaction = undefined;
+    g.storyLeadId = undefined;
+    const oldProfile = g.prologue?.profile;
+    g.prologue = {
+      stage:
+        a.choice === "reuse" || a.choice === "skip" ? "origin" : "questions",
+      profile:
+        (a.choice === "reuse" || a.choice === "skip") && oldProfile
+          ? { ...oldProfile, cycle: g.rebirths }
+          : scorePrologue({}, g.rebirths),
+    };
     log(g, "새 순환을 시작했다. 선택한 계승품만 남았다.");
   } else if (a.type === "quest") {
     check(!r, "거점에서 퀘스트를 선택하세요.");
@@ -2114,9 +2219,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     } else {
       const quest = storyQuests.find((item) => item.id === a.id);
       check(quest, "알 수 없는 퀘스트입니다.");
-      const next = storyQuests.find(
-        (item) => !g.completedQuests.includes(item.id),
-      );
+      const next = nextStoryQuest(g.completedQuests);
       check(next?.id === quest.id, "앞선 이야기부터 완료해야 합니다.");
       check(
         unlockedRegions(g.completedQuests).includes(quest.region as RegionId),
@@ -2135,6 +2238,7 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     const regionIndex = regionCatalog.findIndex((item) => item.id === region);
     const choices = relicChoicesFor(g, region);
     g.summary = null;
+    g.storyLeadId = g.party[0];
     g.run = {
       seed: seed >>> 0 || 1,
       region,

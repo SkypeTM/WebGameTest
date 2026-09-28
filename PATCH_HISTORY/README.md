@@ -62,3 +62,5 @@
 - `037-mobile-encounter-story.md`: 모바일 사이드바·팩션 인물 유물 제안·14장 스토리·카드 드롭 안정화
 - `038-card-journal-living-backgrounds.md`: 덱·도감 카드 이미지 통일, 좌우 행동 기록 팝업, 움직이는 2D 배경
 
+- `039-character-card-art-story-dialogue.md`: 캐릭터 동작 카드·고유 성물·팩션 NPC·112줄 대화·상반신 표정 원화 (생성 한도로 일부 대기)
+- `040-faction-prologue.md`: 서버 저장 프롤로그·8팩션 시작 선택·Q00·탐사 대표 고정

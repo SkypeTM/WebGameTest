@@ -9,8 +9,13 @@ import "./living-scenes.css";
 import ActionJournal from "./components/ActionJournal";
 import LivingBackdrop from "./components/LivingBackdrop";
 import PortableMenu from "./components/PortableMenu";
-import storyChapters from "../data/story_chapters.json";
-import relicEncounters from "../data/relic_encounters.json";
+import QuestConversation, {
+  type ConversationRequest,
+} from "./components/QuestConversation";
+import storyNpcs from "../data/story_npcs.json";
+import { dialogueArt } from "../lib/story-art";
+import "./story-conversation.css";
+import FactionPrologue from "./components/FactionPrologue";
 import characterCardArt from "../data/card_character_art.json";
 import {
   characters,
@@ -38,6 +43,7 @@ import {
   storyQuests,
   regionCatalog,
   unlockedRegions,
+  nextStoryQuest,
   availableRecruitIds,
   deckPreview,
   effectiveCardValue,
@@ -412,6 +418,9 @@ export default function Page() {
     [selectedHero, setSelectedHero] = useState(""),
     [facilityTab, setFacilityTab] = useState("forge"),
     [selectedRegion, setSelectedRegion] = useState("fortress"),
+    [conversation, setConversation] = useState<ConversationRequest | null>(
+      null,
+    ),
     [sceneryEnabled, setSceneryEnabled] = useState(true),
     [deckOpen, setDeckOpen] = useState(false),
     [codexOpen, setCodexOpen] = useState(false),
@@ -620,6 +629,19 @@ export default function Page() {
       setBusy(false);
     }
   }
+  const previousQuests = useRef<string[] | null>(null);
+  useEffect(() => {
+    if (!game) {
+      previousQuests.current = null;
+      return;
+    }
+    const previous = previousQuests.current;
+    previousQuests.current = [...game.completedQuests];
+    const added =
+      previous && game.completedQuests.find((id) => !previous.includes(id));
+    const quest = storyQuests.find((q) => q.id === added);
+    if (quest) setConversation({ quest: quest.id, phase: "return" });
+  }, [game?.completedQuests]);
   const locked = busy || animating || offline || !control || !!pending.current;
   const run = game?.run,
     battle = run?.battle,
@@ -998,12 +1020,20 @@ export default function Page() {
       </button>
     </div>
   );
+  if (game.prologue && game.prologue.stage !== "complete")
+    return (
+      <div className="shell">
+        {accountControls}
+        {error && <p role="alert">{error}</p>}
+        <FactionPrologue game={game} locked={locked} act={act} />
+      </div>
+    );
   const encounterRelic =
     run?.mode === "relic"
       ? relicCatalog.find((r) => r.id === run.relicChoices[0])
       : undefined;
   const encounter = encounterRelic
-    ? relicEncounters[encounterRelic.faction as keyof typeof relicEncounters]
+    ? storyNpcs[encounterRelic.faction as keyof typeof storyNpcs]
     : undefined;
   return (
     <div className="shell">
@@ -1269,6 +1299,30 @@ export default function Page() {
                       }
                     >
                       선택한 계승품으로 환생
+                    </button>
+                    <button
+                      disabled={locked || !game.prologue}
+                      onClick={() =>
+                        void act({
+                          type: "rebirth",
+                          ids: inheritance,
+                          choice: "reuse",
+                        })
+                      }
+                    >
+                      이전 답으로 기원 다시 선택
+                    </button>
+                    <button
+                      disabled={locked}
+                      onClick={() =>
+                        void act({
+                          type: "rebirth",
+                          ids: inheritance,
+                          choice: "skip",
+                        })
+                      }
+                    >
+                      기억을 건너뛰고 기원 선택
                     </button>
                   </section>
                 )}
@@ -1999,7 +2053,12 @@ export default function Page() {
                       <div className="section-heading">
                         <h2>전체 이야기</h2>
                         <span>
-                          {game.completedQuests.length} / {storyQuests.length}
+                          {
+                            storyQuests.filter((q) =>
+                              game.completedQuests.includes(q.id),
+                            ).length
+                          }{" "}
+                          / {storyQuests.length}
                         </span>
                       </div>
                       {storyQuests.map((quest) => {
@@ -2007,9 +2066,7 @@ export default function Page() {
                           quest.id,
                         );
                         const active = game.activeQuest === quest.id;
-                        const next = storyQuests.find(
-                          (item) => !game.completedQuests.includes(item.id),
-                        );
+                        const next = nextStoryQuest(game.completedQuests);
                         const region = regionCatalog.find(
                           (item) => item.id === quest.region,
                         )!;
@@ -2028,31 +2085,19 @@ export default function Page() {
                               {(complete ||
                                 active ||
                                 next?.id === quest.id) && (
-                                <details className="quest-story">
-                                  <summary>
-                                    {complete
-                                      ? "귀환 기록 읽기"
-                                      : "의뢰의 사연 읽기"}
-                                  </summary>
-                                  <strong>
-                                    {storyChapters[quest.id].speaker}
-                                  </strong>
-                                  <p>{storyChapters[quest.id].briefing}</p>
-                                  <small>
-                                    완료 조건: 이 의뢰를 수락한 상태로{" "}
-                                    {region.name} 보스 처치 후 야영지에서 안전
-                                    귀환.
-                                  </small>
-                                  {complete && (
-                                    <>
-                                      <blockquote>
-                                        {storyChapters[quest.id].discovery}
-                                      </blockquote>
-                                      <p>{storyChapters[quest.id].debrief}</p>
-                                      <p>{storyChapters[quest.id].hook}</p>
-                                    </>
-                                  )}
-                                </details>
+                                <button
+                                  className="quest-story"
+                                  onClick={() =>
+                                    setConversation({
+                                      quest: quest.id,
+                                      phase: complete ? "return" : "briefing",
+                                    })
+                                  }
+                                >
+                                  {complete
+                                    ? "귀환 대화 다시 보기"
+                                    : "NPC와 이야기하기"}
+                                </button>
                               )}
                               <span>
                                 보상 ◈ {quest.rewardGold} ·{" "}
@@ -2078,10 +2123,10 @@ export default function Page() {
                                   next?.id !== quest.id
                                 }
                                 onClick={() =>
-                                  void act({
-                                    type: "quest",
-                                    id: quest.id,
-                                    choice: "accept",
+                                  setConversation({
+                                    quest: quest.id,
+                                    phase: "briefing",
+                                    accept: true,
                                   })
                                 }
                               >
@@ -3437,18 +3482,26 @@ export default function Page() {
                     <>
                       {encounter && (
                         <div className="relic-host">
-                          <img
-                            src={
-                              characterAssets.find(
-                                (a) =>
-                                  a.id === encounter.hero && a.state === "idle",
-                              )?.path
-                            }
-                            alt={char(encounter.hero).name}
-                          />
+                          {dialogueArt(
+                            encounterRelic!.faction,
+                            "explain",
+                            true,
+                          ) && (
+                            <img
+                              className="npc-relic-portrait"
+                              src={dialogueArt(
+                                encounterRelic!.faction,
+                                "explain",
+                                true,
+                              )}
+                              alt={encounter.name}
+                            />
+                          )}
                           <div>
-                            <small>{char(encounter.hero).faction}</small>
-                            <h3>{char(encounter.hero).name}</h3>
+                            <small>
+                              {encounter.faction} · {encounter.title}
+                            </small>
+                            <h3>{encounter.name}</h3>
                             <blockquote>“{encounter.line}”</blockquote>
                             <p>
                               유물 3개 중 하나를 선택하세요. 효과는 이번 탐사가
@@ -3797,6 +3850,28 @@ export default function Page() {
               <ActionJournal entries={game.log} />
             </div>
           </>
+        )}
+        {conversation && (
+          <QuestConversation
+            key={
+              conversation.quest +
+              conversation.phase +
+              String(conversation.accept)
+            }
+            request={conversation}
+            playerId={game.storyLeadId || game.party[0] || "AR1"}
+            locked={locked}
+            onClose={() => setConversation(null)}
+            onAccept={() => {
+              if (locked) return;
+              void act({
+                type: "quest",
+                id: conversation.quest,
+                choice: "accept",
+              });
+              setConversation(null);
+            }}
+          />
         )}
         {deckOpen && (
           <div

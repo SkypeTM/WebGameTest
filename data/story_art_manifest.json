@@ -1,0 +1,914 @@
+[
+  {
+    "key": "npc-AR-neutral",
+    "path": "/assets/story-v1/npc-AR-neutral.webp",
+    "source": "art-source/story-v1/npc-AR-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-AR-explain",
+    "path": "/assets/story-v1/npc-AR-explain.webp",
+    "source": "art-source/story-v1/npc-AR-explain.png",
+    "width": 1145,
+    "height": 1374,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-AR-resolve",
+    "path": "/assets/story-v1/npc-AR-resolve.webp",
+    "source": "art-source/story-v1/npc-AR-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-VR-neutral",
+    "path": "/assets/story-v1/npc-VR-neutral.webp",
+    "source": "art-source/story-v1/npc-VR-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-VR-explain",
+    "path": "/assets/story-v1/npc-VR-explain.webp",
+    "source": "art-source/story-v1/npc-VR-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-VR-resolve",
+    "path": "/assets/story-v1/npc-VR-resolve.webp",
+    "source": "art-source/story-v1/npc-VR-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-BC-neutral",
+    "path": "/assets/story-v1/npc-BC-neutral.webp",
+    "source": "art-source/story-v1/npc-BC-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-BC-explain",
+    "path": "/assets/story-v1/npc-BC-explain.webp",
+    "source": "art-source/story-v1/npc-BC-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-BC-resolve",
+    "path": "/assets/story-v1/npc-BC-resolve.webp",
+    "source": "art-source/story-v1/npc-BC-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-BK-neutral",
+    "path": "/assets/story-v1/npc-BK-neutral.webp",
+    "source": "art-source/story-v1/npc-BK-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-BK-explain",
+    "path": "/assets/story-v1/npc-BK-explain.webp",
+    "source": "art-source/story-v1/npc-BK-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-BK-resolve",
+    "path": "/assets/story-v1/npc-BK-resolve.webp",
+    "source": "art-source/story-v1/npc-BK-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-WS-neutral",
+    "path": "/assets/story-v1/npc-WS-neutral.webp",
+    "source": "art-source/story-v1/npc-WS-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-WS-explain",
+    "path": "/assets/story-v1/npc-WS-explain.webp",
+    "source": "art-source/story-v1/npc-WS-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-WS-resolve",
+    "path": "/assets/story-v1/npc-WS-resolve.webp",
+    "source": "art-source/story-v1/npc-WS-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-DS-neutral",
+    "path": "/assets/story-v1/npc-DS-neutral.webp",
+    "source": "art-source/story-v1/npc-DS-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-DS-explain",
+    "path": "/assets/story-v1/npc-DS-explain.webp",
+    "source": "art-source/story-v1/npc-DS-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-DS-resolve",
+    "path": "/assets/story-v1/npc-DS-resolve.webp",
+    "source": "art-source/story-v1/npc-DS-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-GO-neutral",
+    "path": "/assets/story-v1/npc-GO-neutral.webp",
+    "source": "art-source/story-v1/npc-GO-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-GO-explain",
+    "path": "/assets/story-v1/npc-GO-explain.webp",
+    "source": "art-source/story-v1/npc-GO-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-GO-resolve",
+    "path": "/assets/story-v1/npc-GO-resolve.webp",
+    "source": "art-source/story-v1/npc-GO-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-EF-neutral",
+    "path": "/assets/story-v1/npc-EF-neutral.webp",
+    "source": "art-source/story-v1/npc-EF-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-EF-explain",
+    "path": "/assets/story-v1/npc-EF-explain.webp",
+    "source": "art-source/story-v1/npc-EF-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "npc-EF-resolve",
+    "path": "/assets/story-v1/npc-EF-resolve.webp",
+    "source": "art-source/story-v1/npc-EF-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-fortress-1",
+    "path": "/assets/story-v1/relic-fortress-1.webp",
+    "source": "art-source/story-v1/relic-fortress-1.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-fortress-2",
+    "path": "/assets/story-v1/relic-fortress-2.webp",
+    "source": "art-source/story-v1/relic-fortress-2.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-fortress-3",
+    "path": "/assets/story-v1/relic-fortress-3.webp",
+    "source": "art-source/story-v1/relic-fortress-3.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-harbor-1",
+    "path": "/assets/story-v1/relic-harbor-1.webp",
+    "source": "art-source/story-v1/relic-harbor-1.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-harbor-2",
+    "path": "/assets/story-v1/relic-harbor-2.webp",
+    "source": "art-source/story-v1/relic-harbor-2.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-harbor-3",
+    "path": "/assets/story-v1/relic-harbor-3.webp",
+    "source": "art-source/story-v1/relic-harbor-3.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-archive-1",
+    "path": "/assets/story-v1/relic-archive-1.webp",
+    "source": "art-source/story-v1/relic-archive-1.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-archive-2",
+    "path": "/assets/story-v1/relic-archive-2.webp",
+    "source": "art-source/story-v1/relic-archive-2.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-archive-3",
+    "path": "/assets/story-v1/relic-archive-3.webp",
+    "source": "art-source/story-v1/relic-archive-3.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-chapel-1",
+    "path": "/assets/story-v1/relic-chapel-1.webp",
+    "source": "art-source/story-v1/relic-chapel-1.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-chapel-2",
+    "path": "/assets/story-v1/relic-chapel-2.webp",
+    "source": "art-source/story-v1/relic-chapel-2.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-chapel-3",
+    "path": "/assets/story-v1/relic-chapel-3.webp",
+    "source": "art-source/story-v1/relic-chapel-3.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-laboratory-1",
+    "path": "/assets/story-v1/relic-laboratory-1.webp",
+    "source": "art-source/story-v1/relic-laboratory-1.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-laboratory-2",
+    "path": "/assets/story-v1/relic-laboratory-2.webp",
+    "source": "art-source/story-v1/relic-laboratory-2.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-laboratory-3",
+    "path": "/assets/story-v1/relic-laboratory-3.webp",
+    "source": "art-source/story-v1/relic-laboratory-3.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-observatory-1",
+    "path": "/assets/story-v1/relic-observatory-1.webp",
+    "source": "art-source/story-v1/relic-observatory-1.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-observatory-2",
+    "path": "/assets/story-v1/relic-observatory-2.webp",
+    "source": "art-source/story-v1/relic-observatory-2.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-observatory-3",
+    "path": "/assets/story-v1/relic-observatory-3.webp",
+    "source": "art-source/story-v1/relic-observatory-3.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-palace-1",
+    "path": "/assets/story-v1/relic-palace-1.webp",
+    "source": "art-source/story-v1/relic-palace-1.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-palace-2",
+    "path": "/assets/story-v1/relic-palace-2.webp",
+    "source": "art-source/story-v1/relic-palace-2.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "relic-palace-3",
+    "path": "/assets/story-v1/relic-palace-3.webp",
+    "source": "art-source/story-v1/relic-palace-3.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR1-strike",
+    "path": "/assets/story-v1/card-AR1-strike.webp",
+    "source": "art-source/story-v1/card-AR1-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR1-guard",
+    "path": "/assets/story-v1/card-AR1-guard.webp",
+    "source": "art-source/story-v1/card-AR1-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR1-heavy",
+    "path": "/assets/story-v1/card-AR1-heavy.webp",
+    "source": "art-source/story-v1/card-AR1-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR2-strike",
+    "path": "/assets/story-v1/card-AR2-strike.webp",
+    "source": "art-source/story-v1/card-AR2-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR2-guard",
+    "path": "/assets/story-v1/card-AR2-guard.webp",
+    "source": "art-source/story-v1/card-AR2-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR2-heavy",
+    "path": "/assets/story-v1/card-AR2-heavy.webp",
+    "source": "art-source/story-v1/card-AR2-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR3-strike",
+    "path": "/assets/story-v1/card-AR3-strike.webp",
+    "source": "art-source/story-v1/card-AR3-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR3-guard",
+    "path": "/assets/story-v1/card-AR3-guard.webp",
+    "source": "art-source/story-v1/card-AR3-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR3-heavy",
+    "path": "/assets/story-v1/card-AR3-heavy.webp",
+    "source": "art-source/story-v1/card-AR3-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR4-strike",
+    "path": "/assets/story-v1/card-AR4-strike.webp",
+    "source": "art-source/story-v1/card-AR4-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR4-guard",
+    "path": "/assets/story-v1/card-AR4-guard.webp",
+    "source": "art-source/story-v1/card-AR4-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-AR4-heavy",
+    "path": "/assets/story-v1/card-AR4-heavy.webp",
+    "source": "art-source/story-v1/card-AR4-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR1-strike",
+    "path": "/assets/story-v1/card-VR1-strike.webp",
+    "source": "art-source/story-v1/card-VR1-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR1-guard",
+    "path": "/assets/story-v1/card-VR1-guard.webp",
+    "source": "art-source/story-v1/card-VR1-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR1-heavy",
+    "path": "/assets/story-v1/card-VR1-heavy.webp",
+    "source": "art-source/story-v1/card-VR1-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR2-strike",
+    "path": "/assets/story-v1/card-VR2-strike.webp",
+    "source": "art-source/story-v1/card-VR2-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR2-guard",
+    "path": "/assets/story-v1/card-VR2-guard.webp",
+    "source": "art-source/story-v1/card-VR2-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR2-heavy",
+    "path": "/assets/story-v1/card-VR2-heavy.webp",
+    "source": "art-source/story-v1/card-VR2-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR3-strike",
+    "path": "/assets/story-v1/card-VR3-strike.webp",
+    "source": "art-source/story-v1/card-VR3-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR3-guard",
+    "path": "/assets/story-v1/card-VR3-guard.webp",
+    "source": "art-source/story-v1/card-VR3-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR3-heavy",
+    "path": "/assets/story-v1/card-VR3-heavy.webp",
+    "source": "art-source/story-v1/card-VR3-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR4-strike",
+    "path": "/assets/story-v1/card-VR4-strike.webp",
+    "source": "art-source/story-v1/card-VR4-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR4-guard",
+    "path": "/assets/story-v1/card-VR4-guard.webp",
+    "source": "art-source/story-v1/card-VR4-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR4-heavy",
+    "path": "/assets/story-v1/card-VR4-heavy.webp",
+    "source": "art-source/story-v1/card-VR4-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC1-strike",
+    "path": "/assets/story-v1/card-BC1-strike.webp",
+    "source": "art-source/story-v1/card-BC1-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC1-guard",
+    "path": "/assets/story-v1/card-BC1-guard.webp",
+    "source": "art-source/story-v1/card-BC1-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC1-heavy",
+    "path": "/assets/story-v1/card-BC1-heavy.webp",
+    "source": "art-source/story-v1/card-BC1-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC2-strike",
+    "path": "/assets/story-v1/card-BC2-strike.webp",
+    "source": "art-source/story-v1/card-BC2-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC2-guard",
+    "path": "/assets/story-v1/card-BC2-guard.webp",
+    "source": "art-source/story-v1/card-BC2-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC2-heavy",
+    "path": "/assets/story-v1/card-BC2-heavy.webp",
+    "source": "art-source/story-v1/card-BC2-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC3-strike",
+    "path": "/assets/story-v1/card-BC3-strike.webp",
+    "source": "art-source/story-v1/card-BC3-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC3-guard",
+    "path": "/assets/story-v1/card-BC3-guard.webp",
+    "source": "art-source/story-v1/card-BC3-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC3-heavy",
+    "path": "/assets/story-v1/card-BC3-heavy.webp",
+    "source": "art-source/story-v1/card-BC3-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC4-strike",
+    "path": "/assets/story-v1/card-BC4-strike.webp",
+    "source": "art-source/story-v1/card-BC4-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC4-guard",
+    "path": "/assets/story-v1/card-BC4-guard.webp",
+    "source": "art-source/story-v1/card-BC4-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC4-heavy",
+    "path": "/assets/story-v1/card-BC4-heavy.webp",
+    "source": "art-source/story-v1/card-BC4-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK1-strike",
+    "path": "/assets/story-v1/card-BK1-strike.webp",
+    "source": "art-source/story-v1/card-BK1-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK1-guard",
+    "path": "/assets/story-v1/card-BK1-guard.webp",
+    "source": "art-source/story-v1/card-BK1-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK1-heavy",
+    "path": "/assets/story-v1/card-BK1-heavy.webp",
+    "source": "art-source/story-v1/card-BK1-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK2-strike",
+    "path": "/assets/story-v1/card-BK2-strike.webp",
+    "source": "art-source/story-v1/card-BK2-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK2-guard",
+    "path": "/assets/story-v1/card-BK2-guard.webp",
+    "source": "art-source/story-v1/card-BK2-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK2-heavy",
+    "path": "/assets/story-v1/card-BK2-heavy.webp",
+    "source": "art-source/story-v1/card-BK2-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK3-strike",
+    "path": "/assets/story-v1/card-BK3-strike.webp",
+    "source": "art-source/story-v1/card-BK3-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK3-guard",
+    "path": "/assets/story-v1/card-BK3-guard.webp",
+    "source": "art-source/story-v1/card-BK3-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK3-heavy",
+    "path": "/assets/story-v1/card-BK3-heavy.webp",
+    "source": "art-source/story-v1/card-BK3-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK4-strike",
+    "path": "/assets/story-v1/card-BK4-strike.webp",
+    "source": "art-source/story-v1/card-BK4-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK4-guard",
+    "path": "/assets/story-v1/card-BK4-guard.webp",
+    "source": "art-source/story-v1/card-BK4-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK4-heavy",
+    "path": "/assets/story-v1/card-BK4-heavy.webp",
+    "source": "art-source/story-v1/card-BK4-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS1-strike",
+    "path": "/assets/story-v1/card-WS1-strike.webp",
+    "source": "art-source/story-v1/card-WS1-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS1-guard",
+    "path": "/assets/story-v1/card-WS1-guard.webp",
+    "source": "art-source/story-v1/card-WS1-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS1-heavy",
+    "path": "/assets/story-v1/card-WS1-heavy.webp",
+    "source": "art-source/story-v1/card-WS1-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS2-strike",
+    "path": "/assets/story-v1/card-WS2-strike.webp",
+    "source": "art-source/story-v1/card-WS2-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS2-guard",
+    "path": "/assets/story-v1/card-WS2-guard.webp",
+    "source": "art-source/story-v1/card-WS2-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS2-heavy",
+    "path": "/assets/story-v1/card-WS2-heavy.webp",
+    "source": "art-source/story-v1/card-WS2-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS3-strike",
+    "path": "/assets/story-v1/card-WS3-strike.webp",
+    "source": "art-source/story-v1/card-WS3-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS3-guard",
+    "path": "/assets/story-v1/card-WS3-guard.webp",
+    "source": "art-source/story-v1/card-WS3-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS3-heavy",
+    "path": "/assets/story-v1/card-WS3-heavy.webp",
+    "source": "art-source/story-v1/card-WS3-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR1-neutral",
+    "path": "/assets/story-v1/hero-AR1-neutral.webp",
+    "source": "art-source/story-v1/hero-AR1-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR1-explain",
+    "path": "/assets/story-v1/hero-AR1-explain.webp",
+    "source": "art-source/story-v1/hero-AR1-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR1-resolve",
+    "path": "/assets/story-v1/hero-AR1-resolve.webp",
+    "source": "art-source/story-v1/hero-AR1-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR2-neutral",
+    "path": "/assets/story-v1/hero-AR2-neutral.webp",
+    "source": "art-source/story-v1/hero-AR2-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR2-explain",
+    "path": "/assets/story-v1/hero-AR2-explain.webp",
+    "source": "art-source/story-v1/hero-AR2-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR2-resolve",
+    "path": "/assets/story-v1/hero-AR2-resolve.webp",
+    "source": "art-source/story-v1/hero-AR2-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR3-neutral",
+    "path": "/assets/story-v1/hero-AR3-neutral.webp",
+    "source": "art-source/story-v1/hero-AR3-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR3-explain",
+    "path": "/assets/story-v1/hero-AR3-explain.webp",
+    "source": "art-source/story-v1/hero-AR3-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR3-resolve",
+    "path": "/assets/story-v1/hero-AR3-resolve.webp",
+    "source": "art-source/story-v1/hero-AR3-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR4-neutral",
+    "path": "/assets/story-v1/hero-AR4-neutral.webp",
+    "source": "art-source/story-v1/hero-AR4-neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR4-explain",
+    "path": "/assets/story-v1/hero-AR4-explain.webp",
+    "source": "art-source/story-v1/hero-AR4-explain.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "hero-AR4-resolve",
+    "path": "/assets/story-v1/hero-AR4-resolve.webp",
+    "source": "art-source/story-v1/hero-AR4-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  }
+]

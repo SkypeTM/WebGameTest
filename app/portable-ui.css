@@ -1,0 +1,244 @@
+/* Stable combat geometry: pointer selection must not anchor the document. */
+.battle-page,
+.battle-page * {
+  overflow-anchor: none;
+}
+.battle-page .hand-section .selection-hint {
+  height: 24px;
+  overflow: hidden;
+}
+.battle-page .hand-section .section-heading {
+  min-height: 32px;
+}
+.portable-tools {
+  display: none;
+}
+.battle-page .sd-battlefield .unit-readout {
+  flex: 0 0 auto;
+}
+.battle-page .unit-readout {
+  position: relative;
+  flex: 0 0 auto;
+  height: 154px;
+  min-height: 154px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.battle-page .preview-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.relic-host {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 12px 0 20px;
+}
+.relic-host img {
+  width: clamp(110px, 24vw, 230px);
+  height: 240px;
+  object-fit: contain;
+}
+.relic-host blockquote {
+  margin: 10px 0;
+  color: #eed8a3;
+  line-height: 1.7;
+}
+.quest-story {
+  padding: 10px 0;
+  line-height: 1.8;
+}
+.quest-story summary {
+  cursor: pointer;
+  color: #ddbf79;
+}
+.quest-story blockquote {
+  margin: 12px 0;
+  padding-left: 12px;
+  border-left: 2px solid #ddbf79;
+}
+@media (max-width: 1100px) {
+  .portable-tools {
+    display: block;
+  }
+  .header > .account {
+    display: none;
+  }
+  .portable-drawer {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(380px, 94vw);
+    max-width: 94vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #9b8755;
+    background: #172325;
+    color: #e8e5d9;
+    overscroll-behavior: contain;
+  }
+  .portable-drawer::backdrop {
+    background: #030b10b8;
+  }
+  .portable-drawer-content {
+    min-height: 100%;
+    padding: 20px;
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+  }
+  .portable-drawer .account {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .portable-drawer button {
+    min-height: 44px;
+  }
+  .portable-drawer .username,
+  .portable-drawer .save-label {
+    display: inline;
+  }
+  .portable-drawer .mobile-shortcuts {
+    display: grid;
+    gap: 10px;
+  }
+  .portable-drawer .mobile-party {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .mobile-party progress {
+    width: 100%;
+    accent-color: #87b5a3;
+  }
+  .mobile-route-banner {
+    display: none;
+  }
+  .shell > .status.status-healthy {
+    display: none;
+  }
+  .header {
+    padding: 6px 12px;
+    min-height: 44px;
+  }
+  .header .brand small {
+    display: none;
+  }
+  .hub-overlay {
+    width: 100%;
+    max-height: calc(100dvh - 12px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .overlay-heading {
+    position: sticky;
+    top: 0;
+    background: #172325;
+    z-index: 25;
+  }
+  .battle-page .page-heading {
+    display: none;
+  }
+  .battle-page.main {
+    padding: 4px 8px 0;
+  }
+  .battle-page .sd-battlefield {
+    height: calc(100dvh - 95px);
+  }
+  .battle-page .hand-section {
+    z-index: 20;
+  }
+  .battle-page .hand-section .selection-hint {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .relic-choice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .relic-choice {
+    min-width: 0;
+    padding: 8px;
+  }
+  .relic-choice img {
+    width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+  }
+}
+@media (max-width: 1100px) and (orientation: landscape) {
+  .battle-page .unit-readout {
+    height: 94px;
+    min-height: 94px;
+  }
+  .battle-page .unit-readout p {
+    margin: 3px 0;
+  }
+  .battle-page .unit-readout .status-chip {
+    font-size: 8px;
+    padding: 1px 3px;
+  }
+  .battle-page .sd-battlefield {
+    min-height: 280px;
+    padding-bottom: 130px !important;
+  }
+  .battle-page .unit-readout .hero-equipment,
+  .battle-page .unit-readout small {
+    display: none;
+  }
+  .battle-page .hand-section {
+    margin-top: -126px;
+  }
+  .battle-page .hand {
+    height: 116px;
+  }
+  .relic-host img {
+    height: 170px;
+  }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .battle-page .sd-battlefield {
+    gap: 30px;
+    min-height: 500px;
+    padding-top: 60px;
+    padding-bottom: 180px !important;
+  }
+  .battle-page .battle-sd,
+  .battle-page .enemy .battle-sd {
+    height: 110px;
+  }
+  .battle-page .unit-readout {
+    height: 84px;
+    min-height: 84px;
+  }
+  .battle-page .unit-readout small,
+  .battle-page .hero-equipment {
+    display: none;
+  }
+  .battle-page .hand-section {
+    margin-top: -165px;
+  }
+  .battle-page .hand {
+    height: 155px;
+  }
+  .relic-host {
+    gap: 8px;
+  }
+  .relic-host img {
+    height: 180px;
+  }
+  .relic-choice-grid {
+    grid-template-columns: 1fr;
+  }
+  .relic-choice {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    text-align: left;
+  }
+  .relic-choice img {
+    grid-row: span 3;
+  }
+}

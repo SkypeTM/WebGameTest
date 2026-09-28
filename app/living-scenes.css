@@ -1,0 +1,318 @@
+.town-map,
+.expedition-stage {
+  position: relative;
+  isolation: isolate;
+}
+.living-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  contain: paint;
+}
+.town-skyline,
+.town-locations,
+.stage-party,
+.stage-destination {
+  z-index: 1;
+}
+.sd-battlefield .allies,
+.sd-battlefield .enemies {
+  position: relative;
+  z-index: 1;
+}
+.scenery-mist {
+  position: absolute;
+  inset: 35% -25% -10%;
+  background: radial-gradient(ellipse at 30% 65%, #bfd4d317, transparent 55%);
+  animation: scenery-drift 24s ease-in-out infinite alternate;
+}
+.scenery-rain {
+  position: absolute;
+  inset: -60%;
+  opacity: 0.24;
+  background: repeating-linear-gradient(
+    105deg,
+    transparent 0 39px,
+    #bed5df65 40px,
+    transparent 41px 77px
+  );
+  mask-image: repeating-linear-gradient(
+    0deg,
+    #000 0 9px,
+    transparent 10px 61px
+  );
+  animation: scenery-rain 0.85s linear infinite;
+}
+.scenery-snow {
+  position: absolute;
+  inset: -50%;
+  background-image: radial-gradient(circle, #e2eeff8a 1px, transparent 2px);
+  background-size: 65px 83px;
+  animation: scenery-snow 16s linear infinite;
+}
+.scenery-flag {
+  position: absolute;
+  top: 12%;
+  width: 6%;
+  max-width: 74px;
+  height: 27%;
+  overflow: visible;
+  opacity: 0.8;
+}
+.flag-pole {
+  stroke: #9a8b6f;
+  stroke-width: 2;
+}
+.scenery-flag g {
+  transform-origin: 6px 18px;
+  animation: scenery-flag 2.8s ease-in-out infinite alternate;
+}
+.scenery-rampart {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  width: 75%;
+  height: 8%;
+  overflow: hidden;
+}
+.scenery-patrol {
+  position: absolute;
+  height: 100%;
+  width: 22px;
+  animation: scenery-patrol 42s linear infinite alternate;
+}
+.patrol-leg {
+  transform-origin: 14px 28px;
+  animation: scenery-walk 0.8s ease-in-out infinite alternate;
+}
+.leg-b {
+  animation-delay: -0.8s;
+}
+.scenery-lantern {
+  position: absolute;
+  width: 3px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffe2a1;
+  box-shadow:
+    0 0 10px 4px #eba44877,
+    0 0 35px 12px #df96352a;
+  animation: scenery-flame 2.3s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+.scenery-waterfall {
+  position: absolute;
+  left: 83%;
+  top: 23%;
+  width: 5%;
+  height: 53%;
+  opacity: 0.26;
+  border-radius: 25% 30% 45% 40%;
+  background: repeating-linear-gradient(
+    180deg,
+    #c1e5e725 0 9px,
+    #e4f3f399 15px,
+    #8dacba33 25px
+  );
+  background-size: 100% 50px;
+  mask-image: linear-gradient(0deg, transparent, #000 15% 90%, transparent);
+  animation: scenery-water 1.2s linear infinite;
+}
+.scenery-ripples {
+  position: absolute;
+  inset: 78% 0 0;
+  background: repeating-radial-gradient(
+    ellipse at 86% 0,
+    transparent 0 14px,
+    #a7ccd426 16px,
+    transparent 18px 31px
+  );
+  animation: scenery-ripple 5s ease-in-out infinite alternate;
+}
+.scenery-leaf {
+  position: absolute;
+  top: -12%;
+  left: var(--leaf-x);
+  width: 9px;
+  height: 4px;
+  border-radius: 85% 0;
+  background: #a28c4880;
+  animation: scenery-leaf var(--leaf-duration) linear var(--leaf-delay) infinite;
+}
+@keyframes scenery-drift {
+  to {
+    transform: translateX(16%);
+    opacity: 0.5;
+  }
+}
+@keyframes scenery-rain {
+  to {
+    transform: translate(-42px, 61px);
+  }
+}
+@keyframes scenery-snow {
+  to {
+    transform: translate(65px, 166px);
+  }
+}
+@keyframes scenery-flag {
+  from {
+    transform: skewY(-6deg) scaleX(0.86);
+  }
+  to {
+    transform: skewY(7deg) scaleX(1);
+  }
+}
+@keyframes scenery-patrol {
+  from {
+    left: 4%;
+  }
+  to {
+    left: 94%;
+  }
+}
+@keyframes scenery-walk {
+  from {
+    transform: rotate(-15deg);
+  }
+  to {
+    transform: rotate(15deg);
+  }
+}
+@keyframes scenery-flame {
+  0% {
+    transform: rotate(-10deg) scale(0.9);
+    opacity: 0.6;
+  }
+  45% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(14deg) scale(1.15);
+    opacity: 0.8;
+  }
+}
+@keyframes scenery-water {
+  to {
+    background-position: 0 50px;
+  }
+}
+@keyframes scenery-ripple {
+  to {
+    transform: scaleX(1.08);
+    opacity: 0.55;
+  }
+}
+@keyframes scenery-leaf {
+  0% {
+    transform: translate(0, 0) rotate(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100px, 650px) rotate(440deg);
+    opacity: 0;
+  }
+}
+.scenery-paused * {
+  animation-play-state: paused !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .living-backdrop * {
+    animation: none !important;
+  }
+  .scenery-rain,
+  .scenery-leaf,
+  .scenery-snow {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .scenery-leaf:nth-last-child(-n + 3) {
+    display: none;
+  }
+}
+.action-journal {
+  width: min(760px, 94vw);
+  max-height: 88dvh;
+  padding: 20px;
+  border: 1px solid #b19a68;
+  border-radius: 14px;
+  background: #101d22;
+  color: #ebe5d3;
+}
+.action-journal::backdrop {
+  background: #030b10bf;
+}
+.action-journal header,
+.journal-legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.action-journal h2 {
+  margin: 4px 0 12px;
+}
+.journal-legend {
+  color: #ccb987;
+  font-size: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #b19a6844;
+}
+.journal-feed {
+  max-height: 62dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 3px;
+}
+.journal-event {
+  max-width: 78%;
+  padding: 10px 14px;
+  border: 1px solid #537877;
+  border-radius: 14px;
+  background: #1b3337;
+  align-self: flex-start;
+}
+.journal-event p {
+  margin: 5px 0;
+  line-height: 1.5;
+}
+.journal-event small {
+  font-size: 10px;
+  color: #a4cdc5;
+}
+.journal-enemy {
+  align-self: flex-end;
+  text-align: right;
+  border-color: #915c56;
+  background: #35252b;
+}
+.journal-enemy small {
+  color: #e2a89e;
+}
+.journal-world {
+  align-self: center;
+  text-align: center;
+  background: #202729;
+  border-color: #626051;
+  max-width: 90%;
+}
+.deck-preview-card .unified-card-art {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  display: block;
+}
+.codex-visual .unified-card-art {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

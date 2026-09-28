@@ -2465,7 +2465,10 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           triggers: earnedCardTriggers(h, "strike", r),
         });
       if (info.triggers.includes("discover")) draw(r);
-      log(g, `${characters.find((x) => x.id === h.id)!.name}의 ${info.name}.`);
+      log(
+        g,
+        `[아군] ${characters.find((x) => x.id === h.id)!.name}의 ${info.name}.`,
+      );
       victory(g);
       if (r.mode === "battle") intent(r);
     } else if (a.type === "endTurn") {
@@ -2499,13 +2502,24 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           r.heroes.find((h) => h.id === e.target && h.hp > 0) ||
           r.heroes.find((h) => h.hp > 0);
         if (!target) break;
+        const beforeTargets = r.heroes.map((h) => ({
+          id: h.id,
+          hp: h.hp,
+          shield: h.shield,
+        }));
+        const beforeShield = e.shield;
+        const enemyName = monsters.find((m) => m.id === e.id)?.name || e.id;
         if (e.id === "M01") e.shield += 10;
-        else if (e.id === "M04") continue;
-        else if (e.id === "M03") {
+        else if (e.id === "M04") {
+          log(g, `[적] ${enemyName}: 반응을 기다린다.`);
+          continue;
+        } else if (e.id === "M03") {
           if (b.turn % 3 === 0)
             r.heroes.filter((h) => h.hp > 0).forEach((h) => hit(h, 12));
-        } else if (e.id === "M06" && b.turn % 2) continue;
-        else if (e.id === "M08") {
+        } else if (e.id === "M06" && b.turn % 2) {
+          log(g, `[적] ${enemyName}: 다음 공격을 준비한다.`);
+          continue;
+        } else if (e.id === "M08") {
           if (b.turn % 2) {
             if (e.tower > 0) e.shield += 16;
           } else
@@ -2523,6 +2537,21 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
             amount: damage,
           };
         }
+        const changes = beforeTargets.flatMap((before) => {
+          const after = r.heroes.find((h) => h.id === before.id)!;
+          const hpLost = Math.max(0, before.hp - after.hp);
+          const blocked = Math.max(0, before.shield - after.shield);
+          return hpLost || blocked
+            ? [
+                `${characters.find((c) => c.id === after.id)!.name} 체력 -${hpLost}${blocked ? ` · 보호막 흡수 ${blocked}` : ""}`,
+              ]
+            : [];
+        });
+        const shieldGain = e.shield - beforeShield;
+        log(
+          g,
+          `[적] ${enemyName}: ${changes.join(" / ") || (shieldGain > 0 ? `보호막 +${shieldGain}` : "공격 준비 또는 피해 차단")}.`,
+        );
       }
       for (const h of r.heroes.filter((hero) => hero.hp > 0)) {
         const damage =

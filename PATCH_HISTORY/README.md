@@ -59,3 +59,6 @@
 - `034-2d-clash-combat.md`: 2D 전투 컷인·타격 이펙트
 - `035-sd-horizontal-battle.md`: SD 32명·변경 요새 몬스터 8종·횡배열·실제 대상 연결선
 - `036-fan-hand-earned-keywords.md`: 부채꼴 손패·코스트 아이콘·전용 카드 그림·획득형 키워드
+- `037-mobile-encounter-story.md`: 모바일 사이드바·팩션 인물 유물 제안·14장 스토리·카드 드롭 안정화
+- `038-card-journal-living-backgrounds.md`: 덱·도감 카드 이미지 통일, 좌우 행동 기록 팝업, 움직이는 2D 배경
+

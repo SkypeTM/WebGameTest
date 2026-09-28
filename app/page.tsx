@@ -4,6 +4,13 @@ import BattleTargetLines from "./components/BattleTargetLines";
 import sdAssets from "../data/sd_asset_manifest.json";
 import "./battle-stage.css";
 import "./card-hand.css";
+import "./portable-ui.css";
+import "./living-scenes.css";
+import ActionJournal from "./components/ActionJournal";
+import LivingBackdrop from "./components/LivingBackdrop";
+import PortableMenu from "./components/PortableMenu";
+import storyChapters from "../data/story_chapters.json";
+import relicEncounters from "../data/relic_encounters.json";
 import characterCardArt from "../data/card_character_art.json";
 import {
   characters,
@@ -67,10 +74,16 @@ type CodexEntry = {
   description: string;
   asset?: string;
   actor?: string;
+  cardOwner?: string;
   cardKind?: Card["kind"];
   role?: string;
   unlockHint: string;
 };
+const cardArtwork = (owner: string, kind: Card["kind"]) =>
+  (
+    characterCardArt.find((a) => a.id === owner && a.kind === kind) ||
+    sdAssets.find((a) => a.id === owner)
+  )?.path;
 const char = (id: string) => characters.find((c) => c.id === id)!;
 const rankLabel = (ranks: readonly number[]) =>
   ranks.map((rank) => `${rank}열`).join("·");
@@ -399,6 +412,7 @@ export default function Page() {
     [selectedHero, setSelectedHero] = useState(""),
     [facilityTab, setFacilityTab] = useState("forge"),
     [selectedRegion, setSelectedRegion] = useState("fortress"),
+    [sceneryEnabled, setSceneryEnabled] = useState(true),
     [deckOpen, setDeckOpen] = useState(false),
     [codexOpen, setCodexOpen] = useState(false),
     [codexTab, setCodexTab] = useState<
@@ -740,7 +754,7 @@ export default function Page() {
     const targetKind = targetElement?.dataset.cardKind;
     setDragPoint(null);
     setPreviewTarget("");
-    dragStart.current.moved = false;
+    // Preserve moved through the synthetic click following pointerup.
     if (wasMoved && targetId && targetKind === cardInfo(card).target)
       void act({ type: "play", id: card.id, target: targetId });
   }
@@ -914,7 +928,8 @@ export default function Page() {
         id: `skill:${character.id}`,
         name: `${character.name} · ${professionFor(character.id).skill}`,
         description: professionFor(character.id).skillDescription,
-        actor: character.id,
+        cardOwner: character.id,
+        cardKind: "skill" as const,
         unlockHint: "캐릭터 해금",
       })),
     ],
@@ -926,6 +941,70 @@ export default function Page() {
       unlockHint: `${regionCatalog.find((region) => region.id === relic.region)?.name} · ${relic.faction} 우호도 ${relic.requiredReputation}`,
     })),
   };
+  const accountControls = (
+    <div className="account">
+      <div className="audio-controls" aria-label="오디오 설정">
+        <button
+          className="mini"
+          aria-pressed={musicEnabled}
+          onClick={() => setMusicEnabled((value) => !value)}
+          title="배경 음악 켜기/끄기"
+        >
+          {musicEnabled ? "♫" : "♩̸"}
+        </button>
+        <button
+          className="mini"
+          aria-pressed={soundEnabled}
+          onClick={() => setSoundEnabled((value) => !value)}
+          title="효과음 켜기/끄기"
+        >
+          {soundEnabled ? "◖))" : "◖×"}
+        </button>
+      </div>
+      <span className="save-dot" />
+      <span className="save-label">
+        {busy ? "저장 중" : offline ? "연결 중단" : `저장됨 · v${game.version}`}
+      </span>
+      <button
+        className="codex-button"
+        onClick={() => setCodexOpen(true)}
+        aria-label="통합 도감 열기"
+      >
+        ▤ <span>도감</span>
+      </button>
+      <ActionJournal entries={game.log} />
+      <button
+        className="mini"
+        aria-pressed={sceneryEnabled}
+        onClick={() => setSceneryEnabled((v) => !v)}
+      >
+        배경 움직임 {sceneryEnabled ? "켜짐" : "꺼짐"}
+      </button>
+      <span className="wallet">◈ {game.gold}</span>
+      <span className="username">{name}</span>
+      <button
+        className="mini"
+        onClick={async () => {
+          await fetch("/api/auth/sign-out", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: "{}",
+          });
+          setGame(null);
+          setControl(false);
+        }}
+      >
+        로그아웃
+      </button>
+    </div>
+  );
+  const encounterRelic =
+    run?.mode === "relic"
+      ? relicCatalog.find((r) => r.id === run.relicChoices[0])
+      : undefined;
+  const encounter = encounterRelic
+    ? relicEncounters[encounterRelic.faction as keyof typeof relicEncounters]
+    : undefined;
   return (
     <div className="shell">
       <header className="header">
@@ -935,59 +1014,48 @@ export default function Page() {
             침묵의 종 아래<small>BENEATH THE SILENT BELL</small>
           </span>
         </a>
-        <div className="account">
-          <div className="audio-controls" aria-label="오디오 설정">
-            <button
-              className="mini"
-              aria-pressed={musicEnabled}
-              onClick={() => setMusicEnabled((value) => !value)}
-              title="배경 음악 켜기/끄기"
-            >
-              {musicEnabled ? "♫" : "♩̸"}
+        {accountControls}
+        <PortableMenu>
+          <div className="mobile-shortcuts">
+            <button data-close-menu onClick={() => setDeckOpen(true)}>
+              ▱ 덱 미리보기
             </button>
-            <button
-              className="mini"
-              aria-pressed={soundEnabled}
-              onClick={() => setSoundEnabled((value) => !value)}
-              title="효과음 켜기/끄기"
-            >
-              {soundEnabled ? "◖))" : "◖×"}
+            <button data-close-menu onClick={() => setCodexOpen(true)}>
+              ▤ 도감
             </button>
+            {!run && (
+              <button
+                data-close-menu
+                onClick={() => {
+                  setTab("quests");
+                  setOverlayOpen(true);
+                }}
+              >
+                ✧ 이야기 의뢰
+              </button>
+            )}
           </div>
-          <span className="save-dot" />
-          <span className="save-label">
-            {busy
-              ? "저장 중"
-              : offline
-                ? "연결 중단"
-                : `저장됨 · v${game.version}`}
-          </span>
-          <button
-            className="codex-button"
-            onClick={() => setCodexOpen(true)}
-            aria-label="통합 도감 열기"
-          >
-            ▤ <span>도감</span>
-          </button>
-          <span className="wallet">◈ {game.gold}</span>
-          <span className="username">{name}</span>
-          <button
-            className="mini"
-            onClick={async () => {
-              await fetch("/api/auth/sign-out", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: "{}",
-              });
-              setGame(null);
-              setControl(false);
-            }}
-          >
-            로그아웃
-          </button>
-        </div>
+          <div className="mobile-party">
+            {(run?.heroes ?? game.roster)
+              .filter((h) => game.party.includes(h.id))
+              .map((h) => (
+                <div key={h.id}>
+                  <strong>{char(h.id).name}</strong> · HP {h.hp}/{h.maxHp}
+                  <progress
+                    value={h.hp}
+                    max={h.maxHp}
+                    aria-label={`${char(h.id).name} 체력`}
+                  />
+                </div>
+              ))}
+          </div>
+          {accountControls}
+        </PortableMenu>
       </header>
-      <div className="status" role="status">
+      <div
+        className={`status ${control && !error && !offline && !pending.current ? "status-healthy" : ""}`}
+        role="status"
+      >
         {!control ? (
           <>
             <span>다른 기기에서 플레이 중이거나 조작권 확인이 필요합니다.</span>
@@ -1063,6 +1131,7 @@ export default function Page() {
         {!run ? (
           <>
             <section className="town-map" aria-label="마지막 피난처 마을 지도">
+              <LivingBackdrop region="hamlet" enabled={sceneryEnabled} />
               <div className="town-skyline">
                 <span>THE LAST REFUGE</span>
                 <b>건물을 선택해 방문하세요</b>
@@ -1956,6 +2025,35 @@ export default function Page() {
                               <h3>{quest.title}</h3>
                               <small>{region.name}</small>
                               <p>{quest.story}</p>
+                              {(complete ||
+                                active ||
+                                next?.id === quest.id) && (
+                                <details className="quest-story">
+                                  <summary>
+                                    {complete
+                                      ? "귀환 기록 읽기"
+                                      : "의뢰의 사연 읽기"}
+                                  </summary>
+                                  <strong>
+                                    {storyChapters[quest.id].speaker}
+                                  </strong>
+                                  <p>{storyChapters[quest.id].briefing}</p>
+                                  <small>
+                                    완료 조건: 이 의뢰를 수락한 상태로{" "}
+                                    {region.name} 보스 처치 후 야영지에서 안전
+                                    귀환.
+                                  </small>
+                                  {complete && (
+                                    <>
+                                      <blockquote>
+                                        {storyChapters[quest.id].discovery}
+                                      </blockquote>
+                                      <p>{storyChapters[quest.id].debrief}</p>
+                                      <p>{storyChapters[quest.id].hook}</p>
+                                    </>
+                                  )}
+                                </details>
+                              )}
                               <span>
                                 보상 ◈ {quest.rewardGold} ·{" "}
                                 {quest.rewardMaterial}
@@ -2522,11 +2620,7 @@ export default function Page() {
                     </section>
                     <section className="panel">
                       <h2>탐사 기록</h2>
-                      {game.log.map((l, i) => (
-                        <p key={i} className="log-line">
-                          {l}
-                        </p>
-                      ))}
+                      <ActionJournal entries={game.log} />
                     </section>
                   </div>
                 )}
@@ -2590,6 +2684,10 @@ export default function Page() {
                     aria-hidden="true"
                   />
                   <div className="battle-vignette" aria-hidden="true" />
+                  <LivingBackdrop
+                    region={run.region}
+                    enabled={sceneryEnabled}
+                  />
                   {selected && !locked && (
                     <>
                       <BattleTargetLines
@@ -2721,7 +2819,7 @@ export default function Page() {
                             </small>
                           </span>
                           <BattleActor
-                            key={`crest-${h.id}-${fx?.nonce ?? "idle"}`}
+                            key={`crest-${h.id}`}
                             id={h.id}
                             motion={
                               h.hp === 0
@@ -2875,7 +2973,7 @@ export default function Page() {
                               </span>
                             )}
                             <BattleActor
-                              key={`crest-${e.id}-${fx?.nonce ?? "idle"}`}
+                              key={`crest-${e.id}`}
                               id={e.id}
                               large
                               motion={
@@ -2983,11 +3081,7 @@ export default function Page() {
                           run.heroes.find((hero) => hero.id === c.owner)!,
                           c.kind,
                         ),
-                        artwork =
-                          characterCardArt.find(
-                            (asset) =>
-                              asset.id === c.owner && asset.kind === c.kind,
-                          ) || sdAssets.find((asset) => asset.id === c.owner),
+                        artwork = cardArtwork(c.owner, c.kind),
                         disabled =
                           locked ||
                           battle.energy < info.cost ||
@@ -3011,6 +3105,8 @@ export default function Page() {
                           draggable={false}
                           disabled={disabled}
                           onPointerDown={(event) => {
+                            if (event.button !== 0 || !event.isPrimary) return;
+                            event.preventDefault(); // Do not scroll a raised card into focus.
                             event.currentTarget.setPointerCapture(
                               event.pointerId,
                             );
@@ -3030,9 +3126,10 @@ export default function Page() {
                             setDragPoint(null);
                             setPreviewTarget("");
                           }}
-                          onClick={() =>
-                            !dragStart.current.moved && setSelected(c)
-                          }
+                          onClick={(event) => {
+                            if (event.detail === 0 || !dragStart.current.moved)
+                              setSelected(c);
+                          }}
                         >
                           <span
                             className="card-cost"
@@ -3055,7 +3152,7 @@ export default function Page() {
                           <span className="card-character-art">
                             {artwork ? (
                               <img
-                                src={artwork.path}
+                                src={artwork}
                                 alt={
                                   c.kind === "skill"
                                     ? `${char(c.owner).name} 전용 스킬`
@@ -3166,6 +3263,10 @@ export default function Page() {
                       alt={`${environmentForRoom(run.room).label} 탐사 배경`}
                     />
                     <div className="stage-shade" aria-hidden="true" />
+                    <LivingBackdrop
+                      region={run.region}
+                      enabled={sceneryEnabled}
+                    />
                     <div className="stage-caption">
                       <span className="eyebrow">CURRENT AREA</span>
                       <strong>{roomFor(run).name}</strong>
@@ -3325,7 +3426,7 @@ export default function Page() {
                   <span className="eyebrow">EXPEDITION JOURNAL</span>
                   <h2>
                     {run.mode === "relic"
-                      ? "팩션의 탐사 유물"
+                      ? "유물을 선택하세요"
                       : run.mode === "reward"
                         ? "전투 승리"
                         : run.mode === "defeat"
@@ -3334,10 +3435,28 @@ export default function Page() {
                   </h2>
                   {run.mode === "relic" ? (
                     <>
-                      <p>
-                        스토리와 우호도 조건을 충족했습니다. 이번 탐사에서만
-                        작동할 유물 하나를 선택하세요.
-                      </p>
+                      {encounter && (
+                        <div className="relic-host">
+                          <img
+                            src={
+                              characterAssets.find(
+                                (a) =>
+                                  a.id === encounter.hero && a.state === "idle",
+                              )?.path
+                            }
+                            alt={char(encounter.hero).name}
+                          />
+                          <div>
+                            <small>{char(encounter.hero).faction}</small>
+                            <h3>{char(encounter.hero).name}</h3>
+                            <blockquote>“{encounter.line}”</blockquote>
+                            <p>
+                              유물 3개 중 하나를 선택하세요. 효과는 이번 탐사가
+                              끝나면 사라집니다.
+                            </p>
+                          </div>
+                        </div>
+                      )}
                       <div className="relic-choice-grid">
                         {run.relicChoices.map((id) => {
                           const relic = relicCatalog.find(
@@ -3674,10 +3793,9 @@ export default function Page() {
                 </section>
               </div>
             )}
-            <section className="battle-log">
-              <span className="eyebrow">최근 기록</span>
-              <p aria-live="polite">{game.log.at(-1)}</p>
-            </section>
+            <div className="battle-journal-shortcut">
+              <ActionJournal entries={game.log} />
+            </div>
           </>
         )}
         {deckOpen && (
@@ -3707,12 +3825,17 @@ export default function Page() {
                     className={`deck-preview-card card-${card.kind}`}
                     key={card.id}
                   >
-                    <span className="card-cost">{value.cost}</span>
-                    {card.kind === "skill" ? (
-                      <Crest id={card.owner} state="skill" />
-                    ) : (
-                      <CardArt kind={card.kind} role={value.role} />
-                    )}
+                    <span
+                      className="card-cost"
+                      aria-label={`행동력 ${value.cost} 소비`}
+                    >
+                      ◆{value.cost}
+                    </span>
+                    <img
+                      className="unified-card-art"
+                      src={cardArtwork(card.owner, card.kind)}
+                      alt={`${char(card.owner).name} · ${value.name}`}
+                    />
                     <small>
                       {char(card.owner).name} · {professionFor(card.owner).name}
                     </small>
@@ -3794,13 +3917,17 @@ export default function Page() {
                       key={entry.id}
                     >
                       <div className="codex-visual">
-                        {entry.actor ? (
-                          <Crest id={entry.actor} state="idle" contain />
-                        ) : entry.cardKind ? (
-                          <CardArt
-                            kind={entry.cardKind}
-                            role={entry.role || "카드"}
+                        {entry.cardKind ? (
+                          <img
+                            className="unified-card-art"
+                            src={cardArtwork(
+                              entry.cardOwner || "AR1",
+                              entry.cardKind,
+                            )}
+                            alt={unlocked ? entry.name : "잠긴 카드"}
                           />
+                        ) : entry.actor ? (
+                          <Crest id={entry.actor} state="idle" contain />
                         ) : entry.asset ? (
                           <img
                             src={entry.asset}

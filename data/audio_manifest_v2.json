@@ -1,0 +1,338 @@
+{
+  "version": 2,
+  "generator": "scripts/compose-soundtrack.mjs",
+  "license": "Original procedural compositions and synthesis; no external recordings",
+  "sampleRate": 32000,
+  "music": {
+    "prologue": {
+      "path": "/assets/audio/v2/music-prologue.wav",
+      "loop": true,
+      "seconds": 58.1818125,
+      "title": "두 번째 종은 울리지 않았다",
+      "bpm": 66,
+      "bars": 16
+    },
+    "origin": {
+      "path": "/assets/audio/v2/music-origin.wav",
+      "loop": true,
+      "seconds": 50.5263125,
+      "title": "여덟 갈래의 새벽",
+      "bpm": 76,
+      "bars": 16
+    },
+    "dialogue": {
+      "path": "/assets/audio/v2/music-dialogue.wav",
+      "loop": true,
+      "seconds": 53.33334375,
+      "title": "남겨진 목소리",
+      "bpm": 72,
+      "bars": 16
+    },
+    "hamlet": {
+      "path": "/assets/audio/v2/music-hamlet.wav",
+      "loop": true,
+      "seconds": 45.71428125,
+      "title": "귀환자의 등불",
+      "bpm": 84,
+      "bars": 16
+    },
+    "fortress": {
+      "path": "/assets/audio/v2/music-fortress.wav",
+      "loop": true,
+      "seconds": 43.636375,
+      "title": "사흘째 봉화",
+      "bpm": 88,
+      "bars": 16
+    },
+    "harbor": {
+      "path": "/assets/audio/v2/music-harbor.wav",
+      "loop": true,
+      "seconds": 48,
+      "title": "파도 아래의 계약",
+      "bpm": 80,
+      "bars": 16
+    },
+    "archive": {
+      "path": "/assets/audio/v2/music-archive.wav",
+      "loop": true,
+      "seconds": 53.33334375,
+      "title": "젖은 종이의 이름",
+      "bpm": 72,
+      "bars": 16
+    },
+    "chapel": {
+      "path": "/assets/audio/v2/music-chapel.wav",
+      "loop": true,
+      "seconds": 60,
+      "title": "대답 없는 성가",
+      "bpm": 64,
+      "bars": 16
+    },
+    "laboratory": {
+      "path": "/assets/audio/v2/music-laboratory.wav",
+      "loop": true,
+      "seconds": 40,
+      "title": "유리 속의 메아리",
+      "bpm": 96,
+      "bars": 16
+    },
+    "observatory": {
+      "path": "/assets/audio/v2/music-observatory.wav",
+      "loop": true,
+      "seconds": 54.85715625,
+      "title": "움직이는 북쪽 별",
+      "bpm": 70,
+      "bars": 16
+    },
+    "palace": {
+      "path": "/assets/audio/v2/music-palace.wav",
+      "loop": true,
+      "seconds": 46.82928125,
+      "title": "비어 있는 왕좌",
+      "bpm": 82,
+      "bars": 16
+    },
+    "battle": {
+      "path": "/assets/audio/v2/music-battle.wav",
+      "loop": true,
+      "seconds": 32,
+      "title": "끊어진 명령",
+      "bpm": 120,
+      "bars": 16
+    },
+    "boss": {
+      "path": "/assets/audio/v2/music-boss.wav",
+      "loop": true,
+      "seconds": 28.23528125,
+      "title": "종탑의 마지막 심장",
+      "bpm": 136,
+      "bars": 16
+    },
+    "merchant": {
+      "path": "/assets/audio/v2/music-merchant.wav",
+      "loop": true,
+      "seconds": 38.4,
+      "title": "황동 저울",
+      "bpm": 100,
+      "bars": 16
+    },
+    "rest": {
+      "path": "/assets/audio/v2/music-rest.wav",
+      "loop": true,
+      "seconds": 56.47059375,
+      "title": "재 속에 남은 불",
+      "bpm": 68,
+      "bars": 16
+    },
+    "relic": {
+      "path": "/assets/audio/v2/music-relic.wav",
+      "loop": true,
+      "seconds": 49.23078125,
+      "title": "손에서 손으로",
+      "bpm": 78,
+      "bars": 16
+    },
+    "ending": {
+      "path": "/assets/audio/v2/music-ending.wav",
+      "loop": true,
+      "seconds": 50.5263125,
+      "title": "아직 돌아올 자리",
+      "bpm": 76,
+      "bars": 16
+    },
+    "defeat": {
+      "path": "/assets/audio/v2/music-defeat.wav",
+      "loop": true,
+      "seconds": 64,
+      "title": "꺼지지 않은 기억",
+      "bpm": 60,
+      "bars": 16
+    },
+    "secret": {
+      "path": "/assets/audio/v2/music-secret.wav",
+      "loop": true,
+      "seconds": 51.89190625,
+      "title": "잠긴 증언",
+      "bpm": 74,
+      "bars": 16
+    },
+    "refuge": {
+      "path": "/assets/audio/v2/music-refuge.wav",
+      "loop": true,
+      "seconds": 46.82928125,
+      "title": "비워 둔 자리",
+      "bpm": 82,
+      "bars": 16
+    }
+  },
+  "sfx": {
+    "ui-click": {
+      "path": "/assets/audio/v2/sfx-ui-click.wav",
+      "loop": false,
+      "seconds": 0.49,
+      "title": "ui-click"
+    },
+    "card-select": {
+      "path": "/assets/audio/v2/sfx-card-select.wav",
+      "loop": false,
+      "seconds": 0.65,
+      "title": "card-select"
+    },
+    "card-play": {
+      "path": "/assets/audio/v2/sfx-card-play.wav",
+      "loop": false,
+      "seconds": 0.74,
+      "title": "card-play"
+    },
+    "hit": {
+      "path": "/assets/audio/v2/sfx-hit.wav",
+      "loop": false,
+      "seconds": 0.7,
+      "title": "hit"
+    },
+    "skill": {
+      "path": "/assets/audio/v2/sfx-skill.wav",
+      "loop": false,
+      "seconds": 1.36,
+      "title": "skill"
+    },
+    "route": {
+      "path": "/assets/audio/v2/sfx-route.wav",
+      "loop": false,
+      "seconds": 0.8,
+      "title": "route"
+    },
+    "reward": {
+      "path": "/assets/audio/v2/sfx-reward.wav",
+      "loop": false,
+      "seconds": 1.6,
+      "title": "reward"
+    },
+    "victory": {
+      "path": "/assets/audio/v2/sfx-victory.wav",
+      "loop": false,
+      "seconds": 2.3,
+      "title": "victory"
+    },
+    "defeat": {
+      "path": "/assets/audio/v2/sfx-defeat.wav",
+      "loop": false,
+      "seconds": 2.25,
+      "title": "defeat"
+    },
+    "memory-choice": {
+      "path": "/assets/audio/v2/sfx-memory-choice.wav",
+      "loop": false,
+      "seconds": 1.8,
+      "title": "memory-choice"
+    },
+    "origin-confirm": {
+      "path": "/assets/audio/v2/sfx-origin-confirm.wav",
+      "loop": false,
+      "seconds": 2.5,
+      "title": "origin-confirm"
+    },
+    "dialogue-next": {
+      "path": "/assets/audio/v2/sfx-dialogue-next.wav",
+      "loop": false,
+      "seconds": 0.5,
+      "title": "dialogue-next"
+    },
+    "quest-accept": {
+      "path": "/assets/audio/v2/sfx-quest-accept.wav",
+      "loop": false,
+      "seconds": 1.1,
+      "title": "quest-accept"
+    },
+    "quest-complete": {
+      "path": "/assets/audio/v2/sfx-quest-complete.wav",
+      "loop": false,
+      "seconds": 1.9,
+      "title": "quest-complete"
+    },
+    "heal": {
+      "path": "/assets/audio/v2/sfx-heal.wav",
+      "loop": false,
+      "seconds": 1.56,
+      "title": "heal"
+    },
+    "guard": {
+      "path": "/assets/audio/v2/sfx-guard.wav",
+      "loop": false,
+      "seconds": 0.93,
+      "title": "guard"
+    },
+    "craft": {
+      "path": "/assets/audio/v2/sfx-craft.wav",
+      "loop": false,
+      "seconds": 1.36,
+      "title": "craft"
+    },
+    "purchase": {
+      "path": "/assets/audio/v2/sfx-purchase.wav",
+      "loop": false,
+      "seconds": 0.88,
+      "title": "purchase"
+    },
+    "recruit": {
+      "path": "/assets/audio/v2/sfx-recruit.wav",
+      "loop": false,
+      "seconds": 1.15,
+      "title": "recruit"
+    },
+    "relic-select": {
+      "path": "/assets/audio/v2/sfx-relic-select.wav",
+      "loop": false,
+      "seconds": 2.3,
+      "title": "relic-select"
+    },
+    "camp-return": {
+      "path": "/assets/audio/v2/sfx-camp-return.wav",
+      "loop": false,
+      "seconds": 1.5,
+      "title": "camp-return"
+    },
+    "boss-enter": {
+      "path": "/assets/audio/v2/sfx-boss-enter.wav",
+      "loop": false,
+      "seconds": 2.4,
+      "title": "boss-enter"
+    },
+    "stress": {
+      "path": "/assets/audio/v2/sfx-stress.wav",
+      "loop": false,
+      "seconds": 1.1,
+      "title": "stress"
+    },
+    "poison": {
+      "path": "/assets/audio/v2/sfx-poison.wav",
+      "loop": false,
+      "seconds": 0.8,
+      "title": "poison"
+    },
+    "burn": {
+      "path": "/assets/audio/v2/sfx-burn.wav",
+      "loop": false,
+      "seconds": 1,
+      "title": "burn"
+    },
+    "frost": {
+      "path": "/assets/audio/v2/sfx-frost.wav",
+      "loop": false,
+      "seconds": 1.25,
+      "title": "frost"
+    },
+    "shock": {
+      "path": "/assets/audio/v2/sfx-shock.wav",
+      "loop": false,
+      "seconds": 0.56,
+      "title": "shock"
+    },
+    "rebirth": {
+      "path": "/assets/audio/v2/sfx-rebirth.wav",
+      "loop": false,
+      "seconds": 2.7,
+      "title": "rebirth"
+    }
+  }
+}

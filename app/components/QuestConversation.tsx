@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import LivingBackdrop from "./LivingBackdrop";
 import conversations from "../../data/story_dialogues.json";
 import npcs from "../../data/story_npcs.json";
 import { characters, storyQuests } from "../../lib/game";
@@ -16,12 +17,14 @@ export default function QuestConversation({
   onClose,
   onAccept,
   locked,
+  onAdvance,
 }: {
   request: ConversationRequest;
   playerId: string;
   onClose: () => void;
   onAccept: () => void;
   locked: boolean;
+  onAdvance?: () => void;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [index, setIndex] = useState(0);
@@ -75,7 +78,10 @@ export default function QuestConversation({
         </div>
         <button onClick={onClose}>닫기 ×</button>
       </header>
-      <div className="conversation-stage">
+      <div className="conversation-stage live-scene-panel">
+        <LivingBackdrop
+          region={storyQuests.find((q) => q.id === request.quest)?.region}
+        />
         <figure
           className={`conversation-person player ${playerSpeaking ? "speaking" : ""}`}
         >
@@ -119,14 +125,26 @@ export default function QuestConversation({
         <p>{lines[index]}</p>
       </section>
       <footer>
-        <button disabled={index === 0} onClick={() => setIndex((i) => i - 1)}>
+        <button
+          disabled={index === 0}
+          onClick={() => {
+            onAdvance?.();
+            setIndex((i) => i - 1);
+          }}
+        >
           ← 이전
         </button>
         <small>
           {index + 1} / {lines.length}
         </small>
         {!final ? (
-          <button className="primary" onClick={() => setIndex((i) => i + 1)}>
+          <button
+            className="primary"
+            onClick={() => {
+              onAdvance?.();
+              setIndex((i) => i + 1);
+            }}
+          >
             다음 →
           </button>
         ) : request.accept ? (

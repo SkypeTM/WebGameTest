@@ -31,7 +31,7 @@ for (const job of jobs) {
     height,
     generator: "built-in-imagegen",
   });
-  const match = job.key.match(/^card-(\w+)-(strike|guard|heavy)$/);
+  const match = job.key.match(/^card-(\w+)-(strike|guard|heavy|skill)$/);
   if (match) {
     const entry = { id: match[1], kind: match[2], path: job.path };
     const at = cards.findIndex(

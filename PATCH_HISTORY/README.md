@@ -64,3 +64,5 @@
 
 - `039-character-card-art-story-dialogue.md`: 캐릭터 동작 카드·고유 성물·팩션 NPC·112줄 대화·상반신 표정 원화 (생성 한도로 일부 대기)
 - `040-faction-prologue.md`: 서버 저장 프롤로그·8팩션 시작 선택·Q00·탐사 대표 고정
+- `041-progression-and-soundtrack.md`: 지역별 진행·신뢰도 동료·프롤로그 및 게임 사운드트랙
+- `042-cutout-combat-wallpaper.md`: 탐사 SD 누끼·버프 아이콘·보호막·선택 해제·지역 라이브 배경

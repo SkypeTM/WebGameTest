@@ -1,3 +1,14 @@
+import {
+  regionNeighbors,
+  regionFactions,
+  testimonyIds,
+  policies,
+  endingEligible,
+  recruitment,
+  originBenefits,
+  partyBondKey,
+  type Policy,
+} from "./progression";
 import { originRegions, scorePrologue, type PrologueProfile } from "./prologue";
 import prologueScoring from "../data/prologue_scoring_v1.json";
 import { storyArt } from "./story-art";
@@ -484,24 +495,38 @@ export function unlockedRegions(completed: string[]): RegionId[] {
     !["Q02", "Q06", "Q08", "Q12"].every((id) => completed.includes(id))
   )
     unlocked.delete("palace");
+  if (origin) {
+    for (const q of storyQuests)
+      if (completed.includes(q.id))
+        for (const neighbor of regionNeighbors[q.region] || [])
+          unlocked.add(neighbor as RegionId);
+  }
   return [...unlocked];
 }
+export function availableStoryQuests(completed: string[]) {
+  const open = unlockedRegions(completed);
+  return storyQuests.filter(
+    (q, index) =>
+      !completed.includes(q.id) &&
+      open.includes(q.region as RegionId) &&
+      (index % 2 === 0 || completed.includes(storyQuests[index - 1].id)),
+  );
+}
 export function nextStoryQuest(completed: string[]) {
-  const origin = completed.find((id) => id.startsWith("Q00-"))?.split("-")[1];
-  const start = completed.includes("Q00-EF-harbor")
-    ? "harbor"
-    : originRegions[origin || "AR"];
-  const order = [
-    ...storyQuests.filter((q) => q.region === start),
-    ...storyQuests.filter((q) => q.region !== start),
-  ];
-  return order.find((q) => !completed.includes(q.id));
+  return availableStoryQuests(completed)[0];
 }
 export function availableRecruitIds(completed: string[]) {
   const ids = new Set<string>();
   for (const quest of storyQuests)
     if (completed.includes(quest.id))
       quest.unlockHeroes.forEach((id) => ids.add(id));
+  if (completed.some((q) => q.startsWith("Q00-"))) {
+    for (const region of unlockedRegions(completed))
+      for (const faction of regionFactions[region] || [])
+        characters
+          .filter((c) => c.id.startsWith(faction))
+          .forEach((c) => ids.add(c.id));
+  }
   return [...ids];
 }
 export const professionCatalog = {
@@ -965,6 +990,11 @@ export type Run = {
   >;
 };
 export type Game = {
+  characterTrust?: Record<string, number>;
+  guestIds?: string[];
+  echoMemories?: string[];
+  partyBonds?: Record<string, number>;
+  testimonyChoices?: Record<string, Policy>;
   originFaction?: string;
   prologue?: {
     stage: "questions" | "origin" | "q00" | "complete";
@@ -1438,6 +1468,11 @@ export function heroStats(h: Hero) {
 }
 export function initialGame(): Game {
   return {
+    characterTrust: {},
+    guestIds: [],
+    echoMemories: [],
+    partyBonds: {},
+    testimonyChoices: {},
     prologue: { stage: "questions", profile: scorePrologue({}, 0) },
     schema: 1,
     version: 0,
@@ -1494,6 +1529,11 @@ export function normalizeGame(previous: Game): Game {
     ...defaults,
     ...saved,
     prologue: saved.prologue,
+    characterTrust: saved.characterTrust || {},
+    guestIds: saved.guestIds || [],
+    echoMemories: saved.echoMemories || [],
+    partyBonds: saved.partyBonds || {},
+    testimonyChoices: saved.testimonyChoices || {},
     party: saved.party || defaults.party,
     roster: (saved.roster || defaults.roster).map(normalizeHero),
     materials: saved.materials || {},
@@ -1782,20 +1822,29 @@ function intent(r: Run) {
                     : "문짝 포격 12"
                   : e.id === "M07"
                     ? "연속 행동에 반격 5"
-                    : b.turn % 2
-                      ? "성탑 방어 +16"
-                      : "왕검 전체 공격 " + (e.tower > 0 ? "18" : "9");
+                    : e.id === "M08"
+                      ? b.turn % 2
+                        ? "성탑 방어 +16"
+                        : "왕검 전체 공격 " + (e.tower > 0 ? "18" : "9")
+                      : `단일 공격 ${balance.enemyAttack[(monsters.find((m) => m.id === e.id)?.rank || "일반") as keyof typeof balance.enemyAttack]}`;
   }
 }
 function enterBattle(g: Game, r: Run, ids: string[]) {
   const modifier = relations(r.heroes.map((h) => h.id));
+  const benefit = originBenefits[g.originFaction || ""] || {};
+  const bonded = (g.partyBonds?.[partyBondKey(g.party)] || 0) >= 2;
   const effect =
     relicCatalog.find((relic) => relic.id === r.relic)?.effect || {};
   unlockCodex(g, "monsters", ...ids);
   r.heroes.forEach((h) => {
-    h.shield = modifier.shield + (effect.shield || 0);
+    h.shield =
+      modifier.shield +
+      (effect.shield || 0) +
+      (benefit.shield || 0) +
+      (bonded ? 3 : 0);
+    if (h.hp > 0) h.hp = Math.min(h.maxHp, h.hp + (benefit.heal || 0));
     h.counter = 0;
-    h.mana = heroStats(h).maxMana;
+    h.mana = heroStats(h).maxMana + (benefit.mana || 0);
   });
   const deck = r.heroes
     .filter((h) => h.hp > 0)
@@ -1844,6 +1893,8 @@ function enterBattle(g: Game, r: Run, ids: string[]) {
       };
     }),
   };
+  if (benefit.mark && r.battle.enemies[0])
+    r.battle.enemies[0].mark += benefit.mark;
   r.mode = "battle";
   draw(r);
   intent(r);
@@ -1919,7 +1970,13 @@ function victory(g: Game) {
           (hero) =>
             (hero.hp = Math.min(hero.maxHp, hero.hp + effect.recovery!)),
         );
-    r.heroes.forEach((h) => (h.stress += relations(g.party).stress));
+    const bondKey = partyBondKey(g.party);
+    r.heroes.forEach(
+      (h) =>
+        (h.stress +=
+          (g.partyBonds?.[bondKey] || 0) >= 2 ? 0 : relations(g.party).stress),
+    );
+    r.gold += originBenefits[g.originFaction || ""]?.gold || 0;
     if (roomFor(r).kind === "boss" || r.room.endsWith("-boss"))
       r.cleared = true;
     log(g, "전투 승리. 전리품을 챙기면 다음 경로가 열린다.");
@@ -2002,20 +2059,66 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     );
     g.party = a.ids;
     log(g, "파티 편성을 저장했다.");
+  } else if (a.type === "testimony") {
+    check(
+      !r &&
+        testimonyIds.includes(a.id || "") &&
+        g.completedQuests.includes(a.id!),
+      "확보한 증언만 기록할 수 있습니다.",
+    );
+    check(
+      Object.hasOwn(policies, a.choice || "") && !g.ending,
+      "결말 전에 기록 방침을 선택하세요.",
+    );
+    g.testimonyChoices ||= {};
+    g.testimonyChoices[a.id!] = a.choice as Policy;
+    log(g, `증언 기록: ${a.id} · ${policies[a.choice as Policy]}`);
+  } else if (a.type === "inviteGuest") {
+    check(
+      !r &&
+        characters.some((c) => c.id === a.id) &&
+        availableRecruitIds(g.completedQuests).includes(a.id!),
+      "만난 인물만 거점에서 초대할 수 있습니다.",
+    );
+    check(
+      !g.roster.some((h) => h.id === a.id) &&
+        recruitment(g, a.id!).mode === "guest",
+      "객원 합류 조건이 맞지 않습니다.",
+    );
+    check(
+      (g.guestIds || []).length < 2,
+      "객원은 최대 2명입니다. 먼저 신뢰를 쌓고 정식 영입하세요.",
+    );
+    g.guestIds ||= [];
+    g.guestIds.push(a.id!);
+    g.roster.push(hero(a.id!));
+    g.characterTrust ||= {};
+    g.characterTrust[a.id!] = Math.max(5, g.characterTrust[a.id!] || 0);
+    unlockCodex(g, "characters", a.id!);
+    unlockCodex(g, "cards", `skill:${a.id}`);
+    log(g, "객원 동료가 합류했다. 함께 탐사하며 신뢰를 쌓자.");
   } else if (a.type === "recruit") {
     check(!r, "거점에서 영입하세요.");
     check(
       characters.some((h) => h.id === a.id),
       "존재하지 않는 인물입니다.",
     );
-    check(!g.roster.some((h) => h.id === a.id), "이미 영입했습니다.");
+    check(
+      !g.roster.some((h) => h.id === a.id) || g.guestIds?.includes(a.id!),
+      "이미 영입했습니다.",
+    );
+    check(
+      recruitment(g, a.id!).mode === "recruit",
+      recruitment(g, a.id!).reason,
+    );
     check(
       availableRecruitIds(g.completedQuests).includes(a.id!),
       "스토리 퀘스트를 진행해야 만날 수 있는 동료입니다.",
     );
     check(g.gold >= balance.recruitCost, "은화가 부족합니다.");
     g.gold -= balance.recruitCost;
-    g.roster.push(hero(a.id!));
+    if (!g.roster.some((h) => h.id === a.id)) g.roster.push(hero(a.id!));
+    g.guestIds = g.guestIds?.filter((id) => id !== a.id);
     unlockCodex(g, "characters", a.id!);
     unlockCodex(g, "cards", `skill:${a.id}`);
     log(g, `${characters.find((h) => h.id === a.id)!.name} 영입 완료.`);
@@ -2169,6 +2272,10 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       ["kingdom", "republic", "union", "liberation"].includes(a.choice || ""),
       "알 수 없는 엔딩입니다.",
     );
+    check(
+      endingEligible(g, a.choice!),
+      "네 증언을 확보하고 이 결말에 해당하는 기록 방침을 남기세요.",
+    );
     g.ending = a.choice!;
     g.endingHistory.push(g.ending);
     achievement(g, `ending-${g.ending}`, `${g.ending} 엔딩`);
@@ -2189,6 +2296,15 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     g.materials = Object.fromEntries(g.legacy.map((item) => [item, 1]));
     g.reputation = Object.fromEntries(factionCodes.map((f) => [f, 0]));
     g.facilities = { forge: 0, training: 0, infirmary: 0, canteen: 0 };
+    g.echoMemories = Object.entries(g.characterTrust || {})
+      .filter(([, v]) => v >= 30)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([id]) => id);
+    g.characterTrust = Object.fromEntries(g.echoMemories.map((id) => [id, 10]));
+    g.guestIds = [];
+    g.partyBonds = {};
+    g.testimonyChoices = {};
     g.party = ["AR1", "AR2", "AR3", "AR4"];
     g.roster = g.party.map(hero);
     g.run = null;
@@ -2217,10 +2333,16 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       g.activeQuest = null;
       log(g, "진행 중인 퀘스트를 보류했다.");
     } else {
+      check(
+        !g.activeQuest || g.activeQuest === a.id,
+        "진행 중인 의뢰를 먼저 완료하거나 보류하세요.",
+      );
       const quest = storyQuests.find((item) => item.id === a.id);
       check(quest, "알 수 없는 퀘스트입니다.");
-      const next = nextStoryQuest(g.completedQuests);
-      check(next?.id === quest.id, "앞선 이야기부터 완료해야 합니다.");
+      check(
+        availableStoryQuests(g.completedQuests).some((q) => q.id === quest.id),
+        "해당 지역의 앞선 조사와 해금 조건을 먼저 완료하세요.",
+      );
       check(
         unlockedRegions(g.completedQuests).includes(quest.region as RegionId),
         "아직 갈 수 없는 지역입니다.",
@@ -2268,6 +2390,25 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       cleared: false,
       combatFx: null,
     };
+    if (g.originFaction === "BK" && region === "archive")
+      g.run.route!.entrance.name = "비공개 회랑 · 침수 서고 외곽";
+    if (g.originFaction === "EF" && ["fortress", "harbor"].includes(region))
+      g.run.route!.entrance.name = "잿불 피난로 · 귀환자 집결지";
+    if (
+      (g.originFaction === "BK" && region === "archive") ||
+      (g.originFaction === "EF" && ["fortress", "harbor"].includes(region))
+    ) {
+      const route = g.run.route!;
+      route["origin-approach"] = {
+        name:
+          g.originFaction === "BK" ? "잠긴 증언의 회랑" : "잿불 피난민 집결지",
+        kind: "faction",
+        next: [...route.entrance.next],
+        layer: 0.45,
+        x: 50,
+      };
+      route.entrance.next = ["origin-approach"];
+    }
     log(g, `${regionCatalog[regionIndex].name}에 진입했다.`);
   } else {
     check(r, "진행 중인 탐사가 없습니다.");
@@ -2379,11 +2520,22 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
           "제안을 선택하세요.",
         );
         if (a.choice === "accept") {
-          g.reputation.AR = Math.min(100, g.reputation.AR + 5);
+          const faction =
+            r.room === "origin-approach"
+              ? g.originFaction!
+              : regionFactions[r.region || "fortress"]?.[0] || "AR";
+          g.reputation[faction] = Math.min(
+            100,
+            (g.reputation[faction] || 0) + 5,
+          );
           r.heroes
             .filter((h) => h.hp > 0)
             .forEach((h) => (h.hp = Math.min(h.maxHp, h.hp + 15)));
-          log(g, "왕국 정찰대의 보급을 받았다. 우호도 +5, 체력 +15.");
+          if (faction === "BK" && r.route?.["l2-merchant"]) {
+            roomFor(r).next = unique([...roomFor(r).next, "l2-merchant"]);
+            log(g, "증인이 암상인으로 이어지는 비공개 회랑을 열었다.");
+          }
+          log(g, `${faction} 연락관의 보급을 받았다. 우호도 +5, 체력 +15.`);
         }
       }
       r.mode = "map";
@@ -2631,7 +2783,13 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
               .filter((h) => h.hp > 0)
               .forEach((h) => hit(h, e.tower > 0 ? 18 : 9));
         } else {
-          const damage = e.id === "M06" || e.id === "M07" ? 12 : 6;
+          const damage =
+            e.id === "M06" || e.id === "M07"
+              ? 12
+              : balance.enemyAttack[
+                  (monsters.find((m) => m.id === e.id)?.rank ||
+                    "일반") as keyof typeof balance.enemyAttack
+                ];
           hit(target, damage);
           r.combatFx = {
             nonce: g.version + 1,
@@ -2795,8 +2953,38 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
         log(g, `퀘스트 완료: ${quest.title} · 은화 ${quest.rewardGold}`);
         if (quest.id === "Q14") g.endingUnlocked = true;
       }
+      if (!failed && r.visited.some((id) => Boolean(roomFor(r, id).enemies))) {
+        g.characterTrust ||= {};
+        g.partyBonds ||= {};
+        for (const h of r.heroes)
+          g.characterTrust[h.id] = Math.min(
+            100,
+            (g.characterTrust[h.id] || 0) + (r.cleared ? 15 : 5),
+          );
+        for (const faction of regionFactions[r.region || "fortress"] || []) {
+          g.reputation[faction] = Math.min(
+            100,
+            (g.reputation[faction] || 0) + (r.cleared ? 10 : 3),
+          );
+          for (const c of characters.filter((c) => c.id.startsWith(faction)))
+            g.characterTrust[c.id] = Math.min(
+              100,
+              (g.characterTrust[c.id] || 0) + (r.cleared ? 10 : 3),
+            );
+        }
+        const bond = partyBondKey(g.party);
+        if (bond.includes("-") && r.cleared) {
+          g.partyBonds[bond] = (g.partyBonds[bond] || 0) + 1;
+          log(
+            g,
+            g.partyBonds[bond] >= 2
+              ? "서로의 방식을 이해했다. 이 팩션 조합의 전투 시작 보호막 +3, 승리 스트레스 갈등 해소."
+              : "혼성 탐사대가 함께 귀환했다. 한 번 더 돌파하면 협력 전술을 익힌다.",
+          );
+        }
+      }
       g.runs++;
-      if (r.room === "final-exit") g.endingUnlocked = true;
+      if (!g.originFaction && r.room === "final-exit") g.endingUnlocked = true;
       if (g.runs === 1) achievement(g, "first-return", "첫 귀환");
       g.summary = failed
         ? "탐사 실패 · 부상을 입고 귀환했습니다. 전리품은 잃었지만 경험치는 유지됩니다."

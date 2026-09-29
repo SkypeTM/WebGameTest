@@ -816,6 +816,238 @@
     "generator": "built-in-imagegen"
   },
   {
+    "key": "card-WS4-strike",
+    "path": "/assets/story-v1/card-WS4-strike.webp",
+    "source": "art-source/story-v1/card-WS4-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS4-guard",
+    "path": "/assets/story-v1/card-WS4-guard.webp",
+    "source": "art-source/story-v1/card-WS4-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS4-heavy",
+    "path": "/assets/story-v1/card-WS4-heavy.webp",
+    "source": "art-source/story-v1/card-WS4-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS1-strike",
+    "path": "/assets/story-v1/card-DS1-strike.webp",
+    "source": "art-source/story-v1/card-DS1-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS1-guard",
+    "path": "/assets/story-v1/card-DS1-guard.webp",
+    "source": "art-source/story-v1/card-DS1-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS1-heavy",
+    "path": "/assets/story-v1/card-DS1-heavy.webp",
+    "source": "art-source/story-v1/card-DS1-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS2-strike",
+    "path": "/assets/story-v1/card-DS2-strike.webp",
+    "source": "art-source/story-v1/card-DS2-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS2-guard",
+    "path": "/assets/story-v1/card-DS2-guard.webp",
+    "source": "art-source/story-v1/card-DS2-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS2-heavy",
+    "path": "/assets/story-v1/card-DS2-heavy.webp",
+    "source": "art-source/story-v1/card-DS2-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS3-strike",
+    "path": "/assets/story-v1/card-DS3-strike.webp",
+    "source": "art-source/story-v1/card-DS3-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS3-guard",
+    "path": "/assets/story-v1/card-DS3-guard.webp",
+    "source": "art-source/story-v1/card-DS3-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS3-heavy",
+    "path": "/assets/story-v1/card-DS3-heavy.webp",
+    "source": "art-source/story-v1/card-DS3-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS4-strike",
+    "path": "/assets/story-v1/card-DS4-strike.webp",
+    "source": "art-source/story-v1/card-DS4-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS4-guard",
+    "path": "/assets/story-v1/card-DS4-guard.webp",
+    "source": "art-source/story-v1/card-DS4-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS4-heavy",
+    "path": "/assets/story-v1/card-DS4-heavy.webp",
+    "source": "art-source/story-v1/card-DS4-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO1-strike",
+    "path": "/assets/story-v1/card-GO1-strike.webp",
+    "source": "art-source/story-v1/card-GO1-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO1-guard",
+    "path": "/assets/story-v1/card-GO1-guard.webp",
+    "source": "art-source/story-v1/card-GO1-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO1-heavy",
+    "path": "/assets/story-v1/card-GO1-heavy.webp",
+    "source": "art-source/story-v1/card-GO1-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO2-strike",
+    "path": "/assets/story-v1/card-GO2-strike.webp",
+    "source": "art-source/story-v1/card-GO2-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO2-guard",
+    "path": "/assets/story-v1/card-GO2-guard.webp",
+    "source": "art-source/story-v1/card-GO2-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO2-heavy",
+    "path": "/assets/story-v1/card-GO2-heavy.webp",
+    "source": "art-source/story-v1/card-GO2-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO3-strike",
+    "path": "/assets/story-v1/card-GO3-strike.webp",
+    "source": "art-source/story-v1/card-GO3-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO3-guard",
+    "path": "/assets/story-v1/card-GO3-guard.webp",
+    "source": "art-source/story-v1/card-GO3-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO3-heavy",
+    "path": "/assets/story-v1/card-GO3-heavy.webp",
+    "source": "art-source/story-v1/card-GO3-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO4-strike",
+    "path": "/assets/story-v1/card-GO4-strike.webp",
+    "source": "art-source/story-v1/card-GO4-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO4-guard",
+    "path": "/assets/story-v1/card-GO4-guard.webp",
+    "source": "art-source/story-v1/card-GO4-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO4-heavy",
+    "path": "/assets/story-v1/card-GO4-heavy.webp",
+    "source": "art-source/story-v1/card-GO4-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF1-strike",
+    "path": "/assets/story-v1/card-EF1-strike.webp",
+    "source": "art-source/story-v1/card-EF1-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF1-guard",
+    "path": "/assets/story-v1/card-EF1-guard.webp",
+    "source": "art-source/story-v1/card-EF1-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
     "key": "hero-AR1-neutral",
     "path": "/assets/story-v1/hero-AR1-neutral.webp",
     "source": "art-source/story-v1/hero-AR1-neutral.png",

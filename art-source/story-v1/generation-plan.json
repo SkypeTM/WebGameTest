@@ -1657,5 +1657,264 @@
     "transparent": true,
     "source": "art-source/story-v1/hero-EF4-resolve.png",
     "path": "/assets/story-v1/hero-EF4-resolve.webp"
+  },
+  {
+    "key": "card-VR1-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 리베아: 구리 기계궁과 청록 재킷, 긴 흑발; 높은 광대, 좁고 긴 눈, 단단한 턱; 깊은 갈색; 중앙 가르마의 긴 검은 머리; palette 청록·구리·크림. Signature ability: 단발 집중 사격. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-VR1-skill.png",
+    "path": "/assets/story-v1/card-VR1-skill.webp"
+  },
+  {
+    "key": "card-VR2-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 노에라: 접이식 도구 가방과 크림 코트, 은색 곱슬머리; 짧은 사각 얼굴, 큰 둥근 눈, 작은 코; 밝은 복숭아색; 짧은 은색 곱슬머리, 큰 사각 안경; palette 청록·구리·크림. Signature ability: 카드 회수와 장비 보조. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-VR2-skill.png",
+    "path": "/assets/story-v1/card-VR2-skill.webp"
+  },
+  {
+    "key": "card-VR3-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 테사: 작업복과 접이식 방벽, 갈색 올림머리; 넓은 둥근 턱, 두꺼운 눈썹, 넓은 코; 따뜻한 짙은 피부; 갈색 머리를 높게 묶음, 눈가의 연령선; palette 청록·구리·크림. Signature ability: 파티 방어. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-VR3-skill.png",
+    "path": "/assets/story-v1/card-VR3-skill.webp"
+  },
+  {
+    "key": "card-VR4-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 카엘: 지도 두루마리와 지휘검, 청록 견장; 긴 얼굴, 내려간 눈꼬리, 뚜렷한 코; 밝은 황갈색; 짧은 흑갈색 머리와 단정한 콧수염; palette 청록·구리·크림. Signature ability: 적 의도 분석. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-VR4-skill.png",
+    "path": "/assets/story-v1/card-VR4-skill.webp"
+  },
+  {
+    "key": "card-BC1-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 로웬: 탐사 코트와 석궁, 밝은 갈색 단발; 삼각형 턱, 큰 호박색 눈, 들린 코; 햇볕에 그을린 피부; 짧은 갈색 웨이브와 코 위 주근깨; palette 황토·황동·짙은 초록. Signature ability: 약점 사격. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-BC1-skill.png",
+    "path": "/assets/story-v1/card-BC1-skill.webp"
+  },
+  {
+    "key": "card-BC2-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 미라: 등불 지팡이와 구조 가방, 검은 긴 땋은 머리; 부드러운 타원형 얼굴, 긴 눈, 넓은 입; 중간 갈색; 긴 검은 땋은 머리와 초록색 끈; palette 황토·황동·짙은 초록. Signature ability: 구조와 스트레스 완화. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-BC2-skill.png",
+    "path": "/assets/story-v1/card-BC2-skill.webp"
+  },
+  {
+    "key": "card-BC3-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 오델: 두꺼운 가죽 외투와 등반 방패, 회색 짧은 머리; 넓은 사각 얼굴, 깊은 눈매, 낮은 콧등; 밝은 올리브; 짧은 회색 머리와 눈가 주름; palette 황토·황동·짙은 초록. Signature ability: 대신 맞기. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-BC3-skill.png",
+    "path": "/assets/story-v1/card-BC3-skill.webp"
+  },
+  {
+    "key": "card-BC4-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 피아: 측량 렌즈와 투척 쐐기, 적갈색 포니테일; 작은 직사각 얼굴, 가는 눈썹, 좁은 코; 밝은 피부; 적갈색 포니테일, 한쪽 눈의 측량 렌즈; palette 황토·황동·짙은 초록. Signature ability: 함정과 적 방어 해체. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-BC4-skill.png",
+    "path": "/assets/story-v1/card-BC4-skill.webp"
+  },
+  {
+    "key": "card-BK1-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 베스라: 비대칭 자주 코트와 쌍단검, 검은 단발; 각진 광대, 고양이형 눈매, 넓은 입술; 짙은 올리브; 짧은 검은 비대칭 단발; palette 먹색·자주·은색. Signature ability: 출혈과 연속 공격. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-BK1-skill.png",
+    "path": "/assets/story-v1/card-BK1-skill.webp"
+  },
+  {
+    "key": "card-BK2-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 니엘: 은색 열쇠 장식과 와이어, 백금색 머리; 둥근 얼굴, 수평 눈매, 넓은 코끝; 밝은 갈색; 백금색 짧은 웨이브, 왼쪽 보조개; palette 먹색·자주·은색. Signature ability: 구속과 약화. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-BK2-skill.png",
+    "path": "/assets/story-v1/card-BK2-skill.webp"
+  },
+  {
+    "key": "card-BK3-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 사브린: 고급 어두운 정장과 약병 벨트, 붉은 웨이브; 긴 타원형 얼굴, 깊은 눈매, 높은 콧대; 주근깨 있는 중간 피부; 붉은 긴 웨이브, 눈가 잔주름; palette 먹색·자주·은색. Signature ability: 정화와 보급. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-BK3-skill.png",
+    "path": "/assets/story-v1/card-BK3-skill.webp"
+  },
+  {
+    "key": "card-BK4-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 루크: 두꺼운 암색 외투와 철제 팔보호대, 짧은 검은 머리; 넓은 턱과 낮은 눈썹, 구부러진 코; 진한 갈색; 짧은 곱슬 흑발과 짧은 턱수염; palette 먹색·자주·은색. Signature ability: 위협 분산. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-BK4-skill.png",
+    "path": "/assets/story-v1/card-BK4-skill.webp"
+  },
+  {
+    "key": "card-WS1-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 아우렐라: 긴 상아 예복과 별빛 향로, 금발; 둥근 턱, 부드럽게 처진 눈, 넓은 콧등; 따뜻한 갈색; 금빛 곱슬머리를 낮게 묶음; palette 상아·금·진홍. Signature ability: 회복과 정화. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-WS1-skill.png",
+    "path": "/assets/story-v1/card-WS1-skill.webp"
+  },
+  {
+    "key": "card-WS2-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 클레아: 금빛 경갑과 성창, 적갈색 단발; 마름모형 얼굴, 큰 눈, 짧고 곧은 코; 밝은 올리브; 적갈색 직선 단발, 한쪽 굵은 눈썹; palette 상아·금·진홍. Signature ability: 정화 표식 공격. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-WS2-skill.png",
+    "path": "/assets/story-v1/card-WS2-skill.webp"
+  },
+  {
+    "key": "card-WS3-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 이사벨: 긴 백색 망토와 종형 방패, 회색 머리; 직사각 얼굴, 얇은 입술, 깊은 눈; 짙은 갈색; 짧은 회색 머리와 뚜렷한 눈가 주름; palette 상아·금·진홍. Signature ability: 보호와 저주 저항. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-WS3-skill.png",
+    "path": "/assets/story-v1/card-WS3-skill.webp"
+  },
+  {
+    "key": "card-WS4-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 라비엔: 붉은 안감 예복과 봉인 책, 검은 긴 머리; 긴 하트형 얼굴, 가는 긴 눈, 작은 입; 밝은 피부; 허리 길이 검은 직모, 작은 금테 안경; palette 상아·금·진홍. Signature ability: 침묵과 효과 해제. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-WS4-skill.png",
+    "path": "/assets/story-v1/card-WS4-skill.webp"
+  },
+  {
+    "key": "card-DS1-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 네레아: 별무늬 긴 코트와 떠 있는 고리, 청회색 머리; 긴 직사각 얼굴, 좁은 눈, 길고 굽은 코; 차가운 중간 피부; 청회색 굵은 웨이브와 비대칭 앞머리; palette 남보라·청록 발광·검정. Signature ability: 정신 표식과 약화. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-DS1-skill.png",
+    "path": "/assets/story-v1/card-DS1-skill.webp"
+  },
+  {
+    "key": "card-DS2-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 시엘라: 보라 겹옷과 수정 곡검, 검은 웨이브; 둥근 턱과 넓은 이마, 올라간 눈매; 깊은 구릿빛; 검은 짧은 웨이브, 푸른 귀걸이; palette 남보라·청록 발광·검정. Signature ability: 저주를 소모하는 공격. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-DS2-skill.png",
+    "path": "/assets/story-v1/card-DS2-skill.webp"
+  },
+  {
+    "key": "card-DS3-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 모이라: 짙은 망토와 기억 구슬, 백색 땋은 머리; 넓은 광대, 얇은 눈썹, 길고 좁은 눈; 짙은 올리브; 백색 땋은 머리와 입가 연령선; palette 남보라·청록 발광·검정. Signature ability: 카드 순환과 정신 안정. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-DS3-skill.png",
+    "path": "/assets/story-v1/card-DS3-skill.webp"
+  },
+  {
+    "key": "card-DS4-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 벨린: 검은 유리 갑옷과 반달 방패, 남색 단발; 사각턱, 낮은 눈썹, 넓은 코; 밝은 황갈색; 남색 아주 짧은 머리, 오른쪽 눈밑 작은 점; palette 남보라·청록 발광·검정. Signature ability: 피해 전환. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-DS4-skill.png",
+    "path": "/assets/story-v1/card-DS4-skill.webp"
+  },
+  {
+    "key": "card-GO1-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 실바: 잎 모양 가죽갑옷과 나무 장궁, 밤색 머리; 긴 타원형 얼굴, 날카로운 눈, 높은 광대; 햇빛에 그을린 갈색; 짙은 밤색 포니테일, 코 옆 작은 주근깨; palette 이끼·호박·뼈색. Signature ability: 연속 표식 사격. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-GO1-skill.png",
+    "path": "/assets/story-v1/card-GO1-skill.webp"
+  },
+  {
+    "key": "card-GO2-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 에린: 이끼 숄과 수액 지팡이, 붉은 곱슬머리; 넓은 둥근 얼굴, 큰 눈, 짧은 코; 주근깨 많은 밝은 피부; 풍성한 붉은 곱슬머리와 둥근 안경; palette 이끼·호박·뼈색. Signature ability: 지속 회복. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-GO2-skill.png",
+    "path": "/assets/story-v1/card-GO2-skill.webp"
+  },
+  {
+    "key": "card-GO3-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 바르나: 큰 나무 방패와 뿔 견갑, 회색 올림머리; 넓은 턱과 긴 코, 작고 깊은 눈; 짙은 따뜻한 피부; 회색 올림머리, 뚜렷한 웃음주름; palette 이끼·호박·뼈색. Signature ability: 가시 방어. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-GO3-skill.png",
+    "path": "/assets/story-v1/card-GO3-skill.webp"
+  },
+  {
+    "key": "card-GO4-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 리스: 짧은 녹색 망토와 덩굴 채찍, 흑발; 하트형 얼굴, 가까운 눈 간격, 각진 눈썹; 중간 올리브; 짧은 검은 땋은 머리 두 줄; palette 이끼·호박·뼈색. Signature ability: 속박과 적 공격 약화. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-GO4-skill.png",
+    "path": "/assets/story-v1/card-GO4-skill.webp"
+  },
+  {
+    "key": "card-EF1-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 레나: 재회색 야전 코트와 큰 도끼, 짧은 붉은 머리; 네모난 턱과 두꺼운 눈썹, 넓은 입; 밝은 구릿빛; 짧은 붉은 언더컷, 코의 작은 흉터; palette 재회색·벽돌빨강·구리. Signature ability: 방어구 파괴. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-EF1-skill.png",
+    "path": "/assets/story-v1/card-EF1-skill.webp"
+  },
+  {
+    "key": "card-EF2-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 유나: 붉은 스카프와 야전 약함, 검은 묶음머리; 부드러운 사각 얼굴, 내려간 눈, 둥근 코끝; 깊은 갈색; 검은 머리 낮게 묶음, 작은 둥근 귀걸이; palette 재회색·벽돌빨강·구리. Signature ability: 응급 회복과 상태 해제. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-EF2-skill.png",
+    "path": "/assets/story-v1/card-EF2-skill.webp"
+  },
+  {
+    "key": "card-EF3-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 다리아: 재활용 철갑과 문짝 방패, 갈색 짧은 머리; 넓은 볼과 깊은 눈, 높은 코; 주근깨 있는 황갈색; 갈색 짧은 머리와 눈밑 연령선; palette 재회색·벽돌빨강·구리. Signature ability: 후열 보호. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-EF3-skill.png",
+    "path": "/assets/story-v1/card-EF3-skill.webp"
+  },
+  {
+    "key": "card-EF4-skill",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Square illustrated RPG card. Adult 세이: 구리 장치 벨트와 신호총형 판타지 도구, 회색 단발; 긴 삼각 얼굴, 큰 눈, 가는 코; 밝은 올리브; 회색 비대칭 단발과 넓은 고글; palette 재회색·벽돌빨강·구리. Signature ability: 연막과 적 약화. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.",
+    "transparent": false,
+    "source": "art-source/story-v1/card-EF4-skill.png",
+    "path": "/assets/story-v1/card-EF4-skill.webp"
+  },
+  {
+    "key": "merchant-idle",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Full body adult male wandering black market trader. Long dark brown hair, short beard, muted forest green scarf and layered brown leather coat, brass buckles, leather satchels, an antique lantern at belt and small brass balance scales. Pose idle: anatomically continuous torso and legs, relaxed trading gesture, both hands and feet complete within generous margin. One coherent figure, no collage or sprite sheet, genuinely transparent background.",
+    "transparent": true,
+    "source": "art-source/story-v1/merchant-idle.png",
+    "path": "/assets/story-v1/merchant-idle.webp"
+  },
+  {
+    "key": "merchant-welcome",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Full body adult male wandering black market trader. Long dark brown hair, short beard, muted forest green scarf and layered brown leather coat, brass buckles, leather satchels, an antique lantern at belt and small brass balance scales. Pose welcome: anatomically continuous torso and legs, relaxed trading gesture, both hands and feet complete within generous margin. One coherent figure, no collage or sprite sheet, genuinely transparent background.",
+    "transparent": true,
+    "source": "art-source/story-v1/merchant-welcome.png",
+    "path": "/assets/story-v1/merchant-welcome.webp"
+  },
+  {
+    "key": "merchant-rare",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Full body adult male wandering black market trader. Long dark brown hair, short beard, muted forest green scarf and layered brown leather coat, brass buckles, leather satchels, an antique lantern at belt and small brass balance scales. Pose rare: anatomically continuous torso and legs, relaxed trading gesture, both hands and feet complete within generous margin. One coherent figure, no collage or sprite sheet, genuinely transparent background.",
+    "transparent": true,
+    "source": "art-source/story-v1/merchant-rare.png",
+    "path": "/assets/story-v1/merchant-rare.webp"
+  },
+  {
+    "key": "merchant-exchange",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Full body adult male wandering black market trader. Long dark brown hair, short beard, muted forest green scarf and layered brown leather coat, brass buckles, leather satchels, an antique lantern at belt and small brass balance scales. Pose exchange: anatomically continuous torso and legs, relaxed trading gesture, both hands and feet complete within generous margin. One coherent figure, no collage or sprite sheet, genuinely transparent background.",
+    "transparent": true,
+    "source": "art-source/story-v1/merchant-exchange.png",
+    "path": "/assets/story-v1/merchant-exchange.webp"
+  },
+  {
+    "key": "merchant-surprised",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Full body adult male wandering black market trader. Long dark brown hair, short beard, muted forest green scarf and layered brown leather coat, brass buckles, leather satchels, an antique lantern at belt and small brass balance scales. Pose surprised: anatomically continuous torso and legs, relaxed trading gesture, both hands and feet complete within generous margin. One coherent figure, no collage or sprite sheet, genuinely transparent background.",
+    "transparent": true,
+    "source": "art-source/story-v1/merchant-surprised.png",
+    "path": "/assets/story-v1/merchant-surprised.webp"
+  },
+  {
+    "key": "merchant-portrait",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Full body adult male wandering black market trader. Long dark brown hair, short beard, muted forest green scarf and layered brown leather coat, brass buckles, leather satchels, an antique lantern at belt and small brass balance scales. Pose portrait: anatomically continuous torso and legs, relaxed trading gesture, both hands and feet complete within generous margin. One coherent figure, no collage or sprite sheet, genuinely transparent background.",
+    "transparent": true,
+    "source": "art-source/story-v1/merchant-portrait.png",
+    "path": "/assets/story-v1/merchant-portrait.webp"
+  },
+  {
+    "key": "environment-laboratory",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Wide 16:9 high resolution painterly environmental key art, no characters, no letters. abandoned brass memory laboratory with glass distillation vats, restrained turquoise light and deep star faction geometrical seals. Layered foreground and distant architecture, soft atmospheric perspective, natural believable lights, no UI. Composition leaves lower foreground free for a tactical RPG party.",
+    "transparent": false,
+    "source": "art-source/story-v1/environment-laboratory.png",
+    "path": "/assets/story-v1/environment-laboratory.webp"
+  },
+  {
+    "key": "environment-observatory",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Wide 16:9 high resolution painterly environmental key art, no characters, no letters. vast snowbound observatory with bronze astronomical instruments, moving clouds and natural green oath motifs. Layered foreground and distant architecture, soft atmospheric perspective, natural believable lights, no UI. Composition leaves lower foreground free for a tactical RPG party.",
+    "transparent": false,
+    "source": "art-source/story-v1/environment-observatory.png",
+    "path": "/assets/story-v1/environment-observatory.webp"
+  },
+  {
+    "key": "environment-palace",
+    "prompt": "High resolution polished painterly anime dark fantasy RPG illustration. Fine precise facial features, coherent anatomy, rich restrained colors, brass detailing. No text, no letters, no UI, no border, one subject only. Wide 16:9 high resolution painterly environmental key art, no characters, no letters. silent ruined royal palace with a vacant throne, brass bells and navy ivory banners. Layered foreground and distant architecture, soft atmospheric perspective, natural believable lights, no UI. Composition leaves lower foreground free for a tactical RPG party.",
+    "transparent": false,
+    "source": "art-source/story-v1/environment-palace.png",
+    "path": "/assets/story-v1/environment-palace.webp"
   }
 ]

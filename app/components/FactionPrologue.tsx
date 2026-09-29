@@ -1,5 +1,8 @@
 "use client";
 import { useState } from "react";
+import LivingBackdrop from "./LivingBackdrop";
+import { originRegions } from "../../lib/prologue";
+import { originBenefits } from "../../lib/progression";
 import type { Game, Action } from "../../lib/game";
 import scenes from "../../data/prologue_scenes.json";
 import design from "../../data/faction_start_design_v1.json";
@@ -56,7 +59,22 @@ export default function FactionPrologue({
   const npc = faction ? npcs[faction.code as keyof typeof npcs] : null;
   const scene = scenes[index];
   return (
-    <main className="prologue-screen">
+    <main className="prologue-screen live-scene-panel">
+      <LivingBackdrop
+        region={
+          game.originFaction
+            ? originRegions[game.originFaction]
+            : [
+                "fortress",
+                "harbor",
+                "archive",
+                "chapel",
+                "laboratory",
+                "observatory",
+                "palace",
+              ][Math.min(index, 6)]
+        }
+      />
       <small>종이 멎은 밤 · {game.rebirths + 1}번째 이야기</small>
       {p.stage === "questions" && scene ? (
         <>
@@ -131,8 +149,8 @@ export default function FactionPrologue({
                     <p>약점: {f.weakness}</p>
                     <p>{f.theme}</p>
                     <small>
-                      파티는 현재 데이터의 해당 팩션 4명으로 시작합니다. 신규
-                      역할·특수 탐사 능력은 설계 단계입니다.
+                      파티는 해당 팩션의 4명으로 시작합니다.{" "}
+                      {originBenefits[f.code]?.label}
                     </small>
                   </>
                 )}

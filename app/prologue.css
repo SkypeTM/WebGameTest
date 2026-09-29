@@ -70,3 +70,19 @@
     margin-right: 20px;
   }
 }
+
+.audio-controls details {
+  position: relative;
+}
+.audio-controls details[open] {
+  z-index: 40;
+}
+.audio-controls details label {
+  display: block;
+  padding: 8px;
+  background: #172324;
+}
+.audio-controls input[type="range"] {
+  max-width: 140px;
+  accent-color: #d8b86c;
+}

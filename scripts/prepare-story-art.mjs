@@ -91,6 +91,36 @@ for (const c of characters)
       `${style} Head to waist visual novel portrait, entire hair, shoulders and both hands inside frame. Adult ${c.gender === "여" ? "woman" : "man"} ${c.name}: ${c.design}; ${c.face}; ${c.skin}; ${c.signature}; palette ${c.palette}. ${gesture}. Preserve character identity, elegant natural hands. Transparent background.`,
       true,
     );
+for (const c of characters.filter((c) => !c.id.startsWith("AR")))
+  add(
+    `card-${c.id}-skill`,
+    `${style} Square illustrated RPG card. Adult ${c.name}: ${c.design}; ${c.face}; ${c.skin}; ${c.signature}; palette ${c.palette}. Signature ability: ${c.cards}. Dynamic upper body action showing this specific ability, elegant realistic anime proportions, not SD or chibi. Elaborate atmospheric dark fantasy setting and restrained magic lighting.`,
+  );
+for (const pose of [
+  "idle",
+  "welcome",
+  "rare",
+  "exchange",
+  "surprised",
+  "portrait",
+])
+  add(
+    `merchant-${pose}`,
+    `${style} Full body adult male wandering black market trader. Long dark brown hair, short beard, muted forest green scarf and layered brown leather coat, brass buckles, leather satchels, an antique lantern at belt and small brass balance scales. Pose ${pose}: anatomically continuous torso and legs, relaxed trading gesture, both hands and feet complete within generous margin. One coherent figure, no collage or sprite sheet, genuinely transparent background.`,
+    true,
+  );
+for (const [id, scene] of Object.entries({
+  laboratory:
+    "abandoned brass memory laboratory with glass distillation vats, restrained turquoise light and deep star faction geometrical seals",
+  observatory:
+    "vast snowbound observatory with bronze astronomical instruments, moving clouds and natural green oath motifs",
+  palace:
+    "silent ruined royal palace with a vacant throne, brass bells and navy ivory banners",
+}))
+  add(
+    `environment-${id}`,
+    `${style} Wide 16:9 high resolution painterly environmental key art, no characters, no letters. ${scene}. Layered foreground and distant architecture, soft atmospheric perspective, natural believable lights, no UI. Composition leaves lower foreground free for a tactical RPG party.`,
+  );
 fs.writeFileSync(
   "art-source/story-v1/generation-plan.json",
   JSON.stringify(jobs, null, 2) + "\n",

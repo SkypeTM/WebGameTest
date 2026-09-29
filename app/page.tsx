@@ -13,8 +13,22 @@ import QuestConversation, {
   type ConversationRequest,
 } from "./components/QuestConversation";
 import storyNpcs from "../data/story_npcs.json";
-import { dialogueArt } from "../lib/story-art";
+import { dialogueArt, storyArt } from "../lib/story-art";
 import "./story-conversation.css";
+import "./combat-polish.css";
+import StatusIcon from "./components/StatusIcon";
+import { sceneAsset } from "../lib/scenery";
+import {
+  recruitment,
+  originBenefits,
+  policies,
+  testimonyIds,
+  endingEligible,
+  endingPolicies,
+  endingTexts,
+  partyBondKey,
+} from "../lib/progression";
+import { gameAudio, soundtrackFor } from "../lib/audio";
 import FactionPrologue from "./components/FactionPrologue";
 import characterCardArt from "../data/card_character_art.json";
 import {
@@ -43,7 +57,7 @@ import {
   storyQuests,
   regionCatalog,
   unlockedRegions,
-  nextStoryQuest,
+  availableStoryQuests,
   availableRecruitIds,
   deckPreview,
   effectiveCardValue,
@@ -53,7 +67,6 @@ import assetManifest from "../data/asset_manifest.json";
 import generatedAssets from "../data/generated_assets.json";
 import characterAssets from "../data/character_asset_manifest.json";
 import monsterAssets from "../data/monster_asset_manifest.json";
-import environmentAssets from "../data/environment_manifest.json";
 import cardArtAssets from "../data/card_art_manifest.json";
 import live2dAssets from "../data/live2d_manifest.json";
 import merchantAssets from "../data/merchant_asset_manifest.json";
@@ -88,7 +101,9 @@ type CodexEntry = {
 const cardArtwork = (owner: string, kind: Card["kind"]) =>
   (
     characterCardArt.find((a) => a.id === owner && a.kind === kind) ||
-    sdAssets.find((a) => a.id === owner)
+    characterCardArt.find((a) => a.id === owner && a.kind === "heavy") ||
+    characterCardArt.find((a) => a.id === owner && a.kind === "strike") ||
+    characterAssets.find((a) => a.id === owner && a.state === "skill")
   )?.path;
 const char = (id: string) => characters.find((c) => c.id === id)!;
 const rankLabel = (ranks: readonly number[]) =>
@@ -98,22 +113,6 @@ const symbols: Record<string, string> = {
   공격: "↗",
   지원: "✦",
   제어: "◎",
-};
-const environmentForRoom = (roomId: string) => {
-  const prefix = roomId.split("-")[0];
-  const region = [
-    "harbor",
-    "archive",
-    "chapel",
-    "root",
-    "village",
-    "tower",
-  ].includes(prefix)
-    ? prefix === "root"
-      ? "roots"
-      : prefix
-    : "fortress";
-  return environmentAssets.find((asset) => asset.id === region)!;
 };
 function Crest({
   id,
@@ -165,7 +164,14 @@ function Crest({
   const repairedMonster = monster
     ? sdAssets.find((entry) => entry.id === id)
     : undefined;
+  const transparentHero =
+    !monster && !portrait
+      ? state === "dialogue" && storyArt(`hero-${id}-neutral`)
+        ? { path: storyArt(`hero-${id}-neutral`)! }
+        : sdAssets.find((a) => a.id === id)
+      : undefined;
   const asset =
+    transparentHero ||
     repairedMonster ||
     (motion
       ? actionAsset || idleAsset
@@ -184,7 +190,8 @@ function Crest({
           style={{
             width: "100%",
             height: "100%",
-            objectFit: monster || contain ? "contain" : "cover",
+            objectFit:
+              transparentHero || monster || contain ? "contain" : "cover",
             objectPosition: monster ? "50% 100%" : "50% 50%",
           }}
           onError={() => setFailed(true)}
@@ -254,10 +261,15 @@ function MerchantLive2D({ state = "idle" }: { state?: string }) {
   if (!asset) return null;
   return (
     <div className={`merchant-live2d merchant-${state}`} aria-label="암상인">
-      <img src={asset.path} alt="암상인" className="merchant-base" />
-      <img src={asset.path} alt="" className="merchant-layer merchant-upper" />
-      <img src={asset.path} alt="" className="merchant-layer merchant-face" />
-      <i className="merchant-glow" aria-hidden="true" />
+      <img
+        src={
+          storyArt(`merchant-${state}`) ||
+          storyArt("merchant-idle") ||
+          asset.path
+        }
+        alt="암상인"
+        className="merchant-base"
+      />
     </div>
   );
 }
@@ -297,59 +309,148 @@ function CardArt({ kind, role }: { kind: Card["kind"]; role: string }) {
 function Meter({
   value,
   max,
+  shield = 0,
   preview,
 }: {
   value: number;
   max: number;
+  shield?: number;
   preview?: CardPreview["target"];
 }) {
-  const current = Math.max(0, (value / max) * 100);
-  const after = preview ? Math.max(0, (preview.hpAfter / max) * 100) : current;
+  const beforeShield = preview?.shieldBefore ?? shield,
+    afterShield = preview?.shieldAfter ?? shield;
+  const scale = Math.max(1, max + Math.max(beforeShield, afterShield));
+  const current = Math.max(0, Math.min(100, (value / scale) * 100)),
+    after = preview
+      ? Math.max(0, Math.min(100, (preview.hpAfter / scale) * 100))
+      : current;
+  const shieldLeft = preview ? after : current,
+    blue = (Math.min(beforeShield, afterShield) / scale) * 100;
   return (
-    <div className={`meter ${preview ? "previewing" : ""}`}>
-      <i style={{ width: `${preview ? after : current}%` }} />
-      {preview && after < current && (
+    <div
+      className={`meter ${preview ? "previewing" : ""}`}
+      role="meter"
+      aria-label={`체력 ${value}/${max}, 보호막 ${shield}`}
+      aria-valuemin={0}
+      aria-valuemax={max}
+      aria-valuenow={Math.min(max, value)}
+      title={`체력 ${value}/${max} · 보호막 ${shield}${preview ? ` → 체력 ${preview.hpAfter}, 보호막 ${afterShield}` : ""}`}
+    >
+      <i style={{ width: `${after}%` }} />
+      {after < current && (
         <span
           className="meter-damage-preview"
           style={{ left: `${after}%`, width: `${current - after}%` }}
         />
       )}
-      {preview && after > current && (
+      {after > current && (
         <span
           className="meter-heal-preview"
           style={{ left: `${current}%`, width: `${after - current}%` }}
         />
       )}
-      {preview && preview.shieldAfter > preview.shieldBefore && (
+      {blue > 0 && (
+        <span
+          className="meter-shield"
+          style={{ left: `${shieldLeft}%`, width: `${blue}%` }}
+        />
+      )}
+      {afterShield > beforeShield && (
         <span
           className="meter-shield-preview"
           style={{
-            width: `${Math.min(100, ((preview.shieldAfter - preview.shieldBefore) / max) * 100)}%`,
+            left: `${shieldLeft + (beforeShield / scale) * 100}%`,
+            width: `${((afterShield - beforeShield) / scale) * 100}%`,
+          }}
+        />
+      )}
+      {beforeShield > afterShield && (
+        <span
+          className="meter-shield-loss"
+          style={{
+            left: `${shieldLeft + (afterShield / scale) * 100}%`,
+            width: `${((beforeShield - afterShield) / scale) * 100}%`,
           }}
         />
       )}
     </div>
   );
 }
-function StatusList({ statuses }: { statuses: StatusMap }) {
-  const active = Object.entries(statuses).filter(
-    ([, value]) => (value || 0) > 0,
-  );
-  if (!active.length) return null;
+function StatusList({
+  statuses,
+  counter = 0,
+  stress = 0,
+  injury = false,
+  mark = 0,
+  stun = 0,
+}: {
+  statuses: StatusMap;
+  counter?: number;
+  stress?: number;
+  injury?: boolean;
+  mark?: number;
+  stun?: number;
+}) {
+  const extra = [
+    {
+      id: "counter",
+      icon: "↶",
+      name: "반격",
+      value: counter,
+      description: "보호막으로 공격을 막으면 적에게 피해를 줍니다.",
+    },
+    {
+      id: "stress",
+      icon: "☾",
+      name: "스트레스",
+      value: stress,
+      description:
+        "탐사 중 누적되는 정신적 부담입니다. 휴식으로 낮출 수 있습니다.",
+    },
+    {
+      id: "injury",
+      icon: "✚",
+      name: "부상",
+      value: injury ? 1 : 0,
+      description: "귀환 후 시설에서 치료하세요.",
+    },
+    {
+      id: "mark",
+      icon: "⌖",
+      name: "표식",
+      value: mark,
+      description: `다음 일반 공격 피해 +${mark}`,
+    },
+    {
+      id: "stun",
+      icon: "✦",
+      name: "기절",
+      value: stun,
+      description: "적 행동을 건너뜁니다.",
+    },
+  ];
   return (
     <div className="status-list" aria-label="현재 상태 효과">
-      {active.map(([id, value]) => {
-        const status = statusDefinitions[id as keyof typeof statusDefinitions];
-        return (
-          <span
-            className={`status-token tone-${status.tone}`}
-            title={status.description}
-            key={id}
-          >
-            <b>{status.icon}</b> {status.name} {value}
-          </span>
-        );
-      })}
+      {extra
+        .filter((e) => e.value > 0)
+        .map((e) => (
+          <StatusIcon key={e.id} {...e} />
+        ))}
+      {Object.entries(statuses)
+        .filter(([, v]) => (v || 0) > 0)
+        .map(([id, value]) => {
+          const d = statusDefinitions[id as keyof typeof statusDefinitions];
+          return d ? (
+            <StatusIcon
+              key={`status-${id}`}
+              icon={d.icon}
+              name={d.name}
+              value={value!}
+              description={d.description}
+              tone={d.tone}
+            />
+          ) : null;
+        })}
     </div>
   );
 }
@@ -439,19 +540,19 @@ export default function Page() {
     [soundEnabled, setSoundEnabled] = useState(true),
     [musicEnabled, setMusicEnabled] = useState(true),
     [audioReady, setAudioReady] = useState(false),
+    [musicVolume, setMusicVolume] = useState(0.24),
+    [sfxVolume, setSfxVolume] = useState(0.75),
+    [audioPrefsLoaded, setAudioPrefsLoaded] = useState(false),
     [dragPoint, setDragPoint] = useState<{ x: number; y: number } | null>(null);
   const battleFieldRef = useRef<HTMLDivElement>(null);
   const client = useRef(""),
     pending = useRef<Record<string, unknown> | null>(null),
     working = useRef(false),
-    musicRef = useRef<HTMLAudioElement | null>(null),
     lastFx = useRef(0),
     dragStart = useRef({ x: 0, y: 0, moved: false, active: false });
   function playSound(name: string, volume = 0.35) {
     if (!audioReady || !soundEnabled) return;
-    const sound = new Audio(`/assets/audio/sfx/${name}.wav`);
-    sound.volume = volume;
-    void sound.play().catch(() => undefined);
+    gameAudio.play(name, volume * sfxVolume);
   }
   const accept = (data: {
     state: Game;
@@ -576,7 +677,29 @@ export default function Page() {
       else if (performed?.type === "move" || performed?.type === "enter")
         playSound("route");
       else if (performed?.type === "claim") playSound("reward");
-      else if (performed?.type === "return") playSound("victory");
+      else if (performed?.type === "return")
+        playSound(
+          game?.run?.mode === "defeat"
+            ? "defeat"
+            : game?.run?.cleared && game?.activeQuest
+              ? "quest-complete"
+              : "camp-return",
+        );
+      else if (performed?.type === "prologue")
+        playSound(
+          performed.choice === "answer" ? "memory-choice" : "origin-confirm",
+        );
+      else if (performed?.type === "quest") playSound("quest-accept");
+      else if (performed?.type === "chooseRelic") playSound("relic-select");
+      else if (performed?.type === "craft") playSound("craft");
+      else if (performed?.type === "merchant")
+        playSound(performed.choice === "heal" ? "heal" : "purchase");
+      else if (
+        performed?.type === "recruit" ||
+        performed?.type === "inviteGuest"
+      )
+        playSound("recruit");
+      else if (performed?.type === "rebirth") playSound("rebirth");
       else if (performed?.type === "event") playSound("skill", 0.25);
       else playSound("ui-click", 0.2);
       pending.current = null;
@@ -658,13 +781,7 @@ export default function Page() {
     game && merchantHeroState
       ? effectiveCardValue(game, merchantHeroState, "heavy")
       : null;
-  const musicTrack = run
-    ? run.mode === "battle"
-      ? run.room === "boss" || run.room?.endsWith("-boss")
-        ? "boss"
-        : "battle"
-      : "exploration"
-    : "hamlet";
+  const musicTrack = soundtrackFor(game, Boolean(conversation));
   const loggedIn = Boolean(game);
   useEffect(() => {
     const unlock = () => setAudioReady(true);
@@ -676,15 +793,56 @@ export default function Page() {
     };
   }, []);
   useEffect(() => {
-    musicRef.current?.pause();
-    if (!audioReady || !musicEnabled || !loggedIn) return;
-    const audio = new Audio(`/assets/audio/music/${musicTrack}.wav`);
-    audio.loop = true;
-    audio.volume = 0.16;
-    musicRef.current = audio;
-    void audio.play().catch(() => undefined);
-    return () => audio.pause();
-  }, [audioReady, loggedIn, musicEnabled, musicTrack]);
+    try {
+      const p = JSON.parse(localStorage.getItem("bell-audio-v2") || "null");
+      if (p) {
+        setMusicEnabled(p.music !== false);
+        setSoundEnabled(p.sfx !== false);
+        if (Number.isFinite(p.musicVolume))
+          setMusicVolume(Math.max(0, Math.min(1, p.musicVolume)));
+        if (Number.isFinite(p.sfxVolume))
+          setSfxVolume(Math.max(0, Math.min(1, p.sfxVolume)));
+      }
+    } catch {}
+    setAudioPrefsLoaded(true);
+  }, []);
+  useEffect(() => {
+    if (audioPrefsLoaded)
+      try {
+        localStorage.setItem(
+          "bell-audio-v2",
+          JSON.stringify({
+            music: musicEnabled,
+            sfx: soundEnabled,
+            musicVolume,
+            sfxVolume,
+          }),
+        );
+      } catch {}
+  }, [audioPrefsLoaded, musicEnabled, soundEnabled, musicVolume, sfxVolume]);
+  useEffect(() => {
+    const update = () => {
+      if (!audioReady || !musicEnabled || !loggedIn || document.hidden)
+        gameAudio.stopMusic();
+      else gameAudio.setMusic(musicTrack, musicVolume);
+      if (document.hidden) gameAudio.stopSounds();
+    };
+    update();
+    document.addEventListener("visibilitychange", update);
+    return () => {
+      document.removeEventListener("visibilitychange", update);
+    };
+  }, [audioReady, loggedIn, musicEnabled, musicTrack, musicVolume]);
+  useEffect(
+    () => () => {
+      gameAudio.stopMusic();
+      gameAudio.stopSounds();
+    },
+    [],
+  );
+  useEffect(() => {
+    if (!soundEnabled) gameAudio.stopSounds();
+  }, [soundEnabled]);
   useEffect(() => {
     if (!fx || fx.nonce === lastFx.current) return;
     lastFx.current = fx.nonce;
@@ -692,6 +850,8 @@ export default function Page() {
     const timer = window.setTimeout(() => setAnimating(false), 900);
     if (fx.kind === "hero-attack" || fx.kind === "enemy-attack")
       playSound("hit", 0.32);
+    else if (fx.kind === "hero-guard") playSound("guard");
+    else if (fx.kind === "hero-heal") playSound("heal");
     return () => window.clearTimeout(timer);
   }, [fx?.nonce]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -707,6 +867,68 @@ export default function Page() {
     }, 1250);
     return () => window.clearTimeout(timer);
   }, [run?.mode, run?.room]);
+  const previousSoundState = useRef<{
+    mode?: string;
+    room?: string;
+    stress: number;
+    poison: number;
+    burn: number;
+    frost: number;
+    shock: number;
+  } | null>(null);
+  useEffect(() => {
+    const values = {
+      mode: run?.mode,
+      room: run?.room,
+      stress: run?.heroes.reduce((n, h) => n + h.stress, 0) || 0,
+      poison:
+        run?.heroes.reduce((n, h) => n + (h.statuses.poison || 0), 0) || 0,
+      burn: run?.heroes.reduce((n, h) => n + (h.statuses.burn || 0), 0) || 0,
+      frost: run?.heroes.reduce((n, h) => n + (h.statuses.frost || 0), 0) || 0,
+      shock: run?.heroes.reduce((n, h) => n + (h.statuses.shock || 0), 0) || 0,
+    };
+    const old = previousSoundState.current;
+    previousSoundState.current = values;
+    if (!old) return;
+    if (values.mode !== old.mode) {
+      if (values.mode === "defeat") playSound("defeat");
+      else if (values.mode === "reward") playSound("victory", 0.3);
+      else if (values.mode === "battle" && values.room?.endsWith("boss"))
+        playSound("boss-enter");
+    }
+    if (old.room === values.room) {
+      for (const key of ["stress", "poison", "burn", "frost", "shock"] as const)
+        if (values[key] > old[key]) {
+          playSound(key, 0.25);
+          break;
+        }
+    }
+  }, [game?.version]);
+  useEffect(() => {
+    if (!selected) return;
+    const cancel = () => {
+      setSelected(null);
+      setPreviewTarget("");
+      setDragPoint(null);
+      dragStart.current.active = false;
+    };
+    const outside = (e: PointerEvent) => {
+      const el = e.target instanceof Element ? e.target : null;
+      if (el?.closest(".play-card")) return;
+      const target = el?.closest<HTMLElement>("[data-card-target]");
+      if (target?.dataset.cardKind === cardInfo(selected).target) return;
+      cancel();
+    };
+    const escape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") cancel();
+    };
+    document.addEventListener("pointerdown", outside, true);
+    document.addEventListener("keydown", escape);
+    return () => {
+      document.removeEventListener("pointerdown", outside, true);
+      document.removeEventListener("keydown", escape);
+    };
+  }, [selected]);
   const motionFor = (id: string, side: "hero" | "enemy") => {
     if (!fx) return "";
     if (fx.actor === id && side === "hero")
@@ -779,6 +1001,7 @@ export default function Page() {
     // Preserve moved through the synthetic click following pointerup.
     if (wasMoved && targetId && targetKind === cardInfo(card).target)
       void act({ type: "play", id: card.id, target: targetId });
+    else if (wasMoved) setSelected(null);
   }
   if (loading)
     return (
@@ -790,7 +1013,8 @@ export default function Page() {
   if (!game)
     return (
       <main className="login">
-        <div className="login-art">
+        <div className="login-art live-scene-panel">
+          <LivingBackdrop region="hamlet" />
           <div className="moon" />
           <div className="tower one" />
           <div className="tower two" />
@@ -966,6 +1190,33 @@ export default function Page() {
   const accountControls = (
     <div className="account">
       <div className="audio-controls" aria-label="오디오 설정">
+        <details>
+          <summary>음량</summary>
+          <label>
+            음악{" "}
+            <input
+              aria-label="음악 음량"
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={musicVolume}
+              onChange={(e) => setMusicVolume(Number(e.target.value))}
+            />
+          </label>
+          <label>
+            효과음{" "}
+            <input
+              aria-label="효과음 음량"
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={sfxVolume}
+              onChange={(e) => setSfxVolume(Number(e.target.value))}
+            />
+          </label>
+        </details>
         <button
           className="mini"
           aria-pressed={musicEnabled}
@@ -1229,6 +1480,53 @@ export default function Page() {
                 {game.summary && (
                   <div className="summary">✦ {game.summary}</div>
                 )}
+                {game.originFaction &&
+                  testimonyIds.some((id) =>
+                    game.completedQuests.includes(id),
+                  ) &&
+                  !game.ending && (
+                    <section className="panel">
+                      <h2>증언의 보관 방침</h2>
+                      <p>
+                        각 증언을 어떻게 남길지 정하세요. 결말을 기록하기 전까지
+                        바꿀 수 있습니다.
+                      </p>
+                      {testimonyIds
+                        .filter((id) => game.completedQuests.includes(id))
+                        .map((id) => (
+                          <details key={id}>
+                            <summary>
+                              {storyQuests.find((q) => q.id === id)?.title} ·{" "}
+                              {game.testimonyChoices?.[id]
+                                ? policies[game.testimonyChoices[id]]
+                                : "방침 미정"}
+                            </summary>
+                            <div className="ending-actions">
+                              {Object.entries(policies).map(
+                                ([choice, label]) => (
+                                  <button
+                                    key={choice}
+                                    disabled={locked}
+                                    aria-pressed={
+                                      game.testimonyChoices?.[id] === choice
+                                    }
+                                    onClick={() =>
+                                      void act({
+                                        type: "testimony",
+                                        id,
+                                        choice,
+                                      })
+                                    }
+                                  >
+                                    {label}
+                                  </button>
+                                ),
+                              )}
+                            </div>
+                          </details>
+                        ))}
+                    </section>
+                  )}
                 {game.endingUnlocked && !game.ending && (
                   <section className="panel ending-panel">
                     <span className="eyebrow">THE LAST BELL</span>
@@ -1246,12 +1544,13 @@ export default function Page() {
                         <button
                           className="primary"
                           key={id}
-                          disabled={locked}
+                          disabled={locked || !endingEligible(game, id)}
+                          title={policies[endingPolicies[id]]}
                           onClick={() =>
                             void act({ type: "chooseEnding", choice: id })
                           }
                         >
-                          {label}
+                          {label} · {policies[endingPolicies[id]]}
                         </button>
                       ))}
                     </div>
@@ -1261,6 +1560,7 @@ export default function Page() {
                   <section className="panel ending-panel">
                     <span className="eyebrow">ENDING RECORDED</span>
                     <h2>{game.ending} 엔딩</h2>
+                    <p>{endingTexts[game.ending]}</p>
                     <p className="muted">
                       환생은 선택 사항입니다. 보관 재료 중 최대 3개만 계승할 수
                       있습니다.
@@ -1846,6 +2146,10 @@ export default function Page() {
                           현재 덱 미리보기 · {deckPreview(game).length}장
                         </button>
                         <p className="small muted">
+                          {originBenefits[game.originFaction || ""]?.label} ·
+                          혼성 유대{" "}
+                          {game.partyBonds?.[partyBondKey(game.party)] || 0}/2
+                          <br />
                           귀환 야영지에서만 전리품을 지키며 거점으로 돌아갈 수
                           있습니다.
                         </p>
@@ -1868,7 +2172,7 @@ export default function Page() {
                         </span>
                       </h2>
                       <span className="muted small">
-                        첫 버전 영입 비용 ◈ {balance.recruitCost}
+                        정식 동료 계약 비용 ◈ {balance.recruitCost}
                       </span>
                     </div>
                     <div className="filters">
@@ -1901,6 +2205,7 @@ export default function Page() {
                             hero(c.id);
                           const stats = heroStats(preview);
                           const profession = professionFor(c.id);
+                          const eligibility = recruitment(game, c.id);
                           return (
                             <article className="recruit" key={c.id}>
                               <Crest id={c.id} state="dialogue" />
@@ -1924,6 +2229,10 @@ export default function Page() {
                                   <span>방어 {stats.defense}</span>
                                   <span>주문 {stats.spell}</span>
                                 </div>
+                                <p className="small">
+                                  {eligibility.reason} · 개인 신뢰{" "}
+                                  {eligibility.trust}
+                                </p>
                                 <button
                                   className="secondary recruit-detail-button"
                                   onClick={() => setSelectedHero(c.id)}
@@ -1933,16 +2242,29 @@ export default function Page() {
                                 <button
                                   disabled={
                                     locked ||
-                                    game.roster.some((h) => h.id === c.id) ||
-                                    game.gold < balance.recruitCost
+                                    ["owned", "locked"].includes(
+                                      eligibility.mode,
+                                    ) ||
+                                    (eligibility.mode === "recruit" &&
+                                      game.gold < balance.recruitCost)
                                   }
                                   onClick={() =>
-                                    void act({ type: "recruit", id: c.id })
+                                    void act({
+                                      type:
+                                        eligibility.mode === "guest"
+                                          ? "inviteGuest"
+                                          : "recruit",
+                                      id: c.id,
+                                    })
                                   }
                                 >
-                                  {game.roster.some((h) => h.id === c.id)
-                                    ? "영입 완료"
-                                    : `영입 · ◈ ${balance.recruitCost}`}
+                                  {eligibility.mode === "owned"
+                                    ? "정식 동료"
+                                    : eligibility.mode === "guest"
+                                      ? "객원 초대 · 무료"
+                                      : eligibility.mode === "locked"
+                                        ? "조건 미충족"
+                                        : `정식 영입 · ◈ ${balance.recruitCost}`}
                                 </button>
                               </div>
                             </article>
@@ -2066,7 +2388,9 @@ export default function Page() {
                           quest.id,
                         );
                         const active = game.activeQuest === quest.id;
-                        const next = nextStoryQuest(game.completedQuests);
+                        const available = availableStoryQuests(
+                          game.completedQuests,
+                        ).some((q) => q.id === quest.id);
                         const region = regionCatalog.find(
                           (item) => item.id === quest.region,
                         )!;
@@ -2082,9 +2406,7 @@ export default function Page() {
                               <h3>{quest.title}</h3>
                               <small>{region.name}</small>
                               <p>{quest.story}</p>
-                              {(complete ||
-                                active ||
-                                next?.id === quest.id) && (
+                              {(complete || active || available) && (
                                 <button
                                   className="quest-story"
                                   onClick={() =>
@@ -2120,7 +2442,7 @@ export default function Page() {
                                 disabled={
                                   locked ||
                                   Boolean(game.activeQuest) ||
-                                  next?.id !== quest.id
+                                  !available
                                 }
                                 onClick={() =>
                                   setConversation({
@@ -2724,7 +3046,7 @@ export default function Page() {
                 >
                   <img
                     className="battle-scene-bg"
-                    src={environmentForRoom(run.room).path}
+                    src={sceneAsset(run.region)}
                     alt=""
                     aria-hidden="true"
                   />
@@ -2886,6 +3208,7 @@ export default function Page() {
                             </h3>
                             <Meter
                               value={h.hp}
+                              shield={h.shield}
                               max={h.maxHp}
                               preview={
                                 previewTarget === h.id
@@ -2896,7 +3219,6 @@ export default function Page() {
                             <p>
                               HP {h.hp}/{h.maxHp} · MP {h.mana}/
                               {heroStats(h).maxMana}
-                              <span>◇ {h.shield}</span>
                             </p>
                             <small
                               className="equipment-line inline-asset"
@@ -2917,43 +3239,15 @@ export default function Page() {
                               · 공격 {heroStats(h).attack}
                             </small>
                             <small>
-                              {h.hp === 0
-                                ? "전투 불능"
-                                : `스트레스 ${h.stress} · Lv.${h.level}`}
+                              {h.hp === 0 ? "전투 불능" : `Lv.${h.level}`}
                             </small>
-                            {h.shield > 0 && (
-                              <span
-                                className="status-chip shield-chip"
-                                title="먼저 피해를 흡수하고 소모됩니다."
-                              >
-                                ◇ 보호막 {h.shield}
-                              </span>
-                            )}
-                            {(h.counter || 0) > 0 && (
-                              <span
-                                className="status-chip counter-chip"
-                                title="보호막으로 공격을 막으면 적에게 피해를 줍니다."
-                              >
-                                ↶ 반격 {h.counter}
-                              </span>
-                            )}
-                            {h.stress > 0 && (
-                              <span
-                                className="status-chip stress-chip"
-                                title="탐사 중 누적되는 정신적 부담입니다. 휴식으로 낮출 수 있습니다."
-                              >
-                                ☾ 스트레스 {h.stress}
-                              </span>
-                            )}
-                            {h.injury && (
-                              <span
-                                className="status-chip debuff-chip"
-                                title="거점 의무실에서 치료하기 전까지 남는 부상입니다."
-                              >
-                                ✚ 부상
-                              </span>
-                            )}
-                            <StatusList statuses={h.statuses} />
+                            <StatusList
+                              statuses={h.statuses}
+                              counter={h.counter}
+                              stress={h.stress}
+                              injury={h.injury}
+                            />
+
                             {previewTarget === h.id && (
                               <strong className="preview-badge">
                                 예상 결과
@@ -3032,6 +3326,7 @@ export default function Page() {
                             <h3>{monsters.find((m) => m.id === e.id)!.name}</h3>
                             <Meter
                               value={e.hp}
+                              shield={e.shield}
                               max={e.maxHp}
                               preview={
                                 previewTarget === e.id
@@ -3040,33 +3335,14 @@ export default function Page() {
                               }
                             />
                             <p>
-                              HP {e.hp}/{e.maxHp} · ◇ {e.shield}
+                              HP {e.hp}/{e.maxHp}
                             </p>
-                            {e.shield > 0 && (
-                              <span
-                                className="status-chip shield-chip"
-                                title="체력 피해보다 먼저 소모됩니다."
-                              >
-                                ◇ 보호막 {e.shield}
-                              </span>
-                            )}
-                            {e.mark > 0 && (
-                              <span
-                                className="status-chip debuff-chip"
-                                title={`다음 일반 공격의 피해가 ${e.mark} 증가합니다.`}
-                              >
-                                ⌖ 표식 +{e.mark}
-                              </span>
-                            )}
-                            {e.stun > 0 && (
-                              <span
-                                className="status-chip stun-chip"
-                                title="다음 적 행동을 한 번 건너뜁니다."
-                              >
-                                ✦ 기절 {e.stun}턴
-                              </span>
-                            )}
-                            <StatusList statuses={e.statuses} />
+                            <StatusList
+                              statuses={e.statuses}
+                              mark={e.mark}
+                              stun={e.stun}
+                            />
+
                             {previewTarget === e.id && (
                               <strong className="preview-badge">
                                 예상 결과
@@ -3168,6 +3444,7 @@ export default function Page() {
                           onPointerUp={(event) => cardPointerUp(event, c)}
                           onPointerCancel={() => {
                             dragStart.current.active = false;
+                            setSelected(null);
                             setDragPoint(null);
                             setPreviewTarget("");
                           }}
@@ -3300,12 +3577,15 @@ export default function Page() {
                 <section className="map-panel">
                   <div className="section-heading">
                     <h2>탐사 경로</h2>
-                    <span className="small muted">변경 요새</span>
+                    <span className="small muted">
+                      {regionCatalog.find((r) => r.id === run.region)?.name ||
+                        "변경 요새"}
+                    </span>
                   </div>
                   <div className="expedition-stage">
                     <img
-                      src={environmentForRoom(run.room).path}
-                      alt={`${environmentForRoom(run.room).label} 탐사 배경`}
+                      src={sceneAsset(run.region)}
+                      alt={`${regionCatalog.find((r) => r.id === run.region)?.name || "변경 요새"} 탐사 배경`}
                     />
                     <div className="stage-shade" aria-hidden="true" />
                     <LivingBackdrop
@@ -3323,7 +3603,7 @@ export default function Page() {
                           key={hero.id}
                           title={`${index + 1}열 · ${char(hero.id).name}`}
                         >
-                          <Crest id={hero.id} />
+                          <BattleActor id={hero.id} />
                           <b>{index + 1}</b>
                         </div>
                       ))}
@@ -3467,7 +3747,11 @@ export default function Page() {
                     </div>
                   )}
                 </section>
-                <section className="room-panel panel">
+                <section className="room-panel panel live-scene-panel">
+                  <LivingBackdrop
+                    region={run.region}
+                    enabled={sceneryEnabled}
+                  />
                   <span className="eyebrow">EXPEDITION JOURNAL</span>
                   <h2>
                     {run.mode === "relic"
@@ -3675,7 +3959,7 @@ export default function Page() {
                       ) : (
                         <>
                           <p>
-                            왕국 정찰대가 붕괴된 통로를 지키고 있습니다. 남은
+                            현지 연락관이 귀환로를 지키고 있습니다. 남은
                             보급품을 건넵니다.
                           </p>
                           <p>생존 동료 체력 +15 · 왕국 우호도 +5</p>
@@ -3859,6 +4143,7 @@ export default function Page() {
               String(conversation.accept)
             }
             request={conversation}
+            onAdvance={() => playSound("dialogue-next", 0.2)}
             playerId={game.storyLeadId || game.party[0] || "AR1"}
             locked={locked}
             onClose={() => setConversation(null)}

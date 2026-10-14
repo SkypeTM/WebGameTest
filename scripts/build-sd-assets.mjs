@@ -24,6 +24,9 @@ for (const type of ["characters", "monsters"]) {
     const source = path.join(sourceDir, file);
     const info = await sharp(source).metadata();
     if (!info.hasAlpha) throw new Error(`${id}: missing transparency`);
+    // A declared alpha channel can still be completely opaque.
+    const stats = await sharp(source).stats();
+    if (stats.isOpaque) throw new Error(`${id}: alpha channel is fully opaque`);
     await sharp(source)
       .webp({ quality: 94, alphaQuality: 100, effort: 6 })
       .toFile(path.join(outDir, `${id}.webp`));

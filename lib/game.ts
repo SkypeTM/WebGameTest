@@ -1609,6 +1609,8 @@ export function normalizeGame(previous: Game): Game {
       : null,
   };
   syncCardTriggers(normalized);
+  // Keep legacy state identical before/after JSON persistence and receipt replay.
+  if (!saved.prologue) delete normalized.prologue;
   return normalized;
 }
 export function relations(ids: string[]) {

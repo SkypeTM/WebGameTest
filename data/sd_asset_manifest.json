@@ -318,5 +318,389 @@
     "source": "art-source/sd/monsters/M08.png",
     "width": 1312,
     "height": 1199
+  },
+  {
+    "id": "M09",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M09.webp",
+    "source": "art-source/sd/monsters/M09.png",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "M10",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M10.webp",
+    "source": "art-source/sd/monsters/M10.png",
+    "width": 1312,
+    "height": 1199
+  },
+  {
+    "id": "M11",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M11.webp",
+    "source": "art-source/sd/monsters/M11.png",
+    "width": 1219,
+    "height": 1290
+  },
+  {
+    "id": "M12",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M12.webp",
+    "source": "art-source/sd/monsters/M12.png",
+    "width": 1312,
+    "height": 1199
+  },
+  {
+    "id": "M13",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M13.webp",
+    "source": "art-source/sd/monsters/M13.png",
+    "width": 1374,
+    "height": 1145
+  },
+  {
+    "id": "M14",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M14.webp",
+    "source": "art-source/sd/monsters/M14.png",
+    "width": 1213,
+    "height": 1297
+  },
+  {
+    "id": "M15",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M15.webp",
+    "source": "art-source/sd/monsters/M15.png",
+    "width": 1222,
+    "height": 1287
+  },
+  {
+    "id": "M16",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M16.webp",
+    "source": "art-source/sd/monsters/M16.png",
+    "width": 1374,
+    "height": 1145
+  },
+  {
+    "id": "M17",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M17.webp",
+    "source": "art-source/sd/monsters/M17.png",
+    "width": 1374,
+    "height": 1145
+  },
+  {
+    "id": "M18",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M18.webp",
+    "source": "art-source/sd/monsters/M18.png",
+    "width": 1374,
+    "height": 1145
+  },
+  {
+    "id": "M19",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M19.webp",
+    "source": "art-source/sd/monsters/M19.png",
+    "width": 1312,
+    "height": 1199
+  },
+  {
+    "id": "M20",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M20.webp",
+    "source": "art-source/sd/monsters/M20.png",
+    "width": 1240,
+    "height": 1269
+  },
+  {
+    "id": "M21",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M21.webp",
+    "source": "art-source/sd/monsters/M21.png",
+    "width": 1374,
+    "height": 1145
+  },
+  {
+    "id": "M22",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M22.webp",
+    "source": "art-source/sd/monsters/M22.png",
+    "width": 1303,
+    "height": 1207
+  },
+  {
+    "id": "M23",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M23.webp",
+    "source": "art-source/sd/monsters/M23.png",
+    "width": 1374,
+    "height": 1145
+  },
+  {
+    "id": "M24",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M24.webp",
+    "source": "art-source/sd/monsters/M24.png",
+    "width": 1374,
+    "height": 1145
+  },
+  {
+    "id": "M25",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M25.webp",
+    "source": "art-source/sd/monsters/M25.png",
+    "width": 1230,
+    "height": 1278
+  },
+  {
+    "id": "M26",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M26.webp",
+    "source": "art-source/sd/monsters/M26.png",
+    "width": 1312,
+    "height": 1199
+  },
+  {
+    "id": "M27",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M27.webp",
+    "source": "art-source/sd/monsters/M27.png",
+    "width": 1374,
+    "height": 1145
+  },
+  {
+    "id": "M28",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M28.webp",
+    "source": "art-source/sd/monsters/M28.png",
+    "width": 1214,
+    "height": 1295
+  },
+  {
+    "id": "M29",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M29.webp",
+    "source": "art-source/sd/monsters/M29.png",
+    "width": 1312,
+    "height": 1199
+  },
+  {
+    "id": "M30",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M30.webp",
+    "source": "art-source/sd/monsters/M30.png",
+    "width": 1312,
+    "height": 1199
+  },
+  {
+    "id": "M31",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M31.webp",
+    "source": "art-source/sd/monsters/M31.png",
+    "width": 1225,
+    "height": 1284
+  },
+  {
+    "id": "M32",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M32.webp",
+    "source": "art-source/sd/monsters/M32.png",
+    "width": 1312,
+    "height": 1199
+  },
+  {
+    "id": "M33",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M33.webp",
+    "source": "art-source/sd/monsters/M33.png",
+    "width": 1214,
+    "height": 1295
+  },
+  {
+    "id": "M34",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M34.webp",
+    "source": "art-source/sd/monsters/M34.png",
+    "width": 1234,
+    "height": 1275
+  },
+  {
+    "id": "M35",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M35.webp",
+    "source": "art-source/sd/monsters/M35.png",
+    "width": 1254,
+    "height": 1254
+  },
+  {
+    "id": "M36",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M36.webp",
+    "source": "art-source/sd/monsters/M36.png",
+    "width": 1223,
+    "height": 1286
+  },
+  {
+    "id": "M37",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M37.webp",
+    "source": "art-source/sd/monsters/M37.png",
+    "width": 1239,
+    "height": 1270
+  },
+  {
+    "id": "M38",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M38.webp",
+    "source": "art-source/sd/monsters/M38.png",
+    "width": 1240,
+    "height": 1268
+  },
+  {
+    "id": "M39",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M39.webp",
+    "source": "art-source/sd/monsters/M39.png",
+    "width": 1212,
+    "height": 1298
+  },
+  {
+    "id": "M40",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M40.webp",
+    "source": "art-source/sd/monsters/M40.png",
+    "width": 1214,
+    "height": 1295
+  },
+  {
+    "id": "M41",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M41.webp",
+    "source": "art-source/sd/monsters/M41.png",
+    "width": 1295,
+    "height": 1214
+  },
+  {
+    "id": "M42",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M42.webp",
+    "source": "art-source/sd/monsters/M42.png",
+    "width": 1226,
+    "height": 1283
+  },
+  {
+    "id": "M43",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M43.webp",
+    "source": "art-source/sd/monsters/M43.png",
+    "width": 1222,
+    "height": 1287
+  },
+  {
+    "id": "M44",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M44.webp",
+    "source": "art-source/sd/monsters/M44.png",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "M45",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M45.webp",
+    "source": "art-source/sd/monsters/M45.png",
+    "width": 1312,
+    "height": 1199
+  },
+  {
+    "id": "M46",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M46.webp",
+    "source": "art-source/sd/monsters/M46.png",
+    "width": 1225,
+    "height": 1284
+  },
+  {
+    "id": "M47",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M47.webp",
+    "source": "art-source/sd/monsters/M47.png",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "id": "M48",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M48.webp",
+    "source": "art-source/sd/monsters/M48.png",
+    "width": 1241,
+    "height": 1268
+  },
+  {
+    "id": "M49",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M49.webp",
+    "source": "art-source/sd/monsters/M49.png",
+    "width": 1226,
+    "height": 1283
+  },
+  {
+    "id": "M50",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M50.webp",
+    "source": "art-source/sd/monsters/M50.png",
+    "width": 1238,
+    "height": 1271
+  },
+  {
+    "id": "M51",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M51.webp",
+    "source": "art-source/sd/monsters/M51.png",
+    "width": 1209,
+    "height": 1301
+  },
+  {
+    "id": "M52",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M52.webp",
+    "source": "art-source/sd/monsters/M52.png",
+    "width": 1241,
+    "height": 1268
+  },
+  {
+    "id": "M53",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M53.webp",
+    "source": "art-source/sd/monsters/M53.png",
+    "width": 1362,
+    "height": 1155
+  },
+  {
+    "id": "M54",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M54.webp",
+    "source": "art-source/sd/monsters/M54.png",
+    "width": 1223,
+    "height": 1286
+  },
+  {
+    "id": "M55",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M55.webp",
+    "source": "art-source/sd/monsters/M55.png",
+    "width": 1225,
+    "height": 1284
+  },
+  {
+    "id": "M56",
+    "type": "monsters",
+    "path": "/assets/sd/monsters/M56.webp",
+    "source": "art-source/sd/monsters/M56.png",
+    "width": 1190,
+    "height": 1322
   }
 ]

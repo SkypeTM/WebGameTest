@@ -155,3 +155,40 @@
     font-size: 12px;
   }
 }
+.region-preview {
+  background-size: cover;
+  background-position: center;
+}
+.region-preview span {
+  text-shadow: 0 2px 6px #000;
+}
+.formation-slot .portrait-only .concept-art {
+  transform: scale(2.4);
+  transform-origin: 50% 0%;
+}
+
+/* Keep the horizontal party together despite legacy narrow-screen grids. */
+.battle-page .sd-battlefield .allies {
+  display: block;
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .battle-page .hand-section .hand .play-card {
+    flex-basis: 88px;
+    width: 88px;
+    height: 150px;
+    margin-left: -48px;
+  }
+  .battle-page .hand-section .hand .play-card:first-child {
+    margin-left: 0;
+  }
+  .battle-page .hand-section .hand {
+    padding-inline: 20px;
+  }
+  .battle-page .sd-battlefield .ally h3 {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .battle-page .sd-battlefield .ally h3 > small {
+    display: none;
+  }
+}

@@ -1,7 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
-  initialGame,
   reduceGame,
   normalizeGame,
   deckPreview,
@@ -9,6 +8,7 @@ import {
   earnedCardTriggers,
   type Game,
 } from "../lib/game";
+import { initialGame } from "./legacy-fixture";
 function run() {
   return reduceGame(initialGame(), { type: "enter" }, 42);
 }

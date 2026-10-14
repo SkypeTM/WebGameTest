@@ -5,3 +5,4 @@
 - 모바일 자동 이동, desktop=1 예외 유지. API와 RSC 요청은 기존 OpenNext 서버 처리 유지. 계정/DB/결제 요금제 변경 없음.
 - 동적/재검증 페이지를 잘못 발행하지 않도록 prerender manifest를 빌드 시 검사.
 - typecheck 및 Cloudflare 빌드 통과. 전체 게임 QA 생략. API의 무료 CPU 한도 초과 가능성까지 제거한 것은 아님.
+- 복구 배포 후 `/`와 `/m` HTTP 200, `x-game-shell: static-v1` 확인. 모바일 UA는 `/m`으로 307, 미인증 `/api/game`은 기존대로 401. 실제 로그인·전투 QA는 수행하지 않음.

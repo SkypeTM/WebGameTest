@@ -154,12 +154,12 @@ function Crest({
     ? monsterAssets.find((item) => item.id === id && item.state === "idle") ||
       assetManifest.find((item) => item.id === id)
     : characterAssets.find((item) => item.id === id && item.state === "idle");
-  const actionAsset = rigStates[monster ? monsterState : visualState]
-    ? { path: rigStates[monster ? monsterState : visualState] }
-    : manifestActionAsset;
-  const idleAsset = rigStates.idle
-    ? { path: rigStates.idle }
-    : manifestIdleAsset;
+  const actionAsset =
+    !monster && rigStates[visualState]
+      ? { path: rigStates[monster ? monsterState : visualState] }
+      : manifestActionAsset;
+  const idleAsset =
+    !monster && rigStates.idle ? { path: rigStates.idle } : manifestIdleAsset;
   const portraitPath = !monster ? `/assets/fhd/portraits/${id}.webp` : "";
   const repairedMonster = monster
     ? sdAssets.find((entry) => entry.id === id)
@@ -173,11 +173,13 @@ function Crest({
   const asset =
     transparentHero ||
     repairedMonster ||
-    (motion
-      ? actionAsset || idleAsset
-      : state
-        ? actionAsset
-        : idleAsset || actionAsset);
+    (monster
+      ? manifestIdleAsset
+      : motion
+        ? actionAsset || idleAsset
+        : state
+          ? actionAsset
+          : idleAsset || actionAsset);
   if (asset?.path && !failed)
     return (
       <div
@@ -2057,18 +2059,19 @@ export default function Page() {
                         })()}
                     </section>
                     <aside className="expedition-panel">
-                      <div className="fortress-art">
-                        <div className="moon" />
-                        <div className="tower one" />
-                        <div className="tower two" />
-                        <div className="tower three" />
+                      <div
+                        className="fortress-art region-preview"
+                        style={{
+                          backgroundImage: `url(${sceneAsset(selectedRegion)})`,
+                        }}
+                      >
                         <span>
                           {String(
                             regionCatalog.findIndex(
                               (region) => region.id === selectedRegion,
                             ) + 1,
                           ).padStart(2, "0")}{" "}
-                          / FRONTIER
+                          / {selectedRegion.toUpperCase()}
                         </span>
                       </div>
                       <div className="expedition-copy">
@@ -2119,7 +2122,16 @@ export default function Page() {
                           <span>분기 경로</span>
                           <strong>전투 · 휴식 · 사건</strong>
                           <span>최종 위협</span>
-                          <strong>캐슬 타이탄</strong>
+                          <strong>
+                            {monsters[
+                              (regionCatalog.findIndex(
+                                (region) => region.id === selectedRegion,
+                              ) +
+                                1) *
+                                8 -
+                                1
+                            ]?.name || "미확인"}
+                          </strong>
                           <span>파티 방어</span>
                           <strong>
                             +{Math.round(relations(game.party).defense * 100)}%
@@ -3597,16 +3609,19 @@ export default function Page() {
                       <strong>{roomFor(run).name}</strong>
                     </div>
                     <div className="stage-party" aria-label="현재 탐사 대형">
-                      {run.heroes.map((hero, index) => (
-                        <div
-                          className={`stage-hero stage-rank-${index + 1}`}
-                          key={hero.id}
-                          title={`${index + 1}열 · ${char(hero.id).name}`}
-                        >
-                          <BattleActor id={hero.id} />
-                          <b>{index + 1}</b>
-                        </div>
-                      ))}
+                      {run.heroes
+                        .map((hero, index) => ({ hero, index }))
+                        .reverse()
+                        .map(({ hero, index }) => (
+                          <div
+                            className={`stage-hero stage-rank-${index + 1}`}
+                            key={hero.id}
+                            title={`${index + 1}열 · ${char(hero.id).name}`}
+                          >
+                            <BattleActor id={hero.id} />
+                            <b>{index + 1}</b>
+                          </div>
+                        ))}
                     </div>
                     <div className="stage-destination" aria-hidden="true">
                       <i />

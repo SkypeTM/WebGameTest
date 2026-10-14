@@ -1142,5 +1142,29 @@
     "width": 1024,
     "height": 1536,
     "generator": "built-in-imagegen"
+  },
+  {
+    "key": "environment-laboratory",
+    "path": "/assets/story-v1/environment-laboratory.webp",
+    "source": "art-source/story-v1/environment-laboratory.png",
+    "width": 1672,
+    "height": 941,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "environment-observatory",
+    "path": "/assets/story-v1/environment-observatory.webp",
+    "source": "art-source/story-v1/environment-observatory.png",
+    "width": 1672,
+    "height": 941,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "environment-palace",
+    "path": "/assets/story-v1/environment-palace.webp",
+    "source": "art-source/story-v1/environment-palace.png",
+    "width": 1672,
+    "height": 941,
+    "generator": "built-in-imagegen"
   }
 ]

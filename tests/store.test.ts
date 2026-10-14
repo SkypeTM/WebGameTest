@@ -8,11 +8,15 @@ process.env.DATABASE_PATH = join(
   "test.sqlite",
 );
 const { db, migrateGame } = await import("../lib/db-node");
-const { initialGame } = await import("../lib/game");
+const { initialGame } = await import("./legacy-fixture");
 db.exec(
   "CREATE TABLE user(id TEXT PRIMARY KEY); INSERT INTO user VALUES ('a'),('b');",
 );
 migrateGame();
+for (const id of ["a", "b"]) {
+  db.prepare("INSERT INTO campaign(account_id,state,version,updated_at) VALUES(?,?,?,?)")
+    .run(id, JSON.stringify(initialGame()), 0, new Date().toISOString());
+}
 const { claimControl, executeAction, getCampaign, getMarket, getMarketHistory } =
   await import("../lib/store-node");
 test("atomic receipt replay, conflicting replay, concurrent versions and device control", () => {

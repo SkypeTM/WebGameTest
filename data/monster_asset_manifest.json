@@ -147,864 +147,864 @@
     "id": "M09",
     "name": "앵커 크랩",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M09/idle.webp"
+    "path": "/assets/sd/monsters/M09.webp"
   },
   {
     "id": "M09",
     "name": "앵커 크랩",
     "state": "action",
-    "path": "/assets/fhd/monsters/M09/action.webp"
+    "path": "/assets/sd/monsters/M09.webp"
   },
   {
     "id": "M09",
     "name": "앵커 크랩",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M09/hit.webp"
+    "path": "/assets/sd/monsters/M09.webp"
   },
   {
     "id": "M10",
     "name": "랜턴 젤리",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M10/idle.webp"
+    "path": "/assets/sd/monsters/M10.webp"
   },
   {
     "id": "M10",
     "name": "랜턴 젤리",
     "state": "action",
-    "path": "/assets/fhd/monsters/M10/action.webp"
+    "path": "/assets/sd/monsters/M10.webp"
   },
   {
     "id": "M10",
     "name": "랜턴 젤리",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M10/hit.webp"
+    "path": "/assets/sd/monsters/M10.webp"
   },
   {
     "id": "M11",
     "name": "로프 골렘",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M11/idle.webp"
+    "path": "/assets/sd/monsters/M11.webp"
   },
   {
     "id": "M11",
     "name": "로프 골렘",
     "state": "action",
-    "path": "/assets/fhd/monsters/M11/action.webp"
+    "path": "/assets/sd/monsters/M11.webp"
   },
   {
     "id": "M11",
     "name": "로프 골렘",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M11/hit.webp"
+    "path": "/assets/sd/monsters/M11.webp"
   },
   {
     "id": "M12",
     "name": "보물 껍질게",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M12/idle.webp"
+    "path": "/assets/sd/monsters/M12.webp"
   },
   {
     "id": "M12",
     "name": "보물 껍질게",
     "state": "action",
-    "path": "/assets/fhd/monsters/M12/action.webp"
+    "path": "/assets/sd/monsters/M12.webp"
   },
   {
     "id": "M12",
     "name": "보물 껍질게",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M12/hit.webp"
+    "path": "/assets/sd/monsters/M12.webp"
   },
   {
     "id": "M13",
     "name": "솔트 윙",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M13/idle.webp"
+    "path": "/assets/sd/monsters/M13.webp"
   },
   {
     "id": "M13",
     "name": "솔트 윙",
     "state": "action",
-    "path": "/assets/fhd/monsters/M13/action.webp"
+    "path": "/assets/sd/monsters/M13.webp"
   },
   {
     "id": "M13",
     "name": "솔트 윙",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M13/hit.webp"
+    "path": "/assets/sd/monsters/M13.webp"
   },
   {
     "id": "M14",
     "name": "문어 경매상",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M14/idle.webp"
+    "path": "/assets/sd/monsters/M14.webp"
   },
   {
     "id": "M14",
     "name": "문어 경매상",
     "state": "action",
-    "path": "/assets/fhd/monsters/M14/action.webp"
+    "path": "/assets/sd/monsters/M14.webp"
   },
   {
     "id": "M14",
     "name": "문어 경매상",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M14/hit.webp"
+    "path": "/assets/sd/monsters/M14.webp"
   },
   {
     "id": "M15",
     "name": "다이버 센트리",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M15/idle.webp"
+    "path": "/assets/sd/monsters/M15.webp"
   },
   {
     "id": "M15",
     "name": "다이버 센트리",
     "state": "action",
-    "path": "/assets/fhd/monsters/M15/action.webp"
+    "path": "/assets/sd/monsters/M15.webp"
   },
   {
     "id": "M15",
     "name": "다이버 센트리",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M15/hit.webp"
+    "path": "/assets/sd/monsters/M15.webp"
   },
   {
     "id": "M16",
     "name": "타이드 캐리어",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M16/idle.webp"
+    "path": "/assets/sd/monsters/M16.webp"
   },
   {
     "id": "M16",
     "name": "타이드 캐리어",
     "state": "action",
-    "path": "/assets/fhd/monsters/M16/action.webp"
+    "path": "/assets/sd/monsters/M16.webp"
   },
   {
     "id": "M16",
     "name": "타이드 캐리어",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M16/hit.webp"
+    "path": "/assets/sd/monsters/M16.webp"
   },
   {
     "id": "M17",
     "name": "잉크 애벌레",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M17/idle.webp"
+    "path": "/assets/sd/monsters/M17.webp"
   },
   {
     "id": "M17",
     "name": "잉크 애벌레",
     "state": "action",
-    "path": "/assets/fhd/monsters/M17/action.webp"
+    "path": "/assets/sd/monsters/M17.webp"
   },
   {
     "id": "M17",
     "name": "잉크 애벌레",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M17/hit.webp"
+    "path": "/assets/sd/monsters/M17.webp"
   },
   {
     "id": "M18",
     "name": "종이 제비",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M18/idle.webp"
+    "path": "/assets/sd/monsters/M18.webp"
   },
   {
     "id": "M18",
     "name": "종이 제비",
     "state": "action",
-    "path": "/assets/fhd/monsters/M18/action.webp"
+    "path": "/assets/sd/monsters/M18.webp"
   },
   {
     "id": "M18",
     "name": "종이 제비",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M18/hit.webp"
+    "path": "/assets/sd/monsters/M18.webp"
   },
   {
     "id": "M19",
     "name": "북카트 골렘",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M19/idle.webp"
+    "path": "/assets/sd/monsters/M19.webp"
   },
   {
     "id": "M19",
     "name": "북카트 골렘",
     "state": "action",
-    "path": "/assets/fhd/monsters/M19/action.webp"
+    "path": "/assets/sd/monsters/M19.webp"
   },
   {
     "id": "M19",
     "name": "북카트 골렘",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M19/hit.webp"
+    "path": "/assets/sd/monsters/M19.webp"
   },
   {
     "id": "M20",
     "name": "인덱스 렌즈",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M20/idle.webp"
+    "path": "/assets/sd/monsters/M20.webp"
   },
   {
     "id": "M20",
     "name": "인덱스 렌즈",
     "state": "action",
-    "path": "/assets/fhd/monsters/M20/action.webp"
+    "path": "/assets/sd/monsters/M20.webp"
   },
   {
     "id": "M20",
     "name": "인덱스 렌즈",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M20/hit.webp"
+    "path": "/assets/sd/monsters/M20.webp"
   },
   {
     "id": "M21",
     "name": "쉿 부엉이",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M21/idle.webp"
+    "path": "/assets/sd/monsters/M21.webp"
   },
   {
     "id": "M21",
     "name": "쉿 부엉이",
     "state": "action",
-    "path": "/assets/fhd/monsters/M21/action.webp"
+    "path": "/assets/sd/monsters/M21.webp"
   },
   {
     "id": "M21",
     "name": "쉿 부엉이",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M21/hit.webp"
+    "path": "/assets/sd/monsters/M21.webp"
   },
   {
     "id": "M22",
     "name": "페이지 키퍼",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M22/idle.webp"
+    "path": "/assets/sd/monsters/M22.webp"
   },
   {
     "id": "M22",
     "name": "페이지 키퍼",
     "state": "action",
-    "path": "/assets/fhd/monsters/M22/action.webp"
+    "path": "/assets/sd/monsters/M22.webp"
   },
   {
     "id": "M22",
     "name": "페이지 키퍼",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M22/hit.webp"
+    "path": "/assets/sd/monsters/M22.webp"
   },
   {
     "id": "M23",
     "name": "바인더 봇",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M23/idle.webp"
+    "path": "/assets/sd/monsters/M23.webp"
   },
   {
     "id": "M23",
     "name": "바인더 봇",
     "state": "action",
-    "path": "/assets/fhd/monsters/M23/action.webp"
+    "path": "/assets/sd/monsters/M23.webp"
   },
   {
     "id": "M23",
     "name": "바인더 봇",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M23/hit.webp"
+    "path": "/assets/sd/monsters/M23.webp"
   },
   {
     "id": "M24",
     "name": "그랜드 아카이브",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M24/idle.webp"
+    "path": "/assets/sd/monsters/M24.webp"
   },
   {
     "id": "M24",
     "name": "그랜드 아카이브",
     "state": "action",
-    "path": "/assets/fhd/monsters/M24/action.webp"
+    "path": "/assets/sd/monsters/M24.webp"
   },
   {
     "id": "M24",
     "name": "그랜드 아카이브",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M24/hit.webp"
+    "path": "/assets/sd/monsters/M24.webp"
   },
   {
     "id": "M25",
     "name": "캔들 버디",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M25/idle.webp"
+    "path": "/assets/sd/monsters/M25.webp"
   },
   {
     "id": "M25",
     "name": "캔들 버디",
     "state": "action",
-    "path": "/assets/fhd/monsters/M25/action.webp"
+    "path": "/assets/sd/monsters/M25.webp"
   },
   {
     "id": "M25",
     "name": "캔들 버디",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M25/hit.webp"
+    "path": "/assets/sd/monsters/M25.webp"
   },
   {
     "id": "M26",
     "name": "벨 코러스",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M26/idle.webp"
+    "path": "/assets/sd/monsters/M26.webp"
   },
   {
     "id": "M26",
     "name": "벨 코러스",
     "state": "action",
-    "path": "/assets/fhd/monsters/M26/action.webp"
+    "path": "/assets/sd/monsters/M26.webp"
   },
   {
     "id": "M26",
     "name": "벨 코러스",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M26/hit.webp"
+    "path": "/assets/sd/monsters/M26.webp"
   },
   {
     "id": "M27",
     "name": "인센스 비틀",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M27/idle.webp"
+    "path": "/assets/sd/monsters/M27.webp"
   },
   {
     "id": "M27",
     "name": "인센스 비틀",
     "state": "action",
-    "path": "/assets/fhd/monsters/M27/action.webp"
+    "path": "/assets/sd/monsters/M27.webp"
   },
   {
     "id": "M27",
     "name": "인센스 비틀",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M27/hit.webp"
+    "path": "/assets/sd/monsters/M27.webp"
   },
   {
     "id": "M28",
     "name": "마블 가디언",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M28/idle.webp"
+    "path": "/assets/sd/monsters/M28.webp"
   },
   {
     "id": "M28",
     "name": "마블 가디언",
     "state": "action",
-    "path": "/assets/fhd/monsters/M28/action.webp"
+    "path": "/assets/sd/monsters/M28.webp"
   },
   {
     "id": "M28",
     "name": "마블 가디언",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M28/hit.webp"
+    "path": "/assets/sd/monsters/M28.webp"
   },
   {
     "id": "M29",
     "name": "글라스 모스",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M29/idle.webp"
+    "path": "/assets/sd/monsters/M29.webp"
   },
   {
     "id": "M29",
     "name": "글라스 모스",
     "state": "action",
-    "path": "/assets/fhd/monsters/M29/action.webp"
+    "path": "/assets/sd/monsters/M29.webp"
   },
   {
     "id": "M29",
     "name": "글라스 모스",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M29/hit.webp"
+    "path": "/assets/sd/monsters/M29.webp"
   },
   {
     "id": "M30",
     "name": "차임 워커",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M30/idle.webp"
+    "path": "/assets/sd/monsters/M30.webp"
   },
   {
     "id": "M30",
     "name": "차임 워커",
     "state": "action",
-    "path": "/assets/fhd/monsters/M30/action.webp"
+    "path": "/assets/sd/monsters/M30.webp"
   },
   {
     "id": "M30",
     "name": "차임 워커",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M30/hit.webp"
+    "path": "/assets/sd/monsters/M30.webp"
   },
   {
     "id": "M31",
     "name": "이클립스 메이지",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M31/idle.webp"
+    "path": "/assets/sd/monsters/M31.webp"
   },
   {
     "id": "M31",
     "name": "이클립스 메이지",
     "state": "action",
-    "path": "/assets/fhd/monsters/M31/action.webp"
+    "path": "/assets/sd/monsters/M31.webp"
   },
   {
     "id": "M31",
     "name": "이클립스 메이지",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M31/hit.webp"
+    "path": "/assets/sd/monsters/M31.webp"
   },
   {
     "id": "M32",
     "name": "솔라 세라프",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M32/idle.webp"
+    "path": "/assets/sd/monsters/M32.webp"
   },
   {
     "id": "M32",
     "name": "솔라 세라프",
     "state": "action",
-    "path": "/assets/fhd/monsters/M32/action.webp"
+    "path": "/assets/sd/monsters/M32.webp"
   },
   {
     "id": "M32",
     "name": "솔라 세라프",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M32/hit.webp"
+    "path": "/assets/sd/monsters/M32.webp"
   },
   {
     "id": "M33",
     "name": "가시등 노루",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M33/idle.webp"
+    "path": "/assets/sd/monsters/M33.webp"
   },
   {
     "id": "M33",
     "name": "가시등 노루",
     "state": "action",
-    "path": "/assets/fhd/monsters/M33/action.webp"
+    "path": "/assets/sd/monsters/M33.webp"
   },
   {
     "id": "M33",
     "name": "가시등 노루",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M33/hit.webp"
+    "path": "/assets/sd/monsters/M33.webp"
   },
   {
     "id": "M34",
     "name": "우산 버섯",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M34/idle.webp"
+    "path": "/assets/sd/monsters/M34.webp"
   },
   {
     "id": "M34",
     "name": "우산 버섯",
     "state": "action",
-    "path": "/assets/fhd/monsters/M34/action.webp"
+    "path": "/assets/sd/monsters/M34.webp"
   },
   {
     "id": "M34",
     "name": "우산 버섯",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M34/hit.webp"
+    "path": "/assets/sd/monsters/M34.webp"
   },
   {
     "id": "M35",
     "name": "수액 슬라임",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M35/idle.webp"
+    "path": "/assets/sd/monsters/M35.webp"
   },
   {
     "id": "M35",
     "name": "수액 슬라임",
     "state": "action",
-    "path": "/assets/fhd/monsters/M35/action.webp"
+    "path": "/assets/sd/monsters/M35.webp"
   },
   {
     "id": "M35",
     "name": "수액 슬라임",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M35/hit.webp"
+    "path": "/assets/sd/monsters/M35.webp"
   },
   {
     "id": "M36",
     "name": "나이테 방패벌",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M36/idle.webp"
+    "path": "/assets/sd/monsters/M36.webp"
   },
   {
     "id": "M36",
     "name": "나이테 방패벌",
     "state": "action",
-    "path": "/assets/fhd/monsters/M36/action.webp"
+    "path": "/assets/sd/monsters/M36.webp"
   },
   {
     "id": "M36",
     "name": "나이테 방패벌",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M36/hit.webp"
+    "path": "/assets/sd/monsters/M36.webp"
   },
   {
     "id": "M37",
     "name": "새싹 인형",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M37/idle.webp"
+    "path": "/assets/sd/monsters/M37.webp"
   },
   {
     "id": "M37",
     "name": "새싹 인형",
     "state": "action",
-    "path": "/assets/fhd/monsters/M37/action.webp"
+    "path": "/assets/sd/monsters/M37.webp"
   },
   {
     "id": "M37",
     "name": "새싹 인형",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M37/hit.webp"
+    "path": "/assets/sd/monsters/M37.webp"
   },
   {
     "id": "M38",
     "name": "왕관사슴",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M38/idle.webp"
+    "path": "/assets/sd/monsters/M38.webp"
   },
   {
     "id": "M38",
     "name": "왕관사슴",
     "state": "action",
-    "path": "/assets/fhd/monsters/M38/action.webp"
+    "path": "/assets/sd/monsters/M38.webp"
   },
   {
     "id": "M38",
     "name": "왕관사슴",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M38/hit.webp"
+    "path": "/assets/sd/monsters/M38.webp"
   },
   {
     "id": "M39",
     "name": "가든 커터",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M39/idle.webp"
+    "path": "/assets/sd/monsters/M39.webp"
   },
   {
     "id": "M39",
     "name": "가든 커터",
     "state": "action",
-    "path": "/assets/fhd/monsters/M39/action.webp"
+    "path": "/assets/sd/monsters/M39.webp"
   },
   {
     "id": "M39",
     "name": "가든 커터",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M39/hit.webp"
+    "path": "/assets/sd/monsters/M39.webp"
   },
   {
     "id": "M40",
     "name": "에인션트 트리혼",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M40/idle.webp"
+    "path": "/assets/sd/monsters/M40.webp"
   },
   {
     "id": "M40",
     "name": "에인션트 트리혼",
     "state": "action",
-    "path": "/assets/fhd/monsters/M40/action.webp"
+    "path": "/assets/sd/monsters/M40.webp"
   },
   {
     "id": "M40",
     "name": "에인션트 트리혼",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M40/hit.webp"
+    "path": "/assets/sd/monsters/M40.webp"
   },
   {
     "id": "M41",
     "name": "패치 스케어크로",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M41/idle.webp"
+    "path": "/assets/sd/monsters/M41.webp"
   },
   {
     "id": "M41",
     "name": "패치 스케어크로",
     "state": "action",
-    "path": "/assets/fhd/monsters/M41/action.webp"
+    "path": "/assets/sd/monsters/M41.webp"
   },
   {
     "id": "M41",
     "name": "패치 스케어크로",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M41/hit.webp"
+    "path": "/assets/sd/monsters/M41.webp"
   },
   {
     "id": "M42",
     "name": "굴뚝 참새",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M42/idle.webp"
+    "path": "/assets/sd/monsters/M42.webp"
   },
   {
     "id": "M42",
     "name": "굴뚝 참새",
     "state": "action",
-    "path": "/assets/fhd/monsters/M42/action.webp"
+    "path": "/assets/sd/monsters/M42.webp"
   },
   {
     "id": "M42",
     "name": "굴뚝 참새",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M42/hit.webp"
+    "path": "/assets/sd/monsters/M42.webp"
   },
   {
     "id": "M43",
     "name": "팟 워커",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M43/idle.webp"
+    "path": "/assets/sd/monsters/M43.webp"
   },
   {
     "id": "M43",
     "name": "팟 워커",
     "state": "action",
-    "path": "/assets/fhd/monsters/M43/action.webp"
+    "path": "/assets/sd/monsters/M43.webp"
   },
   {
     "id": "M43",
     "name": "팟 워커",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M43/hit.webp"
+    "path": "/assets/sd/monsters/M43.webp"
   },
   {
     "id": "M44",
     "name": "벽지 도마뱀",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M44/idle.webp"
+    "path": "/assets/sd/monsters/M44.webp"
   },
   {
     "id": "M44",
     "name": "벽지 도마뱀",
     "state": "action",
-    "path": "/assets/fhd/monsters/M44/action.webp"
+    "path": "/assets/sd/monsters/M44.webp"
   },
   {
     "id": "M44",
     "name": "벽지 도마뱀",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M44/hit.webp"
+    "path": "/assets/sd/monsters/M44.webp"
   },
   {
     "id": "M45",
     "name": "휠 러너",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M45/idle.webp"
+    "path": "/assets/sd/monsters/M45.webp"
   },
   {
     "id": "M45",
     "name": "휠 러너",
     "state": "action",
-    "path": "/assets/fhd/monsters/M45/action.webp"
+    "path": "/assets/sd/monsters/M45.webp"
   },
   {
     "id": "M45",
     "name": "휠 러너",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M45/hit.webp"
+    "path": "/assets/sd/monsters/M45.webp"
   },
   {
     "id": "M46",
     "name": "스모크 소방봇",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M46/idle.webp"
+    "path": "/assets/sd/monsters/M46.webp"
   },
   {
     "id": "M46",
     "name": "스모크 소방봇",
     "state": "action",
-    "path": "/assets/fhd/monsters/M46/action.webp"
+    "path": "/assets/sd/monsters/M46.webp"
   },
   {
     "id": "M46",
     "name": "스모크 소방봇",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M46/hit.webp"
+    "path": "/assets/sd/monsters/M46.webp"
   },
   {
     "id": "M47",
     "name": "랜턴 캐러밴",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M47/idle.webp"
+    "path": "/assets/sd/monsters/M47.webp"
   },
   {
     "id": "M47",
     "name": "랜턴 캐러밴",
     "state": "action",
-    "path": "/assets/fhd/monsters/M47/action.webp"
+    "path": "/assets/sd/monsters/M47.webp"
   },
   {
     "id": "M47",
     "name": "랜턴 캐러밴",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M47/hit.webp"
+    "path": "/assets/sd/monsters/M47.webp"
   },
   {
     "id": "M48",
     "name": "퍼니스 하우스",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M48/idle.webp"
+    "path": "/assets/sd/monsters/M48.webp"
   },
   {
     "id": "M48",
     "name": "퍼니스 하우스",
     "state": "action",
-    "path": "/assets/fhd/monsters/M48/action.webp"
+    "path": "/assets/sd/monsters/M48.webp"
   },
   {
     "id": "M48",
     "name": "퍼니스 하우스",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M48/hit.webp"
+    "path": "/assets/sd/monsters/M48.webp"
   },
   {
     "id": "M49",
     "name": "클록 맨티스",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M49/idle.webp"
+    "path": "/assets/sd/monsters/M49.webp"
   },
   {
     "id": "M49",
     "name": "클록 맨티스",
     "state": "action",
-    "path": "/assets/fhd/monsters/M49/action.webp"
+    "path": "/assets/sd/monsters/M49.webp"
   },
   {
     "id": "M49",
     "name": "클록 맨티스",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M49/hit.webp"
+    "path": "/assets/sd/monsters/M49.webp"
   },
   {
     "id": "M50",
     "name": "차임 캐터필러",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M50/idle.webp"
+    "path": "/assets/sd/monsters/M50.webp"
   },
   {
     "id": "M50",
     "name": "차임 캐터필러",
     "state": "action",
-    "path": "/assets/fhd/monsters/M50/action.webp"
+    "path": "/assets/sd/monsters/M50.webp"
   },
   {
     "id": "M50",
     "name": "차임 캐터필러",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M50/hit.webp"
+    "path": "/assets/sd/monsters/M50.webp"
   },
   {
     "id": "M51",
     "name": "오브 드론",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M51/idle.webp"
+    "path": "/assets/sd/monsters/M51.webp"
   },
   {
     "id": "M51",
     "name": "오브 드론",
     "state": "action",
-    "path": "/assets/fhd/monsters/M51/action.webp"
+    "path": "/assets/sd/monsters/M51.webp"
   },
   {
     "id": "M51",
     "name": "오브 드론",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M51/hit.webp"
+    "path": "/assets/sd/monsters/M51.webp"
   },
   {
     "id": "M52",
     "name": "노트 골렘",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M52/idle.webp"
+    "path": "/assets/sd/monsters/M52.webp"
   },
   {
     "id": "M52",
     "name": "노트 골렘",
     "state": "action",
-    "path": "/assets/fhd/monsters/M52/action.webp"
+    "path": "/assets/sd/monsters/M52.webp"
   },
   {
     "id": "M52",
     "name": "노트 골렘",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M52/hit.webp"
+    "path": "/assets/sd/monsters/M52.webp"
   },
   {
     "id": "M53",
     "name": "리버스 윙",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M53/idle.webp"
+    "path": "/assets/sd/monsters/M53.webp"
   },
   {
     "id": "M53",
     "name": "리버스 윙",
     "state": "action",
-    "path": "/assets/fhd/monsters/M53/action.webp"
+    "path": "/assets/sd/monsters/M53.webp"
   },
   {
     "id": "M53",
     "name": "리버스 윙",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M53/hit.webp"
+    "path": "/assets/sd/monsters/M53.webp"
   },
   {
     "id": "M54",
     "name": "기어 마스터",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M54/idle.webp"
+    "path": "/assets/sd/monsters/M54.webp"
   },
   {
     "id": "M54",
     "name": "기어 마스터",
     "state": "action",
-    "path": "/assets/fhd/monsters/M54/action.webp"
+    "path": "/assets/sd/monsters/M54.webp"
   },
   {
     "id": "M54",
     "name": "기어 마스터",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M54/hit.webp"
+    "path": "/assets/sd/monsters/M54.webp"
   },
   {
     "id": "M55",
     "name": "펜듈럼 가드",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M55/idle.webp"
+    "path": "/assets/sd/monsters/M55.webp"
   },
   {
     "id": "M55",
     "name": "펜듈럼 가드",
     "state": "action",
-    "path": "/assets/fhd/monsters/M55/action.webp"
+    "path": "/assets/sd/monsters/M55.webp"
   },
   {
     "id": "M55",
     "name": "펜듈럼 가드",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M55/hit.webp"
+    "path": "/assets/sd/monsters/M55.webp"
   },
   {
     "id": "M56",
     "name": "종탑 거신",
     "state": "idle",
-    "path": "/assets/fhd/monsters/M56/idle.webp"
+    "path": "/assets/sd/monsters/M56.webp"
   },
   {
     "id": "M56",
     "name": "종탑 거신",
     "state": "action",
-    "path": "/assets/fhd/monsters/M56/action.webp"
+    "path": "/assets/sd/monsters/M56.webp"
   },
   {
     "id": "M56",
     "name": "종탑 거신",
     "state": "hit",
-    "path": "/assets/fhd/monsters/M56/hit.webp"
+    "path": "/assets/sd/monsters/M56.webp"
   }
 ]

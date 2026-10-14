@@ -1,7 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
-  initialGame,
   reduceGame,
   characters,
   monsters,
@@ -20,6 +19,7 @@ import {
   type Game,
   type Action,
 } from "../lib/game";
+import { initialGame } from "./legacy-fixture";
 function act(g: Game, a: Action) {
   return reduceGame(g, a, 1234567);
 }

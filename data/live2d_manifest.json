@@ -363,432 +363,432 @@
     "id": "M09",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M09/idle.webp",
-      "action": "/assets/fhd/monsters/M09/action.webp",
-      "hit": "/assets/fhd/monsters/M09/hit.webp"
+      "idle": "/assets/sd/monsters/M09.webp",
+      "action": "/assets/sd/monsters/M09.webp",
+      "hit": "/assets/sd/monsters/M09.webp"
     }
   },
   {
     "id": "M10",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M10/idle.webp",
-      "action": "/assets/fhd/monsters/M10/action.webp",
-      "hit": "/assets/fhd/monsters/M10/hit.webp"
+      "idle": "/assets/sd/monsters/M10.webp",
+      "action": "/assets/sd/monsters/M10.webp",
+      "hit": "/assets/sd/monsters/M10.webp"
     }
   },
   {
     "id": "M11",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M11/idle.webp",
-      "action": "/assets/fhd/monsters/M11/action.webp",
-      "hit": "/assets/fhd/monsters/M11/hit.webp"
+      "idle": "/assets/sd/monsters/M11.webp",
+      "action": "/assets/sd/monsters/M11.webp",
+      "hit": "/assets/sd/monsters/M11.webp"
     }
   },
   {
     "id": "M12",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M12/idle.webp",
-      "action": "/assets/fhd/monsters/M12/action.webp",
-      "hit": "/assets/fhd/monsters/M12/hit.webp"
+      "idle": "/assets/sd/monsters/M12.webp",
+      "action": "/assets/sd/monsters/M12.webp",
+      "hit": "/assets/sd/monsters/M12.webp"
     }
   },
   {
     "id": "M13",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M13/idle.webp",
-      "action": "/assets/fhd/monsters/M13/action.webp",
-      "hit": "/assets/fhd/monsters/M13/hit.webp"
+      "idle": "/assets/sd/monsters/M13.webp",
+      "action": "/assets/sd/monsters/M13.webp",
+      "hit": "/assets/sd/monsters/M13.webp"
     }
   },
   {
     "id": "M14",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M14/idle.webp",
-      "action": "/assets/fhd/monsters/M14/action.webp",
-      "hit": "/assets/fhd/monsters/M14/hit.webp"
+      "idle": "/assets/sd/monsters/M14.webp",
+      "action": "/assets/sd/monsters/M14.webp",
+      "hit": "/assets/sd/monsters/M14.webp"
     }
   },
   {
     "id": "M15",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M15/idle.webp",
-      "action": "/assets/fhd/monsters/M15/action.webp",
-      "hit": "/assets/fhd/monsters/M15/hit.webp"
+      "idle": "/assets/sd/monsters/M15.webp",
+      "action": "/assets/sd/monsters/M15.webp",
+      "hit": "/assets/sd/monsters/M15.webp"
     }
   },
   {
     "id": "M16",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M16/idle.webp",
-      "action": "/assets/fhd/monsters/M16/action.webp",
-      "hit": "/assets/fhd/monsters/M16/hit.webp"
+      "idle": "/assets/sd/monsters/M16.webp",
+      "action": "/assets/sd/monsters/M16.webp",
+      "hit": "/assets/sd/monsters/M16.webp"
     }
   },
   {
     "id": "M17",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M17/idle.webp",
-      "action": "/assets/fhd/monsters/M17/action.webp",
-      "hit": "/assets/fhd/monsters/M17/hit.webp"
+      "idle": "/assets/sd/monsters/M17.webp",
+      "action": "/assets/sd/monsters/M17.webp",
+      "hit": "/assets/sd/monsters/M17.webp"
     }
   },
   {
     "id": "M18",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M18/idle.webp",
-      "action": "/assets/fhd/monsters/M18/action.webp",
-      "hit": "/assets/fhd/monsters/M18/hit.webp"
+      "idle": "/assets/sd/monsters/M18.webp",
+      "action": "/assets/sd/monsters/M18.webp",
+      "hit": "/assets/sd/monsters/M18.webp"
     }
   },
   {
     "id": "M19",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M19/idle.webp",
-      "action": "/assets/fhd/monsters/M19/action.webp",
-      "hit": "/assets/fhd/monsters/M19/hit.webp"
+      "idle": "/assets/sd/monsters/M19.webp",
+      "action": "/assets/sd/monsters/M19.webp",
+      "hit": "/assets/sd/monsters/M19.webp"
     }
   },
   {
     "id": "M20",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M20/idle.webp",
-      "action": "/assets/fhd/monsters/M20/action.webp",
-      "hit": "/assets/fhd/monsters/M20/hit.webp"
+      "idle": "/assets/sd/monsters/M20.webp",
+      "action": "/assets/sd/monsters/M20.webp",
+      "hit": "/assets/sd/monsters/M20.webp"
     }
   },
   {
     "id": "M21",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M21/idle.webp",
-      "action": "/assets/fhd/monsters/M21/action.webp",
-      "hit": "/assets/fhd/monsters/M21/hit.webp"
+      "idle": "/assets/sd/monsters/M21.webp",
+      "action": "/assets/sd/monsters/M21.webp",
+      "hit": "/assets/sd/monsters/M21.webp"
     }
   },
   {
     "id": "M22",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M22/idle.webp",
-      "action": "/assets/fhd/monsters/M22/action.webp",
-      "hit": "/assets/fhd/monsters/M22/hit.webp"
+      "idle": "/assets/sd/monsters/M22.webp",
+      "action": "/assets/sd/monsters/M22.webp",
+      "hit": "/assets/sd/monsters/M22.webp"
     }
   },
   {
     "id": "M23",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M23/idle.webp",
-      "action": "/assets/fhd/monsters/M23/action.webp",
-      "hit": "/assets/fhd/monsters/M23/hit.webp"
+      "idle": "/assets/sd/monsters/M23.webp",
+      "action": "/assets/sd/monsters/M23.webp",
+      "hit": "/assets/sd/monsters/M23.webp"
     }
   },
   {
     "id": "M24",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M24/idle.webp",
-      "action": "/assets/fhd/monsters/M24/action.webp",
-      "hit": "/assets/fhd/monsters/M24/hit.webp"
+      "idle": "/assets/sd/monsters/M24.webp",
+      "action": "/assets/sd/monsters/M24.webp",
+      "hit": "/assets/sd/monsters/M24.webp"
     }
   },
   {
     "id": "M25",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M25/idle.webp",
-      "action": "/assets/fhd/monsters/M25/action.webp",
-      "hit": "/assets/fhd/monsters/M25/hit.webp"
+      "idle": "/assets/sd/monsters/M25.webp",
+      "action": "/assets/sd/monsters/M25.webp",
+      "hit": "/assets/sd/monsters/M25.webp"
     }
   },
   {
     "id": "M26",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M26/idle.webp",
-      "action": "/assets/fhd/monsters/M26/action.webp",
-      "hit": "/assets/fhd/monsters/M26/hit.webp"
+      "idle": "/assets/sd/monsters/M26.webp",
+      "action": "/assets/sd/monsters/M26.webp",
+      "hit": "/assets/sd/monsters/M26.webp"
     }
   },
   {
     "id": "M27",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M27/idle.webp",
-      "action": "/assets/fhd/monsters/M27/action.webp",
-      "hit": "/assets/fhd/monsters/M27/hit.webp"
+      "idle": "/assets/sd/monsters/M27.webp",
+      "action": "/assets/sd/monsters/M27.webp",
+      "hit": "/assets/sd/monsters/M27.webp"
     }
   },
   {
     "id": "M28",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M28/idle.webp",
-      "action": "/assets/fhd/monsters/M28/action.webp",
-      "hit": "/assets/fhd/monsters/M28/hit.webp"
+      "idle": "/assets/sd/monsters/M28.webp",
+      "action": "/assets/sd/monsters/M28.webp",
+      "hit": "/assets/sd/monsters/M28.webp"
     }
   },
   {
     "id": "M29",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M29/idle.webp",
-      "action": "/assets/fhd/monsters/M29/action.webp",
-      "hit": "/assets/fhd/monsters/M29/hit.webp"
+      "idle": "/assets/sd/monsters/M29.webp",
+      "action": "/assets/sd/monsters/M29.webp",
+      "hit": "/assets/sd/monsters/M29.webp"
     }
   },
   {
     "id": "M30",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M30/idle.webp",
-      "action": "/assets/fhd/monsters/M30/action.webp",
-      "hit": "/assets/fhd/monsters/M30/hit.webp"
+      "idle": "/assets/sd/monsters/M30.webp",
+      "action": "/assets/sd/monsters/M30.webp",
+      "hit": "/assets/sd/monsters/M30.webp"
     }
   },
   {
     "id": "M31",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M31/idle.webp",
-      "action": "/assets/fhd/monsters/M31/action.webp",
-      "hit": "/assets/fhd/monsters/M31/hit.webp"
+      "idle": "/assets/sd/monsters/M31.webp",
+      "action": "/assets/sd/monsters/M31.webp",
+      "hit": "/assets/sd/monsters/M31.webp"
     }
   },
   {
     "id": "M32",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M32/idle.webp",
-      "action": "/assets/fhd/monsters/M32/action.webp",
-      "hit": "/assets/fhd/monsters/M32/hit.webp"
+      "idle": "/assets/sd/monsters/M32.webp",
+      "action": "/assets/sd/monsters/M32.webp",
+      "hit": "/assets/sd/monsters/M32.webp"
     }
   },
   {
     "id": "M33",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M33/idle.webp",
-      "action": "/assets/fhd/monsters/M33/action.webp",
-      "hit": "/assets/fhd/monsters/M33/hit.webp"
+      "idle": "/assets/sd/monsters/M33.webp",
+      "action": "/assets/sd/monsters/M33.webp",
+      "hit": "/assets/sd/monsters/M33.webp"
     }
   },
   {
     "id": "M34",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M34/idle.webp",
-      "action": "/assets/fhd/monsters/M34/action.webp",
-      "hit": "/assets/fhd/monsters/M34/hit.webp"
+      "idle": "/assets/sd/monsters/M34.webp",
+      "action": "/assets/sd/monsters/M34.webp",
+      "hit": "/assets/sd/monsters/M34.webp"
     }
   },
   {
     "id": "M35",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M35/idle.webp",
-      "action": "/assets/fhd/monsters/M35/action.webp",
-      "hit": "/assets/fhd/monsters/M35/hit.webp"
+      "idle": "/assets/sd/monsters/M35.webp",
+      "action": "/assets/sd/monsters/M35.webp",
+      "hit": "/assets/sd/monsters/M35.webp"
     }
   },
   {
     "id": "M36",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M36/idle.webp",
-      "action": "/assets/fhd/monsters/M36/action.webp",
-      "hit": "/assets/fhd/monsters/M36/hit.webp"
+      "idle": "/assets/sd/monsters/M36.webp",
+      "action": "/assets/sd/monsters/M36.webp",
+      "hit": "/assets/sd/monsters/M36.webp"
     }
   },
   {
     "id": "M37",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M37/idle.webp",
-      "action": "/assets/fhd/monsters/M37/action.webp",
-      "hit": "/assets/fhd/monsters/M37/hit.webp"
+      "idle": "/assets/sd/monsters/M37.webp",
+      "action": "/assets/sd/monsters/M37.webp",
+      "hit": "/assets/sd/monsters/M37.webp"
     }
   },
   {
     "id": "M38",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M38/idle.webp",
-      "action": "/assets/fhd/monsters/M38/action.webp",
-      "hit": "/assets/fhd/monsters/M38/hit.webp"
+      "idle": "/assets/sd/monsters/M38.webp",
+      "action": "/assets/sd/monsters/M38.webp",
+      "hit": "/assets/sd/monsters/M38.webp"
     }
   },
   {
     "id": "M39",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M39/idle.webp",
-      "action": "/assets/fhd/monsters/M39/action.webp",
-      "hit": "/assets/fhd/monsters/M39/hit.webp"
+      "idle": "/assets/sd/monsters/M39.webp",
+      "action": "/assets/sd/monsters/M39.webp",
+      "hit": "/assets/sd/monsters/M39.webp"
     }
   },
   {
     "id": "M40",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M40/idle.webp",
-      "action": "/assets/fhd/monsters/M40/action.webp",
-      "hit": "/assets/fhd/monsters/M40/hit.webp"
+      "idle": "/assets/sd/monsters/M40.webp",
+      "action": "/assets/sd/monsters/M40.webp",
+      "hit": "/assets/sd/monsters/M40.webp"
     }
   },
   {
     "id": "M41",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M41/idle.webp",
-      "action": "/assets/fhd/monsters/M41/action.webp",
-      "hit": "/assets/fhd/monsters/M41/hit.webp"
+      "idle": "/assets/sd/monsters/M41.webp",
+      "action": "/assets/sd/monsters/M41.webp",
+      "hit": "/assets/sd/monsters/M41.webp"
     }
   },
   {
     "id": "M42",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M42/idle.webp",
-      "action": "/assets/fhd/monsters/M42/action.webp",
-      "hit": "/assets/fhd/monsters/M42/hit.webp"
+      "idle": "/assets/sd/monsters/M42.webp",
+      "action": "/assets/sd/monsters/M42.webp",
+      "hit": "/assets/sd/monsters/M42.webp"
     }
   },
   {
     "id": "M43",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M43/idle.webp",
-      "action": "/assets/fhd/monsters/M43/action.webp",
-      "hit": "/assets/fhd/monsters/M43/hit.webp"
+      "idle": "/assets/sd/monsters/M43.webp",
+      "action": "/assets/sd/monsters/M43.webp",
+      "hit": "/assets/sd/monsters/M43.webp"
     }
   },
   {
     "id": "M44",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M44/idle.webp",
-      "action": "/assets/fhd/monsters/M44/action.webp",
-      "hit": "/assets/fhd/monsters/M44/hit.webp"
+      "idle": "/assets/sd/monsters/M44.webp",
+      "action": "/assets/sd/monsters/M44.webp",
+      "hit": "/assets/sd/monsters/M44.webp"
     }
   },
   {
     "id": "M45",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M45/idle.webp",
-      "action": "/assets/fhd/monsters/M45/action.webp",
-      "hit": "/assets/fhd/monsters/M45/hit.webp"
+      "idle": "/assets/sd/monsters/M45.webp",
+      "action": "/assets/sd/monsters/M45.webp",
+      "hit": "/assets/sd/monsters/M45.webp"
     }
   },
   {
     "id": "M46",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M46/idle.webp",
-      "action": "/assets/fhd/monsters/M46/action.webp",
-      "hit": "/assets/fhd/monsters/M46/hit.webp"
+      "idle": "/assets/sd/monsters/M46.webp",
+      "action": "/assets/sd/monsters/M46.webp",
+      "hit": "/assets/sd/monsters/M46.webp"
     }
   },
   {
     "id": "M47",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M47/idle.webp",
-      "action": "/assets/fhd/monsters/M47/action.webp",
-      "hit": "/assets/fhd/monsters/M47/hit.webp"
+      "idle": "/assets/sd/monsters/M47.webp",
+      "action": "/assets/sd/monsters/M47.webp",
+      "hit": "/assets/sd/monsters/M47.webp"
     }
   },
   {
     "id": "M48",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M48/idle.webp",
-      "action": "/assets/fhd/monsters/M48/action.webp",
-      "hit": "/assets/fhd/monsters/M48/hit.webp"
+      "idle": "/assets/sd/monsters/M48.webp",
+      "action": "/assets/sd/monsters/M48.webp",
+      "hit": "/assets/sd/monsters/M48.webp"
     }
   },
   {
     "id": "M49",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M49/idle.webp",
-      "action": "/assets/fhd/monsters/M49/action.webp",
-      "hit": "/assets/fhd/monsters/M49/hit.webp"
+      "idle": "/assets/sd/monsters/M49.webp",
+      "action": "/assets/sd/monsters/M49.webp",
+      "hit": "/assets/sd/monsters/M49.webp"
     }
   },
   {
     "id": "M50",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M50/idle.webp",
-      "action": "/assets/fhd/monsters/M50/action.webp",
-      "hit": "/assets/fhd/monsters/M50/hit.webp"
+      "idle": "/assets/sd/monsters/M50.webp",
+      "action": "/assets/sd/monsters/M50.webp",
+      "hit": "/assets/sd/monsters/M50.webp"
     }
   },
   {
     "id": "M51",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M51/idle.webp",
-      "action": "/assets/fhd/monsters/M51/action.webp",
-      "hit": "/assets/fhd/monsters/M51/hit.webp"
+      "idle": "/assets/sd/monsters/M51.webp",
+      "action": "/assets/sd/monsters/M51.webp",
+      "hit": "/assets/sd/monsters/M51.webp"
     }
   },
   {
     "id": "M52",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M52/idle.webp",
-      "action": "/assets/fhd/monsters/M52/action.webp",
-      "hit": "/assets/fhd/monsters/M52/hit.webp"
+      "idle": "/assets/sd/monsters/M52.webp",
+      "action": "/assets/sd/monsters/M52.webp",
+      "hit": "/assets/sd/monsters/M52.webp"
     }
   },
   {
     "id": "M53",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M53/idle.webp",
-      "action": "/assets/fhd/monsters/M53/action.webp",
-      "hit": "/assets/fhd/monsters/M53/hit.webp"
+      "idle": "/assets/sd/monsters/M53.webp",
+      "action": "/assets/sd/monsters/M53.webp",
+      "hit": "/assets/sd/monsters/M53.webp"
     }
   },
   {
     "id": "M54",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M54/idle.webp",
-      "action": "/assets/fhd/monsters/M54/action.webp",
-      "hit": "/assets/fhd/monsters/M54/hit.webp"
+      "idle": "/assets/sd/monsters/M54.webp",
+      "action": "/assets/sd/monsters/M54.webp",
+      "hit": "/assets/sd/monsters/M54.webp"
     }
   },
   {
     "id": "M55",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M55/idle.webp",
-      "action": "/assets/fhd/monsters/M55/action.webp",
-      "hit": "/assets/fhd/monsters/M55/hit.webp"
+      "idle": "/assets/sd/monsters/M55.webp",
+      "action": "/assets/sd/monsters/M55.webp",
+      "hit": "/assets/sd/monsters/M55.webp"
     }
   },
   {
     "id": "M56",
     "type": "monster",
     "states": {
-      "idle": "/assets/fhd/monsters/M56/idle.webp",
-      "action": "/assets/fhd/monsters/M56/action.webp",
-      "hit": "/assets/fhd/monsters/M56/hit.webp"
+      "idle": "/assets/sd/monsters/M56.webp",
+      "action": "/assets/sd/monsters/M56.webp",
+      "hit": "/assets/sd/monsters/M56.webp"
     }
   },
   {

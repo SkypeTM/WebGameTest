@@ -498,5 +498,145 @@
     "id": "EF4",
     "kind": "heavy",
     "path": "/assets/story-v1/card-EF4-heavy.webp"
+  },
+  {
+    "id": "VR1",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-VR1-skill.webp"
+  },
+  {
+    "id": "VR2",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-VR2-skill.webp"
+  },
+  {
+    "id": "VR3",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-VR3-skill.webp"
+  },
+  {
+    "id": "VR4",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-VR4-skill.webp"
+  },
+  {
+    "id": "BC1",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-BC1-skill.webp"
+  },
+  {
+    "id": "BC2",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-BC2-skill.webp"
+  },
+  {
+    "id": "BC3",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-BC3-skill.webp"
+  },
+  {
+    "id": "BC4",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-BC4-skill.webp"
+  },
+  {
+    "id": "BK1",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-BK1-skill.webp"
+  },
+  {
+    "id": "BK2",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-BK2-skill.webp"
+  },
+  {
+    "id": "BK3",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-BK3-skill.webp"
+  },
+  {
+    "id": "BK4",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-BK4-skill.webp"
+  },
+  {
+    "id": "WS1",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-WS1-skill.webp"
+  },
+  {
+    "id": "WS2",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-WS2-skill.webp"
+  },
+  {
+    "id": "WS3",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-WS3-skill.webp"
+  },
+  {
+    "id": "WS4",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-WS4-skill.webp"
+  },
+  {
+    "id": "DS1",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-DS1-skill.webp"
+  },
+  {
+    "id": "DS2",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-DS2-skill.webp"
+  },
+  {
+    "id": "DS3",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-DS3-skill.webp"
+  },
+  {
+    "id": "DS4",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-DS4-skill.webp"
+  },
+  {
+    "id": "GO1",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-GO1-skill.webp"
+  },
+  {
+    "id": "GO2",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-GO2-skill.webp"
+  },
+  {
+    "id": "GO3",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-GO3-skill.webp"
+  },
+  {
+    "id": "GO4",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-GO4-skill.webp"
+  },
+  {
+    "id": "EF1",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-EF1-skill.webp"
+  },
+  {
+    "id": "EF2",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-EF2-skill.webp"
+  },
+  {
+    "id": "EF3",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-EF3-skill.webp"
+  },
+  {
+    "id": "EF4",
+    "kind": "skill",
+    "path": "/assets/story-v1/card-EF4-skill.webp"
   }
 ]

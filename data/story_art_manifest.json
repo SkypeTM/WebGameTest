@@ -1224,6 +1224,230 @@
     "generator": "built-in-imagegen"
   },
   {
+    "key": "card-VR1-skill",
+    "path": "/assets/story-v1/card-VR1-skill.webp",
+    "source": "art-source/story-v1/card-VR1-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR2-skill",
+    "path": "/assets/story-v1/card-VR2-skill.webp",
+    "source": "art-source/story-v1/card-VR2-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR3-skill",
+    "path": "/assets/story-v1/card-VR3-skill.webp",
+    "source": "art-source/story-v1/card-VR3-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-VR4-skill",
+    "path": "/assets/story-v1/card-VR4-skill.webp",
+    "source": "art-source/story-v1/card-VR4-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC1-skill",
+    "path": "/assets/story-v1/card-BC1-skill.webp",
+    "source": "art-source/story-v1/card-BC1-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC2-skill",
+    "path": "/assets/story-v1/card-BC2-skill.webp",
+    "source": "art-source/story-v1/card-BC2-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC3-skill",
+    "path": "/assets/story-v1/card-BC3-skill.webp",
+    "source": "art-source/story-v1/card-BC3-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BC4-skill",
+    "path": "/assets/story-v1/card-BC4-skill.webp",
+    "source": "art-source/story-v1/card-BC4-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK1-skill",
+    "path": "/assets/story-v1/card-BK1-skill.webp",
+    "source": "art-source/story-v1/card-BK1-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK2-skill",
+    "path": "/assets/story-v1/card-BK2-skill.webp",
+    "source": "art-source/story-v1/card-BK2-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK3-skill",
+    "path": "/assets/story-v1/card-BK3-skill.webp",
+    "source": "art-source/story-v1/card-BK3-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-BK4-skill",
+    "path": "/assets/story-v1/card-BK4-skill.webp",
+    "source": "art-source/story-v1/card-BK4-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS1-skill",
+    "path": "/assets/story-v1/card-WS1-skill.webp",
+    "source": "art-source/story-v1/card-WS1-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS2-skill",
+    "path": "/assets/story-v1/card-WS2-skill.webp",
+    "source": "art-source/story-v1/card-WS2-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS3-skill",
+    "path": "/assets/story-v1/card-WS3-skill.webp",
+    "source": "art-source/story-v1/card-WS3-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-WS4-skill",
+    "path": "/assets/story-v1/card-WS4-skill.webp",
+    "source": "art-source/story-v1/card-WS4-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS1-skill",
+    "path": "/assets/story-v1/card-DS1-skill.webp",
+    "source": "art-source/story-v1/card-DS1-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS2-skill",
+    "path": "/assets/story-v1/card-DS2-skill.webp",
+    "source": "art-source/story-v1/card-DS2-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS3-skill",
+    "path": "/assets/story-v1/card-DS3-skill.webp",
+    "source": "art-source/story-v1/card-DS3-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-DS4-skill",
+    "path": "/assets/story-v1/card-DS4-skill.webp",
+    "source": "art-source/story-v1/card-DS4-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO1-skill",
+    "path": "/assets/story-v1/card-GO1-skill.webp",
+    "source": "art-source/story-v1/card-GO1-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO2-skill",
+    "path": "/assets/story-v1/card-GO2-skill.webp",
+    "source": "art-source/story-v1/card-GO2-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO3-skill",
+    "path": "/assets/story-v1/card-GO3-skill.webp",
+    "source": "art-source/story-v1/card-GO3-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-GO4-skill",
+    "path": "/assets/story-v1/card-GO4-skill.webp",
+    "source": "art-source/story-v1/card-GO4-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF1-skill",
+    "path": "/assets/story-v1/card-EF1-skill.webp",
+    "source": "art-source/story-v1/card-EF1-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF2-skill",
+    "path": "/assets/story-v1/card-EF2-skill.webp",
+    "source": "art-source/story-v1/card-EF2-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF3-skill",
+    "path": "/assets/story-v1/card-EF3-skill.webp",
+    "source": "art-source/story-v1/card-EF3-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF4-skill",
+    "path": "/assets/story-v1/card-EF4-skill.webp",
+    "source": "art-source/story-v1/card-EF4-skill.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
     "key": "merchant-idle",
     "path": "/assets/story-v1/merchant-idle.webp",
     "source": "art-source/story-v1/merchant-idle.png",

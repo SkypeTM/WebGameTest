@@ -71,3 +71,5 @@
 
 - `045-merchant-card-art.md`: 암상인 투명 원화 6종 및 EF 기본 카드 10장 완성
 
+
+- `046-signature-card-art.md`: 전용 스킬 카드 신규 원화 (제작 중)

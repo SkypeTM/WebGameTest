@@ -448,5 +448,55 @@
     "id": "EF1",
     "kind": "guard",
     "path": "/assets/story-v1/card-EF1-guard.webp"
+  },
+  {
+    "id": "EF1",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-EF1-heavy.webp"
+  },
+  {
+    "id": "EF2",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-EF2-strike.webp"
+  },
+  {
+    "id": "EF2",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-EF2-guard.webp"
+  },
+  {
+    "id": "EF2",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-EF2-heavy.webp"
+  },
+  {
+    "id": "EF3",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-EF3-strike.webp"
+  },
+  {
+    "id": "EF3",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-EF3-guard.webp"
+  },
+  {
+    "id": "EF3",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-EF3-heavy.webp"
+  },
+  {
+    "id": "EF4",
+    "kind": "strike",
+    "path": "/assets/story-v1/card-EF4-strike.webp"
+  },
+  {
+    "id": "EF4",
+    "kind": "guard",
+    "path": "/assets/story-v1/card-EF4-guard.webp"
+  },
+  {
+    "id": "EF4",
+    "kind": "heavy",
+    "path": "/assets/story-v1/card-EF4-heavy.webp"
   }
 ]

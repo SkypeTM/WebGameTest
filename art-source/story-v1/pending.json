@@ -1,14 +1,4 @@
 [
-  "card-EF1-heavy",
-  "card-EF2-strike",
-  "card-EF2-guard",
-  "card-EF2-heavy",
-  "card-EF3-strike",
-  "card-EF3-guard",
-  "card-EF3-heavy",
-  "card-EF4-strike",
-  "card-EF4-guard",
-  "card-EF4-heavy",
   "hero-VR1-neutral",
   "hero-VR1-explain",
   "hero-VR1-resolve",
@@ -120,11 +110,5 @@
   "card-EF1-skill",
   "card-EF2-skill",
   "card-EF3-skill",
-  "card-EF4-skill",
-  "merchant-idle",
-  "merchant-welcome",
-  "merchant-rare",
-  "merchant-exchange",
-  "merchant-surprised",
-  "merchant-portrait"
+  "card-EF4-skill"
 ]

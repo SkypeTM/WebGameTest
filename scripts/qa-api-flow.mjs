@@ -8,6 +8,7 @@ const live = new URL(base).hostname !== "localhost";
 const accountPath = `storage/qa-${live ? "live" : "local"}-account.json`;
 const password = "Test-only-Passphrase-472!";
 const client = `qa-${randomUUID()}`;
+const stopAtMerchant = process.argv.includes("--stop-at-merchant");
 let account,
   cookie = "",
   state;
@@ -135,13 +136,17 @@ while (state.run && actions++ < 700) {
     const room = roomFor(run);
     if (
       room.kind === "rest" &&
-      (run.cleared || (battles && !process.argv.includes("--full")))
+      (run.cleared ||
+        (battles && !process.argv.includes("--full") && !stopAtMerchant))
     ) {
       await act({ type: "return" });
       break;
     }
     const next = room.next;
     const destination =
+      (stopAtMerchant
+        ? next.find((id) => run.route[id].kind === "merchant")
+        : undefined) ||
       (!battles
         ? next.find((id) => run.route[id].kind === "battle")
         : undefined) ||
@@ -164,6 +169,7 @@ while (state.run && actions++ < 700) {
               : "accept",
     });
   } else if (run.mode === "merchant") {
+    if (stopAtMerchant) break;
     const wounded = run.heroes.find((h) => h.hp > 0 && h.hp < h.maxHp);
     if (wounded && run.gold >= 20)
       await act({ type: "merchant", choice: "heal", id: wounded.id });
@@ -171,7 +177,8 @@ while (state.run && actions++ < 700) {
   } else if (run.mode === "defeat") throw new Error("QA party was defeated");
   else throw new Error(`Unhandled QA mode ${run.mode}`);
 }
-assert.ok(!state.run, "return to hub");
+if (stopAtMerchant) assert.equal(state.run?.mode, "merchant");
+else assert.ok(!state.run, "return to hub");
 assert.ok(battles > 0, "completed combat");
 assert.deepEqual(
   (await request("/api/game")).state,

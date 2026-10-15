@@ -1048,6 +1048,86 @@
     "generator": "built-in-imagegen"
   },
   {
+    "key": "card-EF1-heavy",
+    "path": "/assets/story-v1/card-EF1-heavy.webp",
+    "source": "art-source/story-v1/card-EF1-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF2-strike",
+    "path": "/assets/story-v1/card-EF2-strike.webp",
+    "source": "art-source/story-v1/card-EF2-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF2-guard",
+    "path": "/assets/story-v1/card-EF2-guard.webp",
+    "source": "art-source/story-v1/card-EF2-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF2-heavy",
+    "path": "/assets/story-v1/card-EF2-heavy.webp",
+    "source": "art-source/story-v1/card-EF2-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF3-strike",
+    "path": "/assets/story-v1/card-EF3-strike.webp",
+    "source": "art-source/story-v1/card-EF3-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF3-guard",
+    "path": "/assets/story-v1/card-EF3-guard.webp",
+    "source": "art-source/story-v1/card-EF3-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF3-heavy",
+    "path": "/assets/story-v1/card-EF3-heavy.webp",
+    "source": "art-source/story-v1/card-EF3-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF4-strike",
+    "path": "/assets/story-v1/card-EF4-strike.webp",
+    "source": "art-source/story-v1/card-EF4-strike.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF4-guard",
+    "path": "/assets/story-v1/card-EF4-guard.webp",
+    "source": "art-source/story-v1/card-EF4-guard.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "card-EF4-heavy",
+    "path": "/assets/story-v1/card-EF4-heavy.webp",
+    "source": "art-source/story-v1/card-EF4-heavy.png",
+    "width": 1254,
+    "height": 1254,
+    "generator": "built-in-imagegen"
+  },
+  {
     "key": "hero-AR1-neutral",
     "path": "/assets/story-v1/hero-AR1-neutral.webp",
     "source": "art-source/story-v1/hero-AR1-neutral.png",
@@ -1139,6 +1219,54 @@
     "key": "hero-AR4-resolve",
     "path": "/assets/story-v1/hero-AR4-resolve.webp",
     "source": "art-source/story-v1/hero-AR4-resolve.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "merchant-idle",
+    "path": "/assets/story-v1/merchant-idle.webp",
+    "source": "art-source/story-v1/merchant-idle.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "merchant-welcome",
+    "path": "/assets/story-v1/merchant-welcome.webp",
+    "source": "art-source/story-v1/merchant-welcome.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "merchant-rare",
+    "path": "/assets/story-v1/merchant-rare.webp",
+    "source": "art-source/story-v1/merchant-rare.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "merchant-exchange",
+    "path": "/assets/story-v1/merchant-exchange.webp",
+    "source": "art-source/story-v1/merchant-exchange.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "merchant-surprised",
+    "path": "/assets/story-v1/merchant-surprised.webp",
+    "source": "art-source/story-v1/merchant-surprised.png",
+    "width": 1024,
+    "height": 1536,
+    "generator": "built-in-imagegen"
+  },
+  {
+    "key": "merchant-portrait",
+    "path": "/assets/story-v1/merchant-portrait.webp",
+    "source": "art-source/story-v1/merchant-portrait.png",
     "width": 1024,
     "height": 1536,
     "generator": "built-in-imagegen"

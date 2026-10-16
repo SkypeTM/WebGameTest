@@ -74,4 +74,5 @@
 
 - `046-signature-card-art.md`: 전용 스킬 카드 신규 원화 28종 및 배포
 - `047-renewal-foundation.md`: 32명 디자인 시트·리뉴얼 인계·계정 음향 동기화·AR1 전신 4자세 시제품
+- `048-character-lobby.md`: 캐릭터 중심 로비 구현 (로컬 화면 QA 대기, 라이브 미배포)
 

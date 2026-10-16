@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import BattleTargetLines from "./components/BattleTargetLines";
 import FullBodyActor from "./components/FullBodyActor";
+import CharacterLobby from "./components/CharacterLobby";
+import "./character-lobby.css";
 import sdAssets from "../data/sd_asset_manifest.json";
 import "./battle-stage.css";
 import "./card-hand.css";
@@ -515,7 +517,7 @@ export default function Page() {
     [offline, setOffline] = useState(false),
     [register, setRegister] = useState(false),
     [tab, setTab] = useState("party"),
-    [overlayOpen, setOverlayOpen] = useState(true),
+    [overlayOpen, setOverlayOpen] = useState(false),
     [filter, setFilter] = useState("전체"),
     [inheritance, setInheritance] = useState<string[]>([]),
     [selected, setSelected] = useState<Card | null>(null),
@@ -1422,37 +1424,15 @@ export default function Page() {
           <>
             <section className="town-map" aria-label="마지막 피난처 마을 지도">
               <LivingBackdrop region="hamlet" enabled={sceneryEnabled} />
-              <div className="town-skyline">
-                <span>THE LAST REFUGE</span>
-                <b>건물을 선택해 방문하세요</b>
-              </div>
-              <div className="town-locations">
-                {[
-                  ["party", "작전실", "편성 · 장비"],
-                  ["quests", "의뢰 게시판", "스토리 · 지역 해금"],
-                  ["roster", "주점", "동료 모집"],
-                  ["growth", "거점 시설", "제작 · 훈련 · 치료"],
-                  ["market", "시장 골목", "거래 · 암시장"],
-                  ["storage", "기록 보관소", "전리품 · 로그"],
-                ].map(([id, label, subtitle]) => (
-                  <button
-                    key={id}
-                    className={`town-location location-${id} ${tab === id && overlayOpen ? "active" : ""}`}
-                    aria-label={label}
-                    onClick={() => {
-                      setTab(id);
-                      setOverlayOpen(true);
-                    }}
-                  >
-                    <span
-                      className={`town-icon town-${id}`}
-                      aria-hidden="true"
-                    />
-                    <strong>{label}</strong>
-                    <small>{subtitle}</small>
-                  </button>
-                ))}
-              </div>
+              <CharacterLobby
+                name={char(game.party[0] || "AR1").name}
+                portrait={(game.party[0] || "AR1") === "AR1"
+                  ? "/assets/renewal/AR1/ready.webp"
+                  : characterAssets.find(a => a.id === game.party[0] && a.state === "idle")?.path}
+                region={regionCatalog.find(r => r.id === selectedRegion)?.name || "변경 요새"}
+                summary={game.summary}
+                open={(facility) => { setTab(facility); setOverlayOpen(true); }}
+              />
             </section>
             {overlayOpen && (
               <section

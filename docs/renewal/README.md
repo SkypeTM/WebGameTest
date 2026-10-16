@@ -54,6 +54,7 @@ SD→전신 타임라인은 사용자가 요청한 우리 게임의 설계이다
 다음 에이전트는 git status를 먼저 확인하고 이미 완료된 044~046 자산을 재생성하지 않는다. 각 단계마다 파일 경로, 검증, 미완료 이유를 기록한다. 3D 작업은 취소 상태 유지. 이미지 생성은 현재 built-in imagegen을 사용하고 원본/프롬프트/참조/해상도를 보존한다.
 
 ## Figma 연결 및 구조안
+- 후속 구현: PATCH_HISTORY/048-character-lobby.md. 캐릭터 중심 로비 연결 및 타입 검사 완료. 화면 QA 전이므로 라이브에는 아직 047까지만 반영됨.
 - 설치·연결 확인 완료. 무료 Starter 팀의 초안 파일 사용.
 - 파일: https://www.figma.com/design/q6thoqokJvViBIX0KTBNaI?node-id=2-11
 - 로비/전투/탐사 3개 정보 배치 구조안. 편집 가능한 텍스트와 Auto Layout, 공통 버튼 인스턴스, 색상 변수 6개. 본문 Noto Sans KR.

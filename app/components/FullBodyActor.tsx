@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
+import poses from "../../data/renewal_actor_manifest.json";
 
 // First production slice: distinct full-body poses, not a resized SD image.
 // Keep this renderer independent of gameplay; the server already resolved the action.
-export default function FullBodyActor({ motion = "" }: { motion?: string }) {
+export default function FullBodyActor({ id = "AR1", motion = "" }: { id?: string; motion?: string }) {
   const [pose, setPose] = useState("ready");
   useEffect(() => {
     const reduced = window.matchMedia(
@@ -20,19 +21,19 @@ export default function FullBodyActor({ motion = "" }: { motion?: string }) {
       window.setTimeout(() => setPose(String(name)), Number(ms)),
     );
     return () => timers.forEach(window.clearTimeout);
-  }, [motion]);
+  }, [motion, id]);
   return (
     <div className={`full-body-actor ${motion}`} data-pose={pose}>
-      {["ready", "windup", "strike", "recover"].map((name) => (
+      {poses.filter(entry => entry.id === id).map(({pose: name, path, width, height}) => (
         <img
           key={name}
-          src={`/assets/renewal/AR1/${name}.webp`}
-          alt={name === pose ? "레오나 전신 전투 자세" : ""}
+          src={path}
+          alt={name === pose ? "전신 전투 자세" : ""}
           aria-hidden={name !== pose}
           className={name === pose ? "active" : ""}
           draggable={false}
-          width={1024}
-          height={1536}
+          width={width}
+          height={height}
         />
       ))}
     </div>

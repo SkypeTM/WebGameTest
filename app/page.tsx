@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import BattleTargetLines from "./components/BattleTargetLines";
 import FullBodyActor from "./components/FullBodyActor";
+import renewalPoses from "../data/renewal_actor_manifest.json";
 import CharacterLobby from "./components/CharacterLobby";
 import "./character-lobby.css";
 import sdAssets from "../data/sd_asset_manifest.json";
@@ -246,7 +247,7 @@ function BattleActor({
   large?: boolean;
 }) {
   const asset = sdAssets.find((entry) => entry.id === id);
-  if (full && id === "AR1") return <FullBodyActor motion={motion} />;
+  if (full && renewalPoses.some(p => p.id === id)) return <FullBodyActor id={id} motion={motion} />;
   if (asset)
     return (
       <div
@@ -795,9 +796,9 @@ export default function Page() {
   const loggedIn = Boolean(game);
   useEffect(() => {
     if (!loggedIn) return;
-    for (const pose of ["ready", "windup", "strike", "recover"]) {
+    for (const pose of renewalPoses) {
       const image = new Image();
-      image.src = `/assets/renewal/AR1/${pose}.webp`;
+      image.src = pose.path;
     }
   }, [loggedIn]);
   useEffect(() => {
@@ -1426,9 +1427,8 @@ export default function Page() {
               <LivingBackdrop region="hamlet" enabled={sceneryEnabled} />
               <CharacterLobby
                 name={char(game.party[0] || "AR1").name}
-                portrait={(game.party[0] || "AR1") === "AR1"
-                  ? "/assets/renewal/AR1/ready.webp"
-                  : characterAssets.find(a => a.id === game.party[0] && a.state === "idle")?.path}
+                portrait={renewalPoses.find(p => p.id === (game.party[0] || "AR1") && p.pose === "ready")?.path
+                  || characterAssets.find(a => a.id === game.party[0] && a.state === "idle")?.path}
                 region={regionCatalog.find(r => r.id === selectedRegion)?.name || "변경 요새"}
                 summary={game.summary}
                 open={(facility) => { setTab(facility); setOverlayOpen(true); }}
@@ -3150,7 +3150,7 @@ export default function Page() {
                           key={h.id}
                           data-card-target={h.id}
                           data-card-kind="ally"
-                          className={`ally rank-${index + 1} ${animating && fx?.kind === "hero-attack" && fx.actor === h.id && h.id === "AR1" ? "actor-in-focus" : ""} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
+                          className={`ally rank-${index + 1} ${animating && fx?.kind === "hero-attack" && fx.actor === h.id && renewalPoses.some(p => p.id === h.id) ? "actor-in-focus" : ""} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
                           disabled={
                             locked ||
                             !selected ||

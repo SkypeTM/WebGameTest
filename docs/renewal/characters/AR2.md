@@ -34,6 +34,6 @@ Original adult female fantasy character, apparent age 26, 과묵한 결투가, �
 
 ## 검수/버전 기록
 - 기준 시트: 미생성
-- 파생 포즈: 미생성
+- 파생 포즈: ready/windup/strike/recover 4종 생성, 로컬 연결. art-source/renewal/AR2/GENERATION.md 참조. 전투 연속성 QA 미완료.
 - 실제 크기/alpha/hash: 생성 후 manifest 기록
 - 현행 자산은 신규 묶음 완성 전 유지

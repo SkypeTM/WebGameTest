@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import BattleTargetLines from "./components/BattleTargetLines";
+import FullBodyActor from "./components/FullBodyActor";
 import sdAssets from "../data/sd_asset_manifest.json";
 import "./battle-stage.css";
 import "./card-hand.css";
@@ -16,6 +17,7 @@ import storyNpcs from "../data/story_npcs.json";
 import { dialogueArt, storyArt } from "../lib/story-art";
 import "./story-conversation.css";
 import "./combat-polish.css";
+import "./renewal-combat.css";
 import StatusIcon from "./components/StatusIcon";
 import { sceneAsset } from "../lib/scenery";
 import {
@@ -29,6 +31,7 @@ import {
   partyBondKey,
 } from "../lib/progression";
 import { gameAudio, soundtrackFor } from "../lib/audio";
+import { useAccountAudio } from "./components/useAccountAudio";
 import FactionPrologue from "./components/FactionPrologue";
 import characterCardArt from "../data/card_character_art.json";
 import {
@@ -241,6 +244,7 @@ function BattleActor({
   large?: boolean;
 }) {
   const asset = sdAssets.find((entry) => entry.id === id);
+  if (full && id === "AR1") return <FullBodyActor motion={motion} />;
   if (asset)
     return (
       <div
@@ -539,13 +543,15 @@ export default function Page() {
     } | null>(null),
     [animating, setAnimating] = useState(false),
     [rewardReady, setRewardReady] = useState(false),
-    [soundEnabled, setSoundEnabled] = useState(true),
-    [musicEnabled, setMusicEnabled] = useState(true),
     [audioReady, setAudioReady] = useState(false),
-    [musicVolume, setMusicVolume] = useState(0.24),
-    [sfxVolume, setSfxVolume] = useState(0.75),
-    [audioPrefsLoaded, setAudioPrefsLoaded] = useState(false),
     [dragPoint, setDragPoint] = useState<{ x: number; y: number } | null>(null);
+  const audioSettings = useAccountAudio(game ? account : "");
+  const {
+    music: musicEnabled,
+    sfx: soundEnabled,
+    musicVolume,
+    sfxVolume,
+  } = audioSettings.prefs;
   const battleFieldRef = useRef<HTMLDivElement>(null);
   const client = useRef(""),
     pending = useRef<Record<string, unknown> | null>(null),
@@ -553,7 +559,7 @@ export default function Page() {
     lastFx = useRef(0),
     dragStart = useRef({ x: 0, y: 0, moved: false, active: false });
   function playSound(name: string, volume = 0.35) {
-    if (!audioReady || !soundEnabled) return;
+    if (!audioReady || !audioSettings.ready || !soundEnabled) return;
     gameAudio.play(name, volume * sfxVolume);
   }
   const accept = (data: {
@@ -786,6 +792,13 @@ export default function Page() {
   const musicTrack = soundtrackFor(game, Boolean(conversation));
   const loggedIn = Boolean(game);
   useEffect(() => {
+    if (!loggedIn) return;
+    for (const pose of ["ready", "windup", "strike", "recover"]) {
+      const image = new Image();
+      image.src = `/assets/renewal/AR1/${pose}.webp`;
+    }
+  }, [loggedIn]);
+  useEffect(() => {
     const unlock = () => setAudioReady(true);
     window.addEventListener("pointerdown", unlock, { once: true });
     window.addEventListener("keydown", unlock, { once: true });
@@ -795,36 +808,14 @@ export default function Page() {
     };
   }, []);
   useEffect(() => {
-    try {
-      const p = JSON.parse(localStorage.getItem("bell-audio-v2") || "null");
-      if (p) {
-        setMusicEnabled(p.music !== false);
-        setSoundEnabled(p.sfx !== false);
-        if (Number.isFinite(p.musicVolume))
-          setMusicVolume(Math.max(0, Math.min(1, p.musicVolume)));
-        if (Number.isFinite(p.sfxVolume))
-          setSfxVolume(Math.max(0, Math.min(1, p.sfxVolume)));
-      }
-    } catch {}
-    setAudioPrefsLoaded(true);
-  }, []);
-  useEffect(() => {
-    if (audioPrefsLoaded)
-      try {
-        localStorage.setItem(
-          "bell-audio-v2",
-          JSON.stringify({
-            music: musicEnabled,
-            sfx: soundEnabled,
-            musicVolume,
-            sfxVolume,
-          }),
-        );
-      } catch {}
-  }, [audioPrefsLoaded, musicEnabled, soundEnabled, musicVolume, sfxVolume]);
-  useEffect(() => {
     const update = () => {
-      if (!audioReady || !musicEnabled || !loggedIn || document.hidden)
+      if (
+        !audioReady ||
+        !audioSettings.ready ||
+        !musicEnabled ||
+        !loggedIn ||
+        document.hidden
+      )
         gameAudio.stopMusic();
       else gameAudio.setMusic(musicTrack, musicVolume);
       if (document.hidden) gameAudio.stopSounds();
@@ -834,7 +825,14 @@ export default function Page() {
     return () => {
       document.removeEventListener("visibilitychange", update);
     };
-  }, [audioReady, loggedIn, musicEnabled, musicTrack, musicVolume]);
+  }, [
+    audioReady,
+    audioSettings.ready,
+    loggedIn,
+    musicEnabled,
+    musicTrack,
+    musicVolume,
+  ]);
   useEffect(
     () => () => {
       gameAudio.stopMusic();
@@ -1203,7 +1201,10 @@ export default function Page() {
               max="1"
               step="0.05"
               value={musicVolume}
-              onChange={(e) => setMusicVolume(Number(e.target.value))}
+              disabled={!audioSettings.ready}
+              onChange={(e) =>
+                audioSettings.update({ musicVolume: Number(e.target.value) })
+              }
             />
           </label>
           <label>
@@ -1215,14 +1216,19 @@ export default function Page() {
               max="1"
               step="0.05"
               value={sfxVolume}
-              onChange={(e) => setSfxVolume(Number(e.target.value))}
+              disabled={!audioSettings.ready}
+              onChange={(e) =>
+                audioSettings.update({ sfxVolume: Number(e.target.value) })
+              }
             />
           </label>
+          <small role="status">{audioSettings.status}</small>
         </details>
         <button
           className="mini"
           aria-pressed={musicEnabled}
-          onClick={() => setMusicEnabled((value) => !value)}
+          disabled={!audioSettings.ready}
+          onClick={() => audioSettings.update({ music: !musicEnabled })}
           title="배경 음악 켜기/끄기"
         >
           {musicEnabled ? "♫" : "♩̸"}
@@ -1230,7 +1236,8 @@ export default function Page() {
         <button
           className="mini"
           aria-pressed={soundEnabled}
-          onClick={() => setSoundEnabled((value) => !value)}
+          disabled={!audioSettings.ready}
+          onClick={() => audioSettings.update({ sfx: !soundEnabled })}
           title="효과음 켜기/끄기"
         >
           {soundEnabled ? "◖))" : "◖×"}
@@ -3163,7 +3170,7 @@ export default function Page() {
                           key={h.id}
                           data-card-target={h.id}
                           data-card-kind="ally"
-                          className={`ally rank-${index + 1} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
+                          className={`ally rank-${index + 1} ${animating && fx?.kind === "hero-attack" && fx.actor === h.id && h.id === "AR1" ? "actor-in-focus" : ""} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
                           disabled={
                             locked ||
                             !selected ||

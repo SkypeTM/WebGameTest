@@ -1,0 +1,48 @@
+/* The pose images share a stable canvas; no flow size or scroll position changes. */
+.full-body-actor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  isolation: isolate;
+}
+.full-body-actor img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 0;
+  transition: opacity 65ms linear;
+  filter: drop-shadow(0 7px 7px #0009);
+}
+.full-body-actor img.active {
+  opacity: 1;
+}
+.full-body-actor.motion-hit {
+  animation: full-body-hit 900ms both;
+}
+.ally.actor-in-focus .battle-sd {
+  opacity: 0;
+}
+@keyframes full-body-hit {
+  0%,
+  30%,
+  100% {
+    transform: translateX(0);
+  }
+  42% {
+    transform: translateX(-7%) rotate(-4deg);
+  }
+  55% {
+    transform: translateX(2%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ally.actor-in-focus .battle-sd { opacity: 1; }
+  .full-body-actor,
+  .full-body-actor img {
+    animation: none !important;
+    transition: none !important;
+  }
+}

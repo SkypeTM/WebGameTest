@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import BattleTargetLines from "./components/BattleTargetLines";
 import FullBodyActor from "./components/FullBodyActor";
+import { COMBAT_PRESENTATION } from "../lib/combat-presentation";
 import renewalPoses from "../data/renewal_actor_manifest.json";
 import CharacterLobby from "./components/CharacterLobby";
 import "./character-lobby.css";
@@ -565,6 +566,9 @@ export default function Page() {
     if (!audioReady || !audioSettings.ready || !soundEnabled) return;
     gameAudio.play(name, volume * sfxVolume);
   }
+  // A pending hit must respect a mute/volume change made during its windup.
+  const latestSound = useRef(playSound);
+  useEffect(() => { latestSound.current = playSound; });
   const accept = (data: {
     state: Game;
     control: boolean;
@@ -850,12 +854,16 @@ export default function Page() {
     if (!fx || fx.nonce === lastFx.current) return;
     lastFx.current = fx.nonce;
     setAnimating(true);
-    const timer = window.setTimeout(() => setAnimating(false), 900);
+    const timer = window.setTimeout(() => setAnimating(false), COMBAT_PRESENTATION.duration);
+    let impactTimer: number | undefined;
     if (fx.kind === "hero-attack" || fx.kind === "enemy-attack")
-      playSound("hit", 0.32);
+      impactTimer = window.setTimeout(() => latestSound.current("hit", 0.32), COMBAT_PRESENTATION.impact);
     else if (fx.kind === "hero-guard") playSound("guard");
     else if (fx.kind === "hero-heal") playSound("heal");
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(timer);
+      window.clearTimeout(impactTimer);
+    };
   }, [fx?.nonce]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (run?.mode !== "reward") {
@@ -2999,23 +3007,22 @@ export default function Page() {
             (run.mode === "battle" ||
               (run.mode === "reward" && !rewardReady)) ? (
               <>
-                <div className="battle-toolbar">
+                <div className="battle-toolbar renewal-toolbar">
                   <div>
                     <span className="eyebrow">
                       TURN {battle.turn.toString().padStart(2, "0")} /{" "}
                       {balance.maxBattleTurns}
                     </span>
-                    <h2>
-                      행동 자원{" "}
-                      <span className="energy">
-                        {"◆".repeat(battle.energy)}
-                        {"◇".repeat(4 - battle.energy)}
-                      </span>
+                    <h2 className="energy-display" aria-label={`남은 행동력 ${battle.energy}`}>
+                      <span className="energy-orb" aria-hidden="true"><i>◆</i>{battle.energy}</span>
+                      <span>행동력<small>카드를 사용하면 소비</small></span>
                     </h2>
                   </div>
                   <div className="deck-count">
-                    뽑을 카드 {battle.deck.length} · 버린 카드{" "}
-                    {battle.discard.length}
+                    <button className="deck-access" onClick={() => setDeckOpen(true)} aria-label={`전체 덱 보기. 뽑을 카드 ${battle.deck.length}장, 버린 카드 ${battle.discard.length}장`}>
+                      <span aria-hidden="true">▱</span>
+                      <span>덱 보기<small>뽑기 {battle.deck.length} · 버림 {battle.discard.length}</small></span>
+                    </button>
                     <button
                       className="secondary end-turn-button"
                       disabled={locked || battle.turn >= balance.maxBattleTurns}
@@ -3379,7 +3386,7 @@ export default function Page() {
                     </div>
                   </section>
                 </div>
-                <section className="hand-section">
+                <section className={`hand-section ${animating ? "hand-performing" : ""}`}>
                   <div className="section-heading">
                     <h2>
                       손패{" "}

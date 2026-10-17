@@ -1,4 +1,61 @@
 /* The pose images share a stable canvas; no flow size or scroll position changes. */
+.renewal-toolbar {
+  border: 0;
+  border-bottom: 1px solid #e4bd7033;
+  background: linear-gradient(90deg, #10191ef2, #10191e80);
+  gap: 16px;
+}
+.renewal-toolbar .energy-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 3px 0;
+  font-size: 14px;
+}
+.renewal-toolbar small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: #9aaeb3;
+}
+.renewal-toolbar .energy-orb {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #e4bd70;
+  background: radial-gradient(circle at 35% 25%, #846435, #2f2519 75%);
+  color: #fff3ce;
+  font-size: 25px;
+  font-variant-numeric: tabular-nums;
+}
+.energy-orb i { font-style: normal; font-size: 12px; }
+.renewal-toolbar .deck-count { display: flex; align-items: center; gap: 12px; }
+.renewal-toolbar .deck-access {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid #9aaeb344;
+  text-align: left;
+  color: #f3efe3;
+}
+.deck-access > span:first-child { font-size: 26px; color: #e4bd70; }
+.hand-performing .selection-hint { visibility: hidden; }
+@media (max-width: 600px), (max-height: 500px) {
+  .renewal-toolbar { padding: 7px 8px; gap: 8px; }
+  .renewal-toolbar .energy-display > span:last-child small { display: none; }
+  .renewal-toolbar .energy-orb { width: 40px; height: 40px; font-size: 23px; }
+  .renewal-toolbar .deck-count { gap: 6px; }
+  .renewal-toolbar .deck-access { padding: 4px 6px; }
+  .renewal-toolbar .deck-access > span:first-child { display: none; }
+  .renewal-toolbar .end-turn-button { min-height: 44px; padding: 6px 10px; }
+}
 .full-body-actor {
   position: relative;
   width: 100%;

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import poses from "../../data/renewal_actor_manifest.json";
+import { COMBAT_PRESENTATION as timing } from "../../lib/combat-presentation";
 
 // First production slice: distinct full-body poses, not a resized SD image.
 // Keep this renderer independent of gameplay; the server already resolved the action.
@@ -13,10 +14,10 @@ export default function FullBodyActor({ id = "AR1", motion = "" }: { id?: string
     setPose("ready");
     if (!motion.includes("strike") || reduced) return;
     const timers = [
-      [120, "windup"],
-      [320, "strike"],
-      [560, "recover"],
-      [780, "ready"],
+      [timing.windup, "windup"],
+      [timing.impact, "strike"],
+      [timing.recover, "recover"],
+      [timing.ready, "ready"],
     ].map(([ms, name]) =>
       window.setTimeout(() => setPose(String(name)), Number(ms)),
     );

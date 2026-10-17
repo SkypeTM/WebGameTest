@@ -94,5 +94,101 @@
     "sha256": "df500132e3225fc8b794e262c7c2f661e06857448e096223dae8fb37336d2570",
     "styleVersion": "silent-bell-anime-v2",
     "status": "first-animation-slice"
+  },
+  {
+    "id": "AR3",
+    "pose": "ready",
+    "source": "art-source/renewal/AR3/ready.png",
+    "path": "/assets/renewal/AR3/ready.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "aa79cde3bcfbd386bc29ed768ec0044db97cd9355e2e79ce8702c539df48c6be",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR3",
+    "pose": "windup",
+    "source": "art-source/renewal/AR3/windup.png",
+    "path": "/assets/renewal/AR3/windup.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "ca54bc1d9690c0dfd3974dd95f98ac452b709ecf7100f089f2f6ab352227065d",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR3",
+    "pose": "strike",
+    "source": "art-source/renewal/AR3/strike.png",
+    "path": "/assets/renewal/AR3/strike.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "0ea75bd33137b52352dfc040fe333860ffc7b073bf9a9e5cb6596b2ab16f9d0e",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR3",
+    "pose": "recover",
+    "source": "art-source/renewal/AR3/recover.png",
+    "path": "/assets/renewal/AR3/recover.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "ee8c27af6d0bed3b66877dd8420b54a2b95610b70c8491a9b094a1244b00b91f",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR4",
+    "pose": "ready",
+    "source": "art-source/renewal/AR4/ready.png",
+    "path": "/assets/renewal/AR4/ready.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "bd339022d3601bc8d4553cb4db965bf72fa84c0f81674369bd69f2bd1a650615",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR4",
+    "pose": "windup",
+    "source": "art-source/renewal/AR4/windup.png",
+    "path": "/assets/renewal/AR4/windup.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "49a49c9f0eada6672bfecf10fc50860d0e22ee149017b500990f5c1474e8d472",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR4",
+    "pose": "strike",
+    "source": "art-source/renewal/AR4/strike.png",
+    "path": "/assets/renewal/AR4/strike.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "647ec53bd5d1d5dd7ada94be70a9286a5692f354bcee3a86ef8a514350b27957",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR4",
+    "pose": "recover",
+    "source": "art-source/renewal/AR4/recover.png",
+    "path": "/assets/renewal/AR4/recover.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "57eeeba4b1b48bec250d9dd07658ac870f0cef40caf9fcf7a44b74885d14d285",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
   }
 ]

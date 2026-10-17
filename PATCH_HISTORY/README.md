@@ -77,3 +77,5 @@
 - `048-character-lobby.md`: 캐릭터 중심 로비 구현 (로컬 화면 QA 대기, 라이브 미배포)
 - `049-serin-full-body.md`: 세린 전신 4자세·manifest 액터·로비 누끼 (전투 QA/라이브 대기)
 
+
+- `050-starter-party-fullbody.md`: 마리엔·에델 전신 4자세, 기본 파티 액터 확대

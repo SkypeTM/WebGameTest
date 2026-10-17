@@ -37,3 +37,8 @@ Original adult female fantasy character, apparent age 34, 안경 의무관, 아�
 - 파생 포즈: 미생성
 - 실제 크기/alpha/hash: 생성 후 manifest 기록
 - 현행 자산은 신규 묶음 완성 전 유지
+
+## 050 제작 체크포인트 (2026-10-17)
+- 전신 ready/windup/strike/recover PNG 및 투명 WebP 생성, 공통 액터 manifest 연결.
+- 경로: art-source/renewal/AR3, public/assets/renewal/AR3.
+- 4자세 시제품. guard/hit/skill, 연속 모션·발 기준 정합은 후속.

@@ -25,6 +25,18 @@
 .ally.actor-in-focus .battle-sd {
   opacity: 0;
 }
+/* Keep the full-body performance above the portrait phone hand tray. */
+@media (max-width: 600px) and (orientation: portrait) {
+  .sd-battlefield .combat-cut-in .cut-in-actor,
+  .sd-battlefield .combat-cut-in .cut-in-target {
+    bottom: 30%;
+    height: 60%;
+  }
+  .sd-battlefield .combat-cut-in .cut-in-actor { left: 4%; }
+  .sd-battlefield .combat-cut-in .cut-in-target { right: 4%; }
+  .sd-battlefield .cut-in-enemy-attack .cut-in-actor { left: auto; right: 4%; }
+  .sd-battlefield .cut-in-enemy-attack .cut-in-target { right: auto; left: 4%; }
+}
 @keyframes full-body-hit {
   0%,
   30%,

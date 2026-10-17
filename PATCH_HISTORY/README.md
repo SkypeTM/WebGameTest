@@ -80,4 +80,4 @@
 
 - `050-starter-party-fullbody.md`: 마리엔·에델 전신 4자세, 기본 파티 액터 확대
 
-- `051-combat-hud-timing.md`: 행동력·덱 HUD 및 타격음 동기화 (로컬, 화면 QA 대기)
+- `051-combat-hud-timing.md`: 행동력·덱 HUD 및 타격음 동기화 (로컬 HUD 검증·배포 완료)

@@ -9,3 +9,9 @@
 - recover: sword diagonal down right, shield returning upright, weight settling.
 
 현재 4포즈 교체형 연출이며 연속 프레임/스켈레탈 리깅 완성은 아니다. 정면/측면/후면 정식 턴어라운드와 guard/hit/skill 추가 필요. 동작 간 발 위치·무기 크기 미세 차이는 후속 프레임 정합 작업 대상.
+
+## 052 / guard
+- 2026-10-17 built-in imagegen, transparent_background=true.
+- 참조: art-source/renewal/AR1/ready.png.
+- 포즈: 동일한 왼팔 방패를 앞으로 들어 방어, 오른손 검은 아래로.
+- exact same adult identity/costume, fullbody, complete boots/props, transparent cutout, no floor/text. 원본1024x1536. WebP95/alpha100.

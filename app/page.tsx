@@ -784,6 +784,8 @@ export default function Page() {
   const run = game?.run,
     battle = run?.battle,
     fx = run?.combatFx;
+  const supportPose = fx?.kind === "hero-guard" ? "guard" : fx?.kind === "hero-heal" ? "heal" : null;
+  const supportCinematic = Boolean(supportPose && renewalPoses.some(p => p.id === fx?.actor && p.pose === supportPose));
   const merchantHeroId = merchantHero || run?.heroes[0]?.id || "";
   const merchantHeroState = run?.heroes.find(
     (hero) => hero.id === merchantHeroId,
@@ -3086,6 +3088,18 @@ export default function Page() {
                       </div>
                     </>
                   )}
+                  {fx && animating && supportCinematic && (
+                    <div className={`combat-cut-in support-cut-in support-${supportPose}`} key={`support-${fx.nonce}`} aria-hidden="true">
+                      <span className="cut-in-label">{supportPose === "guard" ? "방어" : "회복"}</span>
+                      <div className="cut-in-actor">
+                        <BattleActor id={fx.actor} full motion={`motion-${supportPose}`} />
+                      </div>
+                      <div className="support-readout">
+                        <span>{characters.find(c => c.id === fx.target)?.name ?? "동료"}</span>
+                        <strong>{supportPose === "guard" ? "보호막 +" : "회복력 "}{fx.amount}</strong>
+                      </div>
+                    </div>
+                  )}
                   {fx &&
                     animating &&
                     (fx.kind === "hero-attack" ||
@@ -3157,7 +3171,7 @@ export default function Page() {
                           key={h.id}
                           data-card-target={h.id}
                           data-card-kind="ally"
-                          className={`ally rank-${index + 1} ${animating && fx?.kind === "hero-attack" && fx.actor === h.id && renewalPoses.some(p => p.id === h.id) ? "actor-in-focus" : ""} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
+                          className={`ally rank-${index + 1} ${animating && fx && (fx.kind === "hero-attack" || supportCinematic) && fx.actor === h.id && renewalPoses.some(p => p.id === h.id) ? "actor-in-focus" : ""} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
                           disabled={
                             locked ||
                             !selected ||

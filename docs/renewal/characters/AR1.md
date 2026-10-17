@@ -37,3 +37,6 @@ Original adult female fantasy character, apparent age 29, 성숙한 방벽대장
 - 파생 포즈: 미생성
 - 실제 크기/alpha/hash: 생성 후 manifest 기록
 - 현행 자산은 신규 묶음 완성 전 유지
+
+## 052 지원 자세
+- guard.png 및 투명 WebP 생성. ready 기반 화풍·장비손 유지. 전용 포즈가 있는 지원 행동만 전신 전환.

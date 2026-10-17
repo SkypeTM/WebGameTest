@@ -12,13 +12,17 @@ export default function FullBodyActor({ id = "AR1", motion = "" }: { id?: string
       "(prefers-reduced-motion: reduce)",
     ).matches;
     setPose("ready");
-    if (!motion.includes("strike") || reduced) return;
-    const timers = [
+    if (reduced) return;
+    const support = motion === "motion-guard" ? "guard" : motion === "motion-heal" ? "heal" : null;
+    const sequence = support && poses.some(p => p.id === id && p.pose === support)
+      ? [[timing.windup, support], [timing.ready, "ready"]]
+      : motion.includes("strike") ? [
       [timing.windup, "windup"],
       [timing.impact, "strike"],
       [timing.recover, "recover"],
       [timing.ready, "ready"],
-    ].map(([ms, name]) =>
+    ] : [];
+    const timers = sequence.map(([ms, name]) =>
       window.setTimeout(() => setPose(String(name)), Number(ms)),
     );
     return () => timers.forEach(window.clearTimeout);

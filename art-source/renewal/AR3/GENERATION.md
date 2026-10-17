@@ -10,3 +10,9 @@
 - AR3 strike의 좌우 손 전환, AR4 ready 검 잘림을 재생성으로 교정.
 - WebP quality95/alpha100, 원본 PNG 보존. 크기/해시: data/renewal_actor_manifest.json.
 - 키 포즈 시제품이며 연속 리깅 아님. 장식과 발 기준점의 자세별 차이 보정은 후속.
+
+## 052 / heal
+- 2026-10-17 built-in imagegen, transparent_background=true.
+- 참조: art-source/renewal/AR3/ready.png.
+- 포즈: 동일한 왼손 약품 가방 유지, 오른손 손바닥에 작은 민트/금색 회복빛.
+- exact same adult identity/costume, fullbody, complete boots/props, transparent cutout, no floor/text. 원본1024x1536. WebP95/alpha100.

@@ -4,7 +4,13 @@ import { createHash } from "node:crypto";
 const require=createRequire(import.meta.url);
 const sharp=require(require.resolve("sharp",{paths:[require.resolve("next")]}));
 const manifest=[];
-for(const id of ["AR1","AR2","AR3","AR4"]) for(const pose of ["ready","windup","strike","recover"]){
+const actorPoses = {
+ AR1: ["ready","windup","strike","recover","guard"],
+ AR2: ["ready","windup","strike","recover"],
+ AR3: ["ready","windup","strike","recover","heal"],
+ AR4: ["ready","windup","strike","recover"],
+};
+for(const [id, names] of Object.entries(actorPoses)) for(const pose of names){
  const source=`art-source/renewal/${id}/${pose}.png`,path=`/assets/renewal/${id}/${pose}.webp`;
  const bytes=await fs.readFile(source), metadata=await sharp(bytes).metadata(), stats=await sharp(bytes).stats();
  if(!metadata.hasAlpha || stats.channels[3].min!==0) throw Error(`${pose} needs transparent background`);

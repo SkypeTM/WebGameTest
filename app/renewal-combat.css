@@ -47,6 +47,27 @@
 }
 .deck-access > span:first-child { font-size: 26px; color: #e4bd70; }
 .hand-performing .selection-hint { visibility: hidden; }
+.sd-battlefield .support-cut-in .cut-in-actor { animation: none; }
+.support-cut-in { background: linear-gradient(100deg, #10252bec, #10252b55 70%); }
+.support-heal { background: linear-gradient(100deg, #122d28ec, #122d2855 70%); }
+.support-readout {
+  position: absolute;
+  left: 54%;
+  top: 34%;
+  display: grid;
+  gap: 8px;
+  color: #66b8ed;
+  text-shadow: 0 2px 8px #000;
+  font-size: clamp(16px, 2.4vw, 30px);
+  animation: support-result 900ms both;
+}
+.support-readout > span { color: #f3efe3; font-size: .65em; }
+.support-heal .support-readout { color: #82c9b3; }
+@keyframes support-result {
+  0%, 10% { opacity: 0; transform: translateY(8px); }
+  28%, 80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-4px); }
+}
 @media (max-width: 600px), (max-height: 500px) {
   .renewal-toolbar { padding: 7px 8px; gap: 8px; }
   .renewal-toolbar .energy-display > span:last-child small { display: none; }

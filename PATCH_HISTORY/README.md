@@ -93,3 +93,5 @@
 - `055-roadmap-qa-bot.md`: 공개 개발 현황과 로컬 기본 플레이 QA 봇.
 
 - `056-mobile-route-sheet.md`: 모바일 경로 선택 패널 구현, 화면 검증 대기.
+
+- `057-fullbody-hit.md`: 로드맵2 우선 진행, AR1 피격 원화·타임라인 연결.

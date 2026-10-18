@@ -14,7 +14,10 @@ export default function FullBodyActor({ id = "AR1", motion = "" }: { id?: string
     setPose("ready");
     if (reduced) return;
     const support = motion === "motion-guard" ? "guard" : motion === "motion-heal" ? "heal" : null;
-    const sequence = support && poses.some(p => p.id === id && p.pose === support)
+    const hasHit = motion === "motion-hit" && poses.some(p => p.id === id && p.pose === "hit");
+    const sequence = hasHit
+      ? [[timing.impact, "hit"], [timing.ready, "ready"]]
+      : support && poses.some(p => p.id === id && p.pose === support)
       ? [[timing.windup, support], [timing.ready, "ready"]]
       : motion.includes("strike") ? [
       [timing.windup, "windup"],

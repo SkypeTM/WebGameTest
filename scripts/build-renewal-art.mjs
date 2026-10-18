@@ -5,7 +5,7 @@ const require=createRequire(import.meta.url);
 const sharp=require(require.resolve("sharp",{paths:[require.resolve("next")]}));
 const manifest=[];
 const actorPoses = {
- AR1: ["ready","windup","strike","recover","guard"],
+ AR1: ["ready","windup","strike","recover","guard","hit"],
  AR2: ["ready","windup","strike","recover"],
  AR3: ["ready","windup","strike","recover","heal"],
  AR4: ["ready","windup","strike","recover"],

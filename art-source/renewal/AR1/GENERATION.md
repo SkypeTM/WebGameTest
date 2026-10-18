@@ -15,3 +15,8 @@
 - 참조: art-source/renewal/AR1/ready.png.
 - 포즈: 동일한 왼팔 방패를 앞으로 들어 방어, 오른손 검은 아래로.
 - exact same adult identity/costume, fullbody, complete boots/props, transparent cutout, no floor/text. 원본1024x1536. WebP95/alpha100.
+
+## 057 hit
+- 참조: ready.png. built-in imagegen, 투명 배경, 1024x1536.
+- 프롬프트: 동일29세 성인 여성 방벽기사, 갈색 피부/짧은 은발 컬/남청 금장 갑옷/백색 타바드 유지. 오른손 검·왼팔 왕관 방패. 화면 오른쪽에서 받은 충격에 상체가 뒤로 젖혀지고 무릎이 굽혀짐. 전신/무기 끝 여백, 피/상처/이펙트 없음.
+- 출력: hit.png. 기존 ready와 별도 원본 보존. 키 포즈이며 연속 리깅 아님.

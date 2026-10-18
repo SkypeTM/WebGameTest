@@ -1359,7 +1359,7 @@ export default function Page() {
         </PortableMenu>
       </header>
       <div
-        className={`status ${control && !error && !offline && !pending.current ? "status-healthy" : ""}`}
+        className={`status ${control && !error && !offline && (!pending.current || busy) ? "status-healthy" : ""}`}
         role="status"
       >
         {!control ? (
@@ -1369,6 +1369,8 @@ export default function Page() {
               이 기기에서 이어하기
             </button>
           </>
+        ) : busy && pending.current && !error && !offline ? (
+          <span>행동 결과를 저장하고 있습니다.</span>
         ) : error || offline || pending.current ? (
           <>
             <span>{error || "결과가 확인되지 않은 행동이 있습니다."}</span>

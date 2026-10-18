@@ -1,0 +1,64 @@
+.route-briefing {
+  padding: 18px;
+  margin-top: 18px;
+  border: 1px solid #bba36a70;
+  border-left: 3px solid var(--gold);
+  background: linear-gradient(110deg, #283332, #111c20);
+}
+.route-briefing header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.route-briefing header > span {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #bba36a70;
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.route-briefing small {
+  color: var(--gold);
+  font-size: 11px;
+}
+.route-briefing h3 {
+  margin: 4px 0 0;
+  font-size: 19px;
+}
+.route-briefing dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 18px 0 0;
+}
+.route-briefing dl > div {
+  border-top: 1px solid #ffffff18;
+  padding-top: 10px;
+}
+.route-briefing dt {
+  color: #a7b5b3;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+.route-briefing dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.route-briefing + .route-confirm {
+  margin-top: 0;
+  border-top: 0;
+}
+@media (max-width: 540px) {
+  .route-briefing {
+    padding: 14px;
+  }
+  .route-briefing dl {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

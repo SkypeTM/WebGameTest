@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import BattleTargetLines from "./components/BattleTargetLines";
 import FullBodyActor from "./components/FullBodyActor";
+import RouteBriefing from "./components/RouteBriefing";
+import "./route-briefing.css";
 import { COMBAT_PRESENTATION } from "../lib/combat-presentation";
 import renewalPoses from "../data/renewal_actor_manifest.json";
 import CharacterLobby from "./components/CharacterLobby";
@@ -3729,45 +3731,52 @@ export default function Page() {
                       ))}
                   </div>
                   {pendingRoom && roomFor(run).next.includes(pendingRoom) && (
-                    <div className="route-confirm" role="status">
-                      <div>
-                        <span className="eyebrow">SELECTED ROUTE</span>
-                        <strong>{roomFor(run, pendingRoom).name}</strong>
-                        <small>
-                          {roomFor(run, pendingRoom).kind === "battle"
-                            ? "전투 지역"
-                            : roomFor(run, pendingRoom).kind === "boss"
-                              ? "보스 지역"
-                              : roomFor(run, pendingRoom).kind === "merchant"
-                                ? "던전 상인"
-                                : roomFor(run, pendingRoom).kind === "question"
-                                  ? "무작위 조우"
-                                  : roomFor(run, pendingRoom).kind === "rest"
-                                    ? "휴식 지역"
-                                    : roomFor(run, pendingRoom).kind ===
-                                        "puzzle"
-                                      ? "수수께끼 지역"
-                                      : "탐사 지역"}
-                        </small>
+                    <>
+                      <RouteBriefing
+                        kind={roomFor(run, pendingRoom).kind}
+                        name={roomFor(run, pendingRoom).name}
+                      />
+                      <div className="route-confirm" role="status">
+                        <div>
+                          <span className="eyebrow">SELECTED ROUTE</span>
+                          <strong>{roomFor(run, pendingRoom).name}</strong>
+                          <small>
+                            {roomFor(run, pendingRoom).kind === "battle"
+                              ? "전투 지역"
+                              : roomFor(run, pendingRoom).kind === "boss"
+                                ? "보스 지역"
+                                : roomFor(run, pendingRoom).kind === "merchant"
+                                  ? "던전 상인"
+                                  : roomFor(run, pendingRoom).kind ===
+                                      "question"
+                                    ? "무작위 조우"
+                                    : roomFor(run, pendingRoom).kind === "rest"
+                                      ? "휴식 지역"
+                                      : roomFor(run, pendingRoom).kind ===
+                                          "puzzle"
+                                        ? "수수께끼 지역"
+                                        : "탐사 지역"}
+                          </small>
+                        </div>
+                        <button
+                          className="mini"
+                          onClick={() => setPendingRoom("")}
+                        >
+                          취소
+                        </button>
+                        <button
+                          className="primary"
+                          disabled={locked}
+                          onClick={() => {
+                            const id = pendingRoom;
+                            setPendingRoom("");
+                            void act({ type: "move", id });
+                          }}
+                        >
+                          탐사 진행 →
+                        </button>
                       </div>
-                      <button
-                        className="mini"
-                        onClick={() => setPendingRoom("")}
-                      >
-                        취소
-                      </button>
-                      <button
-                        className="primary"
-                        disabled={locked}
-                        onClick={() => {
-                          const id = pendingRoom;
-                          setPendingRoom("");
-                          void act({ type: "move", id });
-                        }}
-                      >
-                        탐사 진행 →
-                      </button>
-                    </div>
+                    </>
                   )}
                 </section>
                 <section className="room-panel panel live-scene-panel">

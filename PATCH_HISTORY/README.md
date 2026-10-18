@@ -83,3 +83,5 @@
 - `051-combat-hud-timing.md`: 행동력·덱 HUD 및 타격음 동기화 (로컬 HUD 검증·배포 완료)
 
 - `052-support-fullbody.md`: 레오나 방어·마리엔 회복 전신 연출
+
+- `053-route-briefing.md`: 탐사 경로별 준비·기회 안내 및 선택/취소 검증.

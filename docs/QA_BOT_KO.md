@@ -12,3 +12,5 @@
 작업 페이지 원본은 `data/roadmap.json`, 공개 주소는 `/roadmap`. 패치마다 상태와 완료 기준을 함께 갱신한다. 비공개 자료·계정·QA 로그는 공개 데이터에 넣지 않는다.
 
 Windows에서는 scripts/run-qa-bot.cmd로도 실행할 수 있습니다. 결과 파일을 열어 PASS/FAIL만 먼저 확인하세요.
+
+전투 원화 검사도 qa:bot에 포함됩니다. 필수 자세·원본 해시·WebP 크기·투명 배경·불투명 본체를 검사하고 storage/qa-bot/assets.json에 저장합니다. WebP 알파 반올림을 고려해 본체 알파 250 이상을 허용합니다. 시각적 품질 검사는 별도입니다.

@@ -99,3 +99,6 @@
 - `058-party-hit-poses.md`: 기본 파티 피격4명 완성, SD 중복 표시 조건 수정(화면 검증 대기).
 
 - `059-signature-skill-poses.md`: 세린·에델 전용 스킬 원화 및 카드별 자세 분기.
+
+- `060-asset-qa-roadmap.md`: 전투 원화 자동 QA 및 배포 현황 정정.
+

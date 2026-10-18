@@ -7,6 +7,7 @@ export default function RoadmapPage() {
     <main className="roadmap-page">
       <nav>
         <a href="/">← 게임으로</a>
+        <a href="/animation-preview">전투 연출 미리보기 →</a>
         <span>업데이트 {roadmap.updated}</span>
       </nav>
       <header>

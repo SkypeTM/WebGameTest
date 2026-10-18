@@ -42,3 +42,6 @@ Original adult female fantasy character, apparent age 24, 장난꾸러기 룬술
 - 전신 ready/windup/strike/recover PNG 및 투명 WebP 생성, 공통 액터 manifest 연결.
 - 경로: art-source/renewal/AR4, public/assets/renewal/AR4.
 - 4자세 시제품. guard/hit/skill, 연속 모션·발 기준 정합은 후속.
+
+## 058 피격 자세
+- hit 원화 추가. 320ms hit→780ms ready 공통 타임라인. 실제 화면 검증 대기.

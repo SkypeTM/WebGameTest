@@ -16,3 +16,8 @@
 - 참조: art-source/renewal/AR3/ready.png.
 - 포즈: 동일한 왼손 약품 가방 유지, 오른손 손바닥에 작은 민트/금색 회복빛.
 - exact same adult identity/costume, fullbody, complete boots/props, transparent cutout, no floor/text. 원본1024x1536. WebP95/alpha100.
+
+## 058 hit
+- 기준: AR3/ready.png. built-in imagegen, 1024x1536, 투명 배경.
+- 지시: 동일 성인 여성의 얼굴/머리/의상/팔레트/무기손 유지, 화면 오른쪽 충격에 상체 뒤로 젖힘·무릎 굽힘·긴장 표정, 전신과 무기 끝 포함, 피/상처/이펙트 없음.
+- 원본 hit.png 보존, hit.webp 변환. 단일 키 포즈이며 연속 리깅 아님.

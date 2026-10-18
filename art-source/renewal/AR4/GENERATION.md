@@ -10,3 +10,8 @@
 - AR3 strike의 좌우 손 전환, AR4 ready 검 잘림을 재생성으로 교정.
 - WebP quality95/alpha100, 원본 PNG 보존. 크기/해시: data/renewal_actor_manifest.json.
 - 키 포즈 시제품이며 연속 리깅 아님. 장식과 발 기준점의 자세별 차이 보정은 후속.
+
+## 058 hit
+- 기준: AR4/ready.png. built-in imagegen, 1024x1536, 투명 배경.
+- 지시: 동일 성인 여성의 얼굴/머리/의상/팔레트/무기손 유지, 화면 오른쪽 충격에 상체 뒤로 젖힘·무릎 굽힘·긴장 표정, 전신과 무기 끝 포함, 피/상처/이펙트 없음.
+- 원본 hit.png 보존, hit.webp 변환. 단일 키 포즈이며 연속 리깅 아님.

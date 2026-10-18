@@ -3174,7 +3174,7 @@ export default function Page() {
                           key={h.id}
                           data-card-target={h.id}
                           data-card-kind="ally"
-                          className={`ally rank-${index + 1} ${animating && fx && (fx.kind === "hero-attack" || supportCinematic) && fx.actor === h.id && renewalPoses.some(p => p.id === h.id) ? "actor-in-focus" : ""} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
+                          className={`ally rank-${index + 1} ${animating && fx && (((fx.kind === "hero-attack" || supportCinematic) && fx.actor === h.id) || (fx.kind === "enemy-attack" && fx.target.split(":")[0] === h.id)) && renewalPoses.some(p => p.id === h.id) ? "actor-in-focus" : ""} ${h.hp === 0 ? "fallen" : ""} ${selected && cardInfo(selected).target === "ally" ? "targetable" : ""}`}
                           disabled={
                             locked ||
                             !selected ||

@@ -45,3 +45,6 @@ Original adult female fantasy character, apparent age 34, 안경 의무관, 아�
 
 ## 052 지원 자세
 - heal.png 및 투명 WebP 생성. ready 기반 화풍·장비손 유지. 전용 포즈가 있는 지원 행동만 전신 전환.
+
+## 058 피격 자세
+- hit 원화 추가. 320ms hit→780ms ready 공통 타임라인. 실제 화면 검증 대기.

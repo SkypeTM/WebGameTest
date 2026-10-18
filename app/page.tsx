@@ -1270,6 +1270,7 @@ export default function Page() {
         ▤ <span>도감</span>
       </button>
       <ActionJournal entries={game.log} />
+      <a className="mini" href="/roadmap" target="_blank" rel="noopener noreferrer">개발 현황 ↗</a>
       <button
         className="mini"
         aria-pressed={sceneryEnabled}

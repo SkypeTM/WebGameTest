@@ -7,6 +7,7 @@ const manifest = JSON.parse(
 for (const [route, file] of [
   ["/", "index"],
   ["/m", "m"],
+  ["/roadmap", "roadmap"],
 ]) {
   const entry = manifest.routes[route];
   if (!entry || entry.initialRevalidateSeconds !== false)

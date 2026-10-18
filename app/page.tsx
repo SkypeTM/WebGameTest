@@ -3642,6 +3642,11 @@ export default function Page() {
                       </span>
                     </div>
                   </div>
+                  <div className="route-legend" aria-label="지도 범례">
+                    <span><i className="traveled" />지난 경로</span>
+                    <span><i className="available" />이동 가능</span>
+                    <span><i className="selected" />선택 경로</span>
+                  </div>
                   <div className="route-map procedural-map">
                     <svg
                       className="route-links"
@@ -3659,15 +3664,17 @@ export default function Page() {
                                 <line
                                   key={`${fromId}-${toId}`}
                                   x1={from.x || 50}
-                                  y1={94 - (from.layer || 0) * 14}
+                                  y1={96 - (from.layer || 0) * 14}
                                   x2={to.x || 50}
-                                  y2={94 - (to.layer || 0) * 14}
+                                  y2={96 - (to.layer || 0) * 14}
                                   className={
-                                    run.visited.includes(fromId) &&
-                                    (run.visited.includes(toId) ||
-                                      roomFor(run).next.includes(toId))
-                                      ? "active"
-                                      : ""
+                                    fromId === run.room && toId === pendingRoom
+                                      ? "selected"
+                                      : fromId === run.room
+                                        ? "available"
+                                        : run.visited.includes(fromId) && run.visited.includes(toId)
+                                          ? "traveled"
+                                          : ""
                                   }
                                 />
                               );
@@ -3691,6 +3698,8 @@ export default function Page() {
                         >
                           <button
                             key={id}
+                            aria-pressed={pendingRoom === id}
+                            aria-current={run.room === id ? "step" : undefined}
                             className={`room ${run.room === id ? "current" : ""} ${run.visited.includes(id) ? "visited" : ""} ${pendingRoom === id ? "pending" : ""}`}
                             disabled={
                               locked ||

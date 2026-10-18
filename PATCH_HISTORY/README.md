@@ -97,3 +97,5 @@
 - `057-fullbody-hit.md`: 로드맵2 우선 진행, AR1 피격 원화·타임라인 연결.
 
 - `058-party-hit-poses.md`: 기본 파티 피격4명 완성, SD 중복 표시 조건 수정(화면 검증 대기).
+
+- `059-signature-skill-poses.md`: 세린·에델 전용 스킬 원화 및 카드별 자세 분기.

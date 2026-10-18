@@ -40,3 +40,6 @@ Original adult female fantasy character, apparent age 26, 과묵한 결투가, �
 
 ## 058 피격 자세
 - hit 원화 추가. 320ms hit→780ms ready 공통 타임라인. 실제 화면 검증 대기.
+
+## 059 전용 스킬
+- skill 원화 및 전용 공격 타임라인 연결. 실제 화면 QA 대기.

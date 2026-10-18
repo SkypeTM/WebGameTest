@@ -6,9 +6,9 @@ const sharp=require(require.resolve("sharp",{paths:[require.resolve("next")]}));
 const manifest=[];
 const actorPoses = {
  AR1: ["ready","windup","strike","recover","guard","hit"],
- AR2: ["ready","windup","strike","recover","hit"],
+ AR2: ["ready","windup","strike","recover","hit","skill"],
  AR3: ["ready","windup","strike","recover","heal","hit"],
- AR4: ["ready","windup","strike","recover","hit"],
+ AR4: ["ready","windup","strike","recover","hit","skill"],
 };
 for(const [id, names] of Object.entries(actorPoses)) for(const pose of names){
  const source=`art-source/renewal/${id}/${pose}.png`,path=`/assets/renewal/${id}/${pose}.webp`;

@@ -3113,13 +3113,17 @@ export default function Page() {
                         aria-hidden="true"
                       >
                         <span className="cut-in-label">
-                          {fx.kind === "hero-attack" ? "공격" : "적 공격"}
+                          {fx.kind === "hero-attack"
+                            ? fx.card === "skill"
+                              ? cardInfo({ id: "presentation", owner: fx.actor, kind: "skill" }).name
+                              : "공격"
+                            : "적 공격"}
                         </span>
                         <div className="cut-in-actor">
                           <BattleActor
                             id={fx.actor}
                             full
-                            motion="motion-strike"
+                            motion={fx.kind === "hero-attack" && fx.card === "skill" ? "motion-strike motion-skill" : "motion-strike"}
                           />
                         </div>
                         <div className="cut-in-target">

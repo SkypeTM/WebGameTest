@@ -3741,7 +3741,7 @@ export default function Page() {
                       ))}
                   </div>
                   {pendingRoom && roomFor(run).next.includes(pendingRoom) && (
-                    <>
+                    <section className="route-selection-sheet" aria-label="선택 경로 확인">
                       <RouteBriefing
                         kind={roomFor(run, pendingRoom).kind}
                         name={roomFor(run, pendingRoom).name}
@@ -3786,7 +3786,7 @@ export default function Page() {
                           탐사 진행 →
                         </button>
                       </div>
-                    </>
+                    </section>
                   )}
                 </section>
                 <section className="room-panel panel live-scene-panel">

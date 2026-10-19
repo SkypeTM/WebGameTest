@@ -34,7 +34,7 @@ export default function FullBodyActor({ id = "AR1", motion = "", playbackRate = 
     return () => timers.forEach(window.clearTimeout);
   }, [motion, id, rate]);
   return (
-    <div className={`full-body-actor ${motion}`} data-pose={pose} style={{ "--pose-duration": `${timing.duration / rate}ms`, "--pose-blend": `${100 / rate}ms` } as CSSProperties}>
+    <div className={`full-body-actor ${motion}`} data-pose={pose} style={{ "--pose-duration": `${timing.duration / rate}ms`, "--pose-blend": `${35 / rate}ms` } as CSSProperties}>
       <div className="pose-motion">
       {poses.filter(entry => entry.id === id).map(({pose: name, path, width, height}) => (
         <img

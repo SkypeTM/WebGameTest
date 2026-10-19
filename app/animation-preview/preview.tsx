@@ -14,11 +14,28 @@ export default function Preview() {
   const [replay,setReplay] = useState(0);
   const [speed,setSpeed] = useState(1);
   const [loop,setLoop] = useState(false);
+  const [loadedId,setLoadedId] = useState('');
+  const [loadError,setLoadError] = useState(false);
+  const [loadAttempt,setLoadAttempt] = useState(0);
+  const assetsReady = loadedId===id;
   useEffect(()=>{
-    if (!loop || frame || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let active=true;
+    setLoadedId('');setLoadError(false);
+    const jobs=poses.filter(p=>p.id===id).map(p=>{
+      const image=new Image();image.src=p.path;return image.decode();
+    });
+    void Promise.allSettled(jobs).then(results=>{
+      if(!active)return;
+      if(results.some(r=>r.status==='rejected'))setLoadError(true);
+      else setLoadedId(id);
+    });
+    return ()=>{active=false;};
+  },[id,loadAttempt]);
+  useEffect(()=>{
+    if (!assetsReady || !loop || frame || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer=window.setTimeout(()=>setReplay(n=>n+1),1200/speed);
     return ()=>window.clearTimeout(timer);
-  },[loop,frame,speed,replay,id,motion]);
+  },[loop,frame,speed,replay,id,motion,assetsReady]);
   const entries = poses.filter(p=>p.id===id);
   const selected = entries.find(p=>p.pose===frame);
   const skill = id==='AR1'?'motion-guard':id==='AR3'?'motion-heal':'motion-strike motion-skill';
@@ -29,7 +46,7 @@ export default function Preview() {
     <p>기본 파티의 전신 자세를 살펴보세요. 게임 진행과 저장 데이터에는 영향을 주지 않습니다.</p>
     <div className="preview-layout">
       <section className="preview-stage" aria-label={`${heroes[id]} ${frame?labels[frame]:'동작 재생'}`}>
-        {selected ? <img src={selected.path} width={selected.width} height={selected.height} alt={`${heroes[id]} ${labels[selected.pose]}`} /> : <FullBodyActor key={`${id}-${replay}-${speed}`} id={id} motion={motion} playbackRate={speed}/>}
+        {!assetsReady ? <div className="preview-loading" role="status">{loadError?'원화를 불러오지 못했습니다.':'원화를 준비하고 있습니다.'}{loadError&&<button onClick={()=>setLoadAttempt(n=>n+1)}>다시 불러오기</button>}</div> : selected ? <img src={selected.path} width={selected.width} height={selected.height} alt={`${heroes[id]} ${labels[selected.pose]}`} /> : <FullBodyActor key={`${id}-${replay}-${speed}`} id={id} motion={motion} playbackRate={speed}/>}
       </section>
       <section className="preview-controls" aria-label="연출 조작">
         <label>캐릭터<select value={id} onChange={e=>{setId(e.target.value as keyof typeof heroes);setFrame(null);setMotion('motion-strike');}}>{Object.entries(heroes).map(([key,name])=><option key={key} value={key}>{name}</option>)}</select></label>

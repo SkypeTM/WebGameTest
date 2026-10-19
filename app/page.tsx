@@ -24,6 +24,7 @@ import { dialogueArt, storyArt } from "../lib/story-art";
 import "./story-conversation.css";
 import "./combat-polish.css";
 import "./renewal-combat.css";
+import "./compact-landscape.css";
 import StatusIcon from "./components/StatusIcon";
 import { sceneAsset } from "../lib/scenery";
 import {

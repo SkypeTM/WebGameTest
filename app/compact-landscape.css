@@ -1,0 +1,33 @@
+/* Last, scoped override: reserve the bottom hand tray instead of allowing
+   earlier mobile minimum heights to push targets behind it. */
+@media (orientation:landscape) and (max-height:500px) and (max-width:1100px) {
+  .battle-page .battlefield.sd-battlefield {
+    min-height:0;
+    height:calc(100dvh - 116px);
+    padding:10px 10px 112px !important;
+    align-items:end;
+    gap:12px;
+  }
+  .battle-page .sd-battlefield .field-label {top:-19px;font-size:8px;padding:2px 4px;min-height:0;line-height:12px;}
+  .battle-page .sd-battlefield .field-label span {font-size:7px;}
+  .battle-page .sd-battlefield .battle-sd,
+  .battle-page .sd-battlefield .enemy .battle-sd {height:45px;}
+  .battle-page .sd-battlefield .ally {padding:1px 2px;}
+  .battle-page .sd-battlefield .rank-badge {top:-12px;height:17px;width:18px;left:calc(50% - 9px);font-size:9px;}
+  .battle-page .sd-battlefield .rank-badge small {display:none;}
+  .battle-page .sd-battlefield .unit-readout {height:auto;min-height:0;padding:2px 1px;}
+  .battle-page .sd-battlefield .unit-readout h3,
+  .battle-page .sd-battlefield .enemy h3 {font-size:9px;line-height:12px;margin:1px 0;}
+  .battle-page .sd-battlefield .unit-readout h3 small {display:none;}
+  .battle-page .sd-battlefield .unit-readout p,
+  .battle-page .sd-battlefield .enemy p {font-size:8px;line-height:10px;margin:0;}
+  .battle-page .sd-battlefield .meter {margin:2px 0;}
+  .battle-page .sd-battlefield .status-list {margin:1px 0;gap:2px;}
+  .battle-page .sd-battlefield .equipment-line {display:none;}
+  .battle-page .sd-battlefield .enemy-target {padding:0 2px 2px;}
+  .battle-page .sd-battlefield .enemy .intent {min-height:0;font-size:8px;line-height:10px;padding:2px;margin:0 0 2px;}
+  .battle-page .sd-battlefield .enemy details {position:relative;font-size:8px;line-height:10px;margin:0;}
+  .battle-page .sd-battlefield .enemy details summary {min-height:0;padding:2px;line-height:12px;}
+  .battle-page .sd-battlefield .enemy details[open] {z-index:30;background:#152629;border:1px solid #8a845e;}
+}
+

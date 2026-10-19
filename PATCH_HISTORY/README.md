@@ -106,3 +106,4 @@
 - `062-animation-preview.md`: 기본 파티 전투 연출·개별 자세 미리보기.
 - `063-smooth-combat-motion.md`: 전투 이동·반동·복귀 연속 보간.
 - `064-inbetween-preview.md`: 4명 중간 원화 및 느린·반복 재생.
+- `065-preview-frame-sampler.md`: 프레임 간격 측정 및 반복 체크박스 정리.

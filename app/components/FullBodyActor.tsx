@@ -33,6 +33,7 @@ export default function FullBodyActor({ id = "AR1", motion = "" }: { id?: string
   }, [motion, id]);
   return (
     <div className={`full-body-actor ${motion}`} data-pose={pose}>
+      <div className="pose-motion">
       {poses.filter(entry => entry.id === id).map(({pose: name, path, width, height}) => (
         <img
           key={name}
@@ -45,6 +46,7 @@ export default function FullBodyActor({ id = "AR1", motion = "" }: { id?: string
           height={height}
         />
       ))}
+      </div>
     </div>
   );
 }

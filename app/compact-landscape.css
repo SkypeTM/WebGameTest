@@ -31,3 +31,12 @@
   .battle-page .sd-battlefield .enemy details[open] {z-index:30;background:#152629;border:1px solid #8a845e;}
 }
 
+
+@media (orientation:landscape) and (min-height:700px) and (max-width:1100px) {
+  .battle-page .battlefield.sd-battlefield {
+    min-height:0;
+    height:calc(100dvh - 160px);
+    padding:30px 22px 208px !important;
+    align-items:end;
+  }
+}

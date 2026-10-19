@@ -109,3 +109,4 @@
 - `065-preview-frame-sampler.md`: 프레임 간격 측정 및 반복 체크박스 정리.
 - `066-pose-readiness.md`: 원화 준비 후 미리보기 재생·잔상 단축.
 - `067-short-landscape-combat.md`: 낮은 가로 전투의 손패·대상 중첩 수정.
+- 068: 태블릿 가로 전투 손패 예약 공간 보정 (`068-tablet-landscape-combat.md`).

@@ -25,6 +25,18 @@
   },
   {
     "id": "AR1",
+    "pose": "swing",
+    "source": "art-source/renewal/AR1/swing.png",
+    "path": "/assets/renewal/AR1/swing.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "06e9f221a3d3b1d103492c14d215252fed3c7df24561759d71f5a261679f29e5",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR1",
     "pose": "strike",
     "source": "art-source/renewal/AR1/strike.png",
     "path": "/assets/renewal/AR1/strike.webp",
@@ -92,6 +104,18 @@
     "height": 1536,
     "alpha": true,
     "sha256": "3492481c02d83da843375026e91319682c57a8a8cb09b59fa60e8ec48d7c6832",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR2",
+    "pose": "swing",
+    "source": "art-source/renewal/AR2/swing.png",
+    "path": "/assets/renewal/AR2/swing.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "d5069c6b392586a84bdc082a11bed65862b2fea46d384debee7dc91bbbebb516",
     "styleVersion": "silent-bell-anime-v2",
     "status": "first-animation-slice"
   },
@@ -169,6 +193,18 @@
   },
   {
     "id": "AR3",
+    "pose": "swing",
+    "source": "art-source/renewal/AR3/swing.png",
+    "path": "/assets/renewal/AR3/swing.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "79f2f7600d4ccb5331c39746d7b0f14bc562cfe7a22569b25a51c302c46d63d4",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR3",
     "pose": "strike",
     "source": "art-source/renewal/AR3/strike.png",
     "path": "/assets/renewal/AR3/strike.webp",
@@ -236,6 +272,18 @@
     "height": 1536,
     "alpha": true,
     "sha256": "49a49c9f0eada6672bfecf10fc50860d0e22ee149017b500990f5c1474e8d472",
+    "styleVersion": "silent-bell-anime-v2",
+    "status": "first-animation-slice"
+  },
+  {
+    "id": "AR4",
+    "pose": "swing",
+    "source": "art-source/renewal/AR4/swing.png",
+    "path": "/assets/renewal/AR4/swing.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "sha256": "b634f639021ab1457eb0e8cb0454c2215c2a3b4efdd53d0ff4e48d4669299731",
     "styleVersion": "silent-bell-anime-v2",
     "status": "first-animation-slice"
   },

@@ -31,7 +31,7 @@ for (const entry of manifest) {
   }
 }
 for (const [id, special] of Object.entries({ AR1: 'guard', AR2: 'skill', AR3: 'heal', AR4: 'skill' })) {
-  for (const pose of ['ready', 'windup', 'strike', 'recover', 'hit', special]) {
+  for (const pose of ['ready', 'windup', 'swing', 'strike', 'recover', 'hit', special]) {
     if (!seen.has(`${id}/${pose}`)) results.push({ key: `${id}/${pose}`, passed: false, error: 'required pose missing' });
   }
 }

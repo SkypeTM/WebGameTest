@@ -91,7 +91,7 @@
   object-fit: contain;
   object-position: center bottom;
   opacity: 0;
-  transition: opacity 100ms ease-in-out;
+  transition: opacity var(--pose-blend, 100ms) ease-in-out;
   filter: drop-shadow(0 7px 7px #0009);
 }
 .full-body-actor img.active {
@@ -104,10 +104,10 @@
   transform-origin: 50% 94%;
   will-change: transform;
 }
-.full-body-actor.motion-strike .pose-motion { animation: pose-attack 900ms both; }
-.full-body-actor.motion-hit .pose-motion { animation: pose-recoil 900ms both; }
-.full-body-actor.motion-guard .pose-motion { animation: pose-guard 900ms both; }
-.full-body-actor.motion-heal .pose-motion { animation: pose-heal 900ms both; }
+.full-body-actor.motion-strike .pose-motion { animation: pose-attack var(--pose-duration, 900ms) both; }
+.full-body-actor.motion-hit .pose-motion { animation: pose-recoil var(--pose-duration, 900ms) both; }
+.full-body-actor.motion-guard .pose-motion { animation: pose-guard var(--pose-duration, 900ms) both; }
+.full-body-actor.motion-heal .pose-motion { animation: pose-heal var(--pose-duration, 900ms) both; }
 /* Continuous compositor interpolation, not steps() or per-frame React renders.
    Contact remains at 320 / 900 = 35.56% to match damage and sound. */
 @keyframes pose-attack {

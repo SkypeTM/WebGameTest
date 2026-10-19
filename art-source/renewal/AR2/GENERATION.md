@@ -20,3 +20,7 @@
 - 참조: AR2/ready.png. built-in imagegen,1024x1536,투명 배경.
 - 동일 성인 여성 정체성·복장·팔레트 유지. AR2: 오른손 창, 왼손 중간 지지, 오른쪽 관통 찌르기. AR4: 오른손 룬검 유지, 왼손 청색 룬 마법진 시전. 전신·무기 끝 포함.
 - skill.png 원본 및 skill.webp. 전용 카드만 타격 시점에 사용.
+
+## 064 swing
+Built-in imagegen; transparent_background=true; reference windup.png + strike.png. Prompt: ONE 1024x1536 transparent full-body in-between halfway from windup to strike. Exact identity, costume, hand/weapon ownership and style. Entire weapons and boots within frame, stable ground line, no duplicate limbs or background. Spear nearly horizontal, elbows half extended.
+Saved swing.png and public/assets/renewal/AR2/swing.webp. Not continuous skeletal animation.

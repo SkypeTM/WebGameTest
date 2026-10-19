@@ -105,3 +105,4 @@
 - `061-save-status.md`: 라이브 기본 공격 확인 및 정상 저장 경고 수정.
 - `062-animation-preview.md`: 기본 파티 전투 연출·개별 자세 미리보기.
 - `063-smooth-combat-motion.md`: 전투 이동·반동·복귀 연속 보간.
+- `064-inbetween-preview.md`: 4명 중간 원화 및 느린·반복 재생.

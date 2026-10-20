@@ -1,6 +1,14 @@
 /* Ink, aged brass and parchment: separate navigation, information and route surfaces. */
 :root { --bg:#14161d; --panel:#21242d; --line:#49454a; --text:#eee8dc; --muted:#b5b0a8; --gold:#d7b579; }
 body { background-color:var(--bg); }
+.header { flex-wrap:wrap; }
+.header > .account { flex-wrap:wrap; justify-content:flex-end; min-width:0; gap:10px; }
+.header > .account > * { flex-shrink:0; white-space:nowrap; }
+.header .audio-controls { flex-shrink:0; white-space:nowrap; }
+.header .account button,.header .account a { white-space:nowrap; word-break:keep-all; }
+.procedural-map .room small { color:inherit; opacity:1; }
+.procedural-map .room:disabled { color:#493d2c; }
+.procedural-map .room.current small,.procedural-map .room.pending small { color:#fff1d5; }
 .topbar { background:#191b24; border-bottom-color:#806b4b; }
 .map-panel { background:#26242a; border-color:#665944; }
 .route-map.procedural-map {
@@ -15,7 +23,7 @@ body { background-color:var(--bg); }
   border-radius:3px; box-shadow:0 3px 0 #5b483c40;
   line-height:1.35; overflow-wrap:anywhere; min-height:64px;
 }
-.procedural-map .room:disabled { opacity:1; background:#cab995; color:#5d5140; border-color:#a18e6b; box-shadow:none; }
+.procedural-map .room:disabled { opacity:1; background:#cab995; color:#493d2c; border-color:#a18e6b; box-shadow:none; }
 .procedural-map .room.current { background:#593d32; color:#fff0d1; border-color:#946c47; }
 .procedural-map .room.pending { background:#243f49; color:#fff2d7; border:2px solid #a86731; }
 .procedural-map .room > span { background:transparent; border:0; color:inherit; }

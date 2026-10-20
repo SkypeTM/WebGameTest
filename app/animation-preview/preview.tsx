@@ -5,6 +5,7 @@ import FrameSampler from './FrameSampler';
 import poses from '../../data/renewal_actor_manifest.json';
 import '../renewal-combat.css';
 import './preview.css';
+import '../art-direction.css';
 const heroes = { AR1: '레오나', AR2: '세린', AR3: '마리엔', AR4: '에델' };
 const labels: Record<string,string> = { ready:'대기', windup:'공격 준비', swing:'중간 동작', strike:'타격', recover:'회수', hit:'피격', guard:'방패 반격', heal:'응급 회복', skill:'전용 스킬' };
 export default function Preview() {

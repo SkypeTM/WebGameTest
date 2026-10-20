@@ -25,6 +25,7 @@ import "./story-conversation.css";
 import "./combat-polish.css";
 import "./renewal-combat.css";
 import "./compact-landscape.css";
+import "./art-direction.css";
 import StatusIcon from "./components/StatusIcon";
 import { sceneAsset } from "../lib/scenery";
 import {
@@ -3672,9 +3673,9 @@ export default function Page() {
                                 <line
                                   key={`${fromId}-${toId}`}
                                   x1={from.x || 50}
-                                  y1={96 - (from.layer || 0) * 14}
+                                  y1={90 - (from.layer || 0) * 13}
                                   x2={to.x || 50}
-                                  y2={96 - (to.layer || 0) * 14}
+                                  y2={90 - (to.layer || 0) * 13}
                                   className={
                                     fromId === run.room && toId === pendingRoom
                                       ? "selected"
@@ -3701,7 +3702,7 @@ export default function Page() {
                           key={id}
                           style={{
                             left: `${roomFor(run, id).x || 50}%`,
-                            bottom: `${4 + (roomFor(run, id).layer || 0) * 14}%`,
+                            bottom: `${10 + (roomFor(run, id).layer || 0) * 13}%`,
                           }}
                         >
                           <button

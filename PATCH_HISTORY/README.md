@@ -110,3 +110,4 @@
 - `066-pose-readiness.md`: 원화 준비 후 미리보기 재생·잔상 단축.
 - `067-short-landscape-combat.md`: 낮은 가로 전투의 손패·대상 중첩 수정.
 - 068: 태블릿 가로 전투 손패 예약 공간 보정 (`068-tablet-landscape-combat.md`).
+- 069: 원화 오류 보정, 지도 여백·숫자 정렬 및 색상 역할 분리 (`069-art-ui-consistency.md`).

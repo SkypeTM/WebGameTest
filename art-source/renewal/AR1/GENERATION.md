@@ -24,3 +24,5 @@
 ## 064 swing
 Built-in imagegen; transparent_background=true; reference windup.png + strike.png. Prompt: ONE 1024x1536 transparent full-body in-between halfway from windup to strike. Exact identity, costume, hand/weapon ownership and style. Entire weapons and boots within frame, stable ground line, no duplicate limbs or background. Right sword elbow unfolds halfway from overhead, left shield guarding.
 Saved swing.png and public/assets/renewal/AR1/swing.webp. Not continuous skeletal animation.
+
+2026-10-20: strike를 ready 기준 재생성. 검이 얼굴을 가로지르던 궤적을 허리 앞 베기로 변경, 몸 크기 차이 축소. 출력 exec-d43e4675-5226-4efd-8c03-69ae2ae52bdc.png. 투명 배경 유지.

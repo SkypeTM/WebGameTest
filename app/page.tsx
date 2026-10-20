@@ -3421,7 +3421,7 @@ export default function Page() {
                     </h2>
                     <span className="selection-hint" aria-live="polite">
                       {selected
-                        ? `${cardInfo(selected).name} · ${cardInfo(selected).description} → ${cardInfo(selected).target === "ally" ? "아군" : "적"} 선택`
+                        ? `${cardInfo(selected).name} · 현재 위력 ${selectedPower} → ${cardInfo(selected).target === "ally" ? "아군" : "적"} 선택`
                         : "카드를 선택한 뒤 대상을 누르세요"}
                     </span>
                   </div>
@@ -3453,7 +3453,7 @@ export default function Page() {
                               "--fan-drop": `${Math.abs(handIndex - (battle.hand.length - 1) / 2) * 5}px`,
                             } as CSSProperties
                           }
-                          title={`${info.description} · ${info.triggers.map((t) => cardTriggerDefinitions[t].name).join(" · ") || "키워드 없음"}`}
+                          title={`현재 ${liveValue.label} ${liveValue.value} · 기본 효과: ${info.description} · ${info.triggers.map((t) => cardTriggerDefinitions[t].name).join(" · ") || "키워드 없음"}`}
                           draggable={false}
                           disabled={disabled}
                           onPointerDown={(event) => {
@@ -3534,7 +3534,7 @@ export default function Page() {
                           </span>
                           <span
                             className="card-desc"
-                            aria-label={info.description}
+                            aria-label={`현재 ${liveValue.label} ${liveValue.value}. 기본 효과: ${info.description}`}
                           >
                             {info.target === "ally" ? "아군" : "적"} ·{" "}
                             {c.kind === "skill"

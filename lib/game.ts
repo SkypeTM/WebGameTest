@@ -1734,7 +1734,9 @@ export function effectiveCardValue(
     ...info,
     value,
     label:
-      info.target === "ally" ? (kind === "skill" ? "회복" : "보호막") : "피해",
+      info.target === "ally"
+        ? (kind === "skill" && info.role === "지원" ? "회복" : "보호막")
+        : "피해",
     sources: {
       base: info.power,
       equipmentAndStats:

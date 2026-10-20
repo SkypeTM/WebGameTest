@@ -15,6 +15,7 @@ import {
   availableRecruitIds,
   unlockedRegions,
   deckPreview,
+  effectiveCardValue,
   relicCatalog,
   type Game,
   type Action,
@@ -23,6 +24,15 @@ import { initialGame } from "./legacy-fixture";
 function act(g: Game, a: Action) {
   return reduceGame(g, a, 1234567);
 }
+test("card value labels distinguish shielding skills from healing", () => {
+  const game = initialGame();
+  const leona = game.roster.find(h => h.id === "AR1")!;
+  const marien = game.roster.find(h => h.id === "AR3")!;
+  assert.equal(effectiveCardValue(game, leona, "skill").label, "보호막");
+  assert.equal(effectiveCardValue(game, marien, "skill").label, "회복");
+  assert.equal(effectiveCardValue(game, marien, "guard").label, "보호막");
+  assert.equal(effectiveCardValue(game, leona, "strike").label, "피해");
+});
 function battleStart() {
   return act(act(initialGame(), { type: "enter" }), {
     type: "move",

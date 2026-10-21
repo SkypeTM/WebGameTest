@@ -4,6 +4,7 @@ import BattleTargetLines from "./components/BattleTargetLines";
 import PatchNotes from "./components/PatchNotes";
 import FullBodyActor from "./components/FullBodyActor";
 import RouteBriefing from "./components/RouteBriefing";
+import RouteSelectionSheet from "./components/RouteSelectionSheet";
 import "./route-briefing.css";
 import { COMBAT_PRESENTATION } from "../lib/combat-presentation";
 import renewalPoses from "../data/renewal_actor_manifest.json";
@@ -3751,12 +3752,12 @@ export default function Page() {
                       ))}
                   </div>
                   {pendingRoom && roomFor(run).next.includes(pendingRoom) && (
-                    <section className="route-selection-sheet" aria-label="선택 경로 확인">
+                    <RouteSelectionSheet key={pendingRoom} onCancel={() => setPendingRoom("")}>
                       <RouteBriefing
                         kind={roomFor(run, pendingRoom).kind}
                         name={roomFor(run, pendingRoom).name}
                       />
-                      <div className="route-confirm" role="status">
+                      <div className="route-confirm">
                         <div>
                           <span className="eyebrow">SELECTED ROUTE</span>
                           <strong>{roomFor(run, pendingRoom).name}</strong>
@@ -3781,6 +3782,7 @@ export default function Page() {
                         <button
                           className="mini"
                           onClick={() => setPendingRoom("")}
+                          data-route-cancel
                         >
                           취소
                         </button>
@@ -3796,7 +3798,7 @@ export default function Page() {
                           탐사 진행 →
                         </button>
                       </div>
-                    </section>
+                    </RouteSelectionSheet>
                   )}
                 </section>
                 <section className="room-panel panel live-scene-panel">

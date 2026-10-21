@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { requestAudioPreferences } from "../../lib/audio-sync";
 import {
   defaultAudioPreferences,
   parseAudioPatch,
@@ -24,6 +25,7 @@ export function useAccountAudio(account: string) {
     let disposed = false,
       running = false;
     let retry: number | undefined;
+    const controller = new AbortController();
     const key = `bell-audio-account:${account}`;
     let cached = false;
     try {
@@ -52,18 +54,7 @@ export function useAccountAudio(account: string) {
       const rev = revision.current;
       try {
         const writing = Object.keys(patch).length > 0;
-        const response = await fetch(
-          "/api/preferences",
-          writing
-            ? {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(patch),
-              }
-            : { cache: "no-store" },
-        );
-        if (!response.ok) throw new Error("sync failed");
-        const data = await response.json();
+        const data = await requestAudioPreferences(patch, controller.signal);
         if (disposed) return;
         if (writing)
           for (const k of Object.keys(patch) as (keyof AudioPreferences)[]) {
@@ -121,6 +112,7 @@ export function useAccountAudio(account: string) {
     document.addEventListener("visibilitychange", focus);
     return () => {
       disposed = true;
+      controller.abort();
       window.clearTimeout(retry);
       window.clearInterval(interval);
       window.removeEventListener("online", focus);

@@ -15,6 +15,8 @@
 
 현재 기록:
 
+- `074-audio-sync-timeout.md`: 계정 오디오 설정 요청 시간 제한·취소·응답 검증 및 자동 테스트
+
 - `034-2d-clash-combat.md`: 2D 합선·컷인·타격 이펙트 전투 연출
 
 - `027-webgl-3d-battle-actors.md`: 기본 파티·변경 요새 몬스터 WebGL 3D 전투 모델

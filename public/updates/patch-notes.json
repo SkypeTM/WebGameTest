@@ -1,0 +1,446 @@
+[
+  {
+    "id": "075",
+    "title": "075 — 여정 정리와 패치 기록 팝업",
+    "body": "# 075 — 여정 정리와 패치 기록 팝업\n\n## 목적\n완료된 작업 설명은 패치 기록으로 옮기고, 앞으로의 여정에는 남은 작업만 표시한다.\n\n## 변경\n- 게임과 여정 페이지에서 검색 가능한 패치 기록 팝업 제공.\n- Git 추적 중인 패치 문서를 공개 JSON으로 생성하여 필요할 때만 로드.\n- 문서는 HTML 실행 없이 일반 텍스트로 표시. GitHub 원문 링크 제공.\n- 완료 상태 항목은 여정 목록에서 자동 제외.\n- 정식·임시 배포 명령에 테스트와 플레이 봇 선행 검사를 추가. 실패하면 빌드·배포가 실행되지 않음.\n\n## 검증\n공개 기록 74개의 Git 추적 문서 일치·정렬·중복 검사 포함 테스트 49/49 통과.\n플레이 봇 3/3, 원화 28/28, 지도 700/700 통과. Next.js TypeScript·프로덕션 빌드 통과.\n직접 브라우저 화면 검증은 미완료. 원화 확장·스토리·실기기 검증 등 미완료 작업은 로드맵에 유지.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/075-public-patch-journal.md"
+  },
+  {
+    "id": "074",
+    "title": "074 — 계정 오디오 동기화 복구",
+    "body": "# 074 — 계정 오디오 동기화 복구\n\n- 목적: 응답이 멈춘 설정 요청이 이후 재시도를 계속 차단하지 않도록 한다.\n- 변경: 10초 요청 제한, 계정 변경·화면 종료 시 요청 취소, 서버 응답 형식 검증.\n- 변경 파일: `lib/audio-sync.ts`, `app/components/useAccountAudio.ts`, `tests/audio-sync.test.ts`, `data/roadmap.json`.\n- 검증: 오디오 테스트 6/6 통과(음소거·음량 0, 계정 분리, 시간 초과 후 재요청, 취소, 잘못된 응답).\n- Next.js TypeScript 및 Cloudflare 프로덕션 빌드 통과.\n- 실제 기기 간 재생 확인과 브라우저 검증은 별도 필요.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/074-audio-sync-timeout.md"
+  },
+  {
+    "id": "073",
+    "title": "073 · 상단 메뉴와 지도 가독성",
+    "body": "# 073 · 상단 메뉴와 지도 가독성\n\n사용자 제공1134px 화면에서 메뉴 글자 단위 줄바꿈과 양피지 지도 보조 글씨 대비 부족 확인. 데스크톱 상단 영역은 항목 내부가 아닌 항목 단위로 줄바꿈하도록 수정. 지도 보조 글씨는 상태별 본문색을 상속. 브라우저 직접 검증은 권한 거절로 불가하며 스크린샷 기반 수정이다.\r\n\n범위: header/account 및 room small 스타일만 변경. 게임 상태·계산 변경 없음. Next 빌드/TypeScript 통과. 전체 화면 및 클릭 검증 완료로 표시하지 않음.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/073-header-map-readability.md"
+  },
+  {
+    "id": "072",
+    "title": "072 · 방어형 전용 스킬 수치 명칭",
+    "body": "# 072 · 방어형 전용 스킬 수치 명칭\n\n아군 대상 전용 스킬을 모두 회복으로 분류하던 effectiveCardValue.label을 수정한다. 지원 직군 전용 스킬만 회복, 나머지 아군 대상은 보호막으로 표시한다. 실제 효과/수치 계산과 저장 구조는 유지한다.\r\n\n회귀 테스트로 수정 전 회복≠보호막 실패 재현, 수정 후22/22 통과. 화면 검증은 브라우저 자동 승인 거절 상태로 미실시.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/072-skill-value-label.md"
+  },
+  {
+    "id": "071",
+    "title": "071 · 절차적 지도 자동 검증",
+    "body": "# 071 · 절차적 지도 자동 검증\n\n브라우저 승인 검토 중단과 별개로 로컬 데이터 검사를 추가한다. 7지역×100시드의 모든 노드 도달 가능성, 보스/귀환 연결, 순방향 계층, 좌표 범위, 지역별 적 ID를 검사한다. 시각적 잘림/겹침은 이 검사로 통과 처리하지 않는다.\r\n\n결과: 700/700 통과. 결과 파일 storage/qa-bot/routes.json. qa:bot에 통합. 기존 저장·지도 생성 규칙 변경 없음.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/071-route-qa.md"
+  },
+  {
+    "id": "070",
+    "title": "070 · 카드 수치 안내 일치",
+    "body": "# 070 · 카드 수치 안내 일치\n\n라이브 QA에서 세린 집중 일격 본문/대상 위력28, 툴팁/선택 안내 피해23을 확인했다. 툴팁은 현재 위력을 먼저 표시하고 기본 효과를 명시한다. 선택 안내와 접근성 설명도 현재 위력 기준으로 맞춘다. 대상별 보호막/저항 계산 및 실제 피해 판정은 변경하지 않는다.\r\n\n빌드/TypeScript 통과, 라이브 배포 fc68bf3c-7712-4859-903a-118b7b547e63 완료. 배포 후 브라우저 검증은 사용량 제한 및 자동 승인 거절로 보류. 로컬 플레이 봇3/3 통과.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/070-card-value-labels.md"
+  },
+  {
+    "id": "069",
+    "title": "069 · 원화 및 UI 일관성",
+    "body": "# 069 · 원화 및 UI 일관성\n\n기본 파티 동작 원화의 얼굴·장비·색상·발 위치와 지도/숫자 표시를 점검한다. AR4 중간 동작의 채도가 기준보다 높고 무기 손잡이가 이중으로 보이는 문제를 우선 수정한다. 맵·숫자 스타일은 기존 동작과 저장 구조를 유지한다.\r\n\n## 2026-10-20 원화 감사\n28자세를 나란히 비교. AR1 타격에서 검이 얼굴을 가로지르고 몸 크기가 축소되는 문제: 기준 대기 원화와 함께 재생성, 직립 베기와 얼굴 밖 검 궤적으로 교체. AR4 중간 동작: 이중 손잡이 제거, 망토 남색 보정. AR2·AR3는 비교에서 명확한 장비 누락/다른 캐릭터 얼굴은 발견하지 않아 유지. 자세마다 발 간격·주름·자수의 미세 차이는 남아 있으며 연속 리깅 완성으로 표시하지 않는다.\n지도 노드 중심과 연결선 y 좌표를 함께10+13×layer로 변경해 입구 하단 잘림 방지. 좁은 지도의 노드 폭20% 적용. 숫자 tabular-nums 및 HP 줄바꿈 방지. 지도는 양피지/잉크, 일반 패널은 먹색/황동, 선택은 적갈색으로 역할별 구분.\n검증: 자동 플레이3/3, 원화28/28 통과.\r\n\n로컬: 127.0.0.1:3000/animation-preview 원화 선택과 콘솔 오류0 확인. 게임 본문은 비로그인으로 지도 실플레이 미확인. 빌드/TypeScript 통과. 생성 원화의 미세 장식 변화는 남아 있음.\r\n\n라이브 미리보기 수정 원화 및 패널 확인, 콘솔 오류0. 배포26e9c24d-36e2-41ab-9fdb-5a66bd9d144e. 증거 docs/renewal/069-live.png.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/069-art-ui-consistency.md"
+  },
+  {
+    "id": "068",
+    "title": "068 · 태블릿 가로 전투 손패 공간",
+    "body": "# 068 · 태블릿 가로 전투 손패 공간\n\n1024×768에서 전장이 viewport-95px로 지정되지만 실제 상단 UI가156px이고 손패는200px여서 적 정보가 손패 아래로66px 내려갔다. 높이700px 이상 가로 태블릿에서 전장 높이와 손패 예약 공간을 맞춘다. 작은 모바일 전용067 규칙은 유지한다.\r\n\n검증: 빌드·TypeScript 통과. 라이브1024×768에서 유닛 bottom555.59, 손패 top568로 중첩 해소. 가로 넘침 없음(scrollWidth1009). 증거 docs/renewal/068-tablet.png. 배포 e43c107f-5f55-4bdd-a089-12c2039b1f18. 실기기와 펼친 공격 단서·특수 상태 다량 표시는 후속 검증.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/068-tablet-landscape-combat.md"
+  },
+  {
+    "id": "067",
+    "title": "067 · 낮은 가로 전투 영역",
+    "body": "# 067 · 낮은 가로 전투 영역\n\n844×390 라이브 관측: 손패 top278인데 아군 bottom388, 적 bottom433으로 손패와 중첩. portable-ui의 94px 정보 높이 및 서로 다른 최소 높이가 합쳐져 고정 전장 영역을 넘침. 낮은 가로 화면에 한정해 SD·정보·의도/단서 행을 압축하고 손패112px 공간을 확보한다. 게임 규칙·파티 순서 변경 없음.\n\n검증: OpenNext 빌드/TypeScript 통과. 라이브 844×390 손패 top278, 유닛 bottom276.78로 중첩 해소. 768×1024 손패 top824, 유닛 bottom754.91로 중첩 없음. 1024×768은 bottom633.70 > 손패 top568로 후속 수정 필요. 로컬 화면은 기존 브라우저 접근 차단으로 미검증. 라이브 버전 dba36695-a7d7-431f-9ed1-7b11935a48bc. 증거 docs/renewal/067-landscape.png.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/067-short-landscape-combat.md"
+  },
+  {
+    "id": "066",
+    "title": "066 · 원화 준비 대기 및 잔상 단축",
+    "body": "# 066 · 원화 준비 대기 및 잔상 단축\n\n065 화면에서 자세 전환 시 검·방패가 겹치는 잔상 확인. 크로스페이드100→35ms 단축, 이동 보간은 유지. 미리보기는 선택 캐릭터 원화를 decode한 뒤 재생을 시작하고 실패 시 재시도 제공. 게임의 기존 로그인 원화 사전 로딩은 유지하며 판정/타격 시점에 로딩 대기를 추가하지 않는다.\n\n검증: 빌드·타입 통과. 라이브fe0cdca4-37bd-4c7a-9682-a23f6ae97c2a에서 로딩 안내→전신 표시 확인, 레오나7/7 img.complete 및 naturalWidth>0, transitionDuration0.035s 확인. 네트워크 실패 경로 강제 검증은 미실시.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/066-pose-readiness.md"
+  },
+  {
+    "id": "065",
+    "title": "065 · 미리보기 프레임 간격 측정",
+    "body": "# 065 · 미리보기 프레임 간격 측정\n\n연출 미리보기에서 3초 requestAnimationFrame 간격을 수집한다. 평균 콜백 빈도,95백분위 간격,50ms 초과 간격을 표시한다. 실제 GPU 렌더 완료 FPS나 전투 전체 성능 보장으로 표현하지 않는다. 백그라운드 이동 시 측정 중단, 재측정·언마운트 시 RAF 정리. 계정/서버로 측정값 전송 없음. 반복 체크박스의 공통 input 스타일 침범 수정.\n\n검증: 빌드·타입 통과. 라이브f88fe2fe-e0c7-4f92-b298-3d1f9ee6e539에서 반복 재생 중3초 샘플 평균68.7Hz,95%간격15.1ms,50ms초과0/207 확인. 실제 렌더FPS 보장 아님. 반복 체크박스 크기 및 on/off 확인. docs/renewal/065-frame-sample.png.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/065-preview-frame-sampler.md"
+  },
+  {
+    "id": "064",
+    "title": "064 · 중간 원화와 느린 반복 재생",
+    "body": "# 064 · 중간 원화와 느린 반복 재생\n\nAR1 기본 공격의 준비→타격 사이 swing 원화를 생성한다. 기존 스킬/다른 캐릭터 fallback 유지. 미리보기에 0.25/0.5/1배속 및 반복을 추가한다. 실제 게임은 기본1배속과 타격320ms·종료900ms를 유지한다. 원화 생성은 연속 관절 리깅과 다르다.\n\n범위를 기본 파티4명으로 확장. 각 swing 원화 생성 및 기존 디자인·무기 손 육안 비교. 전체28자세. 220ms 중간 동작,320ms 타격 유지.\r\n\n검증: 원화28/28, 플레이3/3, 빌드·타입 통과. 라이브79aec5e8-2bd3-4bf0-8ef6-a36d0bad97cc에서 0.25배속 CSS3.6초, 반복 on/off, 중간 자세 선택 확인. 390x844에서 scrollWidth375≤innerWidth390. 체크박스가 공통 input 스타일로 과도하게 커지는 후속 UI 수정 필요.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/064-inbetween-preview.md"
+  },
+  {
+    "id": "063",
+    "title": "063 · 전투 자세 사이 연속 보간",
+    "body": "# 063 · 전투 자세 사이 연속 보간\n\n공격 준비→돌진→타격 반동→복귀, 방어·회복·피격에 연속 transform 보간을 적용한다. 화면 주사율에 맞춰 브라우저가 중간 프레임을 그리며 60fps를 보장하거나 신규 원화 프레임 생성으로 간주하지 않는다. 기존 320ms 타격 및 900ms 종료 유지. reduced-motion 유지. 미리보기와 실제 전투가 같은 렌더러 사용.\n\n프로덕션 빌드·타입 통과. 라이브 버전60c3fed0-660b-4464-b0bf-eda1dd5a85a2. 미리보기 HTTP200 및 연속 보간 CSS 제공 확인. 실제 프레임률 측정 및 중간 원화 생성은 미실시.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/063-smooth-combat-motion.md"
+  },
+  {
+    "id": "062",
+    "title": "062 · 전투 연출 미리보기",
+    "body": "# 062 · 전투 연출 미리보기\n\n게임 저장 데이터 변경 없이 기본 파티 24자세와 실제 FullBodyActor 재생을 확인하는 공개 페이지를 추가한다. 캐릭터·행동 선택, 다시 재생, 개별 자세 확인을 지원한다. 여정 페이지에서 연결하고 정적 HTML로 배포한다. 이는 실제 전투 통합 검증의 대체가 아니다.\n\n검증: 빌드·타입 통과. 라이브 e5b2d5aa-1d21-43cd-a85d-ae085410227b에서 여정 링크→미리보기 진입, 에델 선택·전용 스킬 정지 자세·재생 전환 확인. screenshot docs/renewal/062-preview.png. 모바일 및 전체 프레임 검증은 후속.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/062-animation-preview.md"
+  },
+  {
+    "id": "061",
+    "title": "061 · 정상 저장 중 재연결 경고 수정",
+    "body": "# 061 · 정상 저장 중 재연결 경고 수정\n\n2026-10-19 라이브 QA 계정에서 탐사 시작·유물 선택·첫 전투·에델 기본 타격 실행. 적 HP30→19, 손패6→5, 행동력5→4 확인. SD 배치와 투명 몬스터 표시 확인. 짧은 전신 애니메이션 전체 프레임은 아직 검증하지 못함.\n\n정상 요청 처리 중에도 pending.current가 존재해 오류 배너가 표시됨. busy인 정상 저장은 저장 안내로 분리하고 실제 오류/미확인 요청의 재시도 기능은 유지한다. 모바일 정상 저장은 기존 healthy 상태와 동일하게 처리해 배너로 인한 배치 변화를 줄인다.\n\n검증: 플레이 봇3/3, 프로덕션 빌드·타입 통과. 라이브230c56f3-f61b-4e8f-a2d1-c24a8bd536a6에서 회복 카드 실행 시 정상 저장 안내 표시 확인, 저장v73·마나6→5·행동력4→3 확인. 브라우저 오류 로그 없음. docs/renewal/061-live-combat.png 저장.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/061-save-status.md"
+  },
+  {
+    "id": "060",
+    "title": "060 · 전투 원화 자동 QA 및 여정 현황",
+    "body": "# 060 · 전투 원화 자동 QA 및 여정 현황\n\n2026-10-19. 전투 원화 manifest의 필수 자세, 중복, 원본 해시, 배포 이미지 크기·투명도를 읽기 전용으로 검사한다. 기본 플레이 봇과 함께 실행하고 실패 시 비정상 종료한다. 화면·음향 검증을 대체하지 않는다.\n\n여정 페이지에서 056–059 배포 완료 사실과 실제 화면 검증 대기를 구분한다. 이후 작업 완료 시 data/roadmap.json과 패치 기록을 함께 갱신한다.\n\n검증: 기본 플레이3/3 및 전투 원화24/24 통과. WebP 알파 최대값254를 확인하여 본체 알파250 이상 기준 적용.\r\n\n프로덕션 빌드/타입 통과. 라이브 버전39816c52-e195-40bf-8209-b340c15d13a8. /roadmap HTTP200 및 갱신 일자·배포 현황 문구 확인. 화면 QA 미실시.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/060-asset-qa-roadmap.md"
+  },
+  {
+    "id": "059",
+    "title": "059 · 기본 파티 전용 스킬 연출",
+    "body": "# 059 · 기본 파티 전용 스킬 연출\n\nAR2 관통 표식·AR4 룬 사슬 전용 skill 원화를 생성한다. AR1 방패 반격/AR3 응급 회복은 기존 guard/heal 전용 자세를 유지한다.\n서버 combatFx.card가 skill인 공격에만 새 자세를 사용하고 기본 공격은 기존 strike를 유지한다. 수치 계산 및 저장 형식 변경 없음.\n기본 플레이 봇·타입·alpha 검사 후 기록. 실제 화면 검증 전 배포 보류.\n\n공격 컷인에 전용 스킬명 표시. motion-strike motion-skill에서 전용 skill 자세가 있으면 타격 시점에 사용하고, 없으면 기존 strike fallback. AR1 guard·AR3 heal 경로 유지.\r\n\n검증: 생성2종 원화 육안 확인,24종 alpha/변환 통과, QA 봇3/3 및 타입 검사 통과. 게임 내 스킬 연출 시각 확인은 미실시. 라이브055 유지.\r\n\n## 라이브 배포 (2026-10-18)\n사용자 배포 지시에 따라 056–059를 Cloudflare에 반영. 프로덕션 빌드/타입 검사 통과.\n버전: 1ed6f6e0-3ce7-4899-85da-139ada0af26d\n메인 /m /roadmap HTTP 200, 신규 피격 4종·스킬 2종 HTTP 200 및 로컬 원본 바이트 일치 확인. 실제 게임 화면/모바일 상호작용 QA는 미실시.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/059-signature-skill-poses.md"
+  },
+  {
+    "id": "058",
+    "title": "058 · 기본 파티 피격 원화 확장",
+    "body": "# 058 · 기본 파티 피격 원화 확장\n\n로드맵2 우선. AR2/AR3/AR4 ready 참조로 hit 원화를 각각 생성한다. 기존 공통 motion-hit 타임라인(320ms hit,780ms ready)에 manifest로 연결한다.\n캐릭터 정체성·의상·무기손 유지, 투명 배경·무기/발 잘림 검토. 기본 플레이 봇 및 타입 검사 수행. 실제 화면 QA 전 배포 보류.\n\n피격 컷인 대상의 SD 숨김 조건도 확장. 감소된 모션에서는 기존 CSS로 SD 유지. 전투 계산/저장 구조는 변경하지 않음.\r\n\n검증: 새3종 육안 확인, 총22종 alpha 확인·WebP 변환 성공. 기본 플레이 봇3/3·TypeScript 통과. 실제 피격 화면은 아직 검증하지 않음. 라이브는055 유지.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/058-party-hit-poses.md"
+  },
+  {
+    "id": "057",
+    "title": "057 · 전신 피격 자세",
+    "body": "# 057 · 전신 피격 자세\n\n사용자 지시에 따라 056 모바일 작업은 검증 대기 상태로 보존하고 로드맵2 전투 연출을 우선한다.\nAR1 ready 참조로 동일 캐릭터의 피격 원화 생성, 투명 WebP 변환, 피격 시간에만 전용 자세를 사용한다. 미제작 캐릭터는 기존 자세 유지.\n검증: 진행 중. 연속 리깅이 아닌 키 포즈 연출 단계.\n\n생성: AR1 hit 1024x1536. 기준 원화의 얼굴/무기손/갑옷 유지. 타격320ms에 hit,780ms ready 복귀. 나머지 캐릭터는 hit 자산 없으면 기존 fallback 유지. 056이 미검증 상태로 함께 있어 라이브 배포는 보류.\r\n\n검증: 총19종 투명 alpha 확인·WebP 변환 통과. 기본 플레이 봇3/3 및 타입 검사 통과. 전신 자세 생성 결과 육안 확인. 실제 게임 피격 타임라인 화면 QA는 대기.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/057-fullbody-hit.md"
+  },
+  {
+    "id": "056",
+    "title": "056 · 모바일 경로 선택 시트",
+    "body": "# 056 · 모바일 경로 선택 시트\n\n목적: 모바일에서 경로 선택 후 지도 아래로 스크롤하지 않고 안내·취소·이동 버튼을 사용한다.\n작은 화면에서는 하단 고정, 낮은 가로 화면에서는 우측 패널로 표시한다. 기존 이동 확인과 저장 규칙을 유지한다.\n검증 및 배포: 진행 중.\n\n구현: 1024px 이하 하단 패널, 600px 이하 낮은 가로 화면 우측 패널. 안내만 내부 스크롤하고 취소/이동 버튼은 항상 유지. 44px 터치 높이와 안전 영역 적용.\n검증: qa:bot 3/3, TypeScript 통과. 기존 localhost 탭이 연결 실패 페이지여서 사용자 새로고침 요청. 시각 검증 전 배포 보류.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/056-mobile-route-sheet.md"
+  },
+  {
+    "id": "055",
+    "title": "055 · 공개 작업 현황과 로컬 플레이 봇",
+    "body": "# 055 · 공개 작업 현황과 로컬 플레이 봇\n\n요청: 남은 작업을 게임에서 열람하고 반복 플레이 검증 비용을 줄인다.\n구현 예정: 공개 /roadmap 페이지, 게임 연결, 구조화된 작업 데이터, 로컬 격리 플레이 봇 및 JSON/Markdown 결과.\n봇은 실제 게임 reducer로 프롤로그·탐사·전투·보상·귀환을 실행한다. 사용자 저장을 수정하지 않으며 UI/음향/로그인/네트워크 검증을 대체하지 않는다. 실패 시 종료 코드1, 자동 배포 없음.\n검증 및 배포: 진행 중.\n\n구현 완료: /roadmap 공개 페이지 및 게임 헤더 새 창 링크. data/roadmap.json을 공개 현황의 단일 원본으로 사용. qa:bot와 Windows 실행 파일 추가. 실제 reducer 격리 실행, 잘못된 이동 거부·직렬화·버전·체력 범위 확인. 사용자 DB/계정/저장 파일 접근 없음.\n검증: 봇 3/3 PASS(20/23/22행동), 타입 검사 통과. 내부 브라우저 현황 페이지·완료 기준 펼치기 확인. 게임 원래 탭은 URL 정책 차단으로 링크 클릭 확인 미실시. UI·음향·인증 통합 QA 대체 아님.\r\n\n배포: 468fb5c4-e5c9-45c5-8137-78dbdf3681e1. /roadmap·/·/m HTTP200, 공개 현황 HTML 및 신규 게임 JS가 빌드와 바이트 일치. 로컬 서버 재시작. 라이브 화면 열기는 내부 브라우저의 기존 연결 실패 페이지 정책으로 미완료(로컬 현황 화면은 검증 완료).",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/055-roadmap-qa-bot.md"
+  },
+  {
+    "id": "054",
+    "title": "054 · 지도 연결선 가독성",
+    "body": "# 054 · 지도 연결선 가독성\n\n목적: 지난 경로, 이동 가능한 경로, 선택한 경로를 구분하고 연결선과 노드 중심을 일치시킨다.\n변경: app/page.tsx, app/route-briefing.css. 진행 및 저장 규칙은 유지한다.\n검증: 타입 검사 및 내부 브라우저 선택·취소 확인 예정.\n\n구현: 기본 연결선 1px, 지난 경로 2px 실선, 이동 가능 청록 점선, 선택 경로 금색 3px 실선. 노드 중심(bottom4%)과 SVG 연결선(기존94%)의 2% 위치 차이를96% 기준으로 수정. 선택 aria-pressed 및 현재 위치 aria-current 추가.\n검증: 타입 검사·diff 공백 검사 통과. 내부 브라우저는 URL 정책 차단으로 미검증. 사용자에게 localhost 새로고침 요청. 배포 보류.\r\n\n2026-10-18 후속 검증: 새로고침 후 내부 브라우저 접근 복구. 범례·지난 경로·금색 선택 경로 및 노드 중심 정렬을 화면 확인. 취소 후 선택 상태 해제, 저장 버전147 유지. 증거 docs/renewal/054-map.png. 이전 배포 보류 사유 해소.\r\n\n배포 완료: cac1f97e-f2a5-4f97-8f35-c9e5366f68a6. / 및 /m HTTP200, 신규 JS/CSS HTTP200 및 빌드 파일 일치 확인. 로컬 서버 재시작. 라이브 전체 플레이와 모바일 실기기 검증은 미실시.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/054-route-readability.md"
+  },
+  {
+    "id": "053",
+    "title": "053 · 탐사 경로 브리핑",
+    "body": "# 053 · 탐사 경로 브리핑\n\n목적: 다음 경로의 위험과 기회를 선택 시 비교할 수 있도록 안내한다.\n\n변경 예정: RouteBriefing 컴포넌트, page.tsx, 탐사 전용 CSS.\n서버 이동 규칙·저장 데이터·보상 계산은 유지하며 미확정 보상은 수치로 약속하지 않는다.\n\n검증: 진행 중. 내부 브라우저 확인 후 배포 여부를 기록한다.\n\n검증 완료: 타입 검사 통과. Codex 내부 브라우저에서 전투 보상 획득 후 4계층 경로 선택 시 준비·기회 안내 표시, 취소 시 안내 제거 및 저장 버전147 유지 확인. 스크린샷: docs/renewal/053-route-briefing.png. 모바일 실기기 검증은 미실시.\r\n\n배포 완료(2026-10-18 KST): Cloudflare 54ace2e0-895f-4fb6-8ec3-46b69ab05f57. / 및 /m HTTP200, 신규 JS/CSS HTTP200 및 로컬 빌드 바이트 일치. 라이브 전체 플레이 회귀 검증은 하지 않았음. 로컬 서버 재시작 완료.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/053-route-briefing.md"
+  },
+  {
+    "id": "052",
+    "title": "052 · 방어와 회복 전신 연출",
+    "body": "# 052 · 방어와 회복 전신 연출\n\n리뉴얼2항 후속. AR1 방어·AR3 회복 원화를 기준 ready에서 생성하여 전용 포즈가 있는 행동만 전신 컷인에 연결한다. 다른 캐릭터는 기존 SD 연출 유지.\n\n변경: art-source/renewal, public/assets/renewal, renewal_actor_manifest, build-renewal-art, FullBodyActor, page.tsx, renewal-combat.css.\n\n전투 계산/계정/저장 형식은 유지. 지원 연출에 적 피격이나 공격 슬래시를 표시하지 않는다. 자기 자신을 지원할 때 캐릭터가 중복되지 않도록 액터만 표시한다.\n\n검증 및 배포: 진행 중. 키 포즈 전환이며 연속 리깅 아님.\n\n- 18종 alpha/변환·타입 검사 통과. 내부 브라우저 AR1 방어 태세 자기 대상: 전신 guard 표시, 보호막4→21(+17), 행동력4→3, SD 복귀 확인. 증거 docs/renewal/052-guard.png. 회복 표시는 실제 HP 변화와 혼동하지 않도록 회복력으로 표시.\r\n\n- AR3 응급 회복→AR2 선택: heal 원화와 대상 세린·회복력22 표시, HP68→70 확인. 증거 docs/renewal/052-heal.png. 회복 상한을 적용하는 서버 로직은 변경하지 않음.\r\n\n## 배포\n- 빌드 성공. Cloudflare 버전690c5073-c746-4f02-b295-1c52eeb213c1.\n- /, /m, 새 원화2종, JS/CSS HTTP200 및 자산 바이트 일치. 로컬 서버 재시작 완료.\n- 전체32명 지원/피격 원화, 연속 모션, 모바일·태블릿 추가 검증은 후속.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/052-support-fullbody.md"
+  },
+  {
+    "id": "051",
+    "title": "051 · 전투 HUD 및 타격 타이밍",
+    "body": "# 051 · 전투 HUD 및 타격 타이밍\n\n## 목적\n리뉴얼 2·8항 후속. 행동력을 숫자 중심 구슬로 정리하고 덱 접근성을 높인다. 전신 타격 자세와 효과음의 시점을 공유한다.\n\n## 변경 예정\n- lib/combat-presentation.ts: 전신 포즈 및 타격음 공통 타임라인\n- app/components/FullBodyActor.tsx, app/page.tsx: 공유 타이밍, 전투 HUD, 연출 중 안내 숨김\n- app/renewal-combat.css: 반응형 HUD\n\n## 보존\n서버 전투 수치·저장·카드 사용/대상 선택 로직은 유지. 연속 리깅 완성으로 간주하지 않는다.\n\n## 검증\n작업 중. 타입 검사 및 내부 브라우저 대상 전투 확인 후 기록.\n\n## 구현 결과\n- 행동력 숫자 구슬로 변경(4 초과도 안전), 뽑기/버림 수량 및 전체 덱 버튼.\n- 타격 자세와 효과음 공통320ms, 종료900ms. 대기 중 음소거/음량 변경도 최신 설정을 사용.\n- 연출 중 선택 안내를 visibility로 숨겨 레이아웃은 유지.\n- 타입 검사 및 diff 공백 검사 통과. 내부 localhost 탭의 URL 정책 차단으로 화면 QA 대기, 배포 보류.\n\n## 2026-10-17 추가 검증\n- 사용자 새로고침 후 내부 브라우저 접근 복구. QA계정 두 번째 전투 진입, 행동력4·덱10/0 표시, 덱 버튼으로16장 팝업 열기/닫기 확인.\n- 기본 타격 후 행동력3·버림1·적HP30→12·SD 복귀 확인. docs/renewal/051-local-combat.png.\n- 이번 공격의 순간 컷인 캡처는 제한시간 내 포착하지 못함. 320ms 음향의 실제 청취 검증과 모바일/태블릿 추가 검증은 미완료.\n\n## 배포 완료\n- Cloudflare 빌드 성공. 배포 ID: ebe46dc3-82fc-42f9-b859-0c049cc7341f.\n- 라이브 /, /m, 새 JS/CSS HTTP200 및 로컬 빌드 바이트 일치. 로컬 서버 재시작 완료.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/051-combat-hud-timing.md"
+  },
+  {
+    "id": "050",
+    "title": "050 · 기본 파티 전신 자세 확대",
+    "body": "# 050 · 기본 파티 전신 자세 확대\n\n## 목적\n1~8 리뉴얼의 다음 단계: AR3 마리엔·AR4 에델의 전신 4자세를 공통 액터에 연결한다. 3D는 재개하지 않는다.\n\n## 변경 파일\n- art-source/renewal/AR3, AR4: ready/windup/strike/recover 원본 및 생성 기록\n- public/assets/renewal/AR3, AR4: 투명 WebP\n- scripts/build-renewal-art.mjs, data/renewal_actor_manifest.json\n- docs/renewal/README.md, characters/AR3.md, characters/AR4.md\n\n## 내용 및 설계\n- 기존 manifest 기반 렌더러를 재사용하여 SD → 전신 공격 → SD 흐름을 확대.\n- 에델 ready의 잘린 검과 마리엔 strike의 가방 손 변경을 재생성으로 교정.\n- 원본 보존, WebP quality95/alpha100. 캐릭터 ID·저장 데이터·전투 수치는 변경하지 않는다.\n\n## 검증\n- 내부 브라우저에서 세린·에델 공격 피해/자원 차감 및 SD 복귀 확인. 마리엔 실제 공격 컷인의 전신 표시 확인.\n- 모바일 세로에서 손패와 컷인이 겹치는 것을 발견하여 컷인 발 위치를 상향하고 좌우 음수 여백 제거.\n- 생성 원본 8종 1024×1536, alpha 존재 및 투명 픽셀 확인.\n- 후속: 변환·타입 검사·내부 브라우저 전투 검사.\n\n## 제한\n4개 키 포즈 전환 시제품이다. 연속 리깅, 전용 guard/hit/skill, 전체 32명, 전투/탐사 UI 전면 개편은 미완료. 포즈별 발 높이·장식 연속성 추가 보정 필요. 배포 전 상태.\n\n### 2026-10-17 로컬 확인\n- 16종 WebP/manifest 변환, tsc --noEmit 통과.\n- Codex 내부 브라우저 QA 계정: 출정→유물→전투→세린 기본타격(18)·에델 기본타격(14)·룬 사슬(16)→다음 턴→마리엔 기본타격/집중일격. 피해·행동력·마나·SD 복귀 확인.\n- 마리엔 full-body-actor ready 및 실제 windup 화면 관찰. 모바일 세로 컷인 발 위치 7%→30%로 상향 후 화면 재확인. 가로/태블릿 실기기 성능은 미검증.\n- 추가 변경: app/renewal-combat.css.\n\n### 배포\n- Cloudflare 빌드 성공, 048~050 배포 완료. Version: 4055e67a-919c-4f1b-85c4-23decd52fa72.\n- 라이브 /, /m 및 AR3/AR4 8종 HTTP200, 각 WebP 로컬/원격 바이트 일치.\n- 전체 1~8 리뉴얼 완료는 아님. 연속 동작·나머지 캐릭터·전투/탐사 UI는 인계 문서의 후속 항목 유지.\n\n- Codex 내부 라이브 브라우저에서 QA 계정 로비와 레오나 누끼 표시 확인. 증거: docs/renewal/050-live-lobby.png. 라이브 전투 전체 회귀는 이번에 반복하지 않음.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/050-starter-party-fullbody.md"
+  },
+  {
+    "id": "049",
+    "title": "049 — 세린 전신 연출",
+    "body": "# 049 — 세린 전신 연출\n\n8개 리뉴얼 요구사항은 docs/renewal/README.md 및 캐릭터별 시트를 기준으로 유지한다.\n이번 단계: AR2 투명 전신 4자세 제작, 전신 액터의 manifest 기반 연결, 로비 원화 교체.\n전체 캐릭터/엔진 전환 완료 아님. AR3~32 및 연속 리깅은 후속 작업.\n검증: TypeScript 통과, PNG alpha/manifest 변환 8종 통과. 내부 브라우저 모바일 세로 로비에서 세린 누끼 원화와 시설 메뉴 표시 확인.\n실제 전투 자세 전환, 모바일 가로/태블릿, 라이브 배포는 미완료. 048/049는 아직 라이브 미배포.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/049-serin-full-body.md"
+  },
+  {
+    "id": "048",
+    "title": "048 — 캐릭터 중심 거점",
+    "body": "# 048 — 캐릭터 중심 거점\n\n## 목표\nFigma 구조안을 바탕으로 대표 캐릭터, 다음 탐사, 시설 독으로 로비를 정리한다. 기존 시설 내용과 저장·진행 로직은 유지한다.\n\n## 검증 상태\n타입 검사 통과. 2026-10-16 사용자의 localhost 접근 승인 후 내부 브라우저 검증 재개.\n\n### 로컬 관찰\n- 테스트 계정 v116→120: 암상인 거래 종료 → 3계층 야영지 → 휴식 → 안전 귀환 정상.\n- 새 로비의 선봉 이름/이미지, 목적지, 시설 6개 메뉴 표시 확인.\n- 출정 준비 클릭 시 기존 작전실과 파티/장비/지역 선택 창이 정상 표시되며 즉시 출정하지 않음.\n- 세린 기존 idle 원화에는 사각 배경이 남음. 다른 캐릭터 투명 원화 교체는 미완료.\n- 모바일/태블릿 화면 검증 및 라이브 배포는 아직 미완료.\n\n## 변경\n- app/components/CharacterLobby.tsx: 선봉 캐릭터, 선택 지역, 출정 준비 버튼, 시설 6개 메뉴.\n- app/character-lobby.css: 데스크톱 55/45 배치, 모바일 세로 및 낮은 가로 화면 대응.\n- app/page.tsx: 새 로비 연결, 초기 시설 창을 닫아 대표 화면 표시. 출정 준비는 기존 작전실을 열며 즉시 던전에 입장하지 않는다.\n- AR1은 신규 투명 전신, 다른 동료는 기존 idle 원화 사용. 다른 캐릭터의 원화 누끼·모바일 시각 검증은 후속 작업이다.\n- 계정/파티/지역/탐사 저장 구조는 변경하지 않는다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/048-character-lobby.md"
+  },
+  {
+    "id": "047",
+    "title": "047 — 게임 리뉴얼 기준과 계정 오디오 설정",
+    "body": "# 047 — 게임 리뉴얼 기준과 계정 오디오 설정\n\n## 목표\n2026-10-16 사용자 요청 8항을 지속 가능한 작업 계획으로 기록하고 캐릭터별 디자인 기준 및 계정 오디오 저장을 마련한다.\n\n## 범위\n- docs/renewal: 전체 기획, 진행 상태, 캐릭터별 고정 디자인 시트.\n- 계정 설정 전용 API/DB: 게임 조작권 및 캠페인 버전과 분리.\n- 레오나(AR1) 투명 전신 원화 4종(준비/예비동작/타격/회수), 원본 PNG 및 WebP·생성 기록·manifest 추가. 기존 SD 대기를 유지하고 공격 컷인에서 전신 자세를 교체하는 첫 시제품 연결.\n- 완성된 기능과 예정된 디자인을 구분한다. 기존 자산을 새 디자인 완료로 표기하지 않는다.\n\n## 검증\n- TypeScript 검사 통과.\n- 음향 설정 단위 검사 2개 통과(입력 검증, 계정 격리·부분 병합).\n- 로컬 API 통합 검사 통과: 인증·출처·잘못된 입력 거부, 두 세션 동기화, 음소거·0 음량 저장, 재로그인 유지. 테스트 계정의 기존 설정 복원.\n- 원화 4종 알파 채널 및 1024×1536 자산 변환 확인. 타격 검 끝 잘림을 재생성으로 수정.\n- 원격 DB 추가 테이블 생성 완료. 파일 import는 인증 오류였으나 같은 SQL을 D1 query로 실행하여 성공. 기존 게임 데이터 변경 없음.\n- 내부 브라우저의 로컬 탭은 연결 실패 화면에 남아 사용자 새로고침 대기. 화면·실제 전투 연속 모션 QA는 아직 통과로 간주하지 않는다.\n\n## 남은 범위\n- 전신 4자세는 연속 리깅 애니메이션 완료가 아니다. 발 기준·자세 사이 연결·의상 디테일 일관성을 추가 검증해야 한다.\n- AR2~32 전신 제작, AR1 피격/방어/스킬, 전체 HUD 개편, 엔진 비교, 목표 성별/연령의 실제 자산 교체 미완료.\n\n## 배포 및 라이브 검증 (2026-10-16)\n- Cloudflare 빌드 통과, 버전 `7778a542-cf5d-4198-8334-c32a3b4299cd` 배포.\n- 라이브 음향 API 통합 검사 통과(인증/출처/입력, 두 세션, 음소거/부분 병합, 재로그인). 테스트 설정 복원.\n- 배포 직후 첫 검사는 404였으나 전파 후 동일 코드로 재검사 통과. 경로 수정은 없었다.\n- URL: https://beneath-the-silent-bell.camp-cough.workers.dev/",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/047-renewal-foundation.md"
+  },
+  {
+    "id": "046",
+    "title": "046 — 전용 스킬 카드 원화 보완",
+    "body": "# 046 — 전용 스킬 카드 원화 보완\n\n## 목표\n남은 28명(VR/BC/BK/WS/DS/GO/EF)의 전용 스킬을 각 캐릭터 초상화와 능력에 맞는 신규 원화로 교체한다.\n\n## 작업 방식\n- 기존 generation-plan.json 프롬프트와 fhd/portraits 인물 참조를 사용한다.\n- built-in imagegen으로 개별 생성하고 art-source/story-v1에 원본을 보존한다.\n- 기존 build-story-art.mjs로 WebP 및 매핑을 갱신한다. 게임 규칙과 저장 데이터는 변경하지 않는다.\n- 생성 결과 및 검증·배포 상태는 완료 후 기록한다.\n\n## 진행 상태\n제작 시작. 미완료 대화 자세 84종은 별도 후속 작업이다.\n\n## 완료 및 검증\n- 28종 생성·WebP 변환·기존 카드 매핑 연결 완료. 전용 스킬 총 32명 파일 검사 통과.\n- story_art_manifest 190개, pending 84개(대화 자세). 원본 해상도는 manifest에 기록.\n- 28종 시각 검토, TypeScript 검사 통과. 게임 로직 변경 없음.\n- 로컬 내부 브라우저가 이전 연결 실패 페이지에 남아 있어 이번 카드의 로컬 화면 QA는 미완료. 파일·매핑 검사는 완료.\n- 변경 파일: art-source/story-v1/card-*-skill.png, pending.json, public/assets/story-v1/card-*-skill.webp, data/story_art_manifest.json, data/card_character_art.json.\n\r\n\n## 배포\n- GitHub 커밋: 07fa1af (main push 완료).\n- Cloudflare: 07a0235b-09db-4db2-b307-06f0097d3d6e.\n- production build 통과, 신규 28개 라이브 자산 HTTP 200.\n\r\n- Codex 내부 라이브 브라우저 도감 카드 탭에서 신규 VR1/VR2 표시 확인. 도감 story-v1 이미지 32개 모두 로드 완료 확인.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/046-signature-card-art.md"
+  },
+  {
+    "id": "045",
+    "title": "045 — 암상인 투명 원화 및 미완료 카드",
+    "body": "# 045 — 암상인 투명 원화 및 미완료 카드\n\n## 목표\n기존 불투명 암상인 fallback을 고해상도 투명 원화로 교체하고 미완료 EF 기본 카드 원화를 보완한다. 원본 생성 및 검증 후 기존 manifest 방식으로 연결한다.\n\n## 진행\n- built-in imagegen 사용. 원본/프롬프트: art-source/story-v1.\n- 상태별 암상인 생성, EF 카드 생성, 자산 빌드, 제한된 UI QA 및 배포 순서.\r\n\n## 생성 명세와 저장 위치\n- built-in imagegen 사용. 원본: `art-source/story-v1/merchant-*.png`, `card-EF*-*.png`.\n- 카드 기본 프롬프트: `art-source/story-v1/generation-plan.json`. 해당 EF 인물의 `public/assets/fhd/portraits/EF*.webp`를 참조하고 얼굴·머리·복장 유지, 선명한 정사각형 액션 구도를 추가 지시.\n- 암상인은 기존 idle.webp를 참조하여 같은 얼굴·수염·녹색 스카프·황동 장식·가죽 코트를 유지. idle을 기준으로 welcome(손바닥 환영), rare(푸른 유물 소개), exchange(동전과 포장 물품 교환), surprised(손을 가슴에 대고 놀란 표정), portrait(상반신 대화) 생성.\n- 전신은 머리와 발이 포함된 하나의 연속된 인물, 실제 알파 배경, 텍스트/프레임 없음. 원본 1024×1536(암상인), 카드 원본 크기는 manifest에 기록. 단순 확대를 FHD 신규 생성으로 표기하지 않음.\n- 기존 MerchantLive2D 상태 매핑과 카드 아트 매핑에 연결. 실제 Cubism 리깅이 아니라 자세별 이미지와 기존 호흡 애니메이션 방식.\r\n\n## 검증과 남은 자산\n- 암상인 6종 실제 alpha 확인. 로컬 Codex 내부 브라우저에서 누끼 전신·환영 자세, 동료 선택과 회복 거래 확인.\n- 카드 32명 × 타격/방어/집중 일격 = 96개 매핑 및 파일 존재 검사 통과.\n- TypeScript 검사 통과. 게임 로직 변경 없음.\n- 스토리 아트 manifest 162개, pending 112개. 남은 것은 다른 팩션 대화 표정 84개와 전용 스킬 신규 원화 28개이며 기존 fallback은 유지한다. 전체 작업 완료로 집계하지 않는다.\r\n\n## 배포 기록\n- GitHub: 3c24733. Cloudflare: 9037ee53-8b07-46d4-b8ad-f921f8547824.\n- 라이브 암상인 도달·재로그인 저장 확인, 자산 18개 HTTP 200 확인.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/045-merchant-card-art.md"
+  },
+  {
+    "id": "044",
+    "title": "044 — 지역 미리보기·탐사 대형·몬스터 원본 수정",
+    "body": "# 044 — 지역 미리보기·탐사 대형·몬스터 원본 수정\n\n## 목표와 변경\n- 출발 지역 선택에 맞춰 작전실 상단 삽화를 `sceneAsset`의 지역 배경으로 표시. 고정 성곽 도형과 FRONTIER 문구를 제거하고 지역 코드 및 보스 이름도 선택 지역과 일치시킴.\n- 작전실 파티 초상화를 얼굴 중심으로 확대. 전투/도감의 전신 이미지는 유지.\n- 탐사 경로의 대원 표시를 좌→우 4·3·2·1 순서로 변경. 서버의 실제 파티 배열과 전열 판정은 변경하지 않음.\n- 후속 지역 몬스터의 공격/피격 표시가 오래된 잘린 상태 이미지로 돌아가지 않도록 단일 전신 스프라이트를 사용. 기존 이동·타격 애니메이션은 유지.\n- 후속 지역 전신 스프라이트를 투명 PNG 원본과 WebP 배포본으로 관리. `build-sd-assets.mjs`가 SD/몬스터/Live2D 매핑을 함께 갱신하고 완전히 불투명한 알파 채널은 거부.\n\n## 자산과 검증 기록\n생성 완료 목록과 검증 결과는 배포 시 아래에 기록한다.\n\n## 완료 자산\n- M09–M56 48종: 개별 투명 원본 PNG 및 고해상도 WebP 배포본 생성.\n- 전체 SD 매핑: 캐릭터 32명, 몬스터 56종. 매핑된 파일 누락 없음.\n- 연구소·천문대·왕궁 전용 배경 3종 추가.\n- 모바일 전투에서 남아 있던 2열 allies 레이아웃을 해제하여 4인 대형 폭 복구. 세로 손패 크기/겹침 간격 조정으로 가로 넘침 제거.\n\n## QA (2026-10-15)\n- 자동 테스트 41/41 통과, TypeScript 검사 통과.\n- 새 프롤로그 8개 팩션의 질문 순서, 출발 파티, 시작 지역, 저장 복구 검사 추가.\n- 기존 테스트는 프롤로그 이전 저장 형식임을 명시. normalizeGame의 불필요한 undefined prologue 키를 제거하여 재요청 영수증 상태 비교 일치.\n- 로컬 HTTP 실제 계정: 전투·유물·보스·보상·야영지 귀환·로그아웃/재로그인 저장 흐름 통과(최종 v105).\n- Codex 내부 브라우저: 얼굴 초상화, 편성 버튼, 전투 렌더링, 카드 선택/다른 영역 클릭 해제, 모바일 메뉴/덱 팝업 확인.\n- 390×844 / 844×390 / 768×1024 / 1024×768 전투 DOM 폭 검사: 수정 후 가로 넘침 없음.\n- 확인한 전투 화면의 이미지 로드 실패 없음.\n\n## 범위와 남은 확인\n- 모든 분기 대사와 모든 장비 조합을 사람처럼 끝까지 플레이한 검증은 아님.\n- 실제 모바일 기기 성능 및 오디오 청음 품질은 미검증.\n- 기존에 남아 있던 3D 작업 및 오디오 변경 파일은 본 패치에 포함하지 않음.\n- 라이브 배포/검증 결과는 후속 기록으로 보완.\r\n\n## 라이브 배포 결과 (2026-10-15)\n- GitHub 패치 커밋: `8e6fa34` (main push 완료).\n- Cloudflare 버전: `d6a394f3-a56f-45a7-8ebd-527d4fe641fa`.\n- URL: https://beneath-the-silent-bell.camp-cough.workers.dev/\n- 라이브 QA 전용 계정: 프롤로그 → 전투 4회 → 보스 → 귀환 → 재로그인 상태 일치 통과(v55, Q01 완료).\n- 페이지 2개, 새 몬스터 48종, 배경 3종 HTTP 검사 53/53 정상.\n- Codex 내부 브라우저에서 로그인 후 귀환 상태 복구 및 콘솔 경고/오류 없음 확인.\n- 개발 서버 시작 직후 Cloudflare 컨텍스트 초기화 동안 일시적 500이 있었으나 초기화 완료 후 정상 동작. 배포 서버의 동일 오류는 관찰되지 않음.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/044-region-portraits-monster-sprites.md"
+  },
+  {
+    "id": "043",
+    "title": "043 — 첫 화면 Worker 자원 사용 감소",
+    "body": "# 043 — 첫 화면 Worker 자원 사용 감소\n\n- 사용자 보고: 루트 페이지에서 간헐적 Cloudflare 1102. 확인 시 다시 HTTP 200으로 응답하여 해당 실패 요청의 CPU/메모리 세부 원인은 재현하지 못함.\n- `/`, `/m`의 공개 빌드 HTML을 정적 자산으로 발행하고 가벼운 Worker에서 제공. 첫 화면 요청에서 Next 서버 초기화/미들웨어를 우회.\n- 모바일 자동 이동, desktop=1 예외 유지. API와 RSC 요청은 기존 OpenNext 서버 처리 유지. 계정/DB/결제 요금제 변경 없음.\n- 동적/재검증 페이지를 잘못 발행하지 않도록 prerender manifest를 빌드 시 검사.\n- typecheck 및 Cloudflare 빌드 통과. 전체 게임 QA 생략. API의 무료 CPU 한도 초과 가능성까지 제거한 것은 아님.\n- 복구 배포 후 `/`와 `/m` HTTP 200, `x-game-shell: static-v1` 확인. 모바일 UA는 `/m`으로 307, 미인증 `/api/game`은 기존대로 401. 실제 로그인·전투 QA는 수행하지 않음.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/043-static-shell-resource-limit.md"
+  },
+  {
+    "id": "042",
+    "title": "042 · 투명 캐릭터·전투 표시·라이브 배경",
+    "body": "# 042 · 투명 캐릭터·전투 표시·라이브 배경\n\n요청: 캐릭터 누끼, 암상인 분절 수정, 아이콘 상태 툴팁, 파랑 보호막 게이지, 카드 외부 선택 해제, 일러스트 스킬 카드, 지역별 고품질 움직이는 배경.\n\n원인: 탐사 장면이 불투명 FHD 자산 사용, 암상인 원본을 clip-path로 중복 배치, 상태 텍스트와 고정 높이 overflow, 지역 ID 대신 방 ID로 배경 조회.\n\n새 투명 암상인·전용 스킬 원화 생성은 이미지 한도로 대기. 기존 투명 SD 및 캐릭터 일러스트를 활용하고 분절 렌더링부터 제거한다.\r\n\n## 구현 결과\n투명 SD 우선 표시, 암상인 단일 이미지 모션, 상태 툴팁, 파랑 보호막 미리보기, 카드 외부 선택 해제 적용. SD 카드 fallback 대신 동일 캐릭터 일러스트 재사용. WebGL 배경 물결·안개·조명·날씨 적용, SVG 깃발·경비병 제거. 지역 조회 오류 수정.\n\n신규 암상인 누끼6종, 스킬28종, 지역 배경3종은 도구 한도로 대기. 암상인 원본의 불투명 배경은 아직 남음. 렌더링 경계와 대기 상태는 docs/VISUAL_PATCH_042.md 참조. QA 미실시.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/042-cutout-combat-wallpaper.md"
+  },
+  {
+    "id": "041",
+    "title": "041 · 남은 진행 시스템 및 오리지널 사운드트랙",
+    "body": "# 041 · 남은 진행 시스템 및 오리지널 사운드트랙\n\n목표: 자유 지역 조사, 개인 신뢰와 객원 영입, 팩션별 시작 효과·진행 인계, 프롤로그/지역/전투 음악 및 상황별 효과음 연결. 기존 오디오 원본 수정사항은 덮어쓰지 않고 v2 경로에 생성.\n\n이미지 잔여123장 생성 재개. 최종 확보 수와 배포 결과는 완료 시 기록.\n\nQA는 기존 사용자 지시에 따라 생략. 배포 빌드 수행.\r\n\n## 결과\n- 자유 지역 조사, 개인 신뢰/객원, 인연 계승, 혼성 유대, 기원 효과, 증언 결말 연결.\n- 음악20곡(16마디 루프), 효과음28종 직접 작곡·합성. 32kHz stereo WAV, v2 manifest 사용.\n- 음량/음소거 저장, 장면 전환, 비활성 탭 정지, 행동·상태 효과 연결.\n- 신규 원화29장 추가, 누적143장. 기존 대기94장에 042 요청37장을 추가해 대기131장. imagegen 사용량 한도 재도달.\n- TypeScript 컴파일 통과. 플레이/청취 QA 미실시.\n- 상세: docs/FACTION_PROLOGUE_IMPLEMENTATION.md, docs/AUDIO_GUIDE_KO.md.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/041-progression-and-soundtrack.md"
+  },
+  {
+    "id": "040",
+    "title": "040 · 팩션 프롤로그 및 시작 이야기",
+    "body": "# 040 · 팩션 프롤로그 및 시작 이야기\n\n목표: 7개 기억 선택, 정규화 성향, 자유로운 팩션 선택, Q00 시작 대화, 탐사 대표 고정. 기존 저장 및 Q01~Q14 보상 보존.\n\n원본 설계: docs/design/faction-prologue-v1/. 구현 범위와 남은 사항은 docs/FACTION_PROLOGUE_IMPLEMENTATION.md에 기록.\n\nQA는 사용자 요청으로 생략. 배포 빌드만 진행.\r\n\nNext.js/TypeScript 및 OpenNext 프로덕션 빌드 성공. 별도 QA 생략. 팩션별 원래 지역 난이도와 기존 본편 순서 복귀는 유지하며 완전 비선형 진행/신뢰도 영입은 후속 범위로 명시.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/040-faction-prologue.md"
+  },
+  {
+    "id": "039",
+    "title": "039 · 동작 카드 원화와 팩션 NPC 대화",
+    "body": "# 039 · 동작 카드 원화와 팩션 NPC 대화\n\n## 목적\n캐릭터별 기본 타격/방어 태세/집중 일격 이미지, 고유 성물, 팩션 NPC 및 표정·손동작 대화를 연결합니다.\n\n## 제작 정책\n내장 이미지 생성 도구 사용. 생성 성공 파일만 공개 manifest에 등록합니다. 한도로 생성하지 못한 원화는 제작 대기 목록에 남기며 기존 이미지 폴백을 유지합니다. 사용자 요청에 따라 별도 QA는 생략하고 배포 빌드만 수행합니다.\n\n## 적용 내용\n- `app/page.tsx`, `app/components/QuestConversation.tsx`, `app/story-conversation.css`: 14개 의뢰를 NPC와 현재 편성 첫 캐릭터의 대화로 연결. 수락 전 브리핑, 완료 후 자동 귀환 대화, 다시 보기, 이전/다음/닫기 제공. 마지막 수락 버튼에서만 기존 서버 액션을 실행.\n- `data/story_dialogues.json`: 장별 브리핑·귀환 각 4줄, 총 112줄의 대사.\n- `data/story_npcs.json`: 8개 팩션의 전용 NPC 이름·직책·외형·성물 제안 대사. 플레이어블 캐릭터를 NPC로 대신 표시하던 방식 변경.\n- `lib/story-art.ts`, `data/story_art_manifest.json`: 중립/설명/결심 포즈 연결. 말하는 사람을 밝게 표시하고 다음 이미지들을 미리 로드. 미생성 표정은 같은 인물 중립 또는 기존 dialogue 자산으로 대체.\n- `data/card_character_art.json`: 생성 완료한 타격/방어/집중 일격을 손패·덱·도감 공통으로 적용.\n- `lib/game.ts`: 21종 유물의 고유 이미지 경로 연결. 해금·효과·수락·보상·저장 규칙은 유지.\n- `scripts/prepare-story-art.mjs`, `scripts/build-story-art.mjs`: 개별 생성 프롬프트와 PNG→WebP 변환/manifest/미완료 목록. 기존 `build-card-art.mjs`도 새 카드 항목을 지우지 않도록 수정.\n- `docs/STORY_GUIDE.md`, `docs/STORY_SCRIPT_KO.md`: 시스템 설명·세계관·NPC 명단·전체 대본 제공.\n\n## 이미지 생성 결과\n내장 imagegen 사용. 처음에는 한도 오류가 있었으나 갱신 후 재개하여 114장을 확보했습니다. 이후 다시 usage_limit_reached가 발생하여 추가 생성은 중단됐습니다.\n- 카드: AR1~AR4, VR1~VR4, BC1~BC4, BK1~BK4, WS1~WS3 각각 3종 = 57장.\n- NPC: 8명 × 중립/설명/결심 = 24장.\n- 고유 성물: 7지역 × 3종 = 21장.\n- 플레이어 대화: AR1~AR4 × 3표정 = 12장.\n- 남은 123장: WS4·DS1~4·GO1~4·EF1~4 카드 39장, 비아르켄 캐릭터 대화 84장. `art-source/story-v1/pending.json`이 실제 미완료 목록입니다. 전 캐릭터 이미지 제작 완료로 간주하면 안 됩니다.\n- 원본 `art-source/story-v1/`, 게임 파일 `public/assets/story-v1/`. 단순 확대나 기존 파일 복제를 새 생성으로 집계하지 않았습니다.\n\n## 검증 범위\n사용자 요청에 따라 별도 QA 및 브라우저 플레이 테스트는 수행하지 않습니다. 배포에 필요한 프로덕션 빌드만 진행합니다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/039-character-card-art-story-dialogue.md"
+  },
+  {
+    "id": "038",
+    "title": "038 · 카드 이미지 통일, 행동 기록 팝업, 움직이는 배경",
+    "body": "# 038 · 카드 이미지 통일, 행동 기록 팝업, 움직이는 배경\n\n## 작업 목적\n손패와 덱/도감의 카드 원화를 일치시키고 기록을 아군/적 방향별 팝업으로 표시합니다. 기존 배경 위에 애니메이션 레이어를 추가합니다.\n\n## 검증 정책\n사용자 지시에 따라 이번 추가 작업은 QA를 수행하지 않습니다. 배포에 필요한 빌드는 진행합니다.\n\n## 변경 파일\n- `app/page.tsx`: 공통 카드 원화 선택 함수, 덱/도감 카드 이미지·코스트 아이콘 통일, 기록 버튼, 배경 효과 및 토글 연결.\n- `app/components/ActionJournal.tsx`: native dialog 기반 기록 팝업. 아군 왼쪽, 적 오른쪽, 탐사 사건 가운데 배치. 최근 기록으로 자동 이동.\n- `lib/game.ts`: 기존 문자열 저장 형식을 유지하며 신규 행동에 진영 접두어 추가. 적의 실제 체력 피해·보호막 흡수·방어·준비 행동 기록. 이전 저장의 캐릭터 행동 문장은 이름으로 분류.\n- `app/components/LivingBackdrop.tsx`, `app/living-scenes.css`: 기존 배경 위 SVG/CSS 애니메이션 레이어. 요새/거점의 깃발과 순찰병, 야외 비/설원 눈, 항구/서고 물줄기·물결, 등불·낙엽·안개. 화면을 가려도 입력을 차단하지 않음.\n\n## 구현 범위와 제한\n- 기존 패치의 AR1~AR4 전용 카드 원화와 SD 이미지 폴백을 공통 사용. 이번 작업에서 모든 카드 원화를 새로 생성한 것은 아님.\n- 배경은 다층 2D 애니메이션이며 Cubism Live2D 모델 파일이 아님. 깃발·순찰병 등은 SVG 도형으로 새로 제작하고, 움직임은 CSS 키프레임으로 구현.\n- 메뉴에서 배경 움직임 정지 가능. 백그라운드 탭에서는 일시정지하며 OS 동작 줄이기 설정을 존중.\n- 기록은 기존 서버 정책대로 최근 24건만 보관. 과거 저장에는 적 행동 기록이 없어 소급 복원하지 않음.\n- 사용자 요청으로 QA/브라우저 플레이/추가 테스트 생략. 배포용 프로덕션 빌드만 수행.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/038-card-journal-living-backgrounds.md"
+  },
+  {
+    "id": "037",
+    "title": "037 · 모바일 패널, 유물 만남, 이야기 확장",
+    "body": "# 037 · 모바일 패널, 유물 만남, 이야기 확장\n\n## 목적\n세로/가로 모바일 조작을 패널로 정리하고, 팩션 인물의 유물 제안과 14장 이야기를 보강합니다. 카드 드롭 시 화면 흔들림을 줄입니다.\n\n## 변경 및 검증\n아래에 구현 내용과 수행한 검증 범위를 기록합니다.\n## 변경 파일과 동작\n- `app/page.tsx`, `app/components/PortableMenu.tsx`, `app/portable-ui.css`: 모바일·태블릿 메뉴를 우측 모달 사이드바로 분리. 덱/도감/거점 의뢰 바로가기, 체력·오디오·계정 정보 제공. 세로와 가로 대응, 가로 전장 우선 배치.\n- 유물 선택은 기존 조건/효과/저장을 유지하면서 대표 캐릭터 원화와 팩션별 대화로 제시.\n- `data/story_chapters.json`: 14장 의뢰 사연·발견·귀환·다음 장 연결. 완료 전 핵심 발견/귀환 기록 숨김.\n- `data/relic_encounters.json`: 7개 팩션 대표와 대사.\n- `docs/STORY_GUIDE.md`: 세계관, 장별 해금, 인물 감정선, 정본 위치, 구현/기획 경계를 다른 Agent용으로 기록.\n\n## 카드 드롭 수정 원인\n- pointerup에서 moved를 즉시 초기화해 합성 click이 사용한 카드를 재선택하던 문제 수정. 키보드 선택은 유지.\n- 포인터 선택 시 기본 포커스 스크롤 방지, 전장 스크롤 앵커 제외.\n- 효과 nonce마다 모든 캐릭터를 재생성하던 key 제거. 상태 배지/미리보기 추가에 따른 정보창 높이 변화를 고정해 캐릭터 상하 이동 방지.\n\n## 검증\n- TypeScript 검사 통과, 기존 카드 키워드 관련 테스트 5개 통과.\n- 14장 데이터와 모든 유물 대표 캐릭터 ID 연결 검사 통과.\n- Codex 내부 브라우저 localhost: 가로 844×390 메뉴 열기/닫기, 카드 실제 드래그 사용 후 손패 감소와 선택 해제, 스크롤 Y=0 유지 확인.\n- 세로 390×844 사이드바 및 덱 팝업 연결, 태블릿 1024×768 가로 넘침 없음 확인. 브라우저 오류 없음.\n- 광범위 전투 회귀 테스트는 요청에 따라 생략. 유물 실제 입장 흐름 및 14장 전체 플레이는 이번 검증 범위 밖.\n\n## 후속\n- 별도 스토리 수집/호위 목표·분기 결말·음성·컷신은 미구현. 기존 보스 격파+안전 귀환 판정 유지.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/037-mobile-encounter-story.md"
+  },
+  {
+    "id": "036",
+    "title": "036 · 전투 손패와 획득형 카드 키워드",
+    "body": "# 036 · 전투 손패와 획득형 카드 키워드\n\n## 변경\n- 전투 화면 하단에 겹쳐지는 부채꼴 손패, 선택 카드 확대, 행동력 ◆ / 마나 💧 코스트 아이콘 적용.\n- 전투 HUD 축약, 모바일 가로 및 태블릿/데스크탑 카드 크기 조정. 카드에는 이름·핵심 수치 중심으로 표시하고 선택 안내에 상세 효과 제공.\n- 기본 파티 AR1–AR4 전용 스킬 일러스트 4장 신규 생성. 그 외 카드는 소유 캐릭터의 기존 SD 이미지 사용.\n- 기본 카드 고정 키워드 제거. 암상인: 집중 일격 보존 각인(30 은화, 탐사 한정). 긍정 사건: 선두 기본 타격 보존. 유물: 집중 일격 복사/소멸, 방어 보존, 전용 스킬 발견.\n- 레벨 3 방어 보존, 레벨 5 전용 스킬 발견. 거점 훈련장 상위 전직(레벨 5, 80 은화) 시 전용 스킬 생성 해금.\n- 저장 정규화·덱 미리보기·실제 전투에서 동일한 획득 키워드 계산. 중복 각인/전직 거절 및 탐사 한정 효과 분리.\n\n## 파일\n`app/page.tsx`, `app/card-hand.css`, `lib/game.ts`, `data/cards.json`, `data/card_character_art.json`, `scripts/build-card-art.mjs`, `tests/card-keywords.test.ts`, `tests/game.test.ts`.\n원본: `art-source/cards-v2`; 배포 이미지: `public/assets/cards-v2`.\n\n## 검증 및 범위\n- 기존 작업 중 타입 검사 및 게임/저장/키워드 테스트 32개 통과.\n- Codex 내부 로컬 화면에서 부채꼴 손패·코스트 표시·대상 선택 확인. 방어 카드 제출 후 저장 응답의 최종 확인은 사용자 요청으로 추가 QA를 중단하여 미완료.\n- 사용자 지시에 따라 이번 마무리는 빌드 및 배포 성공 여부만 확인하며 광범위한 재검증을 반복하지 않는다.\n- 모든 캐릭터/카드 조합의 신규 개별 일러스트 제작은 미완료. 기본 파티 전용 스킬 4장 외에는 기존 캐릭터 SD 자산을 재사용한다.\n- 모바일에서 선택 카드 확대가 전투 일부를 가릴 수 있어 추후 필요 시 간격을 조정한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/036-fan-hand-earned-keywords.md"
+  },
+  {
+    "id": "035",
+    "title": "035 · SD 횡배열 전투와 몬스터 원본 복구",
+    "body": "# 035 · SD 횡배열 전투와 몬스터 원본 복구\n\n## 목적과 원인\n전열 1번은 오른쪽, 후열 4번은 왼쪽에 배치한다. 기존 몬스터 파일은 부정확한 시트 분할로 신체가 잘리고 다른 개체를 포함했다. 대상 연결선도 실제 좌표가 아닌 고정 좌표를 사용했다.\n\n## 구현\n- 캐릭터 32명의 개별 SD 원본 및 변경 요새 M01–M08 개별 몬스터 원본 생성.\n- 투명 PNG 원본은 `art-source/sd`, 게임용 WebP는 `public/assets/sd`에 보존. 원본 해상도 유지, WebP quality 94 / alpha 100, 40개 총 15.38 MiB.\n- 실제 파티 순서와 저장 데이터는 유지하고 화면만 오른쪽부터 전열 1→4 순으로 배치.\n- SD 전신 contain 표시, 공격·피격·방어·회복·사망 모션 및 컷인에 적용.\n- 실제 액터 위치를 측정하는 연결선과 대상 강조. 화면 크기 및 이미지 로딩 후 재측정.\n- 카드 버튼을 누르지 않은 마우스 이동이 드래그로 인식되던 오류 수정.\n- 종료된 전투 효과가 연결선을 숨기거나 컷인을 계속 유지하던 조건 수정.\n- 몬스터·Live2D 매니페스트와 기존 분할/FHD 스크립트가 복구된 개별 자산을 유지하도록 수정.\n- PATCH_HISTORY 색인에 누락된 034 및 이번 035 추가.\n\n## 주요 변경 파일\n`app/page.tsx`, `app/battle-stage.css`, `app/components/BattleTargetLines.tsx`, `data/sd_asset_manifest.json`, `data/monster_asset_manifest.json`, `data/live2d_manifest.json`, `scripts/build-sd-assets.mjs`, `scripts/slice-monster-assets.py`, `scripts/build-fhd-assets.py`.\n\n## 검증\n- TypeScript 통과, 게임/저장 테스트 27/27 통과, Cloudflare 프로덕션 빌드 통과.\n- 이전 작업 구간의 Codex 내부 로컬 전투: AR1→AR4 오른쪽부터 동일 높이 배치, 공격 후 M01 HP 30→6, 다음 카드 연결선 복원, 단순 호버 시 드래그 유령 없음.\n- 원본/QA 시트 시각 검수 및 변환 시 40개 알파 채널 확인. 로컬 AR1/M08 WebP HTTP 200.\n- Cloudflare 배포: 2026-09-26, version `06f116f3-1732-4c1c-9a34-a79ef826dce6`.\n- Codex 내부 라이브 화면: 기본 파티 4명 + M01/M02 로딩 성공, 전신 표시 및 순서 확인, 콘솔 오류 0.\n- 라이브 844×390 모바일 가로 / 768×1024 태블릿 세로: 파티 동일 높이 및 오른쪽→왼쪽 순서 유지, 가로 넘침 없음.\n- 현재 로컬 오류 페이지 제어는 브라우저 보안 정책으로 차단되어 재검증하지 못함. 라이브 전투 입력은 ‘이 기기에서 이어하기’ 조작권 회수가 자동 승인 검토에서 거절되어 미검증. 읽기 전용 화면 검증만 완료. 사용자 승인 후 카드 사용·저장 확인 필요.\n\n## 범위와 잔여\nSD는 개별 정지 일러스트에 런타임 모션/이펙트를 적용한 방식이며 골격 리깅 또는 프레임별 애니메이션이 아니다. 다른 맵 M09–M56은 기존 자산을 유지한다. 원본 생성 프롬프트 규격은 `art-source/sd/README.md`에 기록했다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/035-sd-horizontal-battle.md"
+  },
+  {
+    "id": "034",
+    "title": "034 · 2D 합 전투 연출",
+    "body": "# 034 · 2D 합 전투 연출\n\n## 작업 목적\n기존 전투의 3D 표현 의존을 제거하고, 카드 선택 단계의 합선·위력 표기와 2D 컷인·타격 이펙트를 추가한다.\n\n## 변경 파일\n- `app/page.tsx`\n- `app/style.css`\n- `public/assets/effects/combat-slash-crimson-v1.png`\n\n## 패치 내용\n- 선택 카드와 유효 대상 사이에 애니메이션 합선을 표시한다.\n- 대상별 합 위력 배지와 선택 카드의 실시간 계산값을 표시한다.\n- 공격 해결에 2D 컷인, 결과 레이블, 생성한 검격 이미지 이펙트를 적용한다.\n\n## 검증\n- 타입 검사, 프로덕션 빌드, 로컬·라이브 URL 점검을 완료한다.\n\n## 후속 작업\n- 합 판정의 다단계 코인 규칙과 음성 연동은 별도 전투 규칙 패치에서 확장한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/034-2d-clash-combat.md"
+  },
+  {
+    "id": "033",
+    "title": "033 — 모바일 전용 경로와 포터블 셸",
+    "body": "# 033 — 모바일 전용 경로와 포터블 셸\n\n## 작업 목적\n\n모바일·태블릿 사용자를 별도 주소와 전용 UI 셸로 안내한다.\n\n## 변경 파일\n\n- `proxy.ts`\n- `app/m/page.tsx`\n- `app/style.css`\n\n## 패치 내용\n\n- 휴대폰·태블릿 User-Agent의 루트 접속을 `/m`으로 임시 리디렉션한다.\n- `/m`은 기존 계정·저장·게임 API를 공유하면서 포터블 레이아웃 셸을 렌더링한다.\n- Workers.dev 주소는 임의의 `m.` 하위 도메인을 지원하지 않으므로, 공개 모바일 주소는 `/m` 경로를 사용한다.\n- Wrangler에 기존 공개 Worker의 Cloudflare 계정을 고정해 비대화형 배포 대상을 일관되게 선택한다.\n\n## 검증 결과\n\n- iPhone User-Agent의 `/` 요청은 `/m` 307로 이동한다.\n- 데스크톱 User-Agent의 `/` 요청은 200으로 유지된다.\n- `/m`과 `/?desktop=1` 요청은 200으로 응답한다.\n- `pnpm typecheck`, `pnpm build` 통과.\n- Cloudflare Worker 버전 `86d76ed3-edd0-4deb-8e40-52b4b904286f` 공개 배포 완료.\n- 라이브 iPhone·iPad User-Agent의 `/` 요청은 `/m` 307, 라이브 `/m`은 200 확인.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/033-mobile-route-and-portable-shell.md"
+  },
+  {
+    "id": "032",
+    "title": "032 — 모바일 가로 · 태블릿 반응형 레이아웃",
+    "body": "# 032 — 모바일 가로 · 태블릿 반응형 레이아웃\n\n## 작업 목적\n\n휴대폰은 가로 플레이를 기준으로 전투·거점·탐사 UI를 재배치하고, 태블릿은 세로와 가로에서 각각 읽기 쉬운 밀도를 유지한다.\n\n## 변경 파일\n\n- `app/style.css`\n- `PATCH_HISTORY/README.md`\n\n## 패치 내용\n\n- 휴대폰 가로(최대 760px, 최대 600px 높이): 마을 시설을 3열로 정렬하고, 전투는 탐사대·적을 좌우로 배치했다.\n- 휴대폰 가로: 손패는 가로 스크롤 4열로 유지하고, 캐릭터 상세창을 2열로 전환했다.\n- 태블릿 세로(761~1199px): 2열 파티, 안정적인 전투 좌우 비율, 3열 손패를 적용했다.\n- 태블릿 가로: 3열 파티, 넓은 전장·탐사 2열 구성, 4열 손패를 적용했다.\n\n## 검증 결과\n\n- 740×390 가로 휴대폰 DOM 레이아웃 확인.\n- `pnpm typecheck` 통과.\n- `pnpm build` 통과.\n\n## 후속 작업\n\n- Cloudflare 인증 복구 후 공개 배포 화면에서도 동일한 브레이크포인트를 재확인한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/032-landscape-mobile-tablet-layouts.md"
+  },
+  {
+    "id": "031",
+    "title": "031 — 2D 전투 액터 복귀",
+    "body": "# 031 — 2D 전투 액터 복귀\n\n## 작업 목적\n\nBlender/WebGL 3D 전투 액터 사용을 전면 중지하고, 전투의 캐릭터와 몬스터를 기존 2D 스프라이트 경로로 통일한다.\n\n## 변경 파일\n\n- `app/page.tsx`\n\n## 패치 내용\n\n- `BattleActor`가 `Actor3D`를 선택하지 않고 항상 `Crest` 2D 스프라이트를 렌더링하도록 변경했다.\n- 기존 2D 상태별 자산 선택과 이미지 실패 시 SVG 폴백을 유지했다.\n- 3D 코드와 GLB 자산은 삭제하지 않아, 향후 별도 작업에서 다시 검토할 수 있다.\n\n## 검증 결과\n\n- `pnpm typecheck` 통과.\n\n## 후속 작업\n\n- 2D 캐릭터·몬스터 아트의 원화 품질과 상태별 스프라이트를 별도 개선한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/031-restore-2d-actors.md"
+  },
+  {
+    "id": "029",
+    "title": "029 — Blender 리깅 캐릭터 파이프라인",
+    "body": "# 029 — Blender 리깅 캐릭터 파이프라인\n\n## 작업 내용\n\n- 첨부 원화 시트의 BC2(미라) 작업본에서 별도 버전의 Blender 리깅 파일을 생성했다.\n- `BC2_rigged.glb`에 Armature 1개와 Idle·Attack·Hit·Death 애니메이션 클립을 포함했다.\n- Blender 5 저장 시 미사용 액션이 제거되지 않도록 각 클립을 보존 처리했다.\n- 게임의 `Actor3D`가 GLB를 우선 로드하고, 자산을 읽지 못할 때 기존 WebGL 메시로 안전하게 대체하도록 했다.\n\n## 생성 자산\n\n- `3D_Build/BC2/bc2_rigged_v011.blend`\n- `public/assets/models/BC2/BC2_rigged.glb`\n- `scripts/blender/build_bc2_production.py`\n\n## 검증\n\n- Blender GLB 재가져오기: 8,200 폴리곤, Armature 1개, 애니메이션 4개 확인\n- `pnpm typecheck` 통과\n- `pnpm build:cloudflare` 통과\n\n## 품질 기준 후속 작업\n\n- 현 GLB는 원화와 리깅 연결을 검증하는 제작 초안이다. MMD급 공개 자산으로 승격하기 전 의상 리토폴로지, UV 언랩, PBR 텍스처, 머리카락 카드, 표정 셰이프키와 물리 본을 완성한다.\n- 같은 제작 기준으로 기본 파티 4명과 첫 지역 몬스터를 개별 제작한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/029-blender-rigged-character-pipeline.md"
+  },
+  {
+    "id": "028",
+    "title": "028 — Cloudflare 3D 공개 배포 검증",
+    "body": "# 028 — Cloudflare 3D 공개 배포 검증\n\n## 작업 목적\n\n- WebGL 3D 전투 패치를 공개 Cloudflare Workers 환경에 반영하고, CDN 환경에서 실제 게임 흐름을 검증한다.\n\n## 변경 파일\n\n- `tests/browser/flow.spec.ts`: 지연 로드되는 HD 초상화의 실제 로드 완료를 기다리도록 브라우저 검증을 보완했다.\n- `PATCH_HISTORY/README.md`: 023~028 패치 인덱스 누락을 복구했다.\n\n## 배포 및 검증\n\n- Cloudflare Workers 배포: `faee91c7-e499-4c3a-b951-62d7f51c9ca0`\n- 공개 URL: `https://beneath-the-silent-bell.camp-cough.workers.dev`\n- 공개 URL 대상 Playwright 흐름 통과: HD 초상화(1080px), 절차적 경로, WebGL SD 전투 객체, 풀사이즈 3D 공격·피격 컷\n\n## 후속 작업\n\n- 절차적 WebGL 메시를 캐릭터별 리깅 GLB 자산으로 순차 교체한다.\n- 기본 파티와 변경 요새 이후의 캐릭터·몬스터 3D 모델 범위를 확장한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/028-cloudflare-3d-release-validation.md"
+  },
+  {
+    "id": "027",
+    "title": "027 — WebGL 3D 전투 캐릭터",
+    "body": "# 027 — WebGL 3D 전투 캐릭터\n\n## 작업 목적\n\n- 기본 파티 4명과 변경 요새 몬스터 8종을 평면 스프라이트 대신 실제 WebGL 3D 객체로 표시한다.\n- 평상시 SD 비율과 카드 공격 시 풀사이즈 비율을 구분하고 동작이 이어지게 한다.\n\n## 변경 파일\n\n- `app/components/Actor3D.tsx`: 12종 절차적 3D 모델, 조명, 카메라, 애니메이션\n- `app/page.tsx`: 전투 SD 모델 및 풀사이즈 공격·피격 컷 전환\n- `app/style.css`: 3D 캔버스 크기, 호버 하이라이트, PC·모바일 연출\n- `package.json`, `pnpm-lock.yaml`: Three.js WebGL 런타임\n- `tests/browser/flow.spec.ts`: 3D 컷 전환 브라우저 검증\n\n## 패치 내용\n\n- 레오나·세린·마리엔·에델의 체형, 팩션 색, 무기 실루엣을 구분한 SD/풀사이즈 3D 모델을 추가했다.\n- M01~M08을 방패병, 비행체, 폭탄 딱정벌레, 깃발 구름, 기계견, 다중 방패병, 쌍검 기사, 성탑 짐승 형태로 모델링했다.\n- 호흡, 부유, 공격 전진, 피격 흔들림, 사망 쓰러짐을 실시간 애니메이션으로 처리한다.\n- 카드 사용 시 SD 객체에서 풀사이즈 3D 컷으로 전환하고, 대상도 풀사이즈 피격 동작을 실행한다.\n- 마우스 호버·키보드 포커스·카드 대상 지정 시 모델 외곽 광원을 강화한다.\n- WebGL 미적용 캐릭터와 지역은 기존 고해상도 이미지로 자동 대체한다.\n\n## 검증\n\n- 타입 검사, 게임 규칙 테스트, 프로덕션 빌드\n- Playwright로 HD 초상화, 절차적 지도, 3D SD 모델과 풀사이즈 전투 컷 확인\n\n## 후속 작업\n\n- 나머지 팩션 캐릭터와 후속 지역 몬스터 3D 모델 확장\n- 향후 전용 GLB 리깅 자산이 준비되면 현재 절차적 메시를 같은 컴포넌트에서 교체",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/027-webgl-3d-battle-actors.md"
+  },
+  {
+    "id": "026",
+    "title": "026 — HD 캐릭터·전투 컷 모션·절차적 지도",
+    "body": "# 026 — HD 캐릭터·전투 컷 모션·절차적 지도\n\n## 변경 내용\n\n- `test-images`와 기존 캐릭터 디자인을 기준으로 8개 팩션, 32명의 고해상도 마스터 이미지를 새로 생성했다.\n- 캐릭터 상태 이미지 192개를 1920×1920 WebP로 교체하고, 얼굴 중심 1080×1080 초상화 32개를 별도로 적용했다.\n- 작전실 배치 슬롯과 파티 카드에서 얼굴을 빠르게 식별할 수 있는 전용 초상화를 사용한다.\n- 중복 레이어로 이미지가 잘리던 기존 Live2D 흉내 렌더링을 제거했다.\n- 전투 중에는 SD 크기의 평상시 객체에서 단일 고해상도 풀사이즈 공격·피격 컷 모션으로 전환한다.\n- 카드와 대상 호버 시 테두리, 확대, 밝기 강조를 적용했다.\n- 매 탐사 시 시드에 따라 노드 위치와 연결이 달라지는 4계층 절차적 분기 지도를 생성한다.\n- 지도 연결선을 SVG로 표시하고, 방문·이동 가능 경로를 금색으로 강조한다.\n- PC와 모바일에서 지도 노드와 전투 컷 모션 크기를 별도로 조정했다.\n\n## 에셋 및 생성 방식\n\n- 원본 시트: `art-source/characters-hd/*.png`\n- 게임 이미지: `public/assets/fhd/characters`, `public/assets/fhd/portraits`\n- 재생성 스크립트: `scripts/build-character-hd.py`\n- 내장 ImageGen으로 기존 외형, 장비, 팩션 색을 유지하는 4인 고해상도 시트를 생성한 뒤 WebP로 분리했다.\n\n## 검증\n\n- `pnpm test`: 27/27 통과\n- `pnpm typecheck`: 통과\n- `pnpm build`: 통과\n- Playwright: HD 초상화 해상도, 절차적 노드·연결선, 단일 이미지 풀사이즈 전투 컷 모션 통과",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/026-hd-characters-combat-motion-procedural-map.md"
+  },
+  {
+    "id": "025",
+    "title": "025 — 통합 도감·팩션 유물·무료 라이브 배포",
+    "body": "# 025 — 통합 도감·팩션 유물·무료 라이브 배포\n\n## 작업 목적\n\n- 플레이 행동에 따라 캐릭터·아이템·몬스터·카드·유물이 계정 도감에 해금되도록 한다.\n- 스토리와 팩션 우호도를 충족하면 지역 입구에서 탐사 전용 유물 3개 중 하나를 선택하게 한다.\n- 계정 저장을 유지하는 무료 공개 서버에 배포하고 접속 주소를 기록한다.\n\n## 변경 파일\n\n- `lib/game.ts`, `app/page.tsx`, `app/style.css`: 계정 도감, 해금 조건, 유물 선택·효과, 전역 오버레이 UI\n- `public/assets/fhd/relics/*`: 7개 팩션 × 3종 유물 1080px WebP 21개\n- `lib/auth.ts`, `lib/store.ts`, `lib/cloud.ts`: Cloudflare D1 기반 계정 인증·게임 저장·시장 저장\n- `migrations/0001_cloudflare.sql`, `wrangler.jsonc`, `open-next.config.ts`: 무료 Workers + D1 배포 구성\n- `scripts/build-relic-assets.py`, `scripts/patch-opennext-windows.mjs`: 에셋 생성과 Windows 배포 빌드 호환\n- `tests/game.test.ts`, `tests/browser/flow.spec.ts`: 도감·유물·D1 동시 요청·UI 흐름 검증\n\n## 패치 내용\n\n- 맵 탐사, 퀘스트, 랜덤 사건, 대장간 제작, 암상인 카드 변환에 해금 이벤트를 연결했다.\n- 캐릭터·아이템·몬스터·카드·유물 전체를 잠금 힌트와 함께 보여주는 도감을 던전 안팎 공통 헤더에 추가했다.\n- 퀘스트와 팩션 우호도 조건을 만족한 지역 입구에서 3개 유물 중 하나를 선택하며, 공격력·보호막·최대 체력·에너지·회복·드로우·획득 은화 효과가 해당 탐사에만 적용된다.\n- 생성형 원본 시트를 바탕으로 유물 21종을 1080×1080 WebP로 분리해 적용했다.\n- 로컬 파일 DB에 의존하던 공개 서버 경로를 Cloudflare D1로 전환하고 Better Auth, 캠페인, 행동 영수증, 시장을 영구 저장하도록 구성했다.\n- 동일 요청 동시 전송 시 D1 영수증을 다시 읽어 결과를 한 번만 적용한다.\n\n## 검증 결과\n\n- `pnpm test`: 27/27 통과\n- `pnpm typecheck`: 통과\n- `pnpm build`: 통과\n- OpenNext Cloudflare Workers 번들 생성: 통과\n- Playwright: 핵심 전체 플레이, 동시 요청/CSRF, 도감·거점·시장 흐름을 각각 통과 확인\n\n## 배포 결과\n\n- 무료 Cloudflare Workers + D1에 공개 배포했다.\n- 공개 플레이 주소: `https://beneath-the-silent-bell.camp-cough.workers.dev`\n- D1 원격 마이그레이션과 운영 로그인 비밀키 설정을 완료했다.\n- 공개 주소에서 HTTP 200 응답과 실제 회원가입·계정 저장·중복 요청 방지·CSRF·계정 격리를 검증했다.\n\n## 남은 작업\n\n- 임시 계정을 배포 후 60분 안에 사용자 Cloudflare 계정으로 귀속해야 주소와 데이터베이스가 영구 유지된다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/025-collection-relics-live-deploy.md"
+  },
+  {
+    "id": "024",
+    "title": "024 — FHD 자산·Live 2D·스토리 퀘스트·덱 미리보기",
+    "body": "# 024 — FHD 자산·Live 2D·스토리 퀘스트·덱 미리보기\n\n## 작업 목적\n\n- 캐릭터·몬스터·아이템 자산을 FHD급 출력으로 재구성한다.\n- FHD 상태 이미지를 Live 2D형 전투·상인 연출에 연결한다.\n- 스토리 퀘스트, 지역 해금, 모집 인원 확장, 덱 미리보기를 서버 저장에 포함한다.\n\n## 변경 파일\n\n- `app/page.tsx`, `app/style.css`: 초상화 편성, 퀘스트 게시판, 지역 선택, 덱·상인 시각화, Live2D형 레이어 연출\n- `lib/game.ts`: 14개 스토리 퀘스트, 7개 지역 해금, 모집 풀 확장, 실시간 카드 수치 계산과 서버 저장\n- `data/*_manifest.json`: FHD 캐릭터·몬스터·아이템·암상인 자산 및 상태별 리그 연결\n- `public/assets/fhd/`: 470개 고해상도 WebP 자산(총 69.2 MiB)\n- `scripts/build-fhd-assets.py`: 원본 보존형 확대·선명화·FHD 캔버스 빌드 도구\n- `tests/game.test.ts`, `tests/browser/flow.spec.ts`: 신규 진행도와 분기형 탐사 회귀 검증\n\n## 패치 내용\n\n- 캐릭터 32명 × 6상태, 몬스터 56종 × 3상태를 FHD 캔버스에 재구성하고 아이템 72종과 초상화 32종을 별도 출력했다.\n- 캐릭터·몬스터는 기본/상체/표정 레이어의 호흡·시선·공격·피격·사망 모션으로 연결했다.\n- 암상인 6상태 원화를 새로 제작하고 대기·제시·교환 상태를 상점 행동에 연결했다.\n- 작전실 전투 배치는 원형 초상화만 표시하며 1열~4열과 추천 배치를 유지한다.\n- 거점 의뢰 게시판에 2장씩 7지역, 총 14개 연속 스토리 퀘스트를 추가했다. 완료 보상에 따라 다음 지역과 팩션 영웅이 해금된다.\n- 던전 출발 지역을 선택할 수 있고 기존 저장의 진행 중 탐사도 지역명으로 자동 복구한다.\n- 입장 전·탐사 중 덱 미리보기에서 공격·방어·전용 스킬 16장을 확인할 수 있다.\n- 무기, 방어구, 장신구, 시설, 카드 개조, 격노·약화 상태를 한 계산식에 합쳐 카드 표시값과 실제 적용값을 일치시켰다.\n- 암상점에서 회복 전후 체력 바, 공격 카드 진화 전후 값, 변환 결과와 삭제 대상을 미리 보여준다.\n\n## 검증 결과\n\n- `npm test`: 26/26 통과\n- `npm run typecheck`: 통과\n- `npm run build`: Next.js 16.3.5 프로덕션 빌드 통과\n- `npm run test:e2e`: 3/3 통과(PC→모바일 이어하기, 분기 탐사·보스·귀환·재로그인, 요청 원자성·계정 격리, 시설·시장 UI)\n- 데스크톱·모바일 브라우저에서 덱 오버레이와 FHD 카드 이미지를 육안 확인\n- 470개 FHD 파일의 생성 수와 대표 이미지 1920×1920 출력을 확인\n\n## 남은 작업\n\n- 리깅 전용 원화 분리와 Cubism 런타임 연동은 별도 제작 파이프라인이 필요하다. 현재 패치는 상태별 FHD 레이어와 CSS 변형을 이용한 Live2D형 런타임이다.\n- 이후 지역별 고유 배경, 퀘스트 대화 컷신, 성우·립싱크 연동을 확장할 수 있다.\n\n## 생성 자산 기록\n\n- 도구: OpenAI 이미지 생성\n- 참조: `test-images/exec-085f0988-d2b2-5fcd-89f9-f01cdb378f88.png`\n- 프롬프트 요약: 기존 다크 판타지 화풍의 남성 암상인을 3×2 상태 시트로 제작하고, 고어·문자·워터마크 없이 손과 교환 물품이 자연스럽게 이어지도록 구성\n- 원본: `art-source/merchant-sheet.png`\n- 게임 출력: `public/assets/fhd/merchant/`",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/024-fhd-live2d-quests-deck.md"
+  },
+  {
+    "id": "023",
+    "title": "023 — 분기 탐험·직업 무기 제작·전투 연출",
+    "body": "# 023 — 분기 탐험·직업 무기 제작·전투 연출\n\n## 작업 목적\n\n- 4계층 분기 던전과 보스 경로를 구현한다.\n- 거점 시설 안에서 직업별 무기를 제작하고 성장 재료를 사용한다.\n- 상인·휴식지·랜덤 조우와 사망 후 보상 연출을 실제 플레이 흐름에 연결한다.\n\n## 변경 파일\n\n- `lib/game.ts`: 분기 경로, 상인, 랜덤 조우, 제작법, 귀환 규칙\n- `app/page.tsx`: 계층 지도, 시설 내부 탭, 제작·상인·보상 화면\n- `app/style.css`: 2D 프레임 전환, 타격·사망 모션, 반응형 지도\n- `tests/game.test.ts`, `tests/store.test.ts`: 신규 흐름과 저장 검증\n\n## 패치 내용\n\n- 매 탐사에 전투·상인·휴식·물음표가 포함되는 4계층 분기 지도와 보스를 추가했다.\n- 서로 다른 노드가 다음 계층의 여러 노드로 연결되며, 7개 지역의 몬스터군을 귀환 횟수에 따라 순환한다.\n- 휴식지에서만 정상 귀환할 수 있고 패배 귀환과 기존 저장의 마지막 봉화는 호환한다.\n- 던전 상인에서 희귀 재료 구매, 유료 회복, 기본 공격 카드 진화·삭제·변경을 지원한다.\n- 거점 시설 내부에 대장간·훈련장·치료실·식당 탭을 만들고 8개 직업용 상위 무기 4종 제작을 추가했다.\n- 계정 창고 재료와 은화를 서버에서 검증해 제작하고 제작한 무기만 장착할 수 있다.\n- 기존 32명 캐릭터 192장, 56종 몬스터 168장의 상태 이미지를 프레임 객체로 연결해 공격·피격 모션에 사용한다.\n- 몬스터는 잘리지 않는 기본 프레임으로 피격하며 마지막 적은 1.25초 사망 모션 뒤 보상이 열린다.\n- 전투 보상에 재료 이미지와 파티원별 경험치 증가량을 표시한다.\n\n## 검증 결과\n\n- `npm test`: 25개 통과\n- `npm run typecheck`: 통과\n- `npm run build`: 통과\n- 실제 PC 브라우저에서 4계층 지도와 상인 화면 확인\n- 390×844 모바일 화면에서 상인·탐험 UI 확인\n\n## 남은 작업\n\n- 퀘스트 보상은 이후 퀘스트 시스템에서 현재 제작 재료 저장 구조에 연결한다.\n- 프레임 보간과 본 애니메이션은 향후 전용 리깅 자산으로 더 세밀하게 확장할 수 있다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/023-branching-expedition-forge-animation.md"
+  },
+  {
+    "id": "022",
+    "title": "022 — 직업·장비 제한·추천 파티 배치",
+    "body": "# 022 — 직업·장비 제한·추천 파티 배치\n\n## 작업 목적\n\n- 캐릭터별 직업과 역할, 장비 제한, 직업별 스탯을 체계화한다.\n- 주점과 상세창 정보를 전투 판단 중심으로 바꾸고 추천 자동 배치를 제공한다.\n\n## 변경 파일\n\n- `lib/game.ts`: 직업·전투 역할·추천 위치·스탯·장비 제한 규칙\n- `app/page.tsx`: 파티 자동 배치, 직업/특성/스킬/주점 상세 UI\n- `app/style.css`: 직업 정보와 팝업의 PC·모바일 반응형 스타일\n- `tests/game.test.ts`: 직업 장비 제한과 추천 배치 검증\n\n## 패치 내용\n\n- 32명 캐릭터를 8개 직업으로 분류하고 직업별 능력치와 역할을 적용했다.\n- 직업에 맞지 않는 장비는 UI와 서버 양쪽에서 차단한다.\n- 캐릭터 카드에 팩션 아이콘, 직업, 세부 역할, 추천 전열 위치를 표시한다.\n- 특성과 전용 스킬 설명을 팝업으로 확인할 수 있다.\n- 주점 모집 정보를 직업·레벨·전투 능력치·장비 중심으로 개편했다.\n- 추천 위치 우선순위로 파티를 정렬하는 자동 배치 버튼을 추가했다.\n\n## 검증 결과\n\n- `npm test`: 23개 통과\n- `npm run typecheck`: 통과\n- `npm run build`: 통과\n- PC 화면에서 파티 편성, 자동 배치, 상세 팝업, 주점 정보 표시 확인\n\n## 남은 작업\n\n- 직업별 성장 및 상위 장비 제작은 후속 패치에서 확장한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/022-professions-party-formation.md"
+  },
+  {
+    "id": "021",
+    "title": "021 — 캐릭터·아이템·카드·몬스터 자산 표시 개선",
+    "body": "# 021 — 캐릭터·아이템·카드·몬스터 자산 표시 개선\n\n## 작업 목적\n\n- 캐릭터 상세 이미지의 저화질 확대, 장비·아이템 누끼 테두리, 전용 스킬 카드 이미지, 몬스터 피격 잘림을 수정한다.\n\n## 변경 파일\n\n- `app/page.tsx`\n- `app/style.css`\n- `scripts/slice-assets.py`\n- `public/assets/generated/items/*.png`\n- `public/assets/generated/equipment/*.png`\n- `public/assets/generated/factions/*.png`\n- `public/assets/generated/sprites/*.png`\n- `PATCH_HISTORY/README.md`\n- `PATCH_HISTORY/021-asset-quality-card-monster-fixes.md`\n\n## 패치 내용\n\n- 캐릭터 상세창 이미지를 세로 영역에 강제 확대·절단하지 않고 원본 비율로 맞춰 표시해 흐려짐과 얼굴·장비 잘림을 줄였다.\n- 투명 PNG 아틀라스를 RGB로 변환하던 절단 스크립트를 RGBA 기반으로 수정했다.\n- 장비·팩션·상태 아이콘의 색 번짐 매트를 제거하고 가장자리를 부드럽게 정리했다.\n- 아이템 아틀라스의 셀 경계선을 제외해 다시 절단하고, UI에서 `contain`과 둥근 테두리로 표시한다.\n- 전용 스킬 카드는 공용 문양 대신 카드 소유 캐릭터의 `skill.png` 장면과 캐릭터명을 표시한다.\n- 몬스터 이미지를 `cover`가 아닌 `contain`으로 표시한다. 피격 때 잘린 `hit` 셀로 교체하지 않고 온전한 `idle` 스프라이트에 피격 모션을 적용한다.\n- 자산 재생성은 임시 파일 후 원자적으로 교체해 개발 서버가 파일을 읽는 중에도 안전하게 완료된다.\n\n## 검증 결과\n\n- `npm run typecheck` 통과\n- `npm test` 통과: 22개\n- `python -m py_compile scripts/slice-assets.py` 통과\n- `npm run build` 통과\n- `npm run test:e2e` 통과: PC→모바일 전체 원정 포함 3개\n- 실제 브라우저에서 상세 캐릭터와 장비 아이콘 합성 상태 확인\n\n## 남은 작업\n\n- 아이템 원본 아틀라스 자체에 그려진 어두운 배경 질감은 유지된다. 완전한 개별 누끼가 필요한 항목은 원본을 다시 생성해야 한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/021-asset-quality-card-monster-fixes.md"
+  },
+  {
+    "id": "020",
+    "title": "020 — 연결형 공격·피격 전투 모션",
+    "body": "# 020 — 연결형 공격·피격 전투 모션\n\n## 작업 목적\n\n- 공격자 이동, 타격 순간, 대상 피격, 밀림, 복귀가 한 동작처럼 이어지는 전투 연출을 구현한다.\n- 캐릭터와 몬스터 양쪽의 공격·피격을 동일한 타임라인 시스템으로 표현한다.\n\n## 변경 파일\n\n- `app/page.tsx`\n- `app/style.css`\n- `PATCH_HISTORY/README.md`\n- `PATCH_HISTORY/020-connected-combat-motion.md`\n\n## 패치 내용\n\n- Slay the Spire 전투 영상의 일반적인 연출 원리를 참고해 공격 준비, 전진, 접촉, 피격, 복귀를 0.9초짜리 공유 타임라인으로 묶었다.\n- 캐릭터와 몬스터가 서로의 위치까지 돌진하고, 대상은 반대 방향으로 밀린 뒤 반동하며 원위치로 돌아온다.\n- 타격 시점에 화면 흔들림, 섬광, 베기 선, 충격 원, 부유 피해량을 동기화했다.\n- 전투 효과 번호가 바뀔 때 애니메이션 요소를 다시 생성해 같은 공격을 연속 사용해도 모션이 재생된다.\n- 연출 중 다음 입력을 잠가 모션이 겹치지 않게 했으며, 자동 저장 폴링이 잠금 해제 타이머를 취소하지 않도록 했다.\n- 모바일에서는 돌진 거리와 충격 위치를 축소했고, 모션 감소 설정에서는 장식 효과를 숨긴다.\n\n## 검증 결과\n\n- `npm run typecheck` 통과\n- `npm test` 통과: 22개\n- `npm run build` 통과\n- `npm run test:e2e` 통과: PC→모바일 전체 원정·저장·재로그인 포함 3개\n\n## 남은 작업\n\n- 현재 자산은 단일 포즈 이미지이므로 팔·무기·몸통을 따로 움직이는 골격 애니메이션은 없다.\n- 후속 캐릭터 시트에 프레임 또는 분리 파츠가 추가되면 같은 타임라인에 프레임 전환과 개별 관절 모션을 연결할 수 있다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/020-connected-combat-motion.md"
+  },
+  {
+    "id": "019",
+    "title": "019 — 캐릭터 장비 상세창과 상태·카드 트리거",
+    "body": "# 019 — 캐릭터 장비 상세창과 상태·카드 트리거\n\n## 작업 목적\n\n- 작게 보이던 캐릭터·장비 이미지를 확대하고 캐릭터 카드에서 상세 장비창을 연다.\n- 캐릭터별 전투 능력치, 성장 정보, 특성, 스킬을 실제 게임 상태와 연결한다.\n- 카드 드래그 중 피해·회복·보호막 결과를 체력바 위의 색상 구간으로 미리 표시한다.\n- 전투 상태 효과와 카드 전용 트리거를 공통 규칙 및 UI에 도입한다.\n\n## 변경 파일\n\n- `app/page.tsx`\n- `app/style.css`\n- `lib/game.ts`\n- `data/cards.json`\n- `data/card_art_manifest.json`\n- `public/assets/generated/cards/*.png`\n- `tests/game.test.ts`\n- `tests/browser/flow.spec.ts`\n- `PATCH_HISTORY/README.md`\n\n## 패치 내용\n\n- 캐릭터 카드 이미지를 확대하고 클릭 가능한 상세 장비·능력치 창을 추가했다.\n- 무기·방어구·장신구 각 3종과 장착 이미지, 실제 공격·방어·주문 보정을 서버 저장 상태에 연결했다.\n- 체력, 마나, 스트레스, 공격력, 방어력, 주문력, 치명타, 특성, 전용 스킬, 경험치 바를 추가했다.\n- 기본 공격·방어·강공격 카드 아트 3종을 새로 제작하고 전용 스킬은 캐릭터 스킬 일러스트를 사용한다.\n- 카드 드래그 중 체력바에 피해·회복·보호막 예상 구간을 색상으로 겹쳐 표시한다.\n- 중독, 출혈, 광기, 도벽, 약화, 표적, 치명타, 취약, 가시, 격노, 기절, 분노, 화상, 동상, 감전, 전염병, 반격, 피해 차단, 은신, 공포 상태 정의와 전투 처리를 추가했다.\n- 복사, 보존, 소멸, 생성, 발견, 사용불가 카드 트리거 정의와 카드 처리·도감을 추가했다.\n- 스킬 카드에 캐릭터별 마나 소비와 턴별 회복을 적용했다.\n- 이전 저장 데이터에는 장비 슬롯, 마나, 상태, 소멸 카드 더미 기본값을 자동으로 채운다.\n\n## 코드 주석 및 설계 이유\n\n- 첨부 이미지는 정보 계층과 상호작용 참고 자료로만 사용하며 고유 캐릭터·카드 이미지는 복제하지 않는다.\n- 새 필드는 이전 저장 데이터에도 기본값을 채워 이어하기가 가능하도록 정규화한다.\n\n## 검증 결과\n\n- `pnpm run typecheck` 통과\n- `pnpm test`: 22개 통과\n- `pnpm run build` 통과\n- Playwright 전체 흐름 3개 통과\n  - PC→모바일 로그인, 장비 변경, 전투, 보상, 귀환, 재로그인\n  - 요청 멱등성·동시성·CSRF·계정 격리\n  - 거점 성장·시장 기능\n\n## 남은 위험 또는 후속 작업\n\n- 전용 스킬 카드 아트는 현재 캐릭터 스킬 상태 일러스트를 사용한다. 역할별 전용 배경 아트 추가 제작은 후속 대상이다.\n- 상태 효과는 공통 규칙을 갖추었으며 몬스터·유물·이벤트별 부여 콘텐츠는 계속 확장할 수 있다.\n- 프레임이 연결된 공격·피격 타임라인 애니메이션은 다음 패치에서 적용한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/019-character-loadout-status-system.md"
+  },
+  {
+    "id": "018",
+    "title": "018 — 시네마틱 탐사와 전투 연출",
+    "body": "# 018 — 시네마틱 탐사와 전투 연출\n\n## 작업 목적\n\n- 참고 영상의 전신 캐릭터, 횡스크롤 탐사, 좌측 파티·우측 적 전장 구도, 카드 귀속 표현을 현재 게임에 맞게 재구성한다.\n- 지역마다 구분되는 탐사·전투 배경을 제작하고 마을부터 던전까지 시각 흐름을 연결한다.\n- 턴 전환, 공격, 피격, 스킬, 대화 장면의 모션과 정보 전달을 강화한다.\n\n## 변경 파일\n\n- `app/page.tsx`\n- `app/style.css`\n- `data/environment_manifest.json`\n- `public/assets/environments/expedition/*.png` (7개)\n- `PATCH_HISTORY/README.md`\n\n## 패치 내용\n\n- 참고 영상에서 확인한 횡스크롤 탐사 무대, 좌측 파티·우측 적 구도, 캐릭터 귀속 카드, 대화 초상 연출을 현재 세계관에 맞게 재구성했다.\n- 변경 요새, 옛 항구, 지하 서고, 예배당, 뿌리 성소, 잿빛 마을, 종탑의 16:9 탐사·전투 배경 7개를 생성했다.\n- 탐사 화면에 현재 지역 무대, 1~4열 파티 행진, 선택한 목적지 표식을 추가했다.\n- 전투 화면에 지역 배경, 턴 전환 배너, 4단계 행동 안내, 원형 턴 종료 버튼을 추가했다.\n- 손패에 카드 소유 캐릭터 초상을 합성하고 선택·호버 시 카드가 앞으로 떠오르도록 조정했다.\n- 아군 대기, 적 호흡, 탐사 행진, 목적지 강조 모션을 추가하고 모션 감소 환경 설정을 존중한다.\n- 휴식·수수께끼·팩션 이벤트에 현재 선두 캐릭터의 대화 초상과 상황별 대사를 추가했다.\n- PC와 모바일에서 배경, 전투 정보, 카드, 이벤트 대화가 겹치지 않도록 반응형 배치를 보강했다.\n\n## 코드 주석 및 설계 이유\n\n- 참고 작품의 고유 캐릭터·화면을 복제하지 않고 공간 구도와 피드백 원칙만 적용한다.\n- 기존 서버 저장 및 카드 전투 규칙은 유지하고 표현 계층을 확장한다.\n\n## 검증 결과\n\n- `pnpm run typecheck` 통과\n- `pnpm test`: 21개 통과\n- `pnpm run build` 통과\n- Playwright 브라우저 회귀 테스트: 3개 통과\n  - 실제 로그인, 파티 편성, 카드 전투, 오프라인 재시도, 보상, 보스, 귀환, 재로그인\n  - 요청 멱등성·동시성·CSRF·계정 격리\n  - 거점 성장·시장 화면\n- 로컬 PC 화면에서 변경 요새 배경, 전후열 정보, 몬스터, 턴 종료 버튼을 시각 확인했다.\n- 생성 배경 7개가 모두 1672×941 PNG이며 정상적으로 열리는 것을 확인했다.\n\n## 남은 위험 또는 후속 작업\n\n- 현재 모션은 상태별 일러스트 전환과 CSS 키프레임을 조합한다. 프레임 단위 스프라이트 애니메이션은 후속 제작 대상이다.\n- 각 지역은 대표 배경 한 장을 공유한다. 방 단위 변형 배경과 보스 전용 시네마틱은 후속 확장 대상이다.\n- 참고 영상의 고유 캐릭터·UI·장면은 복제하지 않았으며, 화면 구도와 피드백 원칙만 적용했다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/018-cinematic-expedition-combat.md"
+  },
+  {
+    "id": "017",
+    "title": "017 — 사운드와 몬스터 리디자인",
+    "body": "# 017 — 사운드와 몬스터 리디자인\n\n## 작업 목적\n\n- 56종 몬스터를 기존 화풍에 맞추되 덜 그로테스크한 형태로 다시 제작한다.\n- 생성 이미지를 전투 화면에 연결하고 교체 가능한 매니페스트로 관리한다.\n- UI, 카드, 피격, 승리, 보상, 마을과 전투에 필요한 사운드를 추가한다.\n- 자원이 허용되는 범위에서 마을·탐사·전투 음악을 게임에 적용한다.\n\n## 변경 파일\n\n- `app/page.tsx`, `app/style.css`\n- `data/monster_asset_manifest.json`\n- `public/assets/generated/atlases/monsters/`\n- `public/assets/generated/monsters/`\n- `public/assets/audio/sfx/`\n- `public/assets/audio/music/`\n- `scripts/slice-monster-assets.py`\n- `scripts/generate-audio.py`\n- `PATCH_HISTORY/README.md`\n\n## 패치 내용\n\n- 7개 지역의 56종 몬스터를 기본·행동·피격 3상태, 총 168개 런타임 이미지로 생성했다.\n- 모든 몬스터는 둥근 형태, 명확한 실루엣, 고어·신체 공포 배제 지침으로 다시 디자인했다.\n- 몬스터 상태 이미지를 전투 모션에 연결하고 기존 자산을 실패 시 대체 자산으로 유지했다.\n- 카드 선택, 카드 사용, 피격, 스킬, 경로 이동, 보상, 승리, 패배, UI 클릭 효과음 9개를 제작했다.\n- 마을·탐사·전투용 24초 루프 음악 3곡을 프로젝트 전용으로 합성했다.\n- 브라우저 자동 재생 정책에 맞춰 첫 입력 후 음악을 시작하고, 헤더에서 음악과 효과음을 각각 끌 수 있게 했다.\n\n## 코드 주석 및 설계 이유\n\n- 브라우저 자동 재생 제한을 지키면서 첫 사용자 입력 이후 오디오를 시작한다.\n- 생성 소스와 런타임용 파일을 분리해 이후 교체 비용을 낮춘다.\n\n## 검증 결과\n\n- `pnpm typecheck` 통과\n- 단위·저장소 테스트 21개 통과\n- `pnpm build` 통과\n- Playwright 브라우저 테스트 3개 통과\n- WAV 파일 12개를 Python `wave` 모듈로 열어 형식 무결성 확인\n- `git diff --check` 통과 예정\n\n## 남은 위험 또는 후속 작업\n\n- 합성 음악은 저용량 원본 초안이다. 향후 실제 악기 녹음이나 전문 믹싱 파일로 같은 경로에서 교체할 수 있다.\n- 몬스터 시트는 전투 가독성을 우선한 1차 리디자인이며 개별 보스의 연출 프레임은 추가 확장할 수 있다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/017-audio-monster-redesign.md"
+  },
+  {
+    "id": "016",
+    "title": "016 — 마을 허브와 전술 전투 UI",
+    "body": "# 016 — 마을 허브와 전술 전투 UI\n\n## 작업 목적\n\n- 탭 중심 화면을 클릭 가능한 중세 마을 허브와 장소 오버레이로 교체한다.\n- 탐험 파티의 1열~4열 순서를 명확히 하고 편성 화면에서 재배치할 수 있게 한다.\n- 캐릭터 장비, 스트레스, 부상, 보호막과 적 디버프를 전투 중 설명 가능한 형태로 표시한다.\n- 마우스와 터치 카드 드래그 중 실제 서버 규칙 기반 결과를 미리 보여준다.\n- 다음 지역 선택 뒤 확인 버튼을 눌러야 이동하도록 변경한다.\n\n## 변경 파일\n\n- `app/page.tsx`\n- `app/style.css`\n- `lib/game.ts`\n- `tests/game.test.ts`\n- `tests/browser/flow.spec.ts`\n- `public/assets/environments/last-refuge-hamlet.png`\n- `public/assets/generated/` — 전리품·팩션·장비·상태·캐릭터 자산\n- `data/generated_assets.json`\n- `data/character_asset_manifest.json`\n- `scripts/slice-assets.py`\n- `scripts/slice-character-assets.py`\n- `scripts/node-user-shim.mjs`, `scripts/register-tsx.mjs`, `scripts/e2e-server.mjs`\n- `package.json`, `playwright.config.ts`, `scripts/test-e2e.ps1`\n- `PATCH_HISTORY/README.md`\n\n## 패치 내용\n\n- 실재 중세 성곽 마을의 중앙 광장·성문·방사형 길 구조를 참고한 마을 배경과 건물 핫스폿을 적용했다.\n- 작전실에서 1 전열~4 후열을 직접 재배치하고 서버에 즉시 저장할 수 있게 했다.\n- 장비, 보호막, 반격, 스트레스, 부상, 표식, 기절의 효과 설명을 전투 UI에 추가했다.\n- 카드 포인터 드래그를 마우스와 터치에서 지원하며 실제 리듀서 결과로 피해·보호막·반격을 예측한다.\n- 지역을 먼저 선택한 뒤 `탐사 진행`을 눌러 이동하도록 변경했다.\n- 56개 전리품, 8개 팩션, 2개 장비, 6개 상태/역할 스프라이트를 생성하고 개별 파일과 매니페스트로 분리했다.\n- 32명 전원의 기본·공격·피격·스킬·대화·진급 이미지 192개를 생성하고 전투 모션, 모집, 진급 표시와 연결했다.\n- 첨부 예시의 선택형 인벤토리 구조를 적용해 소지품 격자, 큰 상세 이미지, 수량, 분류, 간단한 설명을 표시한다.\n- Windows에서 `tsx`의 사용자 정보 조회가 실패하는 환경을 위한 테스트 등록기와 독립 E2E 서버 실행기를 추가했다.\n- 상태 정규화가 기존 `run` 객체를 얕게 재사용하던 문제를 고쳐 카드 미리보기가 저장 상태를 변경하지 않게 했다.\n\n## 코드 주석 및 설계 이유\n\n- 파티 배열 순서를 서버 저장되는 전투 배치 순서로 사용해 별도 상태의 불일치를 피한다.\n- 카드 예상 결과는 전투 리듀서를 복제 상태에 적용해 실제 판정과 같은 규칙을 사용한다.\n- 포인터 이벤트를 사용해 마우스와 터치를 하나의 드래그 흐름으로 처리한다.\n\n## 검증 결과\n\n- `pnpm typecheck` 통과\n- 단위·저장소 테스트 21개 통과\n- `pnpm build` 통과\n- 기존 개발 서버 대상 Playwright 전체 흐름 중 HTTP 격리 테스트 통과, 수정 후 실패했던 데스크톱/모바일 전체 플레이와 성장·시장 테스트 2개 재실행 통과\n- `git diff --check` 통과\n\n## 남은 위험 또는 후속 작업\n\n- 생성 이미지의 아트 디렉션은 일관되지만 세부 포즈와 실루엣은 실제 플레이 화면에서 지속적으로 선별·교체할 수 있다.\n- 사운드와 몬스터 리디자인은 다음 `017` 패치에서 별도로 기록한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/016-hamlet-tactical-ui.md"
+  },
+  {
+    "id": "015",
+    "title": "015 커밋 후 GitHub 자동 push",
+    "body": "# 015 커밋 후 GitHub 자동 push\r\n\r\n## 작업 목적\r\n\r\n앞으로 로컬 커밋이 생성될 때마다 현재 브랜치를 GitHub `origin`으로 자동 push한다.\r\n\r\n## 변경 파일\r\n\r\n- `scripts/install-git-hooks.ps1`\r\n- `README.md`\r\n- `PATCH_HISTORY/015-auto-push-hook.md`\r\n- 로컬 `.git/hooks/post-commit` 설치\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ post-commit 훅 설치 스크립트 추가\r\n+ 커밋 성공 후 origin/current-branch 자동 push\r\n+ GitHub 인증·네트워크 실패 시 커밋은 유지하고 오류 표시\r\n+ 설치·해제 방법 README에 기록\r\n```\r\n\r\n## 설계 주석\r\n\r\n자동 push는 GitHub 인증이 이미 설정된 로컬 환경에서만 성공한다. 훅은 커밋을 되돌리거나 재작성하지 않으며 push 실패가 커밋 자체를 실패시키지 않는다.\r\n\r\n## 검증 결과\r\n\r\n훅 설치 후 테스트용 커밋으로 실행 여부를 확인하고, 원격 커밋 해시를 확인한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/015-auto-push-hook.md"
+  },
+  {
+    "id": "014",
+    "title": "014 test-images 자산 적용",
+    "body": "# 014 test-images 자산 적용\r\n\r\n## 작업 목적\r\n\r\n작업 폴더의 test-images에 있는 캐릭터·몬스터 콘셉트 시트를 확인하고 게임 화면에서 실제 자산으로 연결한다.\r\n\r\n## 변경 파일\r\n\r\n- `public/assets/*`\r\n- `data/asset_manifest.json`\r\n- `app/page.tsx`\r\n- `app/style.css`\r\n- `PATCH_HISTORY/014-test-image-assets.md`\r\n\r\n## 설계 주석\r\n\r\ntest-images는 ID가 표기된 콘셉트 시트이며 투명 스프라이트가 아니다. 우선 시트 원본을 보존하고, 이미지 표시 실패 시 기존 실루엣으로 복귀한다. 시트 원본을 최종 개별 스프라이트로 과장하지 않는다.\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ test-images에서 ID 표기 시트 확인\r\n+ AR1, AR4, BC1, BC2 캐릭터 시트 연결\r\n+ M17, M25, M33, M41 몬스터 시트 연결\r\n+ public/assets/concept-sheets에 원본 시트 보존\r\n+ manifest 상태를 concept-sheet로 표시\r\n+ 시트 주 인물·첫 몬스터 영역을 CSS object-position으로 표시\r\n+ 자산 문서에 콘셉트 시트와 최종 스프라이트의 차이 기록\r\n```\r\n\r\n## 검증 결과\r\n\r\n- 이미지 파일 직접 확인\r\n- manifest 경로 연결\r\n- 이미지 로딩 실패 시 기존 SVG 실루엣 fallback 유지\r\n\r\n## 남은 위험\r\n\r\n시트 안의 여러 ID를 모두 개별 파일로 자른 것은 아니다. 나머지 캐릭터·몬스터는 기존 실루엣을 유지한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/014-test-image-assets.md"
+  },
+  {
+    "id": "013",
+    "title": "013 선택 대상 피해 적용 수정",
+    "body": "# 013 선택 대상 피해 적용 수정\r\n\r\n## 작업 목적\r\n\r\nM01 방어벽이 다른 몬스터를 선택한 공격까지 전부 가로채 선택 대상의 HP가 그대로 보이는 문제를 수정한다.\r\n\r\n## 변경 파일\r\n\r\n- `lib/game.ts`\r\n- `tests/game.test.ts`\r\n- `PATCH_HISTORY/013-selected-target-damage-fix.md`\r\n\r\n## 원인\r\n\r\n공격 처리에서 M01에 방어막이 있으면 선택 대상과 무관하게 `target`을 M01로 교체했다. 따라서 M02를 눌러도 M02 HP가 감소하지 않았다.\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n- 방어막이 있는 M01을 선택 대상 대신 강제로 피해 대상으로 지정\r\n+ 플레이어가 선택한 적을 항상 피해 대상으로 유지\r\n+ M01 방어막은 M01을 직접 공격할 때만 피해를 흡수\r\n```\r\n\r\n## 검증 결과\r\n\r\n- 선택 대상 피해 회귀 테스트 추가\r\n- IDE 진단에서 `lib/game.ts`, `tests/game.test.ts` 오류 없음\r\n- 타입 검사와 게임 테스트 실행 완료\r\n- 개발 서버 재시작 후 브라우저에서 기존 전투를 새로고침해야 새 번들이 적용됨",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/013-selected-target-damage-fix.md"
+  },
+  {
+    "id": "012",
+    "title": "012 전투 무한 턴 방지와 시각 연출",
+    "body": "# 012 전투 무한 턴 방지와 시각 연출\r\n\r\n## 작업 목적\r\n\r\n턴 종료가 끝없이 반복되는 상황을 서버에서 제한하고, 캐릭터·몬스터·카드의 의미 있는 시각 자산과 공격·피격 모션을 플레이 화면에 연결한다.\r\n\r\n## 변경 예정 파일\r\n\r\n- `data/balance.json`\r\n- `lib/game.ts`\r\n- `app/page.tsx`\r\n- `app/style.css`\r\n- `tests/game.test.ts`\r\n- `PATCH_HISTORY/012-combat-motion-assets.md`\r\n\r\n## 설계 주석\r\n\r\n- 턴 상한은 클라이언트가 아니라 reducer에서 검증한다.\r\n- 카드와 전투 대상의 모션은 마지막 확정 상태에 저장되는 `combatFx` 이벤트로 표현한다.\r\n- 실제 외부 이미지가 없어도 캐릭터·몬스터·카드의 의미를 읽을 수 있는 교체 가능한 CSS/SVG 자산을 사용한다.\r\n- 카드 효과의 내용은 기호 하나가 아니라 전용 아트 컴포넌트와 설명으로 함께 전달한다.\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ `maxBattleTurns: 40` 추가\r\n+ 최대 턴 도달 시 전투를 defeat로 종료\r\n+ `CombatFx` 이벤트를 서버 확정 상태에 저장\r\n+ 카드 사용 시 공격·방어·회복 이벤트 기록\r\n+ 몬스터 공격·캐릭터 피격 이벤트 기록\r\n+ 캐릭터·몬스터 자산에 모션 클래스 연결\r\n+ strike, guard, heavy, skill별 카드 SVG 아트 추가\r\n+ 공격 돌진, 방어 펄스, 회복 글로우, 피격 흔들림 애니메이션 추가\r\n+ 전투 화면에 `현재 턴 / 최대 턴` 표시\r\n+ 최대 턴 및 후속 턴 거절 테스트 추가\r\n```\r\n\r\n## 검증 결과\r\n\r\n- IDE 진단: 수정 파일 오류 없음\r\n- 운영 빌드 실행\r\n- 최대 턴 전투 종료 회귀 테스트 추가\r\n\r\n## 남은 위험\r\n\r\n현재 아트는 코드로 생성한 교체 가능한 SVG/CSS 자산이다. 최종 제작 이미지·스프라이트 시트·사운드는 별도 에셋이 필요하다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/012-combat-motion-assets.md"
+  },
+  {
+    "id": "011",
+    "title": "011 구버전 저장 상태 호환",
+    "body": "# 011 구버전 저장 상태 호환\r\n\r\n## 작업 목적\r\n\r\n성장 시스템 도입 전에 생성된 캠페인 저장 상태에 `facilities` 등 신규 필드가 없어 전투 행동이 500 오류로 실패하는 문제를 해결한다.\r\n\r\n## 변경 파일\r\n\r\n- `lib/game.ts`\r\n- `lib/store.ts`\r\n- `tests/game.test.ts`\r\n- `PATCH_HISTORY/011-legacy-state-normalization.md`\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ `normalizeGame` 추가\r\n+ facilities, achievements, ending, 환생 필드를 구버전 상태에 기본값으로 보충\r\n+ reducer 진입점에서 항상 정규화\r\n+ 캠페인 조회 응답에서도 정규화해 성장 UI 접근을 안전하게 처리\r\n+ 신규 성장 필드가 없는 전투 저장 상태 회귀 테스트 추가\r\n```\r\n\r\n## 설계 주석\r\n\r\n정규화는 reducer 진입점에서 수행해 API, 저장소, 테스트 어느 경로로 상태 전이가 호출되어도 동일하게 적용한다. 기존 캐릭터·탐사·버전 값은 유지하고 새 필드만 초기 기본값으로 보충한다.\r\n\r\n## 검증 결과\r\n\r\n- TypeScript 검사 실행 완료\r\n- 구버전 저장 상태 전투 회귀 테스트 실행 완료\r\n- 기존 DB를 삭제하지 않고 기존 캠페인을 계속할 수 있는 경로 추가",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/011-legacy-state-normalization.md"
+  },
+  {
+    "id": "010",
+    "title": "010 GitHub 업로드 준비",
+    "body": "# 010 GitHub 업로드 준비\r\n\r\n## 작업 목적\r\n\r\n로컬 프로젝트와 패치 히스토리를 GitHub 저장소에 안전하게 올릴 수 있도록 원격 설정과 추적 대상 파일을 정리한다.\r\n\r\n## 변경 예정 파일\r\n\r\n- `.gitignore`\r\n- `PATCH_HISTORY/010-github-upload-preparation.md`\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ origin 예시 URL을 실제 GitHub 저장소 URL로 교체\r\n+ 원격 main 브랜치 확인 및 병합 준비\r\n+ `.pnpm-store/`와 생성된 테스트 이미지 추적 제외\r\n+ 소스·문서·패치 히스토리만 커밋 대상으로 유지\r\n```\r\n\r\n## 설계 주석\r\n\r\n의존성 캐시와 테스트 산출물은 코드 확인에 필요하지 않고 저장소를 불필요하게 크게 만든다. `test-results/`와 `playwright-report/`에 이어 `.pnpm-store/`와 `test-images/`도 무시한다.\r\n\r\n## 검증 결과\r\n\r\n원격 fetch, 로컬 커밋, 병합, push 결과를 기록한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/010-github-upload-preparation.md"
+  },
+  {
+    "id": "009",
+    "title": "009 E2E 선택자 수정",
+    "body": "# 009 E2E 선택자 수정\r\n\r\n## 작업 목적\r\n\r\n성장·시장 브라우저 시나리오에서 실제 접근 가능한 버튼 이름과 테스트 선택자의 불일치를 수정한다.\r\n\r\n## 변경 파일\r\n\r\n- `tests/browser/flow.spec.ts`\r\n- `PATCH_HISTORY/009-e2e-selector-fix.md`\r\n\r\n## 발견된 실패\r\n\r\n`대장간 강화`라는 이름을 기대했지만 실제 버튼 접근 가능한 이름은 `강화 · ◈ 30`이었다. 기능과 서버 상태는 정상이며 테스트 선택자만 실패했다.\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n- getByRole(\"button\", { name: /대장간.*강화/ })\r\n+ getByRole(\"button\", { name: /강화/ }).first()\r\n```\r\n\r\n## 검증 결과\r\n\r\n수정 후 전체 브라우저 테스트를 다시 실행한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/009-e2e-selector-fix.md"
+  },
+  {
+    "id": "008",
+    "title": "008 pnpm 없는 환경용 테스트 실행기",
+    "body": "# 008 pnpm 없는 환경용 테스트 실행기\r\n\r\n## 작업 목적\r\n\r\nPowerShell PATH에 `node`, `npm`, `pnpm`이 없는 환경에서도 실제 E2E 테스트를 실행할 수 있게 한다.\r\n\r\n## 변경 파일\r\n\r\n- `scripts/test-e2e.ps1`\r\n- `playwright.config.ts`\r\n- `README.md`\r\n- `package.json`\r\n- `PATCH_HISTORY/008-no-pnpm-runner.md`\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ `scripts/test-e2e.ps1` 추가\r\n+ PATH에 Node가 없으면 Codex Node 런타임 자동 탐색\r\n+ 로컬 Playwright CLI와 격리 E2E 서버 직접 실행\r\n+ `packageManager: pnpm@11.19.0` 고정\r\n+ pnpm/npm 없는 PowerShell 실행 절차 문서화\r\n```\r\n\r\n## 설계 주석\r\n\r\n프로젝트가 사용하는 Codex 대체 Node 경로를 우선 찾고, 로컬 Playwright CLI와 `scripts/e2e-server.ts`를 직접 호출한다. 전역 npm·pnpm 설치는 요구하지 않는다.\r\n\r\n## 검증 결과\r\n\r\n- 프로젝트 자체 PowerShell 실행기 실행 완료\r\n- 격리 테스트 산출물 생성 확인\r\n- 잔류 Node 프로세스 없음 확인",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/008-no-pnpm-runner.md"
+  },
+  {
+    "id": "007",
+    "title": "007 시장 후속 완성",
+    "body": "# 007 시장 후속 완성\r\n\r\n## 작업 목적\r\n\r\n기초 시장에 남아 있던 매물 만료, 거래 수수료, 거래 내역을 추가해 실제 플레이에서 거래 생명주기를 확인할 수 있게 한다.\r\n\r\n## 변경 파일\r\n\r\n- `migrations/001-game.sql`\r\n- `lib/db.ts`\r\n- `lib/store.ts`\r\n- `app/api/game/route.ts`\r\n- `app/page.tsx`\r\n- `tests/store.test.ts`\r\n- `PATCH_HISTORY/007-market-finalization.md`\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ market_listing.expires_at 추가\r\n+ market_history 테이블 추가\r\n+ 24시간 서버 만료 시각 부여\r\n+ 만료 매물의 재료 복구와 판매자 버전 증가\r\n+ 판매 금액 5% 수수료 차감\r\n+ 판매·취소·만료 거래 내역 기록\r\n+ API에 계정별 거래 내역 추가\r\n+ 시장 UI에 만료일·수수료·거래 내역 표시\r\n+ 만료 회수·내역 테스트 추가\r\n```\r\n\r\n## 설계 주석\r\n\r\n- 만료는 서버 시간이 기준이며 클라이언트 시간이 매물 상태를 결정하지 않는다.\r\n- 구매 수수료는 판매 금액의 5%를 차감하고 판매자에게 순수익을 지급한다.\r\n- 만료·취소 시 재료를 판매자에게 복구한다.\r\n- 거래 내역은 실제 완료·취소·만료 상태만 기록한다.\r\n- 모든 전이는 SQLite 트랜잭션 안에서 수행한다.\r\n\r\n## 검증 결과\r\n\r\n- 자동 테스트 18개 통과\r\n- 타입 검사 통과\r\n- 타입 검사 통과\r\n- 운영 빌드 통과\r\n- 격리 브라우저 테스트 3개 통과\r\n\r\n## 남은 위험\r\n\r\n다중 서버 시계 동기화와 운영 정책은 배포 환경에서 추가 검토한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/007-market-finalization.md"
+  },
+  {
+    "id": "006",
+    "title": "006 기록 체계와 최종 후속 작업",
+    "body": "# 006 기록 체계와 최종 후속 작업\r\n\r\n## 작업 목적\r\n\r\n이전 작업을 패치 단위로 소급 기록하고 앞으로의 편집에도 동일한 기록 규칙을 적용한다.\r\n\r\n## 변경 파일\r\n\r\n- `PATCH_HISTORY/README.md`\r\n- `PATCH_HISTORY/001-project-scan.md` ~ `PATCH_HISTORY/005-test-environment.md`\r\n- `PATCH_HISTORY/006-current-finalization.md`\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ 작업별 패치 히스토리 디렉터리 추가\r\n+ 각 작업의 목적·파일·대표 diff·주석·검증·위험 기록\r\n+ 앞으로 편집 전 패치 기록을 먼저 작성하는 규칙 추가\r\n```\r\n\r\n## 주석\r\n\r\n이 파일 이후의 모든 구현은 다음 번호를 사용하고, 패치 기록을 먼저 만든 다음 코드를 수정한다. 실행 결과가 기존 문서와 다르면 같은 패치에 즉시 갱신한다.\r\n\r\n## 검증 결과\r\n\r\n문서 파일 생성과 기록 규칙을 확인했다. 다음 최종 구현 작업에서 이 규칙을 적용한다.\r\n\r\n## 후속 작업\r\n\r\n시장 만료·수수료·내역, 배타 퀘스트·후일담, 고유 카드·몬스터 행동, 최종 아트와 실제 기기 QA가 남아 있다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/006-current-finalization.md"
+  },
+  {
+    "id": "005",
+    "title": "005 격리 테스트 환경",
+    "body": "# 005 격리 테스트 환경\r\n\r\n## 작업 목적\r\n\r\n공유 개발 서버·개발 DB 때문에 브라우저 테스트가 불안정했던 문제를 해결하고 실제 플레이를 반복 실행할 수 있게 했다.\r\n\r\n## 변경 파일\r\n\r\n- `scripts/e2e-server.ts`\r\n- `playwright.config.ts`\r\n- `package.json`\r\n- `tests/browser/flow.spec.ts`\r\n- `README.md`\r\n- `TEST_RESULTS.md`\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ 테스트 전용 `storage/e2e.sqlite` 초기화\r\n+ Better Auth 및 게임 마이그레이션 자동 실행\r\n+ 포트 3100 전용 Next 개발 서버 자동 시작·종료\r\n+ Playwright webServer에 격리 서버 연결\r\n+ 성장·시장 화면 실제 조작 테스트 추가\r\n+ 전역 pnpm이 없는 환경용 직접 실행 절차 문서화\r\n```\r\n\r\n## 주석\r\n\r\nE2E는 포트 3000에 이미 실행 중인 서버를 재사용하지 않는다. 테스트마다 계정·세션·SQLite를 새로 생성해 로그인, 저장, 화면 상태를 독립적으로 검증한다.\r\n\r\n## 검증 결과\r\n\r\n- 브라우저 테스트 3개 통과\r\n- 타입 검사 통과\r\n- 17개 자동 테스트 통과\r\n- 운영 빌드 통과\r\n\r\n## 후속 위험\r\n\r\n실제 휴대폰 하드웨어, Safari·Firefox, 다중 서버 부하는 별도 검증이 필요하다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/005-test-environment.md"
+  },
+  {
+    "id": "004",
+    "title": "004 콘텐츠 경로·엔딩·환생",
+    "body": "# 004 콘텐츠 경로·엔딩·환생\r\n\r\n## 작업 목적\r\n\r\n원본 56종 몬스터를 7개 맵 경로에 연결하고, 최종 귀환 뒤 엔딩 선택과 선택형 환생을 제공했다.\r\n\r\n## 변경 파일\r\n\r\n- `lib/game.ts`\r\n- `app/page.tsx`\r\n- `tests/game.test.ts`\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ M09~M56을 6개 추가 맵의 전투 경로에 연결\r\n+ 각 맵에 일반·정예·보스·휴식 분기 추가\r\n+ 모든 `*-boss` 방에 보상·돌파 판정 적용\r\n+ Game.ending, endingUnlocked, endingHistory, rebirths, legacy 추가\r\n+ `chooseEnding` 행동 추가\r\n+ `rebirth` 행동과 최대 3개 계승 재료 검증 추가\r\n+ 엔딩·환생 거점 UI 추가\r\n+ 7개 맵과 환생 상태 전용 테스트 추가\r\n```\r\n\r\n## 주석\r\n\r\n원본 몬스터의 ID와 보상은 보존했지만 M09~M56의 고유 행동은 아직 공통 전투 규칙을 사용한다. 엔딩과 환생은 서버 상태 전이로만 확정된다.\r\n\r\n## 검증 결과\r\n\r\n- 자동 테스트 17개 통과\r\n- 타입 검사 통과\r\n- 운영 빌드 통과\r\n\r\n## 후속 위험\r\n\r\n48종 고유 행동, 32명 고유 카드, 16개 후일담 조합은 아직 완성되지 않았다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/004-content-ending.md"
+  },
+  {
+    "id": "003",
+    "title": "003 경제 시스템",
+    "body": "# 003 경제 시스템\r\n\r\n## 작업 목적\r\n\r\n실제 계정 간 재료 거래와 팩션 상점·선택형 암시장 거래를 서버 검증으로 연결했다.\r\n\r\n## 변경 파일\r\n\r\n- `migrations/001-game.sql`\r\n- `lib/store.ts`\r\n- `lib/game.ts`\r\n- `app/api/game/route.ts`\r\n- `app/page.tsx`\r\n- `tests/store.test.ts`\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ market_listing 테이블 추가\r\n+ `marketList`, `marketBuy`, `marketCancel` 트랜잭션 추가\r\n+ 판매자 재료 차감과 구매자 은화 차감을 같은 트랜잭션에서 처리\r\n+ 구매 시 판매자 은화와 구매자 재료를 원자적으로 이전\r\n+ 열린 매물 API 응답 추가\r\n+ 팩션 우호도 상점 추가\r\n+ 희생을 강제하지 않는 암시장 증표 교환 추가\r\n+ 시장·성장 UI 추가\r\n+ 계정 간 거래와 중복 요청 테스트 추가\r\n```\r\n\r\n## 주석\r\n\r\nNPC 가상 매물이 아니라 실제 계정 보유 재료만 등록된다. 매물 상태와 소유권은 SQLite에서 확인하며 동일 요청 ID는 영수증으로 재생한다.\r\n\r\n## 검증 결과\r\n\r\n- 자동 테스트 16개 통과\r\n- 타입 검사 통과\r\n- 운영 빌드 통과\r\n\r\n## 후속 위험\r\n\r\n매물 만료·거래 내역·수수료·완전한 에스크로와 동시 취소 정책은 추가 구현이 필요하다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/003-economy.md"
+  },
+  {
+    "id": "002",
+    "title": "002 성장·관계 시스템",
+    "body": "# 002 성장·관계 시스템\r\n\r\n## 작업 목적\r\n\r\n거점에서 시설을 강화하고 동료를 훈련·치료하며 업적을 저장할 수 있게 했다.\r\n\r\n## 변경 파일\r\n\r\n- `data/balance.json`\r\n- `lib/game.ts`\r\n- `app/page.tsx`\r\n- `tests/game.test.ts`\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ Game.facilities: forge, training, infirmary, canteen\r\n+ Game.achievements 추가\r\n+ facilityUpgradeCost, trainingCost, healingCost, trainingXP 추가\r\n+ `upgradeFacility` 행동 추가\r\n+ `train` 행동 추가\r\n+ `heal` 행동 추가\r\n+ 시설 레벨에 따른 비용·피해·경험치·치료비 적용\r\n+ 거점 성장 탭과 동료별 행동 버튼 추가\r\n+ 성장 전용 테스트 추가\r\n```\r\n\r\n## 주석\r\n\r\n성장 행동은 `reduceGame`에서 탐사 중 실행을 거절하고 은화·소유권·부상 상태를 검증한다. 클라이언트는 버튼을 제공할 뿐 비용이나 결과를 신뢰하지 않는다.\r\n\r\n## 검증 결과\r\n\r\n- 자동 테스트 15개 통과\r\n- 타입 검사 통과\r\n\r\n## 후속 위험\r\n\r\n진화·룬·진급·복합 우호도 의뢰와 식당 효과는 아직 단순화되어 있다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/002-growth.md"
+  },
+  {
+    "id": "001",
+    "title": "001 프로젝트 스캔과 기준선",
+    "body": "# 001 프로젝트 스캔과 기준선\r\n\r\n## 작업 목적\r\n\r\n기존 프로젝트의 실행 구조, 저장 경계, 순수 게임 로직, 테스트 범위를 확인하고 후속 구현의 기준선을 세웠다.\r\n\r\n## 변경 파일\r\n\r\n- 코드 변경 없음\r\n- 기준 문서: `README.md`, `IMPLEMENTATION_STATUS.md`, `TEST_RESULTS.md`\r\n\r\n## 패치 내용\r\n\r\n```diff\r\n+ 프로젝트 구조 확인\r\n+ Next.js 16 / React 19 / Better Auth / SQLite 구조 확인\r\n+ `lib/game.ts`를 결정적 상태 전이 소유자로 확인\r\n+ `lib/store.ts`를 트랜잭션·버전·중복 요청 소유자로 확인\r\n+ 타입 검사, 자동 테스트, 운영 빌드 실행\r\n```\r\n\r\n## 주석\r\n\r\n초기 구현은 첫 탐사 한 판을 실제 서버 저장과 연결한 상태였다. 시장, 전체 맵, 엔딩, 최종 자산은 구현 범위 밖임을 문서 기준으로 확인했다.\r\n\r\n## 검증 결과\r\n\r\n- 타입 검사 통과\r\n- 규칙·저장 테스트 14개 통과\r\n- Next.js 운영 빌드 통과\r\n\r\n## 후속 위험\r\n\r\n문서의 완료 범위와 실제 코드가 달라지지 않도록 모든 후속 작업은 reducer, 저장소, UI, 테스트를 함께 갱신해야 한다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/001-project-scan.md"
+  }
+]

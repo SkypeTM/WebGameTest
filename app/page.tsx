@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import BattleTargetLines from "./components/BattleTargetLines";
+import PatchNotes from "./components/PatchNotes";
 import FullBodyActor from "./components/FullBodyActor";
 import RouteBriefing from "./components/RouteBriefing";
 import "./route-briefing.css";
@@ -1273,6 +1274,7 @@ export default function Page() {
       </button>
       <ActionJournal entries={game.log} />
       <a className="mini" href="/roadmap" target="_blank" rel="noopener noreferrer">개발 현황 ↗</a>
+      <PatchNotes />
       <button
         className="mini"
         aria-pressed={sceneryEnabled}

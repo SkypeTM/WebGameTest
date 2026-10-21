@@ -15,6 +15,8 @@
 
 현재 기록:
 
+- `075-public-patch-journal.md`: 여정의 완료 설명 정리 및 사이트 패치 기록 팝업·검색
+
 - `074-audio-sync-timeout.md`: 계정 오디오 설정 요청 시간 제한·취소·응답 검증 및 자동 테스트
 
 - `034-2d-clash-combat.md`: 2D 합선·컷인·타격 이펙트 전투 연출

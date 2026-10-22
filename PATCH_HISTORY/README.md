@@ -15,6 +15,8 @@
 
 현재 기록:
 
+- `077-local-qa-startup.md`: localhost 호스트 일치·개발 바인딩 초기화 대기 및 화면 QA 결과
+
 - `076-route-selection-accessibility.md`: 경로 확인 포커스·Escape 취소·모바일 안전 여백 보완
 
 - `075-public-patch-journal.md`: 여정의 완료 설명 정리 및 사이트 패치 기록 팝업·검색

@@ -6,7 +6,8 @@ const config: NextConfig = {
     "/*": ["./storage/**/*", "./test-results/**/*", "./playwright-report/**/*"],
   },
 };
-export default config;
-
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-initOpenNextCloudflareForDev();
+export default async function nextConfig() {
+  await initOpenNextCloudflareForDev();
+  return config;
+}

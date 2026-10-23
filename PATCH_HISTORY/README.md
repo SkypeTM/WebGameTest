@@ -15,6 +15,10 @@
 
 현재 기록:
 
+- `079-hub-dialog-accessibility.md`: 거점 모달·NPC 대화 포커스 복귀와 모바일 퀘스트 간격
+
+- `078-responsive-route-validation.md`: 모바일 지도 노드 겹침·가로 지도 폭 수정 및 실제 이어하기/전투/경로 QA
+
 - `077-local-qa-startup.md`: localhost 호스트 일치·개발 바인딩 초기화 대기 및 화면 QA 결과
 
 - `076-route-selection-accessibility.md`: 경로 확인 포커스·Escape 취소·모바일 안전 여백 보완

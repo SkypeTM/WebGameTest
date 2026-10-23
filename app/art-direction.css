@@ -1,6 +1,18 @@
 /* Ink, aged brass and parchment: separate navigation, information and route surfaces. */
 :root { --bg:#14161d; --panel:#21242d; --line:#49454a; --text:#eee8dc; --muted:#b5b0a8; --gold:#d7b579; }
 body { background-color:var(--bg); }
+dialog.hub-overlay[open] {
+  position:fixed; inset:0; margin:auto;
+  width:min(1100px, calc(100% - 32px)); max-width:calc(100% - 32px);
+  max-height:calc(100dvh - 32px); box-sizing:border-box;
+  overflow:auto; overscroll-behavior:contain; color:var(--text);
+  padding:clamp(12px, 2vw, 24px);
+}
+dialog.hub-overlay::backdrop { background:#080c15b8; backdrop-filter:blur(4px); }
+dialog.hub-overlay .overlay-heading { position:sticky; top:0; z-index:25; background:#151f20; gap:12px; }
+dialog.hub-overlay .overlay-heading button { flex-shrink:0; min-height:44px; }
+.quest-card .quest-story { display:block; min-height:44px; margin:10px 0; }
+.quest-card > div > span { display:block; line-height:1.6; }
 .header { flex-wrap:wrap; }
 .header > .account { flex-wrap:wrap; justify-content:flex-end; min-width:0; gap:10px; }
 .header > .account > * { flex-shrink:0; white-space:nowrap; }
@@ -19,6 +31,7 @@ body { background-color:var(--bg); }
 }
 .procedural-map .route-row { width:20%; max-width:120px; }
 .procedural-map .room {
+  width:100%; min-width:0; max-width:100%; box-sizing:border-box;
   background:#342d29; color:#eee1c7; border-color:#8e7858;
   border-radius:3px; box-shadow:0 3px 0 #5b483c40;
   line-height:1.35; overflow-wrap:anywhere; min-height:64px;

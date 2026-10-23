@@ -187,6 +187,7 @@
   }
   .map-panel:has(.route-selection-sheet) {
     padding-bottom: 24px;
+    grid-column: 1 / -1;
     padding-right: min(350px, 46vw);
   }
 }

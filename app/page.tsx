@@ -5,6 +5,7 @@ import PatchNotes from "./components/PatchNotes";
 import FullBodyActor from "./components/FullBodyActor";
 import RouteBriefing from "./components/RouteBriefing";
 import RouteSelectionSheet from "./components/RouteSelectionSheet";
+import HubDialog from "./components/HubDialog";
 import "./route-briefing.css";
 import { COMBAT_PRESENTATION } from "../lib/combat-presentation";
 import renewalPoses from "../data/renewal_actor_manifest.json";
@@ -1455,12 +1456,7 @@ export default function Page() {
               />
             </section>
             {overlayOpen && (
-              <section
-                className="hub-overlay"
-                role="dialog"
-                aria-modal="true"
-                aria-label="거점 장소 정보"
-              >
+              <HubDialog onClose={() => setOverlayOpen(false)}>
                 <div className="overlay-heading">
                   <div>
                     <span className="eyebrow">
@@ -1482,6 +1478,7 @@ export default function Page() {
                   <button
                     className="mini"
                     onClick={() => setOverlayOpen(false)}
+                    autoFocus
                   >
                     오버레이 닫기 ×
                   </button>
@@ -3010,7 +3007,7 @@ export default function Page() {
                     </section>
                   </div>
                 )}
-              </section>
+              </HubDialog>
             )}
           </>
         ) : (

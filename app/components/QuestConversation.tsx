@@ -29,7 +29,13 @@ export default function QuestConversation({
   const dialog = useRef<HTMLDialogElement>(null);
   const [index, setIndex] = useState(0);
   useEffect(() => {
-    dialog.current?.showModal();
+    const current = dialog.current!;
+    const source = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    current.showModal();
+    return () => {
+      current.close();
+      if (source?.isConnected) source.focus({ preventScroll: true });
+    };
   }, []);
   const chapter = conversations[request.quest];
   const faction = chapter.npc as keyof typeof npcs;

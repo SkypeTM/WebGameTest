@@ -6,7 +6,7 @@
   "packageManager": "pnpm@11.19.0",
   "scripts": {
     "qa:bot": "node --import ./scripts/register-tsx.mjs scripts/qa-play-bot.ts && node scripts/qa-actor-assets.mjs && node --import ./scripts/register-tsx.mjs scripts/qa-route-graph.ts",
-    "dev": "next dev --hostname localhost",
+    "dev": "node --dns-result-order=ipv4first node_modules/next/dist/bin/next dev --hostname localhost",
     "build": "node scripts/build-patch-notes.mjs && next build",
     "build:cloudflare": "node scripts/patch-opennext-windows.mjs && opennextjs-cloudflare build && node scripts/publish-static-shell.mjs",
     "preview:cloudflare": "pnpm build:cloudflare && opennextjs-cloudflare preview",

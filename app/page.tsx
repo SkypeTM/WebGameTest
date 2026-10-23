@@ -1212,6 +1212,7 @@ export default function Page() {
       <div className="audio-controls" aria-label="오디오 설정">
         <details>
           <summary>음량</summary>
+          <div className="audio-volume-panel">
           <label>
             음악{" "}
             <input
@@ -1243,6 +1244,7 @@ export default function Page() {
             />
           </label>
           <small role="status">{audioSettings.status}</small>
+          </div>
         </details>
         <button
           className="mini"

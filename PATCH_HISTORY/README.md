@@ -15,6 +15,9 @@
 
 현재 기록:
 
+- `081-audio-popover-quest-button.md`: 음량 팝업 헤더 늘어짐 및 NPC 버튼 글자 넘침 수정
+- `080-localhost-ipv4.md`: IPv4 우선 localhost 실행 및 연결 거부 복구
+
 - `079-hub-dialog-accessibility.md`: 거점 모달·NPC 대화 포커스 복귀와 모바일 퀘스트 간격
 
 - `078-responsive-route-validation.md`: 모바일 지도 노드 겹침·가로 지도 폭 수정 및 실제 이어하기/전투/경로 QA

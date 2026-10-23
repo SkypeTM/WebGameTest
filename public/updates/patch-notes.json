@@ -1,5 +1,17 @@
 [
   {
+    "id": "081",
+    "title": "081 — 음량 팝업과 퀘스트 버튼 크기 수정",
+    "body": "# 081 — 음량 팝업과 퀘스트 버튼 크기 수정\n\n- 음량 details를 펼치면 콘텐츠가 헤더 높이를 늘리고 음소거 버튼을 세로로 늘리는 문제 수정.\n- 음량 콘텐츠를 위치가 분리된 패널로 배치하고 음소거 버튼 높이를 유지.\n- 대화 버튼의 문구 너비와 좌우 여백 확보. 기존 대화용 공통 padding과 구분.\n- 오디오 값·음소거·계정 저장 로직은 변경하지 않음.\n- 실제 화면 검증 예정.\n\n## 검증 결과\n- TypeScript 통과.\n- 데스크탑 음량 열기/닫기 헤더 높이 152.5px로 동일.\n- NPC 대화 버튼 내부 너비/내용 너비 137px 일치, 좌우 padding 14px 확인.\n- 모바일 390×844 수첩에서는 음량 패널을 문서 흐름에 배치해 다른 메뉴와 겹치지 않도록 수정.\n- 계정의 기존 음소거, 음악 0.25, 효과음 0.75 유지. 설정 변경 없이 UI만 검증.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/081-audio-popover-quest-button.md"
+  },
+  {
+    "id": "080",
+    "title": "080 — localhost IPv4 연결 거부 복구",
+    "body": "# 080 — localhost IPv4 연결 거부 복구\n\n- 사용자 ERR_CONNECTION_REFUSED 신고 후 수신 주소 확인: ::1:3000만 LISTEN, 127.0.0.1:3000은 REFUSED.\n- Node의 DNS 결과를 IPv4 우선으로 지정하고 Next hostname은 localhost 유지.\n- 서버를 외부 인터페이스에 공개하거나 출처 검사/인증을 완화하지 않음.\n- 재실행 후 127.0.0.1:3000 LISTEN 및 Next Ready 확인.\n- 브라우저 연결 실패 화면은 data: URL 정책으로 차단됨. 사용자 새로고침 후 로그인·이어하기 재검증 대기.\n- 사용자 새로고침 후 세 번째 Codex 탭에서 로그인 상태·이어하기·저장 v22 확인 완료.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/080-localhost-ipv4.md"
+  },
+  {
     "id": "079",
     "title": "079 — 거점 시설 팝업 조작 개선",
     "body": "# 079 — 거점 시설 팝업 조작 개선\n\n## 목적\n- 실제 태블릿 화면에서 의뢰 패널이 문서 하단에 열리고 포커스가 배경 버튼에 남는 문제 수정.\n- 기존 role=dialog 선언에 맞게 실제 모달 동작을 구현.\n\n## 계획\n- 네이티브 dialog로 시설 패널을 열어 배경 조작 차단, 닫기 버튼 초기 포커스, Escape 닫기, 원래 버튼 복귀 적용.\n- 모바일·태블릿 안전 여백과 스크롤 가능한 콘텐츠 유지.\n- 퀘스트 및 시설 내용·저장 로직은 유지.\n\n## 검증\n- 구현 후 실제 브라우저 검증 및 TypeScript 검사 예정.\n\n## 완료 및 검증\n- HubDialog.tsx 추가, page.tsx 거점 패널 교체, art-direction.css 모달/퀘스트 간격 적용.\n- QuestConversation.tsx 종료 시 원래 대화 버튼으로 포커스 복귀.\n- 실제 Codex 브라우저: 태블릿 초기 닫기 포커스, NPC 중첩 대화 Escape 복귀, 시설 Escape 닫기와 원래 버튼 복귀 통과.\n- 모바일 390×844 퀘스트 팝업 확인. 배경이 접근성 트리에서 제외됨.\n- TypeScript 통과. 퀘스트 수락·완료 로직 변경 없음.\n- 탐사 QA 추가: 암상인 종료→야영지 휴식→안전 귀환, 은화 136/저장 v22 확인.\n- 실기기 터치 및 모든 시설별 거래는 후속 검증 대상.",

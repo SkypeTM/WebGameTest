@@ -1,5 +1,11 @@
 [
   {
+    "id": "083",
+    "title": "083 — 거점 업적 이름 표시",
+    "body": "# 083 — 거점 업적 이름 표시\n\n- 실제 로컬 훈련에서 은화 136→124, 레오나 경험치 12→22 확인.\n- 시설 화면의 업적 내부 코드 대신 한국어 이름과 퀘스트 제목을 표시합니다. 저장 ID는 유지합니다.\n- 변경 파일: app/page.tsx, data/roadmap.json.\n- 제작은 재료 부족으로 비활성화 확인. 제작 완료 및 시장 거래 화면 검증은 남아 있습니다.\n\n- 실제 화면에서 첫 귀환·첫 훈련 한국어 표시 확인. TypeScript 통과.\n- 시장 매물 등록→취소→재료 반환, 거래 내역 표시 확인. 브라우저 오류 없음. 다른 계정 구매는 미검증.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/083-achievement-labels.md"
+  },
+  {
     "id": "082",
     "title": "082 — 거점·진행 자동 검사 보고서",
     "body": "# 082 — 거점·진행 자동 검사 보고서\n\n## 목적\n- 제작·훈련·퀘스트·시장·저장 검사를 실행하고 짧은 결과와 상세 로그를 로컬에 저장하여 반복 QA 비용을 줄입니다.\n\n## 변경\n- scripts/qa-hub-report.mjs: 기존 game/store 검사를 실행하고 storage/qa/hub-latest.json 및 hub-latest.log 저장.\n- package.json: qa:hub 명령 추가.\n- data/roadmap.json: 자동 검사와 미완료 화면 검증을 구분.\n\n## 검증\n- 기존 game/store 검사 28/28 통과. 보고서 실행 결과는 작업 후 기록.\n- 화면 검증은 localhost 연결 실패 페이지에 대한 브라우저 정책 차단으로 대기 중. 자동 검사는 화면 검증을 대체하지 않습니다.\n\n- qa:hub 보고서 실행: 28/28 통과, 종료 코드 0. 임시 SQLite DB 사용으로 사용자 저장과 라이브 서버는 변경하지 않음.\n- 사용자 외출로 화면 검증을 보류하고 독립 자동 검사 작업을 진행함.",

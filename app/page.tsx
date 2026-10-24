@@ -2570,7 +2570,8 @@ export default function Page() {
                       {game.achievements.length ? (
                         game.achievements.map((id) => (
                           <p className="log-line" key={id}>
-                            ✦ {id}
+                            ✦ {({ "first-return": "첫 귀환", "first-training": "첫 훈련", "first-treatment": "첫 치료", veteran: "베테랑 동료" } as Record<string, string>)[id]
+                              || (id.startsWith("quest-") ? `${storyQuests.find((quest) => quest.id === id.slice(6))?.title || "의뢰"} 완료` : id.startsWith("ending-") ? `${id.slice(7)} 엔딩` : "탐사 업적")}
                           </p>
                         ))
                       ) : (

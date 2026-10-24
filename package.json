@@ -5,6 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@11.19.0",
   "scripts": {
+    "qa:hub": "node scripts/qa-hub-report.mjs",
     "qa:bot": "node --import ./scripts/register-tsx.mjs scripts/qa-play-bot.ts && node scripts/qa-actor-assets.mjs && node --import ./scripts/register-tsx.mjs scripts/qa-route-graph.ts",
     "dev": "node --dns-result-order=ipv4first node_modules/next/dist/bin/next dev --hostname localhost",
     "build": "node scripts/build-patch-notes.mjs && next build",

@@ -6,6 +6,7 @@ import FullBodyActor from "./components/FullBodyActor";
 import RouteBriefing from "./components/RouteBriefing";
 import RouteSelectionSheet from "./components/RouteSelectionSheet";
 import HubDialog from "./components/HubDialog";
+import PlayerProfile, { AchievementNotice } from "./components/PlayerProfile";
 import "./route-briefing.css";
 import { COMBAT_PRESENTATION } from "../lib/combat-presentation";
 import renewalPoses from "../data/renewal_actor_manifest.json";
@@ -540,6 +541,7 @@ export default function Page() {
       null,
     ),
     [sceneryEnabled, setSceneryEnabled] = useState(true),
+    [profileOpen, setProfileOpen] = useState(false),
     [deckOpen, setDeckOpen] = useState(false),
     [codexOpen, setCodexOpen] = useState(false),
     [codexTab, setCodexTab] = useState<
@@ -1287,7 +1289,7 @@ export default function Page() {
         배경 움직임 {sceneryEnabled ? "켜짐" : "꺼짐"}
       </button>
       <span className="wallet">◈ {game.gold}</span>
-      <span className="username">{name}</span>
+      <button className="mini" onClick={() => setProfileOpen(true)}>{name} · 마이페이지</button>
       <button
         className="mini"
         onClick={async () => {
@@ -1321,6 +1323,8 @@ export default function Page() {
     : undefined;
   return (
     <div className="shell">
+      <AchievementNotice ids={game.achievements} />
+      {profileOpen && <PlayerProfile game={game} name={name} locked={locked} act={act} close={()=>setProfileOpen(false)} />}
       <header className="header">
         <a className="brand" href="/">
           ♧{" "}
@@ -2599,17 +2603,6 @@ export default function Page() {
                             </div>
                           );
                         })}
-                      <h3>업적</h3>
-                      {game.achievements.length ? (
-                        game.achievements.map((id) => (
-                          <p className="log-line" key={id}>
-                            ✦ {({ "first-return": "첫 귀환", "first-training": "첫 훈련", "first-treatment": "첫 치료", veteran: "베테랑 동료" } as Record<string, string>)[id]
-                              || (id.startsWith("quest-") ? `${storyQuests.find((quest) => quest.id === id.slice(6))?.title || "의뢰"} 완료` : id.startsWith("ending-") ? `${id.slice(7)} 엔딩` : "탐사 업적")}
-                          </p>
-                        ))
-                      ) : (
-                        <p className="muted">아직 달성한 업적이 없습니다.</p>
-                      )}
                     </section>
                     <section className="panel">
                       <h2>

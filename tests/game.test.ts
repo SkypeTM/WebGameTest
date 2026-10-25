@@ -477,3 +477,13 @@ test("party quickslots preserve ordered loadouts and reject unavailable gear", (
   g.partyPresets![4]!.ids[0] = "missing-hero";
   assert.throws(() => act(g, { type: "loadPartyPreset", id: "4" }), /소유하지 않은/);
 });
+
+test("titles require earned achievements and survive save serialization", () => {
+  let g = initialGame();
+  assert.throws(() => act(g, { type: "selectTitle", id: "veteran" }), /획득한 업적/);
+  g.achievements.push("first-return");
+  g = act(g, { type: "selectTitle", id: "first-return" });
+  assert.equal(JSON.parse(JSON.stringify(g)).selectedTitle, "first-return");
+  g = act(g, { type: "selectTitle", id: "" });
+  assert.equal(g.selectedTitle, "");
+});

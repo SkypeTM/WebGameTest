@@ -136,3 +136,5 @@
 - `083-achievement-labels.md`: 거점 업적 이름 표시 및 훈련·시장 등록/취소 화면 검증
 
 - `084-estate-development.md`: 영지 구역·지역 선택·파티 퀵슬롯 5개 1차 구현
+
+- `085-profile-achievements.md`: 마이페이지, 등급 업적 알림, 저장형 칭호 선택

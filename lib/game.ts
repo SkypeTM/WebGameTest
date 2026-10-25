@@ -990,6 +990,7 @@ export type Run = {
   >;
 };
 export type Game = {
+  selectedTitle?: string;
   partyPresets?: ({ ids: string[]; loadouts: Record<string, Loadout> } | null)[];
   characterTrust?: Record<string, number>;
   guestIds?: string[];
@@ -2077,6 +2078,9 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       }
       log(g, `준비 편성 ${index + 1}을 불러왔다.`);
     }
+  } else if (a.type === "selectTitle") {
+    check(typeof a.id === "string" && (a.id === "" || g.achievements.includes(a.id)), "획득한 업적만 칭호로 사용할 수 있습니다.");
+    g.selectedTitle = a.id;
   } else if (a.type === "party") {
     check(!r, "탐사 중에는 편성을 바꿀 수 없습니다.");
     check(

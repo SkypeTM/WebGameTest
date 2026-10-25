@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {initialGame} from './legacy-fixture';
+import {reduceGame, heroStats, normalizeGame} from '../lib/game';
+test('specialization switches without stacking and survives save normalization',()=>{
+ const g=initialGame();g.roster[0].level=3;g.roster[0].xp=100;
+ const base=heroStats(g.roster[0]);
+ const a=reduceGame(g,{type:'specialize',id:'AR1',choice:'assault'});
+ assert.equal(heroStats(a.roster[0]).attack,base.attack+3);
+ assert.equal(a.gold,g.gold);
+ const b=reduceGame(a,{type:'specialize',id:'AR1',choice:'bulwark'});
+ assert.equal(heroStats(b.roster[0]).attack,base.attack);
+ assert.equal(heroStats(b.roster[0]).defense,base.defense+2);
+ const c=reduceGame(b,{type:'specialize',id:'AR1',choice:'focus'});
+ assert.equal(heroStats(c.roster[0]).spell,base.spell+3);
+ assert.equal(heroStats(c.roster[0]).defense,base.defense);
+ assert.equal(normalizeGame(JSON.parse(JSON.stringify(c))).roster[0].specialization,'focus');
+ assert.equal(g.roster[0].specialization,undefined);
+});
+test('specialization rejects locked, unowned, invalid and expedition changes',()=>{
+ const g=initialGame();
+ assert.throws(()=>reduceGame(g,{type:'specialize',id:'AR1',choice:'assault'}));
+ g.roster[0].level=3;g.roster[0].xp=100;
+ assert.throws(()=>reduceGame(g,{type:'specialize',id:'VR1',choice:'assault'}));
+ assert.throws(()=>reduceGame(g,{type:'specialize',id:'AR1',choice:'invalid'}));
+ const run=reduceGame(g,{type:'enter'},42);
+ assert.throws(()=>reduceGame(run,{type:'specialize',id:'AR1',choice:'focus'}));
+ const bad=JSON.parse(JSON.stringify(g));bad.roster[0].specialization='invalid';
+ assert.equal(normalizeGame(bad).roster[0].specialization,undefined);
+});

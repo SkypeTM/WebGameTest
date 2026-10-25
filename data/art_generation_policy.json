@@ -1,0 +1,8 @@
+{
+ "version":"2026-10-25-natural-design-1",
+ "appliesTo":["playable-character","story-npc","merchant","enemy","card-actor","environment","ui","dialogue"],
+ "direction":"data/CARTOON_ART_DIRECTION_KO.md",
+ "promptSuffix":"Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+ "reviewRequired":["hair-root-flow","nonrepeating-hair-masses","functional-costume-construction","consistent-front-side-back","character-identity","hands-and-contact","expression-specificity","thumbnail-readability"],
+ "runtimePolicy":"Keep existing assets until a replacement set is reviewed. A prompt policy does not certify generated output. Record unresolved defects and runtimeApplied separately."
+}

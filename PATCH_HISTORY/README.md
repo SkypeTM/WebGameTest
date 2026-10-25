@@ -146,3 +146,5 @@
 - `088-estate-release-qa.md`: 영지 개편 화면 QA와 탭 분기·진행도 표시 수정
 
 - `089-public-player-uid.md`: 계정별 공개 UID 저장 및 마이페이지 연결
+
+- `090-estate-art-batch.md`: 영지·세계 지도, 동료 이야기 32개 장, Lv.3 전문화, 카툰 제작 정책과 기준 시트. 자동 QA 59개 통과.

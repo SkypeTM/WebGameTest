@@ -60,8 +60,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 29, 성숙한 방벽대장, 근육형 장신, 남청·황동·백색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 29, 성숙한 방벽대장, 근육형 장신, 남청·황동·백색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -125,8 +126,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 26, 과묵한 결투가, 슬림 장신, 남청·황동·백색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 26, 과묵한 결투가, 슬림 장신, 남청·황동·백색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -190,8 +192,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 34, 안경 의무관, 아담한 성인 체형, 남청·황동·백색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 34, 안경 의무관, 아담한 성인 체형, 남청·황동·백색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -255,8 +258,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 24, 장난꾸러기 룬술사, 운동형, 남청·황동·백색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 24, 장난꾸러기 룬술사, 운동형, 남청·황동·백색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -320,8 +324,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 31, 냉정한 추적사수, 탄탄한 장신, 청록·구리·크림; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 31, 냉정한 추적사수, 탄탄한 장신, 청록·구리·크림; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -385,8 +390,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 27, 안경 공구 수집가, 아담한 성인 체형, 청록·구리·크림; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 27, 안경 공구 수집가, 아담한 성인 체형, 청록·구리·크림; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -450,8 +456,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 35, 든든한 방벽공, 건장한 체형, 청록·구리·크림; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 35, 든든한 방벽공, 건장한 체형, 청록·구리·크림; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -515,8 +522,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 30, 우아한 여성 지휘관, 장신 슬림, 청록·구리·크림; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 30, 우아한 여성 지휘관, 장신 슬림, 청록·구리·크림; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -580,8 +588,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 23, 쾌활한 탐사꾼, 민첩한 체형, 황토·황동·짙은 초록; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 23, 쾌활한 탐사꾼, 민첩한 체형, 황토·황동·짙은 초록; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -645,8 +654,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 35, 차분한 등불 안내자, 균형형, 황토·황동·짙은 초록; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 35, 차분한 등불 안내자, 균형형, 황토·황동·짙은 초록; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -710,8 +720,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 33, 무뚝뚝한 구조대장, 운동형 장신, 황토·황동·짙은 초록; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 33, 무뚝뚝한 구조대장, 운동형 장신, 황토·황동·짙은 초록; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -775,8 +786,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 25, 장난기 있는 측량사, 슬림, 황토·황동·짙은 초록; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 25, 장난기 있는 측량사, 슬림, 황토·황동·짙은 초록; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -840,8 +852,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 30, 냉미녀 암살자, 슬림 장신, 먹색·자주·은색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 30, 냉미녀 암살자, 슬림 장신, 먹색·자주·은색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -905,8 +918,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 24, 도도한 도적, 슬림, 먹색·자주·은색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 24, 도도한 도적, 슬림, 먹색·자주·은색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -970,8 +984,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 35, 성숙한 협상가, 풍만한 성인 체형, 먹색·자주·은색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 35, 성숙한 협상가, 풍만한 성인 체형, 먹색·자주·은색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1035,8 +1050,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult male fantasy character, apparent age 36, 과묵한 남성 호위, 건장한 장신, 먹색·자주·은색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult male fantasy character, apparent age 36, 과묵한 남성 호위, 건장한 장신, 먹색·자주·은색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1100,8 +1116,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 33, 온화한 성녀, 균형형, 상아·금·진홍; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 33, 온화한 성녀, 균형형, 상아·금·진홍; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1165,8 +1182,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 27, 원칙적인 성창기사, 운동형, 상아·금·진홍; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 27, 원칙적인 성창기사, 운동형, 상아·금·진홍; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1230,8 +1248,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 35, 성숙한 성당 수호자, 건장한 체형, 상아·금·진홍; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 35, 성숙한 성당 수호자, 건장한 체형, 상아·금·진홍; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1295,8 +1314,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 25, 내향적인 수녀 기록관, 슬림, 상아·금·진홍; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 25, 내향적인 수녀 기록관, 슬림, 상아·금·진홍; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1360,8 +1380,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 30, 신비로운 관측자, 슬림 장신, 남보라·청록 발광·검정; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 30, 신비로운 관측자, 슬림 장신, 남보라·청록 발광·검정; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1425,8 +1446,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 26, 사교 서투른 곡검술사, 운동형, 남보라·청록 발광·검정; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 26, 사교 서투른 곡검술사, 운동형, 남보라·청록 발광·검정; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1490,8 +1512,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 35, 음침한 기억 연구자, 균형형, 남보라·청록 발광·검정; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 35, 음침한 기억 연구자, 균형형, 남보라·청록 발광·검정; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1555,8 +1578,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 29, 무표정한 반달수호자, 운동형, 남보라·청록 발광·검정; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 29, 무표정한 반달수호자, 운동형, 남보라·청록 발광·검정; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1620,8 +1644,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 32, 자신감 있는 숲 사냥꾼, 운동형 장신, 이끼·호박·뼈색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 32, 자신감 있는 숲 사냥꾼, 운동형 장신, 이끼·호박·뼈색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1685,8 +1710,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 28, 안경 약초사, 아담한 성인 체형, 이끼·호박·뼈색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 28, 안경 약초사, 아담한 성인 체형, 이끼·호박·뼈색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1750,8 +1776,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 35, 늠름한 숲 수호자, 건장한 장신, 이끼·호박·뼈색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 35, 늠름한 숲 수호자, 건장한 장신, 이끼·호박·뼈색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1815,8 +1842,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 21, 짓궂은 덩굴 정찰병, 슬림 성인 체형, 이끼·호박·뼈색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 21, 짓궂은 덩굴 정찰병, 슬림 성인 체형, 이끼·호박·뼈색; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1880,8 +1908,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 34, 호방한 도끼 용병, 근육형, 재회색·벽돌빨강·구리; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 34, 호방한 도끼 용병, 근육형, 재회색·벽돌빨강·구리; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -1945,8 +1974,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 26, 소심한 야전 치료사, 균형형, 재회색·벽돌빨강·구리; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 26, 소심한 야전 치료사, 균형형, 재회색·벽돌빨강·구리; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -2010,8 +2040,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 32, 든든한 철갑 언니, 건장한 체형, 재회색·벽돌빨강·구리; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 32, 든든한 철갑 언니, 건장한 체형, 재회색·벽돌빨강·구리; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   },
   {
@@ -2075,8 +2106,9 @@
       ],
       "camera": "전신 정면 3/4, 발 기준 (0.5,0.94), 동일 초점거리",
       "lighting": "좌측 위 부드러운 주광, 약한 차가운 림라이트",
-      "prompt": "Original adult female fantasy character, apparent age 23, 무심한 신호공학자, 슬림 성인 체형, 재회색·벽돌빨강·구리; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border.",
-      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수"
+      "prompt": "Original adult female fantasy character, apparent age 23, 무심한 신호공학자, 슬림 성인 체형, 재회색·벽돌빨강·구리; clean refined anime linework, controlled cel shading, readable silhouette, adult anatomy. Preserve the approved turnaround identity. No text, no UI, no border. Design intentional large hair masses with coherent roots and directional flow; avoid repeating identical curls, spaghetti strands and uniform highlights. Preserve the character's established hairstyle. Clothing must have intelligible tailoring, seams and functional attachment points; remove floating straps, redundant buckles and arbitrary filigree. Use distinct character-specific faces, restrained expressions, clear silhouettes, controlled cel shading and material-specific folds. Keep costume construction consistent across views and motion. No random noise to imitate handcraft.",
+      "blockedUntil": "v2 기준 시트 생성 및 정체성 검수",
+      "artPolicy": "data/art_generation_policy.json"
     }
   }
 ]

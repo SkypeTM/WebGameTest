@@ -6,7 +6,8 @@
     "faction": "아르켄 왕국",
     "fallbackHero": "AR1",
     "design": "Older male royal beacon keeper, medium brown skin, swept back silver hair and neat short beard, navy brass ivory officer coat, brass lantern badge, worn ivory gloves",
-    "line": "종은 명령보다 귀환을 위해 울려야 하오. 이번 길을 지켜줄 성물을 하나 고르시오."
+    "line": "종은 명령보다 귀환을 위해 울려야 하오. 이번 길을 지켜줄 성물을 하나 고르시오.",
+    "artPolicy": "data/art_generation_policy.json"
   },
   "VR": {
     "id": "NPC-VR",
@@ -15,7 +16,8 @@
     "faction": "벨로라 공화연맹",
     "fallbackHero": "VR1",
     "design": "Adult woman harbor contract inspector, tan skin, short asymmetrical dark teal hair, copper monocle, teal cream long coat, rolled shipping ledger, leather gloves",
-    "line": "계약의 값은 당신의 무사 귀환이에요. 세 가지 중 이번 항로에 필요한 것을 골라요."
+    "line": "계약의 값은 당신의 무사 귀환이에요. 세 가지 중 이번 항로에 필요한 것을 골라요.",
+    "artPolicy": "data/art_generation_policy.json"
   },
   "BC": {
     "id": "NPC-BC",
@@ -24,7 +26,8 @@
     "faction": "황동나침반 조합",
     "fallbackHero": "BC2",
     "design": "Adult male archive guide, olive skin, curly chestnut hair, round brass spectacles, moss green scarf, ochre travel vest, compass brooch, ink-stained fingers",
-    "line": "기록을 찾는 사람에게는 길잡이가 필요하지요. 이 성물의 기억을 이번 탐사에 빌려드릴게요."
+    "line": "기록을 찾는 사람에게는 길잡이가 필요하지요. 이 성물의 기억을 이번 탐사에 빌려드릴게요.",
+    "artPolicy": "data/art_generation_policy.json"
   },
   "BK": {
     "id": "NPC-BK",
@@ -33,7 +36,8 @@
     "faction": "검은열쇠 결사",
     "fallbackHero": "BK1",
     "design": "Adult woman covert witness, pale olive skin, straight black chin-length hair with a silver streak, plum asymmetric coat, silver key brooch, dark gloves",
-    "line": "문은 열어드리지요. 그 너머에서 무엇을 지킬지는 당신이 정하세요."
+    "line": "문은 열어드리지요. 그 너머에서 무엇을 지킬지는 당신이 정하세요.",
+    "artPolicy": "data/art_generation_policy.json"
   },
   "WS": {
     "id": "NPC-WS",
@@ -42,7 +46,8 @@
     "faction": "백야성좌 교단",
     "fallbackHero": "WS1",
     "design": "Older woman resonance archivist, deep brown skin, silver tightly braided crown hair, ivory gold ceremonial robes, amber spectacles, small star incense pendant",
-    "line": "고통을 지우는 대신 견딜 힘을 드릴게요. 이번 여정을 위한 성물을 선택하세요."
+    "line": "고통을 지우는 대신 견딜 힘을 드릴게요. 이번 여정을 위한 성물을 선택하세요.",
+    "artPolicy": "data/art_generation_policy.json"
   },
   "DS": {
     "id": "NPC-DS",
@@ -51,7 +56,8 @@
     "faction": "깊은별 성회",
     "fallbackHero": "DS1",
     "design": "Adult androgynous male memory astronomer, pale skin, shoulder-length blue grey wavy hair, violet layered coat, floating tiny crystal astrolabe, dark indigo gloves",
-    "line": "기억은 소유하는 것이 아니라 돌보는 것이지요. 당신의 선택을 기록하겠습니다."
+    "line": "기억은 소유하는 것이 아니라 돌보는 것이지요. 당신의 선택을 기록하겠습니다.",
+    "artPolicy": "data/art_generation_policy.json"
   },
   "GO": {
     "id": "NPC-GO",
@@ -60,7 +66,8 @@
     "faction": "녹서약 수호회",
     "fallbackHero": "GO1",
     "design": "Older male woodland and snow guide, weathered tan face, salt pepper short hair, moss green leather fur-lined cloak, leaf clasp, wooden star compass, thick brown gloves",
-    "line": "별은 길을 정하지 않네. 길을 걷는 그대에게 이 작은 약속을 맡기지."
+    "line": "별은 길을 정하지 않네. 길을 걷는 그대에게 이 작은 약속을 맡기지.",
+    "artPolicy": "data/art_generation_policy.json"
   },
   "EF": {
     "id": "NPC-EF",
@@ -69,6 +76,7 @@
     "faction": "잿불 해방전선",
     "fallbackHero": "EF1",
     "design": "Adult woman resistance liaison, brown skin, cropped auburn hair, small nose scar, ash grey patched officer jacket, red scarf, brass signal badge, fingerless leather gloves",
-    "line": "우리가 귀환로를 지킬게. 왕좌 앞에서 필요한 힘 하나를 가지고 가."
+    "line": "우리가 귀환로를 지킬게. 왕좌 앞에서 필요한 힘 하나를 가지고 가.",
+    "artPolicy": "data/art_generation_policy.json"
   }
 }

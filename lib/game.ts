@@ -918,6 +918,7 @@ export type Hero = {
   xp: number;
   level: number;
   promotion?: number;
+  specialization?: "assault" | "bulwark" | "focus";
   injury: boolean;
   equipment: "blade" | "ward";
   mana: number;
@@ -1405,6 +1406,9 @@ export function hero(id: string): Hero {
   };
 }
 function normalizeHero(saved: Hero): Hero {
+  if (!["assault", "bulwark", "focus"].includes(saved.specialization || "")) {
+    saved = { ...saved }; delete saved.specialization;
+  }
   const defaults = hero(saved.id);
   const mergedLoadout = { ...defaults.loadout, ...(saved.loadout || {}) };
   const loadout = (Object.keys(defaults.loadout) as (keyof Loadout)[]).reduce(
@@ -1450,15 +1454,15 @@ export function heroStats(h: Hero) {
       weapon.attack +
       armor.attack +
       trinket.attack +
-      h.level,
+      h.level + (h.level >= 3 && h.specialization === "assault" ? 3 : 0),
     defense:
       profession.defense +
       weapon.defense +
       armor.defense +
       trinket.defense +
-      Math.floor(h.level / 2),
+      Math.floor(h.level / 2) + (h.level >= 3 && h.specialization === "bulwark" ? 2 : 0),
     spell:
-      profession.spell + weapon.spell + armor.spell + trinket.spell + h.level,
+      profession.spell + weapon.spell + armor.spell + trinket.spell + h.level + (h.level >= 3 && h.specialization === "focus" ? 3 : 0),
     crit: profession.crit + (h.loadout.weapon === "spear" ? 6 : 0),
     trait: profession.trait,
     traitDescription: profession.traitDescription,
@@ -2230,6 +2234,13 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     g.gold -= cost;
     g.facilities[id]++;
     log(g, `${id} 시설을 ${level + 1}단계로 올렸다.`);
+  } else if (a.type === "specialize") {
+    check(!r, "거점에서만 전문화를 변경할 수 있습니다.");
+    const h = g.roster.find(hero => hero.id === a.id);
+    check(h && h.level >= 3, "레벨 3 이상 보유 동료가 필요합니다.");
+    check(a.choice === "assault" || a.choice === "bulwark" || a.choice === "focus", "잘못된 전문화입니다.");
+    h.specialization = a.choice;
+    log(g, `${characters.find(c => c.id === h.id)!.name} 전문화 변경: ${a.choice === "assault" ? "맹공" : a.choice === "bulwark" ? "수비" : "집중"}.`);
   } else if (a.type === "promote") {
     check(!r, "거점에서만 전직할 수 있습니다.");
     const h = g.roster.find((hero) => hero.id === a.id);

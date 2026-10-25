@@ -1,0 +1,30 @@
+{
+  "styleVersion": "silent-bell-cartoon-v3",
+  "direction": "data/CARTOON_ART_DIRECTION_KO.md",
+  "assets": [
+    {
+      "id": "AR1-turnaround-v3",
+      "character": "AR1",
+      "path": "art-source/cartoon-v3/AR1-turnaround-v3.png",
+      "status": "reference-draft",
+      "runtimeApplied": false,
+      "review": "정면·측면·후면 및 표정 3종 생성. 은발·갈색 피부·남청/황동/백색·검/방패 유지. 작은 눈썹 흉터 및 시점별 장식 세부 일치는 모션 제작 전 추가 확인 필요."
+    },
+    {
+      "id": "AR1-turnaround-v3-refined",
+      "character": "AR1",
+      "path": "art-source/cartoon-v3/AR1-turnaround-v3-refined.png",
+      "status": "reference-draft",
+      "runtimeApplied": false,
+      "review": "반복 금장 감소, 낮은 굽, 단순 문양, 미세 표정 개선 확인. 머리 컬은 여전히 세밀하며 시점별 끈·눈썹 흉터 정합 후속 확인 필요."
+    },
+    {
+      "id": "AR1-turnaround-v3-natural",
+      "character": "AR1",
+      "path": "art-source/cartoon-v3/AR1-turnaround-v3-natural.png",
+      "status": "reference-draft",
+      "runtimeApplied": false,
+      "review": "큰 모발 덩어리와 단일 허리띠, 등 X끈 제거 확인. 측면 어깨 왕관 표시가 정면과 달라 후속 정합 수정 필요."
+    }
+  ]
+}

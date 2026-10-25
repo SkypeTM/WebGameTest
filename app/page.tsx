@@ -12,6 +12,7 @@ import "./route-briefing.css";
 import { COMBAT_PRESENTATION } from "../lib/combat-presentation";
 import renewalPoses from "../data/renewal_actor_manifest.json";
 import CharacterLobby from "./components/CharacterLobby";
+import WorldAtlas from "./components/WorldAtlas";
 import "./character-lobby.css";
 import sdAssets from "../data/sd_asset_manifest.json";
 import "./battle-stage.css";
@@ -1452,7 +1453,6 @@ export default function Page() {
         {!run ? (
           <>
             <section className="town-map" aria-label="마지막 피난처 마을 지도">
-              <LivingBackdrop region="hamlet" enabled={sceneryEnabled} />
               <CharacterLobby
                 name={char(game.party[0] || "AR1").name}
                 portrait={renewalPoses.find(p => p.id === (game.party[0] || "AR1") && p.pose === "ready")?.path
@@ -1500,16 +1500,7 @@ export default function Page() {
                 {game.summary && (
                   <div className="summary">✦ {game.summary}</div>
                 )}
-                {tab === "world" && <section className="world-atlas" aria-label="전체 탐사 지역">
-                  {regionCatalog.map((region) => {
-                    const available = unlockedRegions(game.completedQuests).includes(region.id);
-                    return <button key={region.id} className="world-region" disabled={!available}
-                      style={{backgroundImage:`linear-gradient(transparent, #10191ef2), url(${sceneAsset(region.id)})`}}
-                      onClick={() => {setSelectedRegion(region.id);setTab("party");}}>
-                      <strong>{region.name}</strong><span>{available ? "이 지역으로 파티 준비 →" : "🔒 선행 이야기 완료 필요"}</span>
-                    </button>;
-                  })}
-                </section>}
+                {tab === "world" && <WorldAtlas completedQuests={game.completedQuests} initialRegion={selectedRegion} prepare={(region) => {setSelectedRegion(region);setTab("party");}} />}
                 {tab === "guild" && <nav className="ending-actions" aria-label="길드 업무">
                   <button onClick={()=>setTab("quests")}>의뢰 게시판</button><button onClick={()=>setTab("roster")}>동료 모집</button>
                 </nav>}
@@ -2693,6 +2684,9 @@ export default function Page() {
                               </p>
                             </div>
                             <div className="growth-actions">
+                              {facilityTab === "training" && <fieldset><legend>전문화 · Lv.3 · 거점 무료 변경</legend>{([
+                                ["assault", "맹공 · 공격 +3"], ["bulwark", "수비 · 방어 +2"], ["focus", "집중 · 주문 +3"]
+                              ] as const).map(([choice,label]) => <button key={choice} className="mini" disabled={locked || h.level < 3 || h.specialization === choice} aria-pressed={h.specialization === choice} onClick={()=>void act({type:"specialize",id:h.id,choice})}>{h.specialization === choice ? "✓ " : ""}{label}</button>)}</fieldset>}
                               {facilityTab === "training" && (
                                 <button
                                   className="mini"

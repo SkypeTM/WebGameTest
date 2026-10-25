@@ -14,7 +14,7 @@ export const progressAchievements = [
 export function achievementProgress(game:Game,metric:string):number {
   switch(metric){
     case "returns":return game.runs;
-    case "stories":return new Set(game.completedQuests).size;
+    case "stories":return new Set(game.completedQuests.filter(id=>/^Q(0[1-9]|1[0-4])$/.test(id))).size;
     case "crafts":return new Set(game.craftedGear).size;
     case "veterans":return game.roster.filter(h=>h.level>=3).length;
     case "promoted":return game.roster.filter(h=>(h.promotion || 0)>0).length;

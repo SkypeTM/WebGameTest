@@ -2935,7 +2935,7 @@ export default function Page() {
                       </button>
                     </section>
                   </div>
-                ) : (
+                ) : tab === "storage" ? (
                   <div className="storage-grid">
                     <section className="panel inventory-panel">
                       <div className="inventory-title">
@@ -3037,7 +3037,7 @@ export default function Page() {
                       <ActionJournal entries={game.log} />
                     </section>
                   </div>
-                )}
+                ) : null}
               </HubDialog>
             )}
           </>

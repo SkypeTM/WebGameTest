@@ -142,3 +142,5 @@
 - `086-tavern-character-dossier.md`: 주점 상세·성장 경로·기본 파티 개인 이야기 8개 장
 
 - `087-progress-achievements.md`: 누적 진행 업적 10개 및 마이페이지 다음 목표
+
+- `088-estate-release-qa.md`: 영지 개편 화면 QA와 탭 분기·진행도 표시 수정

@@ -134,3 +134,5 @@
 - 073: 스크린샷에서 확인한 상단 메뉴 줄바꿈·지도 보조 글씨 대비 보정 (`073-header-map-readability.md`).
 
 - `083-achievement-labels.md`: 거점 업적 이름 표시 및 훈련·시장 등록/취소 화면 검증
+
+- `084-estate-development.md`: 영지 구역·지역 선택·파티 퀵슬롯 5개 1차 구현

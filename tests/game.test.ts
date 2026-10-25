@@ -463,3 +463,17 @@ test("faction relic choice is run-only and discoveries persist in the codex", ()
   assert.ok(g.codex.monsters.includes("M01"));
   assert.ok(g.codex.monsters.includes("M02"));
 });
+
+test("party quickslots preserve ordered loadouts and reject unavailable gear", () => {
+  let g = initialGame();
+  g = act(g, { type: "savePartyPreset", id: "4" });
+  const original = [...g.party];
+  g = act(g, { type: "party", ids: [...g.party].reverse() });
+  g = act(g, { type: "loadPartyPreset", id: "4" });
+  assert.deepEqual(g.party, original);
+  assert.equal(g.partyPresets?.length, 5);
+  assert.throws(() => act(g, { type: "loadPartyPreset", id: "5" }));
+  assert.throws(() => act(g, { type: "loadPartyPreset", id: "0" }));
+  g.partyPresets![4]!.ids[0] = "missing-hero";
+  assert.throws(() => act(g, { type: "loadPartyPreset", id: "4" }), /소유하지 않은/);
+});

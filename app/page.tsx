@@ -1454,7 +1454,11 @@ export default function Page() {
                   || characterAssets.find(a => a.id === game.party[0] && a.state === "idle")?.path}
                 region={regionCatalog.find(r => r.id === selectedRegion)?.name || "변경 요새"}
                 summary={game.summary}
-                open={(facility) => { setTab(facility); setOverlayOpen(true); }}
+                open={(facility) => {
+                  if (["forge", "training", "infirmary"].includes(facility)) { setFacilityTab(facility); setTab("growth"); }
+                  else setTab(facility);
+                  setOverlayOpen(true);
+                }}
               />
             </section>
             {overlayOpen && (
@@ -1473,6 +1477,9 @@ export default function Page() {
                           growth: "거점 시설",
                           market: "시장 골목",
                           storage: "기록 보관소",
+                          world: "세계 지도 · 목적지 선택",
+                          guild: "길드",
+                          tavern: "주점",
                         } as Record<string, string>
                       )[tab] || "거점"}
                     </h2>
@@ -1482,12 +1489,29 @@ export default function Page() {
                     onClick={() => setOverlayOpen(false)}
                     autoFocus
                   >
-                    오버레이 닫기 ×
+                    영지로 돌아가기 ×
                   </button>
                 </div>
                 {game.summary && (
                   <div className="summary">✦ {game.summary}</div>
                 )}
+                {tab === "world" && <section className="world-atlas" aria-label="전체 탐사 지역">
+                  {regionCatalog.map((region) => {
+                    const available = unlockedRegions(game.completedQuests).includes(region.id);
+                    return <button key={region.id} className="world-region" disabled={!available}
+                      style={{backgroundImage:`linear-gradient(transparent, #10191ef2), url(${sceneAsset(region.id)})`}}
+                      onClick={() => {setSelectedRegion(region.id);setTab("party");}}>
+                      <strong>{region.name}</strong><span>{available ? "이 지역으로 파티 준비 →" : "🔒 선행 이야기 완료 필요"}</span>
+                    </button>;
+                  })}
+                </section>}
+                {tab === "guild" && <nav className="ending-actions" aria-label="길드 업무">
+                  <button onClick={()=>setTab("quests")}>의뢰 게시판</button><button onClick={()=>setTab("roster")}>동료 모집</button>
+                </nav>}
+                {tab === "tavern" && <nav className="ending-actions" aria-label="주점 메뉴">
+                  <button onClick={()=>setTab("roster")}>동료 살펴보기</button><button onClick={()=>setTab("quests")}>진행 중인 이야기</button>
+                  <button onClick={()=>{setFacilityTab("canteen");setTab("growth");}}>탐사식량 준비</button>
+                </nav>}
                 {game.originFaction &&
                   testimonyIds.some((id) =>
                     game.completedQuests.includes(id),
@@ -1637,6 +1661,15 @@ export default function Page() {
                 {tab === "party" ? (
                   <div className="hub-grid">
                     <section>
+                      <button className="mini" onClick={()=>setTab("world")}>← 전체 지역 지도</button>
+                      <div className="party-quickslots" aria-label="파티 준비 퀵슬롯 5개">
+                        {Array.from({length:5},(_,index)=> <article key={index}>
+                          <strong>편성 {index + 1}</strong>
+                          <small>{game.partyPresets?.[index]?.ids.map(id=>char(id).name).join(" · ") || "빈 슬롯"}</small>
+                          <button disabled={locked || !game.partyPresets?.[index]} onClick={()=>void act({type:"loadPartyPreset",id:String(index)})}>불러오기</button>
+                          <button disabled={locked} onClick={()=>void act({type:"savePartyPreset",id:String(index)})}>현재 편성 저장</button>
+                        </article>)}
+                      </div>
                       <div className="section-heading">
                         <h2>
                           당신의 탐사대 <span>{game.party.length} / 4</span>

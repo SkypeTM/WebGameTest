@@ -1,65 +1,22 @@
 "use client";
-
 const facilities = [
-  ["party", "탐사대", "편성 · 장비"],
-  ["quests", "의뢰", "이야기 · 지역"],
-  ["roster", "주점", "동료 모집"],
-  ["growth", "거점 시설", "제작 · 훈련 · 치료"],
-  ["market", "시장", "거래 · 암시장"],
-  ["storage", "기록", "전리품 · 로그"],
-];
-
-export default function CharacterLobby({
-  name,
-  portrait,
-  region,
-  summary,
-  open,
-}: {
-  name: string;
-  portrait?: string;
-  region: string;
-  summary?: string | null;
+  ["guild", "길드", "의뢰 · 동료 모집", 24, 27],
+  ["party", "탐사대 숙소", "편성 · 장비", 16, 60],
+  ["tavern", "주점", "이야기 · 탐사식량", 45, 67],
+  ["forge", "대장간", "장비 제작", 75, 66],
+  ["training", "훈련장", "캐릭터 훈련", 84, 37],
+  ["infirmary", "교회", "캐릭터 치료", 51, 23],
+  ["market", "상점", "재료 구매 · 판매", 66, 45],
+] as const;
+export default function CharacterLobby({ open }: {
+  name: string; portrait?: string; region: string; summary?: string | null;
   open: (facility: string) => void;
 }) {
-  return (
-    <div className="character-lobby">
-      <div className="lobby-character">
-        {portrait && (
-          <img src={portrait} alt={`${name} 대표 캐릭터`} draggable={false} />
-        )}
-        <div className="lobby-name">
-          <span>이번 탐사의 선봉</span>
-          <strong>{name}</strong>
-        </div>
-      </div>
-      <section className="lobby-departure" aria-label="다음 탐사 준비">
-        <span className="lobby-kicker">다음 목적지</span>
-        <h2>{region}</h2>
-        <p>
-          동료의 장비와 덱을 확인하고,
-          <br />
-          종소리가 멎은 곳으로 향하세요.
-        </p>
-        <button
-          className="lobby-departure-button"
-          onClick={() => open("party")}
-        >
-          출정 준비 <span aria-hidden="true">→</span>
-        </button>
-        <button className="lobby-story-button" onClick={() => open("quests")}>
-          진행 중인 이야기 보기
-        </button>
-        {summary && <p className="lobby-last-record">{summary}</p>}
-      </section>
-      <nav className="lobby-dock" aria-label="거점 시설">
-        {facilities.map(([id, label, description]) => (
-          <button key={id} onClick={() => open(id)}>
-            <strong>{label}</strong>
-            <small>{description}</small>
-          </button>
-        ))}
-      </nav>
-    </div>
-  );
+  return <div className="estate-lobby">
+    <header className="estate-caption"><span>THE LAST REFUGE</span><h2>침묵의 영지</h2><p>불빛이 켜진 시설을 선택하세요.</p></header>
+    <nav className="estate-districts" aria-label="영지 시설 지도">
+      {facilities.map(([id,name,description,x,y]) => <button key={id} className="estate-site" style={{left:`${x}%`,top:`${y}%`}} onClick={()=>open(id)}><span aria-hidden="true">◇</span><strong>{name}</strong><small>{description}</small></button>)}
+    </nav>
+    <footer className="estate-actions"><button onClick={()=>open('storage')}>출정 기록 · 전리품</button><button className="lobby-departure-button" onClick={()=>open('world')}>세계 지도 · 출정 준비 →</button></footer>
+  </div>;
 }

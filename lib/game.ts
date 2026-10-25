@@ -990,6 +990,7 @@ export type Run = {
   >;
 };
 export type Game = {
+  partyPresets?: ({ ids: string[]; loadouts: Record<string, Loadout> } | null)[];
   characterTrust?: Record<string, number>;
   guestIds?: string[];
   echoMemories?: string[];
@@ -1535,6 +1536,7 @@ export function normalizeGame(previous: Game): Game {
     partyBonds: saved.partyBonds || {},
     testimonyChoices: saved.testimonyChoices || {},
     party: saved.party || defaults.party,
+    partyPresets: Array.from({ length: 5 }, (_, index) => saved.partyPresets?.[index] || null),
     roster: (saved.roster || defaults.roster).map(normalizeHero),
     materials: saved.materials || {},
     craftedGear: saved.craftedGear || [],
@@ -2048,6 +2050,33 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       )!.id;
       log(g, "종이 멎은 밤의 기억을 남기고, 선택한 동료들과 첫 조사에 나섰다.");
     } else throw new RuleError("알 수 없는 프롤로그 선택입니다.");
+  } else if (a.type === "savePartyPreset" || a.type === "loadPartyPreset") {
+    check(!r, "탐사 중에는 준비 편성을 변경할 수 없습니다.");
+    const index = Number(a.id);
+    check(a.id !== undefined && /^[0-4]$/.test(a.id), "퀵슬롯은 1~5번입니다.");
+    g.partyPresets ||= Array(5).fill(null);
+    if (a.type === "savePartyPreset") {
+      g.partyPresets[index] = { ids: [...g.party], loadouts: Object.fromEntries(g.party.map(id => [id, { ...g.roster.find(h => h.id === id)!.loadout }])) };
+      log(g, `준비 편성 ${index + 1}을 저장했다.`);
+    } else {
+      const preset = g.partyPresets[index];
+      check(preset && preset.ids.length >= 1 && preset.ids.length <= 4 && new Set(preset.ids).size === preset.ids.length, "저장된 편성이 없습니다.");
+      for (const id of preset.ids) {
+        check(g.roster.some(h => h.id === id), "더 이상 소유하지 않은 동료가 있습니다.");
+        for (const slot of ["weapon", "armor", "trinket"] as const) {
+          const item = preset.loadouts[id]?.[slot];
+          check(item && equipmentAllowed(id, slot, item), "저장된 장비를 착용할 수 없습니다.");
+          check(!craftedWeaponIds.includes(item as (typeof craftedWeaponIds)[number]) || g.craftedGear.includes(item), "저장된 제작 장비를 보유하지 않았습니다.");
+        }
+      }
+      g.party = [...preset.ids];
+      for (const id of preset.ids) {
+        const h = g.roster.find(h => h.id === id)!;
+        h.loadout = { ...preset.loadouts[id] };
+        h.equipment = h.loadout.weapon === "blade" ? "blade" : h.loadout.trinket === "ward" ? "ward" : "blade";
+      }
+      log(g, `준비 편성 ${index + 1}을 불러왔다.`);
+    }
   } else if (a.type === "party") {
     check(!r, "탐사 중에는 편성을 바꿀 수 없습니다.");
     check(

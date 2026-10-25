@@ -165,3 +165,27 @@
     display: none;
   }
 }
+
+/* Estate navigation preserves facility actions while placing them in the scene. */
+.estate-lobby {position:relative;z-index:2;min-height:700px;background:linear-gradient(#10151a66,transparent 35%,#10151a88);}
+.estate-caption {position:absolute;left:28px;top:20px;pointer-events:none;}
+.estate-caption span {color:#e4bd70;font-size:11px;letter-spacing:.18em;}
+.estate-caption h2 {margin:8px 0;}
+.estate-caption p {font-size:12px;}
+.estate-districts {position:absolute;inset:70px 0 90px;}
+.estate-site {position:absolute;transform:translate(-50%,-50%);display:grid;gap:5px;min-width:120px;padding:12px 18px;background:#10191ee8;border:1px solid #ad9060;box-shadow:0 8px 22px #0009;color:#f5e4c0;}
+.estate-site > span {font-size:26px;color:#e7be6b;}
+.estate-site small {color:#c5c5b7;font-size:11px;}
+.estate-site:hover,.estate-site:focus-visible {outline:2px solid #f0cf87;background:#344139;}
+.estate-actions {position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;gap:16px;padding:18px;background:#0c151de8;}
+.estate-actions .lobby-departure-button {width:auto;min-width:220px;}
+.world-atlas {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:24px 0;}
+.world-region {min-height:190px;background-size:cover;background-position:center;display:flex;flex-direction:column;justify-content:end;align-items:start;padding:20px;text-align:left;border:1px solid #aa916a;}
+.world-region strong {font-size:24px;}
+.world-region:disabled {filter:grayscale(1);opacity:.55;}
+* {scrollbar-width:thin;scrollbar-color:#a48b5d #172026;}
+::-webkit-scrollbar {width:9px;height:9px;}
+::-webkit-scrollbar-track {background:#172026;}
+::-webkit-scrollbar-thumb {background:#a48b5d;border:2px solid #172026;border-radius:8px;}
+@media(max-width:600px){.estate-lobby{min-height:780px}.estate-site{min-width:94px;padding:10px 7px}.estate-site small{max-width:85px}.estate-actions{flex-wrap:wrap}.estate-actions button{flex:1}.world-atlas{grid-template-columns:repeat(2,minmax(0,1fr))}.world-region{min-height:160px;padding:12px}.world-region strong{font-size:19px}}
+.party-quickslots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:16px 0}.party-quickslots article{display:grid;gap:8px;align-content:start;padding:12px;background:#17252b;border:1px solid #625c49}.party-quickslots small{min-height:45px;color:#b7c3c1}.party-quickslots button{padding:8px;font-size:12px;min-height:42px}@media(max-width:800px){.party-quickslots{grid-template-columns:repeat(2,minmax(0,1fr))}}

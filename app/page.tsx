@@ -6,6 +6,7 @@ import FullBodyActor from "./components/FullBodyActor";
 import RouteBriefing from "./components/RouteBriefing";
 import RouteSelectionSheet from "./components/RouteSelectionSheet";
 import HubDialog from "./components/HubDialog";
+import TavernDossier from "./components/TavernDossier";
 import PlayerProfile, { AchievementNotice } from "./components/PlayerProfile";
 import "./route-briefing.css";
 import { COMBAT_PRESENTATION } from "../lib/combat-presentation";
@@ -2244,7 +2245,8 @@ export default function Page() {
                         </button>
                       ))}
                     </div>
-                    <div className="recruit-grid">
+                    <TavernDossier game={game} />
+                    <h3>동료 모집과 계약</h3><div className="recruit-grid">
                       {characters
                         .filter(
                           (c) =>

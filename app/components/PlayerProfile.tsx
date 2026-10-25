@@ -26,10 +26,27 @@ export function AchievementNotice({ ids }: { ids: string[] }) {
 }
 
 export default function PlayerProfile({ game, name, locked, act, close }: { game: Game; name: string; locked: boolean; act: (a: Action) => unknown; close: () => void }) {
+  const [uid,setUid]=useState("");
+  const [uidError,setUidError]=useState("");
+  const [retry,setRetry]=useState(0);
+  useEffect(()=>{
+    const controller=new AbortController();
+    let active=true;
+    setUidError("");
+    const timer=setTimeout(()=>controller.abort(),12000);
+    fetch("/api/profile",{signal:controller.signal,cache:"no-store"}).then(async response=>{
+      if(!response.ok) throw new Error("UID를 불러오지 못했습니다.");
+      const data=await response.json();
+      if(typeof data.uid!=="string" || !/^SB-[A-F0-9]{32}$/.test(data.uid)) throw new Error("UID 형식 오류");
+      if(active) setUid(data.uid);
+    }).catch(()=>{if(active)setUidError("UID를 불러오지 못했습니다.");}).finally(()=>clearTimeout(timer));
+    return ()=>{active=false;clearTimeout(timer);controller.abort();};
+  },[retry]);
   const title = game.selectedTitle ? achievementInfo(game.selectedTitle).name : "귀환자";
   return <HubDialog onClose={close}>
     <header className="overlay-heading"><div><span className="eyebrow">EXPLORER PROFILE</span><h2>{name} · {title}</h2></div><button autoFocus onClick={close}>닫기 ×</button></header>
     <div className="profile-grid">
+      <section className="panel"><h3>공개 탐사자 UID</h3>{uid ? <><code style={{overflowWrap:"anywhere",userSelect:"all"}}>{uid}</code><p className="small">친구 식별용 UID입니다. 친구 검색과 초대 기능은 준비 중입니다.</p></> : uidError ? <><p role="status">{uidError}</p><button onClick={()=>setRetry(n=>n+1)}>다시 불러오기</button></> : <p role="status">UID 불러오는 중…</p>}</section>
       <section className="panel"><h3>탐사 기록</h3><p>귀환 {game.runs}회 · 이야기 {game.completedQuests.filter(id=>storyQuests.some(q=>q.id===id)).length}/{storyQuests.length}</p><p>은화 ◈ {game.gold} · 동료 {game.roster.length}명</p><h4>진행 중인 의뢰</h4><p>{storyQuests.find(q=>q.id===game.activeQuest)?.title || "진행 중인 의뢰 없음"}</p><h4>완료한 이야기</h4>{game.completedQuests.map(id=><p key={id}>{storyQuests.find(q=>q.id===id)?.title || (id.startsWith("Q00-") ? "기원의 기억" : "탐사 기록")}</p>)}</section>
       <section className="panel"><h3>팩션 우호도</h3>{Object.entries(game.reputation).map(([id,value])=><p key={id}>{characters.find(c=>c.id.startsWith(id))?.faction || id} <strong>{value}</strong></p>)}</section>
       <section className="panel"><h3>창고와 수집품</h3>{Object.entries(game.materials).map(([id,n])=><p key={id}>{id} × {n}</p>)}{Object.entries(game.codex).map(([id,items])=><p key={id}>{({characters:"인물",items:"아이템",monsters:"몬스터",cards:"카드",relics:"성물"} as Record<string,string>)[id] || id} · {items.length}종 발견</p>)}</section>

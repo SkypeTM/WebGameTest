@@ -144,3 +144,5 @@
 - `087-progress-achievements.md`: 누적 진행 업적 10개 및 마이페이지 다음 목표
 
 - `088-estate-release-qa.md`: 영지 개편 화면 QA와 탭 분기·진행도 표시 수정
+
+- `089-public-player-uid.md`: 계정별 공개 UID 저장 및 마이페이지 연결

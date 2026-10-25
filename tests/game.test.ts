@@ -487,3 +487,19 @@ test("titles require earned achievements and survive save serialization", () => 
   g = act(g, { type: "selectTitle", id: "" });
   assert.equal(g.selectedTitle, "");
 });
+
+test("progress achievements grant reached tiers once and preserve old achievements", () => {
+ let g=initialGame();
+ g.runs=20;
+ g.achievements=['first-return'];
+ g=act(g,{type:'party',ids:g.party});
+ assert.ok(g.achievements.includes('return-5'));
+ assert.ok(g.achievements.includes('return-20'));
+ assert.ok(!g.achievements.includes('return-50'));
+ assert.ok(g.achievements.includes('first-return'));
+ const earned=[...g.achievements];
+ g=act(g,{type:'party',ids:g.party});
+ assert.deepEqual(g.achievements,earned);
+ g=act(g,{type:'selectTitle',id:'return-20'});
+ assert.equal(g.selectedTitle,'return-20');
+});

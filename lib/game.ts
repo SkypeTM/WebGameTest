@@ -1,3 +1,4 @@
+import { progressAchievements, achievementProgress } from "./progress-achievements";
 import {
   regionNeighbors,
   regionFactions,
@@ -3031,6 +3032,10 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     } else throw new RuleError("지원하지 않는 행동입니다.");
   }
   syncCardTriggers(g);
+  for (const milestone of progressAchievements) {
+    if (achievementProgress(g, milestone.metric) >= milestone.goal)
+      achievement(g, milestone.id, milestone.name);
+  }
   g.version++;
   return g;
 }

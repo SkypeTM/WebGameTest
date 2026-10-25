@@ -1,5 +1,8 @@
 import { storyQuests } from "./game";
+import { progressAchievements } from "./progress-achievements";
 export function achievementInfo(id: string) {
+  const milestone = progressAchievements.find(item=>item.id===id);
+  if (milestone) return {name:milestone.name,tier:milestone.tier};
   const base: Record<string, [string, string]> = {
     "first-return": ["첫 귀환", "브론즈"],
     "first-training": ["첫 훈련", "브론즈"],

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { type Game, type Action, storyQuests } from "../../lib/game";
 import { achievementInfo } from "../../lib/achievement-labels";
 import HubDialog from "./HubDialog";
+import { progressAchievements, achievementProgress } from "../../lib/progress-achievements";
 
 export function AchievementNotice({ ids }: { ids: string[] }) {
   const previous = useRef<Set<string> | null>(null);
@@ -33,6 +34,7 @@ export default function PlayerProfile({ game, name, locked, act, close }: { game
       <section className="panel"><h3>팩션 우호도</h3>{Object.entries(game.reputation).map(([id,value])=><p key={id}>{id} <strong>{value}</strong></p>)}</section>
       <section className="panel"><h3>창고와 수집품</h3>{Object.entries(game.materials).map(([id,n])=><p key={id}>{id} × {n}</p>)}{Object.entries(game.codex).map(([id,items])=><p key={id}>{({characters:"인물",items:"아이템",monsters:"몬스터",cards:"카드",relics:"성물"} as Record<string,string>)[id] || id} · {items.length}종 발견</p>)}</section>
       <section className="panel"><h3>업적과 칭호</h3><button disabled={locked} onClick={()=>act({type:"selectTitle",id:""})}>기본 칭호 · 귀환자</button>{["브론즈","실버","골드","전설"].map(tier=><div key={tier}><h4>{tier}</h4>{game.achievements.filter(id=>achievementInfo(id).tier===tier).map(id=><button className="profile-achievement" key={id} disabled={locked} aria-pressed={game.selectedTitle===id} onClick={()=>act({type:"selectTitle",id})}>{achievementInfo(id).name}{game.selectedTitle===id ? " · 사용 중" : " · 칭호 적용"}</button>)}</div>)}</section>
+      <section className="panel"><h3>다음 업적 목표</h3>{progressAchievements.filter(item=>!game.achievements.includes(item.id)).map(item=><div key={item.id} className="achievement-goal"><strong>{item.tier} · {item.name}</strong><p>{achievementProgress(game,item.metric)} / {item.goal}</p><progress aria-label={`${item.name} 진행도`} value={Math.min(item.goal,achievementProgress(game,item.metric))} max={item.goal}/></div>)}</section>
     </div>
   </HubDialog>;
 }

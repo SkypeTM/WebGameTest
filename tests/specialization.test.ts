@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {initialGame} from './legacy-fixture';
-import {reduceGame, heroStats, normalizeGame} from '../lib/game';
+import {reduceGame, heroStats, normalizeGame, effectiveCardValue} from '../lib/game';
 test('specialization switches without stacking and survives save normalization',()=>{
  const g=initialGame();g.roster[0].level=3;g.roster[0].xp=100;
  const base=heroStats(g.roster[0]);
@@ -27,4 +27,16 @@ test('specialization rejects locked, unowned, invalid and expedition changes',()
  assert.throws(()=>reduceGame(run,{type:'specialize',id:'AR1',choice:'focus'}));
  const bad=JSON.parse(JSON.stringify(g));bad.roster[0].specialization='invalid';
  assert.equal(normalizeGame(bad).roster[0].specialization,undefined);
+});
+test('specialization reaches expedition cards and survives battle resume',()=>{
+ const g=initialGame();const healer=g.roster.find(h=>h.id==='AR3')!;healer.level=3;healer.xp=100;
+ const base=reduceGame(reduceGame(g,{type:'enter'},42),{type:'move',id:'l1-battle'},42);
+ const selected=reduceGame(g,{type:'specialize',id:'AR3',choice:'focus'});
+ const entered=reduceGame(reduceGame(selected,{type:'enter'},42),{type:'move',id:'l1-battle'},42);
+ const before=effectiveCardValue(base,base.run!.heroes.find(h=>h.id==='AR3')!,'skill');
+ const after=effectiveCardValue(entered,entered.run!.heroes.find(h=>h.id==='AR3')!,'skill');
+ assert.equal(after.value,before.value+1);
+ const resumed=normalizeGame(JSON.parse(JSON.stringify(entered)));
+ assert.equal(resumed.run!.heroes.find(h=>h.id==='AR3')!.specialization,'focus');
+ assert.equal(effectiveCardValue(resumed,resumed.run!.heroes.find(h=>h.id==='AR3')!,'skill').value,after.value);
 });

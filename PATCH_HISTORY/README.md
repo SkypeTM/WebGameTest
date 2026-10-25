@@ -148,3 +148,4 @@
 - `089-public-player-uid.md`: 계정별 공개 UID 저장 및 마이페이지 연결
 
 - `090-estate-art-batch.md`: 영지·세계 지도, 동료 이야기 32개 장, Lv.3 전문화, 카툰 제작 정책과 기준 시트. 자동 QA 59개 통과.
+- `091-specialization-release-validation.md`: 전문화의 전투·저장 재개 검사와 090 배포 결과.

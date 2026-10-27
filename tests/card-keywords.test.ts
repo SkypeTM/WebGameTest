@@ -50,6 +50,8 @@ test("level and promotion keywords survive normalization; promotion is validated
   assert.throws(() => reduceGame(g, { type: "promote", id: "AR1" }));
   g.roster[0].xp = 200;
   g.roster[0].level = 5;
+  g.roster[0].specialization = "bulwark";
+  g.completedQuests = ["Q02"];
   g.gold = 100;
   assert.deepEqual(earnedCardTriggers(g.roster[0], "guard"), ["retain"]);
   g = reduceGame(g, { type: "promote", id: "AR1" });

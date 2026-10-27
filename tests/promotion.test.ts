@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { initialGame } from './legacy-fixture';
+import { reduceGame, heroStats, normalizeGame } from '../lib/game';
+import { promotionQuest } from '../lib/promotion';
+test('promotion enforces conditions, charges once and preserves legacy second tier',()=>{
+ const g=initialGame();g.gold=1000;const h=g.roster[0];h.level=10;h.xp=450;
+ assert.throws(()=>reduceGame(g,{type:'promote',id:h.id}));
+ h.specialization='bulwark';g.completedQuests=['Q02'];
+ const second=reduceGame(g,{type:'promote',id:h.id});
+ assert.equal(second.roster[0].promotion,1);assert.equal(second.gold,920);
+ assert.throws(()=>reduceGame(second,{type:'promote',id:h.id}));
+ second.completedQuests.push('Q04');const before=heroStats(second.roster[0]);
+ const third=reduceGame(second,{type:'promote',id:h.id});
+ assert.equal(third.roster[0].promotion,2);assert.equal(third.gold,740);
+ assert.equal(heroStats(third.roster[0]).defense,before.defense+3);
+ assert.throws(()=>reduceGame(third,{type:'promote',id:h.id}));
+ assert.equal(normalizeGame(JSON.parse(JSON.stringify(third))).roster[0].promotion,2);
+ assert.equal(normalizeGame(JSON.parse(JSON.stringify(second))).roster[0].promotion,1);
+ assert.equal(g.gold,1000);
+});
+test('promotion rejects unowned, insufficient funds, expedition and skipped levels',()=>{
+ const g=initialGame();const h=g.roster[0];h.specialization='assault';g.completedQuests=['Q02','Q04'];g.gold=1000;
+ assert.throws(()=>reduceGame(g,{type:'promote',id:h.id}));
+ h.level=10;h.xp=450;g.gold=79;
+ assert.throws(()=>reduceGame(g,{type:'promote',id:h.id}));
+ g.gold=1000;assert.throws(()=>reduceGame(g,{type:'promote',id:'invalid'}));
+ const run=reduceGame(g,{type:'enter'},42);assert.throws(()=>reduceGame(run,{type:'promote',id:h.id}));
+ assert.equal(promotionQuest(h,g.completedQuests).next,2);
+});

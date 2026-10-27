@@ -12,6 +12,7 @@ import "./route-briefing.css";
 import { COMBAT_PRESENTATION } from "../lib/combat-presentation";
 import renewalPoses from "../data/renewal_actor_manifest.json";
 import CharacterLobby from "./components/CharacterLobby";
+import PromotionQuest from "./components/PromotionQuest";
 import WorldAtlas from "./components/WorldAtlas";
 import "./character-lobby.css";
 import sdAssets from "../data/sd_asset_manifest.json";
@@ -33,7 +34,7 @@ import "./renewal-combat.css";
 import "./compact-landscape.css";
 import "./art-direction.css";
 import StatusIcon from "./components/StatusIcon";
-import { sceneAsset } from "../lib/scenery";
+import { sceneAsset, preparationSceneAsset } from "../lib/scenery";
 import {
   recruitment,
   originBenefits,
@@ -2097,7 +2098,7 @@ export default function Page() {
                       <div
                         className="fortress-art region-preview"
                         style={{
-                          backgroundImage: `url(${sceneAsset(selectedRegion)})`,
+                          backgroundImage: `url(${preparationSceneAsset(selectedRegion)})`,
                         }}
                       >
                         <span>
@@ -2687,24 +2688,7 @@ export default function Page() {
                               {facilityTab === "training" && <fieldset><legend>전문화 · Lv.3 · 거점 무료 변경</legend>{([
                                 ["assault", "맹공 · 공격 +3"], ["bulwark", "수비 · 방어 +2"], ["focus", "집중 · 주문 +3"]
                               ] as const).map(([choice,label]) => <button key={choice} className="mini" disabled={locked || h.level < 3 || h.specialization === choice} aria-pressed={h.specialization === choice} onClick={()=>void act({type:"specialize",id:h.id,choice})}>{h.specialization === choice ? "✓ " : ""}{label}</button>)}</fieldset>}
-                              {facilityTab === "training" && (
-                                <button
-                                  className="mini"
-                                  disabled={
-                                    locked ||
-                                    h.level < 5 ||
-                                    !!h.promotion ||
-                                    game.gold < 80
-                                  }
-                                  onClick={() =>
-                                    void act({ type: "promote", id: h.id })
-                                  }
-                                >
-                                  {h.promotion
-                                    ? "상위 전직 완료"
-                                    : "상위 전직 · Lv.5 / ◈80 · 전용 스킬 생성"}
-                                </button>
-                              )}
+                              {facilityTab === "training" && <PromotionQuest member={h} completed={game.completedQuests} gold={game.gold} locked={locked} onPromote={()=>void act({type:"promote",id:h.id})} />}
                               {facilityTab === "training" ? (
                                 <button
                                   className="mini"
@@ -4235,12 +4219,7 @@ export default function Page() {
           />
         )}
         {deckOpen && (
-          <div
-            className="deck-modal-backdrop"
-            role="dialog"
-            aria-modal="true"
-            aria-label="현재 덱 미리보기"
-          >
+          <HubDialog label="현재 덱 미리보기" onClose={() => setDeckOpen(false)}>
             <section className="deck-modal">
               <div className="section-heading">
                 <div>
@@ -4295,7 +4274,7 @@ export default function Page() {
                 ))}
               </div>
             </section>
-          </div>
+          </HubDialog>
         )}
         {codexOpen && (
           <div

@@ -1,0 +1,4620 @@
+{
+  "note": "Manifest-derived candidate inventory; some entries are legacy and need runtime usage confirmation before replacement. Not all are currently rendered.",
+  "policy": "data/art_generation_policy.json",
+  "items": [
+    {
+      "path": "/assets/concept-sheets/AR1.png",
+      "sources": [
+        "asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/concept-sheets/AR4.png",
+      "sources": [
+        "asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/concept-sheets/BC1.png",
+      "sources": [
+        "asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/concept-sheets/BC2.png",
+      "sources": [
+        "asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/concept-sheets/M17.png",
+      "sources": [
+        "asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/concept-sheets/M25.png",
+      "sources": [
+        "asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/concept-sheets/M33.png",
+      "sources": [
+        "asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/concept-sheets/M41.png",
+      "sources": [
+        "asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/cards/basic-strike.png",
+      "sources": [
+        "card_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/cards/defensive-stance.png",
+      "sources": [
+        "card_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/cards/heavy-attack.png",
+      "sources": [
+        "card_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/cards-v2/AR1-skill.webp",
+      "sources": [
+        "card_character_art.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/cards-v2/AR2-skill.webp",
+      "sources": [
+        "card_character_art.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/cards-v2/AR3-skill.webp",
+      "sources": [
+        "card_character_art.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/cards-v2/AR4-skill.webp",
+      "sources": [
+        "card_character_art.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR1-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR1-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR1-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR2-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR2-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR2-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR3-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR3-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR3-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR4-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR4-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-AR4-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR1-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR1-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR1-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR2-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR2-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR2-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR3-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR3-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR3-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR4-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR4-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR4-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC1-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC1-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC1-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC2-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC2-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC2-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC3-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC3-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC3-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC4-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC4-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC4-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK1-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK1-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK1-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK2-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK2-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK2-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK3-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK3-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK3-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK4-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK4-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK4-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS1-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS1-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS1-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS2-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS2-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS2-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS3-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS3-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS3-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS4-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS4-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS4-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS1-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS1-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS1-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS2-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS2-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS2-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS3-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS3-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS3-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS4-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS4-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS4-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO1-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO1-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO1-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO2-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO2-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO2-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO3-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO3-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO3-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO4-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO4-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO4-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF1-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF1-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF1-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF2-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF2-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF2-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF3-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF3-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF3-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF4-strike.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF4-guard.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF4-heavy.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR1-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR2-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR3-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-VR4-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC1-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC2-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC3-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BC4-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK1-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK2-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK3-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-BK4-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS1-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS2-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS3-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-WS4-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS1-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS2-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS3-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-DS4-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO1-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO2-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO3-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-GO4-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF1-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF2-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF3-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/card-EF4-skill.webp",
+      "sources": [
+        "card_character_art.json",
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR1/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR1/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR1/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR1/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR1/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR1/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR2/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR2/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR2/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR2/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR2/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR2/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR3/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR3/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR3/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR3/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR3/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR3/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR4/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR4/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR4/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR4/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR4/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/AR4/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC1/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC1/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC1/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC1/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC1/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC1/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC2/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC2/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC2/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC2/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC2/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC2/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC3/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC3/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC3/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC3/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC3/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC3/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC4/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC4/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC4/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC4/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC4/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BC4/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK1/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK1/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK1/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK1/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK1/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK1/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK2/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK2/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK2/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK2/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK2/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK2/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK3/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK3/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK3/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK3/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK3/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK3/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK4/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK4/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK4/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK4/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK4/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/BK4/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS1/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS1/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS1/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS1/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS1/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS1/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS2/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS2/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS2/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS2/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS2/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS2/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS3/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS3/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS3/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS3/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS3/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS3/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS4/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS4/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS4/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS4/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS4/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/DS4/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF1/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF1/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF1/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF1/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF1/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF1/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF2/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF2/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF2/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF2/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF2/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF2/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF3/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF3/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF3/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF3/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF3/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF3/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF4/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF4/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF4/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF4/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF4/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/EF4/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO1/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO1/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO1/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO1/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO1/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO1/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO2/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO2/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO2/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO2/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO2/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO2/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO3/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO3/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO3/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO3/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO3/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO3/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO4/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO4/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO4/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO4/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO4/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/GO4/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR1/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR1/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR1/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR1/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR1/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR1/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR2/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR2/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR2/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR2/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR2/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR2/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR3/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR3/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR3/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR3/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR3/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR3/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR4/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR4/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR4/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR4/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR4/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/VR4/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS1/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS1/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS1/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS1/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS1/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS1/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS2/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS2/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS2/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS2/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS2/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS2/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS3/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS3/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS3/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS3/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS3/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS3/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS4/idle.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS4/attack.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS4/hit.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS4/skill.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS4/dialogue.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/characters/WS4/promotion.webp",
+      "sources": [
+        "character_asset_manifest.json",
+        "live2d_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/environments/expedition/fortress-gate.png",
+      "sources": [
+        "environment_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/environments/expedition/tidal-harbor.png",
+      "sources": [
+        "environment_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/environments/expedition/forgotten-archive.png",
+      "sources": [
+        "environment_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/environments/expedition/ruined-chapel.png",
+      "sources": [
+        "environment_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/environments/expedition/root-sanctuary.png",
+      "sources": [
+        "environment_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/environments/expedition/ashen-village.png",
+      "sources": [
+        "environment_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/environments/expedition/bell-tower.png",
+      "sources": [
+        "environment_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M01.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M02.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M03.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M04.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M05.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M06.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M07.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M08.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M09.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M10.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M11.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M12.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M13.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M14.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M15.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M16.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M17.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M18.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M19.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M20.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M21.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M22.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M23.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M24.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M25.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M26.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M27.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M28.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M29.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M30.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M31.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M32.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M33.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M34.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M35.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M36.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M37.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M38.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M39.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M40.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M41.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M42.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M43.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M44.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M45.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M46.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M47.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M48.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M49.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M50.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M51.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M52.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M53.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M54.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M55.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/monsters/M56.webp",
+      "sources": [
+        "live2d_manifest.json",
+        "monster_asset_manifest.json",
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/merchant/idle.webp",
+      "sources": [
+        "merchant_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/merchant/welcome.webp",
+      "sources": [
+        "merchant_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/merchant/rare.webp",
+      "sources": [
+        "merchant_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/merchant/exchange.webp",
+      "sources": [
+        "merchant_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/merchant/surprised.webp",
+      "sources": [
+        "merchant_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/fhd/merchant/portrait.webp",
+      "sources": [
+        "merchant_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR1/ready.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR1/windup.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR1/swing.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR1/strike.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR1/recover.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR1/guard.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR1/hit.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR2/ready.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR2/windup.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR2/swing.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR2/strike.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR2/recover.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR2/hit.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR2/skill.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR3/ready.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR3/windup.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR3/swing.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR3/strike.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR3/recover.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR3/heal.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR3/hit.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR4/ready.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR4/windup.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR4/swing.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR4/strike.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR4/recover.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR4/hit.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/renewal/AR4/skill.webp",
+      "sources": [
+        "renewal_actor_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/AR1.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/AR2.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/AR3.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/AR4.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/BC1.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/BC2.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/BC3.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/BC4.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/BK1.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/BK2.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/BK3.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/BK4.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/DS1.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/DS2.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/DS3.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/DS4.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/EF1.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/EF2.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/EF3.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/EF4.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/GO1.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/GO2.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/GO3.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/GO4.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/VR1.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/VR2.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/VR3.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/VR4.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/WS1.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/WS2.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/WS3.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/sd/characters/WS4.webp",
+      "sources": [
+        "sd_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-01.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-02.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-03.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-04.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-05.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-06.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-07.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-08.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-09.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-10.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-11.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-12.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-13.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-14.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-15.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-16.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-17.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-18.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-19.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-20.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-21.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-22.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-23.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-24.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-25.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-26.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-27.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-28.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-29.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-30.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-31.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-32.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-33.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-34.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-35.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-36.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-37.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-38.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-39.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-40.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-41.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-42.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-43.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-44.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-45.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-46.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-47.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-48.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-49.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-50.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-51.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-52.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-53.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-54.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-55.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/items/loot-56.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/factions/AR.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/factions/BC.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/factions/BK.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/factions/DS.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/factions/EF.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/factions/GO.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/factions/VR.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/factions/WS.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/equipment/blade.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/equipment/ward.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/sprites/attack.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/sprites/guard.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/sprites/support.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/sprites/control.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/sprites/stress.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/generated/sprites/injury.png",
+      "sources": [
+        "source_asset_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-AR-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-AR-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-AR-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-VR-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-VR-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-VR-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-BC-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-BC-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-BC-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-BK-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-BK-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-BK-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-WS-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-WS-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-WS-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-DS-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-DS-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-DS-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-GO-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-GO-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-GO-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-EF-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-EF-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/npc-EF-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-fortress-1.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-fortress-2.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-fortress-3.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-harbor-1.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-harbor-2.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-harbor-3.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-archive-1.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-archive-2.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-archive-3.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-chapel-1.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-chapel-2.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-chapel-3.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-laboratory-1.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-laboratory-2.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-laboratory-3.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-observatory-1.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-observatory-2.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-observatory-3.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-palace-1.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-palace-2.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/relic-palace-3.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR1-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR1-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR1-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR2-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR2-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR2-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR3-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR3-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR3-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR4-neutral.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR4-explain.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/hero-AR4-resolve.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/merchant-idle.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/merchant-welcome.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/merchant-rare.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/merchant-exchange.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/merchant-surprised.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/merchant-portrait.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/environment-laboratory.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/environment-observatory.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    },
+    {
+      "path": "/assets/story-v1/environment-palace.webp",
+      "sources": [
+        "story_art_manifest.json"
+      ],
+      "status": "pending"
+    }
+  ]
+}

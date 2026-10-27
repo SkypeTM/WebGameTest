@@ -2,9 +2,10 @@
 import { useEffect, useRef, type ReactNode } from "react";
 
 /** Native modal semantics keep background facilities out of keyboard navigation. */
-export default function HubDialog({ children, onClose }: {
+export default function HubDialog({ children, onClose, label = "거점 장소 정보" }: {
   children: ReactNode;
   onClose: () => void;
+  label?: string;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function HubDialog({ children, onClose }: {
       }
     };
   }, []);
-  return <dialog ref={ref} className="hub-overlay" aria-label="거점 장소 정보"
+  return <dialog ref={ref} className="hub-overlay" aria-label={label}
     onCancel={(event) => { event.preventDefault(); onClose(); }}>
     {children}
   </dialog>;

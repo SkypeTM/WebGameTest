@@ -1,3 +1,4 @@
+import { promotionQuest, promotionBonus } from "./promotion";
 import { progressAchievements, achievementProgress } from "./progress-achievements";
 import {
   regionNeighbors,
@@ -1406,6 +1407,9 @@ export function hero(id: string): Hero {
   };
 }
 function normalizeHero(saved: Hero): Hero {
+  if (saved.promotion !== undefined && ![0, 1, 2].includes(saved.promotion)) {
+    saved = { ...saved }; delete saved.promotion;
+  }
   if (!["assault", "bulwark", "focus"].includes(saved.specialization || "")) {
     saved = { ...saved }; delete saved.specialization;
   }
@@ -1436,6 +1440,7 @@ function normalizeHero(saved: Hero): Hero {
   };
 }
 export function heroStats(h: Hero) {
+  const ascension = promotionBonus(h);
   const profession = professionFor(h.id);
   const weapon =
     equipmentCatalog.weapon.find((item) => item.id === h.loadout.weapon) ||
@@ -1454,15 +1459,15 @@ export function heroStats(h: Hero) {
       weapon.attack +
       armor.attack +
       trinket.attack +
-      h.level + (h.level >= 3 && h.specialization === "assault" ? 3 : 0),
+      h.level + ascension.attack + (h.level >= 3 && h.specialization === "assault" ? 3 : 0),
     defense:
       profession.defense +
       weapon.defense +
       armor.defense +
       trinket.defense +
-      Math.floor(h.level / 2) + (h.level >= 3 && h.specialization === "bulwark" ? 2 : 0),
+      Math.floor(h.level / 2) + ascension.defense + (h.level >= 3 && h.specialization === "bulwark" ? 2 : 0),
     spell:
-      profession.spell + weapon.spell + armor.spell + trinket.spell + h.level + (h.level >= 3 && h.specialization === "focus" ? 3 : 0),
+      profession.spell + weapon.spell + armor.spell + trinket.spell + h.level + ascension.spell + (h.level >= 3 && h.specialization === "focus" ? 3 : 0),
     crit: profession.crit + (h.loadout.weapon === "spear" ? 6 : 0),
     trait: profession.trait,
     traitDescription: profession.traitDescription,
@@ -2244,15 +2249,14 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
   } else if (a.type === "promote") {
     check(!r, "거점에서만 전직할 수 있습니다.");
     const h = g.roster.find((hero) => hero.id === a.id);
-    check(h && h.level >= 5, "레벨 5 이상 동료가 필요합니다.");
-    check(!h.promotion, "이미 상위 전직했습니다.");
-    check(g.gold >= 80, "은화가 부족합니다.");
-    g.gold -= 80;
-    h.promotion = 1;
-    log(
-      g,
-      `${characters.find((c) => c.id === h.id)!.name} 상위 전직: 전용 스킬에 생성 키워드 해금.`,
-    );
+    check(h, "소유하지 않은 캐릭터입니다.");
+    const growth = promotionQuest(h, g.completedQuests);
+    check(!growth.complete, "이미 3단계 승급을 완료했습니다.");
+    check(growth.eligible, "승급 의뢰의 레벨·이야기·전문화 조건을 완료하세요.");
+    check(g.gold >= growth.cost, "은화가 부족합니다.");
+    g.gold -= growth.cost;
+    h.promotion = growth.next - 1;
+    log(g, growth.title + " 완료 · " + growth.next + "단계 승급" + (growth.next === 2 ? " · 전용 스킬 생성 해금." : " · 역할 능력 강화."));
   } else if (a.type === "train") {
     check(!r, "탐사 중에는 훈련할 수 없습니다.");
     const h = g.roster.find((hero) => hero.id === a.id);

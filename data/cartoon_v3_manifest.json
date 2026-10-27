@@ -25,6 +25,47 @@
       "status": "reference-draft",
       "runtimeApplied": false,
       "review": "큰 모발 덩어리와 단일 허리띠, 등 X끈 제거 확인. 측면 어깨 왕관 표시가 정면과 달라 후속 정합 수정 필요."
+    },
+    {
+      "id": "world-map-cartoon-v3",
+      "path": "public/assets/world-map-cartoon-v3.png",
+      "status": "superseded",
+      "runtimeApplied": false,
+      "usage": "WorldAtlas",
+      "review": "7개 지역 랜드마크 확인, 버튼 좌표 조정. 화면 검증 대기."
+    },
+    {
+      "id": "AR1-full-cartoon-v3",
+      "character": "AR1",
+      "path": "public/assets/cartoon-v3/AR1-full.png",
+      "status": "portrait-only",
+      "runtimeApplied": true,
+      "usage": "TavernDossier AR1",
+      "review": "배경 잔존. 전투 누끼로 사용 금지, 단독 초상 패널에만 적용."
+    },
+    {
+      "id": "world-map-districts-v4",
+      "path": "public/assets/world-map-districts-v4.png",
+      "status": "implemented-local",
+      "runtimeApplied": true,
+      "usage": "WorldAtlas",
+      "review": "반복 절벽 감소, 목조 항구·원형 예배당·침수 서고·벽돌 연구동·관측소 차별화. 구역별 개별 배경은 후속 제작.",
+      "generation": {
+        "tool": "built-in image_gen",
+        "prompt": "기존 7개 랜드마크 좌표 유지. 반복 절벽을 평지·습지·단일 설원 언덕으로 변경. 낮은 군사 성문과 꺼진 봉화, 목조 항구와 검은 조류, 노출 서가의 침수 서고, 낮은 원형 백색 예배당, 톱니 지붕 벽돌 연구동, 목조 황동 관측소, 어두운 왕궁. 캐주얼 셀 셰이딩, 복제 건축과 노이즈 제거."
+      }
+    },
+    {
+      "id": "AR1-promotion-stages-v1",
+      "character": "AR1",
+      "path": "art-source/cartoon-v3/AR1-promotion-stages-v1.png",
+      "status": "reference-draft",
+      "runtimeApplied": false,
+      "review": "3단계 의상·갑주·방패·검 변화 및 정체성 유지 확인. 1단계 끈 수와 상위 단계 무기 차별화 추가 검토. 전투 스프라이트가 아닌 비교 시트.",
+      "generation": {
+        "tool": "built-in image_gen",
+        "prompt": "AR1 natural 시트 정체성 유지. 성인 여성 29세, 갈색 피부·짧은 은발·회색 눈·수호 역할. 1단계 실용 기본 갑주와 무문양 방패, 2단계 왕관형 견갑/남청 판금/백색 타바드, 3단계 보강 관절갑주·백색 망토·광맥 검. 동일 포즈와 키, 절제된 셀 셰이딩, 기능적 연결, 무작위 장식 금지."
+      }
     }
   ]
 }

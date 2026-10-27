@@ -17,13 +17,14 @@ export default function HubDialog({ children, onClose, label = "거점 장소 �
     return () => {
       dialog.close();
       document.body.style.overflow = overflow;
-      if (source?.isConnected && !document.querySelector("dialog[open]")) {
+      const remaining = Array.from(document.querySelectorAll<HTMLDialogElement>("dialog[open]")).at(-1);
+      if (source?.isConnected && (!remaining || remaining.contains(source))) {
         source.focus({ preventScroll: true });
       }
     };
   }, []);
   return <dialog ref={ref} className="hub-overlay" aria-label={label}
-    onCancel={(event) => { event.preventDefault(); onClose(); }}>
+    onCancel={(event) => { event.preventDefault(); event.stopPropagation(); onClose(); }}>
     {children}
   </dialog>;
 }

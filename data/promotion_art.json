@@ -1,0 +1,12 @@
+{
+  "AR1": {
+    "path": "/assets/promotion-sheets/AR1.png",
+    "status": "preview",
+    "description": "기본 방호구 → 왕관형 판금 갑주 → 백색 망토와 계승 검"
+  },
+  "AR2": {
+    "path": "/assets/promotion-sheets/AR2.png",
+    "status": "preview",
+    "description": "훈련 군복 → 장교 코트와 보강 창 → 백색 어깨 망토와 계승 창"
+  }
+}

@@ -66,6 +66,19 @@
         "tool": "built-in image_gen",
         "prompt": "AR1 natural 시트 정체성 유지. 성인 여성 29세, 갈색 피부·짧은 은발·회색 눈·수호 역할. 1단계 실용 기본 갑주와 무문양 방패, 2단계 왕관형 견갑/남청 판금/백색 타바드, 3단계 보강 관절갑주·백색 망토·광맥 검. 동일 포즈와 키, 절제된 셀 셰이딩, 기능적 연결, 무작위 장식 금지."
       }
+    },
+    {
+      "id": "AR2-promotion-stages-v1",
+      "character": "AR2",
+      "path": "public/assets/promotion-sheets/AR2.png",
+      "status": "preview",
+      "runtimeApplied": true,
+      "usage": "훈련장 승급 의상 미리보기, 전투 미적용",
+      "review": "포니테일·얼굴·창 정체성과 단계별 코트/무구 변화 확인. 세부 끈과 망토 연결은 후속 점검.",
+      "generation": {
+        "tool": "built-in image_gen",
+        "prompt": "AR2 기존 얼굴·검은 포니테일·창/남청 군복 정체성, AR1 승급시트 셀 셰이딩. 1단계 실용 군복, 2단계 장교 코트/보강 창, 3단계 백색 어깨 망토/계승 창. 기능적 재봉과 큰 모발 덩어리, 불필요 장식 최소화."
+      }
     }
   ]
 }

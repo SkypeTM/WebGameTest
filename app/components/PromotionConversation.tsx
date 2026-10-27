@@ -4,7 +4,7 @@ import { characters } from "../../lib/game";
 import { dialogueArt } from "../../lib/story-art";
 import HubDialog from "./HubDialog";
 
-export default function PromotionConversation({heroId,title,lines,eligible,onClose}:{heroId:string;title:string;lines:string[][];eligible:boolean;onClose:()=>void}) {
+export default function PromotionConversation({heroId,title,lines,eligible,completed=false,onClose}:{heroId:string;title:string;lines:string[][];eligible:boolean;completed?:boolean;onClose:()=>void}) {
   const [index,setIndex]=useState(0);
   const [failedArt,setFailedArt]=useState<string[]>([]);
   const character=characters.find(c=>c.id===heroId);
@@ -20,7 +20,7 @@ export default function PromotionConversation({heroId,title,lines,eligible,onClo
         <strong>{character?.name}</strong>
       </div>
       <div className="promotion-speech"><div aria-live="polite" aria-atomic="true"><span className="eyebrow">{speaker}</span><p>{line}</p><small>{index+1} / {lines.length}</small></div>
-        {last && <p className="promotion-resolution">{eligible ? "성장 조건 충족 · 훈련장에서 비용을 확인하고 승급할 수 있습니다." : "훈련장에 표시된 성장 조건을 완료하세요."}</p>}
+        {last && <p className="promotion-resolution">{completed ? "이미 계승을 완료한 이야기입니다. 추가 비용은 발생하지 않습니다." : eligible ? "성장 조건 충족 · 훈련장에서 비용을 확인하고 승급할 수 있습니다." : "훈련장에 표시된 성장 조건을 완료하세요."}</p>}
         <nav aria-label="승급 대화 진행"><button type="button" disabled={index===0} onClick={()=>setIndex(i=>Math.max(0,i-1))}>이전</button><button type="button" onClick={()=>last ? onClose() : setIndex(i=>Math.min(lines.length-1,i+1))}>{last ? "조건 확인으로 돌아가기" : "다음 대사 →"}</button></nav>
       </div>
     </section>

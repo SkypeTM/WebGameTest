@@ -6,7 +6,7 @@ import { promotionQuest } from '../lib/promotion';
 test('promotion enforces conditions, charges once and preserves legacy second tier',()=>{
  const g=initialGame();g.gold=1000;const h=g.roster[0];h.level=10;h.xp=450;
  assert.throws(()=>reduceGame(g,{type:'promote',id:h.id}));
- h.specialization='bulwark';g.completedQuests=['Q02'];
+ h.combatWins=8;h.bossWins=1;h.specialization='bulwark';g.completedQuests=['Q02'];
  const second=reduceGame(g,{type:'promote',id:h.id});
  assert.equal(second.roster[0].promotion,1);assert.equal(second.gold,920);
  assert.throws(()=>reduceGame(second,{type:'promote',id:h.id}));

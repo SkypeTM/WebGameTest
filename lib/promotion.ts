@@ -1,6 +1,6 @@
 import characters from "../data/characters.json";
 
-type Member = { id: string; level: number; promotion?: number; specialization?: string };
+type Member = { id: string; level: number; promotion?: number; specialization?: string; combatWins?: number; bossWins?: number };
 const chapters: Record<string, [string, string]> = {
   AR: ["Q02", "Q04"], VR: ["Q04", "Q06"], BC: ["Q06", "Q08"],
   BK: ["Q08", "Q10"], WS: ["Q10", "Q12"], DS: ["Q10", "Q12"],
@@ -22,6 +22,8 @@ export function promotionQuest(member: Member, completed: string[]) {
     { label: `Lv.${level} 달성`, met: member.level >= level },
     { label: `${quest} 이야기 완료`, met: completed.includes(quest) },
     { label: "자신의 전문화 선택", met: ["assault", "bulwark", "focus"].includes(member.specialization || "") },
+    { label: `개인 생존 승리 ${member.combatWins || 0}/${next === 2 ? 3 : 8}`, met: (member.combatWins || 0) >= (next === 2 ? 3 : 8) },
+    ...(next === 3 ? [{ label: `보스 생존 승리 ${member.bossWins || 0}/1`, met: (member.bossWins || 0) >= 1 }] : []),
   ];
   return { id: `${member.id}-promotion-${next}`, stage, next, quest, level, cost,
     title: `${character?.name || member.id} · ${(vows[character?.role || ""] || vows.공격)[next - 2]}`,

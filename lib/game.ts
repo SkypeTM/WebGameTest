@@ -919,6 +919,8 @@ export type Hero = {
   xp: number;
   level: number;
   promotion?: number;
+  combatWins?: number;
+  bossWins?: number;
   specialization?: "assault" | "bulwark" | "focus";
   injury: boolean;
   equipment: "blade" | "ward";
@@ -1407,6 +1409,12 @@ export function hero(id: string): Hero {
   };
 }
 function normalizeHero(saved: Hero): Hero {
+  for (const key of ["combatWins", "bossWins"] as const) {
+    const value = saved[key];
+    if (value !== undefined && (!Number.isSafeInteger(value) || value < 0)) {
+      saved = { ...saved }; delete saved[key];
+    }
+  }
   if (saved.promotion !== undefined && ![0, 1, 2].includes(saved.promotion)) {
     saved = { ...saved }; delete saved.promotion;
   }
@@ -1958,6 +1966,7 @@ function hurt(h: Hero, n: number, defense: number) {
 function victory(g: Game) {
   const r = g.run!,
     b = r.battle!;
+  if (r.mode !== "battle") return;
   if (!r.heroes.some((h) => h.hp > 0)) {
     r.mode = "defeat";
     r.reward = null;
@@ -1967,6 +1976,16 @@ function victory(g: Game) {
     return;
   }
   if (b.enemies.every((e) => e.hp <= 0)) {
+    const boss = roomFor(r).kind === "boss" || r.room.endsWith("-boss");
+    for (const participant of r.heroes.filter(h => h.hp > 0)) {
+      participant.combatWins = (participant.combatWins || 0) + 1;
+      participant.bossWins = (participant.bossWins || 0) + (boss ? 1 : 0);
+      const owned = g.roster.find(h => h.id === participant.id);
+      if (owned) {
+        owned.combatWins = participant.combatWins;
+        owned.bossWins = participant.bossWins;
+      }
+    }
     const effect =
       relicCatalog.find((relic) => relic.id === r.relic)?.effect || {};
     const baseGold =

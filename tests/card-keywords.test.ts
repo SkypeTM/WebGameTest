@@ -51,6 +51,7 @@ test("level and promotion keywords survive normalization; promotion is validated
   g.roster[0].xp = 200;
   g.roster[0].level = 5;
   g.roster[0].specialization = "bulwark";
+  g.roster[0].combatWins = 3;
   g.completedQuests = ["Q02"];
   g.gold = 100;
   assert.deepEqual(earnedCardTriggers(g.roster[0], "guard"), ["retain"]);

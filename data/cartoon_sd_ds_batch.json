@@ -1,0 +1,29 @@
+{
+  "updated": "2026-10-30",
+  "assets": [
+    {
+      "id": "DS1",
+      "source": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-bf0cf6d1-e052-4696-bff4-3ffcd4e8c3c6.png",
+      "prompt": "Use case: style-transfer. Generate a NEW compact SD sprite, not a full-size portrait. Image 1 is IDENTITY reference only. Image 2 is the REQUIRED SD proportions/style reference. Match image2 short limbs and oversized head occupying one third of the total height, 3 heads tall in total. Create one compact 3-head-tall adult SD game sprite of EXACT reference character, whole body weapons and feet visible with margin. Keep identity, navy-violet turquoise black palette. Simplify repetitive chains/ornaments into practical clothing and one signature emblem. Coherent large hair masses. Crisp cartoon outline, 2-3 flat cel shades, stable low boots. Transparent background no floor or background glow or text. Adult woman observer30, blue-gray long wavy hair asymmetric fringe, cool medium skin, narrow eyes long nose. Long violet coat, armillary rings floating near her hands deliberately as magic equipment. Important: transparent empty alpha background. Remove the reference's dark vignette completely. Square canvas. No atmospheric backdrop, no repeated tiny pendants. Keep the full silhouette within 8 percent margin.",
+      "rejectedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-0870b817-f8fc-4df7-be81-d533bade2ca8.png"
+    },
+    {
+      "id": "DS2",
+      "source": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-301bc34f-03bb-4403-9c1b-2a3bdd67a224.png",
+      "prompt": "Use case: style-transfer. Generate a NEW compact SD sprite, not a full-size portrait. Image 1 is IDENTITY reference only. Image 2 is the REQUIRED SD proportions/style reference. Match image2 short limbs and oversized head occupying one third of the total height, 3 heads tall in total. Create one compact 3-head-tall adult SD game sprite of EXACT reference character, whole body weapons and feet visible with margin. Keep identity, navy-violet turquoise black palette. Simplify repetitive chains/ornaments into practical clothing and one signature emblem. Coherent large hair masses. Crisp cartoon outline, 2-3 flat cel shades, stable low boots. Transparent background no floor or background glow or text. Adult woman curved swordswoman26, deep copper skin, short black wavy bob, blue earrings, guarded expression. Purple scarf adjusted by left hand, crystal curved sword in right hand viewer left. Important: transparent empty alpha background. Remove the reference's dark vignette completely. Square canvas. No atmospheric backdrop, no repeated tiny pendants. Keep the full silhouette within 8 percent margin.",
+      "rejectedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-e6deef6a-9aaa-401c-a733-71ffea8e4fdb.png"
+    },
+    {
+      "id": "DS3",
+      "source": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-5c5bd0c2-eb4c-4676-9694-a24ac29e675e.png",
+      "prompt": "Use case: style-transfer. Generate a NEW compact SD sprite, not a full-size portrait. Image 1 is IDENTITY reference only. Image 2 is the REQUIRED SD proportions/style reference. Match image2 short limbs and oversized head occupying one third of the total height, 3 heads tall in total. Create one compact 3-head-tall adult SD game sprite of EXACT reference character, whole body weapons and feet visible with margin. Keep identity, navy-violet turquoise black palette. Simplify repetitive chains/ornaments into practical clothing and one signature emblem. Coherent large hair masses. Crisp cartoon outline, 2-3 flat cel shades, stable low boots. Transparent background no floor or background glow or text. Adult woman memory researcher35, dark olive skin, long white braid, narrow eyes subtle age lines. Dark violet cloak, memory orb held right hand viewer left, small hourglass left hand. Important: transparent empty alpha background. Remove the reference's dark vignette completely. Square canvas. No atmospheric backdrop, no repeated tiny pendants. Keep the full silhouette within 8 percent margin.",
+      "rejectedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-4201cd5c-ee24-4c7a-813d-520da1d0ab61.png"
+    },
+    {
+      "id": "DS4",
+      "source": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-9e629439-4e1b-46c3-b58a-2e9edad6f278.png",
+      "prompt": "Use case: style-transfer. Generate a NEW compact SD sprite, not a full-size portrait. Image 1 is IDENTITY reference only. Image 2 is the REQUIRED SD proportions/style reference. Match image2 short limbs and oversized head occupying one third of the total height, 3 heads tall in total. Create one compact 3-head-tall adult SD game sprite of EXACT reference character, whole body weapons and feet visible with margin. Keep identity, navy-violet turquoise black palette. Simplify repetitive chains/ornaments into practical clothing and one signature emblem. Coherent large hair masses. Crisp cartoon outline, 2-3 flat cel shades, stable low boots. Transparent background no floor or background glow or text. Adult female guardian29, light tan skin, very short navy bob, small mark below right eye, reserved expression. Black glass armor, crescent shield left hand viewer right, sword right hand viewer left. Important: transparent empty alpha background. Remove the reference's dark vignette completely. Square canvas. No atmospheric backdrop, no repeated tiny pendants. Keep the full silhouette within 8 percent margin.",
+      "rejectedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-d39d1a0d-1a85-4826-a48a-79fd1f0e0bd8.png"
+    }
+  ]
+}

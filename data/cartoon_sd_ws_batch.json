@@ -1,0 +1,25 @@
+{
+  "updated": "2026-10-30",
+  "assets": [
+    {
+      "id": "WS1",
+      "source": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-4ef873ef-c463-41e0-a1a8-600b45e56a2b.png",
+      "prompt": "Use case: style-transfer. Produce ONE brand-new SD game sprite. Image1 is identity/costume reference ONLY; image2 is REQUIRED compact SD proportions and clean rendering reference. 3 HEADS TALL TOTAL, large expressive head, short legs, short torso. Adult woman33 saint, warm brown skin, softly downturned eyes, golden curly hair tied low. Ivory robes crimson lining, gold accents. Hold star censer with right hand, closed book left hand. Keep modest robe and simplified functional clasp. Crisp clean cartoon outlines, 2-3 flat cel shadows, 5 large coherent hair masses, simplify filigree to one recognizable emblem. No repeated curls or pendants. Full body/weapon/feet fully visible, 8 percent margin on square canvas. TRUE transparent alpha background, no dark backdrop, no floor, no vignette, no text. Preserve adult identity, no child body or school clothes."
+    },
+    {
+      "id": "WS2",
+      "source": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-87009258-300a-479c-9d4e-be776521e0b9.png",
+      "prompt": "Use case: style-transfer. Produce ONE brand-new SD game sprite. Image1 is identity/costume reference ONLY; image2 is REQUIRED compact SD proportions and clean rendering reference. 3 HEADS TALL TOTAL, large expressive head, short legs, short torso. Adult woman27 knight, light olive skin, red-brown straight bob, diamond face. Ivory gold light armor crimson cloak, sacred spear in right hand (viewer left). Stable low flat armored boots. No tiny hanging chains. Crisp clean cartoon outlines, 2-3 flat cel shadows, 5 large coherent hair masses, simplify filigree to one recognizable emblem. No repeated curls or pendants. Full body/weapon/feet fully visible, 8 percent margin on square canvas. TRUE transparent alpha background, no dark backdrop, no floor, no vignette, no text. Preserve adult identity, no child body or school clothes."
+    },
+    {
+      "id": "WS3",
+      "source": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-a22d7406-98d3-40c8-9a5c-7c1d2f739a5c.png",
+      "prompt": "Use case: style-transfer. Produce ONE brand-new SD game sprite. Image1 is identity/costume reference ONLY; image2 is REQUIRED compact SD proportions and clean rendering reference. 3 HEADS TALL TOTAL, large expressive head, short legs, short torso. Adult woman35 sturdy cathedral guardian, deep brown skin, short swept gray hair, mature rectangular face. White crimson mantle, ivory gold armor, mace in right hand viewer left, tall bell-shaped shield on left arm viewer right. Simple chest insignia. Crisp clean cartoon outlines, 2-3 flat cel shadows, 5 large coherent hair masses, simplify filigree to one recognizable emblem. No repeated curls or pendants. Full body/weapon/feet fully visible, 8 percent margin on square canvas. TRUE transparent alpha background, no dark backdrop, no floor, no vignette, no text. Preserve adult identity, no child body or school clothes."
+    },
+    {
+      "id": "WS4",
+      "source": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-8a4ed177-68b2-4f81-b453-fa379eabd13f.png",
+      "prompt": "Use case: style-transfer. Produce ONE brand-new SD game sprite. Image1 is identity/costume reference ONLY; image2 is REQUIRED compact SD proportions and clean rendering reference. 3 HEADS TALL TOTAL, large expressive head, short legs, short torso. Adult woman25 reserved nun librarian, fair skin, long straight black hair, small gold rim glasses. Ivory robe crimson lining and hood. Sealed red book in right arm, other hand adjusts glasses. Low boots, two main layered robe panels. Crisp clean cartoon outlines, 2-3 flat cel shadows, 5 large coherent hair masses, simplify filigree to one recognizable emblem. No repeated curls or pendants. Full body/weapon/feet fully visible, 8 percent margin on square canvas. TRUE transparent alpha background, no dark backdrop, no floor, no vignette, no text. Preserve adult identity, no child body or school clothes."
+    }
+  ]
+}

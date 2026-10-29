@@ -161,10 +161,90 @@
       "screenReview": "skipped-user-request",
       "tool": "built-in image_gen",
       "reference": "public/assets/cartoon-v5/BK4.png"
+    },
+    {
+      "id": "DS1",
+      "path": "art-source/cartoon-v5-sd/DS1.png",
+      "runtimePath": "/assets/cartoon-v5-sd/DS1.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/DS1.png"
+    },
+    {
+      "id": "DS2",
+      "path": "art-source/cartoon-v5-sd/DS2.png",
+      "runtimePath": "/assets/cartoon-v5-sd/DS2.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/DS2.png"
+    },
+    {
+      "id": "DS3",
+      "path": "art-source/cartoon-v5-sd/DS3.png",
+      "runtimePath": "/assets/cartoon-v5-sd/DS3.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/DS3.png"
+    },
+    {
+      "id": "DS4",
+      "path": "art-source/cartoon-v5-sd/DS4.png",
+      "runtimePath": "/assets/cartoon-v5-sd/DS4.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/DS4.png"
+    },
+    {
+      "id": "WS1",
+      "path": "art-source/cartoon-v5-sd/WS1.png",
+      "runtimePath": "/assets/cartoon-v5-sd/WS1.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/WS1.png"
+    },
+    {
+      "id": "WS2",
+      "path": "art-source/cartoon-v5-sd/WS2.png",
+      "runtimePath": "/assets/cartoon-v5-sd/WS2.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/WS2.png"
+    },
+    {
+      "id": "WS3",
+      "path": "art-source/cartoon-v5-sd/WS3.png",
+      "runtimePath": "/assets/cartoon-v5-sd/WS3.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/WS3.png"
+    },
+    {
+      "id": "WS4",
+      "path": "art-source/cartoon-v5-sd/WS4.png",
+      "runtimePath": "/assets/cartoon-v5-sd/WS4.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/WS4.png"
     }
   ],
   "next": [
-    "Remaining 16 SD characters",
+    "Remaining 8 SD characters: GO / EF",
     "Matching full-size combat poses"
   ]
 }

@@ -98,32 +98,32 @@
   {
     "id": "DS1",
     "type": "characters",
-    "path": "/assets/sd/characters/DS1.webp",
-    "source": "art-source/sd/characters/DS1.png",
+    "path": "/assets/cartoon-v5-sd/DS1.png",
+    "source": "art-source/cartoon-v5-sd/DS1.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "DS2",
     "type": "characters",
-    "path": "/assets/sd/characters/DS2.webp",
-    "source": "art-source/sd/characters/DS2.png",
+    "path": "/assets/cartoon-v5-sd/DS2.png",
+    "source": "art-source/cartoon-v5-sd/DS2.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "DS3",
     "type": "characters",
-    "path": "/assets/sd/characters/DS3.webp",
-    "source": "art-source/sd/characters/DS3.png",
+    "path": "/assets/cartoon-v5-sd/DS3.png",
+    "source": "art-source/cartoon-v5-sd/DS3.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "DS4",
     "type": "characters",
-    "path": "/assets/sd/characters/DS4.webp",
-    "source": "art-source/sd/characters/DS4.png",
+    "path": "/assets/cartoon-v5-sd/DS4.png",
+    "source": "art-source/cartoon-v5-sd/DS4.png",
     "width": 1254,
     "height": 1254
   },
@@ -226,32 +226,32 @@
   {
     "id": "WS1",
     "type": "characters",
-    "path": "/assets/sd/characters/WS1.webp",
-    "source": "art-source/sd/characters/WS1.png",
+    "path": "/assets/cartoon-v5-sd/WS1.png",
+    "source": "art-source/cartoon-v5-sd/WS1.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "WS2",
     "type": "characters",
-    "path": "/assets/sd/characters/WS2.webp",
-    "source": "art-source/sd/characters/WS2.png",
+    "path": "/assets/cartoon-v5-sd/WS2.png",
+    "source": "art-source/cartoon-v5-sd/WS2.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "WS3",
     "type": "characters",
-    "path": "/assets/sd/characters/WS3.webp",
-    "source": "art-source/sd/characters/WS3.png",
+    "path": "/assets/cartoon-v5-sd/WS3.png",
+    "source": "art-source/cartoon-v5-sd/WS3.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "WS4",
     "type": "characters",
-    "path": "/assets/sd/characters/WS4.webp",
-    "source": "art-source/sd/characters/WS4.png",
+    "path": "/assets/cartoon-v5-sd/WS4.png",
+    "source": "art-source/cartoon-v5-sd/WS4.png",
     "width": 1254,
     "height": 1254
   },

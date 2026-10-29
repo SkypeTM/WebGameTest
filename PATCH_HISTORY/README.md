@@ -154,3 +154,4 @@
 - `107-velora-cartoon-sd.md`: 벨로라 4명 SD 제작·로컬 연결, 누적 8/32명.
 - `108-explorer-cartoon-sd.md`: 로웬·미라·오델·피아 SD 연결, 누적 12/32명.
 - `109-shadow-cartoon-sd.md`: 베스라·니엘·사브린·루크 SD 연결, 누적 16/32명.
+- `110-dusk-snow-cartoon-sd.md`: DS·WS 8명 SD 연결, 누적 24/32명. QA 생략.

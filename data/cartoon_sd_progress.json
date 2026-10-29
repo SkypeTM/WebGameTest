@@ -1,0 +1,90 @@
+{
+  "updated": "2026-10-29",
+  "baseStyle": "cartoon-v5",
+  "assets": [
+    {
+      "id": "AR1",
+      "path": "art-source/cartoon-v5-sd/AR1.png",
+      "runtimePath": "/assets/cartoon-v5-sd/AR1.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/AR1.png"
+    },
+    {
+      "id": "AR2",
+      "path": "art-source/cartoon-v5-sd/AR2.png",
+      "runtimePath": "/assets/cartoon-v5-sd/AR2.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/AR2.png"
+    },
+    {
+      "id": "AR3",
+      "path": "art-source/cartoon-v5-sd/AR3.png",
+      "runtimePath": "/assets/cartoon-v5-sd/AR3.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/AR3.png"
+    },
+    {
+      "id": "AR4",
+      "path": "art-source/cartoon-v5-sd/AR4.png",
+      "runtimePath": "/assets/cartoon-v5-sd/AR4.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/AR4.png"
+    },
+    {
+      "id": "VR1",
+      "path": "art-source/cartoon-v5-sd/VR1.png",
+      "runtimePath": "/assets/cartoon-v5-sd/VR1.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/VR1.png"
+    },
+    {
+      "id": "VR2",
+      "path": "art-source/cartoon-v5-sd/VR2.png",
+      "runtimePath": "/assets/cartoon-v5-sd/VR2.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/VR2.png"
+    },
+    {
+      "id": "VR3",
+      "path": "art-source/cartoon-v5-sd/VR3.png",
+      "runtimePath": "/assets/cartoon-v5-sd/VR3.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/VR3.png"
+    },
+    {
+      "id": "VR4",
+      "path": "art-source/cartoon-v5-sd/VR4.png",
+      "runtimePath": "/assets/cartoon-v5-sd/VR4.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/VR4.png"
+    }
+  ],
+  "next": [
+    "Remaining 24 SD characters",
+    "Matching full-size combat poses"
+  ]
+}

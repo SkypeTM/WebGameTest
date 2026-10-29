@@ -2,32 +2,32 @@
   {
     "id": "AR1",
     "type": "characters",
-    "path": "/assets/sd/characters/AR1.webp",
-    "source": "art-source/sd/characters/AR1.png",
+    "path": "/assets/cartoon-v5-sd/AR1.png",
+    "source": "art-source/cartoon-v5-sd/AR1.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "AR2",
     "type": "characters",
-    "path": "/assets/sd/characters/AR2.webp",
-    "source": "art-source/sd/characters/AR2.png",
+    "path": "/assets/cartoon-v5-sd/AR2.png",
+    "source": "art-source/cartoon-v5-sd/AR2.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "AR3",
     "type": "characters",
-    "path": "/assets/sd/characters/AR3.webp",
-    "source": "art-source/sd/characters/AR3.png",
+    "path": "/assets/cartoon-v5-sd/AR3.png",
+    "source": "art-source/cartoon-v5-sd/AR3.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "AR4",
     "type": "characters",
-    "path": "/assets/sd/characters/AR4.webp",
-    "source": "art-source/sd/characters/AR4.png",
+    "path": "/assets/cartoon-v5-sd/AR4.png",
+    "source": "art-source/cartoon-v5-sd/AR4.png",
     "width": 1254,
     "height": 1254
   },
@@ -194,32 +194,32 @@
   {
     "id": "VR1",
     "type": "characters",
-    "path": "/assets/sd/characters/VR1.webp",
-    "source": "art-source/sd/characters/VR1.png",
+    "path": "/assets/cartoon-v5-sd/VR1.png",
+    "source": "art-source/cartoon-v5-sd/VR1.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "VR2",
     "type": "characters",
-    "path": "/assets/sd/characters/VR2.webp",
-    "source": "art-source/sd/characters/VR2.png",
+    "path": "/assets/cartoon-v5-sd/VR2.png",
+    "source": "art-source/cartoon-v5-sd/VR2.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "VR3",
     "type": "characters",
-    "path": "/assets/sd/characters/VR3.webp",
-    "source": "art-source/sd/characters/VR3.png",
+    "path": "/assets/cartoon-v5-sd/VR3.png",
+    "source": "art-source/cartoon-v5-sd/VR3.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "VR4",
     "type": "characters",
-    "path": "/assets/sd/characters/VR4.webp",
-    "source": "art-source/sd/characters/VR4.png",
+    "path": "/assets/cartoon-v5-sd/VR4.png",
+    "source": "art-source/cartoon-v5-sd/VR4.png",
     "width": 1254,
     "height": 1254
   },

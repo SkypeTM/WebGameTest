@@ -152,3 +152,4 @@
 - `105-character-cartoon-replacement.md`: 32명 기본 전신 제작·로컬 연결, VR4·GO3 정체성 보정. SD·모션·NPC 및 화면 검증 미완료.
 - `106-starting-party-cartoon-sd.md`: 기본 파티 4명 SD 제작·로컬 연결. 나머지 SD와 전신 모션은 후속 작업.
 - `107-velora-cartoon-sd.md`: 벨로라 4명 SD 제작·로컬 연결, 누적 8/32명.
+- `108-explorer-cartoon-sd.md`: 로웬·미라·오델·피아 SD 연결, 누적 12/32명.

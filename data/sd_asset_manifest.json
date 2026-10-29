@@ -34,32 +34,32 @@
   {
     "id": "BC1",
     "type": "characters",
-    "path": "/assets/sd/characters/BC1.webp",
-    "source": "art-source/sd/characters/BC1.png",
+    "path": "/assets/cartoon-v5-sd/BC1.png",
+    "source": "art-source/cartoon-v5-sd/BC1.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "BC2",
     "type": "characters",
-    "path": "/assets/sd/characters/BC2.webp",
-    "source": "art-source/sd/characters/BC2.png",
+    "path": "/assets/cartoon-v5-sd/BC2.png",
+    "source": "art-source/cartoon-v5-sd/BC2.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "BC3",
     "type": "characters",
-    "path": "/assets/sd/characters/BC3.webp",
-    "source": "art-source/sd/characters/BC3.png",
+    "path": "/assets/cartoon-v5-sd/BC3.png",
+    "source": "art-source/cartoon-v5-sd/BC3.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "BC4",
     "type": "characters",
-    "path": "/assets/sd/characters/BC4.webp",
-    "source": "art-source/sd/characters/BC4.png",
+    "path": "/assets/cartoon-v5-sd/BC4.png",
+    "source": "art-source/cartoon-v5-sd/BC4.png",
     "width": 1254,
     "height": 1254
   },

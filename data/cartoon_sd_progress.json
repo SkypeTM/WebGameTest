@@ -81,10 +81,50 @@
       "screenReview": "skipped-user-request",
       "tool": "built-in image_gen",
       "reference": "public/assets/cartoon-v5/VR4.png"
+    },
+    {
+      "id": "BC1",
+      "path": "art-source/cartoon-v5-sd/BC1.png",
+      "runtimePath": "/assets/cartoon-v5-sd/BC1.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/BC1.png"
+    },
+    {
+      "id": "BC2",
+      "path": "art-source/cartoon-v5-sd/BC2.png",
+      "runtimePath": "/assets/cartoon-v5-sd/BC2.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/BC2.png"
+    },
+    {
+      "id": "BC3",
+      "path": "art-source/cartoon-v5-sd/BC3.png",
+      "runtimePath": "/assets/cartoon-v5-sd/BC3.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/BC3.png"
+    },
+    {
+      "id": "BC4",
+      "path": "art-source/cartoon-v5-sd/BC4.png",
+      "runtimePath": "/assets/cartoon-v5-sd/BC4.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/BC4.png"
     }
   ],
   "next": [
-    "Remaining 24 SD characters",
+    "Remaining 20 SD characters",
     "Matching full-size combat poses"
   ]
 }

@@ -153,3 +153,4 @@
 - `106-starting-party-cartoon-sd.md`: 기본 파티 4명 SD 제작·로컬 연결. 나머지 SD와 전신 모션은 후속 작업.
 - `107-velora-cartoon-sd.md`: 벨로라 4명 SD 제작·로컬 연결, 누적 8/32명.
 - `108-explorer-cartoon-sd.md`: 로웬·미라·오델·피아 SD 연결, 누적 12/32명.
+- `109-shadow-cartoon-sd.md`: 베스라·니엘·사브린·루크 SD 연결, 누적 16/32명.

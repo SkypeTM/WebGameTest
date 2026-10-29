@@ -130,64 +130,64 @@
   {
     "id": "EF1",
     "type": "characters",
-    "path": "/assets/sd/characters/EF1.webp",
-    "source": "art-source/sd/characters/EF1.png",
+    "path": "/assets/cartoon-v5-sd/EF1.png",
+    "source": "art-source/cartoon-v5-sd/EF1.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "EF2",
     "type": "characters",
-    "path": "/assets/sd/characters/EF2.webp",
-    "source": "art-source/sd/characters/EF2.png",
+    "path": "/assets/cartoon-v5-sd/EF2.png",
+    "source": "art-source/cartoon-v5-sd/EF2.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "EF3",
     "type": "characters",
-    "path": "/assets/sd/characters/EF3.webp",
-    "source": "art-source/sd/characters/EF3.png",
+    "path": "/assets/cartoon-v5-sd/EF3.png",
+    "source": "art-source/cartoon-v5-sd/EF3.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "EF4",
     "type": "characters",
-    "path": "/assets/sd/characters/EF4.webp",
-    "source": "art-source/sd/characters/EF4.png",
+    "path": "/assets/cartoon-v5-sd/EF4.png",
+    "source": "art-source/cartoon-v5-sd/EF4.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "GO1",
     "type": "characters",
-    "path": "/assets/sd/characters/GO1.webp",
-    "source": "art-source/sd/characters/GO1.png",
+    "path": "/assets/cartoon-v5-sd/GO1.png",
+    "source": "art-source/cartoon-v5-sd/GO1.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "GO2",
     "type": "characters",
-    "path": "/assets/sd/characters/GO2.webp",
-    "source": "art-source/sd/characters/GO2.png",
+    "path": "/assets/cartoon-v5-sd/GO2.png",
+    "source": "art-source/cartoon-v5-sd/GO2.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "GO3",
     "type": "characters",
-    "path": "/assets/sd/characters/GO3.webp",
-    "source": "art-source/sd/characters/GO3.png",
+    "path": "/assets/cartoon-v5-sd/GO3.png",
+    "source": "art-source/cartoon-v5-sd/GO3.png",
     "width": 1254,
     "height": 1254
   },
   {
     "id": "GO4",
     "type": "characters",
-    "path": "/assets/sd/characters/GO4.webp",
-    "source": "art-source/sd/characters/GO4.png",
+    "path": "/assets/cartoon-v5-sd/GO4.png",
+    "source": "art-source/cartoon-v5-sd/GO4.png",
     "width": 1254,
     "height": 1254
   },

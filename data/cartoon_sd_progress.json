@@ -241,10 +241,91 @@
       "screenReview": "skipped-user-request",
       "tool": "built-in image_gen",
       "reference": "public/assets/cartoon-v5/WS4.png"
+    },
+    {
+      "id": "GO1",
+      "path": "art-source/cartoon-v5-sd/GO1.png",
+      "runtimePath": "/assets/cartoon-v5-sd/GO1.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/GO1.png"
+    },
+    {
+      "id": "GO2",
+      "path": "art-source/cartoon-v5-sd/GO2.png",
+      "runtimePath": "/assets/cartoon-v5-sd/GO2.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/GO2.png"
+    },
+    {
+      "id": "GO3",
+      "path": "art-source/cartoon-v5-sd/GO3.png",
+      "runtimePath": "/assets/cartoon-v5-sd/GO3.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/GO3.png"
+    },
+    {
+      "id": "GO4",
+      "path": "art-source/cartoon-v5-sd/GO4.png",
+      "runtimePath": "/assets/cartoon-v5-sd/GO4.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/GO4.png"
+    },
+    {
+      "id": "EF1",
+      "path": "art-source/cartoon-v5-sd/EF1.png",
+      "runtimePath": "/assets/cartoon-v5-sd/EF1.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/EF1.png"
+    },
+    {
+      "id": "EF2",
+      "path": "art-source/cartoon-v5-sd/EF2.png",
+      "runtimePath": "/assets/cartoon-v5-sd/EF2.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/EF2.png"
+    },
+    {
+      "id": "EF3",
+      "path": "art-source/cartoon-v5-sd/EF3.png",
+      "runtimePath": "/assets/cartoon-v5-sd/EF3.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/EF3.png"
+    },
+    {
+      "id": "EF4",
+      "path": "art-source/cartoon-v5-sd/EF4.png",
+      "runtimePath": "/assets/cartoon-v5-sd/EF4.png",
+      "status": "illustration-reviewed",
+      "runtimeApplied": true,
+      "screenReview": "skipped-user-request",
+      "tool": "built-in image_gen",
+      "reference": "public/assets/cartoon-v5/EF4.png"
     }
   ],
   "next": [
-    "Remaining 8 SD characters: GO / EF",
-    "Matching full-size combat poses"
+    "Matching full-size combat poses",
+    "Dialogue / promotion / NPC / monster / card illustrations",
+    "Cross-pose identity and costume refinement; screen review when requested"
   ]
 }

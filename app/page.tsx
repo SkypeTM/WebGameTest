@@ -84,6 +84,7 @@ import {
 import assetManifest from "../data/asset_manifest.json";
 import generatedAssets from "../data/generated_assets.json";
 import characterAssets from "../data/character_asset_manifest.json";
+import { characterBaseArt } from "../lib/character-art";
 import monsterAssets from "../data/monster_asset_manifest.json";
 import cardArtAssets from "../data/card_art_manifest.json";
 import live2dAssets from "../data/live2d_manifest.json";
@@ -139,6 +140,7 @@ function Crest({
   state,
   contain = false,
   portrait = false,
+  baseArt = false,
 }: {
   id: string;
   large?: boolean;
@@ -146,6 +148,7 @@ function Crest({
   state?: "idle" | "attack" | "hit" | "skill" | "dialogue" | "promotion";
   contain?: boolean;
   portrait?: boolean;
+  baseArt?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
   const monster = id.startsWith("M");
@@ -178,7 +181,8 @@ function Crest({
       : manifestActionAsset;
   const idleAsset =
     !monster && rigStates.idle ? { path: rigStates.idle } : manifestIdleAsset;
-  const portraitPath = !monster ? `/assets/fhd/portraits/${id}.webp` : "";
+  const cartoonPortrait = !monster && portrait ? characterBaseArt(id) : undefined;
+  const portraitPath = !monster ? cartoonPortrait || `/assets/fhd/portraits/${id}.webp` : "";
   const repairedMonster = monster
     ? sdAssets.find((entry) => entry.id === id)
     : undefined;
@@ -189,6 +193,7 @@ function Crest({
         : sdAssets.find((a) => a.id === id)
       : undefined;
   const asset =
+    (!monster && baseArt && characterBaseArt(id) ? { path: characterBaseArt(id)! } : undefined) ||
     transparentHero ||
     repairedMonster ||
     (monster
@@ -211,8 +216,9 @@ function Crest({
             width: "100%",
             height: "100%",
             objectFit:
-              transparentHero || monster || contain ? "contain" : "cover",
-            objectPosition: monster ? "50% 100%" : "50% 50%",
+              baseArt || transparentHero || monster || contain ? "contain" : "cover",
+            objectPosition: monster ? "50% 100%" : cartoonPortrait ? "50% 10%" : "50% 50%",
+            ...(cartoonPortrait ? { objectFit: "cover" as const, transform: "scale(2.5)", transformOrigin: "50% 10%" } : {}),
           }}
           onError={() => setFailed(true)}
         />
@@ -1456,7 +1462,7 @@ export default function Page() {
             <section className="town-map" aria-label="마지막 피난처 마을 지도">
               <CharacterLobby
                 name={char(game.party[0] || "AR1").name}
-                portrait={renewalPoses.find(p => p.id === (game.party[0] || "AR1") && p.pose === "ready")?.path
+                portrait={characterBaseArt(game.party[0] || "AR1") || renewalPoses.find(p => p.id === (game.party[0] || "AR1") && p.pose === "ready")?.path
                   || characterAssets.find(a => a.id === game.party[0] && a.state === "idle")?.path}
                 region={regionCatalog.find(r => r.id === selectedRegion)?.name || "변경 요새"}
                 summary={game.summary}
@@ -2257,7 +2263,7 @@ export default function Page() {
                           const eligibility = recruitment(game, c.id);
                           return (
                             <article className="recruit" key={c.id}>
-                              <Crest id={c.id} state="dialogue" />
+                              <Crest id={c.id} state="dialogue" baseArt />
                               <div>
                                 <span className="eyebrow">
                                   {c.id} / {profession.name}
@@ -2348,7 +2354,7 @@ export default function Page() {
                               >
                                 ×
                               </button>
-                              <Crest id={selectedHero} state="dialogue" large />
+                              <Crest id={selectedHero} state="dialogue" large baseArt />
                               <div>
                                 <span className="eyebrow">
                                   {character.faction} / {profession.name}

@@ -5,13 +5,14 @@ import { companionStories } from "../../lib/companion-stories";
 import poses from "../../data/renewal_actor_manifest.json";
 import HubDialog from "./HubDialog";
 import { promotionStage } from "../../lib/promotion";
+import { characterBaseArt } from "../../lib/character-art";
 export default function TavernDossier({game}:{game:Game}) {
   const [selected,setSelected]=useState(game.party[0] || game.roster[0]?.id || "AR1");
   const [storyOpen,setStoryOpen]=useState(false);
   const character=characters.find(c=>c.id===selected)!;
   const member=game.roster.find(h=>h.id===selected) || hero(selected);
   const stats=heroStats(member);
-  const art=selected === "AR1" ? "/assets/cartoon-v3/AR1-full.png" : poses.find(p=>p.id===selected && p.pose==="ready")?.path;
+  const art=characterBaseArt(selected) || poses.find(p=>p.id===selected && p.pose==="ready")?.path;
   const stories=companionStories(game,selected);
   return <section className="tavern-dossier" aria-label="동료 상세 기록">
     <nav className="tavern-roster" aria-label="동료 선택">{game.roster.map(h=><button key={h.id} aria-pressed={selected===h.id} onClick={()=>{setSelected(h.id);setStoryOpen(false);}}>{characters.find(c=>c.id===h.id)?.name}</button>)}</nav>

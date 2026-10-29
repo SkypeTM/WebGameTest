@@ -149,3 +149,4 @@
 
 - `090-estate-art-batch.md`: 영지·세계 지도, 동료 이야기 32개 장, Lv.3 전문화, 카툰 제작 정책과 기준 시트. 자동 QA 59개 통과.
 - `091-specialization-release-validation.md`: 전문화의 전투·저장 재개 검사와 090 배포 결과.
+- `105-character-cartoon-replacement.md`: 32명 기본 전신 제작·로컬 연결, VR4·GO3 정체성 보정. SD·모션·NPC 및 화면 검증 미완료.

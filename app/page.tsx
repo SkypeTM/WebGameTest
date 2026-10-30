@@ -818,13 +818,16 @@ export default function Page() {
       : null;
   const musicTrack = soundtrackFor(game, Boolean(conversation));
   const loggedIn = Boolean(game);
+  const animationRosterKey = (run?.heroes.map(hero => hero.id) ?? game?.party ?? []).join(",");
   useEffect(() => {
     if (!loggedIn) return;
+    const roster = new Set(animationRosterKey.split(","));
     for (const pose of renewalPoses) {
+      if (!roster.has(pose.id)) continue;
       const image = new Image();
       image.src = pose.path;
     }
-  }, [loggedIn]);
+  }, [loggedIn, animationRosterKey]);
   useEffect(() => {
     const unlock = () => setAudioReady(true);
     window.addEventListener("pointerdown", unlock, { once: true });

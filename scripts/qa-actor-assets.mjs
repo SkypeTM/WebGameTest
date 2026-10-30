@@ -12,15 +12,16 @@ for (const entry of manifest) {
   try {
     assert.ok(!seen.has(key), 'duplicate pose');
     seen.add(key);
-    assert.match(entry.path, /^\/assets\/renewal\/[A-Z0-9]+\/[a-z]+\.webp$/);
-    assert.match(entry.source, /^art-source\/renewal\/[A-Z0-9]+\/[a-z]+\.png$/);
+    const cartoon = entry.styleVersion === 'cartoon-v5';
+    assert.match(entry.path, cartoon ? /^\/assets\/cartoon-v5-motion\/[A-Z0-9]+\/[a-z]+\.png$/ : /^\/assets\/renewal\/[A-Z0-9]+\/[a-z]+\.webp$/);
+    assert.match(entry.source, cartoon ? /^art-source\/cartoon-v5-motion\/[A-Z0-9]+\/[a-z]+\.png$/ : /^art-source\/renewal\/[A-Z0-9]+\/[a-z]+\.png$/);
     const source = await fs.readFile(entry.source);
     assert.equal(createHash('sha256').update(source).digest('hex'), entry.sha256, 'source changed without conversion');
     const image = sharp(await fs.readFile(`public${entry.path}`));
     const meta = await image.metadata();
     assert.equal(meta.width, entry.width, 'width mismatch');
     assert.equal(meta.height, entry.height, 'height mismatch');
-    assert.equal(meta.format, 'webp');
+    assert.equal(meta.format, cartoon ? 'png' : 'webp');
     assert.ok(meta.hasAlpha, 'missing alpha');
     const stats = await image.stats();
     assert.equal(stats.channels[3].min, 0, 'missing transparent background');

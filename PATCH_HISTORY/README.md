@@ -156,3 +156,4 @@
 - `109-shadow-cartoon-sd.md`: 베스라·니엘·사브린·루크 SD 연결, 누적 16/32명.
 - `110-dusk-snow-cartoon-sd.md`: DS·WS 8명 SD 연결, 누적 24/32명. QA 생략.
 - `111-complete-cartoon-sd-roster.md`: GO·EF 8명 SD 연결, 플레이어32명 경로 전환. 전신 모션과 기타 아트는 미완료.
+- `112-leona-cartoon-motion.md`: 레오나 전신7자세 교체 및 현재 파티만 전투 원화 선로딩.

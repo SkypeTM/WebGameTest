@@ -1,0 +1,48 @@
+{
+  "updated": "2026-10-30",
+  "styleVersion": "cartoon-v5",
+  "assets": [
+    {
+      "id": "AR1",
+      "pose": "ready",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-866d7c55-c82e-4efa-9048-2130ce14de4a.png",
+      "prompt": "Create a FULL-SIZE battle sprite of the adult woman in the reference. Transform the SD/chibi PROPORTIONS to anatomically mature 7-head-tall proportions: much smaller head, long athletic legs and arms, broad adult shoulders. This is NOT an SD illustration. Preserve reference face, short silver curly hair, warm brown skin, small gray eyes, navy-white-brass armor and all equipment. Adult woman29 knight commander. Sword in RIGHT hand viewer left, navy/white gold kite shield LEFT hand viewer right. Full-body neutral combat ready pose, looking to screen right, sword pointing down left, left shield at hip. Keep flat armored boots. Clean anime cartoon outlines and 2-3 cel shades. No intricate repetitive ornament. Square 1536x1536 canvas, both feet at90 percent height, hairtop10 percent; keep all weapons inside6percent edge. Transparent PNG CUTOUT. Outside silhouette must be 100% alpha transparent: NO brown gradient, NO background, NO vignette, NO shadow or glow. Single character only, no labels. This is one frame of a combat sprite animation."
+    },
+    {
+      "id": "AR1",
+      "pose": "windup",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-989fb248-40bc-4057-8c2e-b2f81a8b8503.png",
+      "prompt": "Precise correction of the supplied transparent combat windup sprite. The sword tip currently touches/is cut by the TOP edge. Change ONLY the right wrist/sword angle: blade extends HORIZONTALLY above her head at 12 percent canvas height, fully inside canvas with at least 6 percent transparent margin above blade and to the right of blade tip. Preserve identical character, costume, head/feet positions, body size, shield and ready-to-swing pose. Do not enlarge the character or recrop the canvas. Same square canvas dimensions. Transparent alpha background throughout, no vignette, no floor, no glow. The sword remains gripped by the RIGHT hand viewer left and shield in LEFT hand viewer right. ONE sword only, connected hilt and blade."
+    },
+    {
+      "id": "AR1",
+      "pose": "swing",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-285d7b6a-6c1a-4566-8c27-351b7c4fce70.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR1 combat sprite into ONE SWING frame. Preserve EXACT woman29 identity, warm brown skin, small gray eyes, short silver hair silhouette, same mature full-size body proportions, costume geometry and brass/navy/white colors. No redesign. Sword belongs to anatomical RIGHT hand, shield to LEFT. MID-SWING: feet remain planted, torso rotates from left toward screen right, RIGHT sword arm extends across chest, blade points diagonally up-right in ongoing horizontal slash. LEFT shield stays close to left ribs. Keep face unobscured and shield on left arm. No motion trail. Keep same SQUARE canvas, camera, body scale, feet baseline at97% height and feet centers at45% and72% width like reference. All blade/shield/head inside canvas. The character is 7 heads tall, NEVER SD. Crisp 2-3 cel shades. Maintain real transparent alpha on the whole background; no vignette or filled background, no floor shadow, particles, captions or extra objects. Clean silhouette."
+    },
+    {
+      "id": "AR1",
+      "pose": "strike",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-2eba80ff-eca7-459e-a8bf-8eca169df15d.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR1 combat sprite into ONE STRIKE frame. Preserve EXACT woman29 identity, warm brown skin, small gray eyes, short silver hair silhouette, same mature full-size body proportions, costume geometry and brass/navy/white colors. No redesign. Sword belongs to anatomical RIGHT hand, shield to LEFT. STRIKE impact: feet planted, weight leans forward slightly toward screen right, RIGHT sword arm extends across body to screen right with blade lowered slightly diagonally right in completed slash. LEFT shield tucked at left hip, not over sword. Use foreshortening to fit sword entirely inside canvas. No enemy, no slash trail. Keep same SQUARE canvas, camera, body scale, feet baseline at97% height and feet centers at45% and72% width like reference. All blade/shield/head inside canvas. The character is 7 heads tall, NEVER SD. Crisp 2-3 cel shades. Maintain real transparent alpha on the whole background; no vignette or filled background, no floor shadow, particles, captions or extra objects. Clean silhouette."
+    },
+    {
+      "id": "AR1",
+      "pose": "recover",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-3b5b6d5d-1e29-426e-964e-7c770573217c.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR1 combat sprite into ONE RECOVER frame. Preserve EXACT woman29 identity, warm brown skin, small gray eyes, short silver hair silhouette, same mature full-size body proportions, costume geometry and brass/navy/white colors. No redesign. Sword belongs to anatomical RIGHT hand, shield to LEFT. RECOVER: feet planted same positions, torso settles upright after slash, RIGHT sword hand brings sword diagonally down-left again, blade halfway back toward the ready position. LEFT shield lowers slightly at hip. Coat tails gently settle. Only subtle pose difference from ready. Keep same SQUARE canvas, camera, body scale, feet baseline at97% height and feet centers at45% and72% width like reference. All blade/shield/head inside canvas. The character is 7 heads tall, NEVER SD. Crisp 2-3 cel shades. Maintain real transparent alpha on the whole background; no vignette or filled background, no floor shadow, particles, captions or extra objects. Clean silhouette."
+    },
+    {
+      "id": "AR1",
+      "pose": "guard",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-0f22e19b-1e12-4ce5-b770-67988a7aab6b.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR1 combat sprite into ONE GUARD frame. Preserve EXACT woman29 identity, warm brown skin, small gray eyes, short silver hair silhouette, same mature full-size body proportions, costume geometry and brass/navy/white colors. No redesign. Sword belongs to anatomical RIGHT hand, shield to LEFT. GUARD counter: feet planted same positions, knees braced, LEFT arm lifts and angles kite shield forward across chest to block incoming blow from screen right. Head still visible above shield, eyes resolute. RIGHT hand holds sword close behind body with blade down-left. Do not mirror arms. Keep same SQUARE canvas, camera, body scale, feet baseline at97% height and feet centers at45% and72% width like reference. All blade/shield/head inside canvas. The character is 7 heads tall, NEVER SD. Crisp 2-3 cel shades. Maintain real transparent alpha on the whole background; no vignette or filled background, no floor shadow, particles, captions or extra objects. Clean silhouette."
+    },
+    {
+      "id": "AR1",
+      "pose": "hit",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-884011aa-e175-427c-8e41-e6af3820b7a1.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR1 combat sprite into ONE HIT frame. Preserve EXACT woman29 identity, warm brown skin, small gray eyes, short silver hair silhouette, same mature full-size body proportions, costume geometry and brass/navy/white colors. No redesign. Sword belongs to anatomical RIGHT hand, shield to LEFT. HIT reaction: feet planted same positions, upper body recoils slightly backward toward screen left, shoulders tense, eyes squint with restrained pain. LEFT shield tilted outward to screen right, RIGHT hand retains sword pointed down-left. No blood or injury effects. Keep same SQUARE canvas, camera, body scale, feet baseline at97% height and feet centers at45% and72% width like reference. All blade/shield/head inside canvas. The character is 7 heads tall, NEVER SD. Crisp 2-3 cel shades. Maintain real transparent alpha on the whole background; no vignette or filled background, no floor shadow, particles, captions or extra objects. Clean silhouette."
+    }
+  ]
+}

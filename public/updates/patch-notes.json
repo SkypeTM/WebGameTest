@@ -1,5 +1,11 @@
 [
   {
+    "id": "112",
+    "title": "112 — 레오나 전신 모션 카툰 전환",
+    "body": "# 112 — 레오나 전신 모션 카툰 전환\n\n## 목적\n새 SD와 기존 전신 연출 사이의 화풍 차이를 줄이기 위해 레오나의 전신 자세 세트를 교체한다.\n\n## 변경 사항\n- 레오나 대기·공격 준비·중간 동작·타격·회수·방어·피격 7종을 같은 기준 원화에서 제작했다.\n- 공격 준비 시안의 상단 칼끝 잘림을 재생성으로 수정했다. 배경 잔존 시안은 제외했다.\n- `data/renewal_actor_manifest.json`의 레오나 7개 경로를 새 PNG에 연결해 전투와 연출 미리보기에 반영한다. 이전 원화는 보존한다.\n- 전투 원화 선로딩은 현재 편성/출정 파티에 한정해 불필요한 이미지 요청을 줄인다.\n- QA는 사용자 요청으로 생략한다. 배포 빌드와 원화 자체 확인만 수행한다.\n\n## 변경 파일과 후속 범위\n- `public/assets/cartoon-v5-motion/AR1/`, `art-source/cartoon-v5-motion/AR1/`, 생성·진행 manifest.\n- `app/page.tsx`: 파티별 선로딩. `scripts/qa-actor-assets.mjs`: 향후 검사 시 버전별 PNG/WebP 경로를 처리하도록 유지보수(실행하지 않음).\n- `data/CARTOON_ART_DIRECTION_KO.md`: 오래된 배포 보류 문구를 현재 사용자 지시에 맞게 갱신.\n- 연속 리깅·세부 발 좌표·실제 화면 모션 정합 및 나머지31명 전신 동작은 미완료다. 현재는 개별 자세 전환 방식이다.",
+    "source": "https://github.com/SkypeTM/WebGameTest/blob/main/PATCH_HISTORY/112-leona-cartoon-motion.md"
+  },
+  {
     "id": "111",
     "title": "111 — 전32명 SD 원화 경로 전환",
     "body": "# 111 — 전32명 SD 원화 경로 전환\n\n## 목적과 적용\n- GO 실바·에린·바르나·리스, EF 레나·유나·다리아·세이 SD 8종 제작·연결.\n- `data/sd_asset_manifest.json`의 플레이어 32명 모두 `cartoon-v5-sd` 경로로 전환했다. 이전 파일은 보존한다.\n- `public/assets/cartoon-v5-sd/`, `art-source/cartoon-v5-sd/`, 생성 프롬프트와 진행 JSON을 함께 저장한다.\n- 기존 캐릭터 ID·전투 계산·저장 호환성은 유지한다.\n\n## 확인과 남은 범위\n- 생성 원화에서 얼굴·헤어·무기 손·전체 실루엣을 직접 확인했다.\n- 사용자 요청으로 화면·플레이·자동 QA 생략. 배포용 빌드는 수행한다.\n- 전신 모션·대화 표정·승급·NPC·몬스터·카드는 별도 미완료다. SD 경로32명 연결이 전체 아트 전환 완료를 뜻하지 않는다.\n- 개별 장식·굽·여백·모션 중 시각 정합은 후속 정리 대상이다.",

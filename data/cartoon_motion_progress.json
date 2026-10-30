@@ -1,0 +1,67 @@
+{
+  "updated": "2026-10-30",
+  "styleVersion": "cartoon-v5",
+  "assets": [
+    {
+      "id": "AR1",
+      "pose": "ready",
+      "path": "/assets/cartoon-v5-motion/AR1/ready.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR1",
+      "pose": "windup",
+      "path": "/assets/cartoon-v5-motion/AR1/windup.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR1",
+      "pose": "swing",
+      "path": "/assets/cartoon-v5-motion/AR1/swing.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR1",
+      "pose": "strike",
+      "path": "/assets/cartoon-v5-motion/AR1/strike.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR1",
+      "pose": "recover",
+      "path": "/assets/cartoon-v5-motion/AR1/recover.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR1",
+      "pose": "guard",
+      "path": "/assets/cartoon-v5-motion/AR1/guard.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR1",
+      "pose": "hit",
+      "path": "/assets/cartoon-v5-motion/AR1/hit.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    }
+  ],
+  "next": [
+    "AR2 / AR3 / AR4 full-size sets",
+    "Other28 characters",
+    "Continuous rigging / frame alignment"
+  ]
+}

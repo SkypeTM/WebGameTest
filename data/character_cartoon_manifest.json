@@ -15,7 +15,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -25,7 +24,9 @@
         "tool": "built-in image_gen",
         "prompt": "Create ONE full-body game character on transparent background. Character identity specification: {\"id\":\"AR1\",\"name\":\"레오나\",\"faction\":\"아르켄 왕국\",\"target\":{\"gender\":\"여\",\"apparentAge\":29,\"archetype\":\"성숙한 방벽대장\",\"silhouette\":\"근육형 장신\",\"personality\":\"엄격하지만 동료에게 다정함\",\"expression\":\"단호한 눈썹, 방패에 얹은 손\",\"design\":\"왕관형 어깨갑옷과 큰 방패, 짧은 은발\"},\"fixedIdentity\":{\"palette\":\"남청·황동·백색\",\"face\":\"넓은 사각턱, 작은 회색 눈, 곧고 넓은 코\",\"skin\":\"따뜻한 중간 갈색\",\"hairAndMarks\":\"왼눈썹의 짧은 흉터, 짧은 은색 컬\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Reference image ONLY defines clean cartoon linework and controlled cel shading, NOT character identity. Draw the specified character, not reference woman. Full figure boots and whole weapon visible, centered with 8% padding. Adult 7-head proportion. 2-3 flat cel shade values, natural distinct face, large coherent asymmetric hair masses, minimal functional straps, readable tailored costume, faction palette. No photorealism, no tiny repeated filigree, no floating accessories, no text or multi-panel sheet. Gentle ready standing pose. Right hand primary weapon, left support. Transparent alpha, no floor and no scenery."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json",
+      "motionStatus": "7-poses-runtime-linked-screen-review-skipped"
     },
     {
       "id": "AR2",
@@ -40,7 +41,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -50,7 +50,8 @@
         "tool": "built-in image_gen",
         "prompt": "Production game character full-body standalone key art of {\"id\":\"AR2\",\"name\":\"세린\",\"faction\":\"아르켄 왕국\",\"target\":{\"gender\":\"여\",\"apparentAge\":26,\"archetype\":\"과묵한 결투가\",\"silhouette\":\"슬림 장신\",\"personality\":\"짧고 정확한 말투\",\"expression\":\"곁눈질, 창을 정렬하는 손\",\"design\":\"긴 남청 군복과 가느다란 창, 검은 포니테일\"},\"fixedIdentity\":{\"palette\":\"남청·황동·백색\",\"face\":\"긴 타원형 얼굴, 가는 눈, 긴 콧등\",\"skin\":\"밝은 올리브\",\"hairAndMarks\":\"높은 검은 포니테일, 한쪽 귀의 작은 커프\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Use attached sheet only as identity and illustration style reference; depict ONE character, basic first-stage costume from LEFT panel. Full figure including boots and spear tip, centered vertical composition with generous 8% transparent padding. Natural adult anatomy 7 heads tall, relaxed alert standing pose, coherent hands holding weapon. Casual polished anime cartoon: clear expressive linework, 2-3 flat cel shadow shapes, no photographic texture, simplify hair to large asymmetric masses and functional tailored costume. No repeated tiny curls, no random filigree, no floating straps. True transparent background, no floor, no text, no panels. Preserve identity, age, skin, hair, faction palette."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "AR3",
@@ -65,7 +66,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -75,7 +75,8 @@
         "tool": "built-in image_gen",
         "prompt": "Create ONE full-body game character on transparent background. Character identity specification: {\"id\":\"AR3\",\"name\":\"마리엔\",\"faction\":\"아르켄 왕국\",\"target\":{\"gender\":\"여\",\"apparentAge\":34,\"archetype\":\"안경 의무관\",\"silhouette\":\"아담한 성인 체형\",\"personality\":\"친절하지만 치료 지시에는 단호함\",\"expression\":\"부드러운 미소, 약함을 여는 손\",\"design\":\"백색 의무 망토와 황동 약함, 갈색 단발\"},\"fixedIdentity\":{\"palette\":\"남청·황동·백색\",\"face\":\"둥근 볼, 넓은 눈 간격, 낮은 둥근 코\",\"skin\":\"주근깨 있는 밝은 피부\",\"hairAndMarks\":\"작은 둥근 안경, 턱 길이 갈색 단발\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Reference image ONLY defines clean cartoon linework and controlled cel shading, NOT character identity. Draw the specified character, not reference woman. Full figure boots and whole weapon visible, centered with 8% padding. Adult 7-head proportion. 2-3 flat cel shade values, natural distinct face, large coherent asymmetric hair masses, minimal functional straps, readable tailored costume, faction palette. No photorealism, no tiny repeated filigree, no floating accessories, no text or multi-panel sheet. Gentle ready standing pose. Right hand primary weapon, left support. Transparent alpha, no floor and no scenery."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "AR4",
@@ -90,7 +91,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -100,7 +100,8 @@
         "tool": "built-in image_gen",
         "prompt": "Create ONE full-body game character on transparent background. Character identity specification: {\"id\":\"AR4\",\"name\":\"에델\",\"faction\":\"아르켄 왕국\",\"target\":{\"gender\":\"여\",\"apparentAge\":24,\"archetype\":\"장난꾸러기 룬술사\",\"silhouette\":\"운동형\",\"personality\":\"여유로운 농담 뒤에 치밀한 계산\",\"expression\":\"한쪽 눈썹을 들고 사슬을 돌림\",\"design\":\"짧은 케이프와 룬 사슬검, 붉은 땋은 머리\"},\"fixedIdentity\":{\"palette\":\"남청·황동·백색\",\"face\":\"하트형 얼굴, 올라간 눈꼬리, 각진 눈썹\",\"skin\":\"구릿빛\",\"hairAndMarks\":\"굵은 붉은 외갈래 땋은 머리\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Reference image ONLY defines clean cartoon linework and controlled cel shading, NOT character identity. Draw the specified character, not reference woman. Full figure boots and whole weapon visible, centered with 8% padding. Adult 7-head proportion. 2-3 flat cel shade values, natural distinct face, large coherent asymmetric hair masses, minimal functional straps, readable tailored costume, faction palette. No photorealism, no tiny repeated filigree, no floating accessories, no text or multi-panel sheet. Gentle ready standing pose. Right hand primary weapon, left support. Transparent alpha, no floor and no scenery."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "VR1",
@@ -115,7 +116,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -125,7 +125,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult character game key art, isolated on transparent alpha. Identity strictly: {\"id\":\"VR1\",\"name\":\"리베아\",\"faction\":\"벨로라 공화연맹\",\"target\":{\"gender\":\"여\",\"apparentAge\":31,\"archetype\":\"냉정한 추적사수\",\"silhouette\":\"탄탄한 장신\",\"personality\":\"타인을 신뢰하기까지 오래 걸림\",\"expression\":\"집중한 눈, 활시위를 확인\",\"design\":\"구리 기계궁과 청록 재킷, 긴 흑발\"},\"fixedIdentity\":{\"palette\":\"청록·구리·크림\",\"face\":\"높은 광대, 좁고 긴 눈, 단단한 턱\",\"skin\":\"깊은 갈색\",\"hairAndMarks\":\"중앙 가르마의 긴 검은 머리\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. The attached image is ONLY a rendering-style reference; do NOT copy its navy uniform, spear, face or ponytail. Draw this character's own specified outfit, equipment, skin, hair and faction colors. Full body and all equipment within frame, 8% margin. Seven-head adult proportion, natural stance, unmistakable unique face and age. Clean confident cartoon linework, 2-3 cel shadows, hair in big coherent masses, functional tailoring and attachments, few meaningful ornaments. No photorealistic texture, no random filigree, no labels, no panels, no scenery. Entire background transparent."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "VR2",
@@ -140,7 +141,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -150,7 +150,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult character game key art, isolated on transparent alpha. Identity strictly: {\"id\":\"VR2\",\"name\":\"노에라\",\"faction\":\"벨로라 공화연맹\",\"target\":{\"gender\":\"여\",\"apparentAge\":27,\"archetype\":\"안경 공구 수집가\",\"silhouette\":\"아담한 성인 체형\",\"personality\":\"도구 얘기에는 말이 빨라짐\",\"expression\":\"안경을 밀어 올리고 도구를 제시\",\"design\":\"접이식 도구 가방과 크림 코트, 은색 곱슬머리\"},\"fixedIdentity\":{\"palette\":\"청록·구리·크림\",\"face\":\"짧은 사각 얼굴, 큰 둥근 눈, 작은 코\",\"skin\":\"밝은 복숭아색\",\"hairAndMarks\":\"짧은 은색 곱슬머리, 큰 사각 안경\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. The attached image is ONLY a rendering-style reference; do NOT copy its navy uniform, spear, face or ponytail. Draw this character's own specified outfit, equipment, skin, hair and faction colors. Full body and all equipment within frame, 8% margin. Seven-head adult proportion, natural stance, unmistakable unique face and age. Clean confident cartoon linework, 2-3 cel shadows, hair in big coherent masses, functional tailoring and attachments, few meaningful ornaments. No photorealistic texture, no random filigree, no labels, no panels, no scenery. Entire background transparent."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "VR3",
@@ -165,7 +166,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -175,7 +175,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult character game key art, isolated on transparent alpha. Identity strictly: {\"id\":\"VR3\",\"name\":\"테사\",\"faction\":\"벨로라 공화연맹\",\"target\":{\"gender\":\"여\",\"apparentAge\":35,\"archetype\":\"든든한 방벽공\",\"silhouette\":\"건장한 체형\",\"personality\":\"직설적이며 실무 중심\",\"expression\":\"호탕한 미소, 접이식 방벽을 펼침\",\"design\":\"작업복과 접이식 방벽, 갈색 올림머리\"},\"fixedIdentity\":{\"palette\":\"청록·구리·크림\",\"face\":\"넓은 둥근 턱, 두꺼운 눈썹, 넓은 코\",\"skin\":\"따뜻한 짙은 피부\",\"hairAndMarks\":\"갈색 머리를 높게 묶음, 눈가의 연령선\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. The attached image is ONLY a rendering-style reference; do NOT copy its navy uniform, spear, face or ponytail. Draw this character's own specified outfit, equipment, skin, hair and faction colors. Full body and all equipment within frame, 8% margin. Seven-head adult proportion, natural stance, unmistakable unique face and age. Clean confident cartoon linework, 2-3 cel shadows, hair in big coherent masses, functional tailoring and attachments, few meaningful ornaments. No photorealistic texture, no random filigree, no labels, no panels, no scenery. Entire background transparent."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "VR4",
@@ -190,7 +191,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -201,7 +201,8 @@
         "prompt": "ONE original full-body adult character game key art, isolated on transparent alpha. Identity strictly: {\"id\":\"VR4\",\"name\":\"카엘\",\"faction\":\"벨로라 공화연맹\",\"target\":{\"gender\":\"여\",\"apparentAge\":30,\"archetype\":\"우아한 여성 지휘관\",\"silhouette\":\"장신 슬림\",\"personality\":\"격식 있는 존댓말과 절제된 자신감\",\"expression\":\"가벼운 미소, 펼친 손으로 진로 지시\",\"design\":\"청록 견장 지휘복, 검은 긴 로우 포니테일, 수염 없는 성인 여성 얼굴, 지도 두루마리와 지휘검\"},\"fixedIdentity\":{\"palette\":\"청록·구리·크림\",\"face\":\"성인 여성의 긴 타원형 얼굴, 날카로운 눈, 곧은 코\",\"skin\":\"밝은 황갈색\",\"hairAndMarks\":\"검은 로우 포니테일, 왼귀 황동 나침반 귀걸이\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. The attached image is ONLY a rendering-style reference; do NOT copy its navy uniform, spear, face or ponytail. Draw this character's own specified outfit, equipment, skin, hair and faction colors. Full body and all equipment within frame, 8% margin. Seven-head adult proportion, natural stance, unmistakable unique face and age. Clean confident cartoon linework, 2-3 cel shadows, hair in big coherent masses, functional tailoring and attachments, few meaningful ornaments. No photorealistic texture, no random filigree, no labels, no panels, no scenery. Entire background transparent.",
         "correctionRecord": "data/cartoon-v5-corrections.json"
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "BC1",
@@ -216,7 +217,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -226,7 +226,8 @@
         "tool": "built-in image_gen",
         "prompt": "Design ONE standalone full-body game character. Exact identity: {\"id\":\"BC1\",\"name\":\"로웬\",\"faction\":\"황동나침반 조합\",\"target\":{\"gender\":\"여\",\"apparentAge\":23,\"archetype\":\"쾌활한 탐사꾼\",\"silhouette\":\"민첩한 체형\",\"personality\":\"발견을 숨기지 못하는 호기심\",\"expression\":\"밝은 눈, 석궁을 안전하게 내림\",\"design\":\"탐사 코트와 석궁, 밝은 갈색 단발\"},\"fixedIdentity\":{\"palette\":\"황토·황동·짙은 초록\",\"face\":\"삼각형 턱, 큰 호박색 눈, 들린 코\",\"skin\":\"햇볕에 그을린 피부\",\"hairAndMarks\":\"짧은 갈색 웨이브와 코 위 주근깨\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Adult, 7-head anatomy. Original casual anime cartoon, confident clean ink contours, TWO flat cel shadows per material, restrained highlights, no painterly textures. Hair organized into 5-8 large asymmetric coherent masses. Costume unique to this design, functional seams and attachments, avoid repeated buckles and arbitrary decoration. Distinct face from other characters. Full body, boots and equipment visible with 8% padding. Primary weapon specified in design only; no extra weapon. Relaxed standing pose, right hand primary item. Transparent alpha background, no scene, no floor, no text or layout panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "BC2",
@@ -241,7 +242,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -251,7 +251,8 @@
         "tool": "built-in image_gen",
         "prompt": "Design ONE standalone full-body game character. Exact identity: {\"id\":\"BC2\",\"name\":\"미라\",\"faction\":\"황동나침반 조합\",\"target\":{\"gender\":\"여\",\"apparentAge\":35,\"archetype\":\"차분한 등불 안내자\",\"silhouette\":\"균형형\",\"personality\":\"상대 말을 끝까지 듣는 상담자\",\"expression\":\"편안한 미소, 등불을 들어 길 안내\",\"design\":\"등불 지팡이와 구조 가방, 검은 긴 땋은 머리\"},\"fixedIdentity\":{\"palette\":\"황토·황동·짙은 초록\",\"face\":\"부드러운 타원형 얼굴, 긴 눈, 넓은 입\",\"skin\":\"중간 갈색\",\"hairAndMarks\":\"긴 검은 땋은 머리와 초록색 끈\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Adult, 7-head anatomy. Original casual anime cartoon, confident clean ink contours, TWO flat cel shadows per material, restrained highlights, no painterly textures. Hair organized into 5-8 large asymmetric coherent masses. Costume unique to this design, functional seams and attachments, avoid repeated buckles and arbitrary decoration. Distinct face from other characters. Full body, boots and equipment visible with 8% padding. Primary weapon specified in design only; no extra weapon. Relaxed standing pose, right hand primary item. Transparent alpha background, no scene, no floor, no text or layout panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "BC3",
@@ -266,7 +267,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -276,7 +276,8 @@
         "tool": "built-in image_gen",
         "prompt": "Design ONE standalone full-body game character. Exact identity: {\"id\":\"BC3\",\"name\":\"오델\",\"faction\":\"황동나침반 조합\",\"target\":{\"gender\":\"여\",\"apparentAge\":33,\"archetype\":\"무뚝뚝한 구조대장\",\"silhouette\":\"운동형 장신\",\"personality\":\"설명보다 먼저 행동\",\"expression\":\"단단한 시선, 동료에게 손 내밈\",\"design\":\"두꺼운 가죽 외투와 등반 방패, 회색 짧은 머리\"},\"fixedIdentity\":{\"palette\":\"황토·황동·짙은 초록\",\"face\":\"넓은 사각 얼굴, 깊은 눈매, 낮은 콧등\",\"skin\":\"밝은 올리브\",\"hairAndMarks\":\"짧은 회색 머리와 눈가 주름\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Adult, 7-head anatomy. Original casual anime cartoon, confident clean ink contours, TWO flat cel shadows per material, restrained highlights, no painterly textures. Hair organized into 5-8 large asymmetric coherent masses. Costume unique to this design, functional seams and attachments, avoid repeated buckles and arbitrary decoration. Distinct face from other characters. Full body, boots and equipment visible with 8% padding. Primary weapon specified in design only; no extra weapon. Relaxed standing pose, right hand primary item. Transparent alpha background, no scene, no floor, no text or layout panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "BC4",
@@ -291,7 +292,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -301,7 +301,8 @@
         "tool": "built-in image_gen",
         "prompt": "Design ONE standalone full-body game character. Exact identity: {\"id\":\"BC4\",\"name\":\"피아\",\"faction\":\"황동나침반 조합\",\"target\":{\"gender\":\"여\",\"apparentAge\":25,\"archetype\":\"장난기 있는 측량사\",\"silhouette\":\"슬림\",\"personality\":\"빠른 말투와 소소한 허세\",\"expression\":\"윙크 대신 장난스런 미소, 렌즈 조절\",\"design\":\"측량 렌즈와 투척 쐐기, 적갈색 포니테일\"},\"fixedIdentity\":{\"palette\":\"황토·황동·짙은 초록\",\"face\":\"작은 직사각 얼굴, 가는 눈썹, 좁은 코\",\"skin\":\"밝은 피부\",\"hairAndMarks\":\"적갈색 포니테일, 한쪽 눈의 측량 렌즈\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Adult, 7-head anatomy. Original casual anime cartoon, confident clean ink contours, TWO flat cel shadows per material, restrained highlights, no painterly textures. Hair organized into 5-8 large asymmetric coherent masses. Costume unique to this design, functional seams and attachments, avoid repeated buckles and arbitrary decoration. Distinct face from other characters. Full body, boots and equipment visible with 8% padding. Primary weapon specified in design only; no extra weapon. Relaxed standing pose, right hand primary item. Transparent alpha background, no scene, no floor, no text or layout panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "BK1",
@@ -316,7 +317,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -326,7 +326,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE full-body adult game character on transparent alpha. Exact identity: {\"id\":\"BK1\",\"name\":\"베스라\",\"faction\":\"검은열쇠 결사\",\"target\":{\"gender\":\"여\",\"apparentAge\":30,\"archetype\":\"냉미녀 암살자\",\"silhouette\":\"슬림 장신\",\"personality\":\"작은 목소리로 단정히 말함\",\"expression\":\"가늘어진 눈, 단검을 뒤로 감춤\",\"design\":\"비대칭 자주 코트와 쌍단검, 검은 단발\"},\"fixedIdentity\":{\"palette\":\"먹색·자주·은색\",\"face\":\"각진 광대, 고양이형 눈매, 넓은 입술\",\"skin\":\"짙은 올리브\",\"hairAndMarks\":\"짧은 검은 비대칭 단발\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Original casual anime cartoon, clean intentional contours, 2-3 flat cel shadows, restrained highlights. Preserve specified age, face, skin, hairstyle, equipment and faction palette. Big asymmetric coherent hair masses; practical garment tailoring, attached straps, only essential ornaments. 7-head adult anatomy, full boots and entire equipment inside 8% margin. Natural confident standing pose, clearly drawn hands. No realistic textures, repeated filigree, scenery, lettering or panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "BK2",
@@ -341,7 +342,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -351,7 +351,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE full-body adult game character on transparent alpha. Exact identity: {\"id\":\"BK2\",\"name\":\"니엘\",\"faction\":\"검은열쇠 결사\",\"target\":{\"gender\":\"여\",\"apparentAge\":24,\"archetype\":\"도도한 도적\",\"silhouette\":\"슬림\",\"personality\":\"상대 반응을 시험하는 가벼운 놀림\",\"expression\":\"턱을 살짝 들고 열쇠를 회전\",\"design\":\"은색 열쇠 장식과 와이어, 백금색 머리\"},\"fixedIdentity\":{\"palette\":\"먹색·자주·은색\",\"face\":\"둥근 얼굴, 수평 눈매, 넓은 코끝\",\"skin\":\"밝은 갈색\",\"hairAndMarks\":\"백금색 짧은 웨이브, 왼쪽 보조개\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Original casual anime cartoon, clean intentional contours, 2-3 flat cel shadows, restrained highlights. Preserve specified age, face, skin, hairstyle, equipment and faction palette. Big asymmetric coherent hair masses; practical garment tailoring, attached straps, only essential ornaments. 7-head adult anatomy, full boots and entire equipment inside 8% margin. Natural confident standing pose, clearly drawn hands. No realistic textures, repeated filigree, scenery, lettering or panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "BK3",
@@ -366,7 +367,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -376,7 +376,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE full-body adult game character on transparent alpha. Exact identity: {\"id\":\"BK3\",\"name\":\"사브린\",\"faction\":\"검은열쇠 결사\",\"target\":{\"gender\":\"여\",\"apparentAge\":35,\"archetype\":\"성숙한 협상가\",\"silhouette\":\"풍만한 성인 체형\",\"personality\":\"다정한 말투와 냉철한 판단\",\"expression\":\"절제된 미소, 약병을 들어 설명\",\"design\":\"고급 어두운 정장과 약병 벨트, 붉은 웨이브\"},\"fixedIdentity\":{\"palette\":\"먹색·자주·은색\",\"face\":\"긴 타원형 얼굴, 깊은 눈매, 높은 콧대\",\"skin\":\"주근깨 있는 중간 피부\",\"hairAndMarks\":\"붉은 긴 웨이브, 눈가 잔주름\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Original casual anime cartoon, clean intentional contours, 2-3 flat cel shadows, restrained highlights. Preserve specified age, face, skin, hairstyle, equipment and faction palette. Big asymmetric coherent hair masses; practical garment tailoring, attached straps, only essential ornaments. 7-head adult anatomy, full boots and entire equipment inside 8% margin. Natural confident standing pose, clearly drawn hands. No realistic textures, repeated filigree, scenery, lettering or panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "BK4",
@@ -391,7 +392,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -401,7 +401,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE full-body adult game character on transparent alpha. Exact identity: {\"id\":\"BK4\",\"name\":\"루크\",\"faction\":\"검은열쇠 결사\",\"target\":{\"gender\":\"남\",\"apparentAge\":36,\"archetype\":\"과묵한 남성 호위\",\"silhouette\":\"건장한 장신\",\"personality\":\"필요한 말만 하고 약속을 지킴\",\"expression\":\"낮은 눈썹, 팔보호대를 정돈\",\"design\":\"두꺼운 암색 외투와 철제 팔보호대, 짧은 검은 머리\"},\"fixedIdentity\":{\"palette\":\"먹색·자주·은색\",\"face\":\"넓은 턱과 낮은 눈썹, 구부러진 코\",\"skin\":\"진한 갈색\",\"hairAndMarks\":\"짧은 곱슬 흑발과 짧은 턱수염\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Original casual anime cartoon, clean intentional contours, 2-3 flat cel shadows, restrained highlights. Preserve specified age, face, skin, hairstyle, equipment and faction palette. Big asymmetric coherent hair masses; practical garment tailoring, attached straps, only essential ornaments. 7-head adult anatomy, full boots and entire equipment inside 8% margin. Natural confident standing pose, clearly drawn hands. No realistic textures, repeated filigree, scenery, lettering or panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "WS1",
@@ -416,7 +417,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -426,7 +426,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE standalone full-body adult original anime game character. Exact identity specification: {\"id\":\"WS1\",\"name\":\"아우렐라\",\"faction\":\"백야성좌 교단\",\"target\":{\"gender\":\"여\",\"apparentAge\":33,\"archetype\":\"온화한 성녀\",\"silhouette\":\"균형형\",\"personality\":\"따뜻하지만 신념은 분명함\",\"expression\":\"평온한 눈, 향로를 조심히 들어 올림\",\"design\":\"긴 상아 예복과 별빛 향로, 금발\"},\"fixedIdentity\":{\"palette\":\"상아·금·진홍\",\"face\":\"둥근 턱, 부드럽게 처진 눈, 넓은 콧등\",\"skin\":\"따뜻한 갈색\",\"hairAndMarks\":\"금빛 곱슬머리를 낮게 묶음\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual cartoon clean confident contours, 2-3 flat cel shadows, natural face distinct for this age and identity, restrained highlights. Hair in large coherent masses, functional clothing, minimal intentional ornaments, no repeated tiny filigree. Adult 7-head anatomy, low stable boots, full equipment and feet inside 8% margin. Relaxed alert stance. Transparent alpha background. No scenery, no floor, no lettering, no photorealistic texture."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "WS2",
@@ -441,7 +442,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -451,7 +451,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE standalone full-body adult original anime game character. Exact identity specification: {\"id\":\"WS2\",\"name\":\"클레아\",\"faction\":\"백야성좌 교단\",\"target\":{\"gender\":\"여\",\"apparentAge\":27,\"archetype\":\"원칙적인 성창기사\",\"silhouette\":\"운동형\",\"personality\":\"서툰 칭찬에도 쉽게 얼굴이 붉어짐\",\"expression\":\"굳은 표정 뒤 작은 미소, 성창을 세움\",\"design\":\"금빛 경갑과 성창, 적갈색 단발\"},\"fixedIdentity\":{\"palette\":\"상아·금·진홍\",\"face\":\"마름모형 얼굴, 큰 눈, 짧고 곧은 코\",\"skin\":\"밝은 올리브\",\"hairAndMarks\":\"적갈색 직선 단발, 한쪽 굵은 눈썹\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual cartoon clean confident contours, 2-3 flat cel shadows, natural face distinct for this age and identity, restrained highlights. Hair in large coherent masses, functional clothing, minimal intentional ornaments, no repeated tiny filigree. Adult 7-head anatomy, low stable boots, full equipment and feet inside 8% margin. Relaxed alert stance. Transparent alpha background. No scenery, no floor, no lettering, no photorealistic texture."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "WS3",
@@ -466,7 +467,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -476,7 +476,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE standalone full-body adult original anime game character. Exact identity specification: {\"id\":\"WS3\",\"name\":\"이사벨\",\"faction\":\"백야성좌 교단\",\"target\":{\"gender\":\"여\",\"apparentAge\":35,\"archetype\":\"성숙한 성당 수호자\",\"silhouette\":\"건장한 체형\",\"personality\":\"모두를 챙기는 리더\",\"expression\":\"침착한 눈, 방패 앞 열린 손\",\"design\":\"긴 백색 망토와 종형 방패, 회색 머리\"},\"fixedIdentity\":{\"palette\":\"상아·금·진홍\",\"face\":\"직사각 얼굴, 얇은 입술, 깊은 눈\",\"skin\":\"짙은 갈색\",\"hairAndMarks\":\"짧은 회색 머리와 뚜렷한 눈가 주름\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual cartoon clean confident contours, 2-3 flat cel shadows, natural face distinct for this age and identity, restrained highlights. Hair in large coherent masses, functional clothing, minimal intentional ornaments, no repeated tiny filigree. Adult 7-head anatomy, low stable boots, full equipment and feet inside 8% margin. Relaxed alert stance. Transparent alpha background. No scenery, no floor, no lettering, no photorealistic texture."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "WS4",
@@ -491,7 +492,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -501,7 +501,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE standalone full-body adult original anime game character. Exact identity specification: {\"id\":\"WS4\",\"name\":\"라비엔\",\"faction\":\"백야성좌 교단\",\"target\":{\"gender\":\"여\",\"apparentAge\":25,\"archetype\":\"내향적인 수녀 기록관\",\"silhouette\":\"슬림\",\"personality\":\"대화는 서툴지만 기록 설명은 명확함\",\"expression\":\"눈을 잠시 피함, 책장을 잡은 손\",\"design\":\"붉은 안감 예복과 봉인 책, 검은 긴 머리\"},\"fixedIdentity\":{\"palette\":\"상아·금·진홍\",\"face\":\"긴 하트형 얼굴, 가는 긴 눈, 작은 입\",\"skin\":\"밝은 피부\",\"hairAndMarks\":\"허리 길이 검은 직모, 작은 금테 안경\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual cartoon clean confident contours, 2-3 flat cel shadows, natural face distinct for this age and identity, restrained highlights. Hair in large coherent masses, functional clothing, minimal intentional ornaments, no repeated tiny filigree. Adult 7-head anatomy, low stable boots, full equipment and feet inside 8% margin. Relaxed alert stance. Transparent alpha background. No scenery, no floor, no lettering, no photorealistic texture."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "DS1",
@@ -516,7 +517,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -526,7 +526,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Identity strictly: {\"id\":\"DS1\",\"name\":\"네레아\",\"faction\":\"깊은별 성회\",\"target\":{\"gender\":\"여\",\"apparentAge\":30,\"archetype\":\"신비로운 관측자\",\"silhouette\":\"슬림 장신\",\"personality\":\"비유를 즐기되 핵심은 놓치지 않음\",\"expression\":\"차분한 눈, 고리를 정렬\",\"design\":\"별무늬 긴 코트와 떠 있는 고리, 청회색 머리\"},\"fixedIdentity\":{\"palette\":\"남보라·청록 발광·검정\",\"face\":\"긴 직사각 얼굴, 좁은 눈, 길고 굽은 코\",\"skin\":\"차가운 중간 피부\",\"hairAndMarks\":\"청회색 굵은 웨이브와 비대칭 앞머리\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Clean casual anime cartoon linework, 2-3 flat cel shadow tones, broad intentional hair masses, preserve distinct adult face age hair skin palette and equipment. Clear natural hands, functional seams, sparse purposeful details. Relaxed ready pose, 7-head adult anatomy, practical low boots, full body and equipment within 8% margin. No scenery, floor, text, panels, photographic textures, duplicated decorations."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "DS2",
@@ -541,7 +542,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -551,7 +551,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Identity strictly: {\"id\":\"DS2\",\"name\":\"시엘라\",\"faction\":\"깊은별 성회\",\"target\":{\"gender\":\"여\",\"apparentAge\":26,\"archetype\":\"사교 서투른 곡검술사\",\"silhouette\":\"운동형\",\"personality\":\"낮은 혼잣말 후 용기 내서 대답\",\"expression\":\"경계하는 눈, 손가락으로 스카프 정돈\",\"design\":\"보라 겹옷과 수정 곡검, 검은 웨이브\"},\"fixedIdentity\":{\"palette\":\"남보라·청록 발광·검정\",\"face\":\"둥근 턱과 넓은 이마, 올라간 눈매\",\"skin\":\"깊은 구릿빛\",\"hairAndMarks\":\"검은 짧은 웨이브, 푸른 귀걸이\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Clean casual anime cartoon linework, 2-3 flat cel shadow tones, broad intentional hair masses, preserve distinct adult face age hair skin palette and equipment. Clear natural hands, functional seams, sparse purposeful details. Relaxed ready pose, 7-head adult anatomy, practical low boots, full body and equipment within 8% margin. No scenery, floor, text, panels, photographic textures, duplicated decorations."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "DS3",
@@ -566,7 +567,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -576,7 +576,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Identity strictly: {\"id\":\"DS3\",\"name\":\"모이라\",\"faction\":\"깊은별 성회\",\"target\":{\"gender\":\"여\",\"apparentAge\":35,\"archetype\":\"음침한 기억 연구자\",\"silhouette\":\"균형형\",\"personality\":\"어두운 농담과 탐구심\",\"expression\":\"희미한 미소, 구슬에 시선 고정\",\"design\":\"짙은 망토와 기억 구슬, 백색 땋은 머리\"},\"fixedIdentity\":{\"palette\":\"남보라·청록 발광·검정\",\"face\":\"넓은 광대, 얇은 눈썹, 길고 좁은 눈\",\"skin\":\"짙은 올리브\",\"hairAndMarks\":\"백색 땋은 머리와 입가 연령선\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Clean casual anime cartoon linework, 2-3 flat cel shadow tones, broad intentional hair masses, preserve distinct adult face age hair skin palette and equipment. Clear natural hands, functional seams, sparse purposeful details. Relaxed ready pose, 7-head adult anatomy, practical low boots, full body and equipment within 8% margin. No scenery, floor, text, panels, photographic textures, duplicated decorations."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "DS4",
@@ -591,7 +592,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -601,7 +601,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Identity strictly: {\"id\":\"DS4\",\"name\":\"벨린\",\"faction\":\"깊은별 성회\",\"target\":{\"gender\":\"여\",\"apparentAge\":29,\"archetype\":\"무표정한 반달수호자\",\"silhouette\":\"운동형\",\"personality\":\"감정을 말보다 행동으로 표현\",\"expression\":\"작은 고개 끄덕임, 방패 안쪽 손\",\"design\":\"검은 유리 갑옷과 반달 방패, 남색 단발\"},\"fixedIdentity\":{\"palette\":\"남보라·청록 발광·검정\",\"face\":\"사각턱, 낮은 눈썹, 넓은 코\",\"skin\":\"밝은 황갈색\",\"hairAndMarks\":\"남색 아주 짧은 머리, 오른쪽 눈밑 작은 점\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Clean casual anime cartoon linework, 2-3 flat cel shadow tones, broad intentional hair masses, preserve distinct adult face age hair skin palette and equipment. Clear natural hands, functional seams, sparse purposeful details. Relaxed ready pose, 7-head adult anatomy, practical low boots, full body and equipment within 8% margin. No scenery, floor, text, panels, photographic textures, duplicated decorations."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "GO1",
@@ -616,7 +617,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -626,7 +626,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Exact identity: {\"id\":\"GO1\",\"name\":\"실바\",\"faction\":\"녹서약 수호회\",\"target\":{\"gender\":\"여\",\"apparentAge\":32,\"archetype\":\"자신감 있는 숲 사냥꾼\",\"silhouette\":\"운동형 장신\",\"personality\":\"솔직하고 경쟁을 즐김\",\"expression\":\"밝고 단호한 눈, 화살을 고름\",\"design\":\"잎 모양 가죽갑옷과 나무 장궁, 밤색 머리\"},\"fixedIdentity\":{\"palette\":\"이끼·호박·뼈색\",\"face\":\"긴 타원형 얼굴, 날카로운 눈, 높은 광대\",\"skin\":\"햇빛에 그을린 갈색\",\"hairAndMarks\":\"짙은 밤색 포니테일, 코 옆 작은 주근깨\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual anime cartoon, deliberate clean linework, two or three flat cel shadows, distinct mature face and specified hair skin outfit equipment. Large coherent hair masses; practical tailored clothes and functional attachments, only a few necessary ornaments. Natural hands and relaxed ready pose. 7-head adult anatomy, full boots and all equipment within 8% padding. No photographic textures, arbitrary filigree, scenery, floor, text, layout panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "GO2",
@@ -641,7 +642,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -651,7 +651,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Exact identity: {\"id\":\"GO2\",\"name\":\"에린\",\"faction\":\"녹서약 수호회\",\"target\":{\"gender\":\"여\",\"apparentAge\":28,\"archetype\":\"안경 약초사\",\"silhouette\":\"아담한 성인 체형\",\"personality\":\"약초 지식에는 수다스럽고 낯은 가림\",\"expression\":\"따뜻한 미소, 잎을 가리킴\",\"design\":\"이끼 숄과 수액 지팡이, 붉은 곱슬머리\"},\"fixedIdentity\":{\"palette\":\"이끼·호박·뼈색\",\"face\":\"넓은 둥근 얼굴, 큰 눈, 짧은 코\",\"skin\":\"주근깨 많은 밝은 피부\",\"hairAndMarks\":\"풍성한 붉은 곱슬머리와 둥근 안경\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual anime cartoon, deliberate clean linework, two or three flat cel shadows, distinct mature face and specified hair skin outfit equipment. Large coherent hair masses; practical tailored clothes and functional attachments, only a few necessary ornaments. Natural hands and relaxed ready pose. 7-head adult anatomy, full boots and all equipment within 8% padding. No photographic textures, arbitrary filigree, scenery, floor, text, layout panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "GO3",
@@ -666,7 +667,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -677,7 +677,8 @@
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Exact identity: {\"id\":\"GO3\",\"name\":\"바르나\",\"faction\":\"녹서약 수호회\",\"target\":{\"gender\":\"여\",\"apparentAge\":35,\"archetype\":\"늠름한 숲 수호자\",\"silhouette\":\"건장한 장신\",\"personality\":\"후배를 기다려주는 인내\",\"expression\":\"편안하고 굳센 눈, 나무 방패를 짚음\",\"design\":\"큰 나무 방패와 뿔 견갑, 회색 올림머리\"},\"fixedIdentity\":{\"palette\":\"이끼·호박·뼈색\",\"face\":\"넓은 턱과 긴 코, 작고 깊은 눈\",\"skin\":\"짙은 따뜻한 피부\",\"hairAndMarks\":\"회색 올림머리, 뚜렷한 웃음주름\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual anime cartoon, deliberate clean linework, two or three flat cel shadows, distinct mature face and specified hair skin outfit equipment. Large coherent hair masses; practical tailored clothes and functional attachments, only a few necessary ornaments. Natural hands and relaxed ready pose. 7-head adult anatomy, full boots and all equipment within 8% padding. No photographic textures, arbitrary filigree, scenery, floor, text, layout panels.",
         "correctionRecord": "data/cartoon-v5-corrections.json"
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "GO4",
@@ -692,7 +693,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -702,7 +702,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Exact identity: {\"id\":\"GO4\",\"name\":\"리스\",\"faction\":\"녹서약 수호회\",\"target\":{\"gender\":\"여\",\"apparentAge\":21,\"archetype\":\"짓궂은 덩굴 정찰병\",\"silhouette\":\"슬림 성인 체형\",\"personality\":\"쾌활한 경쟁심과 선을 지키는 농담\",\"expression\":\"활기찬 미소, 채찍을 접어 듦\",\"design\":\"짧은 녹색 망토와 덩굴 채찍, 흑발\"},\"fixedIdentity\":{\"palette\":\"이끼·호박·뼈색\",\"face\":\"하트형 얼굴, 가까운 눈 간격, 각진 눈썹\",\"skin\":\"중간 올리브\",\"hairAndMarks\":\"짧은 검은 땋은 머리 두 줄\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual anime cartoon, deliberate clean linework, two or three flat cel shadows, distinct mature face and specified hair skin outfit equipment. Large coherent hair masses; practical tailored clothes and functional attachments, only a few necessary ornaments. Natural hands and relaxed ready pose. 7-head adult anatomy, full boots and all equipment within 8% padding. No photographic textures, arbitrary filigree, scenery, floor, text, layout panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "EF1",
@@ -717,7 +718,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -727,7 +727,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Exact identity: {\"id\":\"EF1\",\"name\":\"레나\",\"faction\":\"잿불 해방전선\",\"target\":{\"gender\":\"여\",\"apparentAge\":34,\"archetype\":\"호방한 도끼 용병\",\"silhouette\":\"근육형\",\"personality\":\"큰 웃음과 책임감\",\"expression\":\"자신감 있는 미소, 도끼를 어깨에\",\"design\":\"재회색 야전 코트와 큰 도끼, 짧은 붉은 머리\"},\"fixedIdentity\":{\"palette\":\"재회색·벽돌빨강·구리\",\"face\":\"네모난 턱과 두꺼운 눈썹, 넓은 입\",\"skin\":\"밝은 구릿빛\",\"hairAndMarks\":\"짧은 붉은 언더컷, 코의 작은 흉터\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual anime cartoon with deliberate clean contours and two or three flat cel shadow tones. Preserve specified age, distinct face, hairstyle, skin, outfit, weapon and faction colors. Large coherent hair masses, practical tailored clothes, sparse functional attachments, no meaningless ornaments. Natural hands. Full boots and equipment within 8% padding, 7-head adult anatomy, relaxed ready stance. No photographic textures, scenery, floor, text or panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "EF2",
@@ -742,7 +743,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -752,7 +752,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Exact identity: {\"id\":\"EF2\",\"name\":\"유나\",\"faction\":\"잿불 해방전선\",\"target\":{\"gender\":\"여\",\"apparentAge\":26,\"archetype\":\"소심한 야전 치료사\",\"silhouette\":\"균형형\",\"personality\":\"긴장하면 말끝이 흐려지지만 치료는 정확함\",\"expression\":\"걱정스러운 눈, 붕대를 내밈\",\"design\":\"붉은 스카프와 야전 약함, 검은 묶음머리\"},\"fixedIdentity\":{\"palette\":\"재회색·벽돌빨강·구리\",\"face\":\"부드러운 사각 얼굴, 내려간 눈, 둥근 코끝\",\"skin\":\"깊은 갈색\",\"hairAndMarks\":\"검은 머리 낮게 묶음, 작은 둥근 귀걸이\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual anime cartoon with deliberate clean contours and two or three flat cel shadow tones. Preserve specified age, distinct face, hairstyle, skin, outfit, weapon and faction colors. Large coherent hair masses, practical tailored clothes, sparse functional attachments, no meaningless ornaments. Natural hands. Full boots and equipment within 8% padding, 7-head adult anatomy, relaxed ready stance. No photographic textures, scenery, floor, text or panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "EF3",
@@ -767,7 +768,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -777,7 +777,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Exact identity: {\"id\":\"EF3\",\"name\":\"다리아\",\"faction\":\"잿불 해방전선\",\"target\":{\"gender\":\"여\",\"apparentAge\":32,\"archetype\":\"든든한 철갑 언니\",\"silhouette\":\"건장한 체형\",\"personality\":\"동료 실수를 조용히 감싸줌\",\"expression\":\"신뢰감을 주는 눈, 방패끈을 조임\",\"design\":\"재활용 철갑과 문짝 방패, 갈색 짧은 머리\"},\"fixedIdentity\":{\"palette\":\"재회색·벽돌빨강·구리\",\"face\":\"넓은 볼과 깊은 눈, 높은 코\",\"skin\":\"주근깨 있는 황갈색\",\"hairAndMarks\":\"갈색 짧은 머리와 눈밑 연령선\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual anime cartoon with deliberate clean contours and two or three flat cel shadow tones. Preserve specified age, distinct face, hairstyle, skin, outfit, weapon and faction colors. Large coherent hair masses, practical tailored clothes, sparse functional attachments, no meaningless ornaments. Natural hands. Full boots and equipment within 8% padding, 7-head adult anatomy, relaxed ready stance. No photographic textures, scenery, floor, text or panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     },
     {
       "id": "EF4",
@@ -792,7 +793,6 @@
         "recruitment-detail"
       ],
       "pending": [
-        "SD",
         "combat-motion",
         "dialogue-expressions",
         "promotion-stages"
@@ -802,7 +802,8 @@
         "tool": "built-in image_gen",
         "prompt": "ONE original full-body adult game character, transparent alpha cutout. Exact identity: {\"id\":\"EF4\",\"name\":\"세이\",\"faction\":\"잿불 해방전선\",\"target\":{\"gender\":\"여\",\"apparentAge\":23,\"archetype\":\"무심한 신호공학자\",\"silhouette\":\"슬림 성인 체형\",\"personality\":\"사회적 눈치보다 문제 해결에 집중\",\"expression\":\"졸린 듯 집중한 눈, 고글을 올림\",\"design\":\"구리 장치 벨트와 신호총형 판타지 도구, 회색 단발\"},\"fixedIdentity\":{\"palette\":\"재회색·벽돌빨강·구리\",\"face\":\"긴 삼각 얼굴, 큰 눈, 가는 코\",\"skin\":\"밝은 올리브\",\"hairAndMarks\":\"회색 비대칭 단발과 넓은 고글\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Casual anime cartoon with deliberate clean contours and two or three flat cel shadow tones. Preserve specified age, distinct face, hairstyle, skin, outfit, weapon and faction colors. Large coherent hair masses, practical tailored clothes, sparse functional attachments, no meaningless ornaments. Natural hands. Full boots and equipment within 8% padding, 7-head adult anatomy, relaxed ready stance. No photographic textures, scenery, floor, text or panels."
       },
-      "screenReview": "pending-browser-connection"
+      "screenReview": "pending-browser-connection",
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
     }
   ]
 }

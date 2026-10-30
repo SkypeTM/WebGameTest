@@ -51,7 +51,8 @@
         "prompt": "Production game character full-body standalone key art of {\"id\":\"AR2\",\"name\":\"세린\",\"faction\":\"아르켄 왕국\",\"target\":{\"gender\":\"여\",\"apparentAge\":26,\"archetype\":\"과묵한 결투가\",\"silhouette\":\"슬림 장신\",\"personality\":\"짧고 정확한 말투\",\"expression\":\"곁눈질, 창을 정렬하는 손\",\"design\":\"긴 남청 군복과 가느다란 창, 검은 포니테일\"},\"fixedIdentity\":{\"palette\":\"남청·황동·백색\",\"face\":\"긴 타원형 얼굴, 가는 눈, 긴 콧등\",\"skin\":\"밝은 올리브\",\"hairAndMarks\":\"높은 검은 포니테일, 한쪽 귀의 작은 커프\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Use attached sheet only as identity and illustration style reference; depict ONE character, basic first-stage costume from LEFT panel. Full figure including boots and spear tip, centered vertical composition with generous 8% transparent padding. Natural adult anatomy 7 heads tall, relaxed alert standing pose, coherent hands holding weapon. Casual polished anime cartoon: clear expressive linework, 2-3 flat cel shadow shapes, no photographic texture, simplify hair to large asymmetric masses and functional tailored costume. No repeated tiny curls, no random filigree, no floating straps. True transparent background, no floor, no text, no panels. Preserve identity, age, skin, hair, faction palette."
       },
       "screenReview": "pending-browser-connection",
-      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json",
+      "motionStatus": "7-poses-runtime-linked-screen-review-skipped"
     },
     {
       "id": "AR3",

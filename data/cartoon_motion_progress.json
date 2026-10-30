@@ -57,10 +57,66 @@
       "runtimeApplied": true,
       "illustrationReview": "reviewed",
       "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR2",
+      "pose": "ready",
+      "path": "/assets/cartoon-v5-motion/AR2/ready.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR2",
+      "pose": "windup",
+      "path": "/assets/cartoon-v5-motion/AR2/windup.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR2",
+      "pose": "swing",
+      "path": "/assets/cartoon-v5-motion/AR2/swing.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR2",
+      "pose": "strike",
+      "path": "/assets/cartoon-v5-motion/AR2/strike.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR2",
+      "pose": "recover",
+      "path": "/assets/cartoon-v5-motion/AR2/recover.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR2",
+      "pose": "hit",
+      "path": "/assets/cartoon-v5-motion/AR2/hit.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR2",
+      "pose": "skill",
+      "path": "/assets/cartoon-v5-motion/AR2/skill.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
     }
   ],
   "next": [
-    "AR2 / AR3 / AR4 full-size sets",
+    "AR3 / AR4 full-size sets",
     "Other28 characters",
     "Continuous rigging / frame alignment"
   ]

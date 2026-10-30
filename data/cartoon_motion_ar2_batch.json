@@ -1,0 +1,48 @@
+{
+  "updated": "2026-10-30",
+  "styleVersion": "cartoon-v5",
+  "assets": [
+    {
+      "id": "AR2",
+      "pose": "ready",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-428b169d-25e0-49e6-ab4a-b8c6d0317a66.png",
+      "prompt": "Create the FULL-SIZE READY battle sprite of adult woman26 Serin in reference. Transform SD/chibi PROPORTIONS to mature athletic 7-head-tall proportions: small head, long arms and legs, narrow adult oval face. Preserve light olive skin, narrow brown eyes, high black ponytail with coherent large locks, small ear cuff. Navy tailored officer coat with two long navy/ivory tails and restrained brass edging, white trousers, short practical flat dark boots, one brown crossbody strap and belt with pouch. Long slender straight spear with ONE silver pointed tip and brass socket held by RIGHT hand viewer left at a relaxed vertical angle, other hand relaxed near waist. Threequarter combat ready stance facing screen right. Keep complete spear inside canvas with6percent margins; her head at12percent height, feet at93percent. Square transparent canvas. 2-3 cel shades, clean cartoon linework, no texture noise or arbitrary filigree. Actual transparent alpha everywhere outside silhouette: no background vignette, floor, glow, text or UI. NOT SD proportions."
+    },
+    {
+      "id": "AR2",
+      "pose": "windup",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-0985e9a4-57d5-4c0b-a797-0035a8dd7241.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR2 Serin sprite into ONE WINDUP frame. Preserve adult woman26 face, light olive skin, narrow brown eyes, high black ponytail in large flowing locks, exact navy/white/brass uniform and simple belt/strap. Same 7-head-tall proportions, body scale, square canvas. WINDUP: lower stance, draw spear backward toward screen left with RIGHT rear hand, LEFT front hand guides shaft. Spear is diagonal across waist, pointed silver blade aimed up-right. Use perspective to keep full spear inside frame. Gaze fixed screen right. Frame from head to boots plus entire spear. Keep6percent transparent safe margin around all assets. Flat low boots on same93percent baseline. Clean controlled cartoon lineart, 2-3 cel shades. Maintain real transparent alpha background. Do not add backdrop, vignette, floor, glows or extra weapons. No redesign, no SD, no text."
+    },
+    {
+      "id": "AR2",
+      "pose": "swing",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-e586b785-bd35-498a-8124-1fcec8a1ffdd.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR2 Serin sprite into ONE SWING frame. Preserve adult woman26 face, light olive skin, narrow brown eyes, high black ponytail in large flowing locks, exact navy/white/brass uniform and simple belt/strap. Same 7-head-tall proportions, body scale, square canvas. MID THRUST: begin extending both hands forward toward screen right, RIGHT hand remains rear grip nearer hip and LEFT hand nearer blade. One continuous straight spear shaft. Feet slightly wider, ponytail trails left. Pointed blade fully inside right margin. Frame from head to boots plus entire spear. Keep6percent transparent safe margin around all assets. Flat low boots on same93percent baseline. Clean controlled cartoon lineart, 2-3 cel shades. Maintain real transparent alpha background. Do not add backdrop, vignette, floor, glows or extra weapons. No redesign, no SD, no text."
+    },
+    {
+      "id": "AR2",
+      "pose": "strike",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-a6741dfd-795d-4f0b-9086-5b3a6aaecdcb.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR2 Serin sprite into ONE STRIKE frame. Preserve adult woman26 face, light olive skin, narrow brown eyes, high black ponytail in large flowing locks, exact navy/white/brass uniform and simple belt/strap. Same 7-head-tall proportions, body scale, square canvas. THRUST IMPACT: full controlled forward thrust toward screen right at chest height, torso leans slightly right, RIGHT hand rear grip at hip and LEFT front guiding grip extends. Show whole spear tip with foreshortening, 6 percent margin all edges. Exactly one spear, no duplicated tips. Frame from head to boots plus entire spear. Keep6percent transparent safe margin around all assets. Flat low boots on same93percent baseline. Clean controlled cartoon lineart, 2-3 cel shades. Maintain real transparent alpha background. Do not add backdrop, vignette, floor, glows or extra weapons. No redesign, no SD, no text."
+    },
+    {
+      "id": "AR2",
+      "pose": "recover",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-5dcb4657-fe7d-40a6-a245-7bbf046c56c5.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR2 Serin sprite into ONE RECOVER frame. Preserve adult woman26 face, light olive skin, narrow brown eyes, high black ponytail in large flowing locks, exact navy/white/brass uniform and simple belt/strap. Same 7-head-tall proportions, body scale, square canvas. RECOVERY: body settles upright, draw spear inward from thrust, RIGHT hand lowers shaft diagonally, left hand loosens front grip. Spear tip points up-left like original ready pose but at a shallow angle. Feet baseline and character scale unchanged. Frame from head to boots plus entire spear. Keep6percent transparent safe margin around all assets. Flat low boots on same93percent baseline. Clean controlled cartoon lineart, 2-3 cel shades. Maintain real transparent alpha background. Do not add backdrop, vignette, floor, glows or extra weapons. No redesign, no SD, no text."
+    },
+    {
+      "id": "AR2",
+      "pose": "hit",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-0d35b034-9653-4fc5-996d-db92134fa5ff.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR2 Serin sprite into ONE HIT frame. Preserve adult woman26 face, light olive skin, narrow brown eyes, high black ponytail in large flowing locks, exact navy/white/brass uniform and simple belt/strap. Same 7-head-tall proportions, body scale, square canvas. HIT: torso recoils subtly screen left, eyes squint and mouth tense. RIGHT hand keeps spear vertical at viewer left, left arm protects chest. Feet firmly planted. No injury effects. Frame from head to boots plus entire spear. Keep6percent transparent safe margin around all assets. Flat low boots on same93percent baseline. Clean controlled cartoon lineart, 2-3 cel shades. Maintain real transparent alpha background. Do not add backdrop, vignette, floor, glows or extra weapons. No redesign, no SD, no text."
+    },
+    {
+      "id": "AR2",
+      "pose": "skill",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-c30d023e-8525-414a-bc85-ddef30e0241e.png",
+      "prompt": "Use case: identity-preserve. EDIT the supplied transparent full-size AR2 Serin sprite into ONE SKILL frame. Preserve adult woman26 face, light olive skin, narrow brown eyes, high black ponytail in large flowing locks, exact navy/white/brass uniform and simple belt/strap. Same 7-head-tall proportions, body scale, square canvas. SIGNATURE PRECISION STRIKE: focused eyes, firm wide grounded stance, body in decisive threequarter orientation toward screen right. Both hands make a forceful spear thrust slightly down-right; RIGHT hand rear and LEFT front. Ponytail and split coat tails follow toward left. No VFX or labels. Foreshorten spear so whole blade and butt remain within canvas. Frame from head to boots plus entire spear. Keep6percent transparent safe margin around all assets. Flat low boots on same93percent baseline. Clean controlled cartoon lineart, 2-3 cel shades. Maintain real transparent alpha background. Do not add backdrop, vignette, floor, glows or extra weapons. No redesign, no SD, no text."
+    }
+  ]
+}

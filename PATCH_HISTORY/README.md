@@ -15,6 +15,8 @@
 
 현재 기록:
 
+- [113 — 세린 전신 모션 카툰 전환](113-serin-cartoon-motion.md)
+
 - `082-hub-qa-report.md`: 거점·퀘스트·시장·저장 자동 검사 결과 및 상세 로그 저장
 
 - `081-audio-popover-quest-button.md`: 음량 팝업 헤더 늘어짐 및 NPC 버튼 글자 넘침 수정

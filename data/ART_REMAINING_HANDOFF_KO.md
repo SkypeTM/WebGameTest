@@ -1,15 +1,15 @@
 # 카툰 원화 전환 인계
 
-갱신: 2026-10-30. 이 문서는 작업 범위 설명이며 실제 적용 경로는 아래 manifest를 우선한다.
+갱신: 2026-11-01. 이 문서는 작업 범위 설명이며 실제 적용 경로는 아래 manifest를 우선한다.
 
 ## 현재 적용
 - 기본 전신32명: `data/character_cartoon_manifest.json`. 주점 상세·초상·동료 모집에 사용한다. 기본 전신 원화가 전투 동작을 대체하지 않는다.
 - 탐사/전투 SD32명: `data/sd_asset_manifest.json`, `data/cartoon_sd_progress.json`. 패치111까지 GitHub/Cloudflare 배포 완료.
-- 레오나·세린·마리엔 전신 각7자세: `data/renewal_actor_manifest.json`, `data/cartoon_motion_progress.json`. 패치112·113 배포 완료, 114 마리엔 작업 단위.
+- 기본 파티4명 전신 각7자세(총28): `data/renewal_actor_manifest.json`, `data/cartoon_motion_progress.json`. 패치112~115 작업 단위. 배포 성공 기록은 storage/qa 릴리스 기록 참조.
 - 현재 QA 생략 요청이 있으므로 원화 자체 확인과 실제 화면/플레이 검증을 구분한다. 라이브 배포 성공은 화면 검증 통과가 아니다.
 
 ## 이어서 할 일
-1. AR4 전신7자세를 동일 기준에서 생성하고 세트 단위로 연결한다. 한 캐릭터의 신구 화풍을 섞지 않는다.
+1. 기본 파티4명28자세의 크기·발 기준점·장식·가장자리를 후속 보정한다. 한 캐릭터의 신구 화풍을 섞지 않는다.
 2. 나머지28명의 전신 행동 세트. 현재 `FullBodyActor`는 `renewal_actor_manifest.json`에 있는 인물만 지원하고, 다른 인물은 SD 확대가 호환 경로다.
 3. 대화 표정·손동작, 3단계 승급 단독 원화, NPC·상인, 몬스터, 카드의 캐릭터 원화.
 4. 발 기준·얼굴 크기·의상 구조·무기 손·굽·여백을 자세 간 일치시킨다. 현재 프레임 전환은 연속 리깅이 아니다.

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-30",
+  "updated": "2026-11-01",
   "styleVersion": "cartoon-v5",
   "assets": [
     {
@@ -169,11 +169,67 @@
       "runtimeApplied": true,
       "illustrationReview": "reviewed",
       "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR4",
+      "pose": "ready",
+      "path": "/assets/cartoon-v5-motion/AR4/ready.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR4",
+      "pose": "windup",
+      "path": "/assets/cartoon-v5-motion/AR4/windup.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR4",
+      "pose": "swing",
+      "path": "/assets/cartoon-v5-motion/AR4/swing.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR4",
+      "pose": "strike",
+      "path": "/assets/cartoon-v5-motion/AR4/strike.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR4",
+      "pose": "recover",
+      "path": "/assets/cartoon-v5-motion/AR4/recover.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR4",
+      "pose": "hit",
+      "path": "/assets/cartoon-v5-motion/AR4/hit.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR4",
+      "pose": "skill",
+      "path": "/assets/cartoon-v5-motion/AR4/skill.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
     }
   ],
   "next": [
-    "AR4 full-size set",
-    "Other28 characters",
-    "Continuous rigging / frame alignment"
+    "Other28 characters full-size sets",
+    "Starting party pose scale / foot anchor / edge refinement",
+    "Continuous rigging / scene validation"
   ]
 }

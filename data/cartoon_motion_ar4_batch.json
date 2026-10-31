@@ -1,0 +1,51 @@
+{
+  "updated": "2026-11-01",
+  "generated": "2026-10-30",
+  "styleVersion": "cartoon-v5",
+  "tool": "built-in image_gen",
+  "promptRecord": "Generation/edit intent recovered from the conversation after tool session restart; these are summaries, not exact prompt transcripts.",
+  "assets": [
+    {
+      "id": "AR4",
+      "pose": "ready",
+      "generatedSource": "C:/Users/123/.codex/generated_images/01a0aaa2-8b2d-7dc1-8348-f85a737a6902/exec-4d36f4ac-1251-48dc-bd0b-4bde02046402.png",
+      "promptSummary": "Full-size 7-head adult neutral ready pose from AR4 SD; sword right hand, chain left; copper skin, one thick red braid, navy-white-brass outfit. Square transparent cutout, all equipment inside frame."
+    },
+    {
+      "id": "AR4",
+      "pose": "windup",
+      "generatedSource": "C:/Users/123/.codex/generated_images/01a0aaa2-8b2d-7dc1-8348-f85a737a6902/exec-43aa1d49-1ed8-41fc-bdbf-a1640ad6e133.png",
+      "promptSummary": "Attack anticipation screen right; right hand sword across chest; left hand gathers chain connected to sword. Preserve exact ready identity, clothing and mature proportions."
+    },
+    {
+      "id": "AR4",
+      "pose": "swing",
+      "generatedSource": "C:/Users/123/.codex/generated_images/01a0aaa2-8b2d-7dc1-8348-f85a737a6902/exec-8a4035bd-21f5-4f0d-9e96-5c028b4ae997.png",
+      "promptSummary": "Sword slash with right arm toward right, left arm controls chain behind hip. Final edit shrinks complete silhouette to center80%, reconstructs clipped sword tip and continuous chain."
+    },
+    {
+      "id": "AR4",
+      "pose": "strike",
+      "generatedSource": "C:/Users/123/.codex/generated_images/01a0aaa2-8b2d-7dc1-8348-f85a737a6902/exec-cb2cb074-975a-479d-a03f-f1bc93344b79.png",
+      "promptSummary": "Forward sword slash impact screen right; right hand blade low diagonally right, left hand chain behind waist. Full blade, planted stance, no burst effects."
+    },
+    {
+      "id": "AR4",
+      "pose": "recover",
+      "generatedSource": "C:/Users/123/.codex/generated_images/01a0aaa2-8b2d-7dc1-8348-f85a737a6902/exec-36044649-4888-4008-a2c2-0ab3daa3fd1a.png",
+      "promptSummary": "Recovery upright; right hand lowers sword across front, left hand gathers chain near waist, same fullbody scale and costume."
+    },
+    {
+      "id": "AR4",
+      "pose": "hit",
+      "generatedSource": "C:/Users/123/.codex/generated_images/01a0aaa2-8b2d-7dc1-8348-f85a737a6902/exec-08d75b34-0a8b-4d76-b01d-2a63c47e749d.png",
+      "promptSummary": "Recoil toward left from hit on right; sword remains right hand, left hand chain near chest. Final edit fixes framing and one connected chain from sword across waist to left hand and one end weight."
+    },
+    {
+      "id": "AR4",
+      "pose": "skill",
+      "generatedSource": "C:/Users/123/.codex/generated_images/01a0aaa2-8b2d-7dc1-8348-f85a737a6902/exec-518e9151-9926-4b0c-a4c3-1b42bf6d9f1d.png",
+      "promptSummary": "Rune chain skill rightwards, right hand holds sword near waist, left hand extends chain. Final edit fixes frame margin and single continuous connected chain with one diamond end weight."
+    }
+  ]
+}

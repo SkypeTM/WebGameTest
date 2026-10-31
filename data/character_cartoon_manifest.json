@@ -103,7 +103,8 @@
         "prompt": "Create ONE full-body game character on transparent background. Character identity specification: {\"id\":\"AR4\",\"name\":\"에델\",\"faction\":\"아르켄 왕국\",\"target\":{\"gender\":\"여\",\"apparentAge\":24,\"archetype\":\"장난꾸러기 룬술사\",\"silhouette\":\"운동형\",\"personality\":\"여유로운 농담 뒤에 치밀한 계산\",\"expression\":\"한쪽 눈썹을 들고 사슬을 돌림\",\"design\":\"짧은 케이프와 룬 사슬검, 붉은 땋은 머리\"},\"fixedIdentity\":{\"palette\":\"남청·황동·백색\",\"face\":\"하트형 얼굴, 올라간 눈꼬리, 각진 눈썹\",\"skin\":\"구릿빛\",\"hairAndMarks\":\"굵은 붉은 외갈래 땋은 머리\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Reference image ONLY defines clean cartoon linework and controlled cel shading, NOT character identity. Draw the specified character, not reference woman. Full figure boots and whole weapon visible, centered with 8% padding. Adult 7-head proportion. 2-3 flat cel shade values, natural distinct face, large coherent asymmetric hair masses, minimal functional straps, readable tailored costume, faction palette. No photorealism, no tiny repeated filigree, no floating accessories, no text or multi-panel sheet. Gentle ready standing pose. Right hand primary weapon, left support. Transparent alpha, no floor and no scenery."
       },
       "screenReview": "pending-browser-connection",
-      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json",
+      "motionStatus": "7-poses-runtime-linked-screen-review-skipped"
     },
     {
       "id": "VR1",

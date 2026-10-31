@@ -15,6 +15,8 @@
 
 현재 기록:
 
+- [115 — 에델 전신 모션과 사슬검 연출 교체](115-edel-cartoon-motion.md)
+
 - [114 — 마리엔 전신 모션과 치유 자세 교체](114-marien-cartoon-motion.md)
 
 - [113 — 세린 전신 모션 카툰 전환](113-serin-cartoon-motion.md)

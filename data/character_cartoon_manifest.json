@@ -77,7 +77,8 @@
         "prompt": "Create ONE full-body game character on transparent background. Character identity specification: {\"id\":\"AR3\",\"name\":\"마리엔\",\"faction\":\"아르켄 왕국\",\"target\":{\"gender\":\"여\",\"apparentAge\":34,\"archetype\":\"안경 의무관\",\"silhouette\":\"아담한 성인 체형\",\"personality\":\"친절하지만 치료 지시에는 단호함\",\"expression\":\"부드러운 미소, 약함을 여는 손\",\"design\":\"백색 의무 망토와 황동 약함, 갈색 단발\"},\"fixedIdentity\":{\"palette\":\"남청·황동·백색\",\"face\":\"둥근 볼, 넓은 눈 간격, 낮은 둥근 코\",\"skin\":\"주근깨 있는 밝은 피부\",\"hairAndMarks\":\"작은 둥근 안경, 턱 길이 갈색 단발\",\"weaponHand\":\"오른손 주무기 / 왼손 보조 장비\",\"costumeLayers\":[\"안쪽 셔츠 또는 보호복\",\"팩션 외투 또는 갑옷\",\"기존 무기와 대표 장신구\"]}}. Reference image ONLY defines clean cartoon linework and controlled cel shading, NOT character identity. Draw the specified character, not reference woman. Full figure boots and whole weapon visible, centered with 8% padding. Adult 7-head proportion. 2-3 flat cel shade values, natural distinct face, large coherent asymmetric hair masses, minimal functional straps, readable tailored costume, faction palette. No photorealism, no tiny repeated filigree, no floating accessories, no text or multi-panel sheet. Gentle ready standing pose. Right hand primary weapon, left support. Transparent alpha, no floor and no scenery."
       },
       "screenReview": "pending-browser-connection",
-      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json"
+      "sdStatus": "runtime-linked-see-cartoon_sd_progress.json",
+      "motionStatus": "7-poses-runtime-linked-screen-review-skipped"
     },
     {
       "id": "AR4",

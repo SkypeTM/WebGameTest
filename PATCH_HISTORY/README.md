@@ -15,6 +15,8 @@
 
 현재 기록:
 
+- [114 — 마리엔 전신 모션과 치유 자세 교체](114-marien-cartoon-motion.md)
+
 - [113 — 세린 전신 모션 카툰 전환](113-serin-cartoon-motion.md)
 
 - `082-hub-qa-report.md`: 거점·퀘스트·시장·저장 자동 검사 결과 및 상세 로그 저장

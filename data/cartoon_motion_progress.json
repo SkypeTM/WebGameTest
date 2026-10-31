@@ -113,10 +113,66 @@
       "runtimeApplied": true,
       "illustrationReview": "reviewed",
       "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR3",
+      "pose": "ready",
+      "path": "/assets/cartoon-v5-motion/AR3/ready.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR3",
+      "pose": "windup",
+      "path": "/assets/cartoon-v5-motion/AR3/windup.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR3",
+      "pose": "swing",
+      "path": "/assets/cartoon-v5-motion/AR3/swing.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR3",
+      "pose": "strike",
+      "path": "/assets/cartoon-v5-motion/AR3/strike.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR3",
+      "pose": "recover",
+      "path": "/assets/cartoon-v5-motion/AR3/recover.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR3",
+      "pose": "heal",
+      "path": "/assets/cartoon-v5-motion/AR3/heal.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
+    },
+    {
+      "id": "AR3",
+      "pose": "hit",
+      "path": "/assets/cartoon-v5-motion/AR3/hit.png",
+      "runtimeApplied": true,
+      "illustrationReview": "reviewed",
+      "screenReview": "skipped-user-request"
     }
   ],
   "next": [
-    "AR3 / AR4 full-size sets",
+    "AR4 full-size set",
     "Other28 characters",
     "Continuous rigging / frame alignment"
   ]

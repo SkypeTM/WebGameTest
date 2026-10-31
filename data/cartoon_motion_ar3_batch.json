@@ -1,0 +1,48 @@
+{
+  "updated": "2026-10-30",
+  "styleVersion": "cartoon-v5",
+  "assets": [
+    {
+      "id": "AR3",
+      "pose": "ready",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-68b10c41-c862-403e-8abf-85b00a30c791.png",
+      "prompt": "Create ONE FULL-SIZE battle sprite of the SAME adult woman in the reference. Transform ONLY SD/chibi proportions to mature 7-head-tall adult proportions: head much smaller, anatomically adult arms and legs. Marien adult woman age34, petite adult physique, round cheeks, brown eyes spaced broadly, freckles, small round glasses, chin length brown bob. White medic cape over navy high collar coat and white shirt/trousers, brass medical case in LEFT hand, brass star-orb healing staff in RIGHT hand. Preserve cape clasp, belt pouch, boots. Gentle attentive expression. Fullbody neutral combat ready pose in 3/4 facing SCREEN RIGHT; feet planted, whole weapon visible. Clean anime cartoon outlines and restrained 2-3 cel shades, no texture noise, no new decorative filigree. Hair in coherent large masses, clothing with functional attachment points. Square 1536x1536 canvas; entire character within 10%-90% vertical range, both feet baseline90%; EVERY weapon and hair strand within 6% edge margin. Stable low practical boot heels. Transparent PNG CUTOUT, outside silhouette truly alpha0. NO brown gradient, NO scene, NO vignette, NO shadow, NO text. One character only, not a sheet."
+    },
+    {
+      "id": "AR3",
+      "pose": "windup",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-6feeb1c1-22a1-403c-9f13-fe58c09bd87e.png",
+      "prompt": "Edit the supplied fullbody reference to ONE new animation pose of Marien, adult woman34. SAME exact face, chin length brown bob, round glasses, freckles, navy-white coat, white medic cape, gold star-orb staff RIGHT hand, medical case LEFT hand, low heel boots. Preserve body and head scale from reference. Attack anticipation. Both feet grounded slightly apart. Turn torso and gaze toward screen RIGHT. Draw the staff back toward screen left with RIGHT hand to prepare a short staff swing. LEFT hand holds medical case low behind hip. 7-head mature adult anatomy. Clean cel cartoon, coherent large hair clumps, no new decoration. Entire fullbody on SQUARE1536 canvas with hair at10%, feet baseline90%, all equipment inside8% edge. Zoom OUT enough that staff tip, feet and cape stay visible. No mirroring weapon hands. Full alpha TRANSPARENT outside character, no ground, no vignette, no background, no glow, no text."
+    },
+    {
+      "id": "AR3",
+      "pose": "swing",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-15fe4b8d-a1f6-409a-94c6-4c2a8ae9e9f6.png",
+      "prompt": "Correct this fullbody Marien animation sprite. Draw the NEXT frame of the attack. Her ANATOMICAL RIGHT arm starts at the shoulder on VIEWER LEFT and swings the staff FORWARD ACROSS HER CHEST toward SCREEN RIGHT. Her LEFT hand holds the medical case on VIEWER RIGHT below waist. DO NOT mirror her arms or swap staff and medical case. The staff remains in her right hand, the hand on the viewer-left arm. Keep feet spread, no step. Preserve adult34 mature anatomy, small round glasses, brown bob, freckles, navy-white uniform, white medic cape and medical case. Outfit and body proportions remain the same. Keep same clean cel shading. NO NEW DECORATION. Square canvas; place every cape edge, staff tip and boot at least8% inside the canvas border. Whole silhouette visible. True alpha transparent outside silhouette. Clean smooth anti-aliased edges, NO red/yellow color fringe, NO glow, NO background."
+    },
+    {
+      "id": "AR3",
+      "pose": "strike",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-edb9d3fa-1e5d-4bfa-9b5d-2694f96f2781.png",
+      "prompt": "Correct this fullbody Marien animation sprite. Keep SAME exact pose, prop hands, face, costume and facial expression. Fix framing only: scale the ENTIRE character down to 80% of previous canvas span so the left cape edges and right staff tip do not touch the image border. Reconstruct any clipped cape. Leave generous fully transparent border on ALL four sides. Preserve adult34 mature anatomy, small round glasses, brown bob, freckles, navy-white uniform, white medic cape and medical case. Outfit and body proportions remain the same. Keep same clean cel shading. NO NEW DECORATION. Square canvas; place every cape edge, staff tip and boot at least8% inside the canvas border. Whole silhouette visible. True alpha transparent outside silhouette. Clean smooth anti-aliased edges, NO red/yellow color fringe, NO glow, NO background."
+    },
+    {
+      "id": "AR3",
+      "pose": "recover",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-cb934bbe-cf6b-4dda-a1eb-d523caa20df5.png",
+      "prompt": "Edit the supplied fullbody reference to ONE new animation pose of Marien, adult woman34. SAME exact face, chin length brown bob, round glasses, freckles, navy-white coat, white medic cape, gold star-orb staff RIGHT hand, medical case LEFT hand, low heel boots. Preserve body and head scale from reference. Recover after attack. Torso and gaze to screen RIGHT. Relax stance, lower staff in RIGHT hand beside hip; LEFT hand still carries case. Return toward ready posture. 7-head mature adult anatomy. Clean cel cartoon, coherent large hair clumps, no new decoration. Entire fullbody on SQUARE1536 canvas with hair at10%, feet baseline90%, all equipment inside8% edge. Zoom OUT enough that staff tip, feet and cape stay visible. No mirroring weapon hands. Full alpha TRANSPARENT outside character, no ground, no vignette, no background, no glow, no text."
+    },
+    {
+      "id": "AR3",
+      "pose": "heal",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-38dcd712-d758-4e4f-b1f1-a7bb2832e528.png",
+      "prompt": "Edit the supplied fullbody reference to ONE new animation pose of Marien, adult woman34. SAME exact face, chin length brown bob, round glasses, freckles, navy-white coat, white medic cape, gold star-orb staff RIGHT hand, medical case LEFT hand, low heel boots. Preserve body and head scale from reference. Healing skill. Kind focused face toward screen RIGHT. RIGHT hand raises staff orb toward right ally at chest height, LEFT hand lifts closed medical case slightly as a practical healer gesture. Keep both hands on their equipment, no extra limbs. 7-head mature adult anatomy. Clean cel cartoon, coherent large hair clumps, no new decoration. Entire fullbody on SQUARE1536 canvas with hair at10%, feet baseline90%, all equipment inside8% edge. Zoom OUT enough that staff tip, feet and cape stay visible. No mirroring weapon hands. Full alpha TRANSPARENT outside character, no ground, no vignette, no background, no glow, no text."
+    },
+    {
+      "id": "AR3",
+      "pose": "hit",
+      "generatedSource": "C:\\Users\\123\\.codex\\generated_images\\01a0aaa2-8b2d-7dc1-8348-f85a737a6902\\exec-091d6148-4e26-4c77-9ba4-bbb59000b173.png",
+      "prompt": "Edit the supplied fullbody reference to ONE new animation pose of Marien, adult woman34. SAME exact face, chin length brown bob, round glasses, freckles, navy-white coat, white medic cape, gold star-orb staff RIGHT hand, medical case LEFT hand, low heel boots. Preserve body and head scale from reference. Small recoil from being hit on front by opponent at screen RIGHT. Chin tucked and eyes wince, shoulders back slightly. RIGHT hand keeps staff upright tilted inward, LEFT hand medical case close to hip. Feet remain planted. No injury or blood. 7-head mature adult anatomy. Clean cel cartoon, coherent large hair clumps, no new decoration. Entire fullbody on SQUARE1536 canvas with hair at10%, feet baseline90%, all equipment inside8% edge. Zoom OUT enough that staff tip, feet and cape stay visible. No mirroring weapon hands. Full alpha TRANSPARENT outside character, no ground, no vignette, no background, no glow, no text."
+    }
+  ]
+}

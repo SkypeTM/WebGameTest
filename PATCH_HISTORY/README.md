@@ -15,6 +15,8 @@
 
 현재 기록:
 
+- [116 — 전 팩션 동료 개인 이야기 확장](116-all-companion-stories.md)
+
 - [115 — 에델 전신 모션과 사슬검 연출 교체](115-edel-cartoon-motion.md)
 
 - [114 — 마리엔 전신 모션과 치유 자세 교체](114-marien-cartoon-motion.md)

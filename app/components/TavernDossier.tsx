@@ -6,7 +6,7 @@ import poses from "../../data/renewal_actor_manifest.json";
 import CompanionStoryDialog from "./CompanionStoryDialog";
 import { promotionStage } from "../../lib/promotion";
 import { characterBaseArt } from "../../lib/character-art";
-export default function TavernDossier({game}:{game:Game}) {
+export default function TavernDossier({game, locked, onCompleteStory}:{game:Game; locked:boolean; onCompleteStory:(id:string)=>Promise<boolean>}) {
   const [selected,setSelected]=useState(game.party[0] || game.roster[0]?.id || "AR1");
   const [storyOpen,setStoryOpen]=useState(false);
   const character=characters.find(c=>c.id===selected)!;
@@ -21,8 +21,8 @@ export default function TavernDossier({game}:{game:Game}) {
       <dl className="tavern-stat-grid">{Object.entries({HP:stats.maxHp,MP:stats.maxMana,공격:stats.attack,방어:stats.defense,주문:stats.spell,"치명타 %":stats.crit}).map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
       <h3>성장 경로</h3><p>Lv.3 전문화 · {member.specialization === "assault" ? "맹공 · 공격 +3" : member.specialization === "bulwark" ? "수비 · 방어 +2" : member.specialization === "focus" ? "집중 · 주문 +3" : "미선택"}<small> · 훈련장에서 무료 변경</small></p><ol className="tavern-skill-path"><li><strong>{stats.trait}</strong><p>{stats.traitDescription}</p></li><li><strong>{stats.skill}</strong><p>{stats.skillDescription}</p></li><li aria-label={member.level>=3 ? "해금됨" : "잠김"}>Lv.3 · 방어 카드 보존 {member.level>=3 ? "✓" : "🔒"}</li><li>Lv.5 · 전용 스킬 발견 {member.level>=5 ? "✓" : "🔒"}</li><li>상위 전직 · 전용 스킬 생성 {member.promotion ? "✓" : "🔒"}</li></ol>
       <p>승급 {promotionStage(member)}/3단계 · {promotionStage(member)===3 ? "계승 완료 · 역할 능력 강화" : "훈련장에서 승급 의뢰 확인"}</p>
-      <button className="secondary" aria-label={`${character.name} 개인 이야기 열기`} onClick={()=>setStoryOpen(true)}>▤ 개인 이야기 · {stories.filter(s=>s.unlocked).length}/{stories.length}</button>
+      <button className="secondary" aria-label={`${character.name} 개인 이야기 열기`} onClick={()=>setStoryOpen(true)}>▤ 개인 이야기 · {stories.filter(s=>s.unlocked).length}/{stories.length} 해금 · {stories.filter(s=>s.completed).length}편 읽음</button>
     </div>
-    {storyOpen && <CompanionStoryDialog key={selected} characterId={selected} characterName={character.name} stories={stories} onClose={()=>setStoryOpen(false)} />}
+    {storyOpen && <CompanionStoryDialog key={selected} characterId={selected} characterName={character.name} stories={stories} locked={locked} onComplete={onCompleteStory} onClose={()=>setStoryOpen(false)} />}
   </section>;
 }

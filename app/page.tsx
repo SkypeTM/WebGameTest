@@ -683,7 +683,7 @@ export default function Page() {
     }
   }
   async function act(action?: Action) {
-    if (working.current) return;
+    if (working.current) return false;
     working.current = true;
     setBusy(true);
     setError("");
@@ -696,7 +696,7 @@ export default function Page() {
         };
         sessionStorage.setItem("bell-pending", JSON.stringify(pending.current));
       }
-      if (!pending.current) return;
+      if (!pending.current) return false;
       const performed =
         action || (pending.current.action as Action | undefined);
       accept(await api(pending.current));
@@ -739,6 +739,7 @@ export default function Page() {
       sessionStorage.removeItem("bell-pending");
       setSelected(null);
       setOffline(false);
+      return true;
     } catch (e) {
       const err = e as Error & { status?: number };
       setError(err.message);
@@ -749,6 +750,7 @@ export default function Page() {
         if (err.status === 409) await load();
         if (err.status === 401) setGame(null);
       } else setOffline(true);
+      return false;
     } finally {
       setBusy(false);
       working.current = false;
@@ -2246,7 +2248,7 @@ export default function Page() {
                         </button>
                       ))}
                     </div>
-                    <TavernDossier game={game} />
+                    <TavernDossier game={game} locked={locked} onCompleteStory={id => act({type:"completeCompanionStory", id})} />
                     <h3>동료 모집과 계약</h3><div className="recruit-grid">
                       {characters
                         .filter(

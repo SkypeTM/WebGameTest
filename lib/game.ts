@@ -14,6 +14,7 @@ import {
 import { originRegions, scorePrologue, type PrologueProfile } from "./prologue";
 import prologueScoring from "../data/prologue_scoring_v1.json";
 import { storyArt } from "./story-art";
+import { companionStoryById, isCompanionStoryUnlocked, normalizeCompletedCompanionStories } from "./companion-story-progress";
 import characters from "../data/characters.json" with { type: "json" };
 import monsters from "../data/monsters.json" with { type: "json" };
 import balance from "../data/balance.json" with { type: "json" };
@@ -995,6 +996,7 @@ export type Run = {
   >;
 };
 export type Game = {
+  completedCompanionStories?: string[];
   selectedTitle?: string;
   partyPresets?: ({ ids: string[]; loadouts: Record<string, Loadout> } | null)[];
   characterTrust?: Record<string, number>;
@@ -1488,6 +1490,7 @@ export function heroStats(h: Hero) {
 }
 export function initialGame(): Game {
   return {
+    completedCompanionStories: [],
     characterTrust: {},
     guestIds: [],
     echoMemories: [],
@@ -1549,6 +1552,7 @@ export function normalizeGame(previous: Game): Game {
     ...defaults,
     ...saved,
     prologue: saved.prologue,
+    completedCompanionStories: normalizeCompletedCompanionStories(saved.completedCompanionStories),
     characterTrust: saved.characterTrust || {},
     guestIds: saved.guestIds || [],
     echoMemories: saved.echoMemories || [],
@@ -2080,6 +2084,17 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
       )!.id;
       log(g, "종이 멎은 밤의 기억을 남기고, 선택한 동료들과 첫 조사에 나섰다.");
     } else throw new RuleError("알 수 없는 프롤로그 선택입니다.");
+  } else if (a.type === "completeCompanionStory") {
+    check(!r, "동료 이야기는 거점에서 마무리하세요.");
+    const story = companionStoryById(a.id);
+    check(story, "알 수 없는 동료 이야기입니다.");
+    check(g.roster.some(member => member.id === story.hero), "영입한 동료의 이야기만 기록할 수 있습니다.");
+    check(isCompanionStoryUnlocked(g, story), "이 이야기의 퀘스트와 팩션 우호도 조건을 먼저 달성하세요.");
+    const completed = g.completedCompanionStories!;
+    if (!completed.includes(story.id)) completed.push(story.id);
+    // Reading only saves progress; it does not trigger gameplay rewards or logs.
+    g.version++;
+    return g;
   } else if (a.type === "savePartyPreset" || a.type === "loadPartyPreset") {
     check(!r, "탐사 중에는 준비 편성을 변경할 수 없습니다.");
     const index = Number(a.id);

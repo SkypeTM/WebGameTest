@@ -279,6 +279,22 @@
   cursor: default;
 }
 
+.reader .finishButton {
+  background: #b89961;
+  border-color: #ddbe80;
+  color: #151d26;
+  font-weight: 700;
+}
+
+.readStatus {
+  min-height: 1.5em;
+  margin: 14px 0 0;
+  color: #c4cbc7;
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
 .srOnly {
   position: absolute;
   width: 1px;

@@ -21,14 +21,18 @@ function parseLine(line: string) {
   };
 }
 
-export default function CompanionStoryDialog({ characterId, characterName, stories, onClose }: {
+export default function CompanionStoryDialog({ characterId, characterName, stories, locked, onComplete, onClose }: {
   characterId: string;
   characterName: string;
   stories: Story[];
+  locked: boolean;
+  onComplete: (id: string) => Promise<boolean>;
   onClose: () => void;
 }) {
   const [activeStoryId, setActiveStoryId] = useState<string | null>(null);
   const [lineIndex, setLineIndex] = useState(0);
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
   const titleRef = useRef<HTMLHeadingElement>(null);
   const storyButtons = useRef(new Map<string, HTMLButtonElement>());
   const returnFocusId = useRef<string | null>(null);
@@ -54,12 +58,27 @@ export default function CompanionStoryDialog({ characterId, characterName, stori
     if (!story.unlocked || !story.lines.length) return;
     returnFocusId.current = story.id;
     setLineIndex(0);
+    setSaveError("");
     setActiveStoryId(story.id);
   }
 
   function returnToList() {
     setActiveStoryId(null);
     setLineIndex(0);
+    setSaveError("");
+  }
+
+  async function finishStory() {
+    if (!activeStory || activeStory.completed || saving || locked || currentIndex !== activeStory.lines.length - 1) return;
+    setSaving(true);
+    setSaveError("");
+    try {
+      if (!await onComplete(activeStory.id)) setSaveError("읽음 기록을 저장하지 못했습니다. 연결과 조작권을 확인한 뒤 다시 시도하세요.");
+    } catch {
+      setSaveError("읽음 기록을 저장하지 못했습니다. 잠시 후 다시 시도하세요.");
+    } finally {
+      setSaving(false);
+    }
   }
 
   function handleReadingKeys(event: KeyboardEvent<HTMLElement>) {
@@ -99,12 +118,15 @@ export default function CompanionStoryDialog({ characterId, characterName, stori
           </div>
         </div>
         <footer className={styles.controls}>
-          <button type="button" className={styles.listButton} onClick={returnToList}>이야기 목록</button>
+          <button type="button" className={styles.listButton} disabled={saving} onClick={returnToList}>이야기 목록</button>
           <div className={styles.pageControls} aria-label="대사 이동">
             <button type="button" onClick={()=>setLineIndex(currentIndex - 1)} disabled={currentIndex === 0}><span aria-hidden="true">← </span>이전 대사</button>
-            <button type="button" onClick={()=>setLineIndex(currentIndex + 1)} disabled={currentIndex === activeStory.lines.length - 1}>다음 대사<span aria-hidden="true"> →</span></button>
+            {currentIndex < activeStory.lines.length - 1
+              ? <button type="button" onClick={()=>setLineIndex(currentIndex + 1)}>다음 대사<span aria-hidden="true"> →</span></button>
+              : <button type="button" className={styles.finishButton} disabled={activeStory.completed || saving || locked} onClick={finishStory}>{saving ? "저장 중…" : activeStory.completed ? "읽음 기록됨 ✓" : "이야기 마치기 ✓"}</button>}
           </div>
         </footer>
+        <p className={styles.readStatus} role="status">{saveError || (activeStory.completed ? "읽음 기록이 계정에 저장되어 있습니다. 언제든 다시 읽을 수 있습니다." : locked && !saving ? "읽기는 계속할 수 있습니다. 기록을 저장하려면 연결과 이 기기의 조작권이 필요합니다." : "마지막 대사에서 ‘이야기 마치기’를 누르면 읽음 기록을 계정에 저장합니다.")}</p>
       </> : <>
         <p className={styles.intro}>동료와 나누고 싶은 이야기를 고르세요.</p>
         {stories.length ? <ul className={styles.storyList}>{stories.map((story, index) => <li key={story.id} className={styles.storyItem}>
@@ -112,7 +134,7 @@ export default function CompanionStoryDialog({ characterId, characterName, stori
             ref={node => { if (node) storyButtons.current.set(story.id, node); else storyButtons.current.delete(story.id); }}
             onClick={()=>openStory(story)}>
             <span className={styles.chapterNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-            <span className={styles.storySummary}><strong>{story.title}</strong><small>{story.lines.length}개 대사 · 이야기 시작</small></span>
+            <span className={styles.storySummary}><strong>{story.title}</strong><small>{story.lines.length}개 대사 · {story.completed ? "읽음 ✓ · 다시 읽기" : "아직 읽지 않은 이야기"}</small></span>
             <span aria-hidden="true">→</span>
           </button> : <div className={styles.lockedStory}>
             <span className={styles.chapterNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>

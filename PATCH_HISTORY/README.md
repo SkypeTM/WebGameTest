@@ -15,6 +15,9 @@
 
 현재 기록:
 
+- [118 — 전체 동료 SD 원화와 전신 연출 미리보기](118-roster-art-preview.md)
+- [117 — 주점 개인 이야기 읽기 화면](117-companion-story-reader.md)
+
 - [116 — 전 팩션 동료 개인 이야기 확장](116-all-companion-stories.md)
 
 - [115 — 에델 전신 모션과 사슬검 연출 교체](115-edel-cartoon-motion.md)

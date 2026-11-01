@@ -7,78 +7,83 @@
       "id": "fortress",
       "path": "/assets/regions-v4/fortress.png",
       "description": "깨진 종과 꺼진 봉화의 낮은 군사 성문",
-      "status": "implemented-local",
+      "status": "runtime-linked",
       "usage": [
         "WorldAtlas detail",
         "party preparation"
       ],
-      "review": "독립 원화 확인. 라이브 미배포."
+      "review": "독립 원화 확인. 라이브 배포 완료, 라이브 화면 QA 미실시."
     },
     {
       "id": "harbor",
       "path": "/assets/regions-v4/harbor.png",
       "description": "검은 갯벌·좌초선·목조 창고",
-      "status": "implemented-local",
+      "status": "runtime-linked",
       "usage": [
         "WorldAtlas detail",
         "party preparation"
       ],
-      "review": "독립 원화 확인. 라이브 미배포."
+      "review": "독립 원화 확인. 라이브 배포 완료, 라이브 화면 QA 미실시."
     },
     {
       "id": "archive",
       "path": "/assets/regions-v4/archive.png",
       "description": "수몰 계단과 노출 서가의 침수 기록실",
-      "status": "implemented-local",
+      "status": "runtime-linked",
       "usage": [
         "WorldAtlas detail",
         "party preparation"
       ],
-      "review": "독립 원화 확인. 라이브 미배포."
+      "review": "독립 원화 확인. 라이브 배포 완료, 라이브 화면 QA 미실시."
     },
     {
       "id": "chapel",
       "path": "/assets/regions-v4/chapel.png",
       "description": "낮은 원형 백색 예배당과 정원",
-      "status": "implemented-local",
+      "status": "runtime-linked",
       "usage": [
         "WorldAtlas detail",
         "party preparation"
       ],
-      "review": "독립 원화 확인. 라이브 미배포."
+      "review": "독립 원화 확인. 라이브 배포 완료, 라이브 화면 QA 미실시."
     },
     {
       "id": "laboratory",
       "path": "/assets/regions-v4/laboratory.png",
       "description": "톱니 지붕 벽돌 연구동과 구리 배관",
-      "status": "implemented-local",
+      "status": "runtime-linked",
       "usage": [
         "WorldAtlas detail",
         "party preparation"
       ],
-      "review": "독립 원화 확인. 라이브 미배포."
+      "review": "독립 원화 확인. 라이브 배포 완료, 라이브 화면 QA 미실시."
     },
     {
       "id": "observatory",
       "path": "/assets/regions-v4/observatory.png",
       "description": "설원의 목조 관측소와 황동 망원경",
-      "status": "implemented-local",
+      "status": "runtime-linked",
       "usage": [
         "WorldAtlas detail",
         "party preparation"
       ],
-      "review": "독립 원화 확인. 라이브 미배포."
+      "review": "독립 원화 확인. 라이브 배포 완료, 라이브 화면 QA 미실시."
     },
     {
       "id": "palace",
       "path": "/assets/regions-v4/palace.png",
       "description": "깨진 왕관 실루엣의 검은 왕궁",
-      "status": "implemented-local",
+      "status": "runtime-linked",
       "usage": [
         "WorldAtlas detail",
         "party preparation"
       ],
-      "review": "독립 원화 확인. 라이브 미배포."
+      "review": "독립 원화 확인. 라이브 배포 완료, 라이브 화면 QA 미실시."
     }
-  ]
+  ],
+  "deployment": {
+    "commit": "65050ce",
+    "cloudflareVersion": "06b09ec8-8148-4070-947c-69cfb7cd4ae8",
+    "screenReview": "not-performed"
+  }
 }

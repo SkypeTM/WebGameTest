@@ -1,0 +1,363 @@
+.reader {
+  min-width: 0;
+  color: #eee8dc;
+}
+
+.reader button {
+  min-height: 44px;
+  margin: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+.reader button:focus-visible,
+.chapterHeading h3:focus-visible {
+  outline: 2px solid #f1cf87;
+  outline-offset: 4px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #80704f;
+}
+
+.header > div,
+.chapterHeading h3 {
+  min-width: 0;
+}
+
+.header h2 {
+  margin: 6px 0 0;
+  font-size: clamp(20px, 3vw, 28px);
+  overflow-wrap: anywhere;
+}
+
+.eyebrow {
+  color: #d7b579;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+
+.reader .closeButton {
+  flex: 0 0 auto;
+  padding: 10px 16px;
+}
+
+.intro,
+.empty {
+  color: #c1c5c3;
+  line-height: 1.7;
+  margin: 18px 0;
+}
+
+.storyList {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.storyItem {
+  min-width: 0;
+}
+
+.reader .storyButton,
+.lockedStory {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: left;
+  border: 1px solid #80704f;
+  background: #202a31;
+  color: #eee8dc;
+  border-radius: 4px;
+}
+
+.reader .storyButton:hover {
+  border-color: #e2bd77;
+  background: #303632;
+}
+
+.chapterNumber {
+  flex: 0 0 28px;
+  color: #d7b579;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.storySummary {
+  display: block;
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.storySummary strong,
+.storySummary h3 {
+  display: block;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.storySummary small {
+  display: block;
+  margin-top: 5px;
+  color: #bdcac7;
+  font-size: 12px;
+}
+
+.storySummary p {
+  margin: 8px 0 0;
+  line-height: 1.65;
+  font-size: 13px;
+  color: #c6bca8;
+}
+
+.lockedStory {
+  border-style: dashed;
+  border-color: #686258;
+  background: #1b2228;
+}
+
+.chapterHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+}
+
+.chapterHeading h3 {
+  margin: 0;
+  font-size: clamp(18px, 2.7vw, 24px);
+  overflow-wrap: anywhere;
+}
+
+.chapterHeading > span {
+  flex-shrink: 0;
+  color: #d7b579;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.scene {
+  display: grid;
+  grid-template-columns: minmax(180px, .8fr) minmax(0, 1.2fr);
+  min-height: 340px;
+  background: #131c26;
+  border: 1px solid #4b5358;
+}
+
+.portrait {
+  position: relative;
+  min-width: 0;
+  height: clamp(280px, 42dvh, 430px);
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 55% 65%, #64766c55, transparent 75%);
+  border-right: 1px solid #4b5358;
+}
+
+.portrait img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 150%;
+  max-width: none;
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.listening img {
+  opacity: .84;
+}
+
+.speaking {
+  background-color: #263139;
+}
+
+.portrait figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 22px 16px 14px;
+  background: linear-gradient(transparent, #101923f5 40%);
+  color: #eed6a4;
+  font-size: 18px;
+}
+
+.portrait figcaption small {
+  display: block;
+  margin-top: 4px;
+  color: #c4cbc7;
+  font-size: 11px;
+}
+
+.portraitFallback {
+  display: grid;
+  height: 100%;
+  place-items: center;
+  color: #d7b579;
+}
+
+.dialogue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(20px, 3vw, 36px);
+}
+
+.dialogueText {
+  border-left: 3px solid #d7b579;
+  padding-left: 18px;
+}
+
+.playerLine .dialogueText {
+  border-left-color: #8ebfb7;
+}
+
+.narration .dialogueText {
+  border-left-color: #8e9aa5;
+}
+
+.speaker {
+  display: block;
+  color: #e3c786;
+  font-size: 16px;
+}
+
+.playerLine .speaker {
+  color: #a8d2cd;
+}
+
+.dialogueText p {
+  margin: 14px 0 0;
+  line-height: 1.85;
+  font-size: clamp(16px, 2vw, 19px);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.keyHint {
+  margin-top: 28px;
+  color: #aab6ba;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.pageControls {
+  display: flex;
+  gap: 8px;
+}
+
+.reader .pageControls button,
+.reader .listButton {
+  padding: 10px 16px;
+}
+
+.reader .pageControls button:disabled {
+  opacity: .55;
+  cursor: default;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+  .scene {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .portrait {
+    height: 230px;
+    border-right: 0;
+    border-bottom: 1px solid #4b5358;
+  }
+
+  .portrait img {
+    width: 310px;
+  }
+
+  .dialogue {
+    min-height: 190px;
+    padding: 22px 18px;
+  }
+
+  .controls {
+    flex-wrap: wrap;
+  }
+
+  .pageControls {
+    flex: 1 1 100%;
+  }
+
+  .pageControls button {
+    flex: 1;
+  }
+
+  .reader .storyButton,
+  .lockedStory {
+    gap: 10px;
+    padding: 16px 12px;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .scene {
+    grid-template-columns: minmax(130px, .6fr) minmax(0, 1.4fr);
+    min-height: 210px;
+  }
+
+  .portrait {
+    height: 210px;
+  }
+
+  .portrait img {
+    width: 280px;
+  }
+
+  .header {
+    padding-bottom: 10px;
+  }
+
+  .chapterHeading {
+    padding: 12px 0;
+  }
+
+  .dialogue {
+    padding: 18px;
+  }
+
+  .keyHint {
+    display: none;
+  }
+}

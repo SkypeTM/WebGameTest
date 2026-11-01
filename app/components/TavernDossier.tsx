@@ -3,7 +3,7 @@ import { useState } from "react";
 import { characters, hero, heroStats, type Game } from "../../lib/game";
 import { companionStories } from "../../lib/companion-stories";
 import poses from "../../data/renewal_actor_manifest.json";
-import HubDialog from "./HubDialog";
+import CompanionStoryDialog from "./CompanionStoryDialog";
 import { promotionStage } from "../../lib/promotion";
 import { characterBaseArt } from "../../lib/character-art";
 export default function TavernDossier({game}:{game:Game}) {
@@ -23,6 +23,6 @@ export default function TavernDossier({game}:{game:Game}) {
       <p>승급 {promotionStage(member)}/3단계 · {promotionStage(member)===3 ? "계승 완료 · 역할 능력 강화" : "훈련장에서 승급 의뢰 확인"}</p>
       <button className="secondary" aria-label={`${character.name} 개인 이야기 열기`} onClick={()=>setStoryOpen(true)}>▤ 개인 이야기 · {stories.filter(s=>s.unlocked).length}/{stories.length}</button>
     </div>
-    {storyOpen && <HubDialog onClose={()=>setStoryOpen(false)}><header className="overlay-heading"><h2>{character.name}의 이야기</h2><button autoFocus onClick={()=>setStoryOpen(false)}>닫기 ×</button></header>{stories.length ? stories.map(story=><section className="panel" key={story.id}><h3>{story.unlocked ? "▤" : "🔒"} {story.title}</h3>{story.unlocked ? story.lines.map((line,i)=><p key={i}>{line}</p>) : <p>{story.requirement}</p>}</section>) : <p>이 동료의 개인 이야기는 준비 중입니다.</p>}</HubDialog>}
+    {storyOpen && <CompanionStoryDialog key={selected} characterId={selected} characterName={character.name} stories={stories} onClose={()=>setStoryOpen(false)} />}
   </section>;
 }

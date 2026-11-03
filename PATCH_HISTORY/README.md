@@ -15,6 +15,8 @@
 
 현재 기록:
 
+- [120 — 전문화와 심화 성장 분기](120-character-mastery-tree.md)
+
 - [119 — 동료 개인 이야기 읽음 기록](119-companion-story-progress.md)
 
 - [118 — 전체 동료 SD 원화와 전신 연출 미리보기](118-roster-art-preview.md)

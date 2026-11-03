@@ -1,4 +1,5 @@
 import { promotionQuest, promotionBonus } from "./promotion";
+import { activeMastery, getMastery, masteryBonus, type MasteryId } from "./skill-tree";
 import { progressAchievements, achievementProgress } from "./progress-achievements";
 import {
   regionNeighbors,
@@ -923,6 +924,7 @@ export type Hero = {
   combatWins?: number;
   bossWins?: number;
   specialization?: "assault" | "bulwark" | "focus";
+  mastery?: MasteryId;
   injury: boolean;
   equipment: "blade" | "ward";
   mana: number;
@@ -1423,6 +1425,9 @@ function normalizeHero(saved: Hero): Hero {
   if (!["assault", "bulwark", "focus"].includes(saved.specialization || "")) {
     saved = { ...saved }; delete saved.specialization;
   }
+  if (saved.mastery !== undefined && !activeMastery(saved)) {
+    saved = { ...saved }; delete saved.mastery;
+  }
   const defaults = hero(saved.id);
   const mergedLoadout = { ...defaults.loadout, ...(saved.loadout || {}) };
   const loadout = (Object.keys(defaults.loadout) as (keyof Loadout)[]).reduce(
@@ -1451,6 +1456,7 @@ function normalizeHero(saved: Hero): Hero {
 }
 export function heroStats(h: Hero) {
   const ascension = promotionBonus(h);
+  const mastery = masteryBonus(h);
   const profession = professionFor(h.id);
   const weapon =
     equipmentCatalog.weapon.find((item) => item.id === h.loadout.weapon) ||
@@ -1469,16 +1475,16 @@ export function heroStats(h: Hero) {
       weapon.attack +
       armor.attack +
       trinket.attack +
-      h.level + ascension.attack + (h.level >= 3 && h.specialization === "assault" ? 3 : 0),
+      h.level + ascension.attack + (h.level >= 3 && h.specialization === "assault" ? 3 : 0) + mastery.attack,
     defense:
       profession.defense +
       weapon.defense +
       armor.defense +
       trinket.defense +
-      Math.floor(h.level / 2) + ascension.defense + (h.level >= 3 && h.specialization === "bulwark" ? 2 : 0),
+      Math.floor(h.level / 2) + ascension.defense + (h.level >= 3 && h.specialization === "bulwark" ? 2 : 0) + mastery.defense,
     spell:
-      profession.spell + weapon.spell + armor.spell + trinket.spell + h.level + ascension.spell + (h.level >= 3 && h.specialization === "focus" ? 3 : 0),
-    crit: profession.crit + (h.loadout.weapon === "spear" ? 6 : 0),
+      profession.spell + weapon.spell + armor.spell + trinket.spell + h.level + ascension.spell + (h.level >= 3 && h.specialization === "focus" ? 3 : 0) + mastery.spell,
+    crit: profession.crit + (h.loadout.weapon === "spear" ? 6 : 0) + mastery.crit,
     trait: profession.trait,
     traitDescription: profession.traitDescription,
     skill: profession.skill,
@@ -2279,7 +2285,20 @@ export function reduceGame(previous: Game, a: Action, seed = 1): Game {
     check(h && h.level >= 3, "레벨 3 이상 보유 동료가 필요합니다.");
     check(a.choice === "assault" || a.choice === "bulwark" || a.choice === "focus", "잘못된 전문화입니다.");
     h.specialization = a.choice;
+    if (getMastery(h.mastery)?.parent !== h.specialization) delete h.mastery;
     log(g, `${characters.find(c => c.id === h.id)!.name} 전문화 변경: ${a.choice === "assault" ? "맹공" : a.choice === "bulwark" ? "수비" : "집중"}.`);
+  } else if (a.type === "mastery") {
+    check(!r, "거점에서만 심화 능력을 변경할 수 있습니다.");
+    const h = g.roster.find(member => member.id === a.id);
+    check(h, "소유하지 않은 캐릭터입니다.");
+    const mastery = getMastery(a.choice);
+    check(mastery, "알 수 없는 심화 능력입니다.");
+    check(Number.isFinite(h.level) && h.level >= mastery.minLevel, `레벨 ${mastery.minLevel} 이상 동료가 필요합니다.`);
+    check(h.specialization === mastery.parent, "먼저 이 심화 능력의 상위 전문화를 선택하세요.");
+    if (h.mastery !== mastery.id) {
+      h.mastery = mastery.id;
+      log(g, `${characters.find(c => c.id === h.id)!.name} 심화 능력 선택: ${mastery.name}.`);
+    }
   } else if (a.type === "promote") {
     check(!r, "거점에서만 전직할 수 있습니다.");
     const h = g.roster.find((hero) => hero.id === a.id);

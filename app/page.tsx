@@ -7,6 +7,8 @@ import RouteBriefing from "./components/RouteBriefing";
 import RouteSelectionSheet from "./components/RouteSelectionSheet";
 import HubDialog from "./components/HubDialog";
 import TavernDossier from "./components/TavernDossier";
+import CharacterSkillTree from "./components/CharacterSkillTree";
+import { activeMastery, getSpecialization } from "../lib/skill-tree";
 import PlayerProfile, { AchievementNotice } from "./components/PlayerProfile";
 import "./route-briefing.css";
 import { COMBAT_PRESENTATION } from "../lib/combat-presentation";
@@ -2696,9 +2698,11 @@ export default function Page() {
                               </p>
                             </div>
                             <div className="growth-actions">
-                              {facilityTab === "training" && <fieldset><legend>전문화 · Lv.3 · 거점 무료 변경</legend>{([
-                                ["assault", "맹공 · 공격 +3"], ["bulwark", "수비 · 방어 +2"], ["focus", "집중 · 주문 +3"]
-                              ] as const).map(([choice,label]) => <button key={choice} className="mini" disabled={locked || h.level < 3 || h.specialization === choice} aria-pressed={h.specialization === choice} onClick={()=>void act({type:"specialize",id:h.id,choice})}>{h.specialization === choice ? "✓ " : ""}{label}</button>)}</fieldset>}
+                              {facilityTab === "training" && <details className="training-growth-tree"><summary>성장 분기 · {getSpecialization(h.specialization)?.name || "전문화 미선택"}{activeMastery(h) ? ` → ${activeMastery(h)!.name}` : ""}</summary>
+                                <CharacterSkillTree member={h} characterName={char(h.id).name} editable locked={locked}
+                                  onSpecialize={choice => void act({type:"specialize", id:h.id, choice})}
+                                  onMaster={choice => void act({type:"mastery", id:h.id, choice})} />
+                              </details>}
                               {facilityTab === "training" && <PromotionQuest member={h} completed={game.completedQuests} gold={game.gold} locked={locked} onPromote={()=>void act({type:"promote",id:h.id})} />}
                               {facilityTab === "training" ? (
                                 <button
